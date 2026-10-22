@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgeFlow Terminal — Private Trade Thesis Studio & Session Desk</title>
+  <meta name="description" content="Private trader execution journal, trade thesis studio, tone analyzer, and global session tracker." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Live Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="brand-badge">
+        <span class="pulse-dot"></span>
+        <span>EDGEFLOW TERMINAL • PRIVATE DESK</span>
+      </div>
+      <div class="session-tracker">
+        <div class="utc-clock" id="utcClock">UTC: --:--:--</div>
+        <div class="session-pill" id="sessionStatus">Detecting Trading Session...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">REAL EXECUTION • AUTHENTIC INSIGHTS • ZERO ROBOTIC FLUFF</div>
+          <h1>Master the <span class="accent-gradient">EdgeFlow</span> Desk Playbook</h1>
+          <p class="hero-sub">
+            Your private workspace for crafting high-conviction trade notes, passing organic quality filters, and converting market reads into actionable setups.
+          </p>
+          <div class="hero-actions">
+            <a href="#post-studio" class="btn btn-primary">Launch Thesis Studio</a>
+            <a href="#daily-checklist" class="btn btn-secondary">Daily Tracker & Cadence</a>
+          </div>
+          <div class="metrics-strip">
+            <div class="metric-card">
+              <span class="metric-value">2–3</span>
+              <span class="metric-label">Optimal Notes / Day</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-value">1–2</span>
+              <span class="metric-label">Real Trades / Day</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-value">4–6h</span>
+              <span class="metric-label">Note Spacing Window</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-value">100%</span>
+              <span class="metric-label">Organic Human Tone</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score Engine Pillar Card -->
+        <div class="hero-panel">
+          <div class="panel-header">
+            <h3>Performance Engine Breakdown</h3>
+            <span class="badge-gold">Core Weights</span>
+          </div>
+          <div class="pillar-list">
+            <div class="pillar-item">
+              <div class="pillar-top">
+                <span class="pillar-title">1. Trade Conversion (Widget Action)</span>
+                <span class="pillar-weight">Heaviest Weight</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-gold" style="width: 92%"></div></div>
+              <p>Unique participants & volume generated via your embedded Spot, Perp, or Copy widgets.</p>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-top">
+                <span class="pillar-title">2. Thesis Depth & Organic Tone Filter</span>
+                <span class="pillar-weight">High Multiplier</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-green" style="width: 80%"></div></div>
+              <p>Original first-person reasoning, annotated chart levels, and clear risk/invalidation zones.</p>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-top">
+                <span class="pillar-title">3. Community Discussion Depth</span>
+                <span class="pillar-weight">Core Pillar</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-blue" style="width: 70%"></div></div>
+              <p>Back-and-forth comment threads and genuine trader debates (not empty views or likes).</p>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-top">
+                <span class="pillar-title">4. Weekly Cadence (Mon–Sun UTC)</span>
+                <span class="pillar-weight">Consistency Multiplier</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill fill-purple" style="width: 65%"></div></div>
+              <p>Steady daily publishing across global trading sessions without spam bursts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="section-nav">
+    <div class="container nav-inner">
+      <a href="#post-studio">✍️ Thesis Studio & Tone Scanner</a>
+      <a href="#daily-checklist">⏱️ Daily Cadence & Checklist</a>
+      <a href="#voice-guide">🧠 Real Trader Voice Guide</a>
+      <a href="#pro-strategies">🚀 7 Pro Growth Strategies</a>
+    </div>
+  </nav>
+
+  <main class="container main-content">
+    <!-- SECTION 1: INTERACTIVE POST BUILDER & ANTI-AI SCANNER -->
+    <section id="post-studio" class="section-block">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">INTERACTIVE TOOL</span>
+          <h2>Authentic Trade Thesis Builder & Tone Scanner</h2>
+          <p>Build a first-person trade setup using real numbers, then check your text against robotic phrases that trigger quality penalties.</p>
+        </div>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Left: Setup Inputs -->
+        <div class="studio-card">
+          <h3>1. Enter Your Real Trade Parameters</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="templateType">Thesis Framework</label>
+              <select id="templateType">
+                <option value="reversal">Trapped Traders / Liquidity Sweep</option>
+                <option value="pullback">Patience / Limit Pullback Setup</option>
+                <option value="twoway">Two-Way Breakout (Bull & Bear Plan)</option>
+                <option value="update">Honest Trade Update / Post-Mortem</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="coinPair">Coin Ticker</label>
+              <input type="text" id="coinPair" value="SOL" placeholder="e.g. SOL, BTC, ETH" />
+            </div>
+            <div class="form-group">
+              <label for="direction">Bias / Direction</label>
+              <select id="direction">
+                <option value="Short">Short (Perp)</option>
+                <option value="Long">Long (Perp / Spot)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timeframe">Chart Timeframe</label>
+              <select id="timeframe">
+                <option value="1H">1H Chart</option>
+                <option value="15m">15m Chart</option>
+                <option value="4H">4H Chart</option>
+                <option value="Daily">Daily Chart</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="entryPrice">Entry Price / Zone ($)</label>
+              <input type="text" id="entryPrice" value="184.50" placeholder="e.g. 184.50" />
+            </div>
+            <div class="form-group">
+              <label for="stopPrice">Stop-Loss / Invalidation ($)</label>
+              <input type="text" id="stopPrice" value="189.20" placeholder="e.g. 189.20" />
+            </div>
+            <div class="form-group">
+              <label for="tp1Price">Target 1 ($)</label>
+              <input type="text" id="tp1Price" value="176.00" placeholder="e.g. 176.00" />
+            </div>
+            <div class="form-group">
+              <label for="tp2Price">Target 2 ($)</label>
+              <input type="text" id="tp2Price" value="169.50" placeholder="e.g. 169.50" />
+            </div>
+            <div class="form-group full-width">
+              <label for="customCatalyst">What Caught Your Eye on the Chart? (Optional Personal Note)</label>
+              <input type="text" id="customCatalyst" value="we swept the London highs three times while open interest spiked and buyers stalled out" placeholder="e.g. funding flipped super positive right into 4H supply" />
+            </div>
+          </div>
+          <button class="btn btn-primary full-width" id="generatePostBtn">Generate First-Person Draft</button>
+        </div>
+
+        <!-- Right: Live Editor & Anti-AI Scanner -->
+        <div class="studio-card">
+          <div class="editor-header">
+            <h3>2. Edit & Scan for Robotic Phrases</h3>
+            <div class="authenticity-badge" id="authScoreBadge">100% Human Voice</div>
+          </div>
+          <textarea id="postOutput" rows="11" placeholder="Your generated note will appear here. You can also paste any draft here to scan for templated phrases..."></textarea>
+
+          <div class="scanner-box" id="scannerReport">
+            <div class="scanner-status status-clean">
+              <span>✅ No templated boilerplate detected. Ready to publish with your Trade Widget!</span>
+            </div>
+          </div>
+
+          <div class="widget-reminder">
+            <span>📌 <strong>Before Publishing:</strong> Attach the live <code>$<span id="reminderTicker">SOL</span></code> Perp/Spot Trade Widget + your annotated chart screenshot.</span>
+          </div>
+
+          <div class="editor-actions">
+            <button class="btn btn-primary" id="copyPostBtn">📋 Copy Note to Clipboard</button>
+            <button class="btn btn-secondary" id="clearPostBtn">Clear / Test Custom Draft</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: DAILY CADENCE & INTERACTIVE CHECKLIST -->
+    <section id="daily-checklist" class="section-block">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">CONSISTENCY ENGINE</span>
+          <h2>Why 2–3 Notes & 1–2 Trades Is the Winning Formula</h2>
+          <p>Publishing 5+ times a day triggers burst filters and splits your comment engagement. Space 2–3 notes across global liquidity waves.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="resetChecklistBtn">Reset Today's Progress</button>
+      </div>
+
+      <div class="cadence-grid">
+        <!-- Session Timeline -->
+        <div class="timeline-card">
+          <h3>The 3 Global Liquidity Windows</h3>
+          <div class="session-step">
+            <div class="step-badge">NOTE #1 • 07:00–10:00 UTC</div>
+            <h4>London Open — Primary Trade Setup</h4>
+            <p>Publish your highest-conviction setup of the day with a clean annotated chart, exact entry/invalidation levels, and an embedded <strong>Trade Widget</strong>.</p>
+          </div>
+          <div class="session-step">
+            <div class="step-badge">NOTE #2 • 13:30–16:30 UTC</div>
+            <h4>NY Open — Live Position Update or Hot Gainer</h4>
+            <p>Peak trading volume window. Post a live update on Trade #1 (with your PnL/Position widget) <em>or</em> chart a Top Gainer coin that traders are actively searching.</p>
+          </div>
+          <div class="session-step">
+            <div class="step-badge">NOTE #3 (OPTIONAL) • 19:30–22:00 UTC</div>
+            <h4>Daily Close — Honest Post-Mortem</h4>
+            <p>Share whether you hit TP or got stopped out, what you learned from today's price action, and the key level you're watching overnight.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Daily Checklist -->
+        <div class="checklist-card">
+          <div class="checklist-header">
+            <h3>Today's Execution Checklist</h3>
+            <span class="checklist-progress" id="checklistCounter">0 / 7 Completed</span>
+          </div>
+          <div class="checklist-items" id="checklistContainer">
+            <label class="check-item">
+              <input type="checkbox" data-task="reg" />
+              <span>Confirmed <strong>"Registered"</strong> status on active weekly cycle</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" data-task="post1" />
+              <span><strong>Note #1 (Morning):</strong> Published primary setup + annotated chart + Trade Widget</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" data-task="trade1" />
+              <span><strong>Real Trade Executed:</strong> Opened 1–2 disciplined trades (0.5%–1% risk) for live proof</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" data-task="siphon" />
+              <span><strong>Traffic Siphon:</strong> Left 5–10 analytical comments on top trending creators' posts</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" data-task="post2" />
+              <span><strong>Note #2 (NY Open, 4–6h later):</strong> Published live trade update or Top Gainer setup</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" data-task="replies" />
+              <span><strong>2x Comment Multiplier:</strong> Replied to every comment on my notes with a follow-up question</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" data-task="post3" />
+              <span><strong>Note #3 (Evening):</strong> Shared transparent trade recap (win or loss)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: REAL TRADER VOICE VS AI -->
+    <section id="voice-guide" class="section-block">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">ORGANIC QUALITY FILTER</span>
+          <h2>How to Write Original Reasoning & Personal Views</h2>
+          <p>Robotic templates write like a textbook defining indicators. Real traders write in the first person ("I / My") explaining traps, execution, and what proves them wrong.</p>
+        </div>
+      </div>
+
+      <div class="four-questions-banner">
+        <div class="q-item">
+          <span class="q-num">Q1</span>
+          <h4>What caught my eye?</h4>
+          <p>"I noticed $SOL failed to break $185 three times on the 1H while OI kept rising."</p>
+        </div>
+        <div class="q-item">
+          <span class="q-num">Q2</span>
+          <h4>Who is trapped?</h4>
+          <p>"To me, this looks like late retail longs getting trapped at resistance before a flush."</p>
+        </div>
+        <div class="q-item">
+          <span class="q-num">Q3</span>
+          <h4>How am I playing it?</h4>
+          <p>"I stepped into a short at $184.50 with stop at $189.20, aiming for $176."</p>
+        </div>
+        <div class="q-item">
+          <span class="q-num">Q4</span>
+          <h4>What makes me wrong?</h4>
+          <p>"If we get a strong 1H close above $189.20, my thesis is dead and I cut it."</p>
+        </div>
+      </div>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>🚫 Robotic / Textbook Language (Penalized or Filtered)</th>
+              <th>✅ Authentic Trader Voice (High Multiplier)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"In this post, let's dive into Ethereum's current market structure and key indicators."</td>
+              <td>"I'm watching $ETH closely right here because we're back at the exact level that dumped us on Tuesday."</td>
+            </tr>
+            <tr>
+              <td>"The RSI indicator shows overbought conditions, suggesting a potential trend reversal soon."</td>
+              <td>"Buyers look exhausted up here—every push above $2,650 is getting sold into immediately on the 15m."</td>
+            </tr>
+            <tr>
+              <td>"Furthermore, traders should always exercise caution and implement proper risk management."</td>
+              <td>"Not going heavy here—just risking 1% of my account at 3x leverage until NY Open shows its hand."</td>
+            </tr>
+            <tr>
+              <td>"Only time will tell which direction Bitcoin chooses. What are your thoughts?"</td>
+              <td>"If BTC sweeps $66,800 and reclaims it, I'm longing. Are you bidding the sweep or waiting for 4H close?"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 7 HIGH-LEVERAGE PRO STRATEGIES -->
+    <section id="pro-strategies" class="section-block">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">SCORE MULTIPLIERS</span>
+          <h2>7 Pro Tactics to Multiply Widget Trades & Engagement</h2>
+          <p>Use these psychological and algorithmic edges to drive more unique traders through your widgets.</p>
+        </div>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="strat-num">01</div>
+          <h3>"Hot List" Cashtag Hijacking</h3>
+          <p>Retail traders live on the <strong>Top Gainers / Hot Derivatives</strong> list. When a coin pumps +20%, chart the 15m pullback or short-squeeze zone immediately and attach its Trade Widget. Search traffic converts at 3x–5x normal rates.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strat-num">02</div>
+          <h3>The "Two-Way Breakout" Setup</h3>
+          <p>Before CPI, Fed announcements, or tight triangle breakouts, publish both your <strong>Bull Trigger</strong> and <strong>Bear Trigger</strong>. Both bulls and bears click your widget to place orders and debate in your comments.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strat-num">03</div>
+          <h3>Serialized Trade Logs ("Trade #2/8")</h3>
+          <p>Frame your week as an ongoing transparent series: <em>"Weekly Live Trade Log [Trade #3/8]"</em>. People follow stories and return to your profile daily to see if you won or lost, creating habitual widget users.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strat-num">04</div>
+          <h3>Early Comment Siphoning</h3>
+          <p>Right after London/NY Open, drop a smart counter-level or liquidity note in the comments of the top 5 trending posts and mention you charted the exact entry on your profile. Siphon active traders straight to your widgets.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strat-num">05</div>
+          <h3>Mobile "Scroll-Stopper" Charts</h3>
+          <p>90% of users browse on phones. Remove messy indicators. Use a clean chart with the green/red <strong>Long/Short Risk-Reward Box</strong>, 1 large text label, and your real open position card.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strat-num">06</div>
+          <h3>The 2x Comment Depth Loop</h3>
+          <p>End every post with a binary price question. When someone replies, never just say "Thanks"—reply back with a follow-up question about their entry level. 1 reader = 3 comments in the algorithm.</p>
+        </div>
+
+        <div class="strategy-card">
+          <div class="strat-num">07</div>
+          <h3>The Sunday UTC Cutoff Push</h3>
+          <p>The weekly cycle locks <strong>Sunday at 23:59:59 UTC</strong> while most creators relax. Publish a Sunday evening <em>"Monday Open & CME Gap Gameplan"</em> with BTC/ETH/SOL widgets to capture weekend positioning.</p>
+        </div>
+
+        <div class="strategy-card highlight-card">
+          <div class="strat-num">💡</div>
+          <h3>The 30-Second Voice Note Secret</h3>
+          <p>Stuck writing? Look at your chart, pretend a friend asked <em>"Why are you taking this trade?"</em>, and talk into your phone's voice-to-text for 20 seconds. Clean up the numbers and post—100% human every time.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p><strong>EdgeFlow Terminal</strong> • Private Execution & Thesis Studio • Real Trades, Real Insights.</p>
+      <p class="footer-note">Reminder: Exclude 0-fee pairs and stablecoin-to-stablecoin pairs from widget setups, as they do not count toward conversion volume.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
