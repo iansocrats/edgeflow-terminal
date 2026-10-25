@@ -1,0 +1,302 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EdgeFlow Terminal//ByX Strategy Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:EdgeFlow Trading Posts (kiprobian@gmail.com)
+X-WR-TIMEZONE:Africa/Nairobi
+BEGIN:VEVENT
+UID:20261026-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261026T090000
+DTEND;TZID=Africa/Nairobi:20261026T093000
+SUMMARY:🚀 Post #1: London Open Setup (Monday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261026-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261026T150000
+DTEND;TZID=Africa/Nairobi:20261026T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Monday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261026-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261026T210000
+DTEND;TZID=Africa/Nairobi:20261026T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Monday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261027-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261027T090000
+DTEND;TZID=Africa/Nairobi:20261027T093000
+SUMMARY:🚀 Post #1: London Open Setup (Tuesday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261027-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261027T150000
+DTEND;TZID=Africa/Nairobi:20261027T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Tuesday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261027-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261027T210000
+DTEND;TZID=Africa/Nairobi:20261027T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Tuesday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261028T090000
+DTEND;TZID=Africa/Nairobi:20261028T093000
+SUMMARY:🚀 Post #1: London Open Setup (Wednesday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261028T150000
+DTEND;TZID=Africa/Nairobi:20261028T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Wednesday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261028T210000
+DTEND;TZID=Africa/Nairobi:20261028T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Wednesday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261029-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261029T090000
+DTEND;TZID=Africa/Nairobi:20261029T093000
+SUMMARY:🚀 Post #1: London Open Setup (Thursday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261029-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261029T150000
+DTEND;TZID=Africa/Nairobi:20261029T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Thursday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261029-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261029T210000
+DTEND;TZID=Africa/Nairobi:20261029T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Thursday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261030-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261030T090000
+DTEND;TZID=Africa/Nairobi:20261030T093000
+SUMMARY:🚀 Post #1: London Open Setup (Friday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261030-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261030T150000
+DTEND;TZID=Africa/Nairobi:20261030T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Friday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261030-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261030T210000
+DTEND;TZID=Africa/Nairobi:20261030T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Friday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261031-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261031T090000
+DTEND;TZID=Africa/Nairobi:20261031T093000
+SUMMARY:🚀 Post #1: London Open Setup (Saturday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261031-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261031T150000
+DTEND;TZID=Africa/Nairobi:20261031T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Saturday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261031-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261031T210000
+DTEND;TZID=Africa/Nairobi:20261031T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Saturday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261101-0900-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261101T090000
+DTEND;TZID=Africa/Nairobi:20261101T093000
+SUMMARY:🚀 Post #1: London Open Setup (Sunday)
+DESCRIPTION:Publish primary high-conviction trade setup.\n- 1H annotated chart with clear invalidation\n- Exact Entry, Stop-Loss, TP1, TP2\n- Attach Spot/Perp Trade Widget\n- End with debate question
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #1: London Open Setup
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261101-1500-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261101T150000
+DTEND;TZID=Africa/Nairobi:20261101T153000
+SUMMARY:🚀 Post #2: NY Open / Live Update (Sunday)
+DESCRIPTION:Peak volatility window.\n- Option A: Live update on Post #1 (trailed SL, TP taken)\n- Option B: Chart an exploding Top Gainer altcoin with widget\n- Siphon comments on top creators
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #2: NY Open / Live Update
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261101-2100-byx-post@edgeflow
+DTSTAMP:20261025T110000Z
+DTSTART;TZID=Africa/Nairobi:20261101T210000
+DTEND;TZID=Africa/Nairobi:20261101T213000
+SUMMARY:🚀 Post #3: Daily Close / Master Recap (Sunday)
+DESCRIPTION:Evening trust builder.\n- Transparent recap of today's trades (wins and losses)\n- Key overnight levels to watch\n- Reply to all pending comments on your posts
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post #3: Daily Close / Master Recap
+END:VALARM
+END:VEVENT
+END:VCALENDAR
