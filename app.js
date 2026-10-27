@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v13';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v14';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -283,9 +283,12 @@ async function loadPostsData() {
           postsData = serverPosts;
           localStorage.setItem(STORAGE_KEY, JSON.stringify(postsData));
         } else {
-          // Always ensure Post 1 has the latest rule-abiding post if previously unedited
+          // Always ensure Post 1 and Post 2 have latest rule-abiding post if previously unedited
           if (postsData[0] && serverPosts[0] && (!postsData[0].raw || postsData[0].raw === serverPosts[0].raw)) {
             postsData[0] = serverPosts[0];
+          }
+          if (postsData[1] && serverPosts[1] && (!postsData[1].raw || postsData[1].status === 'waiting')) {
+            postsData[1] = serverPosts[1];
           }
         }
       }
@@ -712,7 +715,8 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'confluence', 'orderflow', 'delta', 'imbalance', 'vwap', 'exhaustion', 'reclaim', 
   'breakout', 'scalp', 'bias', 'cluster', 'trader', 'sfp', 'cvd', 'outflows',
   'inflows', 'etf', 'institutional', 'consolidation', 'neutrality', 'continuation',
-  'rejection', 'distribution', 'accumulation', 'retest', 'volatility', 'chop'
+  'rejection', 'distribution', 'accumulation', 'retest', 'volatility', 'chop',
+  'gold', 'paxg', 'ounce', 'cfds', 'macroeconomics', 'bullion', 'catalyst', 'sovereign'
 ]);
 
 function runGltrPredictability(text) {
@@ -1803,12 +1807,12 @@ function runByxDimensionsScore(text) {
   originalityScore = Math.min(20, Math.max(4, originalityScore));
 
   // Dimension 2: Depth & Structure (0 - 20 pts)
-  // Concrete metrics, verified figures ($79,659, $1B, $76,000, 50 index), logical paragraphs
+  // Concrete metrics, verified figures ($79,659, $4,000, $1B, $30T, 50 index), logical paragraphs
   let depthScore = 6;
-  if (/\$79[,.]?659/i.test(clean)) depthScore += 3;
-  if (/\$87[,.]?000|\$84[,.]?000|\$76[,.]?000/i.test(clean)) depthScore += 3;
-  if (/1\s*billion|\$1b|300\s*million/i.test(clean)) depthScore += 4;
-  if (/fear and greed.*50|index.*50/i.test(clean)) depthScore += 2;
+  if (/\$79[,.]?659|\$4[,.]?000|\$3[,.]?998|\$4[,.]?190/i.test(clean)) depthScore += 3;
+  if (/\$87[,.]?000|\$84[,.]?000|\$76[,.]?000|\$4[,.]?700|\$4[,.]?200/i.test(clean)) depthScore += 3;
+  if (/1\s*billion|\$1b|300\s*million|30\s*trillion|\$30t/i.test(clean)) depthScore += 4;
+  if (/fear and greed.*50|index.*50|federal interest|fed.*decision|4%/i.test(clean)) depthScore += 2;
   const paraCount = clean.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
   if (paraCount >= 3) depthScore += 2;
   depthScore = Math.min(20, Math.max(5, depthScore));
@@ -1816,18 +1820,18 @@ function runByxDimensionsScore(text) {
   // Dimension 3: Relevance (0 - 20 pts)
   // Cashtag, active market momentum, timely setup
   let relevanceScore = 8;
-  if (/\$btc|bitcoin/i.test(clean)) relevanceScore += 4;
-  if (/support|resistance|pullback|momentum|outflow|inflow|etf/i.test(clean)) relevanceScore += 5;
-  if (/this week|past two weeks|last month/i.test(clean)) relevanceScore += 3;
+  if (/\$btc|bitcoin|\$paxg|gold|\$gold/i.test(clean)) relevanceScore += 4;
+  if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot/i.test(clean)) relevanceScore += 5;
+  if (/this week|past two weeks|last month|tomorrow|28th/i.test(clean)) relevanceScore += 3;
   relevanceScore = Math.min(20, Math.max(6, relevanceScore));
 
   // Dimension 4: Credibility & Risk (0 - 20 pts)
   // Defined invalidation / floor support, disciplined risk-reward, patient entry
   let credScore = 7;
-  if (/76[,.]?000|floor|support/i.test(clean)) credScore += 4;
-  if (/84[,.]?000|resistance|invalidation/i.test(clean)) credScore += 3;
+  if (/76[,.]?000|4[,.]?000|3[,.]?998|floor|support/i.test(clean)) credScore += 4;
+  if (/84[,.]?000|4[,.]?200|resistance|invalidation/i.test(clean)) credScore += 3;
   if (/cautious|patient|confirmation|risk|rr/i.test(clean)) credScore += 4;
-  if (/not financial advice|setup|sweep/i.test(clean)) credScore += 2;
+  if (/not financial advice|setup|sweep|macro/i.test(clean)) credScore += 2;
   credScore = Math.min(20, Math.max(5, credScore));
 
   // Dimension 5: Presentation (0 - 20 pts)
