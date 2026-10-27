@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v15';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v16';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -287,7 +287,7 @@ async function loadPostsData() {
           if (postsData[0] && serverPosts[0] && (!postsData[0].raw || postsData[0].raw === serverPosts[0].raw)) {
             postsData[0] = serverPosts[0];
           }
-          if (postsData[1] && serverPosts[1] && (!postsData[1].raw || postsData[1].status === 'waiting')) {
+          if (postsData[1] && serverPosts[1] && (!postsData[1].raw || postsData[1].status === 'waiting' || (postsData[1].improved && postsData[1].improved.includes("Gold is really interesting. As we speak, the price is below $4,000")))) {
             postsData[1] = serverPosts[1];
           }
         }
@@ -1871,13 +1871,15 @@ function runByxDimensionsScore(text) {
   credScore = Math.min(20, Math.max(5, credScore));
 
   // Dimension 5: Presentation (0 - 20 pts)
-  // Clean line breaks, proper punctuation, readable length
-  let presScore = 8;
-  if (clean.includes('\n\n')) presScore += 4;
-  if (/[,.;!?]/.test(clean)) presScore += 4;
+  // Clean line breaks, proper punctuation, readable length, bullet lists & visual hierarchy
+  let presScore = 6;
+  if (clean.includes('\n\n')) presScore += 3;
+  if (/[,.;!?]/.test(clean)) presScore += 3;
+  if (/•|-|\*/.test(clean)) presScore += 3; // Bullet points / clean lists
+  if (/^[📊🥇🧭⚡🔥🚨]/.test(clean) || clean.includes('🥇') || clean.includes('📊')) presScore += 2; // Visual anchor
   const wordCount = (clean.match(/\b\w+\b/g) || []).length;
-  if (wordCount >= 80 && wordCount <= 220) presScore += 4;
-  presScore = Math.min(20, Math.max(6, presScore));
+  if (wordCount >= 70 && wordCount <= 270) presScore += 3; // Mobile optimal reading span (70 to 270 words)
+  presScore = Math.min(20, Math.max(8, presScore));
 
   const totalScore = originalityScore + depthScore + relevanceScore + credScore + presScore;
 
