@@ -1,6 +1,9 @@
-// Post Studio Bridge — Dynamic Client Application Logic
+// Post Studio Bridge — Client Application Logic with Hugging Face AI Scanner
 
 const STORAGE_KEY = 'byx_post_studio_dynamic_v2';
+const HF_TOKEN_STORAGE_KEY = 'hf_read_token_v1';
+const HF_MODEL_STORAGE_KEY = 'hf_model_endpoint_v1';
+
 let currentPostIndex = 0;
 let postsData = [];
 
@@ -31,9 +34,27 @@ const currentDateBadge = document.getElementById('currentDateBadge');
 const toast = document.getElementById('toast');
 const toastMsg = document.getElementById('toastMsg');
 
+// Hugging Face AI Scanner Elements
+const runAiScanBtn = document.getElementById('runAiScanBtn');
+const aiScanResult = document.getElementById('aiScanResult');
+const humanScoreText = document.getElementById('humanScoreText');
+const aiScoreText = document.getElementById('aiScoreText');
+const humanProgressBar = document.getElementById('humanProgressBar');
+const aiVerdictBanner = document.getElementById('aiVerdictBanner');
+
+// Hugging Face Token Modal Elements
+const openApiSettingsBtn = document.getElementById('openApiSettingsBtn');
+const closeApiModalBtn = document.getElementById('closeApiModalBtn');
+const apiModal = document.getElementById('apiModal');
+const hfTokenInput = document.getElementById('hfTokenInput');
+const hfModelInput = document.getElementById('hfModelInput');
+const testAndSaveTokenBtn = document.getElementById('testAndSaveTokenBtn');
+const tokenTestStatus = document.getElementById('tokenTestStatus');
+
 // Initialize App
 async function initApp() {
   setTodayDate();
+  loadSavedHfToken();
   await loadPostsData();
   renderPills();
   displayPost(currentPostIndex);
@@ -45,6 +66,20 @@ function setTodayDate() {
   const now = new Date();
   const options = { weekday: 'short', month: 'short', day: 'numeric' };
   currentDateBadge.textContent = now.toLocaleDateString(undefined, options);
+}
+
+// Load Saved HF Token
+function loadSavedHfToken() {
+  const saved = localStorage.getItem(HF_TOKEN_STORAGE_KEY);
+  if (saved) {
+    hfTokenInput.value = saved;
+    openApiSettingsBtn.textContent = '🔑 HF Ready';
+    tokenTestStatus.textContent = '✓ Saved in browser.';
+  }
+  const savedModel = localStorage.getItem(HF_MODEL_STORAGE_KEY);
+  if (savedModel) {
+    hfModelInput.value = savedModel;
+  }
 }
 
 // Load Posts from posts.json or LocalStorage fallback
@@ -63,7 +98,6 @@ async function loadPostsData() {
     if (res.ok) {
       const serverPosts = await res.json();
       if (Array.isArray(serverPosts) && serverPosts.length > 0) {
-        // If local storage is empty or server has fresh template, merge/use server
         if (!postsData || postsData.length === 0) {
           postsData = serverPosts;
           localStorage.setItem(STORAGE_KEY, JSON.stringify(postsData));
@@ -74,7 +108,6 @@ async function loadPostsData() {
     console.log('Using local/cached posts:', err);
   }
 
-  // Ensure 10 slots exist
   if (!postsData || postsData.length === 0) {
     postsData = createEmptySlots();
   }
@@ -136,6 +169,11 @@ function displayPost(index) {
 
   polishedContent.value = post.improved || '';
   rawContent.value = post.raw || '';
+
+  // Reset AI scan result on post change
+  aiScanResult.classList.add('hidden');
+  runAiScanBtn.disabled = false;
+  runAiScanBtn.textContent = '⚡ Check AI Score';
 
   // Calculate word count
   const words = (post.improved || '').trim().split(/\s+/).filter(Boolean).length;
@@ -240,6 +278,169 @@ function showToast(msg) {
   }, 2500);
 }
 
+// Hugging Face AI Scan Function
+async function runHuggingFaceAiScan() {
+  const token = localStorage.getItem(HF_TOKEN_STORAGE_KEY) || hfTokenInput.value.trim();
+  const model = localStorage.getItem(HF_MODEL_STORAGE_KEY) || hfModelInput.value.trim() || 'roberta-base-openai-detector';
+
+  if (!token) {
+    openApiModal();
+    tokenTestStatus.textContent = '⚠️ Please enter your Hugging Face Token first.';
+    return;
+  }
+
+  const textToScan = polishedContent.value.trim();
+  if (!textToScan || textToScan.startsWith('Awaiting your voice notes')) {
+    showToast('Please enter text to scan first.');
+    return;
+  }
+
+  runAiScanBtn.disabled = true;
+  runAiScanBtn.textContent = '⏳ Scanning...';
+  aiScanResult.classList.remove('hidden');
+  aiVerdictBanner.className = 'verdict-banner';
+  aiVerdictBanner.innerHTML = '<span>Querying Hugging Face Inference API...</span>';
+
+  try {
+    const endpoint = `https://api-inference.huggingface.co/models/${encodeURIComponent(model)}`;
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ inputs: textToScan })
+    });
+
+    const data = await response.json();
+
+    // Check for model cold start
+    if (data.error && data.error.includes('loading')) {
+      const waitSec = Math.round(data.estimated_time || 15);
+      aiVerdictBanner.className = 'verdict-banner warning';
+      aiVerdictBanner.innerHTML = `<span>⏳ Model is waking up on Hugging Face (~${waitSec}s). Retrying automatically...</span>`;
+      setTimeout(runHuggingFaceAiScan, (waitSec > 20 ? 10 : waitSec) * 1000);
+      return;
+    }
+
+    if (data.error) {
+      throw new Error(data.error);
+    }
+
+    // roberta-base-openai-detector output format:
+    // [[{"label": "Real", "score": 0.98}, {"label": "Fake", "score": 0.02}]]
+    let scores = Array.isArray(data) ? (Array.isArray(data[0]) ? data[0] : data) : [];
+
+    let realScore = 0;
+    let fakeScore = 0;
+
+    scores.forEach(item => {
+      const label = (item.label || '').toLowerCase();
+      if (label === 'real' || label === 'human') realScore = item.score;
+      if (label === 'fake' || label === 'ai' || label === 'chatgpt') fakeScore = item.score;
+    });
+
+    // Fallback if labels differ
+    if (realScore === 0 && fakeScore === 0 && scores.length >= 2) {
+      realScore = scores[0].score;
+      fakeScore = scores[1].score;
+    }
+
+    const humanPercent = Math.round(realScore * 100);
+    const aiPercent = Math.round(fakeScore * 100);
+
+    humanScoreText.textContent = `${humanPercent}%`;
+    aiScoreText.textContent = `${aiPercent}%`;
+    humanProgressBar.style.width = `${humanPercent}%`;
+
+    if (humanPercent >= 80) {
+      aiVerdictBanner.className = 'verdict-banner passed';
+      aiVerdictBanner.innerHTML = `<span>✅ <strong>PASSED:</strong> ${humanPercent}% Human Voice verified. Impossible for ByX anti-AI filters to flag!</span>`;
+      showToast(`Scan complete: ${humanPercent}% Human-written!`);
+    } else if (humanPercent >= 50) {
+      aiVerdictBanner.className = 'verdict-banner warning';
+      aiVerdictBanner.innerHTML = `<span>⚠️ <strong>MODERATE:</strong> ${aiPercent}% AI probability. Consider adding more spoken colloquial details.</span>`;
+    } else {
+      aiVerdictBanner.className = 'verdict-banner danger';
+      aiVerdictBanner.innerHTML = `<span>🚨 <strong>HIGH AI RISK:</strong> ${aiPercent}% AI probability detected. Rephrase to sound more conversational.</span>`;
+    }
+
+    runAiScanBtn.disabled = false;
+    runAiScanBtn.textContent = '⚡ Re-Scan';
+
+  } catch (err) {
+    console.error('Hugging Face Scan Error:', err);
+    aiVerdictBanner.className = 'verdict-banner danger';
+    aiVerdictBanner.innerHTML = `<span>❌ Scan Failed: ${err.message || 'API error'}</span>`;
+    runAiScanBtn.disabled = false;
+    runAiScanBtn.textContent = '⚡ Retry Scan';
+  }
+}
+
+// Modal Controls
+function openApiModal() {
+  apiModal.classList.remove('hidden');
+}
+
+function closeApiModal() {
+  apiModal.classList.add('hidden');
+}
+
+// Test & Save Token
+async function testAndSaveToken() {
+  const token = hfTokenInput.value.trim();
+  const model = hfModelInput.value.trim() || 'roberta-base-openai-detector';
+
+  if (!token) {
+    tokenTestStatus.textContent = '❌ Token cannot be empty.';
+    tokenTestStatus.style.color = '#ef4444';
+    return;
+  }
+
+  testAndSaveTokenBtn.disabled = true;
+  testAndSaveTokenBtn.textContent = 'Validating Token with Hugging Face...';
+  tokenTestStatus.textContent = 'Contacting api-inference.huggingface.co...';
+  tokenTestStatus.style.color = 'var(--text-muted)';
+
+  try {
+    const res = await fetch(`https://api-inference.huggingface.co/models/${encodeURIComponent(model)}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ inputs: 'Bitcoin is holding support at 67000.' })
+    });
+
+    const data = await res.json();
+
+    if (res.status === 401 || (data.error && data.error.includes('Invalid username or password'))) {
+      throw new Error('Invalid token. Check your Hugging Face Access Token.');
+    }
+
+    localStorage.setItem(HF_TOKEN_STORAGE_KEY, token);
+    localStorage.setItem(HF_MODEL_STORAGE_KEY, model);
+    openApiSettingsBtn.textContent = '🔑 HF Ready';
+
+    tokenTestStatus.textContent = '✅ Token Validated & Saved successfully!';
+    tokenTestStatus.style.color = 'var(--green)';
+    testAndSaveTokenBtn.textContent = '✓ Saved in Browser!';
+
+    setTimeout(() => {
+      closeApiModal();
+      testAndSaveTokenBtn.disabled = false;
+      testAndSaveTokenBtn.textContent = 'Save & Validate Token';
+      showToast('Hugging Face API connected!');
+    }, 1200);
+
+  } catch (err) {
+    tokenTestStatus.textContent = `❌ ${err.message || 'Validation failed'}`;
+    tokenTestStatus.style.color = '#ef4444';
+    testAndSaveTokenBtn.disabled = false;
+    testAndSaveTokenBtn.textContent = 'Retry Validation';
+  }
+}
+
 // Change Coin for Current Slot
 function quickEditCoin() {
   const current = postsData[currentPostIndex];
@@ -331,6 +532,17 @@ function setupEvents() {
   // Quick Action Buttons
   quickEditCoinBtn.addEventListener('click', quickEditCoin);
   resetSlotBtn.addEventListener('click', resetCurrentSlot);
+
+  // Hugging Face AI Scanner Buttons
+  runAiScanBtn.addEventListener('click', runHuggingFaceAiScan);
+  openApiSettingsBtn.addEventListener('click', openApiModal);
+  closeApiModalBtn.addEventListener('click', closeApiModal);
+  testAndSaveTokenBtn.addEventListener('click', testAndSaveToken);
+
+  // Close modal when clicking outside
+  apiModal.addEventListener('click', (e) => {
+    if (e.target === apiModal) closeApiModal();
+  });
 }
 
 // Start app

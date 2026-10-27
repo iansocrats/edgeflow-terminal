@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Post Studio Bridge — Dynamic Dictation & Copy Desk</title>
-  <meta name="description" content="Dynamic 10-post daily copy desk with color-coded anti-AI transparency and 1-tap mobile copying." />
+  <meta name="description" content="Dynamic 10-post daily copy desk with Hugging Face AI detection and 1-tap mobile copying." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,12 +19,15 @@
           <span class="status-indicator"></span>
           <h1>Post Studio Bridge</h1>
         </div>
-        <div class="daily-badge">
-          <span class="badge-label">ACTIVE DAY</span>
-          <span class="badge-value" id="currentDateBadge">Today's Desk</span>
+        <div class="header-right-actions">
+          <button id="openApiSettingsBtn" class="token-btn" title="Hugging Face API Settings">🔑 HF API</button>
+          <div class="daily-badge">
+            <span class="badge-label">ACTIVE</span>
+            <span class="badge-value" id="currentDateBadge">Today's Desk</span>
+          </div>
         </div>
       </div>
-      <p class="header-sub">Dynamic Daily Pipeline • Color-Coded Polishing • 100% Anti-AI Compliant</p>
+      <p class="header-sub">Dynamic Daily Pipeline • RoBERTa AI Detection • 100% Anti-AI Compliant</p>
     </header>
 
     <!-- Dynamic 10-Post Navigation Carousel / Pills -->
@@ -73,11 +76,40 @@
         </button>
       </div>
 
+      <!-- Hugging Face AI Detector Panel -->
+      <div class="ai-detector-box">
+        <div class="ai-detector-top">
+          <div class="detector-title">
+            <span>🤗 Hugging Face AI Scanner</span>
+            <span class="model-badge">roberta-base-openai-detector</span>
+          </div>
+          <button id="runAiScanBtn" class="btn-scan">⚡ Check AI Score</button>
+        </div>
+        <div id="aiScanResult" class="ai-scan-result hidden">
+          <div class="score-meters">
+            <div class="meter-col">
+              <span class="meter-label">HUMAN VOICE</span>
+              <span class="meter-num real" id="humanScoreText">--%</span>
+            </div>
+            <div class="meter-col">
+              <span class="meter-label">AI PROBABILITY</span>
+              <span class="meter-num fake" id="aiScoreText">--%</span>
+            </div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div id="humanProgressBar" class="progress-fill" style="width: 0%"></div>
+          </div>
+          <div id="aiVerdictBanner" class="verdict-banner">
+            <span>Ready to scan.</span>
+          </div>
+        </div>
+      </div>
+
       <!-- Color-Code Transparency Legend -->
       <div class="color-legend-box">
         <div class="legend-title">
           <span>🎨 Color-Coded Polishing Transparency:</span>
-          <span class="anti-ai-tag">100% Anti-AI Safe</span>
+          <span class="anti-ai-tag">Anti-AI System</span>
         </div>
         <div class="legend-grid">
           <span class="leg-item leg-purple">🟣 Hook / 2s Stopper</span>
@@ -93,7 +125,7 @@
           <div class="badge-group">
             <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
             <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
-            <span class="pill-badge pill-blue">Zero AI Flags</span>
+            <span class="pill-badge pill-blue">Widget CTA Included</span>
           </div>
           <span class="quick-copy-text">Tap anywhere in box to copy</span>
         </div>
@@ -139,9 +171,36 @@
         <button id="nextPostBtn" class="btn-nav">Next →</button>
       </div>
       <div class="footer-tip">
-        <span>💡 <strong>Dynamic Workflow:</strong> Post 1 ($BTC) is active. Once posted, advance to Post 2, dictate new coin notes, and let me polish it!</span>
+        <span>💡 <strong>Tip:</strong> Tap <strong>"⚡ Check AI Score"</strong> to run a live Hugging Face scan on your text before posting!</span>
       </div>
     </footer>
+  </div>
+
+  <!-- Hugging Face API Token Modal -->
+  <div id="apiModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🤗 Hugging Face API Setup</h3>
+        <button id="closeApiModalBtn" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Enter your free Hugging Face <strong>Read Token</strong> (starts with <code>hf_...</code>). It is securely stored in your personal browser's <code>localStorage</code> and never sent to GitHub.
+        </p>
+        <div class="form-group">
+          <label for="hfTokenInput">Hugging Face User Access Token:</label>
+          <input type="password" id="hfTokenInput" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+        </div>
+        <div class="form-group">
+          <label for="hfModelInput">Model Endpoint:</label>
+          <input type="text" id="hfModelInput" value="roberta-base-openai-detector" />
+        </div>
+        <div class="token-status" id="tokenTestStatus">No token configured yet.</div>
+      </div>
+      <div class="modal-footer">
+        <button id="testAndSaveTokenBtn" class="btn-primary">Save & Validate Token</button>
+      </div>
+    </div>
   </div>
 
   <!-- Notification Toast -->
