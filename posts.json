@@ -155,13 +155,30 @@
   },
   {
     "id": 7,
-    "coin": "+ New Coin",
-    "title": "Post 7: Ready for Today's Dictation",
-    "status": "waiting",
-    "raw": "",
-    "improved": "Awaiting your voice notes for Post 7...",
-    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
-    "suggestions": []
+    "coin": "$HYPE",
+    "title": "Post 7: ⚡ $HYPE (Hyperliquid) at $80: Why the Payward/Kraken CFTC Deal Primes a Breakout to $86",
+    "status": "ready",
+    "raw": "HYPR, which is Hyperliquid. I'd like to talk about this wonderful coin. Now, of course, the current price is at $80 a coin. The support flow is at $75, while the two resistance zones, the first one is at $82, and then the next one is at $86. Of course, it could go higher. Those are the levels this coin. Of course, you can look at the coin inflow and outflow. Now the coin inflow and outflow, there seems to be a net negative, so there's a bigger outflow, but still that's Now something that we have to talk about about HYPR is the fact that this decentralized exchange coin is looking to make a comeback towards the $100 level. This is due to institutional inflows and of course being a utility coin that provides revenue, capture of revenue from offering services and taking the fees. Now you can fact-check me about that. Now I would like you to fact-check me about the ETF flows for this coin. What is the weekly net flow? Please fact-check me on that. Hyperliquid says that Kraken parent Payward to be first CFTC-regulated HIP-3 deployer. Hyperliquid says it intends to make Kraken Payward the first CFTC-regulated deployer audits HIP-13 markets. As the decentralized protocol develops permissioned market functionality that could enable regulated US perpetual futures trading, an H1-3 upgrade could let deployers restrict market access to a true-only allowlist, potentially allowing regulated operators to use Hyperliquid infrastructure. This functionality is available on testnet, and Payward+ deployment remains subject to regulatory approval. Of course, it's still a neutral infrastructure layer with a goal of just a larger part of the financial system. My prediction and setup: I'm looking for a long trade setup, opening at the current price, which is $80, and targeting about $86, and having my stop losses at $75.",
+    "improved": "⚡ $HYPE (Hyperliquid) at $80: Why the Payward/Kraken CFTC Deal Primes a Breakout to $86\n\nHyperliquid ($HYPE) is consolidating at the $80 baseline above its $75 structural support floor. Despite short-term on-chain net outflows, the chart is compressing between immediate resistance at $82 and secondary resistance at $86, with bulls eyeing an eventual expansion back toward the $100 psychological milestone.\n\nThe primary fundamental driver is institutional infrastructure expansion:\n• Kraken parent company Payward is set to become the first CFTC-regulated deployer on Hyperliquid's HIP-3 upgrade.\n• By enabling permissioned on-chain allowlists, regulated clearinghouses (Bitnomial) can settle US perpetual futures directly on Hyperliquid L1.\n• Protocol revenue capture remains robust, with decentralized trading fees directly bolstering the $HYPE utility and staking ecosystem.\n\nMy setup is opening a long position at the current $80 floor targeting the $86 resistance zone, with a strict stop-loss anchored at $75 to protect capital while waiting for the $82 breakout confirmation.",
+    "rules_summary": {
+      "punctuation_count": 14,
+      "word_replacement_count": 5,
+      "emoji_spacing_count": 5
+    },
+    "suggestions": [
+      {
+        "category": "punct",
+        "description": "Structured verbal flow into distinct institutional thesis and tactical execution paragraphs."
+      },
+      {
+        "category": "word",
+        "description": "Standardized ticker (HYPR ➔ $HYPE), proposal naming (HIP-13 ➔ HIP-3), and clarified on-chain flows."
+      },
+      {
+        "category": "spacing",
+        "description": "Formatted CFTC regulatory mechanisms and allowlist architecture with scannable bullet points."
+      }
+    ]
   },
   {
     "id": 8,
