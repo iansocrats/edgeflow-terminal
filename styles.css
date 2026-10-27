@@ -1708,6 +1708,171 @@ body {
   color: #fbbf24;
 }
 
+/* Entropy / AI Reduction Action Bar in Card 3 */
+.entropy-action-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.btn-entropy-fix {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.12s ease;
+}
+.btn-entropy-fix:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+.btn-entropy-fix.primary {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+.btn-entropy-fix.primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn-quick-fix-inline {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: all 0.1s ease;
+}
+.btn-quick-fix-inline:hover {
+  background: rgba(245, 158, 11, 0.35);
+}
+
+/* Sentence-level suggestion and action pills */
+.sentence-flag-suggestion {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 2px solid #10b981;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 0.64rem;
+  color: #a7f3d0;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+.sentence-flag-suggestion strong {
+  color: #34d399;
+}
+
+.sentence-flag-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.btn-sentence-apply {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.1s ease;
+}
+.btn-sentence-apply:hover {
+  filter: brightness(1.1);
+}
+
+.btn-sentence-edit {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-dim);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.1s ease;
+}
+.btn-sentence-edit:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-main);
+}
+
+.sentence-inline-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.sentence-inline-editor.hidden {
+  display: none;
+}
+.sentence-edit-textarea {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-size: 0.66rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 40px;
+}
+.sentence-inline-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.btn-inline-save {
+  background: #10b981;
+  color: #000;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.btn-inline-cancel {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  padding: 2px 8px;
+  font-size: 0.6rem;
+  cursor: pointer;
+}
+
 /* Toast */
 .toast {
   position: fixed;
