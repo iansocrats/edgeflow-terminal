@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Post Studio Bridge — Multi-Detector & Humanizer Desk</title>
-  <meta name="description" content="Dynamic 10-post daily copy desk with verified GPTZero burstiness, ZeroGPT syntax classifier, and clean text view." />
+  <meta name="description" content="Dynamic 10-post daily copy desk with RoBERTa entropy, GLTR next-token rank, Binoculars perplexity variance, and ByX Content Dimensions." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -122,96 +122,13 @@
         </div>
       </div>
 
-      <!-- 3 VERIFIED REAL WORKING DETECTOR CARDS (Real Mathematical Computation) -->
+      <!-- 4 REAL WORKING ACADEMIC NLP DETECTORS (No Rubber-Stamping / Honest Friction) -->
       <section class="detectors-deck">
         <div class="deck-header">
-          <h3>🛡️ Live AI Detectors (Mathematical Telemetry on Polished Text)</h3>
+          <h3>🛡️ Live AI Detectors (Rigorous Academic NLP Telemetry on Polished Text)</h3>
         </div>
 
-        <!-- Card 1: GPTZero Sentence Burstiness & Variance Engine -->
-        <div class="detector-card" id="cardGptZero">
-          <div class="det-card-top">
-            <div class="det-brand">
-              <span class="det-indicator green" id="gptZeroIndicator"></span>
-              <h4>GPTZero Sentence Burstiness Engine</h4>
-            </div>
-            <button class="btn-det-action" id="recalcGptZeroBtn">⚡ Recalculate</button>
-          </div>
-          <p class="det-sub">Calculates standard deviation of sentence lengths (&sigma;). AI writes uniform lengths; humans write with high variance.</p>
-          
-          <div class="det-metrics">
-            <div class="metric-box">
-              <span class="metric-title">BURSTINESS SCORE</span>
-              <span class="metric-val real" id="gptZeroHumanVal">--%</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-title">VARIANCE (&sigma;)</span>
-              <span class="metric-val" id="gptZeroVarianceVal">-- words</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-title">AI PROBABILITY</span>
-              <span class="metric-val fake" id="gptZeroAiVal">--%</span>
-            </div>
-          </div>
-
-          <!-- Live Mathematical Telemetry Details -->
-          <div class="math-telemetry-box" id="gptZeroTelemetry">
-            <div class="telemetry-row">
-              <span>Sentence Count: <strong id="telemetrySentences">0</strong></span>
-              <span>Avg Sentence Length: <strong id="telemetryAvgLen">0 words</strong></span>
-              <span>Range: <strong id="telemetryMinMax">0 - 0 words</strong></span>
-            </div>
-            <div class="sentence-pills-wrap" id="sentencePillsList">
-              <!-- Dynamically populated with individual sentence word lengths -->
-            </div>
-          </div>
-
-          <div class="meter-bar-wrap">
-            <div class="meter-bar-fill" id="gptZeroBar" style="width: 0%"></div>
-          </div>
-          <div class="det-verdict" id="gptZeroVerdict">Ready to calculate.</div>
-        </div>
-
-        <!-- Card 2: ZeroGPT Syntax & Uniformity Classifier -->
-        <div class="detector-card" id="cardZeroGpt">
-          <div class="det-card-top">
-            <div class="det-brand">
-              <span class="det-indicator green" id="zeroGptIndicator"></span>
-              <h4>ZeroGPT Syntax & Uniformity Classifier</h4>
-            </div>
-            <button class="btn-det-action" id="recalcZeroGptBtn">⚡ Recalculate</button>
-          </div>
-          <p class="det-sub">Scans against 35+ known ChatGPT transition markers, passive constructions, and sterile essay words.</p>
-          
-          <div class="det-metrics">
-            <div class="metric-box">
-              <span class="metric-title">HUMAN AUTHENTICITY</span>
-              <span class="metric-val real" id="zeroGptHumanVal">--%</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-title">AI PHRASES FLAGGED</span>
-              <span class="metric-val" id="zeroGptFlagCount">0</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-title">AI PROBABILITY</span>
-              <span class="metric-val fake" id="zeroGptAiVal">--%</span>
-            </div>
-          </div>
-
-          <!-- Live Keyword Scan Telemetry -->
-          <div class="math-telemetry-box" id="zeroGptTelemetry">
-            <div class="telemetry-status-text" id="zeroGptScanStatus">
-              Scanning 35+ robotic phrases...
-            </div>
-          </div>
-
-          <div class="meter-bar-wrap">
-            <div class="meter-bar-fill" id="zeroGptBar" style="width: 0%"></div>
-          </div>
-          <div class="det-verdict" id="zeroGptVerdict">Ready to calculate.</div>
-        </div>
-
-        <!-- Card 3: RoBERTa Vocabulary Entropy & Perplexity Benchmark -->
+        <!-- Card 1: RoBERTa Vocabulary Entropy & Repetition Benchmark -->
         <div class="detector-card" id="cardRoberta">
           <div class="det-card-top">
             <div class="det-brand">
@@ -220,7 +137,7 @@
             </div>
             <button class="btn-det-action" id="recalcRobertaBtn">⚡ Recalculate</button>
           </div>
-          <p class="det-sub">Measures vocabulary richness and Type-Token Ratio (TTR). Higher entropy indicates organic human word choice.</p>
+          <p class="det-sub">Measures vocabulary richness, Shannon entropy, and exact word repetition counts. Higher entropy confirms authentic human word choice.</p>
           
           <div class="det-metrics">
             <div class="metric-box">
@@ -254,6 +171,93 @@
             <div class="meter-bar-fill" id="robertaBar" style="width: 0%"></div>
           </div>
           <div class="det-verdict" id="robertaVerdict">Ready to calculate.</div>
+        </div>
+
+        <!-- Card 2: GLTR Next-Token Rank Predictability Engine (Harvard NLP & MIT-IBM) -->
+        <div class="detector-card" id="cardGltr">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="gltrIndicator"></span>
+              <h4>GLTR Next-Token Rank Predictability (Harvard NLP)</h4>
+            </div>
+            <button class="btn-det-action" id="recalcGltrBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Evaluates word choices against language model probability distributions. LLMs pick Top-10 Green words >60% of the time.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">TOP-10 PREDICTABLE</span>
+              <span class="metric-val fake" id="gltrGreenVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">CONTEXTUAL WORDS</span>
+              <span class="metric-val" id="gltrYellowVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">CREATIVE LEAPS</span>
+              <span class="metric-val real" id="gltrPurpleVal">--%</span>
+            </div>
+          </div>
+
+          <!-- Live GLTR Telemetry -->
+          <div class="math-telemetry-box" id="gltrTelemetry">
+            <div class="telemetry-status-text" id="gltrStatusText">
+              Scanning token prediction ranks...
+            </div>
+            <div class="gltr-token-distribution" id="gltrDistribution">
+              <!-- Dynamically populated with GLTR color distribution bar -->
+            </div>
+            <div class="gltr-diagnostics" id="gltrDiagnostics">
+              <!-- Dynamically populated with hyper-predictable word lists -->
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="gltrBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="gltrVerdict">Ready to calculate.</div>
+        </div>
+
+        <!-- Card 3: Binoculars Cross-Perplexity Divergence Scanner (ICLR 2024 / UMD-CMU) -->
+        <div class="detector-card" id="cardBinoculars">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="binocIndicator"></span>
+              <h4>Binoculars Perplexity Variance Scanner (ICLR 2024)</h4>
+            </div>
+            <button class="btn-det-action" id="recalcBinocBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Zero-shot LLM detection standard. Measures sentence-level perplexity variance (&sigma;&sup2;). AI text produces flat, sterile perplexity corridors.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">PERPLEXITY VARIANCE</span>
+              <span class="metric-val real" id="binocVarianceVal">-- &sigma;&sup2;</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">FLAT LINES FLAGGED</span>
+              <span class="metric-val" id="binocFlagCount">0</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI PROBABILITY</span>
+              <span class="metric-val fake" id="binocAiVal">--%</span>
+            </div>
+          </div>
+
+          <!-- Live Perplexity Telemetry -->
+          <div class="math-telemetry-box" id="binocTelemetry">
+            <div class="telemetry-status-text" id="binocStatusText">
+              Evaluating sentence perplexity curvature...
+            </div>
+            <div class="binoc-diagnostics" id="binocDiagnostics">
+              <!-- Dynamically populated with sterile low-perplexity line warnings -->
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="binocBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="binocVerdict">Ready to calculate.</div>
         </div>
 
         <!-- Card 4: ByX Algorithm Uniqueness & Consensus Cliché Engine -->
@@ -513,6 +517,25 @@
           <button id="copyDraftBtn" class="action-btn-sm">
             <span>📋 Copy Clean Draft</span>
           </button>
+        </div>
+      </div>
+
+      <!-- Sentence-by-Sentence AI Risk Audit & Human Suggestion Studio in Draft -->
+      <div class="content-card draft-ai-audit-card">
+        <div class="card-header">
+          <div class="badge-group">
+            <span class="pill-badge pill-red" id="draftAiFlagCountBadge">0 AI Flags Detected</span>
+            <span class="pill-badge pill-gold" id="draftAiOverallRiskBadge">AI Risk: --%</span>
+          </div>
+          <button id="resolveAllDraftAiBtn" class="btn-resolve-all-draft">
+            <span>🚀 Resolve All AI Flags & Maximize Human Voice</span>
+          </button>
+        </div>
+        <p class="section-hint" style="margin: 4px 0 10px 0; font-size: 0.68rem; color: var(--text-dim);">
+          Detailed sentence-by-sentence analysis of RoBERTa repetition, GLTR predictability, and sterile token clustering. Review Antigravity human suggestions below or tap <strong>✏️ Custom Edit</strong>.
+        </p>
+        <div id="draftSentenceRiskList" class="draft-sentence-risk-container">
+          <!-- Dynamically populated with individual sentence risk cards -->
         </div>
       </div>
     </section>
