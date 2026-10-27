@@ -143,14 +143,17 @@
             <div class="metric-box">
               <span class="metric-title">ENTROPY SCORE</span>
               <span class="metric-val real" id="robertaHumanVal">--%</span>
+              <span class="metric-hint">Target: &ge;90% (Organic)</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">UNIQUE WORD RATIO</span>
               <span class="metric-val" id="robertaTtrVal">--%</span>
+              <span class="metric-hint">Target: &gt;80% (TTR)</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">AI PROBABILITY</span>
               <span class="metric-val fake" id="robertaAiVal">--%</span>
+              <span class="metric-hint">Target: &le;10% (Safe)</span>
             </div>
           </div>
 
@@ -188,14 +191,17 @@
             <div class="metric-box">
               <span class="metric-title">TOP-10 PREDICTABLE</span>
               <span class="metric-val fake" id="gltrGreenVal">--%</span>
+              <span class="metric-hint">Lower is better (&lt;45%)</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">CONTEXTUAL WORDS</span>
               <span class="metric-val" id="gltrYellowVal">--%</span>
+              <span class="metric-hint">Optimal: 40-60%</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">CREATIVE LEAPS</span>
               <span class="metric-val real" id="gltrPurpleVal">--%</span>
+              <span class="metric-hint">Higher is better (&gt;15%)</span>
             </div>
           </div>
 
@@ -233,14 +239,17 @@
             <div class="metric-box">
               <span class="metric-title">PERPLEXITY VARIANCE</span>
               <span class="metric-val real" id="binocVarianceVal">-- &sigma;&sup2;</span>
+              <span class="metric-hint">Higher is better (&gt;2.5 &sigma;&sup2;)</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">FLAT LINES FLAGGED</span>
               <span class="metric-val" id="binocFlagCount">0</span>
+              <span class="metric-hint">Goal: 0 sterile lines</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">AI PROBABILITY</span>
               <span class="metric-val fake" id="binocAiVal">--%</span>
+              <span class="metric-hint">Lower is better (&lt;10%)</span>
             </div>
           </div>
 
@@ -488,6 +497,22 @@
         <div class="sugg-badge sugg-spacing">
           <span class="dot purple"></span>
           <span>💡 Emojis & Bullets: <strong id="spacingSuggCount">0</strong></span>
+        </div>
+      </div>
+
+      <!-- Strategic Evaluation & Next Steps Recommendation Engine -->
+      <div class="content-card draft-next-actions-card" id="draftNextActionsCard">
+        <div class="card-header">
+          <div class="badge-group">
+            <span class="pill-badge pill-purple">🎯 POST EVALUATION & NEXT STEPS</span>
+            <span class="pill-badge pill-gold" id="nextActionAiBadge">Analyzing Next Steps...</span>
+          </div>
+          <button id="btnApplyNextStepHumanization" class="btn-next-action-apply">
+            <span>🚀 Apply High-Entropy Humanization (90%+ Entropy & &lt;10% AI)</span>
+          </button>
+        </div>
+        <div id="draftNextActionsContent" class="next-actions-body">
+          <!-- Dynamically populated with real-time evaluation and what to do next -->
         </div>
       </div>
 
