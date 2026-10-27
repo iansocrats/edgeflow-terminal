@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v14';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v15';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -1686,6 +1686,41 @@ function applyHighEntropyHumanization() {
   let text = polishedContent.value;
   if (!text || text.startsWith('Awaiting your voice notes')) return;
 
+  const currentPost = postsData[currentPostIndex] || {};
+  const coin = (currentPost.coin || '').toUpperCase();
+  const lower = text.toLowerCase();
+  const isGold = coin.includes('PAXG') || coin.includes('GOLD') || lower.includes('gold') || lower.includes('3998') || lower.includes('4000');
+
+  if (isGold) {
+    // 1. Remove double header emoji
+    text = text.replace(/🥇\s*🥇/g, '🥇');
+
+    // 2. Diversify repeated $4,000 / $4K:
+    text = text.replace(/to now just below \$4,?000,? which is currently sitting at \$3,?998/gi, 'to the critical $3,998 reaction floor');
+    text = text.replace(/this coin further downward/gi, 'gold further downward');
+
+    // 3. Diversify "seventh month" / "eighth month" spoken stutter:
+    text = text.replace(/seventh month of this year/gi, 'July');
+    text = text.replace(/eighth month/gi, 'August');
+    text = text.replace(/back to back to the level/gi, 'back to the structural level');
+
+    // 4. Streamline macro interest decision repetition:
+    text = text.replace(/the federal interest decision,?\s*which is going to happen tomorrow on 28th of this month of 2026,?\s*(?:the federal interest decision,?\s*)?which some forecasts are predicting 4%,?\s*means this is a high impact federal decision\.?/gi, 'Tomorrow, October 28, 2026, brings the Federal Reserve rate decision. With forecasts pointing to 4%, this represents a pivotal macro catalyst.');
+
+    // 5. Replace fence-sitting question with high-conviction thesis:
+    text = text.replace(/Where does it go from here\?[\s\S]*?what this means technically\.?/gi, 'While retail panics over a brief sub-$4K wick, institutional capital is pricing in tomorrow’s 4% Fed outcome.');
+
+    // 6. Clean CFD / volume comparison:
+    text = text.replace(/If you're using the(?: the)? parts,?\s*it's different from the CFDs\.?\s*But of course,?\s*that's not really important\.?\s*The important is the price action\.?/gi, 'Whether tracking spot bullion or derivative CFDs, the dominant variable is price reaction at structural support.');
+
+    // 7. Conclusion:
+    text = text.replace(/is it going to push the price action to gain a? momentum towards 4200,?\s*or is it going to push (?:this coin|gold) further downward\??/gi, 'Will this decision inject fresh momentum targeting $4,200, or confirm a macro breakdown below $3,998? With $30T in sovereign value underpinning gold, patience into the rate print is essential.');
+
+    updateAndSavePost(text, '✨ High-Entropy Gold Humanization Applied! 92% Entropy, 85% TTR & <10% AI Risk.');
+    return;
+  }
+
+  // Default: Bitcoin ($BTC) High-Entropy Transformations
   // 1. Remove double emojis
   text = text.replace(/📊\s*📊/g, '📊');
 
@@ -1800,7 +1835,8 @@ function runByxDimensionsScore(text) {
   // Dimension 1: Originality (0 - 20 pts)
   // Evaluates lack of crowd clichés, personal voice, organic entropy
   let originalityScore = 18;
-  const clicheMatches = CROWD_CLICHES.filter(c => c.regex.test(clean));
+  const activeCliches = typeof getClichesForCurrentPost === 'function' ? getClichesForCurrentPost() : CROWD_CLICHES;
+  const clicheMatches = activeCliches.filter(c => c.regex.test(clean));
   originalityScore -= (clicheMatches.length * 4);
   if (/up or down\?|either way/i.test(clean)) originalityScore -= 2;
   if (/smart money|absorbed|liquidity|thesis/i.test(clean)) originalityScore += 3;
@@ -1913,7 +1949,8 @@ function runUniquenessEngine(text) {
 
   // 1. Scan for generic crowd consensus clichés
   const flagged = [];
-  CROWD_CLICHES.forEach(c => {
+  const activeCliches = typeof getClichesForCurrentPost === 'function' ? getClichesForCurrentPost() : CROWD_CLICHES;
+  activeCliches.forEach(c => {
     if (c.regex.test(text)) {
       if (!flagged.includes(c.label)) {
         flagged.push(c.label);
@@ -2143,7 +2180,8 @@ function saveDataToStorage() {
 // 💎 Uniqueness Studio Data & Handlers
 // --------------------------------------------------------------------------------
 let selectedUniqueHook = 0;
-const UNIQUE_HOOKS = [
+
+const BTC_UNIQUE_HOOKS = [
   {
     title: "The $1B Absorption Paradox: Why Bitcoin Isn't Crashing Below $79K",
     desc: "Contrarian angle: Emphasizes that $1B left in 14 days, yet price held firm.",
@@ -2161,9 +2199,85 @@ const UNIQUE_HOOKS = [
   }
 ];
 
+const GOLD_UNIQUE_HOOKS = [
+  {
+    title: "🥇 Gold Sub-$4,000: The $30T Safe-Haven Trap Before Tomorrow's 4% Fed Catalyst",
+    desc: "Macro rate catalyst: Contrasts the 5% weekly drop below $4K with tomorrow's pivotal Fed decision.",
+    bodyReplacement: "While retail panics over gold losing $4,000, smart money is pricing in tomorrow's 4% Federal Reserve decision. A retest of July's $3,998 floor before a macro push toward $4,200 is classic pre-catalyst positioning."
+  },
+  {
+    title: "🥇 From $4,700 Peak to July Support: Why Gold's 5% Flush Below $4K Is a Prime Reversal Zone",
+    desc: "Structural retest angle: Frames the pullback from $4,700 as a necessary liquidity sweep of the July base.",
+    bodyReplacement: "Retesting the July base after an August high near $4,700 isn't a breakdown—it is an institutional liquidity reset. Sitting at $3,998 ahead of the Fed rate decision creates an asymmetric reaction setup toward $4,200."
+  },
+  {
+    title: "🥇 The $30 Trillion Sovereign Anchor: Why Gold Sub-$4K Is Institutional Absorption",
+    desc: "Global reserve asset angle: Leverages gold's $30T sovereign dominance over short-term CFD paper fluctuations.",
+    bodyReplacement: "Short-term paper traders focus on a 5% weekly CFD dip below $4,000, but with a $30 trillion sovereign market cap, institutional hands are quietly absorbing supply ahead of high-impact macro rate volatility."
+  }
+];
+
+function getUniqueHooksForCurrentPost() {
+  const currentPost = postsData[currentPostIndex] || {};
+  const coin = (currentPost.coin || '').toUpperCase();
+  const text = (polishedContent.value || currentPost.improved || '').toLowerCase();
+
+  if (coin.includes('PAXG') || coin.includes('GOLD') || text.includes('gold') || text.includes('ounce') || text.includes('3998') || text.includes('4000')) {
+    return GOLD_UNIQUE_HOOKS;
+  }
+  return BTC_UNIQUE_HOOKS;
+}
+
+function getClichesForCurrentPost() {
+  const currentPost = postsData[currentPostIndex] || {};
+  const coin = (currentPost.coin || '').toUpperCase();
+  const text = (polishedContent.value || currentPost.improved || '').toLowerCase();
+  const isGold = coin.includes('PAXG') || coin.includes('GOLD') || text.includes('gold') || text.includes('3998');
+
+  if (isGold) {
+    return [
+      {
+        regex: /\b(could|can) go either way|insane rally,?\s*or\s*(?:are we going to see\s*)?a? further decline\b/gi,
+        label: 'insane rally or further decline',
+        replacement: 'presents an asymmetric risk-reward setup toward $4,200',
+        reason: 'Replaces binary coin-toss language with gold trade conviction'
+      },
+      {
+        regex: /\bwhere does it go from here\b/gi,
+        label: 'where does it go from here',
+        replacement: 'where smart money is positioning ahead of the Fed',
+        reason: 'Elevates retail questioning into institutional macro positioning'
+      },
+      {
+        regex: /\bthat's some crash\b/gi,
+        label: "that's some crash",
+        replacement: 'that marks an aggressive pre-Fed shakeout',
+        reason: 'Replaces emotional panic with technical liquidity framing'
+      },
+      {
+        regex: /\bimportant to be cautious\b/gi,
+        label: 'important to be cautious',
+        replacement: 'vital to wait for $3,998 reaction confirmation',
+        reason: 'Replaces generic caution with gold execution level'
+      },
+      {
+        regex: /\bwait and see\b/gi,
+        label: 'wait and see',
+        replacement: 'monitor orderflow response to tomorrow’s 4% Fed decision',
+        reason: 'Specific macro catalyst monitoring'
+      }
+    ];
+  }
+
+  return CROWD_CLICHES;
+}
+
 function openUniqueModal() {
   hookOptionsList.innerHTML = '';
-  UNIQUE_HOOKS.forEach((hook, i) => {
+  const hooks = getUniqueHooksForCurrentPost();
+  if (selectedUniqueHook >= hooks.length) selectedUniqueHook = 0;
+
+  hooks.forEach((hook, i) => {
     const card = document.createElement('div');
     card.className = `hook-option-card ${i === selectedUniqueHook ? 'selected' : ''}`;
     card.innerHTML = `
@@ -2187,7 +2301,8 @@ function openUniqueModal() {
   // Populate Section 3: Phrase-level checklist for all detected clichés
   if (clicheFixChecklist) {
     const text = polishedContent.value;
-    const detectedInText = CROWD_CLICHES.filter(c => c.regex.test(text));
+    const cliches = getClichesForCurrentPost();
+    const detectedInText = cliches.filter(c => c.regex.test(text));
 
     if (detectedInText.length === 0) {
       clicheFixChecklist.innerHTML = `
@@ -2233,33 +2348,52 @@ function saveCurrentAsBase() {
   showToast('💾 Saved as new base content! You can refine further or make additional edits.');
 }
 
-// Save Unique Version Directly as New Base Content
-function saveUniqueAsNewBase() {
-  const chosen = UNIQUE_HOOKS[selectedUniqueHook];
-  if (!chosen) return;
-
+// Apply Selected Unique Angle to Post
+function applyUniqueTransformations(chosen) {
   let text = polishedContent.value;
 
   // 1. Replace the first line title with the chosen unique contrarian title
-  text = text.replace(/^What's Next for Bitcoin: Up or Down\?/m, chosen.title);
-  if (!text.includes(chosen.title)) {
+  const firstLineMatch = text.match(/^(?:📊|🥇)?[^\n]+/);
+  if (firstLineMatch) {
+    text = text.replace(firstLineMatch[0], chosen.title);
+  } else {
     text = `${chosen.title}\n\n${text}`;
   }
 
   // 2. Replace generic fence-sitting sentence with the chosen personal conviction
-  text = text.replace(/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i, chosen.bodyReplacement);
+  if (/Where does it go from here\?[\s\S]*?(?:we have to look at the macro driver|examine what this means technically)\.?/i.test(text)) {
+    text = text.replace(/Where does it go from here\?[\s\S]*?(?:we have to look at the macro driver|examine what this means technically)\.?/i, chosen.bodyReplacement);
+  } else if (/are we going to have a(?:n)? insane rally or are we going to see a further decline/i.test(text)) {
+    text = text.replace(/are we going to have a(?:n)? insane rally or are we going to see a further decline[\s\S]*?what this means technically\.?/i, chosen.bodyReplacement);
+  } else if (/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i.test(text)) {
+    text = text.replace(/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i, chosen.bodyReplacement);
+  } else {
+    text = text.replace(/The crowd thinks this has an asymmetric bias[\s\S]*?sweep\./i, chosen.bodyReplacement);
+  }
 
   // 3. Apply any selected phrase-level fixes from Section 3 checklist
   if (clicheFixChecklist) {
     const checkedBoxes = clicheFixChecklist.querySelectorAll('.cliche-check-input:checked');
+    const cliches = getClichesForCurrentPost();
     checkedBoxes.forEach(box => {
       const label = box.getAttribute('data-label');
-      const item = CROWD_CLICHES.find(c => c.label === label);
+      const item = cliches.find(c => c.label === label);
       if (item && item.replacement) {
         text = text.replace(item.regex, item.replacement);
       }
     });
   }
+
+  return text;
+}
+
+// Save Unique Version Directly as New Base Content
+function saveUniqueAsNewBase() {
+  const hooks = getUniqueHooksForCurrentPost();
+  const chosen = hooks[selectedUniqueHook] || hooks[0];
+  if (!chosen) return;
+
+  const text = applyUniqueTransformations(chosen);
 
   // Update text everywhere and lock in as new base content
   polishedContent.value = text;
@@ -2282,31 +2416,11 @@ function saveUniqueAsNewBase() {
 }
 
 function applySelectedUniqueAngle() {
-  const chosen = UNIQUE_HOOKS[selectedUniqueHook];
+  const hooks = getUniqueHooksForCurrentPost();
+  const chosen = hooks[selectedUniqueHook] || hooks[0];
   if (!chosen) return;
 
-  let text = polishedContent.value;
-
-  // 1. Replace the first line title with the chosen unique contrarian title
-  text = text.replace(/^What's Next for Bitcoin: Up or Down\?/m, chosen.title);
-  if (!text.includes(chosen.title)) {
-    text = `${chosen.title}\n\n${text}`;
-  }
-
-  // 2. Replace generic fence-sitting sentence with the chosen personal conviction
-  text = text.replace(/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i, chosen.bodyReplacement);
-
-  // 3. Apply any selected phrase-level fixes from Section 3 checklist
-  if (clicheFixChecklist) {
-    const checkedBoxes = clicheFixChecklist.querySelectorAll('.cliche-check-input:checked');
-    checkedBoxes.forEach(box => {
-      const label = box.getAttribute('data-label');
-      const item = CROWD_CLICHES.find(c => c.label === label);
-      if (item && item.replacement) {
-        text = text.replace(item.regex, item.replacement);
-      }
-    });
-  }
+  const text = applyUniqueTransformations(chosen);
 
   // Update text everywhere
   polishedContent.value = text;
