@@ -239,6 +239,9 @@
             <div class="telemetry-status-text" id="robertaEntropyStatus">
               Analyzing token diversity & Shannon entropy...
             </div>
+            <div class="entropy-diagnostics" id="robertaDiagnostics">
+              <!-- Dynamically populated with token repetition breakdown & exact AI probability sources -->
+            </div>
           </div>
 
           <div class="meter-bar-wrap">
@@ -277,6 +280,9 @@
           <div class="math-telemetry-box" id="uniqueTelemetry">
             <div class="telemetry-status-text" id="uniqueStatusText">
               Scanning for generic consensus clichés...
+            </div>
+            <div class="cliche-diagnostics" id="uniqueDiagnostics">
+              <!-- Dynamically populated with flagged clichés and one-click replacement suggestions -->
             </div>
           </div>
 
@@ -449,10 +455,19 @@
         </div>
       </div>
 
+      <!-- Section 3: Step-by-Step Cliché Replacements -->
+      <div class="unique-section">
+        <label class="section-label">3. SPECIFIC PHRASE-LEVEL ALPHA FIXES</label>
+        <p class="section-hint">Select the specific upgrades to inject into your text:</p>
+        <div class="cliche-fix-checklist" id="clicheFixChecklist">
+          <!-- Dynamically populated with checkboxes for each detected cliché -->
+        </div>
+      </div>
+
       <!-- Modal Footer -->
       <div class="modal-footer">
         <button id="applyUniqueSignatureBtn" class="btn-apply-unique">
-          <span>💎 Apply Unique Signature to Post</span>
+          <span>💎 Apply Unique Signature & Auto-Recalculate</span>
         </button>
       </div>
     </div>

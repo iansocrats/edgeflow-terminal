@@ -1267,6 +1267,85 @@ body {
   filter: brightness(1.1);
 }
 
+/* Live Diagnostics Breakdown Boxes */
+.entropy-diagnostics, .cliche-diagnostics {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.diag-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  line-height: 1.35;
+}
+
+.diag-tag {
+  font-size: 0.55rem;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.diag-tag.red { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+.diag-tag.yellow { background: rgba(234, 179, 8, 0.2); color: #fef08a; }
+.diag-tag.green { background: rgba(16, 185, 129, 0.2); color: #a7f3d0; }
+
+.diag-text {
+  color: var(--text-dim);
+}
+.diag-text strong {
+  color: var(--text-main);
+}
+
+.cliche-fix-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cliche-check-card {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+}
+.cliche-check-card:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.cliche-check-input {
+  margin-top: 3px;
+  accent-color: #a855f7;
+}
+
+.cliche-check-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+.cliche-check-old {
+  color: #f87171;
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+.cliche-check-new {
+  color: #a7f3d0;
+  font-weight: 600;
+}
+
 /* Toast */
 .toast {
   position: fixed;

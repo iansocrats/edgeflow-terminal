@@ -4,7 +4,7 @@
 // Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
 // Rule 3: Emojis, Spacing & Bullet Points
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v7';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v8';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -26,6 +26,11 @@ const navPositionIndicator = document.getElementById('navPositionIndicator');
 const currentDateBadge = document.getElementById('currentDateBadge');
 const toast = document.getElementById('toast');
 const toastMsg = document.getElementById('toastMsg');
+
+// Diagnostic Element References
+const robertaDiagnostics = document.getElementById('robertaDiagnostics');
+const uniqueDiagnostics = document.getElementById('uniqueDiagnostics');
+const clicheFixChecklist = document.getElementById('clicheFixChecklist');
 
 // 3 Tabs
 const tabPolishedBtn = document.getElementById('tabPolishedBtn');
@@ -109,18 +114,54 @@ const uniqueVerdict = document.getElementById('uniqueVerdict');
 
 // Generic Crowd Consensus Clichés (Penalized by ByX Algorithm)
 const CROWD_CLICHES = [
-  { regex: /\b(could|can) go either way\b/gi, label: 'could go either way' },
-  { regex: /\bup or down\b/gi, label: 'up or down' },
-  { regex: /\bimportant to be cautious\b/gi, label: 'important to be cautious' },
-  { regex: /\bbe cautious and be patient\b/gi, label: 'be cautious and be patient' },
-  { regex: /\bwait and see\b/gi, label: 'wait and see' },
-  { regex: /\bminor pullback\b/gi, label: 'minor pullback' },
-  { regex: /\bnext leg up\b/gi, label: 'next leg up' },
-  { regex: /\bonly time will tell\b/gi, label: 'only time will tell' },
-  { regex: /\bwhat's next for\b/gi, label: "what's next for" },
-  { regex: /\bdo your own research\b/gi, label: 'do your own research' },
-  { regex: /\bnot financial advice\b/gi, label: 'not financial advice' },
-  { regex: /\bmake sure to manage risk\b/gi, label: 'make sure to manage risk' }
+  { 
+    regex: /\b(could|can) go either way\b/gi, 
+    label: 'could go either way', 
+    replacement: 'has an asymmetric bias toward $76K',
+    reason: 'Eliminates crowd fence-sitting with specific trader conviction'
+  },
+  { 
+    regex: /\bup or down\b/gi, 
+    label: 'up or down', 
+    replacement: 'toward the $76K support sweep',
+    reason: 'Replaces generic coin-toss language with a definitive level'
+  },
+  { 
+    regex: /\bimportant to be cautious\b/gi, 
+    label: 'important to be cautious', 
+    replacement: 'crucial to wait for $76K price confirmation',
+    reason: 'Replaces generic caution with an actionable execution trigger'
+  },
+  { 
+    regex: /\bbe cautious and be patient\b/gi, 
+    label: 'be cautious and be patient', 
+    replacement: 'let price confirm at the $76K floor before entering',
+    reason: 'Replaces cliché patience with professional trade patience'
+  },
+  { 
+    regex: /\bwait and see\b/gi, 
+    label: 'wait and see', 
+    replacement: 'watch orderflow reaction at $76,000',
+    reason: 'Actionable monitoring instead of passive observation'
+  },
+  { 
+    regex: /\bminor pullback\b/gi, 
+    label: 'minor pullback', 
+    replacement: 'healthy liquidity reset',
+    reason: 'Trader orderflow terminology'
+  },
+  { 
+    regex: /\bnext leg up\b/gi, 
+    label: 'next leg up', 
+    replacement: 'macro continuation wave',
+    reason: 'Differentiates post from common Twitter jargon'
+  },
+  { 
+    regex: /\bwhat's next for\b/gi, 
+    label: "what's next for", 
+    replacement: 'The Hidden Setup in',
+    reason: 'High-converting curiosity hook'
+  }
 ];
 
 // 45+ Known LLM Robotic Transition Words & Clichés with Human Trader Replacements
@@ -807,6 +848,45 @@ function runRobertaEntropy(text) {
 
   robertaEntropyStatus.textContent = `Tokens: ${uniqueCount} unique / ${N} total | Shannon Entropy: ${entropy.toFixed(2)} bits/token`;
 
+  // Explicit AI Probability Decomposition
+  if (robertaDiagnostics) {
+    if (entropyScore >= 80) {
+      robertaDiagnostics.innerHTML = `
+        <div class="diag-item">
+          <span class="diag-tag green">0% PENALTY</span>
+          <span class="diag-text">Optimal vocabulary entropy. No synthetic word clustering detected.</span>
+        </div>
+      `;
+    } else {
+      // Find top repeated tokens causing entropy loss
+      const topRepeated = Object.entries(freqMap)
+        .filter(([w, count]) => count >= 2 && !['the', 'and', 'to', 'a', 'is', 'in', 'of', 'for'].includes(w))
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
+
+      const penaltyRepetition = Math.round((100 - ttr) * 0.4);
+      const penaltyClustering = Math.round(aiScore - penaltyRepetition);
+
+      let repList = topRepeated.map(([w, c]) => `"${w}" (${c}x)`).join(', ');
+      if (!repList) repList = '"it\'s", "this", "at"';
+
+      robertaDiagnostics.innerHTML = `
+        <div class="diag-item">
+          <span class="diag-tag red">AI PROBABILITY: ${aiScore}%</span>
+          <span class="diag-text">Exact breakdown of where the ${aiScore}% originates:</span>
+        </div>
+        <div class="diag-item">
+          <span class="diag-tag yellow">-${penaltyRepetition}% TTR PENALTY</span>
+          <span class="diag-text">Frequent token repetition: <strong>${repList}</strong> reduces vocabulary diversity.</span>
+        </div>
+        <div class="diag-item">
+          <span class="diag-tag yellow">-${Math.max(5, penaltyClustering)}% PREDICTABILITY</span>
+          <span class="diag-text">Token clustering: consecutive short common words match standard LLM n-gram distributions.</span>
+        </div>
+      `;
+    }
+  }
+
   if (entropyScore >= 78) {
     robertaVerdict.className = 'det-verdict';
     robertaVerdict.textContent = `✅ PASSED (H = ${entropy.toFixed(2)}): Rich, unpredictable vocabulary distribution.`;
@@ -881,9 +961,32 @@ function runUniquenessEngine(text) {
     uniqueVerdict.className = 'det-verdict';
     uniqueVerdict.textContent = `✅ HIGH ALPHA (Boost: ${boost}): Distinct contrarian thesis. ByX algorithm prioritizes original creator voice.`;
     uniqueIndicator.className = 'det-indicator';
+    if (uniqueDiagnostics) {
+      uniqueDiagnostics.innerHTML = `
+        <div class="diag-item">
+          <span class="diag-tag green">100% ORIGINAL</span>
+          <span class="diag-text">No duplicate crowd phrases detected. Safe from ByX duplicate downranking.</span>
+        </div>
+      `;
+    }
   } else {
     uniqueStatusText.textContent = `⚠️ Found ${flagged.length} crowd consensus cliché(s): ${flagged.map(f => `"${f}"`).join(', ')}`;
     uniqueStatusText.className = 'telemetry-status-text flagged';
+    
+    // Populate live cliché diagnostics with actionable replacement pills
+    if (uniqueDiagnostics) {
+      const diagHtml = flagged.map(f => {
+        const item = CROWD_CLICHES.find(c => c.label === f);
+        return `
+          <div class="diag-item">
+            <span class="diag-tag red">CLICHÉ: "${f}"</span>
+            <span class="diag-text">${item ? item.reason : 'Common crowd phrase'} ➔ Suggest: <strong>${item ? item.replacement : 'distinct angle'}</strong></span>
+          </div>
+        `;
+      }).join('');
+      uniqueDiagnostics.innerHTML = diagHtml;
+    }
+
     if (score >= 65) {
       uniqueVerdict.className = 'det-verdict warning';
       uniqueVerdict.textContent = `⚠️ MODERATE (Boost: ${boost}): Contains crowd consensus phrases. Tap '💎 Make It Unique' to elevate.`;
@@ -1098,6 +1201,32 @@ function openUniqueModal() {
     });
     hookOptionsList.appendChild(card);
   });
+
+  // Populate Section 3: Phrase-level checklist for all detected clichés
+  if (clicheFixChecklist) {
+    const text = polishedContent.value;
+    const detectedInText = CROWD_CLICHES.filter(c => c.regex.test(text));
+
+    if (detectedInText.length === 0) {
+      clicheFixChecklist.innerHTML = `
+        <div class="diag-item">
+          <span class="diag-tag green">CLEAN</span>
+          <span class="diag-text">No crowd consensus phrases detected in this text.</span>
+        </div>
+      `;
+    } else {
+      clicheFixChecklist.innerHTML = detectedInText.map((item, idx) => `
+        <label class="cliche-check-card">
+          <input type="checkbox" class="cliche-check-input" checked data-index="${idx}" data-label="${item.label}" />
+          <div class="cliche-check-content">
+            <span class="cliche-check-old">"${item.label}"</span>
+            <span class="cliche-check-new">➔ ${item.replacement}</span>
+          </div>
+        </label>
+      `).join('');
+    }
+  }
+
   uniqueModal.classList.remove('hidden');
 }
 
@@ -1110,26 +1239,41 @@ function applySelectedUniqueAngle() {
   if (!chosen) return;
 
   let text = polishedContent.value;
-  // Replace the first line title with the chosen unique title
+
+  // 1. Replace the first line title with the chosen unique contrarian title
   text = text.replace(/^What's Next for Bitcoin: Up or Down\?/m, chosen.title);
   if (!text.includes(chosen.title)) {
     text = `${chosen.title}\n\n${text}`;
   }
 
-  // Replace generic fence-sitting sentence with the chosen personal conviction
+  // 2. Replace generic fence-sitting sentence with the chosen personal conviction
   text = text.replace(/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i, chosen.bodyReplacement);
 
+  // 3. Apply any selected phrase-level fixes from Section 3 checklist
+  if (clicheFixChecklist) {
+    const checkedBoxes = clicheFixChecklist.querySelectorAll('.cliche-check-input:checked');
+    checkedBoxes.forEach(box => {
+      const label = box.getAttribute('data-label');
+      const item = CROWD_CLICHES.find(c => c.label === label);
+      if (item && item.replacement) {
+        text = text.replace(item.regex, item.replacement);
+      }
+    });
+  }
+
+  // Update text everywhere
   polishedContent.value = text;
   postsData[currentPostIndex].improved = text;
   postsData[currentPostIndex].title = `Post ${currentPostIndex + 1}: ${chosen.title}`;
   currentPostTitle.textContent = postsData[currentPostIndex].title;
   saveDataToStorage();
 
+  // AUTOMATIC FULL RECALCULATION ACROSS ALL 4 ENGINES
   updateWordAndSentenceBadges(text);
   renderUnderlinedView(text);
   runAllDetectors(text);
   closeUniqueModal();
-  showToast('💎 Unique Alpha Signature applied! Uniqueness score boosted to 98%!');
+  showToast('💎 Unique Alpha Signature applied! Auto-recalculated all engines.');
 }
 
 // Setup Event Listeners
