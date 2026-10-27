@@ -12,8 +12,9 @@
   --gold-glow: rgba(247, 166, 0, 0.25);
   --green: #10b981;
   --green-glow: rgba(16, 185, 129, 0.28);
-  --green-hover: #059669;
   --blue: #3b82f6;
+  --purple: #a855f7;
+  --yellow: #eab308;
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 8px;
@@ -52,7 +53,7 @@ body {
 
 /* Header */
 .app-header {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .header-main {
@@ -111,14 +112,14 @@ body {
 }
 
 .header-sub {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
 /* 10-Post Navigation Pills */
 .post-pills-bar {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .pills-scroll {
@@ -167,10 +168,15 @@ body {
   font-weight: 700;
 }
 
+.pill-item.waiting {
+  opacity: 0.6;
+  border-style: dashed;
+}
+
 .pill-coin {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  opacity: 0.85;
+  font-size: 0.72rem;
+  opacity: 0.9;
 }
 
 /* Meta Strip */
@@ -183,7 +189,14 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
+}
+
+.slot-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
 }
 
 .meta-slot {
@@ -192,17 +205,39 @@ body {
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 0.05em;
-  display: block;
+}
+
+.slot-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+
+.slot-status-pill.ready {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--green);
+}
+
+.slot-status-pill.waiting {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted);
 }
 
 .meta-title {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 320px;
+  max-width: 280px;
+}
+
+.meta-actions {
+  display: flex;
+  gap: 6px;
 }
 
 .action-btn-sm {
@@ -211,14 +246,21 @@ body {
   color: var(--text-dim);
   padding: 6px 10px;
   border-radius: var(--radius-sm);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .action-btn-sm:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-main);
+}
+
+.action-btn-sm.danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.4);
 }
 
 /* Tabs Navigation */
@@ -341,6 +383,51 @@ body {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Color Legend Box */
+.color-legend-box {
+  background: #0d121c;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+
+.legend-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.anti-ai-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+}
+
+.legend-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.leg-item {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.leg-purple { color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3); }
+.leg-yellow { color: #fde047; border: 1px solid rgba(234, 179, 8, 0.3); }
+.leg-blue { color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
+.leg-green { color: #86efac; border: 1px solid rgba(16, 185, 129, 0.3); }
+
 /* Content Card */
 .content-card {
   background: var(--bg-card);
@@ -377,7 +464,7 @@ body {
 .pill-green { background: rgba(16, 185, 129, 0.15); color: var(--green); }
 .pill-gold { background: rgba(247, 166, 0, 0.15); color: var(--gold); }
 .pill-blue { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
-.pill-gray { background: rgba(148, 163, 184, 0.15); color: var(--text-dim); }
+.pill-yellow { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
 
 .quick-copy-text {
   font-size: 0.72rem;
@@ -392,7 +479,7 @@ body {
 /* Textarea */
 .post-textarea {
   width: 100%;
-  min-height: 340px;
+  min-height: 280px;
   background: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -429,14 +516,83 @@ body {
   color: #000;
   border: none;
   border-radius: var(--radius-sm);
-  padding: 8px 14px;
-  font-size: 0.8rem;
+  padding: 10px 16px;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .btn-save:hover {
   background: #ffb82e;
+}
+
+/* Color-Coded Breakdown Section */
+.breakdown-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breakdown-header h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.breakdown-item {
+  background: #090c12;
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.breakdown-item.type-purple { border-left-color: var(--purple); }
+.breakdown-item.type-yellow { border-left-color: var(--yellow); }
+.breakdown-item.type-blue { border-left-color: var(--blue); }
+.breakdown-item.type-green { border-left-color: var(--green); }
+
+.item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.type-purple .item-tag { color: var(--purple); }
+.type-yellow .item-tag { color: var(--yellow); }
+.type-blue .item-tag { color: var(--blue); }
+.type-green .item-tag { color: var(--green); }
+
+.item-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.item-detail {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  line-height: 1.4;
 }
 
 /* Footer / Navigation */

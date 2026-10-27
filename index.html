@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Post Studio Bridge — Dictation & Copy Desk</title>
-  <meta name="description" content="Two-tab dictation bridge: view raw notes and 1-tap copy polished, high-converting ByX posts on mobile." />
+  <title>Post Studio Bridge — Dynamic Dictation & Copy Desk</title>
+  <meta name="description" content="Dynamic 10-post daily copy desk with color-coded anti-AI transparency and 1-tap mobile copying." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,28 +20,32 @@
           <h1>Post Studio Bridge</h1>
         </div>
         <div class="daily-badge">
-          <span class="badge-label">TARGET</span>
-          <span class="badge-value" id="progressCount">10 Posts / Day</span>
+          <span class="badge-label">ACTIVE DAY</span>
+          <span class="badge-value" id="currentDateBadge">Today's Desk</span>
         </div>
       </div>
-      <p class="header-sub">Laptop ⇄ Phone Copy Desk • Raw Voice Dictation vs. Polished ByX Ready</p>
+      <p class="header-sub">Dynamic Daily Pipeline • Color-Coded Polishing • 100% Anti-AI Compliant</p>
     </header>
 
-    <!-- 10-Post Navigation Carousel / Pills -->
+    <!-- Dynamic 10-Post Navigation Carousel / Pills -->
     <nav class="post-pills-bar">
       <div class="pills-scroll" id="pillsContainer">
-        <!-- Injected via JavaScript (1 to 10) -->
+        <!-- Injected via JavaScript (Post 1 to 10 with live status indicators) -->
       </div>
     </nav>
 
-    <!-- Current Post Metadata Card -->
+    <!-- Current Post Slot Controller -->
     <section class="meta-strip">
       <div class="meta-info">
-        <span class="meta-slot" id="currentSlotLabel">POST 1 OF 10</span>
-        <h2 class="meta-title" id="currentPostTitle">Loading post...</h2>
+        <div class="slot-badge-row">
+          <span class="meta-slot" id="currentSlotLabel">POST 1 OF 10</span>
+          <span class="slot-status-pill" id="currentSlotStatus">● READY</span>
+        </div>
+        <h2 class="meta-title" id="currentPostTitle">Post 1: $BTC Setup</h2>
       </div>
       <div class="meta-actions">
-        <button id="newPostBtn" class="action-btn-sm" title="Add or edit post">✏️ Edit / Dictate</button>
+        <button id="quickEditCoinBtn" class="action-btn-sm" title="Change coin ticker">🏷️ Set Coin</button>
+        <button id="resetSlotBtn" class="action-btn-sm danger" title="Clear this slot">🗑️ Clear</button>
       </div>
     </section>
 
@@ -50,7 +54,7 @@
       <button class="tab-btn active" id="tabPolishedBtn" role="tab" aria-selected="true" data-tab="polished">
         <span class="tab-icon">✨</span>
         <span class="tab-text">Polished Post</span>
-        <span class="tab-chip">Ready to Copy</span>
+        <span class="tab-chip">Color-Coded & Ready</span>
       </button>
       <button class="tab-btn" id="tabRawBtn" role="tab" aria-selected="false" data-tab="raw">
         <span class="tab-icon">🎙️</span>
@@ -69,35 +73,60 @@
         </button>
       </div>
 
+      <!-- Color-Code Transparency Legend -->
+      <div class="color-legend-box">
+        <div class="legend-title">
+          <span>🎨 Color-Coded Polishing Transparency:</span>
+          <span class="anti-ai-tag">100% Anti-AI Safe</span>
+        </div>
+        <div class="legend-grid">
+          <span class="leg-item leg-purple">🟣 Hook / 2s Stopper</span>
+          <span class="leg-item leg-yellow">🟡 100% Spoken Voice (Untouched)</span>
+          <span class="leg-item leg-blue">🔵 Invalidation Levels</span>
+          <span class="leg-item leg-green">🟢 Widget Conversion CTA</span>
+        </div>
+      </div>
+
+      <!-- Polished Content Container -->
       <div class="content-card">
         <div class="card-header">
           <div class="badge-group">
-            <span class="pill-badge pill-green">✓ ByX Optimized</span>
+            <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
             <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
-            <span class="pill-badge pill-blue">Widget CTA Included</span>
+            <span class="pill-badge pill-blue">Zero AI Flags</span>
           </div>
-          <span class="quick-copy-text" id="quickCopyHint">Tap box or button above to copy</span>
+          <span class="quick-copy-text">Tap anywhere in box to copy</span>
         </div>
         <textarea id="polishedContent" class="post-textarea polished" readonly placeholder="Polished post will appear here..."></textarea>
       </div>
+
+      <!-- Color-Coded Audit Breakdown (Why Each Change Was Made) -->
+      <section class="breakdown-card" id="breakdownSection">
+        <div class="breakdown-header">
+          <h3>🔍 Exact Polish Audit (Why These Edits Were Made)</h3>
+        </div>
+        <div class="breakdown-list" id="breakdownList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
     </main>
 
     <!-- Tab 2: Raw Dictation (What I Wrote) -->
     <section class="tab-pane" id="paneRaw" role="tabpanel">
       <div class="copy-bar-wrap">
         <button class="btn-copy-secondary" id="copyRawBtn">
-          <span>📋 Copy Raw Dictation</span>
+          <span>📋 Copy Raw Voice Notes</span>
         </button>
       </div>
 
       <div class="content-card">
         <div class="card-header">
-          <span class="pill-badge pill-gray">Original Spoken / Dictated Voice</span>
-          <span class="meta-hint">Voice-to-text notes before formatting</span>
+          <span class="pill-badge pill-yellow">🎙️ Your Unedited Spoken Words</span>
+          <span class="meta-hint">Type or use mobile speech-to-text</span>
         </div>
-        <textarea id="rawContent" class="post-textarea raw" placeholder="Type or dictate your voice notes here..."></textarea>
+        <textarea id="rawContent" class="post-textarea raw" placeholder="Speak or type your raw notes for this coin here... (e.g. 'Bitcoin is holding 67800 looking for long with stop under 67400...')"></textarea>
         <div class="card-footer">
-          <button id="saveEditBtn" class="btn-save">💾 Save Edits to Post</button>
+          <button id="saveEditBtn" class="btn-save">💾 Save Notes & Request Polish</button>
         </div>
       </div>
     </section>
@@ -105,12 +134,12 @@
     <!-- Bottom Mobile Toolbar -->
     <footer class="app-footer">
       <div class="nav-arrows">
-        <button id="prevPostBtn" class="btn-nav">← Prev Post</button>
-        <span id="navPositionIndicator" class="pos-text">1 / 10</span>
-        <button id="nextPostBtn" class="btn-nav">Next Post →</button>
+        <button id="prevPostBtn" class="btn-nav">← Prev</button>
+        <span id="navPositionIndicator" class="pos-text">Post 1 of 10</span>
+        <button id="nextPostBtn" class="btn-nav">Next →</button>
       </div>
       <div class="footer-tip">
-        <span>💡 <strong>Quick Phone Workflow:</strong> Tap Post # ➔ Tap green button ➔ Open Bybit ByX ➔ Paste with widget.</span>
+        <span>💡 <strong>Dynamic Workflow:</strong> Post 1 ($BTC) is active. Once posted, advance to Post 2, dictate new coin notes, and let me polish it!</span>
       </div>
     </footer>
   </div>
