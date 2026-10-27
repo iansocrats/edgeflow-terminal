@@ -10,6 +10,7 @@ let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
 let currentDraftResult = null;
+let serverPosts = [];
 
 // DOM Elements
 const pillsContainer = document.getElementById('pillsContainer');
@@ -253,13 +254,23 @@ async function initApp() {
   displayPost(currentPostIndex);
   setViewMode('plain'); // Clean plain text by default
   setupEvents();
+  initSessionAndPointsHub();
 }
 
-// Display Real-time Day/Date
+// Display Real-time Day/Date & Session Status
 function setTodayDate() {
   const now = new Date();
   const options = { weekday: 'short', month: 'short', day: 'numeric' };
-  currentDateBadge.textContent = now.toLocaleDateString(undefined, options);
+  const dateStr = now.toLocaleDateString(undefined, options);
+  if (currentDateBadge) {
+    if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day1') {
+      currentDateBadge.textContent = 'Day 1 Archive (9.0 pts)';
+    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day3') {
+      currentDateBadge.textContent = 'Day 3 Fresh Desk';
+    } else {
+      currentDateBadge.textContent = '10/10 Complete';
+    }
+  }
 }
 
 // Load Posts from posts.json or LocalStorage
@@ -276,7 +287,7 @@ async function loadPostsData() {
   try {
     const res = await fetch('posts.json?v=' + Date.now());
     if (res.ok) {
-      const serverPosts = await res.json();
+      serverPosts = await res.json();
       if (Array.isArray(serverPosts) && serverPosts.length > 0) {
         // If cached data is missing or empty, take serverPosts
         if (!postsData || postsData.length === 0) {
@@ -404,6 +415,10 @@ function displayPost(index) {
 
   if (pillButtons[index]) {
     pillButtons[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  if (typeof renderAttributionMatrix === 'function') {
+    renderAttributionMatrix();
   }
 }
 
@@ -3284,6 +3299,291 @@ function setupEvents() {
   // Quick Action Buttons
   quickEditCoinBtn.addEventListener('click', quickEditCoin);
   resetSlotBtn.addEventListener('click', resetCurrentSlot);
+}
+
+// ================================================================================
+// Bybit Daily Points Attribution & Day Session Management Engine
+// ================================================================================
+
+const SESSION_KEY = 'byx_active_session_id';
+let currentSessionId = localStorage.getItem(SESSION_KEY) || 'day2';
+
+// DOM elements for Daily Points Hub
+const daySessionSelect = document.getElementById('daySessionSelect');
+const btnNewDaySession = document.getElementById('btnNewDaySession');
+const officialDailyScoreInput = document.getElementById('officialDailyScoreInput');
+const btnSaveDailyScore = document.getElementById('btnSaveDailyScore');
+const weeklyAccumTotalText = document.getElementById('weeklyAccumTotalText');
+const weeklyPercentText = document.getElementById('weeklyPercentText');
+const weeklyProgressBarFill = document.getElementById('weeklyProgressBarFill');
+const chipDay1 = document.getElementById('chipDay1');
+const chipDay2 = document.getElementById('chipDay2');
+const chipDay3 = document.getElementById('chipDay3');
+const chipTodayScore = document.getElementById('chipTodayScore');
+const attributionTableBody = document.getElementById('attributionTableBody');
+const pointsHubStatusBadge = document.getElementById('pointsHubStatusBadge');
+
+function getDayScoreKey(sessionId) {
+  return `byx_score_${sessionId}`;
+}
+
+function getDaySessionStorageKey(sessionId) {
+  return `byx_session_posts_${sessionId}`;
+}
+
+function getSessionScore(sessionId) {
+  const saved = localStorage.getItem(getDayScoreKey(sessionId));
+  if (saved !== null && saved !== undefined && saved !== '') {
+    return parseFloat(saved) || 0;
+  }
+  // Default fallbacks
+  if (sessionId === 'day1') return 9.0;
+  if (sessionId === 'day2') return 22.5;
+  return 0.0;
+}
+
+function setSessionScore(sessionId, score) {
+  localStorage.setItem(getDayScoreKey(sessionId), score.toString());
+}
+
+function calculatePostDimensionScore(text) {
+  if (!text || text.startsWith('Awaiting your voice notes')) return 0;
+  const clean = text.trim();
+
+  let originalityScore = 18;
+  const activeCliches = typeof getClichesForCurrentPost === 'function' ? getClichesForCurrentPost() : CROWD_CLICHES;
+  const clicheMatches = activeCliches.filter(c => c.regex.test(clean));
+  originalityScore -= (clicheMatches.length * 4);
+  if (/up or down\?|either way/i.test(clean)) originalityScore -= 2;
+  if (/smart money|absorbed|liquidity|thesis|short squeeze|asymmetric/i.test(clean)) originalityScore += 2;
+  originalityScore = Math.min(20, Math.max(4, originalityScore));
+
+  let depthScore = 6;
+  if (/\$[\d,]+(?:\.\d+)?|\b0\.\d{3,4}\b|\$70\s*billion|\$70b/i.test(clean)) depthScore += 3;
+  const distinctPrices = [clean.match(/\$[\d,]+(?:\.\d+)?|\b\d+%\b|\b190\s*coins\b/g) || []].flat();
+  if (distinctPrices.length >= 2) depthScore += 3;
+  if (/\$1b|billion|trillion|million|funding|open interest|oi|ratio|etf|delta|derivatives|dex|cvd|contracts|data centers/i.test(clean)) depthScore += 4;
+  if (/fear and greed.*50|index.*50|federal interest|fed.*decision|4%|cycle|mean reversion|leverage|breakout|\b\d+%\b|hashrate|miners/i.test(clean)) depthScore += 2;
+  const paraCount = clean.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
+  if (paraCount >= 3) depthScore += 2;
+  depthScore = Math.min(20, Math.max(5, depthScore));
+
+  let relevanceScore = 8;
+  if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$meta|meta platforms|\$sui|sui|\$[a-z]{3,6}/i.test(clean)) relevanceScore += 4;
+  if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x|cctp|hashi|anchorage|walrus/i.test(clean)) relevanceScore += 5;
+  if (/this week|past two weeks|last month|tomorrow|28th|today|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
+  relevanceScore = Math.min(20, Math.max(6, relevanceScore));
+
+  let credScore = 7;
+  if (/support|floor|shelf|invalidation|stop-loss|boundary|baseline|infrastructure|hashrate/i.test(clean)) credScore += 4;
+  if (/target|resistance|retest|mean reversion|upside|wick|tp1|tp2|expansion|spot price|payoffs/i.test(clean)) credScore += 3;
+  if (/cautious|patient|confirmation|risk|execution|disciplined|protecting capital|patiently|margins|cash-flow|overleverage/i.test(clean)) credScore += 4;
+  if (/setup|asymmetric|orderflow|delta|reversion|liquidity|not financial advice|sovereign|thesis|cvd|commodity/i.test(clean)) credScore += 2;
+  credScore = Math.min(20, Math.max(5, credScore));
+
+  let presScore = 6;
+  if (clean.includes('\n\n')) presScore += 3;
+  if (/[,.;!?]/.test(clean)) presScore += 3;
+  if (/•|-|\*/.test(clean)) presScore += 3;
+  if (/^[📊🥇🔷🧭⚡🔥🚨💎🌐]/.test(clean) || clean.includes('🥇') || clean.includes('📊') || clean.includes('🔷') || clean.includes('⚡') || clean.includes('🔥') || clean.includes('🌐')) presScore += 2;
+  const wordCount = (clean.match(/\b\w+\b/g) || []).length;
+  if (wordCount >= 70 && wordCount <= 270) presScore += 3;
+  presScore = Math.min(20, Math.max(8, presScore));
+
+  return originalityScore + depthScore + relevanceScore + credScore + presScore;
+}
+
+function renderAttributionMatrix() {
+  if (!attributionTableBody) return;
+
+  const currentScore = getSessionScore(currentSessionId);
+  if (officialDailyScoreInput) {
+    officialDailyScoreInput.value = currentScore.toFixed(1);
+  }
+
+  // Calculate ByX scores for each post
+  const evaluatedPosts = postsData.map((post, idx) => {
+    const text = post.improved || post.raw || '';
+    const score = calculatePostDimensionScore(text);
+    const isValid = score >= 40;
+    return {
+      index: idx,
+      id: post.id || (idx + 1),
+      coin: post.coin || `Slot ${idx + 1}`,
+      score: score,
+      isValid: isValid
+    };
+  });
+
+  const validPosts = evaluatedPosts.filter(p => p.isValid);
+  const totalQualitySum = validPosts.reduce((sum, p) => sum + p.score, 0);
+
+  attributionTableBody.innerHTML = evaluatedPosts.map(p => {
+    if (!p.isValid || totalQualitySum === 0) {
+      return `
+        <tr>
+          <td>Slot ${p.id}</td>
+          <td><strong>${p.coin}</strong></td>
+          <td><span class="attr-status-badge waiting">${p.score > 0 ? p.score + '/100' : '--/100'}</span></td>
+          <td>0.0%</td>
+          <td><span class="attr-pts-badge" style="color:var(--text-dim)">0.00 pts</span></td>
+          <td><span class="attr-status-badge waiting">AWAITING POST</span></td>
+        </tr>
+      `;
+    }
+
+    const shareRatio = p.score / totalQualitySum;
+    const sharePercent = (shareRatio * 100).toFixed(1) + '%';
+    const attributedPts = (currentScore * shareRatio).toFixed(2);
+
+    return `
+      <tr>
+        <td>Slot ${p.id}</td>
+        <td><strong>${p.coin}</strong></td>
+        <td><span class="attr-score-badge">${p.score}/100</span></td>
+        <td>${sharePercent}</td>
+        <td><span class="attr-pts-badge">+${attributedPts} pts</span></td>
+        <td><span class="attr-status-badge valid">VALID POST (≥ 40)</span></td>
+      </tr>
+    `;
+  }).join('');
+
+  updateWeeklyProgress();
+}
+
+function updateWeeklyProgress() {
+  const day1Score = getSessionScore('day1');
+  const day2Score = getSessionScore('day2');
+  const day3Score = getSessionScore('day3');
+  const weeklyTotal = day1Score + day2Score + day3Score;
+
+  if (weeklyAccumTotalText) {
+    weeklyAccumTotalText.textContent = `${weeklyTotal.toFixed(1)} / 100 Pts`;
+  }
+
+  const percent = Math.min(100, (weeklyTotal / 100) * 100);
+  if (weeklyProgressBarFill) {
+    weeklyProgressBarFill.style.width = `${percent}%`;
+  }
+
+  if (weeklyPercentText) {
+    if (weeklyTotal >= 100) {
+      weeklyPercentText.innerHTML = `🎉 <strong>100% UNLOCKED (REWARDS ACTIVE)</strong>`;
+      weeklyPercentText.style.color = '#10b981';
+    } else {
+      weeklyPercentText.textContent = `${percent.toFixed(1)}% to Reward Benchmark`;
+      weeklyPercentText.style.color = '#f59e0b';
+    }
+  }
+
+  if (chipDay1) {
+    chipDay1.innerHTML = `📅 Day 1 (Oct 26): <strong>${day1Score.toFixed(1)} pts</strong> (5 posts)`;
+    chipDay1.className = `chip-day ${currentSessionId === 'day1' ? 'active' : ''}`;
+  }
+  if (chipDay2) {
+    chipDay2.innerHTML = `📅 Day 2 (Today): <strong>${day2Score.toFixed(1)} pts</strong> (10 posts)`;
+    chipDay2.className = `chip-day ${currentSessionId === 'day2' ? 'active' : ''}`;
+  }
+  if (chipDay3) {
+    chipDay3.innerHTML = `📅 Day 3 (Tomorrow): <strong>${day3Score > 0 ? day3Score.toFixed(1) + ' pts' : 'Awaiting'}</strong> (${currentSessionId === 'day3' ? 'Active Desk' : '10 slots'})`;
+    chipDay3.className = `chip-day ${currentSessionId === 'day3' ? 'active' : 'pending'}`;
+  }
+
+  if (chipTodayScore) {
+    chipTodayScore.textContent = `${getSessionScore(currentSessionId).toFixed(1)} pts`;
+  }
+
+  if (pointsHubStatusBadge) {
+    if (weeklyTotal >= 100) {
+      pointsHubStatusBadge.textContent = 'REWARDS UNLOCKED (≥ 100 PTS)';
+      pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
+    } else {
+      pointsHubStatusBadge.textContent = 'ACCUMULATING WEEKLY POINTS';
+      pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
+    }
+  }
+}
+
+function switchDaySession(newSessionId, forceFresh = false) {
+  // Save active posts to session storage
+  localStorage.setItem(getDaySessionStorageKey(currentSessionId), JSON.stringify(postsData));
+
+  currentSessionId = newSessionId;
+  localStorage.setItem(SESSION_KEY, currentSessionId);
+  if (daySessionSelect) {
+    daySessionSelect.value = currentSessionId;
+  }
+
+  const savedSessionData = localStorage.getItem(getDaySessionStorageKey(currentSessionId));
+  if (savedSessionData && !forceFresh) {
+    try {
+      postsData = JSON.parse(savedSessionData);
+    } catch (e) {
+      console.log('Error parsing session data:', e);
+      postsData = createEmptySlots();
+    }
+  } else if (currentSessionId === 'day1') {
+    postsData = createEmptySlots();
+    if (serverPosts && serverPosts.length >= 5) {
+      for (let i = 0; i < 5; i++) {
+        postsData[i] = JSON.parse(JSON.stringify(serverPosts[i]));
+      }
+    }
+  } else if (currentSessionId === 'day2') {
+    postsData = serverPosts && serverPosts.length === 10 ? JSON.parse(JSON.stringify(serverPosts)) : createEmptySlots();
+  } else {
+    postsData = createEmptySlots();
+  }
+
+  currentPostIndex = 0;
+  saveDataToStorage();
+  renderPills();
+  displayPost(0);
+  setTodayDate();
+  renderAttributionMatrix();
+  showToast(`📂 Switched to ${currentSessionId === 'day2' ? 'Day 2 (Today)' : currentSessionId === 'day1' ? 'Day 1 (Yesterday)' : 'Day 3 (Tomorrow)'}!`);
+}
+
+function startTomorrowDesk() {
+  const confirmMsg = "✨ Start Day 3 (Tomorrow)?\n\nToday's 10 completed posts ($BTC to $SUI) and score will remain safely preserved in Day 2.\n\nYou can switch back to view or copy today's posts anytime from the top dropdown!";
+  if (window.confirm(confirmMsg)) {
+    switchDaySession('day3', true);
+  }
+}
+
+function initSessionAndPointsHub() {
+  if (daySessionSelect) {
+    daySessionSelect.value = currentSessionId;
+    daySessionSelect.addEventListener('change', (e) => {
+      switchDaySession(e.target.value);
+    });
+  }
+
+  if (btnNewDaySession) {
+    btnNewDaySession.addEventListener('click', startTomorrowDesk);
+  }
+
+  if (btnSaveDailyScore && officialDailyScoreInput) {
+    btnSaveDailyScore.addEventListener('click', () => {
+      const val = parseFloat(officialDailyScoreInput.value) || 0;
+      setSessionScore(currentSessionId, val);
+      renderAttributionMatrix();
+      showToast(`💾 Saved ${currentSessionId === 'day2' ? "Today's" : currentSessionId === 'day1' ? "Yesterday's" : "Tomorrow's"} score: ${val.toFixed(1)} pts!`);
+    });
+  }
+
+  // Score preset buttons
+  document.querySelectorAll('.btn-score-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const val = parseFloat(btn.getAttribute('data-val')) || 0;
+      if (officialDailyScoreInput) officialDailyScoreInput.value = val.toFixed(1);
+      setSessionScore(currentSessionId, val);
+      renderAttributionMatrix();
+      showToast(`🎯 Score preset applied: ${val.toFixed(1)} pts!`);
+    });
+  });
+
+  renderAttributionMatrix();
 }
 
 // --------------------------------------------------------------------------------

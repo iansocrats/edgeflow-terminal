@@ -22,9 +22,20 @@
           <h1>Post Studio Bridge</h1>
         </div>
         <div class="header-right-actions">
+          <div class="session-selector-wrap">
+            <span class="session-label">DESK:</span>
+            <select id="daySessionSelect" class="session-dropdown" title="Switch active day or view archived posts">
+              <option value="day2" selected>📅 Day 2: Today (Oct 27) — 10 Posts (Complete)</option>
+              <option value="day1">📅 Day 1: Yesterday (Oct 26) — 5 Posts (9.0 pts)</option>
+              <option value="day3">📅 Day 3: Tomorrow (Oct 28) — Fresh 10 Slots</option>
+            </select>
+            <button id="btnNewDaySession" class="btn-new-day" title="Archive today's 10 posts and start fresh for tomorrow">
+              <span>✨ Start Tomorrow</span>
+            </button>
+          </div>
           <div class="daily-badge">
-            <span class="badge-label">ACTIVE</span>
-            <span class="badge-value" id="currentDateBadge">Today's Desk</span>
+            <span class="badge-label">STATUS</span>
+            <span class="badge-value" id="currentDateBadge">10/10 Complete</span>
           </div>
         </div>
       </div>
@@ -330,6 +341,79 @@
           <button id="toggleDraftDiffBtn" class="btn-view-toggle" data-dview="diff">🔍 Highlighted Rules & Suggestions</button>
         </div>
         <span class="draft-badge-indicator">🏆 PRIMARY POSTING STAGE</span>
+      </div>
+
+      <!-- 🏆 Bybit Daily Points & Post Attribution Hub -->
+      <div class="rules-card byx-points-hub-card" id="byxPointsHubCard">
+        <div class="byx-header-wrap">
+          <div class="rules-header">
+            <span class="rules-title">🏆 Bybit Daily Score & Points Attribution Engine</span>
+            <span class="rules-badge byx-valid-badge" id="pointsHubStatusBadge">LEADERBOARD READY</span>
+          </div>
+          <p class="byx-rules-desc">Enter your official end-of-day Bybit score. The engine dynamically attributes points across your posts based on their verified ByX Content Quality Scores ($\ge 40$), tracks cumulative weekly points, and protects daily archives.</p>
+        </div>
+
+        <!-- Daily Score Input & Presets Row -->
+        <div class="points-input-row">
+          <div class="points-input-group">
+            <label for="officialDailyScoreInput" class="points-label">Today's Official Score:</label>
+            <div class="input-with-button">
+              <input type="number" step="0.1" min="0" max="1000" id="officialDailyScoreInput" class="points-score-input" placeholder="e.g. 22.5" />
+              <button id="btnSaveDailyScore" class="btn-save-score">💾 Save & Attribute</button>
+            </div>
+          </div>
+          <div class="points-presets-group">
+            <span class="presets-label">Quick Set:</span>
+            <button class="btn-score-preset" data-val="9.0">Yesterday (9.0)</button>
+            <button class="btn-score-preset" data-val="22.5">10-Post Est (22.5)</button>
+            <button class="btn-score-preset" data-val="35.0">Active Reach (35.0)</button>
+            <button class="btn-score-preset" data-val="50.0">Volume Surge (50.0)</button>
+          </div>
+        </div>
+
+        <!-- Weekly Cumulative Progress Bar -->
+        <div class="weekly-progress-wrap">
+          <div class="weekly-progress-header">
+            <span class="weekly-progress-title">📈 Weekly Accumulated Points: <strong id="weeklyAccumTotalText">31.5 / 100 Pts</strong></span>
+            <span class="weekly-progress-percent" id="weeklyPercentText">31.5% to Reward Pool</span>
+          </div>
+          <div class="weekly-progress-bar-bg">
+            <div class="weekly-progress-bar-fill" id="weeklyProgressBarFill" style="width: 31.5%"></div>
+            <div class="weekly-threshold-pin" title="100 Pt Reward Threshold">
+              <span>100 PT THRESHOLD</span>
+            </div>
+          </div>
+          <div class="daily-breakdown-chips">
+            <span class="chip-day" id="chipDay1">📅 Day 1 (Oct 26): <strong>9.0 pts</strong> (5 posts)</span>
+            <span class="chip-day active" id="chipDay2">📅 Day 2 (Today): <strong id="chipTodayScore">22.5 pts</strong> (10 posts)</span>
+            <span class="chip-day pending" id="chipDay3">📅 Day 3 (Tomorrow): <strong>Awaiting</strong> (10 slots)</span>
+          </div>
+        </div>
+
+        <!-- Post-by-Post Attribution Matrix -->
+        <div class="attribution-matrix-wrap">
+          <div class="matrix-header">
+            <span class="matrix-title">🎯 Points Attributed Per Post (Weighted by Quality Score)</span>
+            <span class="matrix-subtitle">Auto-calculated from today's total score</span>
+          </div>
+          <div class="attribution-table-scroll">
+            <table class="attribution-table">
+              <thead>
+                <tr>
+                  <th>Slot</th>
+                  <th>Coin / Ticker</th>
+                  <th>Quality Score</th>
+                  <th>Weight Share</th>
+                  <th>Attributed Points</th>
+                  <th>ByX Status</th>
+                </tr>
+              </thead>
+              <tbody id="attributionTableBody">
+                <!-- Dynamically populated via renderAttributionMatrix() -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       <!-- Official ByX 5 Content Dimensions & Benchmark Banner -->
