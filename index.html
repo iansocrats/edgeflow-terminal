@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#090c13" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -103,6 +105,7 @@
             <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
             <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
             <span class="pill-badge pill-blue" id="sentenceCountBadge">0 sentences</span>
+            <span class="pill-badge pill-purple" id="readabilityBadge" title="Flesch-Kincaid Mobile Readability">Grade 7</span>
           </div>
           <span class="quick-copy-text">Tap box to copy clean text</span>
         </div>
@@ -290,20 +293,49 @@
       <!-- Rules Banner -->
       <div class="rules-card">
         <div class="rules-header">
-          <span class="rules-title">🛡️ Strict Polishing Rules (No Sentence Rewriting)</span>
+          <span class="rules-title">🛡️ 10 Approved Polishing & Alpha Rules</span>
+          <span class="rules-badge">BYX IMPACT OPTIMIZED</span>
         </div>
         <div class="rules-grid">
           <div class="rule-item">
             <span class="rule-tag tag-green">Rule 1</span>
-            <div><strong>Punctuation Only:</strong> Capitalize, periods, commas, colons.</div>
+            <div><strong>Punctuation Only:</strong> Capitalize, periods, commas, colons. Zero sentence changes.</div>
           </div>
           <div class="rule-item">
             <span class="rule-tag tag-yellow">Rule 2</span>
-            <div><strong>Word Replacements:</strong> Typos or numbers (e.g. 67800 ➔ $67,800). No sentence changes.</div>
+            <div><strong>Word Replacements:</strong> Typos/numbers (e.g. 67800 ➔ $67,800). No rewriting.</div>
           </div>
           <div class="rule-item">
             <span class="rule-tag tag-purple">Rule 3</span>
             <div><strong>Emojis & Spacing:</strong> Relevant emojis, paragraph line breaks, bullet points.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-blue">Rule 4</span>
+            <div><strong>Contrarian Angle:</strong> Take a clear stand against consensus crowd bias.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-gold">Rule 5</span>
+            <div><strong>Invalidation Level:</strong> Name the exact price level where your thesis is proven wrong.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-red">Rule 6</span>
+            <div><strong>No Crowd Clichés:</strong> Ban fence-sitting phrases ("could go either way").</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-green">Rule 7</span>
+            <div><strong>Trade Widget CTA:</strong> Direct prompt to interact with Bybit Trade Widget.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-purple">Rule 8</span>
+            <div><strong>Single Metric Anchor:</strong> Focus on one striking metric ($1B absorbed outflows).</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-blue">Rule 9</span>
+            <div><strong>Hook Under 8 Words:</strong> High-impact scroll-stopping title.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-gold">Rule 10</span>
+            <div><strong>Risk-Reward Ratio:</strong> Frame entries with asymmetric risk (e.g. 1:3 RR).</div>
           </div>
         </div>
       </div>
@@ -354,8 +386,14 @@
 
       <div class="content-card">
         <div class="card-header">
-          <span class="pill-badge pill-yellow">🎙️ Your Unedited Spoken Words</span>
-          <span class="meta-hint">Type or speak your raw thoughts</span>
+          <div class="header-dictate-row">
+            <span class="pill-badge pill-yellow">🎙️ Your Unedited Spoken Words</span>
+            <button id="micDictateBtn" class="btn-mic-live" title="Start live browser voice dictation">
+              <span class="mic-icon">🎙️</span>
+              <span class="mic-status-text">Dictate</span>
+            </button>
+          </div>
+          <span class="meta-hint">Type or tap Dictate to speak your thoughts</span>
         </div>
         <textarea id="rawContent" class="post-textarea raw" placeholder="Speak or type your raw notes for this coin here..."></textarea>
         <div class="card-footer-buttons">
