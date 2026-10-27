@@ -74,13 +74,30 @@
   },
   {
     "id": 4,
-    "coin": "+ New Coin",
-    "title": "Post 4: Ready for Today's Dictation",
-    "status": "waiting",
-    "raw": "",
-    "improved": "Awaiting your voice notes for Post 4...",
-    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
-    "suggestions": []
+    "coin": "$SOL",
+    "title": "Post 4: ⚡ The $172 Liquidation Sweep: Why Solana's DEX Volume Surge Hints at a Breakout to $208",
+    "status": "ready",
+    "raw": "solana is trading around 182 after dropping down to 172 and holding the floor people are worried about market chop but on chain dex volume on bybit spot pairs is up 24% over the past 48 hours with spot volume clearing over 450 million smart money is absorbing the dip while liquidations wiped out overleveraged longs the invalidation for this idea is a daily close below 168 while the main upside target is 208 do not chase mid range candles instead patiently wait for 15m cvd orderflow confirmation near 178",
+    "improved": "⚡ The $172 Liquidation Sweep: Why Solana's DEX Volume Surge Hints at a Breakout to $208\n\nSolana is consolidating around $182 after absorbing an aggressive cascade down to the $172 reaction floor. While the broader market hesitates, on-chain DEX volume on Bybit spot pairs surged 24% over the past 48 hours, with spot volume clearing $450 million as institutional limit bids absorb supply.\n\nWith open interest flushing out excessive leverage, the high-timeframe continuation thesis remains intact:\n• Structural invalidation is strictly defined at a daily close below $168.\n• The primary upside expansion target sits at the major weekly resistance block of $208.\n\nTraders should avoid front-running breakouts during mid-range chop. Patiently wait for 15m CVD orderflow confirmation around $178 before executing entries with disciplined risk-to-reward parameters.",
+    "rules_summary": {
+      "punctuation_count": 11,
+      "word_replacement_count": 7,
+      "emoji_spacing_count": 5
+    },
+    "suggestions": [
+      {
+        "category": "punct",
+        "description": "Natural pauses added around $182 consolidation and 48-hour volume figures."
+      },
+      {
+        "category": "word",
+        "description": "Standardized price numbers (182 ➔ $182, 172 ➔ $172, 168 ➔ $168, 208 ➔ $208, 178 ➔ $178)."
+      },
+      {
+        "category": "spacing",
+        "description": "Separated invalidation boundary and expansion target into clean bullet points."
+      }
+    ]
   },
   {
     "id": 5,
