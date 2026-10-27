@@ -4,7 +4,7 @@
 // Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
 // Rule 3: Emojis, Spacing & Bullet Points
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v2';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v3';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -448,24 +448,34 @@ function generateAndRenderDraft(rawText, existingImproved) {
 }
 
 function renderDraftFromText(text, p, w, s) {
-  punctSuggCount.textContent = `${p || 4}`;
-  wordSuggCount.textContent = `${w || 4}`;
-  spacingSuggCount.textContent = `${s || 3}`;
-  draftChangeCountBadge.textContent = `Review (${(p || 4) + (w || 4) + (s || 3)})`;
+  const pCount = p || 8;
+  const wCount = w || 3;
+  const sCount = s || 5;
 
-  // Render Post 1 structure
+  punctSuggCount.textContent = `${pCount}`;
+  wordSuggCount.textContent = `${wCount}`;
+  spacingSuggCount.textContent = `${sCount}`;
+  draftChangeCountBadge.textContent = `Review (${pCount + wCount + sCount})`;
+
   draftSuggestionsDisplay.innerHTML = `
-<span class="sugg-token token-spacing">📊 <span class="sugg-sub">emoji</span></span><span class="sugg-token token-punct">Bitcoin<span class="sugg-sub">punct</span></span> is consolidating around <span class="sugg-token token-word"><del>67800</del> <ins>$67,800</ins><span class="sugg-sub">word</span></span> after taking out the weekend liquidity<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
-<span class="sugg-token token-spacing">Looking for:<span class="sugg-sub">spacing</span></span><br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>A scalp long if we hold the <span class="sugg-token token-word"><del>15 minute</del> <ins>15m</ins><span class="sugg-sub">word</span></span> support<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> or<br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>A quick short if <span class="sugg-token token-word"><del>67400</del> <ins>$67,400</ins><span class="sugg-sub">word</span></span> breaks<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> with stop loss above <span class="sugg-token token-word"><del>68200</del> <ins>$68,200</ins><span class="sugg-sub">word</span></span><span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span>
+<span class="sugg-token token-spacing">📊 <span class="sugg-sub">emoji</span></span><span class="sugg-token token-punct">Bitcoin<span class="sugg-sub">punct</span></span> is currently at $79,659<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> down from last month's high of $87,000<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
+<span class="sugg-token token-spacing">Key levels:<span class="sugg-sub">spacing</span></span><br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Next resistance: $84,000<br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Current support: $79,659<br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Next floor support: $76,000<br><br>
+<span class="sugg-token token-spacing">Institutional flows & sentiment:<span class="sugg-sub">spacing</span></span><br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>ETFs: Inflow was <span class="sugg-token token-word"><del>300 million</del> <ins>$300M</ins><span class="sugg-sub">word</span></span> while outflow topped <span class="sugg-token token-word"><del>1 billion</del> <ins>$1B</ins><span class="sugg-sub">word</span></span> over the past two weeks<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> yet Bitcoin hasn't really moved this week<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Fear and Greed index is standing at 50<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
+<span class="sugg-token token-spacing">📉 <span class="sugg-sub">emoji</span></span><span class="sugg-token token-spacing">Shorting setup:<span class="sugg-sub">spacing</span></span><br>
+Since the current level is at $79,659<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> Bitcoin is looking to further dump to the next support floor at $76,000<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br>
+<span class="sugg-token token-spacing">🎯 <span class="sugg-sub">emoji</span></span>Targets: <span class="sugg-token token-word"><del>78,000 to 76,000 to 74,000</del> <ins>$78,000 → $76,000 → $74,000</ins><span class="sugg-sub">word</span></span><span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span>
   `;
 
   currentDraftResult = {
     clean: text,
-    punct: p || 4,
-    word: w || 4,
-    spacing: s || 3
+    punct: pCount,
+    word: wCount,
+    spacing: sCount
   };
 }
 

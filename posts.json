@@ -2,47 +2,41 @@
   {
     "id": 1,
     "coin": "$BTC",
-    "title": "Post 1: $BTC Session Liquidity Setup",
+    "title": "Post 1: $BTC $79.6K Shorting Setup & ETF Outflows",
     "status": "ready",
-    "raw": "bitcoin is consolidating around 67800 after taking out the weekend liquidity looking for a scalp long if we hold the 15 minute support or a quick short if 67400 breaks with stop loss above 68200",
-    "improved": "📊 Bitcoin is consolidating around $67,800 after taking out the weekend liquidity.\n\nLooking for:\n• A scalp long if we hold the 15m support, or\n• A quick short if $67,400 breaks, with stop loss above $68,200.",
+    "raw": "Bitcoin is currently at $79,659, down from last month's high of $87,000. Next resistance is at $84,000, current level is the support, while next floor support is $76,000. For the ETFs, last week's inflow was 300 million while outflow was over 1 billion in the past two weeks, and Bitcoin hasn't really moved this week. Fear and greed index is standing at 50. My prediction is since the current level is at $79,659, Bitcoin is looking to further dump and go to the next support floor at $76,000. This is a setup for shorting with targets around 78,000 to 76,000 to 74,000.",
+    "improved": "📊 Bitcoin is currently at $79,659, down from last month's high of $87,000.\n\nKey levels:\n• Next resistance: $84,000\n• Current support: $79,659\n• Next floor support: $76,000\n\nInstitutional flows & sentiment:\n• ETFs: Inflow was $300M while outflow topped $1B over the past two weeks, yet Bitcoin hasn't really moved this week.\n• Fear and Greed index is standing at 50.\n\n📉 Shorting setup:\nSince the current level is at $79,659, Bitcoin is looking to further dump to the next support floor at $76,000.\n🎯 Targets: $78,000 → $76,000 → $74,000.",
     "rules_summary": {
-      "punctuation_count": 6,
-      "word_replacement_count": 4,
-      "emoji_spacing_count": 3
+      "punctuation_count": 8,
+      "word_replacement_count": 3,
+      "emoji_spacing_count": 5
     },
     "suggestions": [
       {
         "category": "punct",
-        "description": "Capitalized 'Bitcoin' and added period after 'liquidity.'"
+        "description": "Added colons after 'Key levels:', 'Shorting setup:', and 'Targets:' to structure thoughts."
       },
       {
         "category": "word",
-        "original": "67800",
-        "suggested": "$67,800",
-        "reason": "Standard price notation"
+        "original": "300 million",
+        "suggested": "$300M",
+        "reason": "Standard financial notation"
       },
       {
         "category": "word",
-        "original": "15 minute",
-        "suggested": "15m",
-        "reason": "Standard trader timeframe"
+        "original": "1 billion",
+        "suggested": "$1B",
+        "reason": "Standard financial notation"
       },
       {
         "category": "word",
-        "original": "67400",
-        "suggested": "$67,400",
-        "reason": "Standard price notation"
-      },
-      {
-        "category": "word",
-        "original": "68200",
-        "suggested": "$68,200",
-        "reason": "Standard price notation"
+        "original": "78,000 to 76,000 to 74,000",
+        "suggested": "$78,000 → $76,000 → $74,000",
+        "reason": "Clean target progression"
       },
       {
         "category": "spacing",
-        "description": "Added '📊' chart emoji and formatted conditional long/short branches into bullet points."
+        "description": "Added anchor emojis (📊, 📉, 🎯) and formatted price levels and ETF insights into clear mobile bullet points (•)."
       }
     ]
   },
