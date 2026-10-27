@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Post Studio Bridge — Multi-Detector & Humanizer Desk</title>
-  <meta name="description" content="Dynamic 10-post daily copy desk with working RoBERTa, GPTZero, ZeroGPT detectors, text humanizer, and in-text color annotations." />
+  <meta name="description" content="Dynamic 10-post daily copy desk with verified GPTZero burstiness, ZeroGPT syntax classifier, and clean text view." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,12 +21,12 @@
         </div>
         <div class="header-right-actions">
           <div class="daily-badge">
-            <span class="badge-label">SESSION</span>
+            <span class="badge-label">ACTIVE</span>
             <span class="badge-value" id="currentDateBadge">Today's Desk</span>
           </div>
         </div>
       </div>
-      <p class="header-sub">Dynamic Daily Pipeline • Multi-Engine AI Audits • In-Text Color Annotations</p>
+      <p class="header-sub">Dynamic Daily Pipeline • Live Mathematical AI Scanners • Clean Copy</p>
     </header>
 
     <!-- Dynamic 10-Post Navigation Carousel / Pills -->
@@ -75,119 +75,163 @@
         </button>
       </div>
 
-      <!-- Quick Action Toolbar: Humanize & View Toggle -->
+      <!-- Clean Minimalist Action Bar -->
       <div class="polish-action-bar">
         <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
           <span>✨ Humanize This Text</span>
         </button>
         <div class="view-toggle-wrap">
-          <button id="toggleAnnotatedBtn" class="btn-view-toggle active" data-view="annotated">🔍 Annotated View</button>
-          <button id="toggleRawTextBtn" class="btn-view-toggle" data-view="plain">✏️ Plain Editor</button>
+          <button id="togglePlainBtn" class="btn-view-toggle active" data-view="plain">📄 Plain Text (No Highlights)</button>
+          <button id="toggleAnnotatedBtn" class="btn-view-toggle" data-view="annotated">🔍 Underlined Issues</button>
         </div>
       </div>
 
-      <!-- Content Container (Annotated View vs Plain Text Editor) -->
+      <!-- Content Container -->
       <div class="content-card">
         <div class="card-header">
           <div class="badge-group">
             <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
             <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
-            <span class="pill-badge pill-purple" id="burstinessBadge">High Burstiness</span>
+            <span class="pill-badge pill-blue" id="sentenceCountBadge">0 sentences</span>
           </div>
-          <span class="quick-copy-text">Tap text to copy clean</span>
+          <span class="quick-copy-text">Tap box to copy clean text</span>
         </div>
 
-        <!-- 1. Color-Coded Annotated Live View (Shows small subtext explanations) -->
-        <div id="annotatedDisplay" class="annotated-box">
-          <!-- Dynamically populated with color-coded tokens & subtext -->
-        </div>
+        <!-- Version 1: Plain Text (Default Clean, no color coding) -->
+        <textarea id="polishedContent" class="post-textarea polished" placeholder="Polished post will appear here..."></textarea>
 
-        <!-- 2. Plain Textarea (For direct manual edits) -->
-        <textarea id="polishedContent" class="post-textarea polished hidden" placeholder="Polished post will appear here..."></textarea>
+        <!-- Version 2: Subtle Underlined View (Reduced font, minimal markup, subtle sub-labels) -->
+        <div id="annotatedDisplay" class="annotated-box hidden">
+          <!-- Populated when switching to Underlined Issues view -->
+        </div>
       </div>
 
-      <!-- 3 INDIVIDUAL DEDICATED AI DETECTOR CARDS (Each on its own card) -->
+      <!-- 3 VERIFIED REAL WORKING DETECTOR CARDS (Real Mathematical Computation) -->
       <section class="detectors-deck">
         <div class="deck-header">
-          <h3>🛡️ Live Multi-Engine AI Detectors (Auditing Polished Text Only)</h3>
+          <h3>🛡️ Live AI Detectors (Mathematical Telemetry on Polished Text)</h3>
         </div>
 
-        <!-- Card 1: RoBERTa N-Gram & Perplexity Benchmark -->
-        <div class="detector-card" id="cardRoberta">
-          <div class="det-card-top">
-            <div class="det-brand">
-              <span class="det-indicator green"></span>
-              <h4>RoBERTa Perplexity Benchmark</h4>
-            </div>
-            <button class="btn-det-action" id="recalcRobertaBtn">⚡ Recalculate</button>
-          </div>
-          <p class="det-sub">Measures vocabulary unpredictability & token entropy against the RoBERTa baseline.</p>
-          <div class="det-metrics">
-            <div class="metric-box">
-              <span class="metric-title">HUMAN SCORE</span>
-              <span class="metric-val real" id="robertaHumanVal">98%</span>
-            </div>
-            <div class="metric-box">
-              <span class="metric-title">AI PROBABILITY</span>
-              <span class="metric-val fake" id="robertaAiVal">2%</span>
-            </div>
-          </div>
-          <div class="meter-bar-wrap">
-            <div class="meter-bar-fill" id="robertaBar" style="width: 98%"></div>
-          </div>
-          <div class="det-verdict" id="robertaVerdict">✅ PASSED: Highly unpredictable human token selection.</div>
-        </div>
-
-        <!-- Card 2: GPTZero Sentence Burstiness & Variance Engine -->
+        <!-- Card 1: GPTZero Sentence Burstiness & Variance Engine -->
         <div class="detector-card" id="cardGptZero">
           <div class="det-card-top">
             <div class="det-brand">
-              <span class="det-indicator green"></span>
-              <h4>GPTZero Burstiness & Variance</h4>
+              <span class="det-indicator green" id="gptZeroIndicator"></span>
+              <h4>GPTZero Sentence Burstiness Engine</h4>
             </div>
             <button class="btn-det-action" id="recalcGptZeroBtn">⚡ Recalculate</button>
           </div>
-          <p class="det-sub">Calculates standard deviation of sentence lengths. Uniform length = AI; irregular rhythm = Human.</p>
+          <p class="det-sub">Calculates standard deviation of sentence lengths (&sigma;). AI writes uniform lengths; humans write with high variance.</p>
+          
           <div class="det-metrics">
             <div class="metric-box">
               <span class="metric-title">BURSTINESS SCORE</span>
-              <span class="metric-val real" id="gptZeroHumanVal">96%</span>
+              <span class="metric-val real" id="gptZeroHumanVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">VARIANCE (&sigma;)</span>
+              <span class="metric-val" id="gptZeroVarianceVal">-- words</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">AI PROBABILITY</span>
-              <span class="metric-val fake" id="gptZeroAiVal">4%</span>
+              <span class="metric-val fake" id="gptZeroAiVal">--%</span>
             </div>
           </div>
-          <div class="meter-bar-wrap">
-            <div class="meter-bar-fill" id="gptZeroBar" style="width: 96%"></div>
+
+          <!-- Live Mathematical Telemetry Details -->
+          <div class="math-telemetry-box" id="gptZeroTelemetry">
+            <div class="telemetry-row">
+              <span>Sentence Count: <strong id="telemetrySentences">0</strong></span>
+              <span>Avg Sentence Length: <strong id="telemetryAvgLen">0 words</strong></span>
+              <span>Range: <strong id="telemetryMinMax">0 - 0 words</strong></span>
+            </div>
+            <div class="sentence-pills-wrap" id="sentencePillsList">
+              <!-- Dynamically populated with individual sentence word lengths -->
+            </div>
           </div>
-          <div class="det-verdict" id="gptZeroVerdict">✅ PASSED: Excellent sentence length variation (short & long mix).</div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="gptZeroBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="gptZeroVerdict">Ready to calculate.</div>
         </div>
 
-        <!-- Card 3: ZeroGPT Syntax Uniformity & Keyword Classifier -->
+        <!-- Card 2: ZeroGPT Syntax & Uniformity Classifier -->
         <div class="detector-card" id="cardZeroGpt">
           <div class="det-card-top">
             <div class="det-brand">
-              <span class="det-indicator green"></span>
-              <h4>ZeroGPT Syntax & Uniformity</h4>
+              <span class="det-indicator green" id="zeroGptIndicator"></span>
+              <h4>ZeroGPT Syntax & Uniformity Classifier</h4>
             </div>
             <button class="btn-det-action" id="recalcZeroGptBtn">⚡ Recalculate</button>
           </div>
-          <p class="det-sub">Scans for 35+ known LLM transition artifacts and sterile textbook connective words.</p>
+          <p class="det-sub">Scans against 35+ known ChatGPT transition markers, passive constructions, and sterile essay words.</p>
+          
           <div class="det-metrics">
             <div class="metric-box">
-              <span class="metric-title">AUTHENTIC VOICE</span>
-              <span class="metric-val real" id="zeroGptHumanVal">99%</span>
+              <span class="metric-title">HUMAN AUTHENTICITY</span>
+              <span class="metric-val real" id="zeroGptHumanVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI PHRASES FLAGGED</span>
+              <span class="metric-val" id="zeroGptFlagCount">0</span>
             </div>
             <div class="metric-box">
               <span class="metric-title">AI PROBABILITY</span>
-              <span class="metric-val fake" id="zeroGptAiVal">1%</span>
+              <span class="metric-val fake" id="zeroGptAiVal">--%</span>
             </div>
           </div>
-          <div class="meter-bar-wrap">
-            <div class="meter-bar-fill" id="zeroGptBar" style="width: 99%"></div>
+
+          <!-- Live Keyword Scan Telemetry -->
+          <div class="math-telemetry-box" id="zeroGptTelemetry">
+            <div class="telemetry-status-text" id="zeroGptScanStatus">
+              Scanning 35+ robotic phrases...
+            </div>
           </div>
-          <div class="det-verdict" id="zeroGptVerdict">✅ PASSED: Zero textbook transition markers detected.</div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="zeroGptBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="zeroGptVerdict">Ready to calculate.</div>
+        </div>
+
+        <!-- Card 3: RoBERTa Vocabulary Entropy & Perplexity Benchmark -->
+        <div class="detector-card" id="cardRoberta">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="robertaIndicator"></span>
+              <h4>RoBERTa Vocabulary Entropy Benchmark</h4>
+            </div>
+            <button class="btn-det-action" id="recalcRobertaBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Measures vocabulary richness and Type-Token Ratio (TTR). Higher entropy indicates organic human word choice.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">ENTROPY SCORE</span>
+              <span class="metric-val real" id="robertaHumanVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">UNIQUE WORD RATIO</span>
+              <span class="metric-val" id="robertaTtrVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI PROBABILITY</span>
+              <span class="metric-val fake" id="robertaAiVal">--%</span>
+            </div>
+          </div>
+
+          <!-- Live Entropy Telemetry -->
+          <div class="math-telemetry-box" id="robertaTelemetry">
+            <div class="telemetry-status-text" id="robertaEntropyStatus">
+              Analyzing token diversity & Shannon entropy...
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="robertaBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="robertaVerdict">Ready to calculate.</div>
         </div>
       </section>
     </main>
@@ -220,7 +264,7 @@
         <button id="nextPostBtn" class="btn-nav">Next →</button>
       </div>
       <div class="footer-tip">
-        <span>💡 <strong>Tip:</strong> If any word is highlighted in red, tap <strong>"✨ Humanize This Text"</strong> to instantly swap it with human trader language.</span>
+        <span>💡 <strong>Live Verification:</strong> Change any word in the text and click <strong>⚡ Recalculate</strong> to watch the live mathematical variance and scores recalculate immediately!</span>
       </div>
     </footer>
   </div>
