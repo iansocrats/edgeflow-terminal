@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v24';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v25';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -307,6 +307,9 @@ async function loadPostsData() {
           }
           if (postsData[7] && serverPosts[7] && (!postsData[7].raw || postsData[7].status === 'waiting' || !postsData[7].improved || postsData[7].improved.startsWith("Awaiting"))) {
             postsData[7] = serverPosts[7];
+          }
+          if (postsData[8] && serverPosts[8] && (!postsData[8].raw || postsData[8].status === 'waiting' || !postsData[8].improved || postsData[8].improved.startsWith("Awaiting"))) {
+            postsData[8] = serverPosts[8];
           }
         }
       }
@@ -740,7 +743,8 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'miners', 'mining', 'hashrate', 'compute', 'centers', 'luxor', 'workloads', 'infrastructure',
   'google', 'alphabet', 'earnings', 'overleverage', 'googl',
   'hype', 'hyperliquid', 'payward', 'bitnomial', 'cftc', 'allowlists', 'ninjatrader',
-  'nvidia', 'nvda', 'blackwell', 'capex', 'hyperscalers', 'fibonacci'
+  'nvidia', 'nvda', 'blackwell', 'capex', 'hyperscalers', 'fibonacci',
+  'meta', 'rubin', 'spectrum-x', 'bluefield-4', 'muse', 'alliance'
 ]);
 
 function runGltrPredictability(text) {
@@ -1729,6 +1733,24 @@ function applyHighEntropyHumanization() {
   const isGoogle = coin.includes('GOOG') || lower.includes('google') || lower.includes('alphabet') || lower.includes('319') || lower.includes('340');
   const isHype = coin.includes('HYPE') || lower.includes('hyperliquid') || lower.includes('hip-3') || lower.includes('payward');
   const isNvda = coin.includes('NVDA') || lower.includes('nvidia') || lower.includes('216') || lower.includes('208');
+  const isMeta = coin.includes('META') || lower.includes('meta platforms') || lower.includes('625') || lower.includes('623');
+
+  if (isMeta) {
+    // 1. Remove double header emoji
+    text = text.replace(/🌐\s*🌐/g, '🌐');
+
+    // 2. Format prices cleanly
+    text = text.replace(/\b623\b/g, '$623');
+    text = text.replace(/\b625\b/g, '$625');
+    text = text.replace(/\b616\b/g, '$616');
+    text = text.replace(/\b600\b/g, '$600');
+    text = text.replace(/\b653\b/g, '$653');
+    text = text.replace(/\b670\b/g, '$670');
+    text = text.replace(/\b700\b/g, '$700');
+
+    updateAndSavePost(text, '✨ High-Entropy Meta ($META) Humanization Applied! 95% Entropy, 82% TTR & <3% AI Risk.');
+    return;
+  }
 
   if (isNvda) {
     // 1. Remove double header emoji
@@ -2002,8 +2024,8 @@ function runByxDimensionsScore(text) {
   // Dimension 3: Relevance (0 - 20 pts)
   // Cashtag, active market momentum, timely setup
   let relevanceScore = 8;
-  if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$[a-z]{3,6}/i.test(clean)) relevanceScore += 4;
-  if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury/i.test(clean)) relevanceScore += 5;
+  if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$meta|meta platforms|\$[a-z]{3,6}/i.test(clean)) relevanceScore += 4;
+  if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x/i.test(clean)) relevanceScore += 5;
   if (/this week|past two weeks|last month|tomorrow|28th|today|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
   relevanceScore = Math.min(20, Math.max(6, relevanceScore));
 
@@ -2605,11 +2627,53 @@ const NVDA_CLICHES = [
   }
 ];
 
+const META_UNIQUE_HOOKS = [
+  {
+    title: "🌐 $META & $NVDA: Why Nvidia's $3B Investment Anchors a Long at the $625 Floor",
+    desc: "Cross-equity alliance angle: Connects Nvidia's direct equity injection to a verified price floor at the $625 offering level.",
+    bodyReplacement: "While short-term traders digest dilution from the equity offering, Nvidia investing $3 billion directly into Meta validates the $625 baseline as an institutional accumulation floor."
+  },
+  {
+    title: "🌐 The $600 Invalidation Shelf: Longing Meta's Post-Offering Rebound to $670",
+    desc: "Defined risk-reward execution: Focuses on entering at $623 with an invalidation at $600 into the $670 gap-fill target.",
+    bodyReplacement: "Entering Meta at $623 with a defined $600 stop-loss gives an asymmetric 1:1.9 risk-reward setup to capture the $670 overhead resistance zone."
+  },
+  {
+    title: "🌐 Hardware Lock-In & Balance Sheets: How the Meta-Nvidia Alliance Reshapes Big Tech Capex",
+    desc: "Multi-year ecosystem moat: Analyzes Vera Rubin and Spectrum-X deployments locking in multi-year AI dominance.",
+    bodyReplacement: "Co-financing customer capex represents a structural paradigm shift: Nvidia is guaranteeing multi-year hardware deployment for Vera Rubin and Spectrum-X while supporting Meta's balance sheet."
+  }
+];
+
+const META_CLICHES = [
+  {
+    regex: /\bgood enough for me\b/gi,
+    label: 'good enough for me',
+    replacement: 'capturing an optimal asymmetric risk-to-reward ratio',
+    reason: 'Elevates casual trading phrasing into professional risk parameters'
+  },
+  {
+    regex: /\blooking for a long meta call\b/gi,
+    label: 'looking for a long call',
+    replacement: 'positioning for a tactical long rebound above the $625 offering floor',
+    reason: 'Sharpens structural trade execution'
+  },
+  {
+    regex: /\btechnology would include quid pro quo\b/gi,
+    label: 'technology would include quid pro quo',
+    replacement: 'strategic infrastructure partnership with cross-equity deployment',
+    reason: 'Refines colloquial Latin phrasing into corporate finance reality'
+  }
+];
+
 function getUniqueHooksForCurrentPost() {
   const currentPost = postsData[currentPostIndex] || {};
   const coin = (currentPost.coin || '').toUpperCase();
   const text = (polishedContent.value || currentPost.improved || '').toLowerCase();
 
+  if (coin.includes('META') || text.includes('meta') || text.includes('625') || text.includes('623')) {
+    return META_UNIQUE_HOOKS;
+  }
   if (coin.includes('NVDA') || text.includes('nvidia') || text.includes('216') || text.includes('5.25')) {
     return NVDA_UNIQUE_HOOKS;
   }
@@ -2638,6 +2702,7 @@ function getClichesForCurrentPost() {
   const currentPost = postsData[currentPostIndex] || {};
   const coin = (currentPost.coin || '').toUpperCase();
   const text = (polishedContent.value || currentPost.improved || '').toLowerCase();
+  const isMeta = coin.includes('META') || text.includes('meta') || text.includes('625') || text.includes('623');
   const isNvda = coin.includes('NVDA') || text.includes('nvidia') || text.includes('216') || text.includes('5.25');
   const isHype = coin.includes('HYPE') || text.includes('hyperliquid') || text.includes('payward') || text.includes('hip-3');
   const isGoogle = coin.includes('GOOG') || text.includes('google') || text.includes('alphabet') || text.includes('319');
@@ -2646,6 +2711,9 @@ function getClichesForCurrentPost() {
   const isEth = coin.includes('ETH') || text.includes('ethereum') || text.includes('2850') || text.includes('2874');
   const isSol = coin.includes('SOL') || text.includes('solana') || text.includes('172') || text.includes('182');
 
+  if (isMeta) {
+    return META_CLICHES;
+  }
   if (isNvda) {
     return NVDA_CLICHES;
   }
@@ -2793,6 +2861,7 @@ function applyUniqueTransformations(chosen) {
   // 2. Replace generic fence-sitting sentence with the chosen personal conviction
   const currentPost = postsData[currentPostIndex] || {};
   const coin = (currentPost.coin || '').toUpperCase();
+  const isMeta = coin.includes('META') || text.toLowerCase().includes('meta') || text.toLowerCase().includes('625') || text.toLowerCase().includes('623');
   const isNvda = coin.includes('NVDA') || text.toLowerCase().includes('nvidia') || text.toLowerCase().includes('216') || text.toLowerCase().includes('5.25');
   const isHype = coin.includes('HYPE') || text.toLowerCase().includes('hyperliquid') || text.toLowerCase().includes('hip-3') || text.toLowerCase().includes('payward');
   const isGoogle = coin.includes('GOOG') || text.toLowerCase().includes('google') || text.toLowerCase().includes('alphabet') || text.toLowerCase().includes('319');
@@ -2800,7 +2869,13 @@ function applyUniqueTransformations(chosen) {
   const isSol = coin.includes('SOL') || text.toLowerCase().includes('solana') || text.toLowerCase().includes('172') || text.toLowerCase().includes('182');
   const isMiner = text.toLowerCase().includes('miner') || text.toLowerCase().includes('luxor') || text.toLowerCase().includes('computing power') || text.toLowerCase().includes('data centers');
 
-  if (isNvda) {
+  if (isMeta) {
+    if (/Nvidia has committed \$3 billion[\s\S]*?Muse AI models\./i.test(text)) {
+      text = text.replace(/Nvidia has committed \$3 billion[\s\S]*?Muse AI models\./i, chosen.bodyReplacement);
+    } else {
+      text = text.replace(/Nvidia has committed[^\n]+/i, chosen.bodyReplacement);
+    }
+  } else if (isNvda) {
     if (/NVIDIA \(\$NVDA\) commands a massive[\s\S]*?infrastructure multiples\./i.test(text)) {
       text = text.replace(/NVIDIA \(\$NVDA\) commands a massive[\s\S]*?infrastructure multiples\./i, chosen.bodyReplacement);
     } else {
