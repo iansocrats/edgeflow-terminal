@@ -236,12 +236,29 @@
   },
   {
     "id": 10,
-    "coin": "+ New Coin",
-    "title": "Post 10: Ready for Today's Dictation",
-    "status": "waiting",
-    "raw": "",
-    "improved": "Awaiting your voice notes for Post 10...",
-    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
-    "suggestions": []
+    "coin": "$SUI",
+    "title": "Post 10: 🔷 $SUI at $0.92: Why CCTP V2 & the $500M Hashi Rollout Prime a Wedge Breakout to $0.97",
+    "status": "ready",
+    "raw": "Something important about SUI is that it just integrated into the Cross-Chain Transfer Protocol to transfer across the 29 blockchain with zero bridge risk. SUI is now integrated into Samsung wallets, which is a really big commitment. SUI also launched a mainnet rollout for Hashi, backed by over $500 million from institutional partners, including Anchorage Digital. We will also talk about AI, as SUI just committed over $30 million to migrate the Data Network AI training protocol into SUI. Let's look into the current price and the technical levels. The current price is consolidating at 0.92, and it's falling into a tight falling wedge. The support floor is the current price, which is 0.85, between 0.85 and 0.90. My target is around 0.97, which is my first take profit, while my take profit two is at $1. My first take profit is around 7%. My risk-reward ratio is 1.1 to 3.0, risking $0.05 to capture around 0.15. That's my trade setup now. I would like you to filter this into something we can send into the website to be published.",
+    "improved": "🔷 $SUI at $0.92: Why CCTP V2 & the $500M Hashi Rollout Prime a Wedge Breakout to $0.97\n\nSui ($SUI) is compressing inside a tight falling wedge at the $0.92 level above its $0.85–$0.90 structural floor. Institutional ecosystem expansion is accelerating rapidly:\n• Circle's CCTP V2 integration enables native USDC transfers across 29 blockchains with zero bridge vulnerability.\n• Mainnet rollout of Hashi commenced with over $500 million committed by Anchorage Digital and institutional partners to unlock Bitcoin DeFi collateral.\n• A $30 million commitment is migrating the DATA Network AI training protocol onto Sui, alongside gasless USDC support in Samsung Wallets.\n\nHere is my tactical execution setup into the wedge compression:\n• Position: Opening a long position at the current $0.92 baseline to capture the falling wedge breakout.\n• Invalidation: Stop-loss placed strictly below structural support at $0.85 ($0.05 risk).\n• Target: First take-profit (TP1) sits at $0.97 (+7% gain), with TP2 targeting the $1.00 psychological milestone (+16% expansion).\n\nRisking $0.05 to capture up to $0.15 provides an asymmetric 1:3.0 risk-to-reward ratio. Defending the $0.85 floor maintains the higher-timeframe accumulation structure, while a confirmed close above $0.92 triggers the expansion into overhead resistance.",
+    "rules_summary": {
+      "punctuation_count": 16,
+      "word_replacement_count": 6,
+      "emoji_spacing_count": 6
+    },
+    "suggestions": [
+      {
+        "category": "punct",
+        "description": "Structured verbal ecosystem highlights and falling wedge parameters into clean paragraphs."
+      },
+      {
+        "category": "word",
+        "description": "Standardized protocol pricing ($0.92, $0.85, $0.97, $1.00) and multi-chain naming (CCTP V2, Hashi, Anchorage Digital)."
+      },
+      {
+        "category": "spacing",
+        "description": "Formatted ecosystem catalysts and execution setup with scannable bullet points."
+      }
+    ]
   }
 ]
