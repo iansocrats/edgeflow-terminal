@@ -2,34 +2,47 @@
   {
     "id": 1,
     "coin": "$BTC",
-    "title": "Post 1: $BTC Session Liquidity & Orderflow",
+    "title": "Post 1: $BTC Session Liquidity Setup",
     "status": "ready",
     "raw": "bitcoin is consolidating around 67800 after taking out the weekend liquidity looking for a scalp long if we hold the 15 minute support or a quick short if 67400 breaks with stop loss above 68200",
-    "improved": "🧭 $BTC Session Liquidity Blueprint — Don't get chopped up:\n\nBitcoin is consolidating around $67,800 after taking out weekend liquidity. Price action is coiling tightly into the session open, setting up an asymmetric break.\n\n📍 CONDITIONAL BLUEPRINT:\n• Bullish Case: 15m candle close holding $67,600 → Long targeting $68,600 retest.\n• Bearish Case: Clean breakdown below $67,400 with delta loss → Short targeting $66,200.\n• Invalidation: Keep stops tight at 0.8%—do not hold through fakeouts.\n\n👉 Both sides are loaded on the Trade Widget below. Tap the widget, choose your side, and set your order with a hard stop.",
-    "breakdown": [
+    "improved": "📊 Bitcoin is consolidating around $67,800 after taking out the weekend liquidity.\n\nLooking for:\n• A scalp long if we hold the 15m support, or\n• A quick short if $67,400 breaks, with stop loss above $68,200.",
+    "rules_summary": {
+      "punctuation_count": 6,
+      "word_replacement_count": 4,
+      "emoji_spacing_count": 3
+    },
+    "suggestions": [
       {
-        "type": "purple",
-        "tag": "Mobile Hook",
-        "label": "Scroll-Stopping Hook",
-        "detail": "Replaced generic greeting with a high-conviction 1-liner so mobile users stop scrolling in under 2 seconds."
+        "category": "punct",
+        "description": "Capitalized 'Bitcoin' and added period after 'liquidity.'"
       },
       {
-        "type": "yellow",
-        "tag": "100% Spoken Voice",
-        "label": "Authentic Trader Logic",
-        "detail": "Kept your exact reasoning ('consolidating after taking weekend liquidity') completely human. Zero robotic filler phrases like 'furthermore' or 'let us delve into'."
+        "category": "word",
+        "original": "67800",
+        "suggested": "$67,800",
+        "reason": "Standard price notation"
       },
       {
-        "type": "blue",
-        "tag": "Conditional Levels",
-        "label": "Structured Invalidation",
-        "detail": "Organized your exact support and breakdown prices into two clear if/then bullets so traders know exactly when to enter."
+        "category": "word",
+        "original": "15 minute",
+        "suggested": "15m",
+        "reason": "Standard trader timeframe"
       },
       {
-        "type": "green",
-        "tag": "Widget CTA",
-        "label": "Direct Conversion Prompt",
-        "detail": "Added explicit instruction to tap the Bybit Trade Widget to place their limit order. This is what drives Valid Traders and scores IMPACT points."
+        "category": "word",
+        "original": "67400",
+        "suggested": "$67,400",
+        "reason": "Standard price notation"
+      },
+      {
+        "category": "word",
+        "original": "68200",
+        "suggested": "$68,200",
+        "reason": "Standard price notation"
+      },
+      {
+        "category": "spacing",
+        "description": "Added '📊' chart emoji and formatted conditional long/short branches into bullet points."
       }
     ]
   },
@@ -39,8 +52,9 @@
     "title": "Post 2: Ready for Today's Dictation",
     "status": "waiting",
     "raw": "",
-    "improved": "Awaiting your voice notes for Post 2...\n\nTap '🎙️ What I Wrote' tab or '✏️ Change Coin / Dictate' to speak or type your raw trade thoughts for today.",
-    "breakdown": []
+    "improved": "Awaiting your voice notes for Post 2...\n\nTap '🎙️ What I Wrote' tab to speak or type your raw notes.",
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 3,
@@ -49,7 +63,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 3...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 4,
@@ -58,7 +73,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 4...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 5,
@@ -67,7 +83,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 5...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 6,
@@ -76,7 +93,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 6...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 7,
@@ -85,7 +103,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 7...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 8,
@@ -94,7 +113,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 8...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 9,
@@ -103,7 +123,8 @@
     "status": "waiting",
     "raw": "",
     "improved": "Awaiting your voice notes for Post 9...",
-    "breakdown": []
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   },
   {
     "id": 10,
@@ -111,7 +132,8 @@
     "title": "Post 10: Ready for Today's Dictation",
     "status": "waiting",
     "raw": "",
-    "improved": "Awaiting your voice notes for Post 10 (Daily Master Recap)...",
-    "breakdown": []
+    "improved": "Awaiting your voice notes for Post 10...",
+    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
+    "suggestions": []
   }
 ]

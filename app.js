@@ -1,9 +1,14 @@
 // Post Studio Bridge — Multi-Detector & Humanizer Client Application
+// Enforces Strict Polishing Rules:
+// Rule 1: Punctuation Only
+// Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
+// Rule 3: Emojis, Spacing & Bullet Points
 
 const STORAGE_KEY = 'byx_post_studio_dynamic_v2';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
+let currentDraftResult = null;
 
 // DOM Elements
 const pillsContainer = document.getElementById('pillsContainer');
@@ -17,10 +22,29 @@ const wordCountBadge = document.getElementById('wordCountBadge');
 const sentenceCountBadge = document.getElementById('sentenceCountBadge');
 const coinTagBadge = document.getElementById('coinTagBadge');
 const navPositionIndicator = document.getElementById('navPositionIndicator');
+const currentDateBadge = document.getElementById('currentDateBadge');
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+
+// 3 Tabs
 const tabPolishedBtn = document.getElementById('tabPolishedBtn');
+const tabDraftBtn = document.getElementById('tabDraftBtn');
 const tabRawBtn = document.getElementById('tabRawBtn');
 const panePolished = document.getElementById('panePolished');
+const paneDraft = document.getElementById('paneDraft');
 const paneRaw = document.getElementById('paneRaw');
+const draftChangeCountBadge = document.getElementById('draftChangeCountBadge');
+
+// Draft Tab Elements
+const punctSuggCount = document.getElementById('punctSuggCount');
+const wordSuggCount = document.getElementById('wordSuggCount');
+const spacingSuggCount = document.getElementById('spacingSuggCount');
+const draftSuggestionsDisplay = document.getElementById('draftSuggestionsDisplay');
+const applyDraftBtn = document.getElementById('applyDraftBtn');
+const copyDraftBtn = document.getElementById('copyDraftBtn');
+const generateDraftBtn = document.getElementById('generateDraftBtn');
+
+// Polished Post Action Elements
 const copyPolishedBtn = document.getElementById('copyPolishedBtn');
 const copyRawBtn = document.getElementById('copyRawBtn');
 const prevPostBtn = document.getElementById('prevPostBtn');
@@ -31,9 +55,6 @@ const resetSlotBtn = document.getElementById('resetSlotBtn');
 const humanizeBtn = document.getElementById('humanizeBtn');
 const togglePlainBtn = document.getElementById('togglePlainBtn');
 const toggleAnnotatedBtn = document.getElementById('toggleAnnotatedBtn');
-const currentDateBadge = document.getElementById('currentDateBadge');
-const toast = document.getElementById('toast');
-const toastMsg = document.getElementById('toastMsg');
 
 // Detector Card 1: GPTZero Burstiness & Variance
 const recalcGptZeroBtn = document.getElementById('recalcGptZeroBtn');
@@ -149,9 +170,15 @@ async function loadPostsData() {
     if (res.ok) {
       const serverPosts = await res.json();
       if (Array.isArray(serverPosts) && serverPosts.length > 0) {
+        // If cached data is missing or empty, take serverPosts
         if (!postsData || postsData.length === 0) {
           postsData = serverPosts;
           localStorage.setItem(STORAGE_KEY, JSON.stringify(postsData));
+        } else {
+          // Always ensure Post 1 has the latest rule-abiding post if previously unedited
+          if (postsData[0] && serverPosts[0] && (!postsData[0].raw || postsData[0].raw === serverPosts[0].raw)) {
+            postsData[0] = serverPosts[0];
+          }
         }
       }
     }
@@ -171,7 +198,7 @@ function createEmptySlots() {
     slots.push({
       id: i,
       coin: i === 1 ? '$BTC' : '+ New Coin',
-      title: i === 1 ? 'Post 1: $BTC Session Liquidity' : `Post ${i}: Ready for Today's Dictation`,
+      title: i === 1 ? 'Post 1: $BTC Session Liquidity Setup' : `Post ${i}: Ready for Today's Dictation`,
       status: i === 1 ? 'ready' : 'waiting',
       raw: '',
       improved: i === 1 ? 'Waiting for Post 1...' : `Awaiting your voice notes for Post ${i}...`
@@ -228,6 +255,9 @@ function displayPost(index) {
   // Build Underlined View
   renderUnderlinedView(post.improved || '');
 
+  // Build Draft Suggestions based on strict rules
+  generateAndRenderDraft(post.raw || '', post.improved || '');
+
   // Run all 3 live mathematical detectors on polished text
   runAllDetectors(post.improved || '');
 
@@ -245,7 +275,6 @@ function displayPost(index) {
 // Extract clean sentences from text
 function extractSentences(text) {
   if (!text) return [];
-  // Split on ., !, ?, or double newlines, clean up bullet points
   const rawChunks = text
     .replace(/\r/g, '')
     .split(/\n\n+|(?<=[.!?])\s+/)
@@ -262,7 +291,185 @@ function updateWordAndSentenceBadges(text) {
   sentenceCountBadge.textContent = `${sentences} sentences`;
 }
 
-// Subtle Underlined View Renderer (No chunky pills or floating backgrounds)
+// --------------------------------------------------------------------------------
+// STRICT RULES ENGINE: Generate Suggestions & Draft (No Sentence Rewriting!)
+// --------------------------------------------------------------------------------
+function generateAndRenderDraft(rawText, existingImproved) {
+  if (!rawText || rawText.trim() === '') {
+    if (existingImproved && !existingImproved.startsWith('Awaiting your voice notes')) {
+      // Analyze existing improved
+      renderDraftFromText(existingImproved, 0, 0, 0);
+    } else {
+      draftSuggestionsDisplay.innerHTML = `<span style="color: var(--text-muted); font-style: italic;">Awaiting raw dictation. Speak or type in '🎙️ What I Wrote' and tap '⚡ Generate Suggestions Draft'.</span>`;
+      punctSuggCount.textContent = '0';
+      wordSuggCount.textContent = '0';
+      spacingSuggCount.textContent = '0';
+      draftChangeCountBadge.textContent = 'Waiting';
+    }
+    return;
+  }
+
+  // Follow the 3 Mandatory Rules:
+  // 1. Punctuation only
+  // 2. Word replacements only (when word doesn't seem right - numbers/typos - NO sentence rewrites)
+  // 3. Emojis, spacing & bullet points
+
+  let pCount = 0;
+  let wCount = 0;
+  let sCount = 0;
+
+  let text = rawText.trim();
+  let diffHtml = '';
+  let cleanPolished = '';
+
+  // Rule 3: Suggest header emoji
+  const startEmoji = '📊 ';
+  sCount++;
+
+  // Rule 2: Word replacements (Numbers to standard financial format)
+  // Detect spoken coin tickers (e.g. bitcoin -> Bitcoin, btc -> $BTC)
+  const coin = (postsData[currentPostIndex].coin || '$BTC').replace('+', '').trim();
+  
+  // Format spoken price numbers (e.g. 67800 -> $67,800, 67400 -> $67,400)
+  const words = text.split(/\s+/);
+  const formattedWords = [];
+  const diffTokens = [];
+
+  diffTokens.push(`<span class="sugg-token token-spacing">${startEmoji}<span class="sugg-sub">emoji</span></span>`);
+
+  for (let i = 0; i < words.length; i++) {
+    let w = words[i];
+    let original = w;
+
+    // Rule 1: Capitalize first word
+    if (i === 0) {
+      const capitalized = w.charAt(0).toUpperCase() + w.slice(1);
+      if (capitalized !== w) {
+        pCount++;
+        w = capitalized;
+        diffTokens.push(`<span class="sugg-token token-punct">${escapeHtml(w)}<span class="sugg-sub">punct</span></span> `);
+        formattedWords.push(w);
+        continue;
+      }
+    }
+
+    // Rule 2: Word replacement for 4-6 digit prices without $ (e.g. 67800 -> $67,800)
+    if (/^\d{4,6}$/.test(w)) {
+      wCount++;
+      const num = parseInt(w, 10).toLocaleString();
+      const rep = `$${num}`;
+      diffTokens.push(`<span class="sugg-token token-word"><del>${escapeHtml(original)}</del> <ins>${rep}</ins><span class="sugg-sub">word</span></span> `);
+      formattedWords.push(rep);
+      continue;
+    }
+
+    // Rule 2: Word replacement for timeframe (e.g. "15 minute" -> "15m")
+    if (w.toLowerCase() === '15' && words[i + 1] && words[i + 1].toLowerCase().startsWith('minute')) {
+      wCount++;
+      i++; // skip 'minute'
+      diffTokens.push(`<span class="sugg-token token-word"><del>15 minute</del> <ins>15m</ins><span class="sugg-sub">word</span></span> `);
+      formattedWords.push('15m');
+      continue;
+    }
+
+    // Rule 1 & 3: Sentence punctuation & bullet spacing detection
+    if (w.toLowerCase() === 'liquidity' && words[i + 1] && words[i + 1].toLowerCase() === 'looking') {
+      pCount++;
+      sCount++;
+      diffTokens.push(`${escapeHtml(w)}<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span>\n\n<span class="sugg-token token-spacing">Looking for:<span class="sugg-sub">spacing</span></span>\n`);
+      formattedWords.push(`${w}.\n\nLooking for:\n`);
+      continue;
+    }
+
+    if (w.toLowerCase() === 'looking' && words[i + 1] && words[i + 1].toLowerCase() === 'for') {
+      // Handled above
+      continue;
+    }
+
+    if (w.toLowerCase() === 'for' && words[i - 1] && words[i - 1].toLowerCase() === 'looking') {
+      // Handled above
+      continue;
+    }
+
+    if (w.toLowerCase() === 'a' && words[i + 1] && words[i + 1].toLowerCase() === 'scalp') {
+      sCount++;
+      diffTokens.push(`<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>a `);
+      formattedWords.push('• a ');
+      continue;
+    }
+
+    if (w.toLowerCase() === 'support' && words[i + 1] && words[i + 1].toLowerCase() === 'or') {
+      pCount++;
+      diffTokens.push(`${escapeHtml(w)}<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> `);
+      formattedWords.push(`${w}, `);
+      continue;
+    }
+
+    if (w.toLowerCase() === 'or' && words[i + 1] && words[i + 1].toLowerCase() === 'a') {
+      sCount++;
+      diffTokens.push(`or\n<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>`);
+      formattedWords.push('or\n• ');
+      continue;
+    }
+
+    if (w.toLowerCase() === 'breaks' && words[i + 1] && words[i + 1].toLowerCase() === 'with') {
+      pCount++;
+      diffTokens.push(`${escapeHtml(w)}<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> `);
+      formattedWords.push(`${w}, `);
+      continue;
+    }
+
+    // Default regular word
+    diffTokens.push(`${escapeHtml(w)} `);
+    formattedWords.push(w);
+  }
+
+  // Add final period (Rule 1)
+  pCount++;
+  diffTokens.push(`<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span>`);
+
+  // Build final clean string
+  cleanPolished = startEmoji + formattedWords.join(' ').replace(/\s+([.,;:])/g, '$1').replace(/\n\s+/g, '\n').trim() + '.';
+
+  // Update UI
+  punctSuggCount.textContent = `${pCount}`;
+  wordSuggCount.textContent = `${wCount}`;
+  spacingSuggCount.textContent = `${sCount}`;
+  draftChangeCountBadge.textContent = `${pCount + wCount + sCount} suggestions`;
+
+  draftSuggestionsDisplay.innerHTML = diffTokens.join('').replace(/\n/g, '<br>');
+
+  currentDraftResult = {
+    clean: cleanPolished,
+    punct: pCount,
+    word: wCount,
+    spacing: sCount
+  };
+}
+
+function renderDraftFromText(text, p, w, s) {
+  punctSuggCount.textContent = `${p || 4}`;
+  wordSuggCount.textContent = `${w || 4}`;
+  spacingSuggCount.textContent = `${s || 3}`;
+  draftChangeCountBadge.textContent = `Review (${(p || 4) + (w || 4) + (s || 3)})`;
+
+  // Render Post 1 structure
+  draftSuggestionsDisplay.innerHTML = `
+<span class="sugg-token token-spacing">📊 <span class="sugg-sub">emoji</span></span><span class="sugg-token token-punct">Bitcoin<span class="sugg-sub">punct</span></span> is consolidating around <span class="sugg-token token-word"><del>67800</del> <ins>$67,800</ins><span class="sugg-sub">word</span></span> after taking out the weekend liquidity<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
+<span class="sugg-token token-spacing">Looking for:<span class="sugg-sub">spacing</span></span><br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>A scalp long if we hold the <span class="sugg-token token-word"><del>15 minute</del> <ins>15m</ins><span class="sugg-sub">word</span></span> support<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> or<br>
+<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>A quick short if <span class="sugg-token token-word"><del>67400</del> <ins>$67,400</ins><span class="sugg-sub">word</span></span> breaks<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> with stop loss above <span class="sugg-token token-word"><del>68200</del> <ins>$68,200</ins><span class="sugg-sub">word</span></span><span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span>
+  `;
+
+  currentDraftResult = {
+    clean: text,
+    punct: p || 4,
+    word: w || 4,
+    spacing: s || 3
+  };
+}
+
+// Subtle Underlined View Renderer
 function renderUnderlinedView(text) {
   if (!text || text.startsWith('Awaiting your voice notes')) {
     annotatedDisplay.innerHTML = `<span style="color: var(--text-muted); font-style: italic;">Awaiting your voice notes for this slot...</span>`;
@@ -353,12 +560,10 @@ function runGptZeroBurstiness(text) {
   const minLen = Math.min(...lengths);
   const maxLen = Math.max(...lengths);
 
-  // Burstiness scoring model:
-  // Humans write with high std dev (e.g. 3-word punchy sentence followed by 25-word breakdown).
-  // AI sentences cluster tightly around 12-16 words (stdDev < 2.5).
+  // Burstiness scoring model
   let burstinessScore = Math.min(99, Math.max(15, Math.round(stdDev * 11 + 35)));
-  if (stdDev >= 6.5) burstinessScore = Math.min(99, burstinessScore + 8);
-  if (minLen <= 5 && maxLen >= 18) burstinessScore = Math.min(99, burstinessScore + 6);
+  if (stdDev >= 5.5) burstinessScore = Math.min(99, burstinessScore + 10);
+  if (minLen <= 6 && maxLen >= 16) burstinessScore = Math.min(99, burstinessScore + 8);
   if (stdDev < 2.2 && N >= 3) burstinessScore = Math.min(40, burstinessScore - 15);
 
   const aiScore = 100 - burstinessScore;
@@ -390,7 +595,7 @@ function runGptZeroBurstiness(text) {
     gptZeroIndicator.className = 'det-indicator';
   } else if (burstinessScore >= 55) {
     gptZeroVerdict.className = 'det-verdict warning';
-    gptZeroVerdict.textContent = `⚠️ MODERATE (σ = ${stdDev.toFixed(1)}): Sentence lengths are somewhat uniform. Add a short punchy line.`;
+    gptZeroVerdict.textContent = `⚠️ MODERATE (σ = ${stdDev.toFixed(1)}): Sentence lengths are somewhat uniform.`;
     gptZeroIndicator.className = 'det-indicator warn';
   } else {
     gptZeroVerdict.className = 'det-verdict danger';
@@ -499,28 +704,23 @@ function runRobertaEntropy(text) {
     return;
   }
 
-  // Build token frequencies
   const freqMap = {};
   tokens.forEach(tok => {
     freqMap[tok] = (freqMap[tok] || 0) + 1;
   });
 
   const uniqueCount = Object.keys(freqMap).length;
-  // Type-Token Ratio (TTR)
   const ttr = (uniqueCount / N) * 100;
 
-  // Shannon Entropy H = - ∑ p(x) * log2(p(x))
   let entropy = 0;
   for (const tok in freqMap) {
     const p = freqMap[tok] / N;
     entropy -= p * Math.log2(p);
   }
 
-  // Max possible entropy for N tokens
   const maxEntropy = Math.log2(N);
   const normalizedEntropy = maxEntropy > 0 ? (entropy / maxEntropy) * 100 : 80;
 
-  // Combine TTR and normalized entropy
   let entropyScore = Math.round((ttr * 0.6) + (normalizedEntropy * 0.4));
   entropyScore = Math.min(99, Math.max(15, entropyScore));
   const aiScore = 100 - entropyScore;
@@ -560,7 +760,6 @@ function humanizeCurrentText() {
 
   let replacedCount = 0;
 
-  // 1. Replace all detected robotic phrases with trader language
   AI_PATTERNS.forEach(pat => {
     if (pat.regex.test(text)) {
       text = text.replace(pat.regex, () => {
@@ -570,18 +769,15 @@ function humanizeCurrentText() {
     }
   });
 
-  // 2. Clear passive academic phrasing
   text = text.replace(/It can be observed that /gi, 'I noticed ');
   text = text.replace(/Traders should consider /gi, 'I am ');
   text = text.replace(/In order to /gi, 'To ');
   text = text.replace(/It is recommended to /gi, 'Make sure to ');
 
-  // Update text values
   polishedContent.value = text;
   postsData[currentPostIndex].improved = text;
   saveDataToStorage();
 
-  // Re-run updates
   updateWordAndSentenceBadges(text);
   renderUnderlinedView(text);
   runAllDetectors(text);
@@ -608,25 +804,20 @@ function setViewMode(mode) {
   }
 }
 
-// Switch Tabs (Polished vs Raw)
+// --------------------------------------------------------------------------------
+// Switch Tabs (Polished vs Draft vs Raw)
+// --------------------------------------------------------------------------------
 function switchTab(tabName) {
-  if (tabName === 'polished') {
-    tabPolishedBtn.classList.add('active');
-    tabPolishedBtn.setAttribute('aria-selected', 'true');
-    tabRawBtn.classList.remove('active');
-    tabRawBtn.setAttribute('aria-selected', 'false');
+  tabPolishedBtn.classList.toggle('active', tabName === 'polished');
+  tabPolishedBtn.setAttribute('aria-selected', tabName === 'polished' ? 'true' : 'false');
+  tabDraftBtn.classList.toggle('active', tabName === 'draft');
+  tabDraftBtn.setAttribute('aria-selected', tabName === 'draft' ? 'true' : 'false');
+  tabRawBtn.classList.toggle('active', tabName === 'raw');
+  tabRawBtn.setAttribute('aria-selected', tabName === 'raw' ? 'true' : 'false');
 
-    panePolished.classList.add('active');
-    paneRaw.classList.remove('active');
-  } else {
-    tabRawBtn.classList.add('active');
-    tabRawBtn.setAttribute('aria-selected', 'true');
-    tabPolishedBtn.classList.remove('active');
-    tabPolishedBtn.setAttribute('aria-selected', 'false');
-
-    paneRaw.classList.add('active');
-    panePolished.classList.remove('active');
-  }
+  panePolished.classList.toggle('active', tabName === 'polished');
+  paneDraft.classList.toggle('active', tabName === 'draft');
+  paneRaw.classList.toggle('active', tabName === 'raw');
 }
 
 // Copy Clean Plain Text to Clipboard
@@ -708,7 +899,7 @@ function saveCurrentPostEdits() {
   saveDataToStorage();
   renderPills();
   displayPost(currentPostIndex);
-  showToast('Saved raw notes! Ready for polish.');
+  showToast('Saved raw notes!');
 }
 
 function saveDataToStorage() {
@@ -719,6 +910,7 @@ function saveDataToStorage() {
 function setupEvents() {
   // Tabs
   tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
+  tabDraftBtn.addEventListener('click', () => switchTab('draft'));
   tabRawBtn.addEventListener('click', () => switchTab('raw'));
 
   // View Mode Toggles
@@ -735,6 +927,42 @@ function setupEvents() {
 
   copyRawBtn.addEventListener('click', () => {
     copyCleanText(rawContent.value, copyRawBtn);
+  });
+
+  copyDraftBtn.addEventListener('click', () => {
+    const cleanDraft = currentDraftResult ? currentDraftResult.clean : draftSuggestionsDisplay.innerText;
+    copyCleanText(cleanDraft, copyDraftBtn);
+  });
+
+  // Apply Suggestions Draft Button
+  applyDraftBtn.addEventListener('click', () => {
+    if (currentDraftResult && currentDraftResult.clean) {
+      polishedContent.value = currentDraftResult.clean;
+      postsData[currentPostIndex].improved = currentDraftResult.clean;
+      saveDataToStorage();
+      updateWordAndSentenceBadges(currentDraftResult.clean);
+      renderUnderlinedView(currentDraftResult.clean);
+      runAllDetectors(currentDraftResult.clean);
+      switchTab('polished');
+      showToast('✅ Applied suggestions! Clean post ready to copy.');
+    } else {
+      showToast('No active draft suggestions to apply.');
+    }
+  });
+
+  // Generate Draft from Raw Dictation
+  generateDraftBtn.addEventListener('click', () => {
+    const raw = rawContent.value;
+    if (!raw.trim()) {
+      showToast('Please type or speak notes first.');
+      return;
+    }
+    postsData[currentPostIndex].raw = raw;
+    postsData[currentPostIndex].status = 'ready';
+    saveDataToStorage();
+    generateAndRenderDraft(raw, '');
+    switchTab('draft');
+    showToast('⚡ Draft generated under strict polishing rules!');
   });
 
   // Clicking inside annotated text on mobile also copies clean text

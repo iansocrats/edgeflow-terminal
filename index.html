@@ -51,12 +51,17 @@
       </div>
     </section>
 
-    <!-- Main Two-Tab Navigation -->
+    <!-- Main Three-Tab Navigation -->
     <div class="tabs-nav" role="tablist">
       <button class="tab-btn active" id="tabPolishedBtn" role="tab" aria-selected="true" data-tab="polished">
         <span class="tab-icon">✨</span>
         <span class="tab-text">Polished Post</span>
-        <span class="tab-chip">Audited & Ready</span>
+        <span class="tab-chip">Audited</span>
+      </button>
+      <button class="tab-btn" id="tabDraftBtn" role="tab" aria-selected="false" data-tab="draft">
+        <span class="tab-icon">🔍</span>
+        <span class="tab-text">Draft & Rules</span>
+        <span class="tab-chip muted" id="draftChangeCountBadge">Suggestions</span>
       </button>
       <button class="tab-btn" id="tabRawBtn" role="tab" aria-selected="false" data-tab="raw">
         <span class="tab-icon">🎙️</span>
@@ -236,7 +241,66 @@
       </section>
     </main>
 
-    <!-- Tab 2: Raw Dictation (What I Wrote) -->
+    <!-- Tab 2: Draft & Suggestions (Strict Rules Enforcement) -->
+    <section class="tab-pane" id="paneDraft" role="tabpanel">
+      <!-- Rules Banner -->
+      <div class="rules-card">
+        <div class="rules-header">
+          <span class="rules-title">🛡️ Strict Polishing Rules (No Sentence Rewriting)</span>
+        </div>
+        <div class="rules-grid">
+          <div class="rule-item">
+            <span class="rule-tag tag-green">Rule 1</span>
+            <div><strong>Punctuation Only:</strong> Capitalize, periods, commas, colons.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-yellow">Rule 2</span>
+            <div><strong>Word Replacements:</strong> Typos or numbers (e.g. 67800 ➔ $67,800). No sentence changes.</div>
+          </div>
+          <div class="rule-item">
+            <span class="rule-tag tag-purple">Rule 3</span>
+            <div><strong>Emojis & Spacing:</strong> Relevant emojis, paragraph line breaks, bullet points.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color-Coded Category Legend & Counts -->
+      <div class="sugg-category-bar">
+        <div class="sugg-badge sugg-punct">
+          <span class="dot green"></span>
+          <span>✍️ Punctuation: <strong id="punctSuggCount">0</strong></span>
+        </div>
+        <div class="sugg-badge sugg-word">
+          <span class="dot yellow"></span>
+          <span>🔤 Word Fixes: <strong id="wordSuggCount">0</strong></span>
+        </div>
+        <div class="sugg-badge sugg-spacing">
+          <span class="dot purple"></span>
+          <span>💡 Emojis & Bullets: <strong id="spacingSuggCount">0</strong></span>
+        </div>
+      </div>
+
+      <!-- Interactive Color-Coded Draft Suggestions Box -->
+      <div class="content-card">
+        <div class="card-header">
+          <span class="pill-badge pill-purple">🔍 Color-Coded Suggestions View</span>
+          <span class="quick-copy-text">Suggested fixes highlighted</span>
+        </div>
+        <div id="draftSuggestionsDisplay" class="draft-diff-box">
+          <!-- Dynamically populated with color-coded suggestions -->
+        </div>
+        <div class="draft-action-footer">
+          <button id="applyDraftBtn" class="btn-apply-draft">
+            <span>✅ Apply Suggestions to Polished Post</span>
+          </button>
+          <button id="copyDraftBtn" class="action-btn-sm">
+            <span>📋 Copy Draft Text</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Raw Dictation (What I Wrote) -->
     <section class="tab-pane" id="paneRaw" role="tabpanel">
       <div class="copy-bar-wrap">
         <button class="btn-copy-secondary" id="copyRawBtn">
@@ -250,8 +314,9 @@
           <span class="meta-hint">Type or speak your raw thoughts</span>
         </div>
         <textarea id="rawContent" class="post-textarea raw" placeholder="Speak or type your raw notes for this coin here..."></textarea>
-        <div class="card-footer">
-          <button id="saveEditBtn" class="btn-save">💾 Save Notes & Request Polish</button>
+        <div class="card-footer-buttons">
+          <button id="generateDraftBtn" class="btn-generate-draft">⚡ Generate Suggestions Draft</button>
+          <button id="saveEditBtn" class="btn-save">💾 Save Notes</button>
         </div>
       </div>
     </section>
