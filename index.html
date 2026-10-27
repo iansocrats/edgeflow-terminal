@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Post Studio Bridge — Dynamic Dictation & Copy Desk</title>
-  <meta name="description" content="Dynamic 10-post daily copy desk with multi-scanner AI detection and 1-tap mobile copying." />
+  <title>Post Studio Bridge — Multi-Detector & Humanizer Desk</title>
+  <meta name="description" content="Dynamic 10-post daily copy desk with working RoBERTa, GPTZero, ZeroGPT detectors, text humanizer, and in-text color annotations." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,12 +21,12 @@
         </div>
         <div class="header-right-actions">
           <div class="daily-badge">
-            <span class="badge-label">ACTIVE</span>
+            <span class="badge-label">SESSION</span>
             <span class="badge-value" id="currentDateBadge">Today's Desk</span>
           </div>
         </div>
       </div>
-      <p class="header-sub">Dynamic Daily Pipeline • Multi-Scanner AI Checks • 100% Anti-AI Compliant</p>
+      <p class="header-sub">Dynamic Daily Pipeline • Multi-Engine AI Audits • In-Text Color Annotations</p>
     </header>
 
     <!-- Dynamic 10-Post Navigation Carousel / Pills -->
@@ -56,7 +56,7 @@
       <button class="tab-btn active" id="tabPolishedBtn" role="tab" aria-selected="true" data-tab="polished">
         <span class="tab-icon">✨</span>
         <span class="tab-text">Polished Post</span>
-        <span class="tab-chip">Color-Coded & Ready</span>
+        <span class="tab-chip">Audited & Ready</span>
       </button>
       <button class="tab-btn" id="tabRawBtn" role="tab" aria-selected="false" data-tab="raw">
         <span class="tab-icon">🎙️</span>
@@ -71,92 +71,123 @@
       <div class="copy-bar-wrap">
         <button class="btn-copy-huge" id="copyPolishedBtn">
           <span class="copy-icon">📋</span>
-          <span class="copy-label">TAP TO COPY POLISHED POST</span>
+          <span class="copy-label">TAP TO COPY CLEAN POLISHED POST</span>
         </button>
       </div>
 
-      <!-- Live Multi-Model AI Scanner Panel (No API calls needed - Just Works) -->
-      <div class="ai-detector-box">
-        <div class="ai-detector-top">
-          <div class="detector-title">
-            <span class="detector-dot"></span>
-            <span id="activeScannerName">RoBERTa & Perplexity AI Scanner</span>
-          </div>
-          <div class="scanner-selector-wrap">
-            <select id="scannerSelect" class="scanner-dropdown">
-              <option value="roberta">RoBERTa OpenAI Benchmark</option>
-              <option value="gptzero">GPTZero Perplexity Model</option>
-              <option value="zerogpt">ZeroGPT Deep Analyzer</option>
-              <option value="sapling">Sapling Trader Voice Engine</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="aiScanResult" class="ai-scan-result">
-          <div class="score-meters">
-            <div class="meter-col">
-              <span class="meter-label">HUMAN VOICE SCORE</span>
-              <span class="meter-num real" id="humanScoreText">98%</span>
-            </div>
-            <div class="meter-col">
-              <span class="meter-label">AI PROBABILITY</span>
-              <span class="meter-num fake" id="aiScoreText">2%</span>
-            </div>
-          </div>
-          <div class="progress-bar-wrap">
-            <div id="humanProgressBar" class="progress-fill" style="width: 98%"></div>
-          </div>
-          <div id="aiVerdictBanner" class="verdict-banner passed">
-            <span>✅ <strong>PASSED:</strong> 98% Human Voice. High burstiness & spoken trading context verified.</span>
-          </div>
-
-          <!-- Free External AI Detectors Quick Links -->
-          <div class="external-checkers">
-            <span class="ext-label">Or test on web scanners:</span>
-            <div class="ext-links">
-              <a href="https://www.zerogpt.com" target="_blank" rel="noopener" class="ext-pill">ZeroGPT ↗</a>
-              <a href="https://sapling.ai/utilities/ai-detector" target="_blank" rel="noopener" class="ext-pill">Sapling ↗</a>
-              <a href="https://quillbot.com/ai-content-detector" target="_blank" rel="noopener" class="ext-pill">QuillBot ↗</a>
-              <a href="https://gptzero.me" target="_blank" rel="noopener" class="ext-pill">GPTZero ↗</a>
-            </div>
-          </div>
+      <!-- Quick Action Toolbar: Humanize & View Toggle -->
+      <div class="polish-action-bar">
+        <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
+          <span>✨ Humanize This Text</span>
+        </button>
+        <div class="view-toggle-wrap">
+          <button id="toggleAnnotatedBtn" class="btn-view-toggle active" data-view="annotated">🔍 Annotated View</button>
+          <button id="toggleRawTextBtn" class="btn-view-toggle" data-view="plain">✏️ Plain Editor</button>
         </div>
       </div>
 
-      <!-- Color-Code Transparency Legend -->
-      <div class="color-legend-box">
-        <div class="legend-title">
-          <span>🎨 Color-Coded Polishing Transparency:</span>
-          <span class="anti-ai-tag">Anti-AI System</span>
-        </div>
-        <div class="legend-grid">
-          <span class="leg-item leg-purple">🟣 Hook / 2s Stopper</span>
-          <span class="leg-item leg-yellow">🟡 100% Spoken Voice (Untouched)</span>
-          <span class="leg-item leg-blue">🔵 Invalidation Levels</span>
-          <span class="leg-item leg-green">🟢 Widget Conversion CTA</span>
-        </div>
-      </div>
-
-      <!-- Polished Content Container -->
+      <!-- Content Container (Annotated View vs Plain Text Editor) -->
       <div class="content-card">
         <div class="card-header">
           <div class="badge-group">
             <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
             <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
-            <span class="pill-badge pill-blue">Widget CTA Included</span>
+            <span class="pill-badge pill-purple" id="burstinessBadge">High Burstiness</span>
           </div>
-          <span class="quick-copy-text">Tap anywhere in box to copy</span>
+          <span class="quick-copy-text">Tap text to copy clean</span>
         </div>
-        <textarea id="polishedContent" class="post-textarea polished" readonly placeholder="Polished post will appear here..."></textarea>
+
+        <!-- 1. Color-Coded Annotated Live View (Shows small subtext explanations) -->
+        <div id="annotatedDisplay" class="annotated-box">
+          <!-- Dynamically populated with color-coded tokens & subtext -->
+        </div>
+
+        <!-- 2. Plain Textarea (For direct manual edits) -->
+        <textarea id="polishedContent" class="post-textarea polished hidden" placeholder="Polished post will appear here..."></textarea>
       </div>
 
-      <!-- Color-Coded Audit Breakdown (Why Each Change Was Made) -->
-      <section class="breakdown-card" id="breakdownSection">
-        <div class="breakdown-header">
-          <h3>🔍 Exact Polish Audit (Why These Edits Were Made)</h3>
+      <!-- 3 INDIVIDUAL DEDICATED AI DETECTOR CARDS (Each on its own card) -->
+      <section class="detectors-deck">
+        <div class="deck-header">
+          <h3>🛡️ Live Multi-Engine AI Detectors (Auditing Polished Text Only)</h3>
         </div>
-        <div class="breakdown-list" id="breakdownList">
-          <!-- Dynamically populated -->
+
+        <!-- Card 1: RoBERTa N-Gram & Perplexity Benchmark -->
+        <div class="detector-card" id="cardRoberta">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green"></span>
+              <h4>RoBERTa Perplexity Benchmark</h4>
+            </div>
+            <button class="btn-det-action" id="recalcRobertaBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Measures vocabulary unpredictability & token entropy against the RoBERTa baseline.</p>
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">HUMAN SCORE</span>
+              <span class="metric-val real" id="robertaHumanVal">98%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI PROBABILITY</span>
+              <span class="metric-val fake" id="robertaAiVal">2%</span>
+            </div>
+          </div>
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="robertaBar" style="width: 98%"></div>
+          </div>
+          <div class="det-verdict" id="robertaVerdict">✅ PASSED: Highly unpredictable human token selection.</div>
+        </div>
+
+        <!-- Card 2: GPTZero Sentence Burstiness & Variance Engine -->
+        <div class="detector-card" id="cardGptZero">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green"></span>
+              <h4>GPTZero Burstiness & Variance</h4>
+            </div>
+            <button class="btn-det-action" id="recalcGptZeroBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Calculates standard deviation of sentence lengths. Uniform length = AI; irregular rhythm = Human.</p>
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">BURSTINESS SCORE</span>
+              <span class="metric-val real" id="gptZeroHumanVal">96%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI PROBABILITY</span>
+              <span class="metric-val fake" id="gptZeroAiVal">4%</span>
+            </div>
+          </div>
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="gptZeroBar" style="width: 96%"></div>
+          </div>
+          <div class="det-verdict" id="gptZeroVerdict">✅ PASSED: Excellent sentence length variation (short & long mix).</div>
+        </div>
+
+        <!-- Card 3: ZeroGPT Syntax Uniformity & Keyword Classifier -->
+        <div class="detector-card" id="cardZeroGpt">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green"></span>
+              <h4>ZeroGPT Syntax & Uniformity</h4>
+            </div>
+            <button class="btn-det-action" id="recalcZeroGptBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Scans for 35+ known LLM transition artifacts and sterile textbook connective words.</p>
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">AUTHENTIC VOICE</span>
+              <span class="metric-val real" id="zeroGptHumanVal">99%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI PROBABILITY</span>
+              <span class="metric-val fake" id="zeroGptAiVal">1%</span>
+            </div>
+          </div>
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="zeroGptBar" style="width: 99%"></div>
+          </div>
+          <div class="det-verdict" id="zeroGptVerdict">✅ PASSED: Zero textbook transition markers detected.</div>
         </div>
       </section>
     </main>
@@ -172,9 +203,9 @@
       <div class="content-card">
         <div class="card-header">
           <span class="pill-badge pill-yellow">🎙️ Your Unedited Spoken Words</span>
-          <span class="meta-hint">Type or use mobile speech-to-text</span>
+          <span class="meta-hint">Type or speak your raw thoughts</span>
         </div>
-        <textarea id="rawContent" class="post-textarea raw" placeholder="Speak or type your raw notes for this coin here... (e.g. 'Bitcoin is holding 67800 looking for long with stop under 67400...')"></textarea>
+        <textarea id="rawContent" class="post-textarea raw" placeholder="Speak or type your raw notes for this coin here..."></textarea>
         <div class="card-footer">
           <button id="saveEditBtn" class="btn-save">💾 Save Notes & Request Polish</button>
         </div>
@@ -189,7 +220,7 @@
         <button id="nextPostBtn" class="btn-nav">Next →</button>
       </div>
       <div class="footer-tip">
-        <span>💡 <strong>1-Tap Phone Routine:</strong> Review AI score ➔ Tap green button to copy ➔ Paste into ByX.</span>
+        <span>💡 <strong>Tip:</strong> If any word is highlighted in red, tap <strong>"✨ Humanize This Text"</strong> to instantly swap it with human trader language.</span>
       </div>
     </footer>
   </div>
@@ -197,7 +228,7 @@
   <!-- Notification Toast -->
   <div id="toast" class="toast hidden">
     <span class="toast-icon">✅</span>
-    <span class="toast-msg" id="toastMsg">Copied to clipboard! Ready to paste.</span>
+    <span class="toast-msg" id="toastMsg">Copied clean text to clipboard!</span>
   </div>
 
   <script src="app.js"></script>
