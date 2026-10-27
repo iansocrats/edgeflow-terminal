@@ -64,3 +64,32 @@ ByX evaluates every post across 5 dimensions. A post must score 40 or higher to 
 
 15. **Rule 15 — The "Asymmetric Risk-Reward Frame" Rule:**
     - Outline a clear risk-to-reward ratio (e.g. risking 800 pts to catch a 3,200 pt move — 1:4 RR).
+
+---
+
+### Part 4: Real Measurement Technologies Behind the 5 Dimensions
+
+1. **Originality Engine — MinHash 3-Gram LSH & Shannon Information Entropy ($H$):**
+   - **Math:** $H = -\sum_{i=1}^U p_i \log_2(p_i)$ where $p_i = \text{freq}(w_i) / N$.
+   - **Function:** Detects vocabulary predictability and cross-references 3-grams against 25+ common Twitter/crypto consensus clichés. Flagged clichés deduct points; high organic entropy ($H \ge 3.8\text{ bits/token}$) earns maximum 20/20.
+
+2. **Depth & Structure Engine — Financial Named Entity Recognition (NER):**
+   - **Regex Pattern:** Extract concrete quantitative anchors: `\$[\d,]+`, `\d+[\d,]*\s*(billion|million|k)`, `\d+%`.
+   - **Function:** Requires verifiable numbers ($79,659 current price, $87,000 previous high, $1B ETF outflow, 50 Fear/Greed index) and multi-tier paragraph architecture.
+
+3. **Relevance Engine — Market Catalyst Vector Lexicon:**
+   - **Lexicon:** Matches active cashtags (`$BTC`), orderflow catalysts (`inflow`, `outflow`, `ETF`, `spot volume`, `support floor`, `resistance`, `pullback`), and timeframe anchors (`this week`, `past two weeks`).
+
+4. **Credibility & Risk Engine — Invalidation Boundary & Risk Assertion Classifier:**
+   - **Classifier:** Detects explicit structural boundaries (e.g. `$76,000 floor support`, `$84,000 resistance invalidation`) and disciplined entry criteria (`wait for confirmation`, `risk-reward`).
+
+5. **Presentation Engine — Flesch-Kincaid Grade 7 Readability Formula:**
+   - **Math:** $\text{FKGL} = 0.39 \left(\frac{\text{total words}}{\text{total sentences}}\right) + 11.8 \left(\frac{\text{total syllables}}{\text{total words}}\right) - 15.59$.
+   - **Function:** Ensures text lands in the Grade 6 to 8 range for optimal mobile scan speed, combined with clean comma/period pauses and bullet point formatting.
+
+---
+
+### Part 5: Two-Stage Terminal Workflow
+
+- **Stage 1 (Polished Post):** The laboratory where uniqueness is injected, AI probability is diagnosed, repetitive tokens are diversified, and n-gram clustering is broken up.
+- **Stage 2 (Draft & Rules):** The primary final posting stage. Whenever changes are made or flags are resolved, the terminal automatically recalculates all ByX dimensions and presents the clean audited draft ready to copy and post.

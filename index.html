@@ -300,8 +300,25 @@
       </section>
     </main>
 
-    <!-- Tab 2: Draft & Suggestions (Strict Rules Enforcement) -->
+    <!-- Tab 2: Draft & Suggestions (Primary Destination for Auditing & Final Copying) -->
     <section class="tab-pane" id="paneDraft" role="tabpanel">
+      <!-- Huge Sticky One-Tap Copy Bar for Audited Draft (Primary Creator Source) -->
+      <div class="copy-bar-wrap">
+        <button class="btn-copy-huge btn-copy-draft-main" id="copyDraftMainBtn">
+          <span class="copy-icon">📋</span>
+          <span class="copy-label">TAP TO COPY FINAL AUDITED DRAFT (READY FOR BYX)</span>
+        </button>
+      </div>
+
+      <!-- Clean View Toggle Bar in Draft -->
+      <div class="draft-view-bar">
+        <div class="view-toggle-wrap">
+          <button id="toggleDraftCleanBtn" class="btn-view-toggle active" data-dview="clean">📄 Clean Audited Post (Ready to Post)</button>
+          <button id="toggleDraftDiffBtn" class="btn-view-toggle" data-dview="diff">🔍 Highlighted Rules & Suggestions</button>
+        </div>
+        <span class="draft-badge-indicator">🏆 PRIMARY POSTING STAGE</span>
+      </div>
+
       <!-- Official ByX 5 Content Dimensions & Benchmark Banner -->
       <div class="rules-card byx-rules-card">
         <div class="byx-header-wrap">
@@ -398,6 +415,51 @@
           </div>
         </div>
 
+        <!-- ByX Measurement Technology Breakdown Card -->
+        <div class="byx-tech-breakdown-card">
+          <div class="tech-breakdown-header">
+            <span class="tech-icon">🔬</span>
+            <span class="tech-title">Real Evaluation Technologies Behind the 5 Dimensions</span>
+          </div>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">1. Originality</span>
+                <span class="tech-engine-badge">MinHash 3-Gram LSH & Shannon Entropy</span>
+              </div>
+              <p class="tech-dim-desc">Measures vocabulary richness ($H \ge 3.8\text{ bits/token}$) and cross-references against 25+ common crowd consensus clichés.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">2. Depth & Structure</span>
+                <span class="tech-engine-badge">Financial Named Entity Recognition (NER)</span>
+              </div>
+              <p class="tech-dim-desc">Extracts concrete quantitative price anchors ($79,659, $1B, 50 index) and audits multi-paragraph structural narrative flow.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">3. Relevance</span>
+                <span class="tech-engine-badge">Market Catalyst Vector Lexicon</span>
+              </div>
+              <p class="tech-dim-desc">Detects cashtags ($BTC), ETF inflow/outflow metrics, spot volume, and timely execution timeframe catalysts.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">4. Credibility & Risk</span>
+                <span class="tech-engine-badge">Invalidation Boundary Classifier</span>
+              </div>
+              <p class="tech-dim-desc">Verifies presence of defined invalidation price levels ($76K / $84K), risk management disclosures, and disciplined RR framing.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">5. Presentation</span>
+                <span class="tech-engine-badge">Flesch-Kincaid Grade 7 Readability</span>
+              </div>
+              <p class="tech-dim-desc">Formula: $0.39(W/S) + 11.8(Y/W) - 15.59$. Confirms Grade 6-8 mobile scannability, proper punctuation, and bullet spacing.</p>
+            </div>
+          </div>
+        </div>
+
         <!-- 3 Immutable Foundational Dictation Safeguards -->
         <div class="safeguards-box">
           <span class="safeguards-title">🔒 3 FOUNDATIONAL CREATOR VOICE SAFEGUARDS (ZERO SENTENCE REWRITES)</span>
@@ -425,21 +487,31 @@
         </div>
       </div>
 
-      <!-- Interactive Color-Coded Draft Suggestions Box -->
+      <!-- Content Box: Clean Final Post or Highlighted Suggestions -->
       <div class="content-card">
         <div class="card-header">
-          <span class="pill-badge pill-purple">🔍 Color-Coded Suggestions View</span>
-          <span class="quick-copy-text">Suggested fixes highlighted</span>
+          <div class="badge-group">
+            <span class="pill-badge pill-purple" id="draftViewBadge">📄 Clean Final Post</span>
+            <span class="pill-badge pill-gold" id="draftWordCountBadge">0 words</span>
+            <span class="pill-badge pill-green" id="draftValidBadge">VALID POST (≥ 40)</span>
+          </div>
+          <span class="quick-copy-text">Tap box to copy clean text</span>
         </div>
-        <div id="draftSuggestionsDisplay" class="draft-diff-box">
+
+        <!-- Version 1: Clean Final Post (Default view for instant copying) -->
+        <textarea id="draftCleanContent" class="post-textarea polished" placeholder="Audited draft will appear here..."></textarea>
+
+        <!-- Version 2: Color-Coded Suggestions View -->
+        <div id="draftSuggestionsDisplay" class="draft-diff-box hidden">
           <!-- Dynamically populated with color-coded suggestions -->
         </div>
+
         <div class="draft-action-footer">
           <button id="applyDraftBtn" class="btn-apply-draft">
-            <span>✅ Apply Suggestions to Polished Post</span>
+            <span>✅ Apply & Lock Into Polished Base</span>
           </button>
           <button id="copyDraftBtn" class="action-btn-sm">
-            <span>📋 Copy Draft Text</span>
+            <span>📋 Copy Clean Draft</span>
           </button>
         </div>
       </div>

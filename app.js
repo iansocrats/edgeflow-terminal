@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v10';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v11';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -54,7 +54,15 @@ const paneDraft = document.getElementById('paneDraft');
 const paneRaw = document.getElementById('paneRaw');
 const draftChangeCountBadge = document.getElementById('draftChangeCountBadge');
 
-// Draft Tab Elements
+// Draft Tab Elements (Primary Destination for Audited Post Copying)
+const copyDraftMainBtn = document.getElementById('copyDraftMainBtn');
+const toggleDraftCleanBtn = document.getElementById('toggleDraftCleanBtn');
+const toggleDraftDiffBtn = document.getElementById('toggleDraftDiffBtn');
+const draftCleanContent = document.getElementById('draftCleanContent');
+const draftViewBadge = document.getElementById('draftViewBadge');
+const draftWordCountBadge = document.getElementById('draftWordCountBadge');
+const draftValidBadge = document.getElementById('draftValidBadge');
+
 const punctSuggCount = document.getElementById('punctSuggCount');
 const wordSuggCount = document.getElementById('wordSuggCount');
 const spacingSuggCount = document.getElementById('spacingSuggCount');
@@ -607,6 +615,13 @@ function renderDraftFromText(text, p, w, s) {
   draftChangeCountBadge.textContent = `Draft Ready (${pCount + wCount + sCount})`;
 
   draftSuggestionsDisplay.innerHTML = formattedParas.join('<br><br>');
+  if (draftCleanContent) {
+    draftCleanContent.value = text;
+  }
+  if (draftWordCountBadge) {
+    const wc = (text.match(/\b[a-z0-9$'-]+\b/gi) || []).length;
+    draftWordCountBadge.textContent = `${wc} words`;
+  }
 
   currentDraftResult = {
     clean: text,
@@ -1149,17 +1164,32 @@ function bindEntropyActionButtons() {
 
 function reduceTokenRepetition(text) {
   let updated = text;
-  // 1. Fix duplicate loops like "it's average, it's average"
-  updated = updated.replace(/average[,\s]+(?:it's|it is)\s+average/gi, 'sitting in the neutral 50-zone');
+
+  // 1. Specifically diversify "Bitcoin" if repeated >= 2 times
+  const btcMatches = updated.match(/\bbitcoin\b/gi) || [];
+  if (btcMatches.length >= 2) {
+    let occurrence = 0;
+    const btcSynonyms = ['the asset', 'the market leader', 'price', 'the dominant crypto'];
+    updated = updated.replace(/\bbitcoin\b/gi, (match) => {
+      occurrence++;
+      if (occurrence === 1) return match; // Keep the first occurrence for coin identity
+      const syn = btcSynonyms[(occurrence - 2) % btcSynonyms.length];
+      return syn;
+    });
+  }
+
+  // 2. Fix duplicate loops like "it's average, it's average"
+  updated = updated.replace(/average[,\s]+(?:it's|it is)\s+average/gi, 'sitting squarely in the neutral 50-zone');
   updated = updated.replace(/average[,\s]+average/gi, 'balanced');
   
-  // 2. Reduce repeated "at" / "is at"
+  // 3. Reduce repeated "at" / "is at"
   updated = updated.replace(/trading at this price[,\s]+which is at \$79,659/gi, 'trading at $79,659');
   updated = updated.replace(/which is at \$79,659/gi, 'at $79,659');
   updated = updated.replace(/still standing at 79\b/gi, 'holding firmly above $79,000');
   
-  // 3. Reduce repeated "for"
+  // 4. Reduce repeated "for"
   updated = updated.replace(/for whichever entry you want to go/gi, 'before committing to an entry');
+  updated = updated.replace(/for the next leg up/gi, 'prior to the next continuation leg');
   updated = updated.replace(/is looking to further dump/gi, 'is primed for an extended pullback');
   
   return updated;
@@ -1168,10 +1198,10 @@ function reduceTokenRepetition(text) {
 function breakUpTokenClustering(text) {
   let updated = text;
   // Break up low-entropy n-gram clusters with concise technical phrasing
-  updated = updated.replace(/This is a thesis for up and down[,\s]+so it can go either way\.?/gi, 'While market structure allows for dual outcomes, downside momentum dominates.');
-  updated = updated.replace(/it's more certainly a possibility you should look on to\.?/gi, 'a key high-probability reaction level to monitor.');
-  updated = updated.replace(/which is showing that it's average\.?/gi, 'confirming market neutrality.');
-  updated = updated.replace(/and I can see it going further high\.?/gi, 'keeping macro upside expansion on the table.');
+  updated = updated.replace(/This is a thesis for up and down[,\s]+so it can go either way\.?/gi, 'While market structure permits dual scenarios, current orderflow tilts toward downside liquidity.');
+  updated = updated.replace(/it's more certainly a possibility you should look on to\.?/gi, 'a key high-probability reaction level to monitor closely.');
+  updated = updated.replace(/which is showing that it's average\.?/gi, 'confirming balanced market sentiment.');
+  updated = updated.replace(/and I can see it going further high\.?/gi, 'keeping structural upside continuation on the table.');
   updated = updated.replace(/important to be cautious and be patient/gi, 'prudent to exercise disciplined execution patience');
   return updated;
 }
@@ -1183,7 +1213,7 @@ function applyReduceTokenRepetition() {
     showToast('Token repetition is already optimal.');
     return;
   }
-  updateAndSavePost(fixed, '🔤 Reduced token repetition! TTR boosted.');
+  updateAndSavePost(fixed, '🔤 Reduced token repetition! TTR boosted and returned to Draft.');
 }
 
 function applyBreakUpTokenClustering() {
@@ -1193,14 +1223,14 @@ function applyBreakUpTokenClustering() {
     showToast('Token clustering is already optimal.');
     return;
   }
-  updateAndSavePost(fixed, '⚡ Broken up low-entropy clusters! Shannon entropy boosted.');
+  updateAndSavePost(fixed, '⚡ Broken up low-entropy clusters! Shannon entropy boosted and returned to Draft.');
 }
 
 function resolveAllAiFlags() {
   let text = polishedContent.value;
   text = reduceTokenRepetition(text);
   text = breakUpTokenClustering(text);
-  updateAndSavePost(text, '🚀 All AI risk penalties resolved! Organic entropy boosted to 90%+');
+  updateAndSavePost(text, '🚀 All AI risk penalties resolved! Organic entropy boosted to 90%+ and returned to Draft.');
 }
 
 function replaceSentenceInText(oldStr, newStr) {
@@ -1211,11 +1241,14 @@ function replaceSentenceInText(oldStr, newStr) {
   } else {
     text = text.replace(oldStr, newStr);
   }
-  updateAndSavePost(text, '✨ Line updated! Recalculated AI probability.');
+  updateAndSavePost(text, '✨ Line updated! Recalculated ByX score and returned to Draft.');
 }
 
 function updateAndSavePost(newText, toastMessage) {
   polishedContent.value = newText;
+  if (draftCleanContent) {
+    draftCleanContent.value = newText;
+  }
   postsData[currentPostIndex].improved = newText;
   postsData[currentPostIndex].raw = newText;
   saveDataToStorage();
@@ -1225,7 +1258,10 @@ function updateAndSavePost(newText, toastMessage) {
   generateAndRenderDraft(newText, newText);
   runAllDetectors(newText);
 
-  showToast(toastMessage || 'Updated post content and recalculated scores!');
+  // Switch back to Draft tab as requested: Draft is the final staging & evaluation tab!
+  switchTab('draft');
+
+  showToast(toastMessage || 'Updated post content, recalculated ByX score, and returned to Draft!');
 }
 
 // --------------------------------------------------------------------------------
@@ -1322,10 +1358,18 @@ function runByxDimensionsScore(text) {
     byxStatusPill.className = 'byx-status-pill valid';
     byxStatusPill.textContent = `✅ VALID POST (${totalScore} PTS)`;
     byxStatusDesc.textContent = `Score meets the official ByX Valid Post threshold (≥ 40). Eligible for creator rewards & multipliers!`;
+    if (draftValidBadge) {
+      draftValidBadge.className = 'pill-badge pill-green';
+      draftValidBadge.textContent = `VALID POST (${totalScore} PTS)`;
+    }
   } else {
     byxStatusPill.className = 'byx-status-pill subpar';
     byxStatusPill.textContent = `⚠️ SUBPAR (< 40 PTS)`;
     byxStatusDesc.textContent = `Post score is below 40. Enhance originality or depth with concrete data to qualify.`;
+    if (draftValidBadge) {
+      draftValidBadge.className = 'pill-badge pill-red';
+      draftValidBadge.textContent = `SUBPAR (< 40 PTS)`;
+    }
   }
 }
 
@@ -1773,12 +1817,56 @@ function applySelectedUniqueAngle() {
   showToast('💎 Unique Alpha applied! Returned to Draft & Rules to review suggestions & ByX Score.');
 }
 
+function setDraftViewMode(mode) {
+  if (mode === 'clean') {
+    if (draftCleanContent) draftCleanContent.classList.remove('hidden');
+    if (draftSuggestionsDisplay) draftSuggestionsDisplay.classList.add('hidden');
+    if (toggleDraftCleanBtn) toggleDraftCleanBtn.classList.add('active');
+    if (toggleDraftDiffBtn) toggleDraftDiffBtn.classList.remove('active');
+    if (draftViewBadge) draftViewBadge.textContent = '📄 Clean Final Post';
+  } else {
+    if (draftCleanContent) draftCleanContent.classList.add('hidden');
+    if (draftSuggestionsDisplay) draftSuggestionsDisplay.classList.remove('hidden');
+    if (toggleDraftCleanBtn) toggleDraftCleanBtn.classList.remove('active');
+    if (toggleDraftDiffBtn) toggleDraftDiffBtn.classList.add('active');
+    if (draftViewBadge) draftViewBadge.textContent = '🔍 Highlighted Rules & Suggestions';
+  }
+}
+
 // Setup Event Listeners
 function setupEvents() {
   // Tabs
   tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
   tabDraftBtn.addEventListener('click', () => switchTab('draft'));
   tabRawBtn.addEventListener('click', () => switchTab('raw'));
+
+  // Primary Draft Tab Main Copy Button (Ready to Post on ByX)
+  if (copyDraftMainBtn) {
+    copyDraftMainBtn.addEventListener('click', () => {
+      const textToCopy = (draftCleanContent && draftCleanContent.value) ? draftCleanContent.value : polishedContent.value;
+      copyCleanText(textToCopy, copyDraftMainBtn);
+    });
+  }
+
+  // Draft View Mode Switchers
+  if (toggleDraftCleanBtn) {
+    toggleDraftCleanBtn.addEventListener('click', () => setDraftViewMode('clean'));
+  }
+  if (toggleDraftDiffBtn) {
+    toggleDraftDiffBtn.addEventListener('click', () => setDraftViewMode('diff'));
+  }
+
+  if (draftCleanContent) {
+    draftCleanContent.addEventListener('input', (e) => {
+      const val = e.target.value;
+      polishedContent.value = val;
+      postsData[currentPostIndex].improved = val;
+      saveDataToStorage();
+      updateWordAndSentenceBadges(val);
+      renderUnderlinedView(val);
+      runAllDetectors(val);
+    });
+  }
 
   // View Mode Toggles
   togglePlainBtn.addEventListener('click', () => setViewMode('plain'));

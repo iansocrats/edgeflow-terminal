@@ -1873,6 +1873,105 @@ body {
   cursor: pointer;
 }
 
+/* Primary Draft Copy Bar & View Controls */
+.btn-copy-draft-main {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4) !important;
+}
+
+.draft-view-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.draft-badge-indicator {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--gold);
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* ByX Measurement Technology Breakdown Card */
+.byx-tech-breakdown-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tech-breakdown-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.tech-icon {
+  font-size: 0.9rem;
+}
+
+.tech-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+}
+
+.tech-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tech-item {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 2px solid var(--gold);
+  padding: 4px 8px;
+  border-radius: 0 4px 4px 0;
+}
+
+.tech-item-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.tech-dim-name {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.tech-engine-badge {
+  font-size: 0.56rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.tech-dim-desc {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  line-height: 1.35;
+  margin: 0;
+}
+
 /* Toast */
 .toast {
   position: fixed;
