@@ -4,13 +4,11 @@
 // Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
 // Rule 3: Emojis, Spacing & Bullet Points
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v6';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v7';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
 let currentDraftResult = null;
-let speechRecognizer = null;
-let isRecordingVoice = false;
 
 // DOM Elements
 const pillsContainer = document.getElementById('pillsContainer');
@@ -28,7 +26,6 @@ const navPositionIndicator = document.getElementById('navPositionIndicator');
 const currentDateBadge = document.getElementById('currentDateBadge');
 const toast = document.getElementById('toast');
 const toastMsg = document.getElementById('toastMsg');
-const micDictateBtn = document.getElementById('micDictateBtn');
 
 // 3 Tabs
 const tabPolishedBtn = document.getElementById('tabPolishedBtn');
@@ -1286,76 +1283,6 @@ function setupEvents() {
 }
 
 // --------------------------------------------------------------------------------
-// 🎙️ Live In-Browser Web Speech Recognition API
-// --------------------------------------------------------------------------------
-function setupVoiceDictation() {
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    if (micDictateBtn) {
-      micDictateBtn.title = 'Speech recognition not supported in this browser';
-      micDictateBtn.style.opacity = '0.5';
-    }
-    return;
-  }
-
-  speechRecognizer = new SpeechRecognition();
-  speechRecognizer.continuous = true;
-  speechRecognizer.interimResults = true;
-  speechRecognizer.lang = 'en-US';
-
-  speechRecognizer.onstart = () => {
-    isRecordingVoice = true;
-    micDictateBtn.classList.add('recording');
-    micDictateBtn.querySelector('.mic-status-text').textContent = 'Listening...';
-    showToast('🎙️ Listening... Speak naturally.');
-  };
-
-  speechRecognizer.onresult = (event) => {
-    let transcript = '';
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      transcript += event.results[i][0].transcript;
-    }
-    rawContent.value = (rawContent.value ? rawContent.value + ' ' : '') + transcript;
-    postsData[currentPostIndex].raw = rawContent.value;
-    saveDataToStorage();
-  };
-
-  speechRecognizer.onerror = (event) => {
-    console.warn('Speech recognition error:', event.error);
-    stopVoiceDictation();
-  };
-
-  speechRecognizer.onend = () => {
-    stopVoiceDictation();
-  };
-
-  if (micDictateBtn) {
-    micDictateBtn.addEventListener('click', toggleVoiceDictation);
-  }
-}
-
-function toggleVoiceDictation() {
-  if (isRecordingVoice) {
-    if (speechRecognizer) speechRecognizer.stop();
-    stopVoiceDictation();
-  } else {
-    try {
-      if (speechRecognizer) speechRecognizer.start();
-    } catch (err) {
-      console.warn('Recognition start error:', err);
-    }
-  }
-}
-
-function stopVoiceDictation() {
-  isRecordingVoice = false;
-  if (micDictateBtn) {
-    micDictateBtn.classList.remove('recording');
-    micDictateBtn.querySelector('.mic-status-text').textContent = 'Dictate';
-  }
-}
-
-// --------------------------------------------------------------------------------
 // Offline PWA Service Worker Registration
 // --------------------------------------------------------------------------------
 function registerServiceWorker() {
@@ -1369,6 +1296,5 @@ function registerServiceWorker() {
 // Start app
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
-  setupVoiceDictation();
   registerServiceWorker();
 });

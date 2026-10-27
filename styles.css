@@ -482,44 +482,6 @@ body {
 .pill-yellow { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
 .pill-purple { background: rgba(168, 85, 247, 0.15); color: var(--purple); }
 
-.header-dictate-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-mic-live {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #fca5a5;
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: all 0.15s ease;
-}
-
-.btn-mic-live:hover {
-  background: rgba(239, 68, 68, 0.25);
-  color: #fff;
-}
-
-.btn-mic-live.recording {
-  background: #ef4444;
-  color: #fff;
-  box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
-  animation: pulse-mic 1.2s infinite ease-in-out;
-}
-
-@keyframes pulse-mic {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
 .quick-copy-text {
   font-size: 0.68rem;
   color: var(--text-muted);
