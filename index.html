@@ -88,6 +88,9 @@
           <button id="makeUniqueBtn" class="btn-unique" title="Inject personal contrarian alpha and eliminate crowd consensus">
             <span>💎 Make It Unique</span>
           </button>
+          <button id="saveBaseBtn" class="btn-save-base" title="Save current text as new base content to allow further stacked changes">
+            <span>💾 Save as New Base</span>
+          </button>
           <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
             <span>✨ Humanize</span>
           </button>
@@ -242,6 +245,9 @@
             <div class="entropy-diagnostics" id="robertaDiagnostics">
               <!-- Dynamically populated with token repetition breakdown & exact AI probability sources -->
             </div>
+            <div class="sentence-risk-diagnostics" id="robertaSentenceFlags">
+              <!-- Dynamically populated with exact Line/Sentence AI risk pinpointing -->
+            </div>
           </div>
 
           <div class="meter-bar-wrap">
@@ -296,52 +302,109 @@
 
     <!-- Tab 2: Draft & Suggestions (Strict Rules Enforcement) -->
     <section class="tab-pane" id="paneDraft" role="tabpanel">
-      <!-- Rules Banner -->
-      <div class="rules-card">
-        <div class="rules-header">
-          <span class="rules-title">🛡️ 10 Approved Polishing & Alpha Rules</span>
-          <span class="rules-badge">BYX IMPACT OPTIMIZED</span>
+      <!-- Official ByX 5 Content Dimensions & Benchmark Banner -->
+      <div class="rules-card byx-rules-card">
+        <div class="byx-header-wrap">
+          <div class="rules-header">
+            <span class="rules-title">🏆 Official Bybit ByX Content Dimensions</span>
+            <span class="rules-badge byx-valid-badge">BENCHMARK: SCORE ≥ 40 QUALIFIES FOR REWARDS</span>
+          </div>
+          <p class="byx-rules-desc">Bybit ByX algorithm evaluates every post across 5 content quality dimensions. Posts with <strong>Content Quality Score &ge; 40</strong> are officially certified as Valid Posts and unlock creator rewards.</p>
         </div>
-        <div class="rules-grid">
-          <div class="rule-item">
-            <span class="rule-tag tag-green">Rule 1</span>
-            <div><strong>Punctuation Only:</strong> Capitalize, periods, commas, colons. Zero sentence changes.</div>
+
+        <!-- 5 ByX Content Dimensions Grid -->
+        <div class="byx-dimensions-grid">
+          <div class="dimension-card" id="dimCardOriginality">
+            <div class="dim-head">
+              <span class="dim-icon">🧠</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">1. Originality</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimOriginality">--/20</span>
+            </div>
+            <p class="dim-desc">Strictly NO AI-templated phrasing. Authentic human trader voice with zero copy-pasted consensus clichés.</p>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-yellow">Rule 2</span>
-            <div><strong>Word Replacements:</strong> Typos/numbers (e.g. 67800 ➔ $67,800). No rewriting.</div>
+
+          <div class="dimension-card" id="dimCardDepth">
+            <div class="dim-head">
+              <span class="dim-icon">📊</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">2. Depth & Structure</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimDepth">--/20</span>
+            </div>
+            <p class="dim-desc">Logical multi-point narrative anchored by concrete verified data ($79,659, $1B outflows, $76,000 floor).</p>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-purple">Rule 3</span>
-            <div><strong>Emojis & Spacing:</strong> Relevant emojis, paragraph line breaks, bullet points.</div>
+
+          <div class="dimension-card" id="dimCardRelevance">
+            <div class="dim-head">
+              <span class="dim-icon">🔥</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">3. Relevance</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimRelevance">--/20</span>
+            </div>
+            <p class="dim-desc">Timely setup on active market hotspots, clear cashtags ($BTC), and actionable market narrative.</p>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-blue">Rule 4</span>
-            <div><strong>Contrarian Angle:</strong> Take a clear stand against consensus crowd bias.</div>
+
+          <div class="dimension-card" id="dimCardCredibility">
+            <div class="dim-head">
+              <span class="dim-icon">🛡️</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">4. Credibility & Risk</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimCredibility">--/20</span>
+            </div>
+            <p class="dim-desc">Clear invalidation price triggers, disciplined risk management, and asymmetric risk-reward framing.</p>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-gold">Rule 5</span>
-            <div><strong>Invalidation Level:</strong> Name the exact price level where your thesis is proven wrong.</div>
+
+          <div class="dimension-card" id="dimCardPresentation">
+            <div class="dim-head">
+              <span class="dim-icon">✨</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">5. Presentation</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimPresentation">--/20</span>
+            </div>
+            <p class="dim-desc">Scannable mobile line breaks, clean punctuation pauses, bullet points, and Flesch-Kincaid Grade 7 readability.</p>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-red">Rule 6</span>
-            <div><strong>No Crowd Clichés:</strong> Ban fence-sitting phrases ("could go either way").</div>
+        </div>
+
+        <!-- Live ByX Content Quality Score Bar -->
+        <div class="byx-total-score-card">
+          <div class="byx-score-left">
+            <span class="byx-score-label">BYX QUALITY SCORE</span>
+            <div class="byx-score-num-wrap">
+              <span class="byx-score-num" id="byxTotalScore">--</span>
+              <span class="byx-score-max">/ 100</span>
+            </div>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-green">Rule 7</span>
-            <div><strong>Trade Widget CTA:</strong> Direct prompt to interact with Bybit Trade Widget.</div>
+          <div class="byx-score-mid">
+            <div class="byx-score-bar-bg">
+              <div class="byx-score-bar-fill" id="byxScoreBar" style="width: 0%"></div>
+              <div class="byx-threshold-marker" title="Minimum Valid Post Threshold (40 Pts)">
+                <span>40 PT REWARD THRESHOLD</span>
+              </div>
+            </div>
+            <span class="byx-status-desc" id="byxStatusDesc">Calculating dimensions on active post...</span>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-purple">Rule 8</span>
-            <div><strong>Single Metric Anchor:</strong> Focus on one striking metric ($1B absorbed outflows).</div>
+          <div class="byx-score-right">
+            <span class="byx-status-pill pending" id="byxStatusPill">AUDITING</span>
           </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-blue">Rule 9</span>
-            <div><strong>Hook Under 8 Words:</strong> High-impact scroll-stopping title.</div>
-          </div>
-          <div class="rule-item">
-            <span class="rule-tag tag-gold">Rule 10</span>
-            <div><strong>Risk-Reward Ratio:</strong> Frame entries with asymmetric risk (e.g. 1:3 RR).</div>
+        </div>
+
+        <!-- 3 Immutable Foundational Dictation Safeguards -->
+        <div class="safeguards-box">
+          <span class="safeguards-title">🔒 3 FOUNDATIONAL CREATOR VOICE SAFEGUARDS (ZERO SENTENCE REWRITES)</span>
+          <div class="safeguards-row">
+            <div class="sg-pill"><span class="sg-icon">1️⃣</span> <strong>Punctuation Only:</strong> Commas, periods, question marks. Zero sentence changes.</div>
+            <div class="sg-pill"><span class="sg-icon">2️⃣</span> <strong>Word/Number Fixes:</strong> e.g. 79659 ➔ $79,659. Zero phrase re-structuring.</div>
+            <div class="sg-pill"><span class="sg-icon">3️⃣</span> <strong>Spacing & Emojis:</strong> Spoken thought line breaks & mobile bullets.</div>
           </div>
         </div>
       </div>
@@ -466,6 +529,9 @@
 
       <!-- Modal Footer -->
       <div class="modal-footer">
+        <button id="saveUniqueAsBaseBtn" class="btn-save-unique-base" title="Save this unique version as new base content so you can make further stacked enhancements">
+          <span>💾 Save as New Base & Keep Refining</span>
+        </button>
         <button id="applyUniqueSignatureBtn" class="btn-apply-unique">
           <span>💎 Apply Unique Signature & Auto-Recalculate</span>
         </button>

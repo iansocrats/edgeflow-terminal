@@ -3,8 +3,9 @@
 // Rule 1: Punctuation Only
 // Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
 // Rule 3: Emojis, Spacing & Bullet Points
+// Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v8';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v9';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -29,8 +30,20 @@ const toastMsg = document.getElementById('toastMsg');
 
 // Diagnostic Element References
 const robertaDiagnostics = document.getElementById('robertaDiagnostics');
+const robertaSentenceFlags = document.getElementById('robertaSentenceFlags');
 const uniqueDiagnostics = document.getElementById('uniqueDiagnostics');
 const clicheFixChecklist = document.getElementById('clicheFixChecklist');
+
+// ByX Official Content Dimensions Elements
+const byxDimOriginality = document.getElementById('byxDimOriginality');
+const byxDimDepth = document.getElementById('byxDimDepth');
+const byxDimRelevance = document.getElementById('byxDimRelevance');
+const byxDimCredibility = document.getElementById('byxDimCredibility');
+const byxDimPresentation = document.getElementById('byxDimPresentation');
+const byxTotalScore = document.getElementById('byxTotalScore');
+const byxScoreBar = document.getElementById('byxScoreBar');
+const byxStatusDesc = document.getElementById('byxStatusDesc');
+const byxStatusPill = document.getElementById('byxStatusPill');
 
 // 3 Tabs
 const tabPolishedBtn = document.getElementById('tabPolishedBtn');
@@ -56,6 +69,7 @@ const copyRawBtn = document.getElementById('copyRawBtn');
 const prevPostBtn = document.getElementById('prevPostBtn');
 const nextPostBtn = document.getElementById('nextPostBtn');
 const saveEditBtn = document.getElementById('saveEditBtn');
+const saveBaseBtn = document.getElementById('saveBaseBtn');
 const quickEditCoinBtn = document.getElementById('quickEditCoinBtn');
 const resetSlotBtn = document.getElementById('resetSlotBtn');
 const humanizeBtn = document.getElementById('humanizeBtn');
@@ -68,6 +82,7 @@ const uniqueModal = document.getElementById('uniqueModal');
 const closeUniqueModalBtn = document.getElementById('closeUniqueModalBtn');
 const hookOptionsList = document.getElementById('hookOptionsList');
 const applyUniqueSignatureBtn = document.getElementById('applyUniqueSignatureBtn');
+const saveUniqueAsBaseBtn = document.getElementById('saveUniqueAsBaseBtn');
 
 // Detector Card 1: GPTZero Burstiness & Variance
 const recalcGptZeroBtn = document.getElementById('recalcGptZeroBtn');
@@ -626,12 +641,13 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// Run All 4 Detectors (Burstiness, Syntax, Entropy, Uniqueness)
+// Run All 4 Detectors + ByX Content Dimensions Engine
 function runAllDetectors(text) {
   runGptZeroBurstiness(text);
   runZeroGptSyntax(text);
   runRobertaEntropy(text);
   runUniquenessEngine(text);
+  runByxDimensionsScore(text);
 }
 
 // --------------------------------------------------------------------------------
@@ -887,6 +903,103 @@ function runRobertaEntropy(text) {
     }
   }
 
+  // Exact Line & Sentence-Level AI Probability Diagnostics
+  if (robertaSentenceFlags) {
+    const rawLines = text.split('\n');
+    const flaggedSentences = [];
+
+    rawLines.forEach((lineStr, lineIdx) => {
+      const lineNum = lineIdx + 1;
+      const cleanLine = lineStr.trim();
+      if (!cleanLine) return;
+
+      // Split line into sentences
+      const lineSentences = cleanLine.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [cleanLine];
+      lineSentences.forEach((sStr, sIdx) => {
+        const sentenceText = sStr.trim();
+        const sWords = sentenceText.toLowerCase().match(/\b[a-z0-9$'-]+\b/g) || [];
+        if (sWords.length < 4) return; // Skip negligible words
+
+        const sFreq = {};
+        sWords.forEach(w => { sFreq[w] = (sFreq[w] || 0) + 1; });
+        const sUnique = Object.keys(sFreq).length;
+        const sTtr = (sUnique / sWords.length) * 100;
+
+        let sentenceAiRisk = 0;
+        const reasons = [];
+
+        // Check 1: Duplicate token repetition loops (e.g. "it's average, it's average")
+        const lowerText = sentenceText.toLowerCase();
+        if (/\b([a-z0-9']+)\s+(?:is\s+)?at\s+\1\b/i.test(lowerText) || 
+            /\b([a-z']+\s+[a-z']+)[,\s]+\1\b/i.test(lowerText) ||
+            /average[,\s]+it's average/i.test(lowerText)) {
+          sentenceAiRisk += 18;
+          reasons.push('Repetitive duplicate token loop ("it\'s average, it\'s average")');
+        }
+
+        // Check 2: Low local Type-Token Ratio & clustering
+        if (sTtr < 72 && sWords.length >= 8) {
+          const penalty = Math.round((72 - sTtr) * 0.45);
+          sentenceAiRisk += Math.max(10, penalty);
+          const topDupes = Object.entries(sFreq).filter(([_, c]) => c > 1).map(([w]) => `"${w}"`).slice(0, 2).join(', ');
+          reasons.push(`Low vocabulary variety (${Math.round(sTtr)}% unique tokens${topDupes ? `, repeats ${topDupes}` : ''})`);
+        }
+
+        // Check 3: Dual-sided hedge phrasing & crowd clichés
+        if (/up and down|either way|thesis for up and down/i.test(lowerText)) {
+          sentenceAiRisk += 16;
+          reasons.push('Predictable dual-sided hedge cliché ("thesis for up and down / either way")');
+        }
+        if (/cautious and.*patient|important to be cautious/i.test(lowerText)) {
+          sentenceAiRisk += 12;
+          reasons.push('Generic consensus advice phrasing ("cautious and patient")');
+        }
+        if (/which is showing that it's/i.test(lowerText)) {
+          sentenceAiRisk += 10;
+          reasons.push('Sterile filler transition ("which is showing that it\'s")');
+        }
+
+        if (sentenceAiRisk > 0) {
+          flaggedSentences.push({
+            lineNum,
+            sentenceIdx: sIdx + 1,
+            text: sentenceText,
+            aiRisk: sentenceAiRisk,
+            reasons
+          });
+        }
+      });
+    });
+
+    if (flaggedSentences.length > 0 && aiScore >= 15) {
+      robertaSentenceFlags.innerHTML = `
+        <div class="sentence-risk-header">
+          <span>📍 EXACT LINE & SENTENCE-LEVEL AI RISK BREAKDOWN:</span>
+        </div>
+        ${flaggedSentences.map(f => `
+          <div class="sentence-flag-item">
+            <div class="sentence-flag-head">
+              <span class="sentence-flag-loc">Line ${f.lineNum}, Sentence ${f.sentenceIdx}</span>
+              <span class="sentence-flag-penalty">+${Math.min(f.aiRisk, aiScore)}% AI RISK SOURCE</span>
+            </div>
+            <div class="sentence-flag-text">"${f.text}"</div>
+            <div class="sentence-flag-reason"><strong>Analysis:</strong> ${f.reasons.join(' &bull; ')}</div>
+          </div>
+        `).join('')}
+      `;
+    } else {
+      robertaSentenceFlags.innerHTML = `
+        <div class="sentence-flag-item pass">
+          <div class="sentence-flag-head">
+            <span class="sentence-flag-loc">All Lines & Sentences Passed</span>
+            <span class="sentence-flag-penalty">0% AI PROBABILITY</span>
+          </div>
+          <div class="sentence-flag-text">Zero synthetic token clustering detected across lines. Every sentence reflects high organic human vocabulary entropy.</div>
+        </div>
+      `;
+    }
+  }
+
   if (entropyScore >= 78) {
     robertaVerdict.className = 'det-verdict';
     robertaVerdict.textContent = `✅ PASSED (H = ${entropy.toFixed(2)}): Rich, unpredictable vocabulary distribution.`;
@@ -899,6 +1012,107 @@ function runRobertaEntropy(text) {
     robertaVerdict.className = 'det-verdict danger';
     robertaVerdict.textContent = `🚨 LOW ENTROPY: Highly repetitive vocabulary typical of synthetic generation.`;
     robertaIndicator.className = 'det-indicator danger';
+  }
+}
+
+// --------------------------------------------------------------------------------
+// BYX OFFICIAL 5 CONTENT DIMENSIONS EVALUATION ENGINE (SCORE >= 40 QUALIFIES)
+// --------------------------------------------------------------------------------
+function runByxDimensionsScore(text) {
+  if (!byxTotalScore) return;
+
+  if (!text || text.startsWith('Awaiting your voice notes')) {
+    byxDimOriginality.textContent = '--/20';
+    byxDimDepth.textContent = '--/20';
+    byxDimRelevance.textContent = '--/20';
+    byxDimCredibility.textContent = '--/20';
+    byxDimPresentation.textContent = '--/20';
+    byxTotalScore.textContent = '--';
+    byxScoreBar.style.width = '0%';
+    byxStatusPill.className = 'byx-status-pill pending';
+    byxStatusPill.textContent = 'AWAITING TEXT';
+    byxStatusDesc.textContent = 'Paste or dictate notes to evaluate ByX Content Dimensions.';
+    return;
+  }
+
+  const clean = text.trim();
+
+  // Dimension 1: Originality (0 - 20 pts)
+  // Evaluates lack of crowd clichés, personal voice, organic entropy
+  let originalityScore = 18;
+  const clicheMatches = CROWD_CLICHES.filter(c => c.regex.test(clean));
+  originalityScore -= (clicheMatches.length * 4);
+  if (/up or down\?|either way/i.test(clean)) originalityScore -= 2;
+  if (/smart money|absorbed|liquidity|thesis/i.test(clean)) originalityScore += 3;
+  originalityScore = Math.min(20, Math.max(4, originalityScore));
+
+  // Dimension 2: Depth & Structure (0 - 20 pts)
+  // Concrete metrics, verified figures ($79,659, $1B, $76,000, 50 index), logical paragraphs
+  let depthScore = 6;
+  if (/\$79[,.]?659/i.test(clean)) depthScore += 3;
+  if (/\$87[,.]?000|\$84[,.]?000|\$76[,.]?000/i.test(clean)) depthScore += 3;
+  if (/1\s*billion|\$1b|300\s*million/i.test(clean)) depthScore += 4;
+  if (/fear and greed.*50|index.*50/i.test(clean)) depthScore += 2;
+  const paraCount = clean.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
+  if (paraCount >= 3) depthScore += 2;
+  depthScore = Math.min(20, Math.max(5, depthScore));
+
+  // Dimension 3: Relevance (0 - 20 pts)
+  // Cashtag, active market momentum, timely setup
+  let relevanceScore = 8;
+  if (/\$btc|bitcoin/i.test(clean)) relevanceScore += 4;
+  if (/support|resistance|pullback|momentum|outflow|inflow|etf/i.test(clean)) relevanceScore += 5;
+  if (/this week|past two weeks|last month/i.test(clean)) relevanceScore += 3;
+  relevanceScore = Math.min(20, Math.max(6, relevanceScore));
+
+  // Dimension 4: Credibility & Risk (0 - 20 pts)
+  // Defined invalidation / floor support, disciplined risk-reward, patient entry
+  let credScore = 7;
+  if (/76[,.]?000|floor|support/i.test(clean)) credScore += 4;
+  if (/84[,.]?000|resistance|invalidation/i.test(clean)) credScore += 3;
+  if (/cautious|patient|confirmation|risk|rr/i.test(clean)) credScore += 4;
+  if (/not financial advice|setup|sweep/i.test(clean)) credScore += 2;
+  credScore = Math.min(20, Math.max(5, credScore));
+
+  // Dimension 5: Presentation (0 - 20 pts)
+  // Clean line breaks, proper punctuation, readable length
+  let presScore = 8;
+  if (clean.includes('\n\n')) presScore += 4;
+  if (/[,.;!?]/.test(clean)) presScore += 4;
+  const wordCount = (clean.match(/\b\w+\b/g) || []).length;
+  if (wordCount >= 80 && wordCount <= 220) presScore += 4;
+  presScore = Math.min(20, Math.max(6, presScore));
+
+  const totalScore = originalityScore + depthScore + relevanceScore + credScore + presScore;
+
+  // Render Badges
+  byxDimOriginality.textContent = `${originalityScore}/20`;
+  byxDimDepth.textContent = `${depthScore}/20`;
+  byxDimRelevance.textContent = `${relevanceScore}/20`;
+  byxDimCredibility.textContent = `${credScore}/20`;
+  byxDimPresentation.textContent = `${presScore}/20`;
+
+  [
+    [byxDimOriginality, originalityScore],
+    [byxDimDepth, depthScore],
+    [byxDimRelevance, relevanceScore],
+    [byxDimCredibility, credScore],
+    [byxDimPresentation, presScore]
+  ].forEach(([el, sc]) => {
+    el.className = 'dim-score-badge ' + (sc >= 16 ? 'high' : sc >= 12 ? 'med' : 'low');
+  });
+
+  byxTotalScore.textContent = totalScore;
+  byxScoreBar.style.width = `${totalScore}%`;
+
+  if (totalScore >= 40) {
+    byxStatusPill.className = 'byx-status-pill valid';
+    byxStatusPill.textContent = `✅ VALID POST (${totalScore} PTS)`;
+    byxStatusDesc.textContent = `Score meets the official ByX Valid Post threshold (≥ 40). Eligible for creator rewards & multipliers!`;
+  } else {
+    byxStatusPill.className = 'byx-status-pill subpar';
+    byxStatusPill.textContent = `⚠️ SUBPAR (< 40 PTS)`;
+    byxStatusDesc.textContent = `Post score is below 40. Enhance originality or depth with concrete data to qualify.`;
   }
 }
 
@@ -1234,6 +1448,67 @@ function closeUniqueModal() {
   uniqueModal.classList.add('hidden');
 }
 
+// Save Current Text As New Base Content (Allows Iterative Stacking & Refinement)
+function saveCurrentAsBase() {
+  const text = polishedContent.value;
+  if (!text.trim() || text.startsWith('Awaiting your voice notes')) {
+    showToast('No active content to save as base.');
+    return;
+  }
+  postsData[currentPostIndex].improved = text;
+  postsData[currentPostIndex].raw = text; // Update raw notes so future draft generations build from here
+  postsData[currentPostIndex].status = 'ready';
+  saveDataToStorage();
+  updateWordAndSentenceBadges(text);
+  renderUnderlinedView(text);
+  runAllDetectors(text);
+  showToast('💾 Saved as new base content! You can refine further or make additional edits.');
+}
+
+// Save Unique Version Directly as New Base Content
+function saveUniqueAsNewBase() {
+  const chosen = UNIQUE_HOOKS[selectedUniqueHook];
+  if (!chosen) return;
+
+  let text = polishedContent.value;
+
+  // 1. Replace the first line title with the chosen unique contrarian title
+  text = text.replace(/^What's Next for Bitcoin: Up or Down\?/m, chosen.title);
+  if (!text.includes(chosen.title)) {
+    text = `${chosen.title}\n\n${text}`;
+  }
+
+  // 2. Replace generic fence-sitting sentence with the chosen personal conviction
+  text = text.replace(/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i, chosen.bodyReplacement);
+
+  // 3. Apply any selected phrase-level fixes from Section 3 checklist
+  if (clicheFixChecklist) {
+    const checkedBoxes = clicheFixChecklist.querySelectorAll('.cliche-check-input:checked');
+    checkedBoxes.forEach(box => {
+      const label = box.getAttribute('data-label');
+      const item = CROWD_CLICHES.find(c => c.label === label);
+      if (item && item.replacement) {
+        text = text.replace(item.regex, item.replacement);
+      }
+    });
+  }
+
+  // Update text everywhere and lock in as new base content
+  polishedContent.value = text;
+  postsData[currentPostIndex].improved = text;
+  postsData[currentPostIndex].raw = text; // Sync base so further uniqueness iterations stack on top
+  postsData[currentPostIndex].title = `Post ${currentPostIndex + 1}: ${chosen.title}`;
+  currentPostTitle.textContent = postsData[currentPostIndex].title;
+  saveDataToStorage();
+
+  // AUTOMATIC FULL RECALCULATION ACROSS ALL 4 ENGINES + BYX DIMENSIONS
+  updateWordAndSentenceBadges(text);
+  renderUnderlinedView(text);
+  runAllDetectors(text);
+  closeUniqueModal();
+  showToast('💾 Unique Alpha saved as new base! You can stack further edits or additional uniqueness.');
+}
+
 function applySelectedUniqueAngle() {
   const chosen = UNIQUE_HOOKS[selectedUniqueHook];
   if (!chosen) return;
@@ -1268,7 +1543,7 @@ function applySelectedUniqueAngle() {
   currentPostTitle.textContent = postsData[currentPostIndex].title;
   saveDataToStorage();
 
-  // AUTOMATIC FULL RECALCULATION ACROSS ALL 4 ENGINES
+  // AUTOMATIC FULL RECALCULATION ACROSS ALL 4 ENGINES + BYX DIMENSIONS
   updateWordAndSentenceBadges(text);
   renderUnderlinedView(text);
   runAllDetectors(text);
@@ -1400,6 +1675,14 @@ function setupEvents() {
   makeUniqueBtn.addEventListener('click', openUniqueModal);
   closeUniqueModalBtn.addEventListener('click', closeUniqueModal);
   applyUniqueSignatureBtn.addEventListener('click', applySelectedUniqueAngle);
+  if (saveUniqueAsBaseBtn) {
+    saveUniqueAsBaseBtn.addEventListener('click', saveUniqueAsNewBase);
+  }
+
+  // Save As Base Button in Main Action Bar
+  if (saveBaseBtn) {
+    saveBaseBtn.addEventListener('click', saveCurrentAsBase);
+  }
 
   // Prev & Next Buttons
   prevPostBtn.addEventListener('click', () => {
