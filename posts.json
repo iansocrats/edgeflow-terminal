@@ -47,13 +47,30 @@
   },
   {
     "id": 3,
-    "coin": "+ New Coin",
-    "title": "Post 3: Ready for Today's Dictation",
-    "status": "waiting",
-    "raw": "",
-    "improved": "Awaiting your voice notes for Post 3...",
-    "rules_summary": { "punctuation_count": 0, "word_replacement_count": 0, "emoji_spacing_count": 0 },
-    "suggestions": []
+    "coin": "$ETH",
+    "title": "Post 3: 🔷 The $2,850 ETH/BTC Capitulation Floor: Why Ethereum Is Primed for an Asymmetric Short Squeeze",
+    "status": "ready",
+    "raw": "ethereum is trading at 2874 and everyone on the timeline is completely bearish saying the eth btc ratio is dead at 0.036 but when you look at the bybit derivatives open interest funding has turned deeply negative while spot orderflow is absorbing every single dip into the 2850 support shelf if bitcoin holds its 79000 level any relief bounce will trigger an aggressive short squeeze on eth the primary invalidation for this setup is a clean 4 hour close below 2780 while the immediate upside liquidity target sits at 3150 traders need to monitor the 15m orderflow delta before entering rather than blindly chasing green candles",
+    "improved": "🔷 The $2,850 ETH/BTC Capitulation Floor: Why Ethereum Is Primed for an Asymmetric Short Squeeze\n\nEthereum is changing hands at $2,874, with sentiment hitting cycle-low pessimism as the ETH/BTC ratio hovers near 0.036. Yet beneath the bearish noise, Bybit derivatives positioning reveals heavily crowded shorts paying negative funding, while spot limit bids quietly defend the $2,850 liquidity shelf.\n\nIf Bitcoin preserves its $79,000 baseline, any upside impulse could trigger a rapid short squeeze across high-beta alts:\n• Structural invalidation sits strictly at a 4-hour close below $2,780.\n• The primary upside liquidity target aligns with the unfilled supply wick at $3,150.\n\nRather than chasing momentum wicks, disciplined execution requires waiting for orderflow delta confirmation on the 15m chart. With asymmetric risk tilted toward mean reversion, protecting capital at the $2,780 boundary remains paramount.",
+    "rules_summary": {
+      "punctuation_count": 12,
+      "word_replacement_count": 6,
+      "emoji_spacing_count": 5
+    },
+    "suggestions": [
+      {
+        "category": "punct",
+        "description": "Added natural pauses around key levels ($2,874, 0.036, $79,000)."
+      },
+      {
+        "category": "word",
+        "description": "Standardized price numbers (2874 ➔ $2,874, 2850 ➔ $2,850, 2780 ➔ $2,780, 3150 ➔ $3,150)."
+      },
+      {
+        "category": "spacing",
+        "description": "Separated invalidation and target parameters into clear bullet points."
+      }
+    ]
   },
   {
     "id": 4,

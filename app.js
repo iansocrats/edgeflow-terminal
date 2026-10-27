@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v17';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v18';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -289,6 +289,9 @@ async function loadPostsData() {
           }
           if (postsData[1] && serverPosts[1] && (!postsData[1].raw || postsData[1].status === 'waiting' || (postsData[1].improved && postsData[1].improved.includes("Gold is really interesting. As we speak, the price is below $4,000")))) {
             postsData[1] = serverPosts[1];
+          }
+          if (postsData[2] && serverPosts[2] && (!postsData[2].raw || postsData[2].status === 'waiting' || !postsData[2].improved || postsData[2].improved.startsWith("Awaiting"))) {
+            postsData[2] = serverPosts[2];
           }
         }
       }
@@ -716,7 +719,8 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'breakout', 'scalp', 'bias', 'cluster', 'trader', 'sfp', 'cvd', 'outflows',
   'inflows', 'etf', 'institutional', 'consolidation', 'neutrality', 'continuation',
   'rejection', 'distribution', 'accumulation', 'retest', 'volatility', 'chop',
-  'gold', 'paxg', 'ounce', 'cfds', 'macroeconomics', 'bullion', 'catalyst', 'sovereign'
+  'gold', 'paxg', 'ounce', 'cfds', 'macroeconomics', 'bullion', 'catalyst', 'sovereign',
+  'ethereum', 'eth', 'squeeze', 'derivatives', 'funding', 'reversion'
 ]);
 
 function runGltrPredictability(text) {
