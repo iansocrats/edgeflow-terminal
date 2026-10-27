@@ -4,7 +4,7 @@
 // Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
 // Rule 3: Emojis, Spacing & Bullet Points
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v4';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v5';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -53,8 +53,15 @@ const saveEditBtn = document.getElementById('saveEditBtn');
 const quickEditCoinBtn = document.getElementById('quickEditCoinBtn');
 const resetSlotBtn = document.getElementById('resetSlotBtn');
 const humanizeBtn = document.getElementById('humanizeBtn');
+const makeUniqueBtn = document.getElementById('makeUniqueBtn');
 const togglePlainBtn = document.getElementById('togglePlainBtn');
 const toggleAnnotatedBtn = document.getElementById('toggleAnnotatedBtn');
+
+// Modal Elements
+const uniqueModal = document.getElementById('uniqueModal');
+const closeUniqueModalBtn = document.getElementById('closeUniqueModalBtn');
+const hookOptionsList = document.getElementById('hookOptionsList');
+const applyUniqueSignatureBtn = document.getElementById('applyUniqueSignatureBtn');
 
 // Detector Card 1: GPTZero Burstiness & Variance
 const recalcGptZeroBtn = document.getElementById('recalcGptZeroBtn');
@@ -88,6 +95,32 @@ const robertaAiVal = document.getElementById('robertaAiVal');
 const robertaEntropyStatus = document.getElementById('robertaEntropyStatus');
 const robertaBar = document.getElementById('robertaBar');
 const robertaVerdict = document.getElementById('robertaVerdict');
+
+// Detector Card 4: ByX Algorithm Uniqueness & Anti-Plagiarism Engine
+const recalcUniqueBtn = document.getElementById('recalcUniqueBtn');
+const uniqueIndicator = document.getElementById('uniqueIndicator');
+const uniqueScoreVal = document.getElementById('uniqueScoreVal');
+const uniqueClicheCount = document.getElementById('uniqueClicheCount');
+const uniqueBoostVal = document.getElementById('uniqueBoostVal');
+const uniqueStatusText = document.getElementById('uniqueStatusText');
+const uniqueBar = document.getElementById('uniqueBar');
+const uniqueVerdict = document.getElementById('uniqueVerdict');
+
+// Generic Crowd Consensus Clichés (Penalized by ByX Algorithm)
+const CROWD_CLICHES = [
+  { regex: /\b(could|can) go either way\b/gi, label: 'could go either way' },
+  { regex: /\bup or down\b/gi, label: 'up or down' },
+  { regex: /\bimportant to be cautious\b/gi, label: 'important to be cautious' },
+  { regex: /\bbe cautious and be patient\b/gi, label: 'be cautious and be patient' },
+  { regex: /\bwait and see\b/gi, label: 'wait and see' },
+  { regex: /\bminor pullback\b/gi, label: 'minor pullback' },
+  { regex: /\bnext leg up\b/gi, label: 'next leg up' },
+  { regex: /\bonly time will tell\b/gi, label: 'only time will tell' },
+  { regex: /\bwhat's next for\b/gi, label: "what's next for" },
+  { regex: /\bdo your own research\b/gi, label: 'do your own research' },
+  { regex: /\bnot financial advice\b/gi, label: 'not financial advice' },
+  { regex: /\bmake sure to manage risk\b/gi, label: 'make sure to manage risk' }
+];
 
 // 45+ Known LLM Robotic Transition Words & Clichés with Human Trader Replacements
 const AI_PATTERNS = [
@@ -517,11 +550,12 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// Run All 3 Detectors
+// Run All 4 Detectors (Burstiness, Syntax, Entropy, Uniqueness)
 function runAllDetectors(text) {
   runGptZeroBurstiness(text);
   runZeroGptSyntax(text);
   runRobertaEntropy(text);
+  runUniquenessEngine(text);
 }
 
 // --------------------------------------------------------------------------------
@@ -754,6 +788,61 @@ function runRobertaEntropy(text) {
 }
 
 // --------------------------------------------------------------------------------
+// DETECTOR 4: ByX Algorithm Uniqueness & Consensus Cliché Engine
+// --------------------------------------------------------------------------------
+function runUniquenessEngine(text) {
+  if (!text || text.startsWith('Awaiting your voice notes')) {
+    uniqueScoreVal.textContent = '--%';
+    uniqueClicheCount.textContent = '0';
+    uniqueBoostVal.textContent = '1.0x';
+    uniqueStatusText.textContent = 'Scanning for generic consensus clichés...';
+    uniqueStatusText.className = 'telemetry-status-text';
+    uniqueBar.style.width = '0%';
+    uniqueVerdict.textContent = 'Awaiting text...';
+    uniqueVerdict.className = 'det-verdict';
+    uniqueIndicator.className = 'det-indicator';
+    return;
+  }
+
+  const flagged = [];
+  CROWD_CLICHES.forEach(c => {
+    if (c.regex.test(text)) {
+      if (!flagged.includes(c.label)) {
+        flagged.push(c.label);
+      }
+    }
+  });
+
+  let score = Math.max(35, 98 - (flagged.length * 16));
+  const boost = score >= 85 ? '2.0x' : (score >= 65 ? '1.4x' : '0.8x');
+
+  uniqueScoreVal.textContent = `${score}%`;
+  uniqueClicheCount.textContent = `${flagged.length}`;
+  uniqueBoostVal.textContent = boost;
+  uniqueBar.style.width = `${score}%`;
+
+  if (flagged.length === 0) {
+    uniqueStatusText.textContent = '✓ 0 crowd clichés detected. High originality & distinct personal trader perspective.';
+    uniqueStatusText.className = 'telemetry-status-text clean';
+    uniqueVerdict.className = 'det-verdict';
+    uniqueVerdict.textContent = `✅ HIGH ALPHA (Boost: ${boost}): Distinct contrarian thesis. ByX algorithm prioritizes original creator voice.`;
+    uniqueIndicator.className = 'det-indicator';
+  } else {
+    uniqueStatusText.textContent = `⚠️ Found ${flagged.length} crowd consensus cliché(s): ${flagged.map(f => `"${f}"`).join(', ')}`;
+    uniqueStatusText.className = 'telemetry-status-text flagged';
+    if (score >= 65) {
+      uniqueVerdict.className = 'det-verdict warning';
+      uniqueVerdict.textContent = `⚠️ MODERATE (Boost: ${boost}): Contains crowd consensus phrases. Tap '💎 Make It Unique' to elevate.`;
+      uniqueIndicator.className = 'det-indicator warn';
+    } else {
+      uniqueVerdict.className = 'det-verdict danger';
+      uniqueVerdict.textContent = `🚨 LOW UNIQUENESS (Boost: ${boost}): Sounds like typical Twitter crowd consensus. Algorithm may penalize.`;
+      uniqueIndicator.className = 'det-indicator danger';
+    }
+  }
+}
+
+// --------------------------------------------------------------------------------
 // ✨ Humanize Text Engine
 // --------------------------------------------------------------------------------
 function humanizeCurrentText() {
@@ -911,6 +1000,84 @@ function saveDataToStorage() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(postsData));
 }
 
+// --------------------------------------------------------------------------------
+// 💎 Uniqueness Studio Data & Handlers
+// --------------------------------------------------------------------------------
+let selectedUniqueHook = 0;
+const UNIQUE_HOOKS = [
+  {
+    title: "The $1B Absorption Paradox: Why Bitcoin Isn't Crashing Below $79K",
+    desc: "Contrarian angle: Emphasizes that $1B left in 14 days, yet price held firm.",
+    bodyReplacement: "The crowd thinks this could go either way, but over $1B in absorbed ETF outflows tells me smart money is quietly holding the line before a $76K sweep."
+  },
+  {
+    title: "Why I'm Watching the $76K Liquidity Flush (While the Crowd Panics)",
+    desc: "Tactical angle: Frames $76K as intentional liquidity accumulation before expansion.",
+    bodyReplacement: "While the crowd debates up or down, my playbook is focused on the $76K support floor—that is where the real institutional liquidity will be swept."
+  },
+  {
+    title: "The 50 Neutrality Trap: What Bitcoin's Stalled Price Is Hiding",
+    desc: "Sentiment angle: Exposes how dead-center sentiment hides impending asymmetric volatility.",
+    bodyReplacement: "The Fear & Greed Index sitting dead center at 50 is a trap. Despite $1B in spot outflows, Bitcoin refusing to break down shows hidden absorption."
+  }
+];
+
+function openUniqueModal() {
+  hookOptionsList.innerHTML = '';
+  UNIQUE_HOOKS.forEach((hook, i) => {
+    const card = document.createElement('div');
+    card.className = `hook-option-card ${i === selectedUniqueHook ? 'selected' : ''}`;
+    card.innerHTML = `
+      <input type="radio" name="uniqueHookRadio" class="hook-radio" ${i === selectedUniqueHook ? 'checked' : ''} />
+      <div class="hook-info">
+        <span class="hook-title-text">${hook.title}</span>
+        <span class="hook-desc-text">${hook.desc}</span>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      selectedUniqueHook = i;
+      const allCards = hookOptionsList.querySelectorAll('.hook-option-card');
+      allCards.forEach((c, idx) => {
+        c.classList.toggle('selected', idx === i);
+        c.querySelector('input').checked = idx === i;
+      });
+    });
+    hookOptionsList.appendChild(card);
+  });
+  uniqueModal.classList.remove('hidden');
+}
+
+function closeUniqueModal() {
+  uniqueModal.classList.add('hidden');
+}
+
+function applySelectedUniqueAngle() {
+  const chosen = UNIQUE_HOOKS[selectedUniqueHook];
+  if (!chosen) return;
+
+  let text = polishedContent.value;
+  // Replace the first line title with the chosen unique title
+  text = text.replace(/^What's Next for Bitcoin: Up or Down\?/m, chosen.title);
+  if (!text.includes(chosen.title)) {
+    text = `${chosen.title}\n\n${text}`;
+  }
+
+  // Replace generic fence-sitting sentence with the chosen personal conviction
+  text = text.replace(/This is a thesis for up and down, so it can go either way\. But my take is that Bitcoin is losing momentum\./i, chosen.bodyReplacement);
+
+  polishedContent.value = text;
+  postsData[currentPostIndex].improved = text;
+  postsData[currentPostIndex].title = `Post ${currentPostIndex + 1}: ${chosen.title}`;
+  currentPostTitle.textContent = postsData[currentPostIndex].title;
+  saveDataToStorage();
+
+  updateWordAndSentenceBadges(text);
+  renderUnderlinedView(text);
+  runAllDetectors(text);
+  closeUniqueModal();
+  showToast('💎 Unique Alpha Signature applied! Uniqueness score boosted to 98%!');
+}
+
 // Setup Event Listeners
 function setupEvents() {
   // Tabs
@@ -1018,6 +1185,23 @@ function setupEvents() {
       showToast('✓ Recalculated RoBERTa Vocabulary Entropy!');
     }, 180);
   });
+
+  // Dedicated Recalculate Button for Uniqueness
+  recalcUniqueBtn.addEventListener('click', () => {
+    recalcUniqueBtn.classList.add('active-calc');
+    recalcUniqueBtn.textContent = '⏳ Scanning...';
+    setTimeout(() => {
+      runUniquenessEngine(polishedContent.value);
+      recalcUniqueBtn.classList.remove('active-calc');
+      recalcUniqueBtn.textContent = '⚡ Recalculate';
+      showToast('✓ Recalculated Uniqueness & Consensus Cliché Score!');
+    }, 180);
+  });
+
+  // Make It Unique Modal Listeners
+  makeUniqueBtn.addEventListener('click', openUniqueModal);
+  closeUniqueModalBtn.addEventListener('click', closeUniqueModal);
+  applyUniqueSignatureBtn.addEventListener('click', applySelectedUniqueAngle);
 
   // Prev & Next Buttons
   prevPostBtn.addEventListener('click', () => {

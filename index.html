@@ -82,9 +82,14 @@
 
       <!-- Clean Minimalist Action Bar -->
       <div class="polish-action-bar">
-        <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
-          <span>✨ Humanize This Text</span>
-        </button>
+        <div class="action-btn-group">
+          <button id="makeUniqueBtn" class="btn-unique" title="Inject personal contrarian alpha and eliminate crowd consensus">
+            <span>💎 Make It Unique</span>
+          </button>
+          <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
+            <span>✨ Humanize</span>
+          </button>
+        </div>
         <div class="view-toggle-wrap">
           <button id="togglePlainBtn" class="btn-view-toggle active" data-view="plain">📄 Plain Text (No Highlights)</button>
           <button id="toggleAnnotatedBtn" class="btn-view-toggle" data-view="annotated">🔍 Underlined Issues</button>
@@ -238,6 +243,45 @@
           </div>
           <div class="det-verdict" id="robertaVerdict">Ready to calculate.</div>
         </div>
+
+        <!-- Card 4: ByX Algorithm Uniqueness & Consensus Cliché Engine -->
+        <div class="detector-card" id="cardUniqueness">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="uniqueIndicator"></span>
+              <h4>ByX Algorithm Uniqueness & Anti-Plagiarism Engine</h4>
+            </div>
+            <button class="btn-det-action" id="recalcUniqueBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Detects common consensus clichés ("could go either way", "be cautious") and calculates your post's distinctive personal alpha score.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">UNIQUENESS SCORE</span>
+              <span class="metric-val real" id="uniqueScoreVal">--%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">CROWD CLICHÉS</span>
+              <span class="metric-val fake" id="uniqueClicheCount">0</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">ALGORITHM BOOST</span>
+              <span class="metric-val real" id="uniqueBoostVal">1.0x</span>
+            </div>
+          </div>
+
+          <!-- Live Cliché Scan Telemetry -->
+          <div class="math-telemetry-box" id="uniqueTelemetry">
+            <div class="telemetry-status-text" id="uniqueStatusText">
+              Scanning for generic consensus clichés...
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="uniqueBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="uniqueVerdict">Ready to calculate.</div>
+        </div>
       </section>
     </main>
 
@@ -332,6 +376,54 @@
         <span>💡 <strong>Live Verification:</strong> Change any word in the text and click <strong>⚡ Recalculate</strong> to watch the live mathematical variance and scores recalculate immediately!</span>
       </div>
     </footer>
+  </div>
+
+  <!-- Uniqueness Studio Modal -->
+  <div id="uniqueModal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-brand">
+          <span class="modal-icon">💎</span>
+          <h3>Make Post Unique (Alpha Engine)</h3>
+        </div>
+        <button id="closeUniqueModalBtn" class="btn-close-modal">✕</button>
+      </div>
+
+      <p class="modal-sub">
+        Transform generic consensus text into your distinct trader signature. The ByX algorithm heavily rewards unique contrarian perspectives and penalizes copy-paste crowd posts.
+      </p>
+
+      <!-- Section 1: Distinctive Hook Selector -->
+      <div class="unique-section">
+        <label class="section-label">1. CHOOSE A CAPTIVATING CONTRARIAN TITLE</label>
+        <div class="hook-options-list" id="hookOptionsList">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section 2: Personal Contrarian Angle -->
+      <div class="unique-section">
+        <label class="section-label">2. YOUR PERSONAL TRADER PERSPECTIVE</label>
+        <p class="section-hint">Replaces generic crowd fence-sitting with your authentic trader conviction:</p>
+        <div class="contrast-box">
+          <div class="contrast-row generic">
+            <span class="tag-red">Crowd Consensus (Generic):</span>
+            <span>"This is a thesis for up and down, so it can go either way... be cautious and be patient."</span>
+          </div>
+          <div class="contrast-row unique">
+            <span class="tag-green">Your Unique Alpha Angle:</span>
+            <span>"The crowd sees a 50/50 toss-up, but over $1B in absorbed outflows tells me smart money is quietly accumulating the $76K sweep."</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button id="applyUniqueSignatureBtn" class="btn-apply-unique">
+          <span>💎 Apply Unique Signature to Post</span>
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Notification Toast -->
