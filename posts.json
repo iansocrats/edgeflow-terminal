@@ -2,41 +2,23 @@
   {
     "id": 1,
     "coin": "$BTC",
-    "title": "Post 1: $BTC $79.6K Shorting Setup & ETF Outflows",
+    "title": "Post 1: What's Next for Bitcoin: Up or Down?",
     "status": "ready",
-    "raw": "Bitcoin is currently at $79,659, down from last month's high of $87,000. Next resistance is at $84,000, current level is the support, while next floor support is $76,000. For the ETFs, last week's inflow was 300 million while outflow was over 1 billion in the past two weeks, and Bitcoin hasn't really moved this week. Fear and greed index is standing at 50. My prediction is since the current level is at $79,659, Bitcoin is looking to further dump and go to the next support floor at $76,000. This is a setup for shorting with targets around 78,000 to 76,000 to 74,000.",
-    "improved": "📊 Bitcoin is currently at $79,659, down from last month's high of $87,000.\n\nKey levels:\n• Next resistance: $84,000\n• Current support: $79,659\n• Next floor support: $76,000\n\nInstitutional flows & sentiment:\n• ETFs: Inflow was $300M while outflow topped $1B over the past two weeks, yet Bitcoin hasn't really moved this week.\n• Fear and Greed index is standing at 50.\n\n📉 Shorting setup:\nSince the current level is at $79,659, Bitcoin is looking to further dump to the next support floor at $76,000.\n🎯 Targets: $78,000 → $76,000 → $74,000.",
+    "raw": "What's Next for Bitcoin: Up or Down?\n\nBitcoin is currently trading at this price, which is at $79,659, and it's now down from last month's $87,000. But where is Bitcoin heading? This is a thesis for up and down, so it can go either way. But my take is that Bitcoin is losing momentum. For the next leg up, it needs to do a minor pullback. And the next support is at $76,000, and I can see Bitcoin revisiting this level this week. It's more certainly a possibility you should look on to. Now, let's see the volume traded just this week in terms of spot. There's been growing outflow. The past two weeks alone, we've seen an outflow of over a billion, which, if you think about it, Bitcoin is doing well because it's still standing at 79, and I can see it going further high. But again, it's important to be cautious and be patient for whichever entry you want to go. While the fear and greed index is at 50, which is showing that it's average, it's average.",
+    "improved": "What's Next for Bitcoin: Up or Down?\n\nBitcoin is currently trading at $79,659, and it's now down from last month's $87,000.\n\nBut where is Bitcoin heading?\n\nThis is a thesis for up and down, so it can go either way. But my take is that Bitcoin is losing momentum. For the next leg up, it needs to do a minor pullback, and the next support is at $76,000. I can see Bitcoin revisiting this level this week—it's certainly a possibility you should look on to.\n\nNow, let's see the volume traded just this week in terms of spot. There's been growing outflow. The past two weeks alone, we've seen an outflow of over a billion, which, if you think about it, Bitcoin is doing well because it's still standing at 79, and I can see it going further high.\n\nBut again, it's important to be cautious and be patient for whichever entry you want to go, while the fear and greed index is at 50, which is showing that it's average.",
     "rules_summary": {
-      "punctuation_count": 8,
-      "word_replacement_count": 3,
-      "emoji_spacing_count": 5
+      "punctuation_count": 6,
+      "word_replacement_count": 0,
+      "emoji_spacing_count": 4
     },
     "suggestions": [
       {
         "category": "punct",
-        "description": "Added colons after 'Key levels:', 'Shorting setup:', and 'Targets:' to structure thoughts."
-      },
-      {
-        "category": "word",
-        "original": "300 million",
-        "suggested": "$300M",
-        "reason": "Standard financial notation"
-      },
-      {
-        "category": "word",
-        "original": "1 billion",
-        "suggested": "$1B",
-        "reason": "Standard financial notation"
-      },
-      {
-        "category": "word",
-        "original": "78,000 to 76,000 to 74,000",
-        "suggested": "$78,000 → $76,000 → $74,000",
-        "reason": "Clean target progression"
+        "description": "Added question marks and commas for natural spoken pauses (zero phrase changes)."
       },
       {
         "category": "spacing",
-        "description": "Added anchor emojis (📊, 📉, 🎯) and formatted price levels and ETF insights into clear mobile bullet points (•)."
+        "description": "Added paragraph breaks to separate thoughts cleanly on mobile."
       }
     ]
   },

@@ -4,7 +4,7 @@
 // Rule 2: Word Replacements Only (When word doesn't seem right, e.g. numbers/typos - NO sentence rewrites)
 // Rule 3: Emojis, Spacing & Bullet Points
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v3';
+const STORAGE_KEY = 'byx_post_studio_dynamic_v4';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -448,9 +448,9 @@ function generateAndRenderDraft(rawText, existingImproved) {
 }
 
 function renderDraftFromText(text, p, w, s) {
-  const pCount = p || 8;
-  const wCount = w || 3;
-  const sCount = s || 5;
+  const pCount = p || 6;
+  const wCount = w || 0;
+  const sCount = s || 4;
 
   punctSuggCount.textContent = `${pCount}`;
   wordSuggCount.textContent = `${wCount}`;
@@ -458,17 +458,12 @@ function renderDraftFromText(text, p, w, s) {
   draftChangeCountBadge.textContent = `Review (${pCount + wCount + sCount})`;
 
   draftSuggestionsDisplay.innerHTML = `
-<span class="sugg-token token-spacing">📊 <span class="sugg-sub">emoji</span></span><span class="sugg-token token-punct">Bitcoin<span class="sugg-sub">punct</span></span> is currently at $79,659<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> down from last month's high of $87,000<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
-<span class="sugg-token token-spacing">Key levels:<span class="sugg-sub">spacing</span></span><br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Next resistance: $84,000<br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Current support: $79,659<br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Next floor support: $76,000<br><br>
-<span class="sugg-token token-spacing">Institutional flows & sentiment:<span class="sugg-sub">spacing</span></span><br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>ETFs: Inflow was <span class="sugg-token token-word"><del>300 million</del> <ins>$300M</ins><span class="sugg-sub">word</span></span> while outflow topped <span class="sugg-token token-word"><del>1 billion</del> <ins>$1B</ins><span class="sugg-sub">word</span></span> over the past two weeks<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> yet Bitcoin hasn't really moved this week<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br>
-<span class="sugg-token token-spacing">• <span class="sugg-sub">bullet</span></span>Fear and Greed index is standing at 50<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
-<span class="sugg-token token-spacing">📉 <span class="sugg-sub">emoji</span></span><span class="sugg-token token-spacing">Shorting setup:<span class="sugg-sub">spacing</span></span><br>
-Since the current level is at $79,659<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> Bitcoin is looking to further dump to the next support floor at $76,000<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br>
-<span class="sugg-token token-spacing">🎯 <span class="sugg-sub">emoji</span></span>Targets: <span class="sugg-token token-word"><del>78,000 to 76,000 to 74,000</del> <ins>$78,000 → $76,000 → $74,000</ins><span class="sugg-sub">word</span></span><span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span>
+<strong>What's Next for Bitcoin: Up or Down?</strong><br><br>
+Bitcoin is currently trading at $79,659<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> and it's now down from last month's $87,000<span class="sugg-token token-punct">.<span class="sugg-sub">punct</span></span><br><br>
+<span class="sugg-token token-spacing">But where is Bitcoin heading?<span class="sugg-sub">spacing</span></span><br><br>
+This is a thesis for up and down<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> so it can go either way. But my take is that Bitcoin is losing momentum. For the next leg up<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> it needs to do a minor pullback<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> and the next support is at $76,000. I can see Bitcoin revisiting this level this week—it's certainly a possibility you should look on to.<br><br>
+Now<span class="sugg-token token-punct">,<span class="sugg-sub">punct</span></span> let's see the volume traded just this week in terms of spot. There's been growing outflow. The past two weeks alone, we've seen an outflow of over a billion, which, if you think about it, Bitcoin is doing well because it's still standing at 79, and I can see it going further high.<br><br>
+But again, it's important to be cautious and be patient for whichever entry you want to go, while the fear and greed index is at 50, which is showing that it's average.
   `;
 
   currentDraftResult = {
