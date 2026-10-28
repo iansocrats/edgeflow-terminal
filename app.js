@@ -299,7 +299,7 @@ async function loadPostsData() {
     }
   }
 
-  // Ensure Day 3 is 100% fresh with Post 1 ($EVA) and Post 2 ($XAI) staged
+  // Ensure Day 3 is 100% fresh with Post 1 ($EVA) and Post 2 ($XAAN) staged
   if (currentSessionId === 'day3' && postsData && postsData.length > 0) {
     const firstText = (postsData[0].improved || '') + (postsData[0].raw || '');
     const firstWordCount = (postsData[0].improved ? postsData[0].improved.match(/\b\w+\b/g) || [] : []).length;
@@ -315,7 +315,7 @@ async function loadPostsData() {
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
     // Auto-stage Post 2 ()
-    if (postsData.length > 1 && (!postsData[1].raw || postsData[1].coin === '+ New Coin' || postsData[1].coin !== '$XAI')) {
+    if (postsData.length > 1 && (!postsData[1].raw || postsData[1].coin === '+ New Coin' || postsData[1].coin !== '$XAAN')) {
       const freshSlots = createEmptySlots();
       postsData[1] = freshSlots[1];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
@@ -340,7 +340,7 @@ async function loadPostsData() {
   }
 }
 
-// Create 10 empty dynamic slots (Day 3 with Post 1 $EVA and Post 2 $XAI ready)
+// Create 10 empty dynamic slots (Day 3 with Post 1 $EVA and Post 2 $XAAN ready)
 function createEmptySlots() {
   const slots = [];
   for (let i = 1; i <= 10; i++) {
@@ -367,11 +367,11 @@ function createEmptySlots() {
     } else if (i === 2) {
       slots.push({
         id: 2,
-        coin: '$XAI',
-        title: 'Post 2: \u26A1 $XAI Token Unlock Catalyst & Fed Decision Setup',
+        coin: '$XAAN',
+        title: 'Post 2: \u26A1 $XAAN Token Unlock Catalyst & Fed Decision Setup',
         status: 'ready',
-        raw: "Now let's talk about XAI and USN, ANOMA coin. One of the big catalysts today is the token unlocks, which is going to happen tomorrow. This coin is already reacting to this news. At the current price of 0.011, the price action is looking promising. Already it has moved 8% and currently it's gaining interest in the market with 25% up just today alone. At the floor price, the floor price is at 0.00755, looking to go further up. Something to talk about is I don't have an open position, but here is my sort of prediction. This is how I am strategically holding a position in anticipation of a big move. Of course, nothing pays off if you're not patient, so I have entered early enough. In my I am going to hold this position for a while. I'm now waiting for the perfect entry, but I already have my perfect entry, so you can still join it if you're seeing this now. Here is my guide for you. Try moving your stop losses slightly to 0.008 if you're entering at 0.07. Consider at least taking 50 to 90% profit. And then thirdly is that let it ride, let the market just ride to your target. Your target is above 0.012. Don't worry if you miss the entry, you can still enter and don't fear missing out. The risk-reward is still really worth it to enter right now. Now, something else Now, you might be asking what's the catalyst here. One is the token unlocks, which is going to happen tomorrow, and two, we might be looking at an interesting market today because of the federal interest decision that's going to be made today. So, I would be guided by that.",
-        improved: "\u26A1 #XAIUSDT: Token Unlock Catalyst & Fed Decision Setup\n\nXAI USDT is reacting early to two major catalysts: a massive token unlock tomorrow and today's Federal Reserve interest rate decision. At the current price of $0.011, the price action is looking promising. Already it has moved 8%, gaining strong market interest with a 25% surge today alone off the $0.00755 floor price.\n\nHere is my strategic trade execution guide:\n\u2022 Floor Support: Baseline floor is anchored at $0.00755.\n\u2022 Entry & Invalidation: If entering around $0.0075 to $0.011, move stop-losses slightly to $0.008 to protect capital.\n\u2022 Take Profit: Scale 50% to 90% profit, then let the rest ride toward targets above $0.012.\n\nNothing pays off if you are not patient, but the asymmetric risk-reward is well worth the entry. Are you playing this pre-unlock surge or waiting for the Fed decision?",
+        raw: "Now let's talk about XAAN and USN, ANOMA coin. One of the big catalysts today is the token unlocks, which is going to happen tomorrow. This coin is already reacting to this news. At the current price of 0.011, the price action is looking promising. Already it has moved 8% and currently it's gaining interest in the market with 25% up just today alone. At the floor price, the floor price is at 0.00755, looking to go further up. Something to talk about is I don't have an open position, but here is my sort of prediction. This is how I am strategically holding a position in anticipation of a big move. Of course, nothing pays off if you're not patient, so I have entered early enough. In my I am going to hold this position for a while. I'm now waiting for the perfect entry, but I already have my perfect entry, so you can still join it if you're seeing this now. Here is my guide for you. Try moving your stop losses slightly to 0.008 if you're entering at 0.07. Consider at least taking 50 to 90% profit. And then thirdly is that let it ride, let the market just ride to your target. Your target is above 0.012. Don't worry if you miss the entry, you can still enter and don't fear missing out. The risk-reward is still really worth it to enter right now. Now, something else Now, you might be asking what's the catalyst here. One is the token unlocks, which is going to happen tomorrow, and two, we might be looking at an interesting market today because of the federal interest decision that's going to be made today. So, I would be guided by that.",
+        improved: "\u26A1 #XAANUSDT: Token Unlock Catalyst & Fed Decision Setup\n\nXAAN USDT is reacting early to two major catalysts: a massive token unlock tomorrow and today's Federal Reserve interest rate decision. At the current price of $0.011, the price action is looking promising. Already it has moved 8%, gaining strong market interest with a 25% surge today alone off the $0.00755 floor price.\n\nHere is my strategic trade execution guide:\n\u2022 Floor Support: Baseline floor is anchored at $0.00755.\n\u2022 Entry & Invalidation: If entering around $0.0075 to $0.011, move stop-losses slightly to $0.008 to protect capital.\n\u2022 Take Profit: Scale 50% to 90% profit, then let the rest ride toward targets above $0.012.\n\nNothing pays off if you are not patient, but the asymmetric risk-reward is well worth the entry. Are you playing this pre-unlock surge or waiting for the Fed decision?",
         rules_summary: {
           punctuation_count: 9,
           word_replacement_count: 5,
@@ -811,7 +811,7 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'hype', 'hyperliquid', 'payward', 'bitnomial', 'cftc', 'allowlists', 'ninjatrader',
   'nvidia', 'nvda', 'blackwell', 'capex', 'hyperscalers', 'fibonacci',
   'meta', 'rubin', 'spectrum-x', 'bluefield-4', 'muse', 'alliance',
-  'sui', 'cctp', 'xai', 'anoma', 'hashi', 'anchorage', 'walrus'
+  'sui', 'cctp', 'xaan', 'xai', 'anoma', 'hashi', 'anchorage', 'walrus'
 ]);
 
 function runGltrPredictability(text) {
