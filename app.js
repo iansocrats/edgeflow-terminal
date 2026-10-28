@@ -3443,23 +3443,23 @@ function calculatePostDimensionScore(text) {
   let relevanceScore = 8;
   if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$meta|meta platforms|\$sui|sui|\$eva|eva|\$[a-z]{3,6}|#?[a-z0-9]+usdt/i.test(clean)) relevanceScore += 4;
   if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x|cctp|hashi|anchorage|walrus/i.test(clean)) relevanceScore += 5;
-  if (/this week|past two weeks|last month|tomorrow|28th|today|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
+  if (/this week|past two weeks|last month|tomorrow|28th|today|this morning|morning|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
   if (/#?[A-Z0-9]{2,10}USDT|cashtag|trade setup|direction:|long|short|tp1|tp2|take profit|risk\/reward|rr/i.test(clean)) relevanceScore += 3;
   relevanceScore = Math.min(20, Math.max(6, relevanceScore));
 
   let credScore = 7;
   if (/support|floor|shelf|invalidation|stop-loss|boundary|baseline|infrastructure|hashrate|protection|trailed/i.test(clean)) credScore += 4;
   if (/target|resistance|retest|mean reversion|upside|wick|tp1|tp2|expansion|spot price|payoffs/i.test(clean)) credScore += 3;
-  if (/cautious|patient|confirmation|risk|execution|disciplined|protecting capital|patiently|margins|cash-flow|overleverage|conservatively/i.test(clean)) credScore += 4;
+  if (/cautious|patient|confirmation|risk|execution|disciplined|protecting capital|protect capital|patiently|margins|cash-flow|overleverage|leveraging|conservatively/i.test(clean)) credScore += 4;
   if (/setup|asymmetric|orderflow|delta|reversion|liquidity|not financial advice|sovereign|thesis|cvd|commodity/i.test(clean)) credScore += 2;
-  if (/profit realized|breakeven|historical entry|profit booked|runner target|risk\/reward|unrealized profit/i.test(clean)) credScore += 3;
+  if (/profit realized|breakeven|historical entry|profit booked|runner target|risk\/reward|unrealized profit|50% up|profit/i.test(clean)) credScore += 3;
   credScore = Math.min(20, Math.max(5, credScore));
 
   let presScore = 6;
   if (clean.includes('\n\n')) presScore += 3;
   if (/[,.;!?]/.test(clean)) presScore += 3;
-  if (/•|-|\*/.test(clean)) presScore += 3;
-  if (/^[📊🥇🔷🧭⚡🔥🚨💎🌐]/.test(clean) || clean.includes('🥇') || clean.includes('📊') || clean.includes('🔷') || clean.includes('⚡') || clean.includes('🔥') || clean.includes('🌐') || clean.includes('📈') || clean.includes('🏆')) presScore += 2;
+  if (/[\u2022\u25AA\u2023\u25B6\u2013\u2014\-\*]/.test(clean) || clean.includes('\u2022') || clean.includes('-')) presScore += 3;
+  if (/[#\u26A1\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(clean) || clean.startsWith('#') || clean.charCodeAt(0) > 127) presScore += 2;
   const wordCount = (clean.match(/\b\w+\b/g) || []).length;
   if (wordCount >= 70 && wordCount <= 270) presScore += 3;
   presScore = Math.min(20, Math.max(8, presScore));
