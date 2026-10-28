@@ -3338,7 +3338,7 @@ function getSessionScore(sessionId) {
   }
   // Default fallbacks
   if (sessionId === 'day1') return 9.0;
-  if (sessionId === 'day2') return 22.5;
+  if (sessionId === 'day2') return 11.0;
   return 0.0;
 }
 

@@ -358,15 +358,15 @@
           <div class="points-input-group">
             <label for="officialDailyScoreInput" class="points-label">Today's Official Score:</label>
             <div class="input-with-button">
-              <input type="number" step="0.1" min="0" max="1000" id="officialDailyScoreInput" class="points-score-input" placeholder="e.g. 22.5" />
+              <input type="number" step="0.1" min="0" max="1000" id="officialDailyScoreInput" class="points-score-input" placeholder="e.g. 11.0" />
               <button id="btnSaveDailyScore" class="btn-save-score">💾 Save & Attribute</button>
             </div>
           </div>
           <div class="points-presets-group">
             <span class="presets-label">Quick Set:</span>
-            <button class="btn-score-preset" data-val="9.0">Yesterday (9.0)</button>
-            <button class="btn-score-preset" data-val="22.5">10-Post Est (22.5)</button>
-            <button class="btn-score-preset" data-val="35.0">Active Reach (35.0)</button>
+            <button class="btn-score-preset" data-val="9.0">Day 1 (9.0)</button>
+            <button class="btn-score-preset" data-val="11.0">Day 2 Confirmed (11.0)</button>
+            <button class="btn-score-preset" data-val="25.0">High Reach (25.0)</button>
             <button class="btn-score-preset" data-val="50.0">Volume Surge (50.0)</button>
           </div>
         </div>
@@ -374,19 +374,19 @@
         <!-- Weekly Cumulative Progress Bar -->
         <div class="weekly-progress-wrap">
           <div class="weekly-progress-header">
-            <span class="weekly-progress-title">📈 Weekly Accumulated Points: <strong id="weeklyAccumTotalText">31.5 / 100 Pts</strong></span>
-            <span class="weekly-progress-percent" id="weeklyPercentText">31.5% to Reward Pool</span>
+            <span class="weekly-progress-title">📈 Weekly Accumulated Points: <strong id="weeklyAccumTotalText">20.0 / 100 Pts</strong></span>
+            <span class="weekly-progress-percent" id="weeklyPercentText">20.0% to Reward Pool</span>
           </div>
           <div class="weekly-progress-bar-bg">
-            <div class="weekly-progress-bar-fill" id="weeklyProgressBarFill" style="width: 31.5%"></div>
+            <div class="weekly-progress-bar-fill" id="weeklyProgressBarFill" style="width: 20.0%"></div>
             <div class="weekly-threshold-pin" title="100 Pt Reward Threshold">
               <span>100 PT THRESHOLD</span>
             </div>
           </div>
           <div class="daily-breakdown-chips">
             <span class="chip-day" id="chipDay1">📅 Day 1 (Oct 26): <strong>9.0 pts</strong> (5 posts)</span>
-            <span class="chip-day active" id="chipDay2">📅 Day 2 (Today): <strong id="chipTodayScore">22.5 pts</strong> (10 posts)</span>
-            <span class="chip-day pending" id="chipDay3">📅 Day 3 (Tomorrow): <strong>Awaiting</strong> (10 slots)</span>
+            <span class="chip-day active" id="chipDay2">📅 Day 2 (Oct 27): <strong id="chipTodayScore">11.0 pts</strong> (10 posts)</span>
+            <span class="chip-day pending" id="chipDay3">📅 Day 3 (Oct 28): <strong>Awaiting</strong> (10 slots)</span>
           </div>
         </div>
 
