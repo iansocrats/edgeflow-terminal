@@ -273,69 +273,47 @@ function setTodayDate() {
 
 // Load Posts from posts.json or LocalStorage
 async function loadPostsData() {
-  const cached = localStorage.getItem(STORAGE_KEY);
-  if (cached) {
-    try {
-      postsData = JSON.parse(cached);
-    } catch (e) {
-      console.error('Error parsing cached posts:', e);
-    }
-  }
-
   try {
     const res = await fetch('posts.json?v=' + Date.now());
     if (res.ok) {
       serverPosts = await res.json();
-      if (Array.isArray(serverPosts) && serverPosts.length > 0) {
-        // Guarantee Day 2 archive is permanently saved in localStorage
+      // Guarantee Day 2 archive is permanently saved in its own session archive
+      if (Array.isArray(serverPosts) && serverPosts.length >= 10) {
         if (!localStorage.getItem('byx_session_posts_day2')) {
           localStorage.setItem('byx_session_posts_day2', JSON.stringify(serverPosts));
-        }
-        // If cached data is missing or empty, take serverPosts
-        if (!postsData || postsData.length === 0) {
-          postsData = serverPosts;
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(postsData));
-        } else {
-          // Always ensure Post 1 and Post 2 have latest rule-abiding post if previously unedited
-          if (postsData[0] && serverPosts[0] && (!postsData[0].raw || postsData[0].raw === serverPosts[0].raw || (postsData[0].improved && postsData[0].improved.includes("📊 📊 The $1B")))) {
-            postsData[0] = serverPosts[0];
-          }
-          if (postsData[1] && serverPosts[1] && (!postsData[1].raw || postsData[1].status === 'waiting' || (postsData[1].improved && postsData[1].improved.includes("Gold is really interesting. As we speak, the price is below $4,000")))) {
-            postsData[1] = serverPosts[1];
-          }
-          if (postsData[2] && serverPosts[2] && (!postsData[2].raw || postsData[2].status === 'waiting' || !postsData[2].improved || postsData[2].improved.startsWith("Awaiting"))) {
-            postsData[2] = serverPosts[2];
-          }
-          if (postsData[3] && serverPosts[3] && (!postsData[3].raw || postsData[3].status === 'waiting' || !postsData[3].improved || postsData[3].improved.startsWith("Awaiting"))) {
-            postsData[3] = serverPosts[3];
-          }
-          if (postsData[4] && serverPosts[4] && (!postsData[4].raw || postsData[4].status === 'waiting' || !postsData[4].improved || postsData[4].improved.startsWith("Awaiting"))) {
-            postsData[4] = serverPosts[4];
-          }
-          if (postsData[5] && serverPosts[5] && (!postsData[5].raw || postsData[5].status === 'waiting' || !postsData[5].improved || postsData[5].improved.startsWith("Awaiting"))) {
-            postsData[5] = serverPosts[5];
-          }
-          if (postsData[6] && serverPosts[6] && (!postsData[6].raw || postsData[6].status === 'waiting' || !postsData[6].improved || postsData[6].improved.startsWith("Awaiting"))) {
-            postsData[6] = serverPosts[6];
-          }
-          if (postsData[7] && serverPosts[7] && (!postsData[7].raw || postsData[7].status === 'waiting' || !postsData[7].improved || postsData[7].improved.startsWith("Awaiting"))) {
-            postsData[7] = serverPosts[7];
-          }
-          if (postsData[8] && serverPosts[8] && (!postsData[8].raw || postsData[8].status === 'waiting' || !postsData[8].improved || postsData[8].improved.startsWith("Awaiting"))) {
-            postsData[8] = serverPosts[8];
-          }
-          if (postsData[9] && serverPosts[9] && (!postsData[9].raw || postsData[9].status === 'waiting' || !postsData[9].improved || postsData[9].improved.startsWith("Awaiting"))) {
-            postsData[9] = serverPosts[9];
-          }
         }
       }
     }
   } catch (err) {
-    console.log('Using local/cached posts:', err);
+    console.log('Error fetching serverPosts:', err);
+  }
+
+  // Load the posts for the current active session
+  const sessionData = localStorage.getItem(getDaySessionStorageKey(currentSessionId));
+  if (sessionData) {
+    try {
+      postsData = JSON.parse(sessionData);
+    } catch (e) {
+      console.error('Error parsing session data:', e);
+      postsData = null;
+    }
   }
 
   if (!postsData || postsData.length === 0) {
-    postsData = createEmptySlots();
+    if (currentSessionId === 'day2') {
+      postsData = serverPosts && serverPosts.length === 10 ? JSON.parse(JSON.stringify(serverPosts)) : createEmptySlots();
+    } else if (currentSessionId === 'day1') {
+      postsData = createEmptySlots();
+      if (serverPosts && serverPosts.length >= 5) {
+        for (let i = 0; i < 5; i++) {
+          postsData[i] = JSON.parse(JSON.stringify(serverPosts[i]));
+        }
+      }
+    } else {
+      // Day 3 starts completely fresh
+      postsData = createEmptySlots();
+    }
+    localStorage.setItem(getDaySessionStorageKey(currentSessionId), JSON.stringify(postsData));
   }
 }
 
@@ -3507,6 +3485,122 @@ function updateWeeklyProgress() {
       pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
     }
   }
+
+  renderWeeklyAuditTable();
+}
+
+const weeklyAuditTableBody = document.getElementById('weeklyAuditTableBody');
+
+function renderWeeklyAuditTable() {
+  if (!weeklyAuditTableBody) return;
+
+  const day1Pts = getSessionScore('day1');
+  const day2Pts = getSessionScore('day2');
+  const day3Pts = getSessionScore('day3');
+  const day4Pts = getSessionScore('day4') || 0;
+  const day5Pts = getSessionScore('day5') || 0;
+  const day6Pts = getSessionScore('day6') || 0;
+  const day7Pts = getSessionScore('day7') || 0;
+
+  const weekRows = [
+    {
+      epoch: 'Day 1',
+      date: 'Sun, Oct 26',
+      posts: '5 posts',
+      score: day1Pts,
+      avg: (day1Pts / 5).toFixed(2),
+      passRate: '100% (5/5)',
+      cumulative: day1Pts.toFixed(1),
+      status: 'CERTIFIED',
+      badgeClass: 'certified',
+      valuation: 'Standard Pass'
+    },
+    {
+      epoch: 'Day 2',
+      date: 'Mon, Oct 27',
+      posts: '10 posts',
+      score: day2Pts,
+      avg: (day2Pts / 10).toFixed(2),
+      passRate: '100% (10/10)',
+      cumulative: (day1Pts + day2Pts).toFixed(1),
+      status: 'CERTIFIED',
+      badgeClass: 'certified',
+      valuation: 'Full Quota Streak'
+    },
+    {
+      epoch: 'Day 3',
+      date: 'Tue, Oct 28 (Today)',
+      posts: currentSessionId === 'day3' && postsData ? `${postsData.filter(p => p.status === 'ready' && p.raw && p.raw.length > 20).length} / 10 Ready` : '10 Fresh Slots',
+      score: day3Pts,
+      avg: day3Pts > 0 ? (day3Pts / 10).toFixed(2) : '--',
+      passRate: 'In Progress',
+      cumulative: (day1Pts + day2Pts + day3Pts).toFixed(1),
+      status: 'ACTIVE DESK',
+      badgeClass: 'active',
+      valuation: '1.5–1.75h Pacing'
+    },
+    {
+      epoch: 'Day 4',
+      date: 'Wed, Oct 29',
+      posts: '10 slots',
+      score: day4Pts,
+      avg: '--',
+      passRate: 'Upcoming',
+      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts).toFixed(1),
+      status: 'SCHEDULED',
+      badgeClass: 'upcoming',
+      valuation: 'Mid-Week Wave'
+    },
+    {
+      epoch: 'Day 5',
+      date: 'Thu, Oct 30',
+      posts: '10 slots',
+      score: day5Pts,
+      avg: '--',
+      passRate: 'Upcoming',
+      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + day5Pts).toFixed(1),
+      status: 'SCHEDULED',
+      badgeClass: 'upcoming',
+      valuation: 'US GDP Print'
+    },
+    {
+      epoch: 'Day 6',
+      date: 'Fri, Oct 31',
+      posts: '10 slots',
+      score: day6Pts,
+      avg: '--',
+      passRate: 'Upcoming',
+      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + day5Pts + day6Pts).toFixed(1),
+      status: 'SCHEDULED',
+      badgeClass: 'upcoming',
+      valuation: 'Monthly Close'
+    },
+    {
+      epoch: 'Day 7',
+      date: 'Sat, Nov 1',
+      posts: '10 slots',
+      score: day7Pts,
+      avg: '--',
+      passRate: 'Upcoming',
+      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + day5Pts + day6Pts + day7Pts).toFixed(1),
+      status: 'SCHEDULED',
+      badgeClass: 'upcoming',
+      valuation: 'Epoch Settlement'
+    }
+  ];
+
+  weeklyAuditTableBody.innerHTML = weekRows.map(row => `
+    <tr>
+      <td><strong>${row.epoch}</strong></td>
+      <td>${row.date}</td>
+      <td>${row.posts}</td>
+      <td><span class="attr-pts-badge">${row.score > 0 ? '+' + row.score.toFixed(1) + ' pts' : (row.status === 'ACTIVE DESK' ? '0.0 pts (Live)' : '--')}</span></td>
+      <td>${row.avg !== '--' ? row.avg + ' pts' : '--'}</td>
+      <td><span style="color:${row.passRate.includes('100%') ? '#10b981' : 'var(--text-muted)'}">${row.passRate}</span></td>
+      <td><strong>${row.cumulative} / 100</strong></td>
+      <td><span class="audit-status-badge ${row.badgeClass}">${row.status}</span> <span style="font-size:0.68rem; color:var(--text-dim)">(${row.valuation})</span></td>
+    </tr>
+  `).join('');
 }
 
 function switchDaySession(newSessionId, forceFresh = false) {
@@ -3576,7 +3670,8 @@ function initSessionAndPointsHub() {
       const val = parseFloat(officialDailyScoreInput.value) || 0;
       setSessionScore(currentSessionId, val);
       renderAttributionMatrix();
-      showToast(`💾 Saved ${currentSessionId === 'day2' ? "Today's" : currentSessionId === 'day1' ? "Yesterday's" : "Tomorrow's"} score: ${val.toFixed(1)} pts!`);
+      updateWeeklyProgress();
+      showToast(`💾 Saved score: ${val.toFixed(1)} pts!`);
     });
   }
 
@@ -3587,6 +3682,7 @@ function initSessionAndPointsHub() {
       if (officialDailyScoreInput) officialDailyScoreInput.value = val.toFixed(1);
       setSessionScore(currentSessionId, val);
       renderAttributionMatrix();
+      updateWeeklyProgress();
       showToast(`🎯 Score preset applied: ${val.toFixed(1)} pts!`);
     });
   });

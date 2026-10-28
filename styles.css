@@ -2508,3 +2508,142 @@ body {
   background: rgba(100, 116, 139, 0.15);
   color: #94a3b8;
 }
+
+/* ==========================================================================
+   Weekly Points Evaluation & Retrospective Hub
+   ========================================================================== */
+.weekly-audit-hub-card {
+  margin-top: 18px;
+  border-top: 2px solid rgba(99, 102, 241, 0.4);
+}
+
+.audit-table-wrap {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.audit-table {
+  min-width: 650px;
+}
+
+.audit-table th {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.audit-status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.audit-status-badge.certified {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.audit-status-badge.active {
+  background: rgba(99, 102, 241, 0.18);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+.audit-status-badge.upcoming {
+  background: rgba(100, 116, 139, 0.12);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.retrospective-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.retro-card {
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border);
+}
+
+.retro-card.retro-well {
+  border-left: 3px solid #10b981;
+}
+
+.retro-card.retro-wrong {
+  border-left: 3px solid #f59e0b;
+}
+
+.retro-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.retro-icon {
+  font-size: 1.15rem;
+}
+
+.retro-heading {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.retro-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.retro-list li {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.retro-list li strong {
+  display: block;
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.retro-list li p {
+  margin: 0;
+}
+
+.retro-analysis {
+  display: block;
+  color: #fca5a5;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.retro-fix {
+  display: block;
+  color: #86efac;
+  font-size: 0.75rem;
+  margin-top: 3px;
+  font-weight: 600;
+  line-height: 1.4;
+}

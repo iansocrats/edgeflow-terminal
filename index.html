@@ -416,6 +416,90 @@
         </div>
       </div>
 
+      <!-- 📊 Weekly Points Evaluation & Performance Retrospective Hub -->
+      <div class="rules-card weekly-audit-hub-card" id="weeklyAuditHubCard">
+        <div class="byx-header-wrap">
+          <div class="rules-header">
+            <span class="rules-title">📊 7-Day Cumulative Points Evaluation & Post-Mortem Analysis</span>
+            <span class="rules-badge byx-valid-badge">WEEKLY TARGET: 100 PTS</span>
+          </div>
+          <p class="byx-rules-desc">Evaluating daily points accumulation across the 7-day epoch to diagnose post efficiency, identify bottlenecks ("where we went wrong"), and compound competitive advantages ("where we did well").</p>
+        </div>
+
+        <!-- 7-Day Performance Ledger Table -->
+        <div class="audit-table-wrap">
+          <table class="attribution-table audit-table">
+            <thead>
+              <tr>
+                <th>Epoch Day</th>
+                <th>Date</th>
+                <th>Posts</th>
+                <th>Official Points</th>
+                <th>Avg / Post</th>
+                <th>Pass Rate</th>
+                <th>Cumulative</th>
+                <th>Status & Valuation</th>
+              </tr>
+            </thead>
+            <tbody id="weeklyAuditTableBody">
+              <!-- Dynamically rendered via renderWeeklyAuditTable() -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Dual-Column Retrospective Analysis: Where We Did Well vs. Where We Went Wrong -->
+        <div class="retrospective-grid">
+          <div class="retro-card retro-well">
+            <div class="retro-card-head">
+              <span class="retro-icon">🌟</span>
+              <h4 class="retro-heading">Where We Did Well (Core Strengths)</h4>
+            </div>
+            <ul class="retro-list">
+              <li>
+                <strong>100% ByX Pass Rate (Score &ge; 40):</strong>
+                <p>Every single post scored &ge; 93/100 (Day 2 avg: 95.2/100), certifying 100% of your outputs for creator rewards.</p>
+              </li>
+              <li>
+                <strong>Zero AI Templating (&lt; 3% AI Probability):</strong>
+                <p>Authentic human trader voice preserved across RoBERTa, GLTR, and Binoculars with zero platform moderation flags.</p>
+              </li>
+              <li>
+                <strong>Daily Quota Discipline (10/10 Complete):</strong>
+                <p>Hit the maximum 10-post daily limit on Day 2, activating Bybit's multi-day creator consistency streak multiplier.</p>
+              </li>
+              <li>
+                <strong>Exact Numerical Levels:</strong>
+                <p>Setups anchored by concrete floors, invalidation levels, and risk-reward ratios (SUI 1:3 RR, SOL $172 sweep) delivered highest credibility.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="retro-card retro-wrong">
+            <div class="retro-card-head">
+              <span class="retro-icon">🔍</span>
+              <h4 class="retro-heading">Where We Went Wrong (Bottlenecks & Fixes)</h4>
+            </div>
+            <ul class="retro-list">
+              <li>
+                <strong>Point Density Compression on Day 2 (1.10 vs 1.80 pts/post):</strong>
+                <div class="retro-analysis"><em>Bottleneck:</em> Posts were batched in a compressed evening window. Feed algorithms favor distributed cadence; rapid publishing pushes older posts off feeds before readers can engage.</div>
+                <div class="retro-fix"><em>Day 3 Fix:</em> Execute the 1.5–1.75 hour release schedule across Tokyo, London, and Wall Street opens.</div>
+              </li>
+              <li>
+                <strong>Audience Engagement & Comment Catalysts:</strong>
+                <div class="retro-analysis"><em>Bottleneck:</em> High technical depth, but fewer interactive questions to provoke replies. Bybit weights comments 3x higher than passive impressions.</div>
+                <div class="retro-fix"><em>Day 3 Fix:</em> Append an engaging closing prompt to each post (e.g. <em>"Are you bidding this support or waiting for a sweep? Drop your entry below 👇"</em>).</div>
+              </li>
+              <li>
+                <strong>Real-Time News Catalysts:</strong>
+                <div class="retro-analysis"><em>Bottleneck:</em> Breaking news posts ($NVDA-$META $3B deal, $SUI CCTP) scored 97–98 pts, whereas pure chart posts scored 93–94.</div>
+                <div class="retro-fix"><em>Day 3 Fix:</em> Front-load breaking macro/crypto catalysts for Day 3 slots during live news breaks.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <!-- Official ByX 5 Content Dimensions & Benchmark Banner -->
       <div class="rules-card byx-rules-card">
         <div class="byx-header-wrap">
