@@ -5,7 +5,7 @@
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_dynamic_v26';
+const STORAGE_KEY = 'byx_post_studio_day3_fresh_v29';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -289,12 +289,20 @@ async function loadPostsData() {
   }
 
   // Load the posts for the current active session
-  const sessionData = localStorage.getItem(getDaySessionStorageKey(currentSessionId));
+  let sessionData = localStorage.getItem(getDaySessionStorageKey(currentSessionId));
   if (sessionData) {
     try {
       postsData = JSON.parse(sessionData);
     } catch (e) {
       console.error('Error parsing session data:', e);
+      postsData = null;
+    }
+  }
+
+  // Ensure Day 3 is 100% fresh and clean (no stale yesterday posts or placeholders)
+  if (currentSessionId === 'day3' && postsData && postsData.length > 0) {
+    const firstText = (postsData[0].improved || '') + (postsData[0].raw || '');
+    if (firstText.includes('Absorption Paradox') || firstText.includes('Bitcoin is holding firmly') || firstText.includes('Waiting for Post 1...')) {
       postsData = null;
     }
   }
@@ -310,24 +318,24 @@ async function loadPostsData() {
         }
       }
     } else {
-      // Day 3 starts completely fresh
+      // Day 3 starts completely fresh and zeroed out
       postsData = createEmptySlots();
     }
     localStorage.setItem(getDaySessionStorageKey(currentSessionId), JSON.stringify(postsData));
   }
 }
 
-// Create 10 empty dynamic slots
+// Create 10 empty dynamic slots (completely clean, zeroed out)
 function createEmptySlots() {
   const slots = [];
   for (let i = 1; i <= 10; i++) {
     slots.push({
       id: i,
-      coin: i === 1 ? '$BTC' : '+ New Coin',
-      title: i === 1 ? 'Post 1: $BTC Session Liquidity Setup' : `Post ${i}: Ready for Today's Dictation`,
+      coin: '+ New Coin',
+      title: `Post ${i}: Ready for Today's Dictation`,
       status: i === 1 ? 'ready' : 'waiting',
       raw: '',
-      improved: i === 1 ? 'Waiting for Post 1...' : `Awaiting your voice notes for Post ${i}...`
+      improved: ''
     });
   }
   return slots;
@@ -2042,15 +2050,17 @@ function runByxDimensionsScore(text) {
   if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$meta|meta platforms|\$sui|sui|\$[a-z]{3,6}/i.test(clean)) relevanceScore += 4;
   if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x|cctp|hashi|anchorage|walrus/i.test(clean)) relevanceScore += 5;
   if (/this week|past two weeks|last month|tomorrow|28th|today|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
+  if (/#?[A-Z0-9]{2,10}USDT|cashtag|trade setup|direction:|long|short|tp1|tp2|take profit|risk\/reward|rr/i.test(clean)) relevanceScore += 3;
   relevanceScore = Math.min(20, Math.max(6, relevanceScore));
 
   // Dimension 4: Credibility & Risk (0 - 20 pts)
-  // Defined invalidation / floor support, disciplined risk-reward, patient entry
+  // Defined invalidation / floor support, disciplined risk-reward, patient entry, trade follow-up
   let credScore = 7;
   if (/support|floor|shelf|invalidation|stop-loss|boundary|baseline|infrastructure|hashrate/i.test(clean)) credScore += 4;
   if (/target|resistance|retest|mean reversion|upside|wick|tp1|tp2|expansion|spot price|payoffs/i.test(clean)) credScore += 3;
   if (/cautious|patient|confirmation|risk|execution|disciplined|protecting capital|patiently|margins|cash-flow|overleverage/i.test(clean)) credScore += 4;
   if (/setup|asymmetric|orderflow|delta|reversion|liquidity|not financial advice|sovereign|thesis|cvd|commodity/i.test(clean)) credScore += 2;
+  if (/profit realized|breakeven|historical entry|profit booked|runner target|risk\/reward/i.test(clean)) credScore += 3;
   credScore = Math.min(20, Math.max(5, credScore));
 
   // Dimension 5: Presentation (0 - 20 pts)
@@ -3081,12 +3091,53 @@ function setDraftViewMode(mode) {
   }
 }
 
+// 🎯 Inject Bybit ByX Cashtag & Real Trading Context (#PAIRUSDT, Setup, Profit Follow-Up)
+function injectTradeContext(type) {
+  const post = postsData[currentPostIndex] || {};
+  let rawCoin = (post.coin && post.coin !== '+ New Coin') ? post.coin.replace(/^\$/, '') : 'BTC';
+  const cashtag = `#${rawCoin.toUpperCase()}USDT`;
+
+  let snippet = '';
+  if (type === 'setup') {
+    snippet = `\n\n📈 Trade Setup & Cashtag: ${cashtag}\n• Direction: Long\n• Entry Zone: Support floor reaction\n• Invalidation (SL): Below structural low\n• Take Profit 1: +5.0% (Book 50% profit)\n• Take Profit 2: +10.0% (Runner target)\n• Risk/Reward Ratio: 1 : 2.5`;
+  } else if (type === 'followup') {
+    snippet = `\n\n🏆 Trade Update & Cashtag: ${cashtag}\n• Historical Entry: Confirmed support\n• Target 1 Hit: +5.0% profit realized\n• Position Action: 50% profit booked; stop loss trailed to breakeven\n• Runner Target: Next key resistance`;
+  }
+
+  const activeText = polishedContent.value || '';
+  const updatedText = activeText ? (activeText.trim() + snippet) : snippet.trim();
+
+  polishedContent.value = updatedText;
+  if (draftCleanContent) draftCleanContent.value = updatedText;
+  post.improved = updatedText;
+  post.status = 'ready';
+
+  saveDataToStorage();
+  updateWordAndSentenceBadges(updatedText);
+  runAllDetectors(updatedText);
+  renderPills();
+  renderAttributionMatrix();
+  updateWeeklyProgress();
+  showToast(`🎯 Injected ByX Cashtag (${cashtag}) & ${type === 'setup' ? 'Trade Setup' : 'Realized Profit Follow-Up'}!`);
+}
+
 // Setup Event Listeners
 function setupEvents() {
   // Tabs
   tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
   tabDraftBtn.addEventListener('click', () => switchTab('draft'));
   tabRawBtn.addEventListener('click', () => switchTab('raw'));
+
+  // Cashtag & Trade Context Quick Injectors
+  const btnInjectTradeSetup = document.getElementById('btnInjectTradeSetup');
+  const btnInjectTradeFollowup = document.getElementById('btnInjectTradeFollowup');
+  const btnInjectTradeSetupDraft = document.getElementById('btnInjectTradeSetupDraft');
+  const btnInjectTradeFollowupDraft = document.getElementById('btnInjectTradeFollowupDraft');
+
+  if (btnInjectTradeSetup) btnInjectTradeSetup.addEventListener('click', () => injectTradeContext('setup'));
+  if (btnInjectTradeFollowup) btnInjectTradeFollowup.addEventListener('click', () => injectTradeContext('followup'));
+  if (btnInjectTradeSetupDraft) btnInjectTradeSetupDraft.addEventListener('click', () => injectTradeContext('setup'));
+  if (btnInjectTradeFollowupDraft) btnInjectTradeFollowupDraft.addEventListener('click', () => injectTradeContext('followup'));
 
   // Primary Draft Tab Main Copy Button (Ready to Post on ByX)
   if (copyDraftMainBtn) {
@@ -3288,8 +3339,8 @@ function setupEvents() {
 // Bybit Daily Points Attribution & Day Session Management Engine
 // ================================================================================
 
-const SESSION_KEY = 'byx_active_session_id';
-let currentSessionId = localStorage.getItem(SESSION_KEY) || 'day3';
+const SESSION_KEY = 'byx_active_session_id_v29';
+let currentSessionId = 'day3';
 
 // DOM elements for Daily Points Hub
 const daySessionSelect = document.getElementById('daySessionSelect');
@@ -3355,6 +3406,7 @@ function calculatePostDimensionScore(text) {
   if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$meta|meta platforms|\$sui|sui|\$[a-z]{3,6}/i.test(clean)) relevanceScore += 4;
   if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x|cctp|hashi|anchorage|walrus/i.test(clean)) relevanceScore += 5;
   if (/this week|past two weeks|last month|tomorrow|28th|today|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
+  if (/#?[A-Z0-9]{2,10}USDT|cashtag|trade setup|direction:|long|short|tp1|tp2|take profit|risk\/reward|rr/i.test(clean)) relevanceScore += 3;
   relevanceScore = Math.min(20, Math.max(6, relevanceScore));
 
   let credScore = 7;
@@ -3362,6 +3414,7 @@ function calculatePostDimensionScore(text) {
   if (/target|resistance|retest|mean reversion|upside|wick|tp1|tp2|expansion|spot price|payoffs/i.test(clean)) credScore += 3;
   if (/cautious|patient|confirmation|risk|execution|disciplined|protecting capital|patiently|margins|cash-flow|overleverage/i.test(clean)) credScore += 4;
   if (/setup|asymmetric|orderflow|delta|reversion|liquidity|not financial advice|sovereign|thesis|cvd|commodity/i.test(clean)) credScore += 2;
+  if (/profit realized|breakeven|historical entry|profit booked|runner target|risk\/reward/i.test(clean)) credScore += 3;
   credScore = Math.min(20, Math.max(5, credScore));
 
   let presScore = 6;
