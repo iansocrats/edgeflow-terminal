@@ -344,6 +344,12 @@ async function loadPostsData() {
       postsData[5] = freshSlots[5];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
+    // Auto-stage Post 7 ($EVA Trade Update +87% PnL)
+    if (postsData.length > 6 && (!postsData[6].raw || postsData[6].coin === '+ New Coin' || !postsData[6].title.includes('+87%'))) {
+      const freshSlots = createEmptySlots();
+      postsData[6] = freshSlots[6];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
   }
 
   if (!postsData || postsData.length === 0) {
@@ -505,6 +511,30 @@ function createEmptySlots() {
           {
             category: "spacing",
             description: "Paragraph formatting & scenario-based risk disclosure bullets."
+          }
+        ]
+      });
+    } else if (i === 7) {
+      slots.push({
+        id: 7,
+        coin: '$EVA',
+        title: 'Post 7: \u26A1 $EVA Trade Update (+87% PnL) & The Road to $2.00',
+        status: 'ready',
+        raw: "For my third post on EVA USDT, now that I am up by 87%, I want to talk about what's now about to happen. All my predictions have gone the way I expected. My first take profit, which was 1.42, I've reached it and I've taken partial profits from this. Now what I want to target next is the window to $2 level, which is my next target. There was a minor pullback which pushed back to 1.188, which I talked about in my earlier post. From the position we are at 1.42, I'm looking that there could be an extension for over 30%. Next stop is 1.6 or 1.7, perhaps a bigger extension to $2. If you look at the chart, there's a rising staircase pattern: big rise, minor pullback, bigger rise, minor pullback. Be patient, pay attention to the highest resistance zones. If you missed the previous prediction, be patient to join the next pullback.",
+        improved: "\u26A1 #EVAUSDT: Trade Update (+87% PnL) & The Road to $2.00\n\nOur EVA USDT swing has surged to +87% unrealized profit as all targets unfold as planned. Our first take-profit target at $1.42 was hit and partial profits have been booked. Following a healthy pullback to the $1.188 support shelf, price action is coiling inside a classic ascending staircase for another 30% expansion.\n\nHere is my updated trade execution roadmap:\n\u2022 Structural Confirmation: The $1.188 dip confirmed aggressive dip-buying, keeping the bullish channel intact.\n\u2022 Expansion Targets: Next overhead stops sit at $1.60 and $1.70, with our primary target locked at $2.00.\n\u2022 Execution Advice: Trail stop-losses to protect banked gains. If you missed the entry, do not chase green candles\u2014wait patiently for the next pullback.\n\nPatience continues to pay off. Are you letting runners ride to $2.00 or locking profits at $1.70?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($1.42, $1.188, $1.60, $1.70, $2.00, +87%, +30%)."
+          },
+          {
+            category: "spacing",
+            description: "Paragraph formatting & mobile bullet list for rapid execution."
           }
         ]
       });
