@@ -320,10 +320,16 @@ async function loadPostsData() {
       postsData[1] = freshSlots[1];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
-    // Auto-stage Post 3 ( Follow-Up +56% PnL)
+    // Auto-stage Post 3 ($EVA Follow-Up +56% PnL)
     if (postsData.length > 2 && (!postsData[2].raw || postsData[2].coin === '+ New Coin' || !postsData[2].title.includes('+56%'))) {
       const freshSlots = createEmptySlots();
       postsData[2] = freshSlots[2];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
+    // Auto-stage Post 4 ($EVA Follow-Up +72% PnL)
+    if (postsData.length > 3 && (!postsData[3].raw || postsData[3].coin === '+ New Coin' || !postsData[3].title.includes('+72%'))) {
+      const freshSlots = createEmptySlots();
+      postsData[3] = freshSlots[3];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
   }
@@ -411,6 +417,30 @@ function createEmptySlots() {
           {
             category: "word",
             description: "Financial formatting ($1.43, $2.00, $3.00, $0.89, $1.00, $0.70, +56%, 3x-5x)."
+          },
+          {
+            category: "spacing",
+            description: "Paragraph formatting & mobile bullet list for rapid execution."
+          }
+        ]
+      });
+    } else if (i === 4) {
+      slots.push({
+        id: 4,
+        coin: '$EVA',
+        title: 'Post 4: \u26A1 $EVA Trade Update (+72% PnL) & $3 Expansion Roadmap',
+        status: 'ready',
+        raw: "Let's do another follow-up. Since we are already at 72% unrealized PnL, this is a positive, so we are up already by that percentage. I would like to talk about how our previous setup is going along. The pullback hasn't happened, but it's showing a growing strength for a green candle. So the candle seems to want to go higher and further. I'm looking for a further extension by over 50%. Now, that means we can still hit a $2 level, maybe even we can extend it to $2.9, which is a 100% gain. There is nothing stopping this coin from going further. Here is the technical analysis. The 4-hour analysis is this: the previous 4-hour candle closed at over 1.35, meaning the extension is going further, while the previous 4-hour support floor is at $1. The green candle for this 4-hour candle, the current one, can see it double it in value, can go up to 2.7 to 3, which is a possibility. Something I also have to say is this protocol, with this low market cap of $9 million and a low circulating supply of 6,670,972, I see no way this cannot extend further. Of course, there is the big news, which is the federal interest rate. Some people are expecting a lower than expected interest rate, while some are expecting bullish. I would like you to give me some scenarios based, in fact, check me where I'm wrong here.",
+        improved: "\u26A1 #EVAUSDT: Trade Update (+72% PnL) & $3 Expansion Roadmap\n\nOur EVA USDT swing is now sitting at +72% unrealized profit. Instead of pulling back, buyers absorbed spot supply with the previous 4-hour candle closing firmly above $1.35. Backed by a tiny $9M market cap and just 6,670,972 circulating coins, this supply crunch is primed for another 50% to 100% impulse.\n\nHere is the technical roadmap & Fed decision playbook:\n\u2022 Structural Support Floor: 4-hour support floor is now anchored at $1.00; trail stops here to lock gains.\n\u2022 Expansion Targets: Clean continuation targets $2.00, with extended targets at $2.70 and $2.90.\n\u2022 Fed Catalyst Scenarios: A dovish rate decision accelerates the run to $3.00, while a hawkish pause tests the $1.00 shelf.\n\nWith +72% banked, disciplined execution beats greed. Are you trailing stops to $1.00 or taking profits into the Fed print?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($1.35, $1.00, $2.00, $2.70, $2.90, $3.00, +72%, $9M)."
           },
           {
             category: "spacing",
