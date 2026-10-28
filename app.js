@@ -299,11 +299,12 @@ async function loadPostsData() {
     }
   }
 
-  // Ensure Day 3 is 100% fresh and clean (no stale yesterday posts or placeholders)
+  // Ensure Day 3 is 100% fresh with Post 1 ($EVA) staged
   if (currentSessionId === 'day3' && postsData && postsData.length > 0) {
     const firstText = (postsData[0].improved || '') + (postsData[0].raw || '');
-    if (firstText.includes('Absorption Paradox') || firstText.includes('Bitcoin is holding firmly') || firstText.includes('Waiting for Post 1...')) {
-      postsData = null;
+    if (firstText.includes('Absorption Paradox') || firstText.includes('Bitcoin is holding firmly') || firstText.includes('Waiting for Post 1...') || postsData[0].coin !== '$EVA') {
+      postsData = createEmptySlots();
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
   }
 
@@ -325,18 +326,40 @@ async function loadPostsData() {
   }
 }
 
-// Create 10 empty dynamic slots (completely clean, zeroed out)
+// Create 10 empty dynamic slots (Day 3 with Post 1 $EVA ready)
 function createEmptySlots() {
   const slots = [];
   for (let i = 1; i <= 10; i++) {
-    slots.push({
-      id: i,
-      coin: '+ New Coin',
-      title: `Post ${i}: Ready for Today's Dictation`,
-      status: i === 1 ? 'ready' : 'waiting',
-      raw: '',
-      improved: ''
-    });
+    if (i === 1) {
+      slots.push({
+        id: 1,
+        coin: '$EVA',
+        title: 'Post 1: ⚡ $EVA Reloading for a 40%–50% Extension: Active Trade Setup',
+        status: 'ready',
+        raw: "Currently, my open position is EVA USDT. This coin is reloading for a big surge. I'm targeting in the range of 50% to 40% surge. Of course, what pays off here is patience. Earlier today, this morning, it made a surge for 40%, hitting at 1.228 level, which is now my new resistance level. If we are able to break this psychological level, then we can extend this further and perhaps target 1.5, perhaps even, if we are lucky, 2.0. If you joined my early long position, here is my takeaway. Try moving your stop losses to 0.8 now, and try to be patient. Consider at least having three taking profit positions because of the volatility, so you can target 1.2, 1.3, or 1.4. Let the rest ride for as much as you want. I'm going to be day trading this one. If you missed out on this, don't worry. There's still more opportunity for this coin. The current price at 1.11 is a good entry point. If we extend this, the next position you can target is 1.22 to 1.55. In case of an invalidation, you can set up a new setup if it decides to go lower or to pull back so that we can get a higher high. Already I'm 50% up. I'm also looking to go further higher and higher. The price action, you have to be very careful about leveraging, and that's my key takeaway.",
+        improved: "⚡ My open position right now is #EVAUSDT.\n\nThis coin is reloading for another major surge after ripping 40% earlier this morning. We hit the $1.228 level, which is now our primary local resistance. If buyers break through this psychological ceiling, the extension can stretch toward $1.50, and potentially $2.00.\n\nAlready, my position is +50% in profit. What pays off here is disciplined patience.\n\n📈 Active Trade Setup & Cashtag: #EVAUSDT\n• Early Position Management: Move stop-losses to $0.80 to protect gains.\n• Fresh Entry Zone: Current consolidation around $1.11.\n• Resistance Ceiling: $1.228.\n• Multi-Tier Take Profit (TP):\n  - TP1: $1.228 (+10%)\n  - TP2: $1.350\n  - TP3: $1.500+ (let runners ride)\n• Invalidation: Retest below $0.80.\n\nBecause of high volatility, be extremely careful with leverage. Are you riding this continuation or waiting for a dip to $1.00?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 0,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "spacing",
+            description: "Paragraph formatting for mobile scannability."
+          }
+        ]
+      });
+    } else {
+      slots.push({
+        id: i,
+        coin: '+ New Coin',
+        title: `Post ${i}: Ready for Today's Dictation`,
+        status: 'waiting',
+        raw: '',
+        improved: ''
+      });
+    }
   }
   return slots;
 }
