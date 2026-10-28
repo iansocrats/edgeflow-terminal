@@ -350,6 +350,12 @@ async function loadPostsData() {
       postsData[6] = freshSlots[6];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
+    // Auto-stage Post 8 ($PEPE Pre-FOMC Whale Beta Setup)
+    if (postsData.length > 7 && (!postsData[7].raw || postsData[7].coin === '+ New Coin' || !postsData[7].title.includes('PEPE'))) {
+      const freshSlots = createEmptySlots();
+      postsData[7] = freshSlots[7];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
   }
 
   if (!postsData || postsData.length === 0) {
@@ -535,6 +541,30 @@ function createEmptySlots() {
           {
             category: "spacing",
             description: "Paragraph formatting & mobile bullet list for rapid execution."
+          }
+        ]
+      });
+    } else if (i === 8) {
+      slots.push({
+        id: 8,
+        coin: '$PEPE',
+        title: 'Post 8: \u26A1 $PEPE Pre-FOMC Whale Accumulation & Meme Beta Setup',
+        status: 'ready',
+        raw: "As our next coin, let's pick PEPE, the meme coin. Justin Sun associated addresses holding over billions of this coin, and this has pushed more whales to own this coin. PEPE is up 10% today at around the support floor of $0.0000098 to $0.0000108, with a $4.5B market cap. Support floor is at $0.0000098, immediate resistance is at $0.0000118 to $0.0000135. Federal interest rate decision is in less than 37 minutes, which will affect Bitcoin and this meme coin. If a dovish Fed cut happens, it triggers a meme rally. If hawkish, it drops below $0.0000094.",
+        improved: "\u26A1 #PEPEUSDT: Pre-FOMC Whale Accumulation & Meme Beta Roadmap\n\nPEPE is up 10% today at $0.0000108, commanding a $4.5B market cap ahead of today's Federal Reserve rate decision. On-chain intelligence confirms heavy institutional accumulation, with Justin Sun-linked wallets absorbing over 100B tokens, coiling price above the $0.0000098 demand floor.\n\nHere is my high-beta trade setup & scenario-based playbook:\n\u2022 Structural Levels: Support floor anchored at $0.0000098; immediate resistance sits at $0.0000118 and $0.0000135.\n\u2022 Trade Setup: Long entry around $0.0000102\u2013$0.0000108; invalidation stop-loss at $0.0000094 using disciplined 3x to 5x leverage.\n\u2022 Profit Targets: Scale TP1 at $0.0000118 (+10%), letting runners target the $0.0000135 breakout (+25%).\n\u2022 Risk Disclosure: A dovish Fed cut triggers a high-beta meme squeeze to $0.0000135+. A hawkish surprise closing beneath $0.0000094 invalidates this setup.\n\nAre you front-running the FOMC rate decision on high-beta memes or waiting for post-event confirmation?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($0.0000108, $0.0000098, $0.0000118, $0.0000135, $4.5B, 3x-5x)."
+          },
+          {
+            category: "spacing",
+            description: "Paragraph formatting & scenario-based risk disclosure bullets."
           }
         ]
       });
@@ -961,7 +991,7 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'hype', 'hyperliquid', 'payward', 'bitnomial', 'cftc', 'allowlists', 'ninjatrader',
   'nvidia', 'nvda', 'blackwell', 'capex', 'hyperscalers', 'fibonacci',
   'meta', 'rubin', 'spectrum-x', 'bluefield-4', 'muse', 'alliance',
-  'sui', 'cctp', 'xaan', 'xai', 'anoma', 'hashi', 'anchorage', 'walrus'
+  'sui', 'cctp', 'xaan', 'xai', 'anoma', 'pepe', 'hashi', 'anchorage', 'walrus'
 ]);
 
 function runGltrPredictability(text) {
