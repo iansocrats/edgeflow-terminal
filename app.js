@@ -248,13 +248,11 @@ const AI_PATTERNS = [
 
 // Initialize App
 async function initApp() {
-  setTodayDate();
   await loadPostsData();
-  renderPills();
-  displayPost(currentPostIndex);
+  initSessionAndPointsHub();
+  switchDaySession(currentSessionId, false);
   setViewMode('plain'); // Clean plain text by default
   setupEvents();
-  initSessionAndPointsHub();
 }
 
 // Display Real-time Day/Date & Session Status
@@ -265,10 +263,10 @@ function setTodayDate() {
   if (currentDateBadge) {
     if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day1') {
       currentDateBadge.textContent = 'Day 1 Archive (9.0 pts)';
-    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day3') {
-      currentDateBadge.textContent = 'Day 3 Fresh Desk';
+    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day2') {
+      currentDateBadge.textContent = 'Day 2 Archive (11.0 pts)';
     } else {
-      currentDateBadge.textContent = '10/10 Complete';
+      currentDateBadge.textContent = 'Day 3 Active Desk';
     }
   }
 }
@@ -289,6 +287,10 @@ async function loadPostsData() {
     if (res.ok) {
       serverPosts = await res.json();
       if (Array.isArray(serverPosts) && serverPosts.length > 0) {
+        // Guarantee Day 2 archive is permanently saved in localStorage
+        if (!localStorage.getItem('byx_session_posts_day2')) {
+          localStorage.setItem('byx_session_posts_day2', JSON.stringify(serverPosts));
+        }
         // If cached data is missing or empty, take serverPosts
         if (!postsData || postsData.length === 0) {
           postsData = serverPosts;
@@ -2379,6 +2381,9 @@ function saveCurrentPostEdits() {
 
 function saveDataToStorage() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(postsData));
+  if (typeof currentSessionId !== 'undefined') {
+    localStorage.setItem(getDaySessionStorageKey(currentSessionId), JSON.stringify(postsData));
+  }
 }
 
 // --------------------------------------------------------------------------------
@@ -3306,7 +3311,7 @@ function setupEvents() {
 // ================================================================================
 
 const SESSION_KEY = 'byx_active_session_id';
-let currentSessionId = localStorage.getItem(SESSION_KEY) || 'day2';
+let currentSessionId = localStorage.getItem(SESSION_KEY) || 'day3';
 
 // DOM elements for Daily Points Hub
 const daySessionSelect = document.getElementById('daySessionSelect');
@@ -3481,11 +3486,11 @@ function updateWeeklyProgress() {
     chipDay1.className = `chip-day ${currentSessionId === 'day1' ? 'active' : ''}`;
   }
   if (chipDay2) {
-    chipDay2.innerHTML = `📅 Day 2 (Today): <strong>${day2Score.toFixed(1)} pts</strong> (10 posts)`;
+    chipDay2.innerHTML = `📅 Day 2 (Oct 27): <strong>${day2Score.toFixed(1)} pts</strong> (10 posts)`;
     chipDay2.className = `chip-day ${currentSessionId === 'day2' ? 'active' : ''}`;
   }
   if (chipDay3) {
-    chipDay3.innerHTML = `📅 Day 3 (Tomorrow): <strong>${day3Score > 0 ? day3Score.toFixed(1) + ' pts' : 'Awaiting'}</strong> (${currentSessionId === 'day3' ? 'Active Desk' : '10 slots'})`;
+    chipDay3.innerHTML = `📅 Day 3 (Today): <strong>${day3Score > 0 ? day3Score.toFixed(1) + ' pts' : 'Active'}</strong> (${currentSessionId === 'day3' ? '10 Fresh Slots' : '10 slots'})`;
     chipDay3.className = `chip-day ${currentSessionId === 'day3' ? 'active' : 'pending'}`;
   }
 
@@ -3505,8 +3510,10 @@ function updateWeeklyProgress() {
 }
 
 function switchDaySession(newSessionId, forceFresh = false) {
-  // Save active posts to session storage
-  localStorage.setItem(getDaySessionStorageKey(currentSessionId), JSON.stringify(postsData));
+  // If current postsData has content, preserve it to the outgoing session key
+  if (postsData && postsData.length > 0 && typeof currentSessionId !== 'undefined') {
+    localStorage.setItem(getDaySessionStorageKey(currentSessionId), JSON.stringify(postsData));
+  }
 
   currentSessionId = newSessionId;
   localStorage.setItem(SESSION_KEY, currentSessionId);
@@ -3541,11 +3548,12 @@ function switchDaySession(newSessionId, forceFresh = false) {
   displayPost(0);
   setTodayDate();
   renderAttributionMatrix();
-  showToast(`📂 Switched to ${currentSessionId === 'day2' ? 'Day 2 (Today)' : currentSessionId === 'day1' ? 'Day 1 (Yesterday)' : 'Day 3 (Tomorrow)'}!`);
+  updateWeeklyProgress();
+  showToast(`📂 Switched to ${currentSessionId === 'day3' ? 'Day 3: Today (Oct 28)' : currentSessionId === 'day2' ? 'Day 2: Yesterday (Oct 27)' : 'Day 1: Oct 26'}!`);
 }
 
 function startTomorrowDesk() {
-  const confirmMsg = "✨ Start Day 3 (Tomorrow)?\n\nToday's 10 completed posts ($BTC to $SUI) and score will remain safely preserved in Day 2.\n\nYou can switch back to view or copy today's posts anytime from the top dropdown!";
+  const confirmMsg = "✨ Start a fresh desk for Day 3 (Today, Oct 28)?\n\nYesterday's 10 completed posts ($BTC to $SUI) and 11.0 points will remain safely preserved in Day 2.\n\nYou can switch back to view or copy yesterday's posts anytime from the top dropdown!";
   if (window.confirm(confirmMsg)) {
     switchDaySession('day3', true);
   }

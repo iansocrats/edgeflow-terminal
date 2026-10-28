@@ -25,12 +25,12 @@
           <div class="session-selector-wrap">
             <span class="session-label">DESK:</span>
             <select id="daySessionSelect" class="session-dropdown" title="Switch active day or view archived posts">
-              <option value="day2" selected>📅 Day 2: Today (Oct 27) — 10 Posts (Complete)</option>
-              <option value="day1">📅 Day 1: Yesterday (Oct 26) — 5 Posts (9.0 pts)</option>
-              <option value="day3">📅 Day 3: Tomorrow (Oct 28) — Fresh 10 Slots</option>
+              <option value="day3" selected>📅 Day 3: Today (Oct 28) — Fresh 10 Slots</option>
+              <option value="day2">📅 Day 2: Yesterday (Oct 27) — 10 Posts (11.0 pts)</option>
+              <option value="day1">📅 Day 1: Oct 26 — 5 Posts (9.0 pts)</option>
             </select>
-            <button id="btnNewDaySession" class="btn-new-day" title="Archive today's 10 posts and start fresh for tomorrow">
-              <span>✨ Start Tomorrow</span>
+            <button id="btnNewDaySession" class="btn-new-day" title="Reset active desk or start a new day">
+              <span>✨ Fresh Desk</span>
             </button>
           </div>
           <div class="daily-badge">
@@ -385,8 +385,8 @@
           </div>
           <div class="daily-breakdown-chips">
             <span class="chip-day" id="chipDay1">📅 Day 1 (Oct 26): <strong>9.0 pts</strong> (5 posts)</span>
-            <span class="chip-day active" id="chipDay2">📅 Day 2 (Oct 27): <strong id="chipTodayScore">11.0 pts</strong> (10 posts)</span>
-            <span class="chip-day pending" id="chipDay3">📅 Day 3 (Oct 28): <strong>Awaiting</strong> (10 slots)</span>
+            <span class="chip-day" id="chipDay2">📅 Day 2 (Oct 27): <strong>11.0 pts</strong> (10 posts)</span>
+            <span class="chip-day active" id="chipDay3">📅 Day 3 (Today): <strong id="chipTodayScore">0.0 pts</strong> (10 slots)</span>
           </div>
         </div>
 
