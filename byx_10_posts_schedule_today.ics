@@ -1,0 +1,148 @@
+﻿BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EdgeFlow Terminal//ByX 10 Daily Posts Schedule//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ByX 10 Daily Trading Posts
+X-WR-TIMEZONE:Africa/Nairobi
+BEGIN:VEVENT
+UID:20261028-post-1-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T084500
+DTEND;TZID=Africa/Nairobi:20261028T091500
+SUMMARY:âš¡ Post 1: EVA USDT 40%-50% Surge (Asia Close)
+DESCRIPTION:Post 1 published: #EVAUSDT setup, .228 resistance, .11 entry, .80 SL.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 1: EVA USDT 40%-50% Surge (Asia Close)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-2-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T101500
+DTEND;TZID=Africa/Nairobi:20261028T104500
+SUMMARY:âš¡ Post 2: XAAN, USDT Token Unlock Catalyst (London Open)
+DESCRIPTION:Post 2 published: #XAANUSDT setup, .00755 floor, .008 SL, .012+ TP.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 2: XAAN, USDT Token Unlock Catalyst (London Open)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-3-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T114500
+DTEND;TZID=Africa/Nairobi:20261028T121500
+SUMMARY:âš¡ Post 3: European Mid-Morning Momentum
+DESCRIPTION:Post 3: Mid-morning continuation or altcoin momentum post with ByX cashtag.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 3: European Mid-Morning Momentum
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-4-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T133000
+DTEND;TZID=Africa/Nairobi:20261028T140000
+SUMMARY:âš¡ Post 4: Pre-NY Macro / US Futures Flow
+DESCRIPTION:Post 4: Macro setup ahead of the US market open and Fed rate expectations.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 4: Pre-NY Macro / US Futures Flow
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-5-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T150000
+DTEND;TZID=Africa/Nairobi:20261028T153000
+SUMMARY:âš¡ Post 5: NY Cash Open Peak Volatility
+DESCRIPTION:Post 5: Peak global liquidity overlap. High-conviction intraday scalp or breakout.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 5: NY Cash Open Peak Volatility
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-6-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T164500
+DTEND;TZID=Africa/Nairobi:20261028T171500
+SUMMARY:âš¡ Post 6: US Mid-Morning Trend Confirmation
+DESCRIPTION:Post 6: Trend confirmation on morning runners or trailing stop updates.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 6: US Mid-Morning Trend Confirmation
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-7-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T183000
+DTEND;TZID=Africa/Nairobi:20261028T190000
+SUMMARY:âš¡ Post 7: London Close & Capital Clearing
+DESCRIPTION:Post 7: European close recap, orderflow shifts, and evening swing setup.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 7: London Close & Capital Clearing
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-8-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T200000
+DTEND;TZID=Africa/Nairobi:20261028T203000
+SUMMARY:âš¡ Post 8: US Afternoon / Pre-Fed Catalyst
+DESCRIPTION:Post 8: Pre-FOMC positioning, capital preservation, risk-reward breakdown.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 8: US Afternoon / Pre-Fed Catalyst
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-9-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T214500
+DTEND;TZID=Africa/Nairobi:20261028T221500
+SUMMARY:âš¡ Post 9: Fed Decision & Power Hour Action
+DESCRIPTION:Post 9: Real-time reaction to Federal Reserve rate decision & market spike.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 9: Fed Decision & Power Hour Action
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-post-10-byx@edgeflow
+DTSTAMP:20261028T070000Z
+DTSTART;TZID=Africa/Nairobi:20261028T230000
+DTEND;TZID=Africa/Nairobi:20261028T233000
+SUMMARY:âš¡ Post 10: NY Daily Close Wrap & PnL Follow-Up
+DESCRIPTION:Post 10: Daily wrap, trade accountability (wins/losses), overnight levels.
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Time to publish Post 10: NY Daily Close Wrap & PnL Follow-Up
+END:VALARM
+END:VEVENT
+END:VCALENDAR
