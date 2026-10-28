@@ -338,6 +338,12 @@ async function loadPostsData() {
       postsData[4] = freshSlots[4];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
+    // Auto-stage Post 6 ($BTC Pre-FOMC Absorption Setup)
+    if (postsData.length > 5 && (!postsData[5].raw || postsData[5].coin === '+ New Coin' || !postsData[5].title.includes('BTC'))) {
+      const freshSlots = createEmptySlots();
+      postsData[5] = freshSlots[5];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
   }
 
   if (!postsData || postsData.length === 0) {
@@ -471,6 +477,30 @@ function createEmptySlots() {
           {
             category: "word",
             description: "Financial formatting ($4,015, $3,980, $4,040, $4,080, $4,190, $4,250, 5x-10x)."
+          },
+          {
+            category: "spacing",
+            description: "Paragraph formatting & scenario-based risk disclosure bullets."
+          }
+        ]
+      });
+    } else if (i === 6) {
+      slots.push({
+        id: 6,
+        coin: '$BTC',
+        title: 'Post 6: \u26A1 $BTC US Session Open & Pre-FOMC Absorption Setup',
+        status: 'ready',
+        raw: "Bitcoin is trading firmly at $79,850 as the New York session opens, defending the $79,000 baseline. Despite $1.1B in absorbed ETF volume, orderflow remains resilient with funding rates dead-neutral at 0.004% ahead of today's Federal Reserve interest rate decision. Support floor is at $79,000; resistance at $81,500 and $83,200. Long entry between $79,200 and $79,650; invalidation stop-loss at $78,400. Profit targets at $81,500 and $83,200. A dovish cut accelerates to $83,000+, while a hawkish surprise invalidates below $78,400.",
+        improved: "\u26A1 #BTCUSDT: US Session Open & Pre-FOMC Absorption Setup\n\nBitcoin is trading firmly at $79,850 as the New York session opens, defending the $79,000 baseline. Despite $1.1B in absorbed ETF volume, orderflow remains resilient with funding rates dead-neutral at 0.004% ahead of today's Federal Reserve interest rate decision.\n\nHere is my trade setup & scenario-based execution roadmap:\n\u2022 Structural Levels: Institutional support shelf anchored at $79,000; overhead resistance sits at $81,500 and $83,200.\n\u2022 Trade Setup: Long entry zone between $79,200 and $79,650; invalidation stop-loss at $78,400 using disciplined 5x to 10x leverage.\n\u2022 Profit Targets: Scale TP1 at $81,500, letting runners target $83,200.\n\u2022 Risk Disclosure: A dovish Fed cut accelerates continuation to $83,000+. A hawkish surprise closing beneath $78,400 invalidates this long for a $76,000 sweep.\n\nAre you positioned before the FOMC print or waiting for post-rate confirmation?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($79,850, $79,000, $81,500, $83,200, $78,400, $1.1B, 5x-10x)."
           },
           {
             category: "spacing",
