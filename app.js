@@ -314,10 +314,16 @@ async function loadPostsData() {
       postsData = createEmptySlots();
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
-    // Auto-stage Post 2 ()
+    // Auto-stage Post 2 (XAAN, USDT)
     if (postsData.length > 1 && (!postsData[1].raw || postsData[1].coin === '+ New Coin' || postsData[1].coin !== 'XAAN, USDT')) {
       const freshSlots = createEmptySlots();
       postsData[1] = freshSlots[1];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
+    // Auto-stage Post 3 ( Follow-Up +56% PnL)
+    if (postsData.length > 2 && (!postsData[2].raw || postsData[2].coin === '+ New Coin' || !postsData[2].title.includes('+56%'))) {
+      const freshSlots = createEmptySlots();
+      postsData[2] = freshSlots[2];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
   }
@@ -381,6 +387,30 @@ function createEmptySlots() {
           {
             category: "word",
             description: "Spoken typos & financial formatting (USN -> USDT, 0.011 -> $0.011, 0.00755 -> $0.00755, 0.008 -> $0.008, 0.012 -> $0.012)."
+          },
+          {
+            category: "spacing",
+            description: "Paragraph formatting & mobile bullet list for rapid execution."
+          }
+        ]
+      });
+    } else if (i === 3) {
+      slots.push({
+        id: 3,
+        coin: '$EVA',
+        title: 'Post 3: \u26A1 $EVA Trade Follow-Up (+56% PnL) & 4H Breakout Setup',
+        status: 'ready',
+        raw: "For the third post, which is a follow-up post on the first post we posted, I'm looking to write about a follow-up on that. At the moment, my position is at an unrealized PnL of +56%. My analysis of this is that this coin is observing whale sellers and it's coiling up for one big good green candle. You can pick some technical analysis on that and say why. Another thing that's encouraging is the low maximum supply of this coin, just around 6 million supply. But the thing that's encouraging is that the pullbacks have been really nice, so there have been lower lows and lower highs, and the momentum is still bullish, strongly bullish. I anticipate an astronomical move in a few hours, so I am patiently watching the 4-hour chart. My chart is just on 4-hour, and I'm just waiting and patiently waiting for my to pass the nearest resistance, which is I think 1.43, which we just hit a few hours ago. Now, the momentum once it peaks, I anticipate it can go as far as $2. Here is my setup. My current position is my entry was at, of course, first of all, this is a long position waiting on a breakout, so I'll swing long on the breakout. My entry zone is between 1.0 and 0.89, so I've been taking profits on that. My stop loss is at 0.7 because I'm using 3 to 5 leverage, so 3x to 5x. My take profit is at 2 to 3, possibly even higher. So I'm going to be patient here. No, it's not a FOMO trap. Are you looking to accumulate before the next breakout?",
+        improved: "\u26A1 #EVAUSDT: Trade Follow-Up (+56% Unrealized PnL)\n\nFollowing up on this morning's EVA USDT setup, my position is currently sitting at +56% unrealized profit. Orderflow shows this coin is absorbing whale sellers and coiling tightly for an explosive green expansion. Backed by an ultra-low 6 million supply, the 4-hour chart pullbacks remain strongly bullish.\n\nHere is the trade execution roadmap:\n\u2022 Structural Resistance: Price tapped the $1.43 level; breaking above unlocks momentum toward $2.00 and $3.00.\n\u2022 Entry & Invalidation: Original entry zone sat between $0.89 and $1.00; trail stop-losses to $0.70 to protect capital.\n\u2022 Leverage & Scaling: Running conservative 3x to 5x leverage while scaling profits into $2.00 to $3.00.\n\nPatience is key \u2014 this is a disciplined swing long, not a FOMO trap. Are you accumulating before this 4-hour breakout or waiting for a retest?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($1.43, $2.00, $3.00, $0.89, $1.00, $0.70, +56%, 3x-5x)."
           },
           {
             category: "spacing",
