@@ -356,6 +356,12 @@ async function loadPostsData() {
       postsData[7] = freshSlots[7];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
+    // Auto-stage Post 9 ($EVA Daily Close Recap & $2.00–$2.70 Roadmap)
+    if (postsData.length > 8 && (!postsData[8].raw || postsData[8].coin === '+ New Coin' || !postsData[8].title.includes('Recap'))) {
+      const freshSlots = createEmptySlots();
+      postsData[8] = freshSlots[8];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
   }
 
   if (!postsData || postsData.length === 0) {
@@ -565,6 +571,30 @@ function createEmptySlots() {
           {
             category: "spacing",
             description: "Paragraph formatting & scenario-based risk disclosure bullets."
+          }
+        ]
+      });
+    } else if (i === 9) {
+      slots.push({
+        id: 9,
+        coin: '$EVA',
+        title: 'Post 9: \u26A1 $EVA Daily Close Recap & $2.00\u2013$2.70 Squeeze Roadmap',
+        status: 'ready',
+        raw: "For our recap post on EVA USDT, picking points three and four: this is an end of the day recap of what profit we've made, what levels we hit, and what our prediction is over the next few hours or until morning. EVA surged over 200% from base accumulation. After banking partial profits at 1.42 with +87% unrealized gains, the 4-hour chart confirms an ascending staircase floor with buyers defending the 1.188 support level. We are still targeting that 2.0 to 2.7 range zone. The danger is that orderbook depth remains thin, so a breakdown below 1.188 invalidates our setup, while aggressive whale profit-taking or sudden unlocks pose swift reversal risks. Protect banked capital by trailing stop-loss orders to 1.188.",
+        improved: "\u26A1 #EVAUSDT: Daily Close Recap & $2.00\u2013$2.70 Squeeze Roadmap\n\nEVA closed today with explosive momentum, surging over +200% from base accumulation. After banking partial profits at $1.42 with +87% unrealized gains, the 4-hour chart confirms an ascending staircase floor with buyers defending the $1.188 support level.\n\nHere is my overnight roadmap & critical risk analysis:\n\u2022 Overnight Targets: Clean 4-hour closes above $1.43 open an expansion window toward $2.00, stretching into the $2.70 resistance zone.\n\u2022 Structural Support: The ascending floor sits firmly at $1.188, backed by institutional liquidity absorption.\n\u2022 Invalidation & Danger: Orderbook depth remains thin. A breakdown below $1.188 invalidates our setup, while aggressive whale profit-taking or sudden unlocks pose swift reversal risks.\n\nProtect banked capital by trailing stop-loss orders to $1.188. Are you letting runners ride to $2.70 or securing gains before morning?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($1.42, $1.188, $1.43, $2.00, $2.70, +200%, +87%)."
+          },
+          {
+            category: "spacing",
+            description: "Structured bullet layout & scenario-based overnight risk disclosure."
           }
         ]
       });
