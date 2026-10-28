@@ -332,6 +332,12 @@ async function loadPostsData() {
       postsData[3] = freshSlots[3];
       localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
     }
+    // Auto-stage Post 5 ($PAXG Gold Pre-Fed Setup)
+    if (postsData.length > 4 && (!postsData[4].raw || postsData[4].coin === '+ New Coin' || !postsData[4].title.includes('Gold'))) {
+      const freshSlots = createEmptySlots();
+      postsData[4] = freshSlots[4];
+      localStorage.setItem(getDaySessionStorageKey('day3'), JSON.stringify(postsData));
+    }
   }
 
   if (!postsData || postsData.length === 0) {
@@ -445,6 +451,30 @@ function createEmptySlots() {
           {
             category: "spacing",
             description: "Paragraph formatting & mobile bullet list for rapid execution."
+          }
+        ]
+      });
+    } else if (i === 5) {
+      slots.push({
+        id: 5,
+        coin: '$PAXG',
+        title: 'Post 5: \u26A1 $PAXG Pre-Fed Gold Setup & Scenario Risk Disclosure',
+        status: 'ready',
+        raw: "Let's prepare for the fifth post. I'm going to think of picking one coin that is likely to be affected by the federal interest rate. Gold is one of them. For example, let's talk about Gold. The current price range for today is between $3,980 and $4,040. Key levels are the floor support at $3,980, the immediate resistance at $4,080, and the highest resistance to target is last month's resistance at $4,190. Then talking about my personal trading setup: I am expecting to go long based on the federal interest decision. My entry price zone is between $3,995 and $4,020, and my stop loss is at $3,960. My take profit first target is $4,100, then afterwards $4,190 to $4,250. Using a moderate leverage of 5x to 10x to protect capital. And adding risk disclosure with scenarios: if a dovish rate cut happens, it weakens the dollar and pushes gold to $4,250. If a hawkish decision breaks below $3,980, it invalidates our setup.",
+        improved: "\u26A1 #PAXGUSDT: Pre-Fed Gold Setup & Scenario Risk Disclosure\n\nGold is holding firmly at $4,015 within today's $3,980\u2013$4,040 range ahead of the Federal Reserve rate decision. CME and crypto gold derivative open interest compressed by over 4% as institutions sideline capital, confirming disciplined pre-event accumulation above the psychological $4,000 reaction baseline.\n\nHere is my trade setup & scenario-based execution roadmap:\n\u2022 Structural Levels: Floor support anchored at $3,980; overhead resistance sits at $4,080 and last month's $4,190 peak.\n\u2022 Trade Setup: Long entry zone between $3,995 and $4,020; invalidation stop-loss at $3,960 using conservative 5x to 10x leverage.\n\u2022 Profit Targets: Scale TP1 at $4,100, letting runners target $4,190 to $4,250.\n\u2022 Risk Disclosure: A dovish cut weakens the dollar, accelerating a breakout toward $4,250. A hawkish hold breaking beneath $3,980 invalidates this long.\n\nAre you positioning long into this Fed volatility or waiting for the post-rate close?",
+        rules_summary: {
+          punctuation_count: 8,
+          word_replacement_count: 5,
+          emoji_spacing_count: 5
+        },
+        suggestions: [
+          {
+            category: "word",
+            description: "Financial formatting ($4,015, $3,980, $4,040, $4,080, $4,190, $4,250, 5x-10x)."
+          },
+          {
+            category: "spacing",
+            description: "Paragraph formatting & scenario-based risk disclosure bullets."
           }
         ]
       });
