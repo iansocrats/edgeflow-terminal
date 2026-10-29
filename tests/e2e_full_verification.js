@@ -216,7 +216,7 @@ async function runE2ETest() {
 
     // Test Metric Pills
     console.log('\n--- TESTING METRIC SELECTOR PILLS ---');
-    const metricPills = ['tfidf', 'trigram', 'entropy', 'jaccard'];
+    const metricPills = ['tfidf', 'trigram', 'entropy', 'jsd', 'syntax', 'jaccard'];
     for (const metric of metricPills) {
       await evalBrowser(`document.querySelector('.metric-pill[data-metric="${metric}"]').click()`);
       await new Promise(r => setTimeout(r, 200));
@@ -231,7 +231,7 @@ async function runE2ETest() {
     const suiteLinalg = await evalBrowser('currentMathSuite');
     console.log(`✅ PASS: Switched to Linear Algebra & Graph Operations Suite: "${suiteLinalg}"`);
 
-    const ops = ['laplacian', 'markov', 'frobenius', 'hadamard'];
+    const ops = ['laplacian', 'markov', 'frobenius', 'hadamard', 'svd', 'von_neumann', 'gramian'];
     for (const op of ops) {
       await evalBrowser(`document.querySelector('.math-op-btn[data-op="${op}"]').click()`);
       await new Promise(r => setTimeout(r, 200));
@@ -245,7 +245,7 @@ async function runE2ETest() {
     await evalBrowser('document.querySelector(\'.math-suite-tab[data-suite="infotheory"]\').click()');
     await new Promise(r => setTimeout(r, 300));
 
-    const infoConcepts = ['kl', 'mutual_info', 'kelly_wealth', 'universal_portfolio'];
+    const infoConcepts = ['kl', 'mutual_info', 'kelly_wealth', 'universal_portfolio', 'aep', 'channel_capacity', 'rate_distortion'];
     for (const concept of infoConcepts) {
       await evalBrowser(`document.querySelector('.info-nav-btn[data-concept="${concept}"]').click()`);
       await new Promise(r => setTimeout(r, 200));
