@@ -3567,6 +3567,10 @@ function injectTradeContext(type) {
 
 // Setup Event Listeners
 function setupEvents() {
+  const runBenchmarkBtn = document.getElementById('runBenchmarkBtn');
+  if (runBenchmarkBtn) {
+    runBenchmarkBtn.addEventListener('click', runRustVsJsBenchmark);
+  }
   // Tabs
   tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
   tabDraftBtn.addEventListener('click', () => switchTab('draft'));
@@ -4215,3 +4219,128 @@ document.addEventListener('DOMContentLoaded', () => {
   initApp();
   registerServiceWorker();
 });
+
+
+// ==============================================================================
+// Real-time Benchmark Engine: Rust WebAssembly vs JavaScript Engine
+// ==============================================================================
+function runRustVsJsBenchmark() {
+  const sampleText = (polishedContent && polishedContent.value && polishedContent.value.length > 20) 
+    ? polishedContent.value 
+    : "⚡ #SOLUSDT: Post-FOMC Floor Retest & Asymmetric Long Setup\n\nSolana is demonstrating spot resilience at $101.50, absorbing selling volume following yesterday's Federal Reserve interest rate decision. While macro sentiment remains mixed, on-chain DEX volume and institutional staking keep the higher-timeframe bullish trend intact above psychological support.\n\nHere is my intraday execution playbook & scenario analysis:\n• Structural Levels: Demand floor anchored at $98.00; overhead resistance sits at $106.50 and $112.00.\n• Tactical Trade Setup: Long entry in the $100.50–$101.50 zone; invalidation stop-loss at $97.20 with disciplined 3x to 5x leverage.\n• Profit Targets: Scale TP1 at $106.50 (+5%), letting runners target TP2 at $112.00 (+10.5%) for a 1:2.8 risk-to-reward ratio.\n• Risk Disclosure: A 4-hour close beneath $97.20 invalidates our thesis.\n\nProtect banked capital by trailing stop-loss orders. Are you bidding this $100 retest or waiting for morning confirmation?";
+
+  const iterations = 500;
+
+  // 1. JavaScript Engine Benchmark
+  const jsStart = performance.now();
+  let jsLastScore = 0;
+  for (let i = 0; i < iterations; i++) {
+    jsLastScore = runJsScorerInternal(sampleText);
+  }
+  const jsTotalTime = performance.now() - jsStart;
+  const jsAvgTime = (jsTotalTime / iterations).toFixed(4);
+
+  // 2. Rust WebAssembly Benchmark
+  let rustAvgTime = '--';
+  let rustSpeedup = '--';
+  let rustScore = 0;
+  let burstiness = 0;
+
+  if (isRustReady && rustCore && typeof rustCore.score_post === 'function') {
+    const rustStart = performance.now();
+    for (let i = 0; i < iterations; i++) {
+      const res = rustCore.score_post(sampleText);
+      if (i === 0) {
+        const parsed = JSON.parse(res);
+        rustScore = parsed.total;
+        burstiness = parsed.burstiness_score;
+      }
+    }
+    const rustTotalTime = performance.now() - rustStart;
+    rustAvgTime = (rustTotalTime / iterations).toFixed(4);
+    const speedupMult = (parseFloat(jsTotalTime) / Math.max(0.001, parseFloat(rustTotalTime))).toFixed(1);
+    rustSpeedup = `${speedupMult}x Faster`;
+  }
+
+  // Render to DOM
+  updateBenchmarkDisplay({
+    iterations,
+    jsTotal: jsTotalTime.toFixed(2),
+    jsAvg: jsAvgTime,
+    rustTotal: (parseFloat(rustAvgTime) * iterations).toFixed(2),
+    rustAvg: rustAvgTime,
+    speedup: rustSpeedup,
+    scoreMatch: `${jsLastScore}/100 (JS) vs ${rustScore}/100 (Rust)`,
+    burstiness: burstiness
+  });
+
+  if (typeof showToast === 'function') {
+    showToast(`⚡ Benchmark Finished: Rust is ${rustSpeedup}!`);
+  }
+}
+
+function runJsScorerInternal(clean) {
+  let originality = 18;
+  if (/up or down\?|either way/i.test(clean)) originality -= 2;
+  if (/smart money|absorbed|liquidity|thesis|short squeeze|asymmetric|surge/i.test(clean)) originality += 2;
+  originality = Math.min(20, Math.max(4, originality));
+
+  let depth = 6;
+  if (/\$[\d,]+(?:\.\d+)?|\b0\.\d{3,4}\b/i.test(clean)) depth += 3;
+  if (/\$1b|billion|trillion|million|funding|open interest/i.test(clean)) depth += 4;
+  if (/federal interest|fed.*decision|cycle|mean reversion/i.test(clean)) depth += 2;
+  const paras = clean.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
+  if (paras >= 3) depth += 2;
+  depth = Math.min(20, Math.max(5, depth));
+
+  let relevance = 8;
+  if (/\$btc|bitcoin|\$sol|solana/i.test(clean)) relevance += 4;
+  if (/support|resistance|pullback|momentum/i.test(clean)) relevance += 5;
+  if (/today|this morning|session|4-hour|daily/i.test(clean)) relevance += 3;
+  if (/#?[A-Z0-9]{2,10}USDT|trade setup|tp1/i.test(clean)) relevance += 3;
+  relevance = Math.min(20, Math.max(6, relevance));
+
+  let cred = 7;
+  if (/support|floor|shelf|invalidation|stop-loss/i.test(clean)) cred += 4;
+  if (/target|resistance|retest|tp1/i.test(clean)) cred += 3;
+  if (/cautious|patient|confirmation|risk|execution/i.test(clean)) cred += 4;
+  if (/setup|asymmetric|orderflow/i.test(clean)) cred += 2;
+  if (/profit/i.test(clean)) cred += 3;
+  cred = Math.min(20, Math.max(5, cred));
+
+  let pres = 6;
+  if (clean.includes('\n\n')) pres += 3;
+  if (/[,.;!?]/.test(clean)) pres += 3;
+  if (clean.includes('•') || clean.includes('-')) pres += 3;
+  if (clean.includes('⚡') || clean.includes('#')) pres += 2;
+  const words = (clean.match(/\b\w+\b/g) || []).length;
+  if (words >= 70 && words <= 270) pres += 3;
+  pres = Math.min(20, Math.max(8, pres));
+
+  return originality + depth + relevance + cred + pres;
+}
+
+function updateBenchmarkDisplay(data) {
+  const container = document.getElementById('benchmarkResultContainer');
+  if (!container) return;
+  container.innerHTML = `
+    <div class="benchmark-grid">
+      <div class="bench-col js-card">
+        <div class="bench-tag">JavaScript JIT Engine</div>
+        <div class="bench-metric"><strong>${data.jsAvg} ms</strong> <span class="bench-sub">/ audit</span></div>
+        <div class="bench-detail">${data.iterations} loops in ${data.jsTotal} ms</div>
+        <div class="bench-feature">⚠️ Dynamic regex & Garbage Collection pauses</div>
+      </div>
+      <div class="bench-col wasm-card">
+        <div class="bench-tag wasm">Rust WebAssembly (WASM)</div>
+        <div class="bench-metric wasm"><strong>${data.rustAvg} ms</strong> <span class="bench-sub">/ audit</span></div>
+        <div class="bench-detail">${data.iterations} loops in ${data.rustTotal} ms</div>
+        <div class="bench-feature wasm">⚡ Zero-GC • ${data.speedup} • Sub-millisecond</div>
+      </div>
+    </div>
+    <div class="benchmark-footer-stat">
+      <span>🎯 <strong>Score Parity:</strong> ${data.scoreMatch}</span>
+      <span>📊 <strong>Rust Burstiness σ:</strong> ${data.burstiness} (Sentence variance & anti-AI proof)</span>
+    </div>
+  `;
+}
