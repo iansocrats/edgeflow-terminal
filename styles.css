@@ -3693,10 +3693,10 @@ body {
   color: #e2e8f0;
 }
 
-.sim-val-low { color: #10b981; }
-.sim-val-med { color: #38bdf8; }
-.sim-val-high { color: #f59e0b; font-weight: 700; background: rgba(245, 158, 11, 0.08); }
-.sim-val-danger { color: #f87171; font-weight: 800; background: rgba(239, 68, 68, 0.12); }
+.sim-val-diag { color: #64748b; font-weight: 600; background: rgba(255, 255, 255, 0.02); }
+.sim-val-green, .sim-val-low { color: #10b981; font-weight: 600; }
+.sim-val-gold, .sim-val-med { color: #f59e0b; font-weight: 700; background: rgba(245, 158, 11, 0.06); }
+.sim-val-red, .sim-val-high, .sim-val-danger { color: #ef4444; font-weight: 800; background: rgba(239, 68, 68, 0.14); }
 
 .forensic-post-card {
   background: rgba(15, 23, 42, 0.65);
@@ -3785,4 +3785,113 @@ body {
   color: #94a3b8;
   margin-top: 3px;
   font-style: italic;
+}
+
+/* Metric Selector Pills & Spectrum Styles */
+.metric-selector-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0 14px 0;
+}
+
+.metric-pill {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metric-pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.metric-pill.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.3));
+  border-color: #10b981;
+  color: #34d399;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.threshold-legend-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: #cbd5e1;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.green { background: #10b981; box-shadow: 0 0 6px #10b981; }
+.legend-dot.gold { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; }
+.legend-dot.red { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
+
+.entropy-spectrum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.entropy-spectrum-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.entropy-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.entropy-card-coin {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.entropy-stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 4px;
+}
+
+.entropy-stat-row strong {
+  color: #e2e8f0;
 }
