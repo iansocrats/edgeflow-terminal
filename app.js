@@ -2720,7 +2720,7 @@ function setViewMode(mode) {
 }
 
 // --------------------------------------------------------------------------------
-// Three Independent Engine Desk Views: 'posts' | 'scores' | 'analysis'
+// Two Independent Engine Desk Views: 'posts' | 'scores'
 // --------------------------------------------------------------------------------
 let currentDeskView = 'posts';
 
@@ -2728,24 +2728,18 @@ function setDeskView(viewMode) {
   currentDeskView = viewMode;
   const postWorkspace = document.getElementById('postWorkspaceWrapper');
   const viewScoresHub = document.getElementById('viewScoresHub');
-  const viewAnalysisDeck = document.getElementById('viewAnalysisDeck');
   const appFooter = document.querySelector('.app-footer');
 
   const pillBarScoresBtn = document.getElementById('pillBarScoresBtn');
-  const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
   const btnOpenScoresModal = document.getElementById('btnOpenScoresModal');
-  const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
 
   if (viewMode === 'posts') {
     if (postWorkspace) postWorkspace.classList.remove('hidden');
     if (viewScoresHub) viewScoresHub.classList.add('hidden');
-    if (viewAnalysisDeck) viewAnalysisDeck.classList.add('hidden');
     if (appFooter) appFooter.classList.remove('hidden');
 
     if (pillBarScoresBtn) pillBarScoresBtn.classList.remove('active');
-    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.remove('active');
     if (btnOpenScoresModal) btnOpenScoresModal.classList.remove('active');
-    if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.remove('active');
 
     // Highlight active post pill in carousel
     const pills = document.querySelectorAll('.pill-item');
@@ -2755,33 +2749,17 @@ function setDeskView(viewMode) {
   } else if (viewMode === 'scores') {
     if (postWorkspace) postWorkspace.classList.add('hidden');
     if (viewScoresHub) viewScoresHub.classList.remove('hidden');
-    if (viewAnalysisDeck) viewAnalysisDeck.classList.add('hidden');
     if (appFooter) appFooter.classList.add('hidden');
 
     if (pillBarScoresBtn) pillBarScoresBtn.classList.add('active');
-    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.remove('active');
     if (btnOpenScoresModal) btnOpenScoresModal.classList.add('active');
-    if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.remove('active');
 
     const pills = document.querySelectorAll('.pill-item');
     pills.forEach(p => p.classList.remove('active'));
 
     if (typeof renderAttributionMatrix === 'function') renderAttributionMatrix();
     if (typeof updateWeeklyProgress === 'function') updateWeeklyProgress();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } else if (viewMode === 'analysis') {
-    if (postWorkspace) postWorkspace.classList.add('hidden');
-    if (viewScoresHub) viewScoresHub.classList.add('hidden');
-    if (viewAnalysisDeck) viewAnalysisDeck.classList.remove('hidden');
-    if (appFooter) appFooter.classList.add('hidden');
-
-    if (pillBarScoresBtn) pillBarScoresBtn.classList.remove('active');
-    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.add('active');
-    if (btnOpenScoresModal) btnOpenScoresModal.classList.remove('active');
-    if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.add('active');
-
-    const pills = document.querySelectorAll('.pill-item');
-    pills.forEach(p => p.classList.remove('active'));
+    if (typeof renderDynamicDayAudit === 'function') renderDynamicDayAudit();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
@@ -2790,12 +2768,8 @@ function setDeskView(viewMode) {
 // Switch Tabs inside Posts Workspace (Polished vs Draft vs Raw)
 // --------------------------------------------------------------------------------
 function switchTab(tabName) {
-  if (tabName === 'scores') {
+  if (tabName === 'scores' || tabName === 'analysis') {
     setDeskView('scores');
-    return;
-  }
-  if (tabName === 'analysis') {
-    setDeskView('analysis');
     return;
   }
 
@@ -3649,20 +3623,14 @@ function injectTradeContext(type) {
 
 // Setup Event Listeners
 function setupEvents() {
-  // Wire up Independent Engine Desk Switchers (Posts, Scores, Performance Audit)
+  // Wire up Independent Engine Desk Switcher (Posts vs Scores & Post Audit Hub)
   const btnOpenScoresModal = document.getElementById('btnOpenScoresModal');
-  const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
   const pillBarScoresBtn = document.getElementById('pillBarScoresBtn');
-  const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
   const returnPostsFromScoresBtn = document.getElementById('returnPostsFromScoresBtn');
-  const returnPostsFromAnalysisBtn = document.getElementById('returnPostsFromAnalysisBtn');
 
   if (btnOpenScoresModal) btnOpenScoresModal.addEventListener('click', () => setDeskView('scores'));
-  if (btnOpenAnalysisModal) btnOpenAnalysisModal.addEventListener('click', () => setDeskView('analysis'));
   if (pillBarScoresBtn) pillBarScoresBtn.addEventListener('click', () => setDeskView('scores'));
-  if (pillBarAnalysisBtn) pillBarAnalysisBtn.addEventListener('click', () => setDeskView('analysis'));
   if (returnPostsFromScoresBtn) returnPostsFromScoresBtn.addEventListener('click', () => setDeskView('posts'));
-  if (returnPostsFromAnalysisBtn) returnPostsFromAnalysisBtn.addEventListener('click', () => setDeskView('posts'));
 
   const runBenchmarkBtn = document.getElementById('runBenchmarkBtn');
   if (runBenchmarkBtn) {
@@ -4213,10 +4181,193 @@ function renderWeeklyAuditTable() {
       <td><span class="attr-pts-badge">${row.score > 0 ? '+' + row.score.toFixed(1) + ' pts' : (row.status === 'ACTIVE DESK' ? '0.0 pts (Live)' : '--')}</span></td>
       <td>${row.avg !== '--' ? row.avg + ' pts' : '--'}</td>
       <td><span style="color:${row.passRate.includes('100%') ? '#10b981' : 'var(--text-muted)'}">${row.passRate}</span></td>
-      <td><strong>${row.cumulative} / 100</strong></td>
+      <td><strong>${row.cumulative} / 150</strong></td>
       <td><span class="audit-status-badge ${row.badgeClass}">${row.status}</span> <span style="font-size:0.68rem; color:var(--text-dim)">(${row.valuation})</span></td>
     </tr>
   `).join('');
+}
+
+const DAILY_AUDIT_DATA = {
+  day1: {
+    title: "📅 Day 1 Audit (Mon, Oct 26) — 5 Posts (9.0 pts)",
+    score: "9.0 pts",
+    avgPost: "1.80 pts / post",
+    quota: "5 / 5 Posts",
+    summary: "High efficiency per post (1.80 pts/post) by anchoring exclusively to major high-liquid assets ($BTC, $ETH, $SOL), but low overall ceiling due to only posting 5 of 10 available slots.",
+    whatWentWrong: [
+      {
+        title: "1. Capping the Daily Quota at 5 Posts",
+        detail: "Only 5 posts were submitted. Even with our best per-post efficiency (1.80 pts), 5 posts capped the day at 9.0 pts. Bybit weekly leaderboard rewards require 150 points minimum; 9 pts/day only gets 63 pts by Sunday."
+      },
+      {
+        title: "2. Passive Rhetorical Endings",
+        detail: "Posts closed with open-ended questions ('Will BTC hold support?') instead of direct trade setups. Good readership dwell time, but low active trader execution."
+      }
+    ],
+    whatWentRight: [
+      {
+        title: "1. Focus on Bybit's Highest Volume Contracts",
+        detail: "Concentrating on $BTC, $ETH, and $SOL tapped into the largest community trading base on Bybit, driving higher organic views per post."
+      },
+      {
+        title: "2. 100% ByX Pass Rate",
+        detail: "All 5 posts passed the ByX quality threshold (>= 40) on first submission with zero moderation flags."
+      }
+    ],
+    tacticalFix: "Never publish fewer than 10 posts. 10 posts with high relevance is non-negotiable for weekly qualification."
+  },
+  day2: {
+    title: "📅 Day 2 Audit (Tue, Oct 27) — 10 Posts (11.0 pts)",
+    score: "11.0 pts",
+    avgPost: "1.10 pts / post",
+    quota: "10 / 10 Posts (Full Quota)",
+    summary: "Hit the full 10-post daily quota and locked in the consistency streak, but per-post yield dropped to 1.10 pts due to evening batch posting and zero trade widget click conversions.",
+    whatWentWrong: [
+      {
+        title: "1. Compressed Evening Batching",
+        detail: "All 10 posts were published in a narrow time window. Feed algorithms quickly pushed our earlier posts off the community feed before readers could engage, cannibalizing our own reach."
+      },
+      {
+        title: "2. Low-Float Micro-Caps With Low Market Appetite",
+        detail: "Covered smaller cap coins that average Bybit community members were not actively trading. Retail volume concentrates heavily in high-beta perps."
+      },
+      {
+        title: "3. Zero Trade Widget Conversion",
+        detail: "Readers read the analysis but did not click the embedded trading widget to open positions, so Bybit awarded only the baseline ~1.0 point per post."
+      }
+    ],
+    whatWentRight: [
+      {
+        title: "1. Full Quota Discipline (10/10 Complete)",
+        detail: "Completed all 10 slots, activating Bybit's multi-day creator consistency streak multiplier."
+      },
+      {
+        title: "2. Concrete Price Levels & Risk-Reward",
+        detail: "Setups anchored by precise floors ($79,659, SUI 1:3 RR) delivered high analytical credibility."
+      }
+    ],
+    tacticalFix: "Distribute the 10 posts across Tokyo, London, and New York market opens to keep content continuously visible."
+  },
+  day3: {
+    title: "📅 Day 3 Audit (Wed, Oct 28 - Yesterday) — 10 Posts (10.0 pts)",
+    score: "10.0 pts",
+    avgPost: "1.00 pts / post",
+    quota: "10 / 10 Posts (Full Quota)",
+    summary: "Needed >50 points to stay on pace for the 150-pt reward qualification, but received only 10.0 points. The core reason: 100% text compliance, but ZERO trade widget clicks. Without trade executions, Bybit awards only the ~1.0 point baseline participation floor per post (10 × 1.0 = 10 pts).",
+    whatWentWrong: [
+      {
+        title: "1. The Zero-Conversion Text Trap (Why We Didn't Hit >50 Pts)",
+        detail: "Our posts scored 95+/100 on text quality, but text quality is only the ticket to enter. The actual points formula is Impact = Valid Traders × Volume × Quality. Because our posts were analytical essays without compelling trade entries, Bybit defaulted to the base 1.0 pt floor per post."
+      },
+      {
+        title: "2. Missing High-Conversion Call-to-Action (CTA)",
+        detail: "None of yesterday's 10 posts had an explicit instruction directing readers to tap the Bybit Cashtag / Trade Widget to place limit orders. Without a CTA, traders read and scroll away without generating volume."
+      },
+      {
+        title: "3. Off-Radar Setups vs. High-Beta Leaders",
+        detail: "Yesterday's top creators on the leaderboard (at 136+ pts) focused aggressively on $SOL, $SUI, $BTC, $ETH, $DOGE where retail perp volume was breaking records. Niche setups failed to attract volume."
+      },
+      {
+        title: "4. Missing Follow-Up Proof of Realized Profits",
+        detail: "Follow-up posts showing real trade executions and booked profits (+8.2%, +14.5%) convert 3x higher than unconfirmed forward setups."
+      }
+    ],
+    whatWentRight: [
+      {
+        title: "1. 10/10 Quota Streak Maintained",
+        detail: "Maintained the full 10-post daily quota. Our 3-day consistency streak is unbroken."
+      },
+      {
+        title: "2. Zero Platform Moderation Penalties",
+        detail: "Authentic, high-entropy trader voice with zero AI spam penalties or shadowbans."
+      }
+    ],
+    tacticalFix: "Every single post today MUST have an explicit Trade Setup (Entry, Target, Invalidation) and a direct CTA urging users to tap the Bybit trade widget."
+  },
+  day4: {
+    title: "📅 Day 4 Plan (Thu, Oct 29 - TODAY) — Target: 30.0–50.0 pts",
+    score: "Target: 30.0–50.0 pts",
+    avgPost: "Need 3.0–5.0 pts / post",
+    quota: "10 Fresh Setups",
+    summary: "Crucial catch-up sprint day. We are currently at 30.0 points and need 150 points minimum by Sunday midnight (120 points needed across Thu, Fri, Sat, Sun = 30 pts/day). Today's posts must execute the high-conversion playbook.",
+    whatWentWrong: [
+      {
+        title: "⚠️ Risk to Avoid Today: Repeating the Passive Essay Mistake",
+        detail: "Do not post generic market observations without specific buy/sell zones. Every post that doesn't direct users to the Bybit trade widget will default to 1.0 point."
+      },
+      {
+        title: "⚠️ Risk to Avoid Today: Posting 10 Versions of the Same Idea",
+        detail: "Do not repeat the same market thesis across all 10 posts. Readers get fatigued. Give 10 distinct catalyst setups across 10 different high-volume liquid coins."
+      }
+    ],
+    whatWentRight: [
+      {
+        title: "🚀 Today's Winning Execution Checklist",
+        detail: "1. Cover the Top 10 Liquid Bybit Contracts: $BTC, $ETH, $SOL, $SUI, $DOGE, $TAO, $APT, $NEAR, $PEPE, $AVAX.<br>2. Concrete Setup on EVERY post: Direction, Entry Shelf, Invalidation Level, Target %.<br>3. High-Conversion Closer: 'Tap the #TICKER widget below to check live orderbook depth and set your limit orders. Are you bidding or waiting for confirmation?'<br>4. Spaced Publishing: 3 in Asian morning, 4 in London open, 3 in New York open."
+      }
+    ],
+    tacticalFix: "Execute the 4-point conversion checklist on all 10 posts today to break the 10-point ceiling and hit 30+ points."
+  }
+};
+
+function renderDynamicDayAudit() {
+  const container = document.getElementById('dynamicDayAuditContainer');
+  if (!container) return;
+
+  const data = DAILY_AUDIT_DATA[currentSessionId] || DAILY_AUDIT_DATA['day3'];
+
+  container.innerHTML = `
+    <div class="dynamic-audit-card">
+      <div class="audit-header-row">
+        <div class="audit-title-block">
+          <h3 class="audit-heading">${data.title}</h3>
+          <span class="audit-session-badge">${currentSessionId.toUpperCase()} PERFORMANCE AUDIT</span>
+        </div>
+        <div class="audit-chips-bar">
+          <span class="audit-chip gold">⭐ Score: <strong>${data.score}</strong></span>
+          <span class="audit-chip">📊 Avg / Post: <strong>${data.avgPost}</strong></span>
+          <span class="audit-chip">🎯 Quota: <strong>${data.quota}</strong></span>
+        </div>
+      </div>
+
+      <div class="audit-summary-box">
+        <strong>📋 Executive Post Audit:</strong> ${data.summary}
+      </div>
+
+      <div class="audit-grid-columns">
+        <!-- Column 1: What Went Wrong -->
+        <div class="audit-col danger-col">
+          <div class="audit-col-header">
+            <span class="badge-danger">❌ WHAT WENT WRONG (POST CONTENT & TRADING)</span>
+          </div>
+          ${data.whatWentWrong.map(item => `
+            <div class="audit-item danger-border">
+              <h4 class="audit-item-title">${item.title}</h4>
+              <p class="audit-item-desc">${item.detail}</p>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Column 2: What Went Well & Tactical Adjustments -->
+        <div class="audit-col success-col">
+          <div class="audit-col-header">
+            <span class="badge-success">✅ WHAT WENT RIGHT (STRENGTHS)</span>
+          </div>
+          ${data.whatWentRight.map(item => `
+            <div class="audit-item success-border">
+              <h4 class="audit-item-title">${item.title}</h4>
+              <p class="audit-item-desc">${item.detail}</p>
+            </div>
+          `).join('')}
+
+          <div class="audit-item gold-border" style="margin-top: 10px;">
+            <h4 class="audit-item-title">⚡ Tactical Adjustment Protocol</h4>
+            <p class="audit-item-desc">${data.tacticalFix}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function switchDaySession(newSessionId, forceFresh = false) {
@@ -4261,6 +4412,7 @@ function switchDaySession(newSessionId, forceFresh = false) {
   setTodayDate();
   renderAttributionMatrix();
   updateWeeklyProgress();
+  renderDynamicDayAudit();
   showToast(`📂 Switched to ${currentSessionId === 'day4' ? 'Day 4: Today (Oct 29)' : currentSessionId === 'day3' ? 'Day 3: Yesterday (Oct 28)' : currentSessionId === 'day2' ? 'Day 2: Oct 27' : 'Day 1: Oct 26'}!`);
 }
 
@@ -4306,6 +4458,7 @@ function initSessionAndPointsHub() {
   });
 
   renderAttributionMatrix();
+  renderDynamicDayAudit();
 }
 
 // --------------------------------------------------------------------------------
