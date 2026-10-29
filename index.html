@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#090c13" />
-  <link rel="stylesheet" href="styles.css?v=49" />
+  <link rel="stylesheet" href="styles.css?v=52" />
 </head>
 <body>
   <div class="app-shell">
@@ -92,69 +92,63 @@
     </div>
 
     <!-- Tab 1: Polished Post (Default active for instant mobile copying) -->
+        <!-- Tab 1: Polished Post (Default active for instant mobile copying) -->
     <main class="tab-pane active" id="panePolished" role="tabpanel">
-      <!-- Huge Sticky One-Tap Copy Bar -->
-      <div class="copy-bar-wrap">
-        <button class="btn-copy-huge" id="copyPolishedBtn">
-          <span class="copy-icon">📋</span>
-          <span class="copy-label">TAP TO COPY CLEAN POLISHED POST</span>
-        </button>
-      </div>
+      <div class="cockpit-layout">
+        <!-- Main Post Stage -->
+        <div class="cockpit-stage">
+          <div class="content-card">
+            <div class="card-header">
+              <div class="badge-group">
+                <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
+                <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
+                <span class="pill-badge pill-blue" id="sentenceCountBadge">0 sentences</span>
+                <span class="pill-badge pill-purple" id="readabilityBadge" title="Flesch-Kincaid Mobile Readability">Grade 7</span>
+              </div>
+              <button class="btn-copy-integrated" id="copyPolishedBtn" title="Copy clean text directly to clipboard">
+                <span class="copy-icon">📋</span>
+                <span class="copy-label">Copy Clean Post</span>
+              </button>
+            </div>
 
-      <!-- Clean Minimalist Action Bar -->
-      <div class="polish-action-bar">
-        <div class="action-btn-group">
-          <button id="makeUniqueBtn" class="btn-unique" title="Inject personal contrarian alpha and eliminate crowd consensus">
-            <span>💎 Make It Unique</span>
-          </button>
-          <button id="saveBaseBtn" class="btn-save-base" title="Save current text as new base content to allow further stacked changes">
-            <span>💾 Save as New Base</span>
-          </button>
-          <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
-            <span>✨ Humanize</span>
-          </button>
-        </div>
-        <div class="view-toggle-wrap">
-          <button id="togglePlainBtn" class="btn-view-toggle active" data-view="plain">📄 Plain Text (No Highlights)</button>
-          <button id="toggleAnnotatedBtn" class="btn-view-toggle" data-view="annotated">🔍 Underlined Issues</button>
-        </div>
-      </div>
+            <!-- Integrated Action Toolbar directly above textarea -->
+            <div class="integrated-action-toolbar">
+              <div class="action-btn-group">
+                <button id="makeUniqueBtn" class="btn-unique" title="Inject personal contrarian alpha and eliminate crowd consensus">
+                  <span>💎 Make Unique</span>
+                </button>
+                <button id="humanizeBtn" class="btn-humanize" title="Remove robotic patterns and boost human voice">
+                  <span>✨ Humanize</span>
+                </button>
+                <button id="saveBaseBtn" class="btn-save-base" title="Save current text as new base content to allow further stacked changes">
+                  <span>💾 Save Base</span>
+                </button>
+                <button id="btnInjectTradeSetup" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
+                  <span>🟢 + Trade Setup</span>
+                </button>
+                <button id="btnInjectTradeFollowup" class="btn-trade-inject followup" title="Insert historical follow-up trade with realized profit %">
+                  <span>🏆 + Follow-Up</span>
+                </button>
+              </div>
+              <div class="view-toggle-wrap">
+                <button id="togglePlainBtn" class="btn-view-toggle active" data-view="plain">📄 Plain</button>
+                <button id="toggleAnnotatedBtn" class="btn-view-toggle" data-view="annotated">🔍 Underlines</button>
+              </div>
+            </div>
 
-      <!-- Bybit Cashtag & Trade Context Quick Injector -->
-      <div class="trade-context-bar">
-        <span class="trade-bar-label">🎯 ByX Cashtag & Trade Context:</span>
-        <button id="btnInjectTradeSetup" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
-          <span>🟢 + Active Trade Setup</span>
-        </button>
-        <button id="btnInjectTradeFollowup" class="btn-trade-inject followup" title="Insert historical follow-up trade with realized profit %">
-          <span>🏆 + Historical Follow-Up (Realized Profit)</span>
-        </button>
-      </div>
+            <!-- Version 1: Plain Text (Default Clean, no color coding) -->
+            <textarea id="polishedContent" class="post-textarea polished" placeholder="Polished post will appear here..."></textarea>
 
-      <!-- Content Container -->
-      
-        <div class="content-card">
-        <div class="card-header">
-          <div class="badge-group">
-            <span class="pill-badge pill-green" id="coinTagBadge">$BTC</span>
-            <span class="pill-badge pill-gold" id="wordCountBadge">0 words</span>
-            <span class="pill-badge pill-blue" id="sentenceCountBadge">0 sentences</span>
-            <span class="pill-badge pill-purple" id="readabilityBadge" title="Flesch-Kincaid Mobile Readability">Grade 7</span>
+            <!-- Version 2: Subtle Underlined View (Reduced font, minimal markup, subtle sub-labels) -->
+            <div id="annotatedDisplay" class="annotated-box hidden">
+              <!-- Populated when switching to Underlined Issues view -->
+            </div>
           </div>
-          <span class="quick-copy-text">Tap box to copy clean text</span>
         </div>
 
-        <!-- Version 1: Plain Text (Default Clean, no color coding) -->
-        <textarea id="polishedContent" class="post-textarea polished" placeholder="Polished post will appear here..."></textarea>
-
-        <!-- Version 2: Subtle Underlined View (Reduced font, minimal markup, subtle sub-labels) -->
-        <div id="annotatedDisplay" class="annotated-box hidden">
-          <!-- Populated when switching to Underlined Issues view -->
-        </div>
-      </div>
-
-      <!-- 4 REAL WORKING ACADEMIC NLP DETECTORS (No Rubber-Stamping / Honest Friction) -->
-      <section class="detectors-deck">
+        <!-- Companion Deck: Live Academic NLP Telemetry (Beside editor on desktop, below on mobile) -->
+        <div class="cockpit-companion">
+          <section class="detectors-deck">
         <div class="deck-header">
           <h3>🛡️ Live AI Detectors (Rigorous Academic NLP Telemetry on Polished Text)</h3>
         </div>
@@ -342,81 +336,56 @@
           <div class="det-verdict" id="uniqueVerdict">Ready to calculate.</div>
         </div>
       </section>
-      
+        </div>
+      </div>
     </main>
 
     <!-- Tab 2: Draft & Suggestions (Primary Destination for Auditing & Final Copying) -->
+        <!-- Tab 2: Draft & Suggestions (Primary Destination for Auditing & Final Copying) -->
     <section class="tab-pane" id="paneDraft" role="tabpanel">
-      <!-- Huge Sticky One-Tap Copy Bar for Audited Draft (Primary Creator Source) -->
-      <div class="copy-bar-wrap">
-        <button class="btn-copy-huge btn-copy-draft-main" id="copyDraftMainBtn">
-          <span class="copy-icon">📋</span>
-          <span class="copy-label">TAP TO COPY FINAL AUDITED DRAFT (READY FOR BYX)</span>
-        </button>
-      </div>
-
-      <!-- Clean View Toggle Bar in Draft -->
-      <div class="draft-view-bar">
-        <div class="view-toggle-wrap">
-          <button id="toggleDraftCleanBtn" class="btn-view-toggle active" data-dview="clean">📄 Clean Audited Post (Ready to Post)</button>
-          <button id="toggleDraftDiffBtn" class="btn-view-toggle" data-dview="diff">🔍 Highlighted Rules & Suggestions</button>
-        </div>
-        <span class="draft-badge-indicator">🏆 PRIMARY POSTING STAGE</span>
-      </div>
-
-
-      <!-- Color-Coded Category Legend & Counts -->
-      <div class="sugg-category-bar">
-        <div class="sugg-badge sugg-punct">
-          <span class="dot green"></span>
-          <span>✍️ Punctuation: <strong id="punctSuggCount">0</strong></span>
-        </div>
-        <div class="sugg-badge sugg-word">
-          <span class="dot yellow"></span>
-          <span>🔤 Word Fixes: <strong id="wordSuggCount">0</strong></span>
-        </div>
-        <div class="sugg-badge sugg-spacing">
-          <span class="dot purple"></span>
-          <span>💡 Emojis & Bullets: <strong id="spacingSuggCount">0</strong></span>
-        </div>
-      </div>
-
-      <!-- Strategic Evaluation & Next Steps Recommendation Engine -->
-      <div class="content-card draft-next-actions-card" id="draftNextActionsCard">
-        <div class="card-header">
-          <div class="badge-group">
-            <span class="pill-badge pill-purple">🎯 POST EVALUATION & NEXT STEPS</span>
-            <span class="pill-badge pill-gold" id="nextActionAiBadge">Analyzing Next Steps...</span>
-          </div>
-          <button id="btnApplyNextStepHumanization" class="btn-next-action-apply">
-            <span>🚀 Apply High-Entropy Humanization (90%+ Entropy & &lt;10% AI)</span>
-          </button>
-        </div>
-        <div id="draftNextActionsContent" class="next-actions-body">
-          <!-- Dynamically populated with real-time evaluation and what to do next -->
-        </div>
-      </div>
-
-      <!-- Bybit Cashtag & Trade Context Quick Injector (Draft View) -->
-      <div class="trade-context-bar">
-        <span class="trade-bar-label">🎯 ByX Cashtag & Trade Context:</span>
-        <button id="btnInjectTradeSetupDraft" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
-          <span>🟢 + Active Trade Setup</span>
-        </button>
-        <button id="btnInjectTradeFollowupDraft" class="btn-trade-inject followup" title="Insert historical follow-up trade with realized profit %">
-          <span>🏆 + Historical Follow-Up (Realized Profit)</span>
-        </button>
-      </div>
-
-      <!-- Content Box: Clean Final Post or Highlighted Suggestions -->
+      <!-- Content Box: Clean Final Post or Highlighted Suggestions (Immediate Top Visibility) -->
       <div class="content-card">
         <div class="card-header">
           <div class="badge-group">
-            <span class="pill-badge pill-purple" id="draftViewBadge">📄 Clean Final Post</span>
+            <span class="pill-badge pill-purple" id="draftViewBadge">📄 Clean Audited Post</span>
             <span class="pill-badge pill-gold" id="draftWordCountBadge">0 words</span>
             <span class="pill-badge pill-green" id="draftValidBadge">VALID POST (≥ 40)</span>
           </div>
-          <span class="quick-copy-text">Tap box to copy clean text</span>
+          <button class="btn-copy-integrated btn-copy-draft-main" id="copyDraftMainBtn" title="Copy final audited draft directly to clipboard">
+            <span class="copy-icon">📋</span>
+            <span class="copy-label">Copy Audited Draft</span>
+          </button>
+        </div>
+
+        <!-- Integrated Draft Toolbar -->
+        <div class="integrated-action-toolbar draft-toolbar">
+          <div class="view-toggle-wrap">
+            <button id="toggleDraftCleanBtn" class="btn-view-toggle active" data-dview="clean">📄 Clean Post</button>
+            <button id="toggleDraftDiffBtn" class="btn-view-toggle" data-dview="diff">🔍 Highlighted Rules & Suggestions</button>
+          </div>
+          <!-- Color-Coded Category Legend & Counts -->
+          <div class="sugg-category-bar inline-chips">
+            <div class="sugg-badge sugg-punct">
+              <span class="dot green"></span>
+              <span>✍️ Punctuation: <strong id="punctSuggCount">0</strong></span>
+            </div>
+            <div class="sugg-badge sugg-word">
+              <span class="dot yellow"></span>
+              <span>🔤 Word Fixes: <strong id="wordSuggCount">0</strong></span>
+            </div>
+            <div class="sugg-badge sugg-spacing">
+              <span class="dot purple"></span>
+              <span>💡 Bullets: <strong id="spacingSuggCount">0</strong></span>
+            </div>
+          </div>
+          <div class="action-btn-group">
+            <button id="btnInjectTradeSetupDraft" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
+              <span>🟢 + Setup</span>
+            </button>
+            <button id="btnInjectTradeFollowupDraft" class="btn-trade-inject followup" title="Insert historical follow-up trade with realized profit %">
+              <span>🏆 + Follow-Up</span>
+            </button>
+          </div>
         </div>
 
         <!-- Version 1: Clean Final Post (Default view for instant copying) -->
@@ -434,6 +403,22 @@
           <button id="copyDraftBtn" class="action-btn-sm">
             <span>📋 Copy Clean Draft</span>
           </button>
+        </div>
+      </div>
+
+      <!-- Strategic Evaluation & Next Steps Recommendation Engine (Neatly Underneath) -->
+      <div class="content-card draft-next-actions-card" id="draftNextActionsCard">
+        <div class="card-header">
+          <div class="badge-group">
+            <span class="pill-badge pill-purple">🎯 POST EVALUATION & NEXT STEPS</span>
+            <span class="pill-badge pill-gold" id="nextActionAiBadge">Analyzing Next Steps...</span>
+          </div>
+          <button id="btnApplyNextStepHumanization" class="btn-next-action-apply">
+            <span>🚀 Apply High-Entropy Humanization (90%+ Entropy & &lt;10% AI)</span>
+          </button>
+        </div>
+        <div id="draftNextActionsContent" class="next-actions-body">
+          <!-- Dynamically populated with real-time evaluation and what to do next -->
         </div>
       </div>
 
@@ -457,7 +442,6 @@
       </div>
     </section>
 
-    
     <!-- Tab 3: Dedicated Bybit Daily Scores & Point Attribution Hub -->
     <!-- Tab 3: Raw Dictation (What I Wrote) -->
     <section class="tab-pane" id="paneRaw" role="tabpanel">
@@ -599,7 +583,6 @@
         <div class="dynamic-day-audit-wrap" id="dynamicDayAuditContainer">
           <!-- Dynamically populated via renderDynamicDayAudit() based on selected Day -->
         </div>
-      </div>
       </div>
 
       <!-- 🎯 Bybit ByX Impact Leaderboard Official Announcement Rules & Cashtag Mechanism -->
@@ -788,6 +771,26 @@
           </div>
         </div>
 
+                <!-- ⚡ Rust (WASM) vs JavaScript Performance Benchmark Engine -->
+        <div class="rules-card benchmark-card" id="rustBenchmarkCard">
+          <div class="byx-header-wrap">
+            <div class="rules-header">
+              <span class="rules-title">⚡ Rust (WASM) vs JavaScript Live Benchmark Engine</span>
+              <span class="rules-badge byx-valid-badge">NATIVE SPEEDUP</span>
+            </div>
+            <p class="byx-rules-desc">Compare execution speed, memory footprint, and garbage collection pauses between the legacy JavaScript JIT engine and our native Rust WebAssembly (WASM) pipeline across 100 deep NLP audit loops.</p>
+          </div>
+          <div class="benchmark-ctrl-row">
+            <button id="runBenchmarkBtn" class="btn-run-benchmark">
+              <span>🚀 Run Live Benchmark (100 Iterations)</span>
+            </button>
+            <span class="benchmark-note">Zero-GC • Sub-millisecond Per-Post Processing</span>
+          </div>
+          <div id="benchmarkResultContainer" class="benchmark-result-container">
+            <div class="benchmark-placeholder-text">Click "Run Live Benchmark" above to benchmark your browser's execution engine.</div>
+          </div>
+        </div>
+
         <!-- 🔒 3 Foundational Creator Voice Safeguards (Platform Drafting Rules) -->
         <div class="rules-card safeguards-rules-card" style="margin-top: 14px;">
           <div class="safeguards-box">
@@ -881,6 +884,6 @@
     <span class="toast-msg" id="toastMsg">Copied clean text to clipboard!</span>
   </div>
 
-  <script src="app.js?v=49"></script>
+  <script src="app.js?v=52"></script>
 </body>
 </html>

@@ -69,13 +69,9 @@ const byxStatusPill = document.getElementById('byxStatusPill');
 // 3 Tabs
 const tabPolishedBtn = document.getElementById('tabPolishedBtn');
 const tabDraftBtn = document.getElementById('tabDraftBtn');
-const tabScoresBtn = document.getElementById('tabScoresBtn');
-const tabAnalysisBtn = document.getElementById('tabAnalysisBtn');
 const tabRawBtn = document.getElementById('tabRawBtn');
 const panePolished = document.getElementById('panePolished');
 const paneDraft = document.getElementById('paneDraft');
-const paneScores = document.getElementById('paneScores');
-const paneAnalysis = document.getElementById('paneAnalysis');
 const paneRaw = document.getElementById('paneRaw');
 const draftChangeCountBadge = document.getElementById('draftChangeCountBadge');
 
