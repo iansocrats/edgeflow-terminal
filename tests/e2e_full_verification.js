@@ -260,6 +260,55 @@ async function runE2ETest() {
     const backInWorkspace = await evalBrowser('!document.getElementById("postWorkspaceWrapper").classList.contains("hidden")');
     console.log(`✅ PASS: Returned back to Post Workspace from Analysis Hub: ${backInWorkspace}`);
 
+    // --- TESTING COMPACT DAY SWITCHERS & RESPONSIVE VIEWPORTS ---
+    console.log('\n--- TESTING COMPACT DAY SWITCHERS & RESPONSIVE DESIGN ---');
+    // Test Cycle Day button
+    const initialSession = await evalBrowser('currentSessionId');
+    await evalBrowser('document.getElementById("btnCycleDay").click()');
+    await new Promise(r => setTimeout(r, 200));
+    const cycledSession = await evalBrowser('currentSessionId');
+    console.log(`  ✓ Clicked #btnCycleDay: switched from "${initialSession}" to "${cycledSession}"`);
+
+    // Switch to Scores Hub and test chip click
+    await evalBrowser('document.getElementById("btnOpenScoresModal").click()');
+    await new Promise(r => setTimeout(r, 200));
+    await evalBrowser('document.getElementById("chipDay2").click()');
+    await new Promise(r => setTimeout(r, 200));
+    const chipSession = await evalBrowser('currentSessionId');
+    console.log(`  ✓ Clicked #chipDay2: active session is now "${chipSession}"`);
+
+    // Reset back to Day 4
+    await evalBrowser('switchDaySession("day4")');
+    await new Promise(r => setTimeout(r, 200));
+    await evalBrowser('document.getElementById("returnPostsFromScoresBtn").click()');
+    await new Promise(r => setTimeout(r, 200));
+
+    // Test Responsive Viewports for Zero Horizontal Overflow
+    const viewports = [
+      { name: 'Mobile (375x667)', width: 375, height: 667 },
+      { name: 'Large Mobile (414x896)', width: 414, height: 896 },
+      { name: 'Tablet (768x1024)', width: 768, height: 1024 },
+      { name: 'Desktop (1440x900)', width: 1440, height: 900 }
+    ];
+
+    for (const vp of viewports) {
+      await send('Emulation.setDeviceMetricsOverride', {
+        width: vp.width,
+        height: vp.height,
+        deviceScaleFactor: 1,
+        mobile: vp.width < 1024
+      });
+      await new Promise(r => setTimeout(r, 250));
+      const overflow = await evalBrowser(`
+        document.documentElement.scrollWidth > window.innerWidth + 1
+      `);
+      const bodyWidth = await evalBrowser('document.documentElement.scrollWidth');
+      console.log(`  ✓ Viewport ${vp.name}: width=${bodyWidth}px, horizontal overflow=${overflow ? 'YES (FAIL)' : 'NO (PERFECT)'}`);
+      if (overflow) {
+        console.error(`🚨 HORIZONTAL OVERFLOW DETECTED AT ${vp.name}! scrollWidth: ${bodyWidth}, innerWidth: ${vp.width}`);
+      }
+    }
+
     // Check final error count
     console.log('\n================================================================');
     if (jsErrors.length === 0) {

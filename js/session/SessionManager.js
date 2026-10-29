@@ -186,21 +186,26 @@ function updateWeeklyProgress() {
   }
 
   if (chipDay1) {
-    chipDay1.innerHTML = `📅 Day 1 (Oct 26): <strong>${day1Score.toFixed(1)} pts</strong> (5 posts)`;
+    chipDay1.innerHTML = `<span class="chip-day-tag">D1</span><span class="chip-pts">${day1Score.toFixed(1)}p</span>`;
     chipDay1.className = `chip-day ${currentSessionId === 'day1' ? 'active' : ''}`;
+    chipDay1.title = `Day 1 (Oct 26): ${day1Score.toFixed(1)} pts (5 posts) — Click to view`;
   }
   if (chipDay2) {
-    chipDay2.innerHTML = `📅 Day 2 (Oct 27): <strong>${day2Score.toFixed(1)} pts</strong> (10 posts)`;
+    chipDay2.innerHTML = `<span class="chip-day-tag">D2</span><span class="chip-pts">${day2Score.toFixed(1)}p</span>`;
     chipDay2.className = `chip-day ${currentSessionId === 'day2' ? 'active' : ''}`;
+    chipDay2.title = `Day 2 (Oct 27): ${day2Score.toFixed(1)} pts (10 posts) — Click to view`;
   }
   if (chipDay3) {
-    chipDay3.innerHTML = `📅 Day 3 (Oct 28): <strong>${day3Score.toFixed(1)} pts</strong> (10 posts)`;
+    chipDay3.innerHTML = `<span class="chip-day-tag">D3</span><span class="chip-pts">${day3Score.toFixed(1)}p</span>`;
     chipDay3.className = `chip-day ${currentSessionId === 'day3' ? 'active' : ''}`;
+    chipDay3.title = `Day 3 (Oct 28): ${day3Score.toFixed(1)} pts (10 posts) — Click to view`;
   }
   const chipDay4 = document.getElementById('chipDay4');
   if (chipDay4) {
-    chipDay4.innerHTML = `📅 Day 4 (Today): <strong>${day4Score > 0 ? day4Score.toFixed(1) + ' pts' : 'Active'}</strong> (10 slots)`;
+    const d4Display = day4Score > 0 ? `${day4Score.toFixed(1)}p` : 'Active';
+    chipDay4.innerHTML = `<span class="chip-day-tag active">D4</span><span class="chip-pts" id="chipTodayScore">${d4Display}</span>`;
     chipDay4.className = `chip-day ${currentSessionId === 'day4' ? 'active' : 'pending'}`;
+    chipDay4.title = `Day 4: Today (Oct 29) — 10 Fresh Setups — Click to view`;
   }
 
   if (chipTodayScore) {
@@ -589,6 +594,33 @@ function initSessionAndPointsHub() {
       renderAttributionMatrix();
       updateWeeklyProgress();
       showToast(`💾 Saved score: ${val.toFixed(1)} pts!`);
+    });
+  }
+
+  // Interactive Day Switcher Chips
+  [
+    { id: 'chipDay1', sid: 'day1' },
+    { id: 'chipDay2', sid: 'day2' },
+    { id: 'chipDay3', sid: 'day3' },
+    { id: 'chipDay4', sid: 'day4' }
+  ].forEach(({ id, sid }) => {
+    const chip = document.getElementById(id);
+    if (chip) {
+      chip.addEventListener('click', () => {
+        switchDaySession(sid);
+      });
+    }
+  });
+
+  // Header Cycle Day Button
+  const btnCycleDay = document.getElementById('btnCycleDay');
+  if (btnCycleDay) {
+    const cycleOrder = ['day1', 'day2', 'day3', 'day4'];
+    btnCycleDay.addEventListener('click', () => {
+      const idx = cycleOrder.indexOf(currentSessionId);
+      const nextIdx = (idx + 1) % cycleOrder.length;
+      const nextSession = cycleOrder[nextIdx];
+      switchDaySession(nextSession);
     });
   }
 

@@ -185,13 +185,6 @@ function getDay4ForensicHtml() {
             <span>📐</span> Spectral Linear Algebra & Graph Geometry
           </button>
         </div>
-          <button type="button" class="math-suite-tab ${currentMathSuite === 'infotheory' ? 'active' : ''}" data-suite="infotheory">
-            <span>🔬</span> Cover & Thomas Information Theory Suite (Elements of Info Theory)
-          </button>
-          <button type="button" class="math-suite-tab ${currentMathSuite === 'linalg' ? 'active' : ''}" data-suite="linalg">
-            <span>ðŸ“</span> Linear Algebra & Graph Operations
-          </button>
-        </div>
 
         ${currentMathSuite === 'infotheory' ? getInfoTheorySectionHtml() : getLinAlgSectionHtml()}
       </div>
@@ -255,7 +248,7 @@ function getDay4ForensicHtml() {
     </div>
 
     <!-- Sentence-by-Sentence Breakdown for Today's 10 Posts with Color-Coded Token Heat-Maps -->
-    <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin: 20px 0 12px 0;">ðŸ” Sentence-by-Sentence Structural & Color-Coded Token Heat-Maps</h3>
+    <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin: 20px 0 12px 0;">🔬 Sentence-by-Sentence Structural & Color-Coded Token Heat-Maps</h3>
     
     <div class="forensic-post-card">
       <div class="forensic-post-header">
@@ -831,11 +824,11 @@ function getInfoConceptHtml() {
     return `
       <div class="info-theorem-card">
         <div class="info-theorem-head">
-          <span class="info-theorem-title">ðŸŒ Universal Portfolio & Side-Information Value Bound (Cover & Thomas §16.5 & §16.8)</span>
+          <span class="info-theorem-title">🌐 Universal Portfolio & Side-Information Value Bound (Cover & Thomas §16.5 & §16.8)</span>
           <span class="info-theorem-badge">Theorem 16.5.1: ΔW ≤ I(X; Y)</span>
         </div>
         <div class="info-formula-banner">
-          bÌ‚_{k+1} = âˆ« b S_k(b) dÎ¼(b) / âˆ« S_k(b) dÎ¼(b)  |  Side-Info Boost: ΔW = W*(F_{X|Y}) - W*(F) ≤ I(X; Y)
+          b̂_{k+1} = ∫ b S_k(b) dμ(b) / ∫ S_k(b) dμ(b)  |  Side-Info Boost: ΔW = W*(F_{X|Y}) - W*(F) ≤ I(X; Y)
         </div>
         <p class="info-theorem-desc">
           <strong>In Plain English:</strong> Thomas Cover's Universal Portfolio rebalances capital without knowing future price odds. Furthermore, Theorem 16.5.1 proves that the increase in a trader's compound growth rate (ΔW) is <strong>directly bounded by the Mutual Information between our technical indicator (Side Information Y) and the coin's price move (X)</strong>!
@@ -1250,11 +1243,11 @@ function getMathOperationHtml() {
     return `
       <div class="math-op-display-card">
         <div class="math-op-head">
-          <span class="math-op-name">ðŸ“ Total Redundancy Score (Matrix Spread Norm: ||S - I||_F)</span>
+          <span class="math-op-name">📊 Total Redundancy Score (Matrix Spread Norm: ||S - I||_F)</span>
           <span class="math-op-tag">Score: 0.82 (66.9% Reduction vs Day 3)</span>
         </div>
         <div class="math-formula-box">
-          ||S - I||_F = âˆš(Σ_{i â‰  j} S_ijÂ²)  |  Day 3 = 2.48 ➔ Day 4 = 0.82
+          ||S - I||_F = √(Σ_{i ≠ j} S_ij²)  |  Day 3 = 2.48 ➔ Day 4 = 0.82
         </div>
         <p class="math-op-desc">
           <strong>In Plain English:</strong> This formula squashes the entire table into <strong>one master score measuring total repetition</strong> across your posts. On Day 3, this score was a dangerous <strong>2.48</strong>. Today, it collapsed to <strong>0.82</strong>, representing a <strong>66.9% drop in total writing redundancy</strong>!
@@ -1352,7 +1345,7 @@ function getMathOperationHtml() {
     return `
       <div class="math-op-display-card">
         <div class="math-op-head">
-          <span class="math-op-name">ðŸ›¡ï¸ Anti-Spam Safety Shield (Multi-Matrix Filter: S_J âŠ™ S_cos âŠ™ S_tri)</span>
+          <span class="math-op-name">🛡️ Anti-Spam Safety Shield (Multi-Matrix Filter: S_J ⊙ S_cos ⊙ S_tri)</span>
           <span class="math-op-tag">Max Risk: 0.0018 / 0.0500 Threshold (99.8% Safe)</span>
         </div>
         <div class="math-formula-box">
@@ -1377,7 +1370,7 @@ function getMathOperationHtml() {
 
               <!-- Operator 1: Circle multiply -->
               <circle cx="195" cy="50" r="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-              <text x="195" y="55" fill="#38bdf8" font-size="14" font-weight="800" text-anchor="middle">âŠ™</text>
+              <text x="195" y="55" fill="#38bdf8" font-size="14" font-weight="800" text-anchor="middle">⊙</text>
 
               <!-- Level 2: Idea Angle (Cosine) -->
               <rect x="220" y="30" width="130" height="40" rx="4" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="1.5"/>
@@ -1386,7 +1379,7 @@ function getMathOperationHtml() {
 
               <!-- Operator 2: Circle multiply -->
               <circle cx="375" cy="50" r="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-              <text x="375" y="55" fill="#38bdf8" font-size="14" font-weight="800" text-anchor="middle">âŠ™</text>
+              <text x="375" y="55" fill="#38bdf8" font-size="14" font-weight="800" text-anchor="middle">⊙</text>
 
               <!-- Level 3: Phrase Clones (Trigrams) -->
               <rect x="400" y="30" width="110" height="40" rx="4" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="1.5"/>
@@ -1436,7 +1429,7 @@ function getMathOperationHtml() {
   return `
     <div class="math-op-display-card">
       <div class="math-op-head">
-        <span class="math-op-name">ðŸŒ Network Graph Connectivity (Graph Laplacian: L = D - S)</span>
+        <span class="math-op-name">🌐 Network Graph Connectivity (Graph Laplacian: L = D - S)</span>
         <span class="math-op-tag">Fiedler Value: λâ‚ = 0.88 / 1.00 (Zero Topic Clumping)</span>
       </div>
       <div class="math-formula-box">
@@ -1593,7 +1586,7 @@ function getDay4ActiveMetricHtml() {
   if (currentForensicMetric === 'tfidf') {
     return `
       <p class="similarity-matrix-desc">
-        <strong>ðŸ“ Idea Angle Matrix (TF-IDF Cosine):</strong> Employs Inverse Document Frequency weighting: terms appearing across multiple posts receive an IDF weight near zero. This measures strictly the <strong>geometric angle of unique alpha concepts</strong>. Across today's 10 posts, Cosine similarity sits between <strong>6.2% and 20.0%</strong>, confirming complete independence of core trading hypotheses.
+        <strong>📐 Idea Angle Matrix (TF-IDF Cosine):</strong> Employs Inverse Document Frequency weighting: terms appearing across multiple posts receive an IDF weight near zero. This measures strictly the <strong>geometric angle of unique alpha concepts</strong>. Across today's 10 posts, Cosine similarity sits between <strong>6.2% and 20.0%</strong>, confirming complete independence of core trading hypotheses.
       </p>
       <table class="similarity-table">
         <thead>

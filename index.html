@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#090c13" />
-  <link rel="stylesheet" href="styles.css?v=54" />
+  <link rel="stylesheet" href="styles.css?v=66" />
 </head>
 <body>
   <div class="app-shell">
@@ -25,16 +25,19 @@
           <div class="session-selector-wrap">
             <span class="session-label">DESK:</span>
             <select id="daySessionSelect" class="session-dropdown" title="Switch active day or view archived posts">
-              <option value="day4" selected>📅 Day 4: Today (Oct 29) — 10 Fresh Setups</option>
-              <option value="day3">📅 Day 3: Yesterday (Oct 28) — 10 Posts (10.0 pts)</option>
-              <option value="day2">📅 Day 2: Oct 27 — 10 Posts (11.0 pts)</option>
-              <option value="day1">📅 Day 1: Oct 26 — 5 Posts (9.0 pts)</option>
+              <option value="day4" selected>📅 Day 4 (Today)</option>
+              <option value="day3">📅 Day 3 (10.0p)</option>
+              <option value="day2">📅 Day 2 (11.0p)</option>
+              <option value="day1">📅 Day 1 (9.0p)</option>
             </select>
+            <button id="btnCycleDay" type="button" class="btn-cycle-day" title="Cycle day session: Day 1 → 2 → 3 → 4">
+              <span>↻ Cycle</span>
+            </button>
             <button id="btnOpenScoresModal" class="btn-nav-action scores-pill" title="View Daily Scores & Leaderboard Engine">
-              <span>🏆 Scores Hub (30.0 / 150 Pts)</span>
+              <span>🏆 Scores (30p)</span>
             </button>
             <button id="btnOpenAnalysisModal" class="btn-nav-action analysis-pill" title="View Deep Forensic Trade & Writing Analysis">
-              <span>🔬 Trade & Writing Analysis</span>
+              <span>🔬 Analysis</span>
             </button>
           </div>
           <div class="daily-badge">
@@ -521,11 +524,19 @@
               <span>150 PT MINIMUM REWARD THRESHOLD</span>
             </div>
           </div>
-          <div class="daily-breakdown-chips">
-            <span class="chip-day" id="chipDay1">📅 Day 1 (Oct 26): <strong>9.0 pts</strong> (5 posts)</span>
-            <span class="chip-day" id="chipDay2">📅 Day 2 (Oct 27): <strong>11.0 pts</strong> (10 posts)</span>
-            <span class="chip-day" id="chipDay3">📅 Day 3 (Oct 28): <strong>10.0 pts</strong> (10 posts)</span>
-            <span class="chip-day active" id="chipDay4">📅 Day 4 (Today): <strong id="chipTodayScore">0.0 pts</strong> (10 slots)</span>
+          <div class="daily-breakdown-chips" role="group" aria-label="Daily Session Selectors">
+            <button type="button" class="chip-day" id="chipDay1" title="Day 1 (Oct 26): 9.0 pts (5 posts)">
+              <span class="chip-day-tag">D1</span><span class="chip-pts">9.0p</span>
+            </button>
+            <button type="button" class="chip-day" id="chipDay2" title="Day 2 (Oct 27): 11.0 pts (10 posts)">
+              <span class="chip-day-tag">D2</span><span class="chip-pts">11.0p</span>
+            </button>
+            <button type="button" class="chip-day" id="chipDay3" title="Day 3 (Oct 28): 10.0 pts (10 posts)">
+              <span class="chip-day-tag">D3</span><span class="chip-pts">10.0p</span>
+            </button>
+            <button type="button" class="chip-day active" id="chipDay4" title="Day 4: Today (Oct 29) — 10 Fresh Setups">
+              <span class="chip-day-tag active">D4</span><span class="chip-pts" id="chipTodayScore">Active</span>
+            </button>
           </div>
         </div>
 
@@ -835,12 +846,16 @@
         </div>
 
         <!-- Interactive Epoch Tabs (Day 4 Today vs Day 3 Yesterday) -->
-        <div class="forensic-epoch-tabs">
-          <button class="forensic-tab-btn active" id="btnForensicDay4" data-fday="day4">
-            <span>📅 Day 4: Today (Oct 29) — 10 High-Conversion Setups Audit</span>
+        <div class="forensic-epoch-tabs" role="tablist">
+          <button class="forensic-tab-btn active" id="btnForensicDay4" data-fday="day4" role="tab" aria-selected="true" title="Day 4: Today (Oct 29) — 10 High-Conversion Setups">
+            <span class="epoch-icon">●</span>
+            <span class="epoch-title">Day 4: Today</span>
+            <span class="epoch-subtag">10 Setups</span>
           </button>
-          <button class="forensic-tab-btn" id="btnForensicDay3" data-fday="day3">
-            <span>📅 Day 3: Yesterday (Oct 28) — Post-Mortem & Similarity Diagnosis</span>
+          <button class="forensic-tab-btn" id="btnForensicDay3" data-fday="day3" role="tab" aria-selected="false" title="Day 3: Yesterday (Oct 28) — Post-Mortem & Similarity Diagnosis">
+            <span class="epoch-icon">✓</span>
+            <span class="epoch-title">Day 3: Yesterday</span>
+            <span class="epoch-subtag">Audit</span>
           </button>
         </div>
 
@@ -931,12 +946,12 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=65"></script>
-  <script src="js/detectors/BaseDetector.js?v=65"></script>
-  <script src="js/detectors/Detectors.js?v=65"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=65"></script>
-  <script src="js/forensics/ForensicHub.js?v=65"></script>
-  <script src="js/session/SessionManager.js?v=65"></script>
-  <script src="app.js?v=65"></script>
+  <script src="js/data/preloadedSlots.js?v=66"></script>
+  <script src="js/detectors/BaseDetector.js?v=66"></script>
+  <script src="js/detectors/Detectors.js?v=66"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=66"></script>
+  <script src="js/forensics/ForensicHub.js?v=66"></script>
+  <script src="js/session/SessionManager.js?v=66"></script>
+  <script src="app.js?v=66"></script>
 </body>
 </html>

@@ -16,3 +16,5 @@ Thumbs.db
 # Scratch / logs
 scratch/
 *.log
+.chrome-debug-profile/
+.chrome-test-profile/
