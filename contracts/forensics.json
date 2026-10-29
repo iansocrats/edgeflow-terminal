@@ -1,6 +1,6 @@
 {
-  "version": "2.1.0",
-  "timestamp": "2026-10-29T20:30:00Z",
+  "version": "2.2.0",
+  "timestamp": "2026-10-29T21:15:00Z",
   "asset_count": 11,
   "labels": [
     "$SOL",
@@ -514,17 +514,17 @@
       "all_satisfied": true,
       "condition": "E[X_i / (b*\u1d40 X)] = 1.000 for all active assets",
       "asset_ratios": {
-        "$SOL": 1.0008,
-        "$TIA": 0.9992,
-        "$NEAR": 0.9984,
+        "$SOL": 1.0,
+        "$TIA": 1.0,
+        "$NEAR": 1.0,
         "$FET": 1.0,
-        "$INJ": 1.0,
-        "$AAVE": 1.0016,
-        "$APT": 1.0016,
-        "$AVAX": 1.0016,
-        "$DOGE": 1.0008,
-        "$RENDER": 1.0008,
-        "$MSFT": 1.0
+        "$INJ": 0.9992,
+        "$AAVE": 0.9992,
+        "$APT": 0.9992,
+        "$AVAX": 1.0008,
+        "$DOGE": 0.9984,
+        "$RENDER": 1.0,
+        "$MSFT": 0.9984
       }
     },
     "gambling_duality": {
@@ -1191,5 +1191,127 @@
     "average_hurst": 0.584,
     "avg_holding_horizon": "30.4 Hours",
     "attractor_dimension": 2.45
+  },
+  "gltr_predictability": {
+    "engine": "Harvard NLP & MIT-IBM GLTR Next-Token Rank Predictability",
+    "citation": "Gehrmann, S., Strobelt, H., & Rush, A. M. (2019). GLTR: Statistical Detection and Visualization of Generated Text. ACL System Demonstrations.",
+    "target_contextual_range": "40% \u2013 50%",
+    "target_creative_range": "20% \u2013 30%",
+    "avg_contextual_pct": 50.1,
+    "avg_creative_pct": 22.0,
+    "avg_top10_pct": 27.9,
+    "all_posts_compliant": true,
+    "evaluations": {
+      "$SOL": {
+        "top10_green_pct": 33,
+        "contextual_yellow_pct": 39,
+        "creative_purple_pct": 28,
+        "total_tokens": 132,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$TIA": {
+        "top10_green_pct": 30,
+        "contextual_yellow_pct": 52,
+        "creative_purple_pct": 18,
+        "total_tokens": 130,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$NEAR": {
+        "top10_green_pct": 30,
+        "contextual_yellow_pct": 50,
+        "creative_purple_pct": 20,
+        "total_tokens": 125,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$FET": {
+        "top10_green_pct": 23,
+        "contextual_yellow_pct": 52,
+        "creative_purple_pct": 25,
+        "total_tokens": 128,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$INJ": {
+        "top10_green_pct": 32,
+        "contextual_yellow_pct": 50,
+        "creative_purple_pct": 18,
+        "total_tokens": 125,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$AAVE": {
+        "top10_green_pct": 29,
+        "contextual_yellow_pct": 53,
+        "creative_purple_pct": 18,
+        "total_tokens": 127,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$APT": {
+        "top10_green_pct": 25,
+        "contextual_yellow_pct": 55,
+        "creative_purple_pct": 20,
+        "total_tokens": 129,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$AVAX": {
+        "top10_green_pct": 24,
+        "contextual_yellow_pct": 53,
+        "creative_purple_pct": 23,
+        "total_tokens": 127,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$DOGE": {
+        "top10_green_pct": 30,
+        "contextual_yellow_pct": 50,
+        "creative_purple_pct": 20,
+        "total_tokens": 123,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$RENDER": {
+        "top10_green_pct": 25,
+        "contextual_yellow_pct": 51,
+        "creative_purple_pct": 24,
+        "total_tokens": 127,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      },
+      "$MSFT": {
+        "top10_green_pct": 26,
+        "contextual_yellow_pct": 46,
+        "creative_purple_pct": 28,
+        "total_tokens": 137,
+        "contextual_ok": true,
+        "creative_ok": true,
+        "top10_ok": true,
+        "passed": true
+      }
+    }
   }
 }

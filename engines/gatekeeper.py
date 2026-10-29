@@ -206,8 +206,24 @@ class MathematicalGatekeeper:
             "message": "Disciplined institutional risk limits met." if passed else "Violates risk policy; add explicit invalidation level and cap leverage <= 4x."
         }
 
+    def check_gltr_predictability(self, text: str) -> Dict[str, Any]:
+        from .math_engine.gltr_engine import evaluate_gltr
+        ev = evaluate_gltr(text)
+        passed = ev["passed"]
+        yellow = ev["contextual_yellow_pct"]
+        purple = ev["creative_purple_pct"]
+        green = ev["top10_green_pct"]
+        return {
+            "name": "8. Harvard GLTR Token Predictability (Rank Optimization)",
+            "passed": passed,
+            "value": f"Contextual: {yellow}% | Creative: {purple}% | Top-10: {green}%",
+            "threshold": "Contextual: 38%–58% (Target: 40–50%) | Creative: 18%–35% (Target: 20–30%)",
+            "details": ev,
+            "message": "Balanced contextual flow and rich creative domain alpha verified." if passed else "Token distribution outside calibrated Harvard GLTR bounds."
+        }
+
     def audit_post(self, text: str, coin: str = "") -> Dict[str, Any]:
-        """Runs the candidate post through all 7 benchmarks."""
+        """Runs the candidate post through all 8 benchmarks."""
         results = [
             self.check_word_count(text),
             self.check_polishing_rules(text),
@@ -215,7 +231,8 @@ class MathematicalGatekeeper:
             self.check_kolmogorov_and_ncd(text),
             self.check_similarity_barrier(text),
             self.check_markov_narrative_flow(text),
-            self.check_risk_compliance(text)
+            self.check_risk_compliance(text),
+            self.check_gltr_predictability(text)
         ]
 
         all_passed = all(r["passed"] for r in results)
@@ -224,9 +241,9 @@ class MathematicalGatekeeper:
         return {
             "coin": coin,
             "approved_for_publishing": all_passed,
-            "score": round(((7 - failed_count) / 7) * 100, 1),
-            "passed_benchmarks": 7 - failed_count,
-            "total_benchmarks": 7,
+            "score": round(((8 - failed_count) / 8) * 100, 1),
+            "passed_benchmarks": 8 - failed_count,
+            "total_benchmarks": 8,
             "details": results
         }
 

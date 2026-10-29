@@ -25,6 +25,7 @@ from .algorithmic_complexity import AlgorithmicComplexityModule
 from .stochastic_process import StochasticProcessModule
 from .information_inequalities import InformationInequalitiesModule
 from .chaos_dynamics import ChaosDynamicsModule
+from .gltr_engine import GLTRPredictabilityModule
 
 
 def tokenize(text: str) -> List[str]:
@@ -85,9 +86,12 @@ def run_math_engine(posts_file: str = "posts.json", output_file: str = "contract
     chaos_mod = ChaosDynamicsModule(labels)
     chaos_data = chaos_mod.compute_telemetry()
 
+    gltr_mod = GLTRPredictabilityModule(raw_texts, labels)
+    gltr_data = gltr_mod.compute_telemetry()
+
     forensics_contract = {
-        "version": "2.1.0",
-        "timestamp": "2026-10-29T20:30:00Z",
+        "version": "2.2.0",
+        "timestamp": "2026-10-29T21:15:00Z",
         "asset_count": len(posts),
         "labels": labels,
         "information_theory": info_data,
@@ -97,7 +101,8 @@ def run_math_engine(posts_file: str = "posts.json", output_file: str = "contract
         "algorithmic_complexity": algo_data,
         "stochastic_process": stoch_data,
         "information_inequalities": ineq_data,
-        "chaos_dynamics": chaos_data
+        "chaos_dynamics": chaos_data,
+        "gltr_predictability": gltr_data
     }
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -115,6 +120,7 @@ def run_math_engine(posts_file: str = "posts.json", output_file: str = "contract
     print(f"  • Fano's Error Bound:        Max Win-Rate Floor: {ineq_data['max_win_rate_ceiling']} | Sanov: {ineq_data['pinsker_sanov_bounds']['sanov_collision_bound']}")
     print(f"  • Chaos & Hurst Exponent:    Avg H = {chaos_data['average_hurst']} ({chaos_data['hurst_analysis']['overall_market_bias'][:32]}...)")
     print(f"  • Lyapunov Trade Horizon:    {chaos_data['avg_holding_horizon']} (Correlation Dim D₂ = {chaos_data['attractor_dimension']})")
+    print(f"  • Harvard GLTR Calibration:  Contextual = {gltr_data['avg_contextual_pct']}% (Target: 40–50%) | Creativity = {gltr_data['avg_creative_pct']}% (Target: 20–30%)")
 
     return forensics_contract
 

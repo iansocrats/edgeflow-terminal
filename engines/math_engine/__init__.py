@@ -20,6 +20,7 @@ from .algorithmic_complexity import AlgorithmicComplexityModule
 from .stochastic_process import StochasticProcessModule
 from .information_inequalities import InformationInequalitiesModule
 from .chaos_dynamics import ChaosDynamicsModule
+from .gltr_engine import GLTRPredictabilityModule
 
 __all__ = [
     "InformationTheoryModule",
@@ -30,5 +31,6 @@ __all__ = [
     "AlgorithmicComplexityModule",
     "StochasticProcessModule",
     "InformationInequalitiesModule",
-    "ChaosDynamicsModule"
+    "ChaosDynamicsModule",
+    "GLTRPredictabilityModule"
 ]

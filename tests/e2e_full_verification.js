@@ -184,6 +184,35 @@ async function runE2ETest() {
     console.log(`✅ PASS: Copy Polished Post button exists: ${copyPolishedBtnExists}`);
     if (!copyPolishedBtnExists) throw new Error('Expected copyPolishedBtn to exist');
 
+    // 4c. Test Harvard NLP GLTR Next-Token Rank Predictability Engine
+    console.log('\n--- TESTING HARVARD NLP GLTR RANK PREDICTABILITY ENGINE ---');
+    await evalBrowser('document.getElementById("recalcGltrBtn").click()');
+    await new Promise(r => setTimeout(r, 200));
+
+    const gltrGreen = await evalBrowser('document.getElementById("gltrGreenVal").textContent');
+    const gltrYellow = await evalBrowser('document.getElementById("gltrYellowVal").textContent');
+    const gltrPurple = await evalBrowser('document.getElementById("gltrPurpleVal").textContent');
+    const gltrVerdict = await evalBrowser('document.getElementById("gltrVerdict").textContent');
+    console.log(`✅ PASS: GLTR Live Telemetry: Top-10=${gltrGreen}, Contextual=${gltrYellow}, Creative=${gltrPurple}`);
+    console.log(`✅ PASS: GLTR Verdict: "${gltrVerdict.slice(0, 75)}..."`);
+
+    const yellowVal = parseInt(gltrYellow);
+    const purpleVal = parseInt(gltrPurple);
+    const greenVal = parseInt(gltrGreen);
+
+    if (yellowVal < 38 || yellowVal > 58) {
+      throw new Error(`Expected Contextual Words to be in 38-58% range (Target: 40-50%), got ${yellowVal}%`);
+    }
+    if (purpleVal < 18 || purpleVal > 35) {
+      throw new Error(`Expected Creative Leaps to be in 18-35% range (Target: 20-30%), got ${purpleVal}%`);
+    }
+    if (greenVal > 38) {
+      throw new Error(`Expected Top-10 Predictable to be <= 38%, got ${greenVal}%`);
+    }
+    if (!gltrVerdict.includes('PASSED')) {
+      throw new Error(`Expected GLTR Verdict to be PASSED, got "${gltrVerdict}"`);
+    }
+
     // 5. Test clicking Score Hub
     console.log('\n--- TESTING SCORE HUB NAVIGATION & ENGINE ---');
     await evalBrowser('document.getElementById("btnOpenScoresModal").click()');

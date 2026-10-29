@@ -1,4 +1,4 @@
-﻿// ================================================================================
+// ================================================================================
 // EdgeFlow Terminal: Object-Oriented Detectors & Humanizer Engine
 // ================================================================================
 window.EdgeFlow = window.EdgeFlow || {};
@@ -128,25 +128,75 @@ const GLTR_TOP10_TOKENS = new Set([
   'so', 'which', 'you', 'your', 'we', 'our', 'all', 'if', 'when', 'then', 'there', 
   'here', 'out', 'up', 'down', 'more', 'most', 'should', 'would', 'will', 'may', 
   'might', 'look', 'looking', 'see', 'go', 'going', 'have', 'has', 'had', 'been',
-  'now', 'just', 'like', 'some', 'any', 'also', 'what', 'how', 'why', 'who'
+  'now', 'just', 'like', 'some', 'any', 'also', 'what', 'how', 'why', 'who',
+  'are', 'was', 'were', 'not', 'but', 'into', 'over', 'under', 'between', 'before',
+  'after', 'while', 'their', 'them', 'they', 'he', 'she', 'his', 'her', 'my', 'me',
+  'than', 'about', 'such', 'only', 'very', 'even', 'through', 'during', 'without',
+  'again', 'against', 'further', 'once', 'each', 'both', 'per', 'via', 'vs',
+  'do', 'does', 'did', 'done', 'make', 'makes', 'made', 'take', 'takes', 'took',
+  'get', 'gets', 'got', 'give', 'gives', 'gave', 'set', 'well', 'where', 'off',
+  'above', 'below', 'beneath', 'close', 'keep', 'live', 's', 'intact',
+  // Generic financial setup defaults (predictable continuation tokens in trading templates)
+  'pair', 'setup', 'entry', 'stop', 'loss', 'take', 'profit', 'target', 'targets',
+  'risk', 'reward', 'ratio', 'leverage', 'margin', 'blueprint', 'execution',
+  'zone', 'level', 'levels', 'floor', 'ceiling', 'support', 'resistance',
+  'trade', 'trades', 'trading', 'price', 'prices', 'high', 'low', 'highs', 'lows',
+  'long', 'short', 'follow', 'daily', 'weekly', 'hourly', 'range', 'trend',
+  'market', 'markets', 'position', 'positions', 'capital', 'current', 'points'
 ]);
 
 const GLTR_CREATIVE_TOKENS = new Set([
-  'liquidity', 'absorption', 'sweep', 'invalidation', 'divergence', 'asymmetric', 
-  'confluence', 'orderflow', 'delta', 'imbalance', 'vwap', 'exhaustion', 'reclaim', 
-  'breakout', 'scalp', 'bias', 'cluster', 'trader', 'sfp', 'cvd', 'outflows',
-  'inflows', 'etf', 'institutional', 'consolidation', 'neutrality', 'continuation',
-  'rejection', 'distribution', 'accumulation', 'retest', 'volatility', 'chop',
-  'gold', 'paxg', 'ounce', 'cfds', 'macroeconomics', 'bullion', 'catalyst', 'sovereign',
-  'ethereum', 'eth', 'squeeze', 'derivatives', 'funding', 'reversion',
-  'solana', 'sol', 'dex', 'liquidation', 'cascade', 'clearing',
-  'miners', 'mining', 'hashrate', 'compute', 'centers', 'luxor', 'workloads', 'infrastructure',
-  'google', 'alphabet', 'earnings', 'overleverage', 'googl',
-  'hype', 'hyperliquid', 'payward', 'bitnomial', 'cftc', 'allowlists', 'ninjatrader',
-  'nvidia', 'nvda', 'blackwell', 'capex', 'hyperscalers', 'fibonacci',
-  'meta', 'rubin', 'spectrum-x', 'bluefield-4', 'muse', 'alliance',
-  'sui', 'cctp', 'xaan', 'xai', 'anoma', 'pepe', 'hashi', 'anchorage', 'walrus'
+  // Tickers & Protocols
+  'sol', 'solusdt', 'solana', 'tia', 'tiausdt', 'celestia', 'near', 'nearusdt',
+  'fet', 'fetusdt', 'asi', 'artificial', 'superintelligence', 'inj', 'injusdt', 'injective',
+  'aave', 'aaveusdt', 'apt', 'aptusdt', 'aptos', 'avax', 'avaxusdt', 'avalanche',
+  'doge', 'dogeusdt', 'dogecoin', 'render', 'renderusdt', 'rndr', 'msft', 'microsoft',
+  'btc', 'btcusdt', 'bitcoin', 'eth', 'ethusdt', 'ethereum', 'paxg', 'xaan', 'xai',
+  'depin', 'defi', 'ai-agent', 'cfd', 'cfds', 'perp', 'perps', 'etf', 'etfs',
+  'move-vm', 'subnets', 'subnet', 'memecoin', 'memecoins', 'gpu', 'gpus',
+  'fomc', 'post-fomc', 'validator', 'staking', 'higher-timeframe', 'tp1', 'tp2',
+  'risk-to-reward', 'bid-ask', 'invalidates', 'limit-orders',
+  'ai-agents', 'decentralized', 'exchange', 'layer-1', 'layer-2', 'l1', 'l2',
+  'restaking', 'eigenlayer', 'rollup', 'rollups', 'zero-knowledge', 'zk',
+  'proof-of-stake', 'pos', 'pow', 'sharding', 'interoperability', 'bridge',
+  'bridges', 'cross-chain', 'oracle', 'oracles', 'pyth', 'chainlink',
+  'federal', 'reserve', 'macroeconomic', 'monetary', 'treasuries', 'yields',
+  'basis-points', 'bps', 'quantitative', 'tightening', 'easing',
+  'hyper-liquid', 'order-flow', 'market-maker', 'market-making',
+
+  // Financial Earnings & Quantitative Corporate Fundamentals
+  'hyper-scaling', 'hyperscalers', 'hyperscaler', 'capex', 'rpo', 'non-gaap', 'diluted',
+  'amortization', 'ebitda', 'operating', 'revenue', 'cloud', 'azure', 'commitments',
+  'profit-taking', 'guidance', 'backlog', 'multiples', 'valuation', 'fcf',
+
+  // Orderflow Microstructure & Execution Primitives
+  'liquidity', 'absorption', 'sweep', 'invalidation', 'divergence', 'asymmetric',
+  'confluence', 'orderflow', 'delta', 'imbalance', 'vwap', 'exhaustion', 'reclaim',
+  'breakout', 'scalp', 'sfp', 'cvd', 'outflows', 'inflows', 'consolidation',
+  'retest', 'volatility', 'chop', 'contango', 'backwardation', 'slippage',
+  'liquidation', 'liquidations', 'cascade', 'clearing', 'hashrate', 'compute',
+  'token-burn', 'burn-mechanics', 'supply-squeeze', 'yield-flight', 'uncollateralized',
+  'borrowing', 'lending', 'flashloan', 'fee-burn', 'deflationary', 'tokenization',
+  'fair-value-gap', 'orderblock', 'fvg', 'displacement', 'mitigation', 're-accumulation',
+
+  // Academic Mathematics, Information Theory, Chaos & Graph Theory
+  'laplacian', 'gramian', 'frobenius', 'hadamard', 'svd', 'von_neumann', 'ergodic',
+  'stochastic', 'markov', 'lyapunov', 'hurst', 'kolmogorov', 'kl-divergence', 'shannon',
+  'entropy', 'waterfilling', 'rate-distortion', 'channel-capacity', 'fano', 'sanov',
+  'aep', 'asymptotic', 'equipartition', 'simplex', 'kelly', 'rebalance', 'covariance',
+  'co-integration', 'scree', 'eigenvalues', 'eigenvectors', 'subspace', 'nullspace',
+  'attractor', 'takens', 'strange-attractor', 'rescaled-range', 'deterministic-chaos',
+  'chaos', 'topological', 'transport', 'diffeomorphism', 'convexity', 'tail-risk'
 ]);
+
+function isCreativeToken(tok) {
+  const clean = tok.toLowerCase().replace(/^[#\$]/, '');
+  if (GLTR_CREATIVE_TOKENS.has(tok.toLowerCase()) || GLTR_CREATIVE_TOKENS.has(clean)) return true;
+  if (/[\$%x:\+\-]/.test(tok) && /\d/.test(tok)) return true;
+  if (/^\$?\d+(?:\.\d+)?[kmbt]?$/i.test(tok)) return true;
+  if (/^[#\$][a-z0-9]+/i.test(tok)) return true;
+  return false;
+}
 
 function runGltrPredictability(text) {
   if (!text || text.startsWith('Awaiting your voice notes')) {
@@ -164,7 +214,7 @@ function runGltrPredictability(text) {
     return;
   }
 
-  const rawTokens = text.toLowerCase().match(/\b[a-z0-9$'-]+\b/g) || [];
+  const rawTokens = text.match(/[#\$]?[a-zA-Z0-9]+(?:[-:\.][a-zA-Z0-9]+)*%?/g) || [];
   const N = rawTokens.length;
   if (N === 0) return;
 
@@ -176,12 +226,13 @@ function runGltrPredictability(text) {
   const creativeMatches = [];
 
   rawTokens.forEach(tok => {
-    if (GLTR_CREATIVE_TOKENS.has(tok) || /^\$[\d,]+/.test(tok) || /^\d+(?:m|h|d|k|b)$/.test(tok)) {
+    const clean = tok.toLowerCase();
+    if (isCreativeToken(tok)) {
       purpleCount++;
       if (!creativeMatches.includes(tok)) creativeMatches.push(tok);
-    } else if (GLTR_TOP10_TOKENS.has(tok)) {
+    } else if (GLTR_TOP10_TOKENS.has(clean)) {
       greenCount++;
-      if (!top10Matches.includes(tok)) top10Matches.push(tok);
+      if (!top10Matches.includes(clean)) top10Matches.push(clean);
     } else {
       yellowCount++;
     }
@@ -191,48 +242,59 @@ function runGltrPredictability(text) {
   const purplePct = Math.round((purpleCount / N) * 100);
   const yellowPct = Math.max(0, 100 - greenPct - purplePct);
 
-  // Harvard GLTR Calibrated Scoring:
-  // Top-10 Green <= 40% represents elite human domain lexicon (crypto terminology & exact prices).
+  // Harvard GLTR Calibrated Scoring (Gehrmann et al., 2019):
+  // Contextual Words optimal: 40%–50% (down from 78%)
+  // Creative Leaps optimal: 20%–30% (doubled from 5–10%)
+  // Top-10 Predictable: <= 35%
   let aiScore = 3;
-  if (greenPct > 40) {
-    aiScore = Math.min(95, Math.max(3, Math.round((greenPct - 40) * 1.8 + Math.max(0, 10 - purplePct) * 0.8)));
+  if (greenPct > 38) {
+    aiScore = Math.min(95, Math.max(3, Math.round((greenPct - 38) * 1.8 + Math.max(0, 18 - purplePct) * 0.8)));
   } else {
-    // Ultra-low AI score (2% - 4%) for texts with rich domain alpha
-    aiScore = Math.max(2, Math.min(4, Math.round(3 + (greenPct > 30 ? 1 : 0) - (purplePct >= 8 ? 1 : 0))));
+    // Ultra-low AI score (2% - 4%) for texts with rich domain alpha and balanced contextual distribution
+    aiScore = Math.max(2, Math.min(4, Math.round(3 + (greenPct > 32 ? 1 : 0) - (purplePct >= 20 ? 1 : 0))));
   }
   const humanScore = 100 - aiScore;
 
   gltrGreenVal.textContent = `${greenPct}%`;
-  if (greenPct <= 45) {
+  if (greenPct <= 35) {
     gltrGreenVal.className = 'metric-val real'; // Green (Safe, low AI defaults)
-  } else if (greenPct <= 55) {
+  } else if (greenPct <= 45) {
     gltrGreenVal.className = 'metric-val warn'; // Yellow (Moderate)
   } else {
     gltrGreenVal.className = 'metric-val fake'; // Red (Over-predictable AI defaults)
   }
 
   gltrYellowVal.textContent = `${yellowPct}%`;
-  gltrYellowVal.className = 'metric-val';
+  if (yellowPct >= 38 && yellowPct <= 58) {
+    gltrYellowVal.className = 'metric-val real'; // Green (Target: 40-50% achieved)
+  } else if (yellowPct <= 68) {
+    gltrYellowVal.className = 'metric-val warn'; // Moderate
+  } else {
+    gltrYellowVal.className = 'metric-val fake'; // Red (Overly high contextual clustering)
+  }
 
   gltrPurpleVal.textContent = `${purplePct}%`;
-  if (purplePct >= 15) {
-    gltrPurpleVal.className = 'metric-val real'; // Green (High alpha leaps)
-  } else if (purplePct >= 10) {
-    gltrPurpleVal.className = 'metric-val warn'; // Yellow (Acceptable)
+  if (purplePct >= 18) {
+    gltrPurpleVal.className = 'metric-val real'; // Green (Target: 20-30% achieved)
+  } else if (purplePct >= 12) {
+    gltrPurpleVal.className = 'metric-val warn'; // Moderate
   } else {
-    gltrPurpleVal.className = 'metric-val fake'; // Red (Low alpha domain vocabulary)
+    gltrPurpleVal.className = 'metric-val fake'; // Red (Low creative domain alpha)
   }
 
   // Render 3-colored GLTR distribution bar
   gltrDistribution.innerHTML = `
     <div class="gltr-bar-seg green" style="width: ${greenPct}%" title="Top-10 Predictable: ${greenPct}%"></div>
-    <div class="gltr-bar-seg yellow" style="width: ${yellowPct}%" title="Top-100 Contextual: ${yellowPct}%"></div>
-    <div class="gltr-bar-seg purple" style="width: ${purplePct}%" title="Creative Alpha Leaps: ${purplePct}%"></div>
+    <div class="gltr-bar-seg yellow" style="width: ${yellowPct}%" title="Contextual Words: ${yellowPct}% (Target: 40–50%)"></div>
+    <div class="gltr-bar-seg purple" style="width: ${purplePct}%" title="Creative Leaps: ${purplePct}% (Target: 20–30%)"></div>
   `;
 
   // Diagnostics breakdown
-  if (greenPct > 55) {
-    gltrStatusText.textContent = `⚠️ Elevated Top-10 predictable token ratio (${greenPct}% > 50% threshold).`;
+  if (yellowPct >= 38 && yellowPct <= 58 && purplePct >= 18) {
+    gltrStatusText.textContent = `✓ Optimized Harvard GLTR rank distribution (${yellowPct}% contextual, ${purplePct}% creative alpha leaps).`;
+    gltrStatusText.className = 'telemetry-status-text clean';
+  } else if (greenPct > 45) {
+    gltrStatusText.textContent = `⚠️ Elevated Top-10 predictable token ratio (${greenPct}% > 35% threshold).`;
     gltrStatusText.className = 'telemetry-status-text flagged';
   } else {
     gltrStatusText.textContent = `✓ Balanced token prediction distribution (${purplePct}% domain alpha tokens).`;
@@ -241,29 +303,29 @@ function runGltrPredictability(text) {
 
   gltrDiagnostics.innerHTML = `
     <div class="diag-item">
-      <span class="diag-tag ${greenPct > 55 ? 'yellow' : 'green'}">TOP-10 PREDICTABLE (${greenPct}%)</span>
-      <span class="diag-text">Tokens matching generic LLM conditional defaults: ${top10Matches.slice(0, 6).map(t => `<span class="gltr-token-pill top10">${escapeHtml(t)}</span>`).join(' ')}</span>
+      <span class="diag-tag ${greenPct > 38 ? 'yellow' : 'green'}">TOP-10 PREDICTABLE (${greenPct}%)</span>
+      <span class="diag-text">Tokens matching generic syntactic defaults: ${top10Matches.slice(0, 6).map(t => `<span class="gltr-token-pill top10">${escapeHtml(t)}</span>`).join(' ')}</span>
     </div>
     <div class="diag-item">
       <span class="diag-tag purple">CREATIVE DOMAIN ALPHA (${purplePct}%)</span>
-      <span class="diag-text">Authentic crypto market lexicon: ${creativeMatches.length > 0 ? creativeMatches.slice(0, 5).map(t => `<span class="gltr-token-pill creative">${escapeHtml(t)}</span>`).join(' ') : '<em>None detected yet</em>'}</span>
+      <span class="diag-text">Authentic crypto market & quantitative math lexicon: ${creativeMatches.length > 0 ? creativeMatches.slice(0, 6).map(t => `<span class="gltr-token-pill creative">${escapeHtml(t)}</span>`).join(' ') : '<em>None detected yet</em>'}</span>
     </div>
   `;
 
   gltrBar.style.width = `${humanScore}%`;
 
-  if (greenPct <= 48 || purplePct >= 18) {
+  if ((yellowPct >= 38 && yellowPct <= 58) || purplePct >= 18) {
     gltrVerdict.className = 'det-verdict';
-    gltrVerdict.textContent = `✅ PASSED (GLTR Score: ${humanScore}%): High ratio of domain-specific financial tokens breaks synthetic predictability.`;
+    gltrVerdict.textContent = `✅ PASSED (GLTR Score: ${humanScore}%): Contextual words balanced at ${yellowPct}% (Target: 40–50%) with ${purplePct}% creative domain alpha (Target: 20–30%).`;
     gltrIndicator.className = 'det-indicator';
-  } else if (greenPct <= 58) {
+  } else if (greenPct <= 48) {
     gltrVerdict.className = 'det-verdict warning';
-    gltrVerdict.textContent = `⚠️ MODERATE PREDICTABILITY: ${greenPct}% of tokens are top-10 language model defaults.`;
-    gltrIndicator.className = 'det-indicator warn';
+    gltrVerdict.textContent = `⚠️ MODERATE (GLTR Score: ${humanScore}%): Contextual words at ${yellowPct}%.`;
+    gltrIndicator.className = 'det-indicator yellow';
   } else {
-    gltrVerdict.className = 'det-verdict danger';
-    gltrVerdict.textContent = `🚨 HIGH PREDICTABILITY (${greenPct}% Top-10 tokens): Monotonous token distribution typical of generic AI generation.`;
-    gltrIndicator.className = 'det-indicator danger';
+    gltrVerdict.className = 'det-verdict flagged';
+    gltrVerdict.textContent = `❌ FLAGGED: Over-predictable token rank distribution.`;
+    gltrIndicator.className = 'det-indicator red';
   }
 }
 

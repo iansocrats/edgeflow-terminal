@@ -110,7 +110,7 @@ def cmd_audit_all():
         posts = json.load(f)
 
     gatekeeper = MathematicalGatekeeper(posts)
-    print(f"\n[Mathematical Gatekeeper] Auditing all {len(posts)} posts against 7 quantitative firewalls...\n")
+    print(f"\n[Mathematical Gatekeeper] Auditing all {len(posts)} posts against 8 quantitative firewalls (including Harvard GLTR)...\n")
 
     all_passed = True
     for i, p in enumerate(posts, 1):
@@ -118,16 +118,16 @@ def cmd_audit_all():
         text = p.get("improved", p.get("raw", ""))
         audit = gatekeeper.audit_post(text, coin)
         status = "PASSED ✓" if audit["approved_for_publishing"] else "FAILED ❌"
-        print(f"  [{i:02d}] {coin:<8} Score: {audit['score']}% ({audit['passed_benchmarks']}/7 Benchmarks) -> {status}")
+        print(f"  [{i:02d}] {coin:<8} Score: {audit['score']}% ({audit['passed_benchmarks']}/{audit['total_benchmarks']} Benchmarks) -> {status}")
         if not audit["approved_for_publishing"]:
             all_passed = False
             for d in audit["details"]:
                 if not d["passed"]:
-                    print(f"       ⚠️ {d['name']}: {d.get('message', '')}")
+                    print(f"       ⚠️ {d['name']}: {d.get('message', '')} (Value: {d.get('value', '')})")
 
     print("\n" + "=" * 80)
     if all_passed:
-        print(f"🏆 GATEKEEPER CLEARANCE: {len(posts)}/{len(posts)} POSTS PASSED ALL 7 BENCHMARKS! 100% GREEN.")
+        print(f"🏆 GATEKEEPER CLEARANCE: {len(posts)}/{len(posts)} POSTS PASSED ALL 8 BENCHMARKS! 100% GREEN.")
     else:
         print("⚠️ SOME POSTS REQUIRE REFACTORING BEFORE PUBLISHING.")
     print("=" * 80 + "\n")
