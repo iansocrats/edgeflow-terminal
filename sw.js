@@ -1,10 +1,16 @@
 // EdgeFlow Terminal Service Worker — Fast Offline Cache
-const CACHE_NAME = 'edgeflow-v61';
+const CACHE_NAME = 'edgeflow-v62';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
+  './js/data/preloadedSlots.js',
+  './js/detectors/BaseDetector.js',
+  './js/detectors/Detectors.js',
+  './js/forensics/ForensicVisualizer.js',
+  './js/forensics/ForensicHub.js',
+  './js/session/SessionManager.js',
   './posts.json',
   './manifest.json',
   './pkg/edgeflow_core.js',
