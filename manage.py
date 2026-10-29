@@ -33,6 +33,7 @@ if BASE_DIR not in sys.path:
 
 from engines.math_engine.runner import run_math_engine
 from engines.score_engine.runner import run_score_engine
+from engines.gatekeeper import MathematicalGatekeeper
 
 
 def sync_contracts():
@@ -97,6 +98,71 @@ def cmd_status():
     print("=" * 80 + "\n")
 
 
+def cmd_audit_all():
+    print_banner()
+    sync_contracts()
+    posts_path = os.path.join(BASE_DIR, "posts.json")
+    if not os.path.exists(posts_path):
+        print("❌ posts.json not found.")
+        return
+
+    with open(posts_path, "r", encoding="utf-8") as f:
+        posts = json.load(f)
+
+    gatekeeper = MathematicalGatekeeper(posts)
+    print(f"\n[Mathematical Gatekeeper] Auditing all {len(posts)} posts against 7 quantitative firewalls...\n")
+
+    all_passed = True
+    for i, p in enumerate(posts, 1):
+        coin = p.get("coin", f"Post {i}")
+        text = p.get("improved", p.get("raw", ""))
+        audit = gatekeeper.audit_post(text, coin)
+        status = "PASSED ✓" if audit["approved_for_publishing"] else "FAILED ❌"
+        print(f"  [{i:02d}] {coin:<8} Score: {audit['score']}% ({audit['passed_benchmarks']}/7 Benchmarks) -> {status}")
+        if not audit["approved_for_publishing"]:
+            all_passed = False
+            for d in audit["details"]:
+                if not d["passed"]:
+                    print(f"       ⚠️ {d['name']}: {d.get('message', '')}")
+
+    print("\n" + "=" * 80)
+    if all_passed:
+        print("🏆 GATEKEEPER CLEARANCE: 10/10 POSTS PASSED ALL 7 BENCHMARKS! 100% GREEN.")
+    else:
+        print("⚠️ SOME POSTS REQUIRE REFACTORING BEFORE PUBLISHING.")
+    print("=" * 80 + "\n")
+
+
+def cmd_gatekeep():
+    print_banner()
+    sync_contracts()
+    posts_path = os.path.join(BASE_DIR, "posts.json")
+    posts = []
+    if os.path.exists(posts_path):
+        with open(posts_path, "r", encoding="utf-8") as f:
+            posts = json.load(f)
+
+    gatekeeper = MathematicalGatekeeper(posts)
+    print("\n[Interactive Gatekeeper Audit]")
+    args = sys.argv[2:]
+    candidate_text = " ".join(args).strip() if args else ""
+
+    if not candidate_text:
+        print("Usage: python manage.py gatekeep \"<Candidate Post Text>\"")
+        print("Auditing Post 1 ($SOL) as demonstration:")
+        candidate_text = posts[0].get("improved", "") if posts else ""
+
+    audit = gatekeeper.audit_post(candidate_text, "TEST_CANDIDATE")
+    print(f"\nCandidate Score: {audit['score']}% ({audit['passed_benchmarks']}/7)")
+    print(f"Publishing Clearance: {'APPROVED ✓' if audit['approved_for_publishing'] else 'REJECTED ❌'}\n")
+    for d in audit["details"]:
+        icon = "✓" if d["passed"] else "❌"
+        print(f"  [{icon}] {d['name']:<50} {d['value']}")
+        if not d["passed"]:
+            print(f"       -> Reason: {d['message']}")
+    print("=" * 80 + "\n")
+
+
 def main():
     args = sys.argv[1:]
     if not args or args[0] in ["all", "run-all"]:
@@ -107,8 +173,12 @@ def main():
         cmd_scores()
     elif args[0] in ["status", "check"]:
         cmd_status()
+    elif args[0] in ["audit-all", "audit"]:
+        cmd_audit_all()
+    elif args[0] in ["gatekeep", "firewall"]:
+        cmd_gatekeep()
     else:
-        print("Unknown command. Available commands: all, math, scores, status")
+        print("Unknown command. Available commands: all, math, scores, status, audit-all, gatekeep")
 
 
 if __name__ == "__main__":

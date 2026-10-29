@@ -19,6 +19,7 @@ from .gaussian_waterfilling import GaussianWaterFillingModule
 from .algorithmic_complexity import AlgorithmicComplexityModule
 from .stochastic_process import StochasticProcessModule
 from .information_inequalities import InformationInequalitiesModule
+from .chaos_dynamics import ChaosDynamicsModule
 
 __all__ = [
     "InformationTheoryModule",
@@ -28,5 +29,6 @@ __all__ = [
     "GaussianWaterFillingModule",
     "AlgorithmicComplexityModule",
     "StochasticProcessModule",
-    "InformationInequalitiesModule"
+    "InformationInequalitiesModule",
+    "ChaosDynamicsModule"
 ]

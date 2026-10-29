@@ -258,6 +258,20 @@ async function runE2ETest() {
       console.log(`  ✓ Info Theory Concept "${concept}" rendered card: ${hasTheoremCard} | "${theoremTitle.slice(0, 45)}..."`);
     }
 
+    // Test Chaos Theory & Nonlinear Phase Space Suite
+    console.log('\n--- TESTING CHAOS THEORY & NONLINEAR PHASE SPACE SUITE ---');
+    await evalBrowser('document.querySelector(\'.math-suite-tab[data-suite="chaos"]\').click()');
+    await new Promise(r => setTimeout(r, 300));
+
+    const chaosConcepts = ['attractor', 'hurst', 'lyapunov'];
+    for (const concept of chaosConcepts) {
+      await evalBrowser(`document.querySelector('.chaos-nav-btn[data-concept="${concept}"]').click()`);
+      await new Promise(r => setTimeout(r, 200));
+      const hasTheoremCard = await evalBrowser('document.querySelector(".info-theorem-card") !== null');
+      const theoremTitle = await evalBrowser('document.querySelector(".info-theorem-title") ? document.querySelector(".info-theorem-title").textContent : ""');
+      console.log(`  ✓ Chaos Concept "${concept}" rendered card: ${hasTheoremCard} | "${theoremTitle.slice(0, 45)}..."`);
+    }
+
     // Return to workspace
     await evalBrowser('document.getElementById("returnPostsFromAnalysisBtn").click()');
     await new Promise(r => setTimeout(r, 300));

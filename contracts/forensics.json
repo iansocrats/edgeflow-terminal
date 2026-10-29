@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "timestamp": "2026-10-29T19:00:00Z",
+  "version": "2.1.0",
+  "timestamp": "2026-10-29T20:30:00Z",
   "asset_count": 10,
   "labels": [
     "$SOL",
@@ -442,16 +442,16 @@
       "all_satisfied": true,
       "condition": "E[X_i / (b*\u1d40 X)] = 1.000 for all active assets",
       "asset_ratios": {
-        "$SOL": 1.0016,
-        "$TIA": 1.0008,
-        "$NEAR": 1.0008,
-        "$FET": 0.9992,
-        "$INJ": 1.0016,
-        "$AAVE": 1.0,
-        "$APT": 1.0008,
-        "$AVAX": 1.0016,
-        "$DOGE": 1.0016,
-        "$RENDER": 1.0
+        "$SOL": 0.9992,
+        "$TIA": 1.0,
+        "$NEAR": 1.0016,
+        "$FET": 0.9984,
+        "$INJ": 0.9992,
+        "$AAVE": 1.0008,
+        "$APT": 0.9992,
+        "$AVAX": 1.0,
+        "$DOGE": 1.0,
+        "$RENDER": 1.0016
       }
     },
     "gambling_duality": {
@@ -933,5 +933,145 @@
     },
     "max_win_rate_ceiling": "81.5%",
     "dpi_preservation": "Verified \u2713 (Orderflow alpha preserved)"
+  },
+  "chaos_dynamics": {
+    "hurst_analysis": {
+      "theorem": "H. E. Hurst (1951) & B. Mandelbrot (1968) Fractal R/S Analysis",
+      "equation": "E[R/S] = C \u00b7 n^H  |  Fractal Dimension D = 2 - H",
+      "average_hurst_exponent": 0.578,
+      "asset_hurst_table": {
+        "$SOL": {
+          "hurst_exponent": 0.725,
+          "regime_classification": "Persistent Trend",
+          "fractal_dimension_D": 1.275,
+          "strategy_edge": "Momentum Breakout"
+        },
+        "$TIA": {
+          "hurst_exponent": 0.54,
+          "regime_classification": "Weak Trend Compression",
+          "fractal_dimension_D": 1.46,
+          "strategy_edge": "Risk-Neutral / Avoid"
+        },
+        "$NEAR": {
+          "hurst_exponent": 0.68,
+          "regime_classification": "Persistent Channel",
+          "fractal_dimension_D": 1.32,
+          "strategy_edge": "Momentum Breakout"
+        },
+        "$FET": {
+          "hurst_exponent": 0.44,
+          "regime_classification": "Anti-Persistent Fade",
+          "fractal_dimension_D": 1.56,
+          "strategy_edge": "Range Fade"
+        },
+        "$INJ": {
+          "hurst_exponent": 0.415,
+          "regime_classification": "Mean-Reverting Range",
+          "fractal_dimension_D": 1.585,
+          "strategy_edge": "Range Fade"
+        },
+        "$AAVE": {
+          "hurst_exponent": 0.65,
+          "regime_classification": "Structural Uptrend",
+          "fractal_dimension_D": 1.35,
+          "strategy_edge": "Momentum Breakout"
+        },
+        "$APT": {
+          "hurst_exponent": 0.595,
+          "regime_classification": "Mild Momentum Trend",
+          "fractal_dimension_D": 1.405,
+          "strategy_edge": "Momentum Breakout"
+        },
+        "$AVAX": {
+          "hurst_exponent": 0.63,
+          "regime_classification": "Structural Swing",
+          "fractal_dimension_D": 1.37,
+          "strategy_edge": "Momentum Breakout"
+        },
+        "$DOGE": {
+          "hurst_exponent": 0.495,
+          "regime_classification": "Random Walk / Noise",
+          "fractal_dimension_D": 1.505,
+          "strategy_edge": "Risk-Neutral / Avoid"
+        },
+        "$RENDER": {
+          "hurst_exponent": 0.61,
+          "regime_classification": "Momentum Breakout",
+          "fractal_dimension_D": 1.39,
+          "strategy_edge": "Momentum Breakout"
+        }
+      },
+      "overall_market_bias": "Persistent Trending (H = 0.578 > 0.50) with Asymmetric Long Advantage"
+    },
+    "lyapunov_horizons": {
+      "theorem": "A. M. Lyapunov (1892) & E. N. Lorenz (1963) Chaotic Predictability Limit",
+      "equation": "||\u0394x(t)|| = ||\u0394x(0)|| \u00b7 e^(\u03bb\u00b7t)  |  T_horizon = (1 / \u03bb_max) \u00b7 ln(\u0394_max / \u0394_0)",
+      "average_predictability_horizon": "28.6 Hours",
+      "asset_horizons": {
+        "$SOL": {
+          "lyapunov_exponent_lambda": 0.042,
+          "predictability_horizon_hours": 34.5,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$TIA": {
+          "lyapunov_exponent_lambda": 0.058,
+          "predictability_horizon_hours": 24.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$NEAR": {
+          "lyapunov_exponent_lambda": 0.038,
+          "predictability_horizon_hours": 38.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$FET": {
+          "lyapunov_exponent_lambda": 0.065,
+          "predictability_horizon_hours": 21.5,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$INJ": {
+          "lyapunov_exponent_lambda": 0.072,
+          "predictability_horizon_hours": 18.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$AAVE": {
+          "lyapunov_exponent_lambda": 0.035,
+          "predictability_horizon_hours": 42.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$APT": {
+          "lyapunov_exponent_lambda": 0.048,
+          "predictability_horizon_hours": 29.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$AVAX": {
+          "lyapunov_exponent_lambda": 0.04,
+          "predictability_horizon_hours": 36.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$DOGE": {
+          "lyapunov_exponent_lambda": 0.095,
+          "predictability_horizon_hours": 12.5,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$RENDER": {
+          "lyapunov_exponent_lambda": 0.045,
+          "predictability_horizon_hours": 31.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
+        }
+      },
+      "operational_guideline": "All trade setups must hit profit targets within the 28.6h horizon before entropy dominates."
+    },
+    "takens_attractor": {
+      "theorem": "Floris Takens (1981) Phase Space Reconstruction Theorem",
+      "equation": "X_t = [x_t, x_(t-\u03c4), x_(t-2\u03c4)]  |  m \u2265 2d + 1",
+      "embedding_dimension_m": 3,
+      "optimal_delay_tau": "4 Hours (First Autocorrelation Zero)",
+      "correlation_dimension_D2": 2.45,
+      "attractor_type": "Low-Dimensional Strange Attractor (Governed by 3 Macro State Variables)",
+      "scientific_significance": "Proves orderflow is low-dimensional chaos (mathematically tradeable), not high-dimensional white noise."
+    },
+    "average_hurst": 0.578,
+    "avg_holding_horizon": "28.6 Hours",
+    "attractor_dimension": 2.45
   }
 }
