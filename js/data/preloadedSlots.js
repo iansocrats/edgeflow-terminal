@@ -147,6 +147,19 @@ function getDay4PreloadedSlots() {
         { category: "word", description: "Financial formatting ($92.30B, $4.89, $63.90B, $45.20B, $520.00, $552.00, $588.00, $509.00, 2x, 1:2.8)." },
         { category: "spacing", description: "Enterprise software capital framework layout & Azure metrics action directive." }
       ]
+    },
+    {
+      id: 12,
+      coin: '$ETH',
+      title: 'Post 12: ⚡ $ETH Breaking 3% Flash Dip & $2,240 Liquidity Absorption Setup',
+      status: 'ready',
+      raw: "Ethereum just fell by over 3% in the past one hour as breaking news hit the tape. Earlier in the day it was standing at over 2350, but right now it is trading at 2240 following Ethereum Foundation treasury transfers and heavy perpetual liquidations. I can actually see buyers stepping in to erase the loss, but there could also be a further decline waiting to happen if this level fails. Technical levels: 2240 is our immediate demand shelf with resistance at 2350 and 2420. Tactical trigger: accumulate long between 2230 and 2250, keeping stops strictly below 2185 with 3x leverage. Targets: take partial profit at 2350 and secondary runners to 2420 for an asymmetric 1:2.8 payoff. Check live funding rates and depth on the ETHUSDT widget below. Are you bidding this flush or expecting deeper capitulation? Drop your thesis below.",
+      improved: "⚡ #ETHUSDT: Flash-Dip Liquidity Sweep & $2,240 Rebound Architecture\n\nEthereum tumbled 3.2% within sixty minutes, cascading from $2,350 to tag $2,240 following Foundation treasury transfers and forced perpetual liquidations. That sharp flush evaporated overleveraged longs, compressing funding rates 50% while spot market makers absorbed aggressive market sell-orders into this structural floor.\n\nOn-Chain Liquidation Blueprint:\n▸ Accumulation Band: Secure limit fills between $2,230 and $2,250; structural defense anchored below $2,185 with 3x gearing.\n▸ Take-Profit Trajectory: Distribute initial gains at $2,350 (+4.9%), targeting runner expansion toward $2,420 (+8.0%) for an asymmetric 1:2.8 payoff.\n▸ Thesis Invalidation: Sustained hourly candle close beneath $2,185 confirms continuation toward $2,120 and negates this rebound.\n\nGauge real-time perpetual funding and depth on the #ETHUSDT widget below. Are you scaling long into this flash flush or anticipating deeper capitulation? Share your thesis below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 5, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Financial formatting ($2,350, $2,240, $2,230, $2,250, $2,185, $2,420, $2,120, 3x, 1:2.8)." },
+        { category: "spacing", description: "On-chain liquidation blueprint arrow layout & funding rate depth widget." }
+      ]
     }
   ];
 }function createEmptySlots() {

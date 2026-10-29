@@ -146,10 +146,10 @@ async function runE2ETest() {
       console.log('✅ PASS: Initial page load completed with ZERO JavaScript exceptions.');
     }
 
-    // 2. Check 11-Post Pills rendered
+    // 2. Check 12-Post Pills rendered
     const pillCount = await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item").length');
     console.log(`✅ PASS: Found ${pillCount} post pills in carousel.`);
-    if (pillCount !== 11) throw new Error(`Expected 11 pills, got ${pillCount}`);
+    if (pillCount !== 12) throw new Error(`Expected 12 pills, got ${pillCount}`);
 
     // 3. Check Post 1 Content loaded
     const postTitle = await evalBrowser('document.getElementById("currentPostTitle").textContent');
@@ -179,12 +179,23 @@ async function runE2ETest() {
     if (!titleP11.includes('MSFT')) throw new Error('Expected Post 11 to be MSFT');
     if (!contentP11.includes('MSFT')) throw new Error('Expected Post 11 content to contain MSFT');
 
+    // 4c. Test clicking Pill 12 ($ETH Breaking Flash Dip)
+    console.log('\n--- TESTING PILL 12 ($ETH) NAVIGATION & COPY FEATURE ---');
+    await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[11].click()');
+    await new Promise(r => setTimeout(r, 300));
+    const titleP12 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
+    const contentP12 = await evalBrowser('document.getElementById("polishedContent").value');
+    console.log(`✅ PASS: Clicked Pill 12 -> New Title: "${titleP12}"`);
+    console.log(`✅ PASS: Post 12 Content loaded (${contentP12.length} chars, contains: "${contentP12.slice(0, 40)}...")`);
+    if (!titleP12.includes('ETH')) throw new Error('Expected Post 12 to be ETH');
+    if (!contentP12.includes('ETH')) throw new Error('Expected Post 12 content to contain ETH');
+
     // Test Copy Polished Post button trigger
     const copyPolishedBtnExists = await evalBrowser('document.getElementById("copyPolishedBtn") !== null');
     console.log(`✅ PASS: Copy Polished Post button exists: ${copyPolishedBtnExists}`);
     if (!copyPolishedBtnExists) throw new Error('Expected copyPolishedBtn to exist');
 
-    // 4c. Test Harvard NLP GLTR Next-Token Rank Predictability Engine
+    // 4d. Test Harvard NLP GLTR Next-Token Rank Predictability Engine
     console.log('\n--- TESTING HARVARD NLP GLTR RANK PREDICTABILITY ENGINE ---');
     await evalBrowser('document.getElementById("recalcGltrBtn").click()');
     await new Promise(r => setTimeout(r, 200));

@@ -236,10 +236,10 @@ async function loadPostsData() {
     }
   }
 
-  // Ensure Day 4 is 100% preloaded with all 11 certified high-conversion setups with trade widget CTAs
+  // Ensure Day 4 is 100% preloaded with all 12 certified high-conversion setups with trade widget CTAs
   if (currentSessionId === 'day4') {
     const d4Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 11 || postsData[0].coin !== '$SOL' || !d4Text.includes('FOMC decision')) {
+    if (!postsData || postsData.length < 12 || postsData[0].coin !== '$SOL' || !d4Text.includes('FOMC decision')) {
       postsData = getDay4PreloadedSlots();
       localStorage.setItem(getDaySessionStorageKey('day4'), JSON.stringify(postsData));
     }

@@ -205,7 +205,7 @@ function updateWeeklyProgress() {
     const d4Display = day4Score > 0 ? `${day4Score.toFixed(1)}p` : 'Active';
     chipDay4.innerHTML = `<span class="chip-day-tag active">D4</span><span class="chip-pts" id="chipTodayScore">${d4Display}</span>`;
     chipDay4.className = `chip-day ${currentSessionId === 'day4' ? 'active' : 'pending'}`;
-    chipDay4.title = `Day 4: Today (Oct 29) — 11 Completed Setups — Click to view`;
+    chipDay4.title = `Day 4: Today (Oct 29) — 12 Completed Setups — Click to view`;
   }
   const chipDay5 = document.getElementById('chipDay5');
   if (chipDay5) {
@@ -600,7 +600,7 @@ function switchDaySession(newSessionId, forceFresh = false) {
 }
 
 function startTomorrowDesk() {
-  const confirmMsg = "✨ Start a fresh desk for Day 5 (Tomorrow, Oct 30)?\n\nDay 4's 11 audited setups ($SOL to $MSFT) will remain permanently preserved as your reference baseline anchor.\n\nAll math matrices and similarity checks will anchor against Day 4 to prevent template fatigue!";
+  const confirmMsg = "✨ Start a fresh desk for Day 5 (Tomorrow, Oct 30)?\n\nDay 4's 12 audited setups ($SOL to $ETH) will remain permanently preserved as your reference baseline anchor.\n\nAll math matrices and similarity checks will anchor against Day 4 to prevent template fatigue!";
   if (window.confirm(confirmMsg)) {
     switchDaySession('day5', true);
   }
