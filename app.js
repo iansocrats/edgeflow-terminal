@@ -3572,6 +3572,29 @@ function injectTradeContext(type) {
 
 // Setup Event Listeners
 function setupEvents() {
+  // Wire up Top Header & Post Carousel Action Pills (Scores & Performance Audit)
+  const btnOpenScoresModal = document.getElementById('btnOpenScoresModal');
+  const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
+  const pillBarScoresBtn = document.getElementById('pillBarScoresBtn');
+  const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
+
+  function openScoresView() {
+    switchTab('scores');
+    if (pillBarScoresBtn) pillBarScoresBtn.classList.add('active');
+    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.remove('active');
+  }
+
+  function openAnalysisView() {
+    switchTab('analysis');
+    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.add('active');
+    if (pillBarScoresBtn) pillBarScoresBtn.classList.remove('active');
+  }
+
+  if (btnOpenScoresModal) btnOpenScoresModal.addEventListener('click', openScoresView);
+  if (btnOpenAnalysisModal) btnOpenAnalysisModal.addEventListener('click', openAnalysisView);
+  if (pillBarScoresBtn) pillBarScoresBtn.addEventListener('click', openScoresView);
+  if (pillBarAnalysisBtn) pillBarAnalysisBtn.addEventListener('click', openAnalysisView);
+
   const runBenchmarkBtn = document.getElementById('runBenchmarkBtn');
   if (runBenchmarkBtn) {
     runBenchmarkBtn.addEventListener('click', runRustVsJsBenchmark);

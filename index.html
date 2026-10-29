@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#090c13" />
-  <link rel="stylesheet" href="styles.css?v=48" />
+  <link rel="stylesheet" href="styles.css?v=49" />
 </head>
 <body>
   <div class="app-shell">
@@ -30,8 +30,11 @@
               <option value="day2">📅 Day 2: Oct 27 — 10 Posts (11.0 pts)</option>
               <option value="day1">📅 Day 1: Oct 26 — 5 Posts (9.0 pts)</option>
             </select>
-            <button id="btnNewDaySession" class="btn-new-day" title="Reset active desk or start a new day">
-              <span>✨ Fresh Desk</span>
+            <button id="btnOpenScoresModal" class="btn-nav-action scores-pill" title="View Bybit Daily Scores & Point Attribution Hub">
+              <span>🏆 Daily Scores (30.0 / 150 Pts)</span>
+            </button>
+            <button id="btnOpenAnalysisModal" class="btn-nav-action analysis-pill" title="View Strategic Performance Analysis: What Went Wrong & Road to 150 Pts">
+              <span>📊 Strategic Analysis & Roadmap</span>
             </button>
           </div>
           <div class="daily-badge">
@@ -43,10 +46,20 @@
       <p class="header-sub">Dynamic Daily Pipeline • Live Mathematical AI Scanners • Clean Copy</p>
     </header>
 
-    <!-- Dynamic 10-Post Navigation Carousel / Pills -->
+    <!-- Dynamic 10-Post Navigation Carousel / Pills + Master Analysis Links -->
     <nav class="post-pills-bar">
       <div class="pills-scroll" id="pillsContainer">
         <!-- Injected via JavaScript (Post 1 to 10 with live status indicators) -->
+      </div>
+      <div class="pills-pinned-actions">
+        <button id="pillBarScoresBtn" class="pill-action-btn scores" title="Open Daily Scores & Points Attribution Hub">
+          <span class="icon">🏆</span>
+          <span class="label">Scores (30.0 Pts)</span>
+        </button>
+        <button id="pillBarAnalysisBtn" class="pill-action-btn analysis" title="Open Performance Analysis: What Went Wrong & Catch-Up Roadmap">
+          <span class="icon">📊</span>
+          <span class="label">Performance Audit</span>
+        </button>
       </div>
     </nav>
 
@@ -76,16 +89,6 @@
         <span class="tab-icon">🔍</span>
         <span class="tab-text">Draft & Rules</span>
         <span class="tab-chip muted" id="draftChangeCountBadge">Suggestions</span>
-      </button>
-      <button class="tab-btn" id="tabScoresBtn" role="tab" aria-selected="false" data-tab="scores">
-        <span class="tab-icon">🏆</span>
-        <span class="tab-text">Daily Scores & Attribution</span>
-        <span class="tab-chip gold" id="tabScoresBadge">30.0 / 150 Pts</span>
-      </button>
-      <button class="tab-btn" id="tabAnalysisBtn" role="tab" aria-selected="false" data-tab="analysis">
-        <span class="tab-icon">📊</span>
-        <span class="tab-text">Post Analysis & Audit</span>
-        <span class="tab-chip" id="tabAnalysisBadge">Audit Review</span>
       </button>
       <button class="tab-btn" id="tabRawBtn" role="tab" aria-selected="false" data-tab="raw">
         <span class="tab-icon">🎙️</span>
@@ -963,6 +966,6 @@
     <span class="toast-msg" id="toastMsg">Copied clean text to clipboard!</span>
   </div>
 
-  <script src="app.js?v=48"></script>
+  <script src="app.js?v=49"></script>
 </body>
 </html>
