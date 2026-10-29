@@ -33,7 +33,8 @@ class GaussianWaterFillingModule:
             "$APT":    0.20,  # Layer 1 baseline
             "$AVAX":   0.12,  # Clean swing structure
             "$DOGE":   0.58,  # Ultra-high meme coin noise floor
-            "$RENDER": 0.22   # Moderate GPU compute trend
+            "$RENDER": 0.22,  # Moderate GPU compute trend
+            "$MSFT":   0.08   # Low-noise enterprise cloud anchor
         }
 
     def compute_differential_entropy(self) -> Dict[str, Any]:

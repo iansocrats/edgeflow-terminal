@@ -201,7 +201,7 @@ function setTodayDate() {
     } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day3') {
       currentDateBadge.textContent = 'Day 3 Archive (10.0 pts)';
     } else {
-      currentDateBadge.textContent = 'Day 4 Active Desk (10/10 Ready)';
+      currentDateBadge.textContent = 'Day 4 Active Desk (11/11 Ready)';
     }
   }
 }
@@ -234,10 +234,10 @@ async function loadPostsData() {
     }
   }
 
-  // Ensure Day 4 is 100% preloaded with all 10 certified high-conversion coin setups with trade widget CTAs
+  // Ensure Day 4 is 100% preloaded with all 11 certified high-conversion setups with trade widget CTAs
   if (currentSessionId === 'day4') {
     const d4Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$SOL' || !d4Text.includes('FOMC decision')) {
+    if (!postsData || postsData.length < 11 || postsData[0].coin !== '$SOL' || !d4Text.includes('FOMC decision')) {
       postsData = getDay4PreloadedSlots();
       localStorage.setItem(getDaySessionStorageKey('day4'), JSON.stringify(postsData));
     }

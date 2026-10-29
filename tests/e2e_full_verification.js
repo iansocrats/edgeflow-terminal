@@ -146,10 +146,10 @@ async function runE2ETest() {
       console.log('✅ PASS: Initial page load completed with ZERO JavaScript exceptions.');
     }
 
-    // 2. Check 10-Post Pills rendered
+    // 2. Check 11-Post Pills rendered
     const pillCount = await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item").length');
     console.log(`✅ PASS: Found ${pillCount} post pills in carousel.`);
-    if (pillCount !== 10) throw new Error(`Expected 10 pills, got ${pillCount}`);
+    if (pillCount !== 11) throw new Error(`Expected 11 pills, got ${pillCount}`);
 
     // 3. Check Post 1 Content loaded
     const postTitle = await evalBrowser('document.getElementById("currentPostTitle").textContent');
@@ -167,6 +167,22 @@ async function runE2ETest() {
     console.log(`✅ PASS: Clicked Pill 2 -> New Title: "${titleP2}"`);
     console.log(`✅ PASS: Post 2 Content loaded (${contentP2.length} chars, contains: "${contentP2.slice(0, 40)}...")`);
     if (!titleP2.includes('TIA')) throw new Error('Expected Post 2 to be TIA');
+
+    // 4b. Test clicking Pill 11 ($MSFT)
+    console.log('\n--- TESTING PILL 11 ($MSFT) NAVIGATION & COPY FEATURE ---');
+    await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[10].click()');
+    await new Promise(r => setTimeout(r, 300));
+    const titleP11 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
+    const contentP11 = await evalBrowser('document.getElementById("polishedContent").value');
+    console.log(`✅ PASS: Clicked Pill 11 -> New Title: "${titleP11}"`);
+    console.log(`✅ PASS: Post 11 Content loaded (${contentP11.length} chars, contains: "${contentP11.slice(0, 40)}...")`);
+    if (!titleP11.includes('MSFT')) throw new Error('Expected Post 11 to be MSFT');
+    if (!contentP11.includes('MSFT')) throw new Error('Expected Post 11 content to contain MSFT');
+
+    // Test Copy Polished Post button trigger
+    const copyPolishedBtnExists = await evalBrowser('document.getElementById("copyPolishedBtn") !== null');
+    console.log(`✅ PASS: Copy Polished Post button exists: ${copyPolishedBtnExists}`);
+    if (!copyPolishedBtnExists) throw new Error('Expected copyPolishedBtn to exist');
 
     // 5. Test clicking Score Hub
     console.log('\n--- TESTING SCORE HUB NAVIGATION & ENGINE ---');

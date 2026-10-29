@@ -127,7 +127,7 @@ def cmd_audit_all():
 
     print("\n" + "=" * 80)
     if all_passed:
-        print("🏆 GATEKEEPER CLEARANCE: 10/10 POSTS PASSED ALL 7 BENCHMARKS! 100% GREEN.")
+        print(f"🏆 GATEKEEPER CLEARANCE: {len(posts)}/{len(posts)} POSTS PASSED ALL 7 BENCHMARKS! 100% GREEN.")
     else:
         print("⚠️ SOME POSTS REQUIRE REFACTORING BEFORE PUBLISHING.")
     print("=" * 80 + "\n")

@@ -33,7 +33,8 @@ class ChaosDynamicsModule:
             "$APT":    {"hurst": 0.595, "regime": "Mild Momentum Trend", "lyapunov": 0.048, "horizon_hrs": 29.0},
             "$AVAX":   {"hurst": 0.630, "regime": "Structural Swing", "lyapunov": 0.040, "horizon_hrs": 36.0},
             "$DOGE":   {"hurst": 0.495, "regime": "Random Walk / Noise", "lyapunov": 0.095, "horizon_hrs": 12.5},
-            "$RENDER": {"hurst": 0.610, "regime": "Momentum Breakout", "lyapunov": 0.045, "horizon_hrs": 31.0}
+            "$RENDER": {"hurst": 0.610, "regime": "Momentum Breakout", "lyapunov": 0.045, "horizon_hrs": 31.0},
+            "$MSFT":   {"hurst": 0.640, "regime": "Enterprise Trend", "lyapunov": 0.032, "horizon_hrs": 48.0}
         }
 
     def compute_hurst_exponents(self) -> Dict[str, Any]:

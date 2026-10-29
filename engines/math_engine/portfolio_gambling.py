@@ -32,7 +32,8 @@ class PortfolioGamblingModule:
             "$APT":    {"alpha": 0.110, "odds": 3.9, "win_prob": 0.33, "volatility": 0.46},
             "$AVAX":   {"alpha": 0.080, "odds": 3.4, "win_prob": 0.37, "volatility": 0.38},
             "$DOGE":   {"alpha": 0.065, "odds": 6.2, "win_prob": 0.20, "volatility": 0.78},
-            "$RENDER": {"alpha": 0.095, "odds": 4.1, "win_prob": 0.31, "volatility": 0.49}
+            "$RENDER": {"alpha": 0.095, "odds": 4.1, "win_prob": 0.31, "volatility": 0.49},
+            "$MSFT":   {"alpha": 0.080, "odds": 2.8, "win_prob": 0.44, "volatility": 0.22}
         }
 
     def compute_kelly_allocation(self) -> Dict[str, float]:

@@ -228,5 +228,28 @@
         "description": "DePIN compute parameter arrow layout & GPU rendering activity tool."
       }
     ]
+  },
+  {
+    "id": 11,
+    "coin": "$MSFT",
+    "title": "Post 11: ⚡ $MSFT Q1 Cloud Hyper-Scaling & Post-Earnings Dip Accumulation",
+    "status": "ready",
+    "raw": "Microsoft reports Q1 revenue of $92.30B (+19% YoY) and diluted EPS of $4.89, topping Wall Street consensus. Microsoft Cloud reaches $63.90B fueled by Azure AI enterprise consumption (+48% YoY) and commercial commitments surging 73% to $677B. Digestion of $45.20B in infrastructure CapEx creates an asymmetric entry against durable software demand. Structural floor proven at $520.00; overhead ceilings sit at $552.00 and $588.00. Order Trigger: Accumulate dips from $522.00 to $526.00; defensive stop placed at $509.00 with disciplined 2x leverage. Profit Tiers: Bank partial profits at $552.00 (+5.7%), stretching runners toward $588.00 (+12.6%) for an asymmetric 1:2.8 payoff. Invalidation Rule: Daily candle closing beneath $509.00 negates this recovery thesis. Track Azure cloud metrics on the MSFT chart. Bidding dips or waiting for $536.00? Drop your view below.",
+    "improved": "⚡ #MSFT: Q1 Cloud Hyper-Scaling & Post-Earnings Dip Accumulation\n\nMicrosoft reports Q1 revenue of $92.30B (+19% YoY) and diluted EPS of $4.89, topping Wall Street consensus. Microsoft Cloud reaches $63.90B fueled by Azure AI enterprise consumption (+48% YoY) and commercial commitments surging 73% to $677B. Digestion of $45.20B in infrastructure CapEx creates an asymmetric entry against durable software demand.\n\nCapital Framework:\n• Foundation Shelf: Structural floor proven at $520.00; overhead ceilings sit at $552.00 and $588.00.\n• Order Trigger: Accumulate dips from $522.00 to $526.00; defensive stop placed at $509.00 with disciplined 2x leverage.\n• Profit Tiers: Bank partial profits at $552.00 (+5.7%), stretching runners toward $588.00 (+12.6%) for an asymmetric 1:2.8 payoff.\n• Invalidation Rule: Daily candle closing beneath $509.00 negates this recovery thesis.\n\nTrack Azure cloud metrics on the #MSFT chart. Bidding dips or waiting for $536.00? Drop your view below 👇",
+    "rules_summary": {
+      "punctuation_count": 8,
+      "word_replacement_count": 5,
+      "emoji_spacing_count": 5
+    },
+    "suggestions": [
+      {
+        "category": "word",
+        "description": "Financial formatting ($92.30B, $4.89, $63.90B, $45.20B, $520.00, $552.00, $588.00, $509.00, 2x, 1:2.8)."
+      },
+      {
+        "category": "spacing",
+        "description": "Enterprise software capital framework layout & Azure metrics action directive."
+      }
+    ]
   }
 ]

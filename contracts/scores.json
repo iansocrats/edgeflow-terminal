@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "timestamp": "2026-10-29T16:20:00Z",
   "byx_evaluation": {
-    "average_byx_quality_score": 95.2,
+    "average_byx_quality_score": 95.6,
     "overall_grade": "A+",
     "projected_daily_points": "28.0 to 35.0 pts/day",
     "posts_evaluations": [
@@ -125,6 +125,18 @@
         "risk_and_cta": 20.0,
         "total_byx_score": 94.3,
         "grade": "A"
+      },
+      {
+        "id": 11,
+        "coin": "$MSFT",
+        "word_count": 138,
+        "originality": 19.8,
+        "depth_structure": 19.5,
+        "relevance": 20.0,
+        "presentation_words": 20.0,
+        "risk_and_cta": 20.0,
+        "total_byx_score": 99.3,
+        "grade": "A+"
       }
     ]
   },

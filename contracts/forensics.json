@@ -1,7 +1,7 @@
 {
   "version": "2.1.0",
   "timestamp": "2026-10-29T20:30:00Z",
-  "asset_count": 10,
+  "asset_count": 11,
   "labels": [
     "$SOL",
     "$TIA",
@@ -12,13 +12,14 @@
     "$APT",
     "$AVAX",
     "$DOGE",
-    "$RENDER"
+    "$RENDER",
+    "$MSFT"
   ],
   "information_theory": {
-    "average_shannon_entropy": 6.627,
-    "min_pairwise_jsd": 0.603,
-    "max_pairwise_jsd": 0.713,
-    "sanov_bound": "P(Spam) <= 2^(-502.1) \u2248 0.000%",
+    "average_shannon_entropy": 6.639,
+    "min_pairwise_jsd": 0.6,
+    "max_pairwise_jsd": 0.711,
+    "sanov_bound": "P(Spam) <= 2^(-503.1) \u2248 0.000%",
     "individual_entropies": {
       "$SOL": 6.784,
       "$TIA": 6.725,
@@ -29,127 +30,151 @@
       "$APT": 6.712,
       "$AVAX": 6.591,
       "$DOGE": 6.577,
-      "$RENDER": 6.616
+      "$RENDER": 6.616,
+      "$MSFT": 6.759
     },
     "jsd_matrix": [
       [
         0.0,
-        0.648,
-        0.626,
-        0.626,
-        0.627,
-        0.644,
-        0.621,
-        0.635,
-        0.656,
-        0.7
-      ],
-      [
-        0.648,
-        0.0,
-        0.687,
-        0.631,
-        0.617,
-        0.652,
-        0.633,
-        0.657,
-        0.636,
-        0.67
-      ],
-      [
-        0.626,
-        0.687,
-        0.0,
-        0.651,
+        0.646,
+        0.624,
+        0.624,
+        0.625,
+        0.642,
         0.619,
-        0.657,
-        0.603,
-        0.64,
-        0.604,
+        0.632,
+        0.653,
+        0.698,
+        0.667
+      ],
+      [
+        0.646,
+        0.0,
+        0.684,
+        0.628,
+        0.615,
+        0.65,
+        0.631,
+        0.654,
+        0.634,
+        0.668,
+        0.678
+      ],
+      [
+        0.624,
+        0.684,
+        0.0,
+        0.649,
+        0.617,
+        0.654,
+        0.6,
+        0.638,
+        0.602,
+        0.672,
+        0.667
+      ],
+      [
+        0.624,
+        0.628,
+        0.649,
+        0.0,
+        0.668,
+        0.659,
+        0.633,
+        0.659,
+        0.676,
+        0.619,
+        0.696
+      ],
+      [
+        0.625,
+        0.615,
+        0.617,
+        0.668,
+        0.0,
+        0.705,
+        0.627,
+        0.663,
+        0.622,
+        0.699,
         0.674
       ],
       [
+        0.642,
+        0.65,
+        0.654,
+        0.659,
+        0.705,
+        0.0,
+        0.65,
         0.626,
-        0.631,
-        0.651,
-        0.0,
-        0.67,
-        0.661,
-        0.635,
-        0.661,
-        0.679,
-        0.621
+        0.659,
+        0.639,
+        0.623
       ],
       [
-        0.627,
-        0.617,
         0.619,
-        0.67,
-        0.0,
-        0.707,
-        0.63,
-        0.666,
-        0.624,
-        0.701
-      ],
-      [
-        0.644,
-        0.652,
-        0.657,
-        0.661,
-        0.707,
-        0.0,
-        0.652,
-        0.628,
-        0.662,
-        0.641
-      ],
-      [
-        0.621,
+        0.631,
+        0.6,
         0.633,
-        0.603,
-        0.635,
-        0.63,
-        0.652,
+        0.627,
+        0.65,
         0.0,
-        0.696,
-        0.663,
-        0.703
-      ],
-      [
-        0.635,
-        0.657,
-        0.64,
-        0.661,
-        0.666,
-        0.628,
-        0.696,
-        0.0,
-        0.713,
-        0.707
-      ],
-      [
-        0.656,
-        0.636,
-        0.604,
-        0.679,
-        0.624,
-        0.662,
-        0.663,
-        0.713,
-        0.0,
-        0.707
-      ],
-      [
+        0.694,
+        0.66,
         0.7,
-        0.67,
+        0.649
+      ],
+      [
+        0.632,
+        0.654,
+        0.638,
+        0.659,
+        0.663,
+        0.626,
+        0.694,
+        0.0,
+        0.711,
+        0.705,
+        0.654
+      ],
+      [
+        0.653,
+        0.634,
+        0.602,
+        0.676,
+        0.622,
+        0.659,
+        0.66,
+        0.711,
+        0.0,
+        0.705,
+        0.698
+      ],
+      [
+        0.698,
+        0.668,
+        0.672,
+        0.619,
+        0.699,
+        0.639,
+        0.7,
+        0.705,
+        0.705,
+        0.0,
+        0.633
+      ],
+      [
+        0.667,
+        0.678,
+        0.667,
+        0.696,
         0.674,
-        0.621,
-        0.701,
-        0.641,
-        0.703,
-        0.707,
-        0.707,
+        0.623,
+        0.649,
+        0.654,
+        0.698,
+        0.633,
         0.0
       ]
     ]
@@ -158,7 +183,7 @@
     "max_pairwise_similarity_percent": 18.0,
     "avg_pairwise_similarity_percent": 13.9,
     "submatrix_posts_7_to_10_range": "9.4% \u2013 12.6%",
-    "frobenius_spread_norm": 1.336,
+    "frobenius_spread_norm": 1.478,
     "frobenius_reduction_vs_day3_percent": "-66.9%",
     "fiedler_eigenvalue": 0.88,
     "hadamard_max_cell": 0.0018,
@@ -191,7 +216,8 @@
         0.157,
         0.151,
         0.134,
-        0.098
+        0.098,
+        0.137
       ],
       [
         0.139,
@@ -203,7 +229,8 @@
         0.148,
         0.136,
         0.155,
-        0.122
+        0.122,
+        0.128
       ],
       [
         0.163,
@@ -215,7 +242,8 @@
         0.18,
         0.149,
         0.163,
-        0.116
+        0.116,
+        0.128
       ],
       [
         0.168,
@@ -227,7 +255,8 @@
         0.153,
         0.135,
         0.124,
-        0.158
+        0.158,
+        0.121
       ],
       [
         0.165,
@@ -239,7 +268,8 @@
         0.163,
         0.144,
         0.171,
-        0.112
+        0.112,
+        0.135
       ],
       [
         0.145,
@@ -251,7 +281,8 @@
         0.137,
         0.149,
         0.131,
-        0.147
+        0.147,
+        0.176
       ],
       [
         0.157,
@@ -263,7 +294,8 @@
         1.0,
         0.096,
         0.126,
-        0.101
+        0.101,
+        0.146
       ],
       [
         0.151,
@@ -275,7 +307,8 @@
         0.096,
         1.0,
         0.095,
-        0.099
+        0.099,
+        0.152
       ],
       [
         0.134,
@@ -287,7 +320,8 @@
         0.126,
         0.095,
         1.0,
-        0.094
+        0.094,
+        0.112
       ],
       [
         0.098,
@@ -299,159 +333,198 @@
         0.101,
         0.099,
         0.094,
+        1.0,
+        0.168
+      ],
+      [
+        0.137,
+        0.128,
+        0.128,
+        0.121,
+        0.135,
+        0.176,
+        0.146,
+        0.152,
+        0.112,
+        0.168,
         1.0
       ]
     ],
     "markov_matrix": [
       [
         0.0,
-        0.105,
-        0.123,
-        0.127,
-        0.125,
-        0.11,
-        0.119,
-        0.114,
-        0.102,
-        0.074
-      ],
-      [
-        0.107,
-        0.0,
+        0.095,
+        0.112,
+        0.115,
+        0.113,
+        0.1,
+        0.108,
+        0.104,
         0.092,
-        0.128,
-        0.13,
-        0.11,
-        0.114,
-        0.105,
-        0.12,
+        0.067,
         0.094
       ],
       [
-        0.121,
-        0.088,
+        0.098,
         0.0,
-        0.114,
-        0.131,
+        0.084,
+        0.116,
+        0.118,
+        0.1,
+        0.104,
         0.096,
-        0.133,
+        0.109,
+        0.086,
+        0.09
+      ],
+      [
         0.11,
-        0.121,
-        0.086
-      ],
-      [
-        0.127,
-        0.125,
-        0.116,
+        0.08,
         0.0,
-        0.098,
-        0.102,
-        0.116,
-        0.102,
-        0.094,
-        0.12
-      ],
-      [
-        0.124,
-        0.126,
-        0.133,
-        0.098,
-        0.0,
-        0.077,
+        0.104,
+        0.12,
+        0.088,
         0.122,
-        0.108,
-        0.128,
+        0.101,
+        0.11,
+        0.078,
+        0.087
+      ],
+      [
+        0.116,
+        0.114,
+        0.107,
+        0.0,
+        0.09,
+        0.094,
+        0.106,
+        0.094,
+        0.086,
+        0.109,
         0.084
       ],
       [
-        0.119,
-        0.117,
-        0.107,
-        0.111,
-        0.084,
-        0.0,
         0.112,
-        0.122,
-        0.108,
-        0.121
-      ],
-      [
-        0.125,
-        0.117,
-        0.143,
+        0.115,
         0.121,
-        0.129,
-        0.109,
+        0.089,
         0.0,
+        0.07,
+        0.111,
+        0.098,
+        0.117,
         0.076,
-        0.1,
-        0.08
+        0.092
       ],
       [
-        0.131,
-        0.118,
-        0.129,
-        0.117,
-        0.125,
-        0.129,
-        0.083,
+        0.104,
+        0.102,
+        0.093,
+        0.097,
+        0.073,
         0.0,
-        0.082,
+        0.098,
+        0.107,
+        0.094,
+        0.105,
+        0.126
+      ],
+      [
+        0.112,
+        0.105,
+        0.128,
+        0.109,
+        0.116,
+        0.097,
+        0.0,
+        0.068,
+        0.09,
+        0.072,
+        0.104
+      ],
+      [
+        0.116,
+        0.104,
+        0.114,
+        0.103,
+        0.11,
+        0.114,
+        0.074,
+        0.0,
+        0.073,
+        0.076,
+        0.116
+      ],
+      [
+        0.103,
+        0.119,
+        0.125,
+        0.095,
+        0.131,
+        0.1,
+        0.097,
+        0.073,
+        0.0,
+        0.072,
         0.086
       ],
       [
-        0.112,
+        0.081,
+        0.1,
+        0.095,
         0.13,
-        0.137,
-        0.104,
-        0.143,
-        0.11,
-        0.106,
-        0.08,
+        0.092,
+        0.121,
+        0.083,
+        0.081,
+        0.077,
         0.0,
-        0.079
+        0.138
       ],
       [
-        0.094,
-        0.117,
-        0.111,
-        0.151,
-        0.107,
-        0.14,
+        0.098,
+        0.091,
+        0.091,
+        0.086,
         0.096,
-        0.095,
-        0.09,
+        0.125,
+        0.104,
+        0.108,
+        0.08,
+        0.12,
         0.0
       ]
     ]
   },
   "portfolio_gambling": {
     "optimal_allocations": {
-      "$SOL": 0.135,
-      "$TIA": 0.105,
-      "$NEAR": 0.11,
-      "$FET": 0.12,
-      "$INJ": 0.095,
-      "$AAVE": 0.085,
-      "$APT": 0.11,
-      "$AVAX": 0.08,
-      "$DOGE": 0.065,
-      "$RENDER": 0.095
+      "$SOL": 0.125,
+      "$TIA": 0.097,
+      "$NEAR": 0.102,
+      "$FET": 0.111,
+      "$INJ": 0.088,
+      "$AAVE": 0.079,
+      "$APT": 0.102,
+      "$AVAX": 0.074,
+      "$DOGE": 0.06,
+      "$RENDER": 0.088,
+      "$MSFT": 0.074
     },
     "kuhn_tucker": {
       "all_satisfied": true,
       "condition": "E[X_i / (b*\u1d40 X)] = 1.000 for all active assets",
       "asset_ratios": {
-        "$SOL": 0.9992,
-        "$TIA": 1.0,
-        "$NEAR": 1.0016,
-        "$FET": 0.9984,
-        "$INJ": 0.9992,
-        "$AAVE": 1.0008,
-        "$APT": 0.9992,
-        "$AVAX": 1.0,
-        "$DOGE": 1.0,
-        "$RENDER": 1.0016
+        "$SOL": 1.0008,
+        "$TIA": 0.9992,
+        "$NEAR": 0.9984,
+        "$FET": 1.0,
+        "$INJ": 1.0,
+        "$AAVE": 1.0016,
+        "$APT": 1.0016,
+        "$AVAX": 1.0016,
+        "$DOGE": 1.0008,
+        "$RENDER": 1.0008,
+        "$MSFT": 1.0
       }
     },
     "gambling_duality": {
@@ -533,7 +606,7 @@
     "differential_entropy": {
       "theorem": "Cover & Thomas Theorem 8.6.5 (Maximum Differential Entropy of Gaussian)",
       "equation": "h(X) = 0.5 * log2(2 * \u03c0 * e * \u03c3\u00b2)",
-      "average_differential_entropy": "0.923 bits",
+      "average_differential_entropy": "0.86 bits",
       "asset_differential_entropies": {
         "$SOL": 0.725,
         "$TIA": 1.225,
@@ -544,51 +617,55 @@
         "$APT": 0.886,
         "$AVAX": 0.518,
         "$DOGE": 1.654,
-        "$RENDER": 0.955
+        "$RENDER": 0.955,
+        "$MSFT": 0.225
       },
       "maxent_property": "Gaussian assumption maximizes entropy, yielding the most conservative risk model."
     },
     "water_filling": {
       "theorem": "Cover & Thomas Theorem 9.4.1 (Shannon Water-Filling on Parallel Channels)",
       "equation": "P_i = (\u03bd - N_i)\u207a  subject to  \u2211 P_i = P_total",
-      "water_level_nu": 0.31,
+      "water_level_nu": 0.2813,
       "total_capital_budget": 1.0,
-      "total_shannon_capacity": 3.375,
+      "total_shannon_capacity": 3.791,
       "allocations": {
-        "$SOL": 0.15,
+        "$SOL": 0.121,
         "$TIA": 0.0,
-        "$NEAR": 0.17,
-        "$FET": 0.07,
+        "$NEAR": 0.141,
+        "$FET": 0.041,
         "$INJ": 0.0,
-        "$AAVE": 0.22,
-        "$APT": 0.11,
-        "$AVAX": 0.19,
+        "$AAVE": 0.191,
+        "$APT": 0.081,
+        "$AVAX": 0.161,
         "$DOGE": 0.0,
-        "$RENDER": 0.09
+        "$RENDER": 0.061,
+        "$MSFT": 0.201
       },
       "channel_capacities_bits": {
-        "$SOL": 0.477,
+        "$SOL": 0.407,
         "$TIA": 0.0,
-        "$NEAR": 0.573,
-        "$FET": 0.185,
+        "$NEAR": 0.503,
+        "$FET": 0.114,
         "$INJ": 0.0,
-        "$AAVE": 0.892,
-        "$APT": 0.316,
-        "$AVAX": 0.685,
+        "$AAVE": 0.822,
+        "$APT": 0.246,
+        "$AVAX": 0.614,
         "$DOGE": 0.0,
-        "$RENDER": 0.247
+        "$RENDER": 0.177,
+        "$MSFT": 0.907
       },
       "snr_db": {
-        "$SOL": -0.3,
+        "$SOL": -1.2,
         "$TIA": -999.0,
-        "$NEAR": 0.8,
-        "$FET": -5.4,
+        "$NEAR": 0.0,
+        "$FET": -7.6,
         "$INJ": -999.0,
-        "$AAVE": 3.9,
-        "$APT": -2.6,
-        "$AVAX": 2.0,
+        "$AAVE": 3.3,
+        "$APT": -3.9,
+        "$AVAX": 1.3,
         "$DOGE": -999.0,
-        "$RENDER": -3.9
+        "$RENDER": -5.6,
+        "$MSFT": 4.0
       },
       "noise_variance": {
         "$SOL": 0.16,
@@ -600,17 +677,18 @@
         "$APT": 0.2,
         "$AVAX": 0.12,
         "$DOGE": 0.58,
-        "$RENDER": 0.22
+        "$RENDER": 0.22,
+        "$MSFT": 0.08
       },
       "pruned_assets": [
         "$TIA",
         "$INJ",
         "$DOGE"
       ],
-      "allocation_insight": "Water level \u03bd = 0.31. Assets with noise > \u03bd ($TIA, $INJ, $DOGE) receive 0 capital because noise exceeds the channel capacity threshold."
+      "allocation_insight": "Water level \u03bd = 0.281. Assets with noise > \u03bd ($TIA, $INJ, $DOGE) receive 0 capital because noise exceeds the channel capacity threshold."
     },
-    "total_shannon_capacity": "3.375 bits/channel-use",
-    "water_level": 0.31,
+    "total_shannon_capacity": "3.791 bits/channel-use",
+    "water_level": 0.2813,
     "pruned_assets": [
       "$TIA",
       "$INJ",
@@ -620,7 +698,7 @@
   "algorithmic_complexity": {
     "kolmogorov_proxy": {
       "theorem": "Cover & Thomas Theorem 14.3.1 (Kolmogorov Incompressibility & Universal Coding)",
-      "average_compression_ratio": 0.633,
+      "average_compression_ratio": 0.634,
       "individual_complexity": {
         "$SOL": {
           "raw_bytes": 1005,
@@ -681,6 +759,12 @@
           "compressed_bytes_K": 609,
           "compression_ratio": 0.622,
           "information_density": "37.8% redundancy eliminated"
+        },
+        "$MSFT": {
+          "raw_bytes": 996,
+          "compressed_bytes_K": 643,
+          "compression_ratio": 0.646,
+          "information_density": "35.4% redundancy eliminated"
         }
       },
       "interpretation": "High compression ratio (0.55 - 0.70) proves dense, high-entropy alpha with minimal repetitive filler."
@@ -689,7 +773,7 @@
       "metric": "Normalized Compression Distance (NCD) Matrix",
       "equation": "NCD(x, y) = [C(xy) - min(C(x), C(y))] / max(C(x), C(y))",
       "min_pairwise_ncd": 0.729,
-      "average_ncd": 0.777,
+      "average_ncd": 0.78,
       "matrix": [
         [
           0.0,
@@ -701,7 +785,8 @@
           0.79,
           0.768,
           0.79,
-          0.822
+          0.822,
+          0.794
         ],
         [
           0.81,
@@ -713,7 +798,8 @@
           0.747,
           0.763,
           0.756,
-          0.775
+          0.775,
+          0.806
         ],
         [
           0.76,
@@ -725,7 +811,8 @@
           0.754,
           0.778,
           0.76,
-          0.778
+          0.778,
+          0.782
         ],
         [
           0.76,
@@ -737,7 +824,8 @@
           0.775,
           0.782,
           0.786,
-          0.76
+          0.76,
+          0.818
         ],
         [
           0.759,
@@ -749,7 +837,8 @@
           0.758,
           0.758,
           0.753,
-          0.801
+          0.801,
+          0.792
         ],
         [
           0.785,
@@ -761,7 +850,8 @@
           0.789,
           0.766,
           0.799,
-          0.768
+          0.768,
+          0.76
         ],
         [
           0.779,
@@ -773,7 +863,8 @@
           0.0,
           0.81,
           0.8,
-          0.823
+          0.823,
+          0.793
         ],
         [
           0.774,
@@ -785,7 +876,8 @@
           0.813,
           0.0,
           0.817,
-          0.826
+          0.826,
+          0.793
         ],
         [
           0.783,
@@ -797,7 +889,8 @@
           0.794,
           0.817,
           0.0,
-          0.801
+          0.801,
+          0.832
         ],
         [
           0.808,
@@ -809,6 +902,20 @@
           0.808,
           0.817,
           0.8,
+          0.0,
+          0.767
+        ],
+        [
+          0.796,
+          0.796,
+          0.781,
+          0.807,
+          0.776,
+          0.759,
+          0.782,
+          0.773,
+          0.826,
+          0.774,
           0.0
         ]
       ],
@@ -816,17 +923,17 @@
     },
     "kraft_huffman_bounds": {
       "theorem": "Cover & Thomas Theorems 5.2.1 (Kraft) & 5.4.1 (Huffman Optimality)",
-      "kraft_mcmillan_sum": 0.6655,
+      "kraft_mcmillan_sum": 0.7275,
       "kraft_satisfied": true,
-      "shannon_entropy_h": 8.667,
-      "average_code_length_l": 9.27,
-      "redundancy_bits": 0.603,
+      "shannon_entropy_h": 8.748,
+      "average_code_length_l": 9.221,
+      "redundancy_bits": 0.472,
       "within_shannon_bound": true,
-      "bound_check": "8.67 <= 9.27 < 9.67 (Strictly Verified \u2713)"
+      "bound_check": "8.75 <= 9.22 < 9.75 (Strictly Verified \u2713)"
     },
-    "avg_compression_ratio": 0.633,
-    "avg_ncd_distance": 0.777,
-    "redundancy_overhead": 0.603
+    "avg_compression_ratio": 0.634,
+    "avg_ncd_distance": 0.78,
+    "redundancy_overhead": 0.472
   },
   "stochastic_process": {
     "markov_flow": {
@@ -938,7 +1045,7 @@
     "hurst_analysis": {
       "theorem": "H. E. Hurst (1951) & B. Mandelbrot (1968) Fractal R/S Analysis",
       "equation": "E[R/S] = C \u00b7 n^H  |  Fractal Dimension D = 2 - H",
-      "average_hurst_exponent": 0.578,
+      "average_hurst_exponent": 0.584,
       "asset_hurst_table": {
         "$SOL": {
           "hurst_exponent": 0.725,
@@ -999,6 +1106,12 @@
           "regime_classification": "Momentum Breakout",
           "fractal_dimension_D": 1.39,
           "strategy_edge": "Momentum Breakout"
+        },
+        "$MSFT": {
+          "hurst_exponent": 0.64,
+          "regime_classification": "Enterprise Trend",
+          "fractal_dimension_D": 1.36,
+          "strategy_edge": "Momentum Breakout"
         }
       },
       "overall_market_bias": "Persistent Trending (H = 0.578 > 0.50) with Asymmetric Long Advantage"
@@ -1006,7 +1119,7 @@
     "lyapunov_horizons": {
       "theorem": "A. M. Lyapunov (1892) & E. N. Lorenz (1963) Chaotic Predictability Limit",
       "equation": "||\u0394x(t)|| = ||\u0394x(0)|| \u00b7 e^(\u03bb\u00b7t)  |  T_horizon = (1 / \u03bb_max) \u00b7 ln(\u0394_max / \u0394_0)",
-      "average_predictability_horizon": "28.6 Hours",
+      "average_predictability_horizon": "30.4 Hours",
       "asset_horizons": {
         "$SOL": {
           "lyapunov_exponent_lambda": 0.042,
@@ -1057,9 +1170,14 @@
           "lyapunov_exponent_lambda": 0.045,
           "predictability_horizon_hours": 31.0,
           "chaos_status": "Deterministic Chaos (Edge Active)"
+        },
+        "$MSFT": {
+          "lyapunov_exponent_lambda": 0.032,
+          "predictability_horizon_hours": 48.0,
+          "chaos_status": "Deterministic Chaos (Edge Active)"
         }
       },
-      "operational_guideline": "All trade setups must hit profit targets within the 28.6h horizon before entropy dominates."
+      "operational_guideline": "All trade setups must hit profit targets within the 30.4h horizon before entropy dominates."
     },
     "takens_attractor": {
       "theorem": "Floris Takens (1981) Phase Space Reconstruction Theorem",
@@ -1070,8 +1188,8 @@
       "attractor_type": "Low-Dimensional Strange Attractor (Governed by 3 Macro State Variables)",
       "scientific_significance": "Proves orderflow is low-dimensional chaos (mathematically tradeable), not high-dimensional white noise."
     },
-    "average_hurst": 0.578,
-    "avg_holding_horizon": "28.6 Hours",
+    "average_hurst": 0.584,
+    "avg_holding_horizon": "30.4 Hours",
     "attractor_dimension": 2.45
   }
 }
