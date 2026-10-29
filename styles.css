@@ -3548,3 +3548,241 @@ body {
   border-radius: var(--radius-sm);
   border: 1px dashed rgba(255, 255, 255, 0.12);
 }
+
+/* ==========================================================================
+   Forensic Trade & Writing Analysis Engine Styles
+   ========================================================================== */
+.forensic-hub-card {
+  margin-top: 14px;
+  border-top: 2px solid #38bdf8;
+}
+
+.forensic-epoch-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0 18px 0;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.forensic-tab-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.forensic-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.forensic-tab-btn.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.3));
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.forensic-scorecard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.forensic-score-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.forensic-score-card.highlight {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.forensic-score-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.forensic-score-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.forensic-score-val.green { color: #10b981; }
+.forensic-score-val.cyan { color: #38bdf8; }
+.forensic-score-val.gold { color: #f59e0b; }
+.forensic-score-val.red { color: #f87171; }
+
+.forensic-score-hint {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.similarity-matrix-wrap {
+  margin: 18px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 12px;
+}
+
+.similarity-matrix-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.similarity-matrix-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.similarity-matrix-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.similarity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+  min-width: 600px;
+}
+
+.similarity-table th {
+  background: #0f172a;
+  padding: 6px 8px;
+  color: var(--text-dim);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 700;
+  text-align: center;
+}
+
+.similarity-table td {
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  text-align: center;
+  color: #e2e8f0;
+}
+
+.sim-val-low { color: #10b981; }
+.sim-val-med { color: #38bdf8; }
+.sim-val-high { color: #f59e0b; font-weight: 700; background: rgba(245, 158, 11, 0.08); }
+.sim-val-danger { color: #f87171; font-weight: 800; background: rgba(239, 68, 68, 0.12); }
+
+.forensic-post-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.forensic-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.forensic-post-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.forensic-post-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.forensic-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.forensic-badge.coin { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+.forensic-badge.words { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.forensic-badge.score { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+.sentence-audit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sentence-item {
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #38bdf8;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: #cbd5e1;
+}
+
+.sentence-item.hook { border-left-color: #a855f7; }
+.sentence-item.setup { border-left-color: #10b981; }
+.sentence-item.invalidation { border-left-color: #ef4444; }
+.sentence-item.cta { border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.05); }
+
+.sentence-type-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+  display: inline-block;
+}
+
+.sentence-type-tag.hook { color: #c084fc; }
+.sentence-type-tag.setup { color: #34d399; }
+.sentence-type-tag.invalidation { color: #f87171; }
+.sentence-type-tag.cta { color: #fbbf24; }
+
+.sentence-text {
+  color: #e2e8f0;
+}
+
+.sentence-critique {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  margin-top: 3px;
+  font-style: italic;
+}

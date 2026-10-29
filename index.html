@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#090c13" />
-  <link rel="stylesheet" href="styles.css?v=52" />
+  <link rel="stylesheet" href="styles.css?v=54" />
 </head>
 <body>
   <div class="app-shell">
@@ -30,8 +30,11 @@
               <option value="day2">📅 Day 2: Oct 27 — 10 Posts (11.0 pts)</option>
               <option value="day1">📅 Day 1: Oct 26 — 5 Posts (9.0 pts)</option>
             </select>
-            <button id="btnOpenScoresModal" class="btn-nav-action scores-pill" title="View Daily Scores & Post Performance Audit Hub">
-              <span>🏆 Scores & Post Audit (30.0 / 150 Pts)</span>
+            <button id="btnOpenScoresModal" class="btn-nav-action scores-pill" title="View Daily Scores & Leaderboard Engine">
+              <span>🏆 Scores Hub (30.0 / 150 Pts)</span>
+            </button>
+            <button id="btnOpenAnalysisModal" class="btn-nav-action analysis-pill" title="View Deep Forensic Trade & Writing Analysis">
+              <span>🔬 Trade & Writing Analysis</span>
             </button>
           </div>
           <div class="daily-badge">
@@ -49,9 +52,13 @@
         <!-- Injected via JavaScript (Post 1 to 10 with live status indicators) -->
       </div>
       <div class="pills-pinned-actions">
-        <button id="pillBarScoresBtn" class="pill-action-btn scores" title="Open Daily Scores & Day-Specific Post Audit">
+        <button id="pillBarScoresBtn" class="pill-action-btn scores" title="Open Daily Scores Hub">
           <span class="icon">🏆</span>
-          <span class="label">Scores & Audit (30.0 Pts)</span>
+          <span class="label">Scores (30.0 Pts)</span>
+        </button>
+        <button id="pillBarAnalysisBtn" class="pill-action-btn analysis" title="Open Forensic Trade & Writing Analysis">
+          <span class="icon">🔬</span>
+          <span class="label">Trade Analysis</span>
         </button>
       </div>
     </nav>
@@ -805,6 +812,45 @@
       </div>
     </section>
 
+    <!-- Standalone View 2: Deep Forensic Trade & Writing Analysis Hub -->
+    <section class="standalone-engine-view hidden" id="viewForensicAnalysisHub" role="region" aria-label="Deep Forensic Trade & Writing Analysis Hub">
+      <div class="engine-top-bar">
+        <button class="btn-return-posts" id="returnPostsFromAnalysisBtn">
+          <span>← Back to Post Workspace (Posts 1–10)</span>
+        </button>
+        <span class="engine-indicator">🔬 FORENSIC TRADE & WRITING AUDIT ENGINE</span>
+        <button class="btn-nav-action scores-pill" id="goToScoresFromAnalysisBtn">
+          <span>🏆 Open Scores Hub</span>
+        </button>
+      </div>
+
+      <!-- Main Forensic Analysis Card -->
+      <div class="rules-card forensic-hub-card" id="forensicHubCard">
+        <div class="byx-header-wrap">
+          <div class="rules-header">
+            <span class="rules-title">🔬 Deep Trade & Writing Forensic Audit</span>
+            <span class="rules-badge byx-valid-badge">BYBIT BYX BENCHMARK ENGINE</span>
+          </div>
+          <p class="byx-rules-desc">Forensic sentence-by-sentence analysis measuring textual similarity, structural templates, originality, depth, risk disclosure, and the Bybit trade widget conversion multiplier.</p>
+        </div>
+
+        <!-- Interactive Epoch Tabs (Day 4 Today vs Day 3 Yesterday) -->
+        <div class="forensic-epoch-tabs">
+          <button class="forensic-tab-btn active" id="btnForensicDay4" data-fday="day4">
+            <span>📅 Day 4: Today (Oct 29) — 10 High-Conversion Setups Audit</span>
+          </button>
+          <button class="forensic-tab-btn" id="btnForensicDay3" data-fday="day3">
+            <span>📅 Day 3: Yesterday (Oct 28) — Post-Mortem & Similarity Diagnosis</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Content Injected via JavaScript -->
+        <div id="forensicAnalysisContentContainer" class="forensic-content-container">
+          <!-- Populated by renderForensicAnalysisHub() -->
+        </div>
+      </div>
+    </section>
+
     <!-- Bottom Mobile Toolbar -->
     <footer class="app-footer">
       <div class="nav-arrows">
@@ -884,6 +930,6 @@
     <span class="toast-msg" id="toastMsg">Copied clean text to clipboard!</span>
   </div>
 
-  <script src="app.js?v=52"></script>
+  <script src="app.js?v=54"></script>
 </body>
 </html>
