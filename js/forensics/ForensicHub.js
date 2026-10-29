@@ -264,18 +264,14 @@ function getDay4ForensicHtml() {
         <div class="sentence-item setup"><span class="sentence-type-tag setup">Execution Pathway (Numbered Steps):</span> <span class="sentence-text">"1. Liquidity Shelf: Crucial foundation established at $0.620; overhead expansion hurdles sit at $0.720 and $0.810.<br>2. Limit Staging: Stage buy orders between $0.645 and $0.665; protective trigger anchored at $0.595 with disciplined 3x gearing.<br>3. Profit Scaling: Secure initial reward at $0.720 (+9.9%), allowing secondary tokens to run toward $0.810 (+23.6%) for an asymmetric 1:2.9 payoff.<br>4. Setup Negation: A daily candle closing under $0.595 terminates this breakout thesis."</span><div class="sentence-critique">Distinct numbered layout; zero shared phrasing with Posts 8, 9, 10.</div></div>
         <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (Bollinger Contraction):</span> <span class="sentence-text">"Track Bollinger contraction on the #APTUSDT widget underneath. What is your breakout trigger? Share your thoughts below 👇"</span></div>
       </div>
-      <!-- Token Heat-Map -->
-      <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
-        <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
-        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Move-VM (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Ascend-Banking (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Sub-second Finality (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 3x Gearing (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.9 Payoff (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
+      <div class="token-flow-bar"><span class="token-flow-label">Token Heat-Map:</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Move-VM (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Ascend-Banking (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Sub-second Finality (Unique Alpha)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 3x Gearing (Controlled Trade Term)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 1:2.9 Payoff (Controlled Trade Term)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> 0 Collision Tokens (100% Safe)</span>
         </div>
-      </div>
     </div>
 
     <div class="forensic-post-card">
@@ -292,18 +288,14 @@ function getDay4ForensicHtml() {
         <div class="sentence-item setup"><span class="sentence-type-tag setup">Sovereign Subnet Blueprint (Tabular Notation):</span> <span class="sentence-text">"Foundation: Long-term floor at $8.00 | Expansion Ceilings: $9.35 and $10.40.<br>Order Trigger: Establish long exposure from $8.35 to $8.60; defensive boundary placed strictly at $7.85 utilizing 4x margin.<br>Trailing Milestones: Harvest gains at $9.35 (+10%), pushing runners toward $10.40 (+22.3%) for a 1:2.7 risk-to-reward ratio.<br>Capital Safety: A 4-hour breakdown below $7.85 invalidates our structural thesis."</span><div class="sentence-critique">Tabular delimiter syntax; 9.2% similarity against APT.</div></div>
         <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (Moving Average Confluence):</span> <span class="sentence-text">"Verify moving average confluence on the #AVAXUSDT chart below. Bidding this institutional base or waiting for confirmation? Drop your thesis below 👇"</span></div>
       </div>
-      <!-- Token Heat-Map -->
-      <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
-        <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
-        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Sovereign Subnets (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Warp Messaging (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 RWA Tokenization (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 4x Margin (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.7 R:R (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
+      <div class="token-flow-bar"><span class="token-flow-label">Token Heat-Map:</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Sovereign Subnets (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Warp Messaging (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> RWA Tokenization (Unique Alpha)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 4x Margin (Controlled Trade Term)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 1:2.7 R:R (Controlled Trade Term)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> 0 Collision Tokens (100% Safe)</span>
         </div>
-      </div>
     </div>
 
     <div class="forensic-post-card">
@@ -320,18 +312,14 @@ function getDay4ForensicHtml() {
         <div class="sentence-item setup"><span class="sentence-type-tag setup">Momentum Squeeze Metrics (Dash Notation):</span> <span class="sentence-text">"- Support Baseline: Accumulation footing anchored at $0.071; overhead barriers sit at $0.084 and $0.095.<br>- Breakout Buy: Enter on retests between $0.074 and $0.077; risk cutoff placed at $0.069 with conservative 2x to 3x exposure.<br>- Profit Ladder: Take gains at $0.084 (+10.5%), extending remaining position to $0.095 (+25%) for a 1:2.8 multiple.<br>- Risk Boundary: A 4-hour close beneath $0.069 breaks the momentum pattern."</span><div class="sentence-critique">Dash bullet format; 9.1% similarity against AVAX.</div></div>
         <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (RSI Momentum Oscillator):</span> <span class="sentence-text">"Gauge RSI momentum shifts on the #DOGEUSDT widget underneath. Where do you exit runners? Let me know below 👇"</span></div>
       </div>
-      <!-- Token Heat-Map -->
-      <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
-        <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
-        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Retail Beta (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Open Interest Squeeze (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Diagonal Resistance (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 2x-3x Exposure (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.8 Multiple (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
+      <div class="token-flow-bar"><span class="token-flow-label">Token Heat-Map:</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Retail Beta (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Open Interest Squeeze (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Diagonal Resistance (Unique Alpha)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 2x-3x Exposure (Controlled Trade Term)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 1:2.8 Multiple (Controlled Trade Term)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> 0 Collision Tokens (100% Safe)</span>
         </div>
-      </div>
     </div>
 
     <div class="forensic-post-card">
@@ -348,18 +336,14 @@ function getDay4ForensicHtml() {
         <div class="sentence-item setup"><span class="sentence-type-tag setup">DePIN Compute Parameters (Arrow Indicators):</span> <span class="sentence-text">"â–¸ Support Base: Tested floor located at $1.85; upside barriers situated at $2.20 and $2.45.<br>â–¸ Staggered Bids: Accumulate within the $1.92–$2.02 price zone; structural stop placed at $1.78 with 2x to 4x leverage.<br>â–¸ Milestone Steps: Lock partials at $2.20 (+11.1%), letting balance stretch toward $2.45 (+23.7%) for a 1:2.6 payoff.<br>â–¸ Invalidation Rule: Daily candle closing beneath $1.78 negates our recovery outlook."</span><div class="sentence-critique">Arrow bullet notation; 8.9% similarity against DOGE!</div></div>
         <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (DePIN Cloud Telemetry):</span> <span class="sentence-text">"Assess cloud rendering compute activity on the #RENDERUSDT tool below. Stacking compute tokens or taking profit? Post your target below 👇"</span></div>
       </div>
-      <!-- Token Heat-Map -->
-      <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
-        <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
-        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 DePIN Graphics (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 AI Diffusion Clusters (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Octane Telemetry (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 2x-4x Leverage (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.6 Payoff (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
+      <div class="token-flow-bar"><span class="token-flow-label">Token Heat-Map:</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> DePIN Graphics (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> AI Diffusion Clusters (Unique Alpha)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> Octane Telemetry (Unique Alpha)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 2x-4x Leverage (Controlled Trade Term)</span>
+          <span class="token-flow-tag gold"><span class="tag-dot"></span> 1:2.6 Payoff (Controlled Trade Term)</span>
+          <span class="token-flow-tag green"><span class="tag-dot"></span> 0 Collision Tokens (100% Safe)</span>
         </div>
-      </div>
     </div>
   `;
 }
@@ -1533,7 +1517,7 @@ function getDay4ActiveMetricHtml() {
       <table class="similarity-table">
         <thead>
           <tr>
-            <th>Coin</th>
+            <th class="matrix-origin-header"><span class="matrix-header-coin">ASSET</span></th>
             <th>$SOL</th><th>$TIA</th><th>$NEAR</th><th>$FET</th><th>$INJ</th>
             <th>$AAVE</th><th>$APT</th><th>$AVAX</th><th>$DOGE</th><th>$RENDER</th>
           </tr>
@@ -1562,7 +1546,7 @@ function getDay4ActiveMetricHtml() {
       <table class="similarity-table">
         <thead>
           <tr>
-            <th>Coin</th>
+            <th class="matrix-origin-header"><span class="matrix-header-coin">ASSET</span></th>
             <th>$SOL</th><th>$TIA</th><th>$NEAR</th><th>$FET</th><th>$INJ</th>
             <th>$AAVE</th><th>$APT</th><th>$AVAX</th><th>$DOGE</th><th>$RENDER</th>
           </tr>
@@ -1591,7 +1575,7 @@ function getDay4ActiveMetricHtml() {
       <table class="similarity-table">
         <thead>
           <tr>
-            <th>Coin</th>
+            <th class="matrix-origin-header"><span class="matrix-header-coin">ASSET</span></th>
             <th>$SOL</th><th>$TIA</th><th>$NEAR</th><th>$FET</th><th>$INJ</th>
             <th>$AAVE</th><th>$APT</th><th>$AVAX</th><th>$DOGE</th><th>$RENDER</th>
           </tr>
@@ -1620,7 +1604,7 @@ function getDay4ActiveMetricHtml() {
       <table class="similarity-table">
         <thead>
           <tr>
-            <th>Coin</th>
+            <th class="matrix-origin-header"><span class="matrix-header-coin">ASSET</span></th>
             <th>$SOL</th><th>$TIA</th><th>$NEAR</th><th>$FET</th><th>$INJ</th>
             <th>$AAVE</th><th>$APT</th><th>$AVAX</th><th>$DOGE</th><th>$RENDER</th>
           </tr>
@@ -1748,7 +1732,7 @@ function getDay4ActiveMetricHtml() {
     <table class="similarity-table">
       <thead>
         <tr>
-          <th>Coin</th>
+          <th class="matrix-origin-header"><span class="matrix-header-coin">ASSET</span></th>
           <th>$SOL</th><th>$TIA</th><th>$NEAR</th><th>$FET</th><th>$INJ</th>
           <th>$AAVE</th><th>$APT</th><th>$AVAX</th><th>$DOGE</th><th>$RENDER</th>
         </tr>
