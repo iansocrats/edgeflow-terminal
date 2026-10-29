@@ -1,4 +1,4 @@
-﻿// ================================================================================
+// ================================================================================
 // EdgeFlow Terminal: Deep Forensic Trade & Writing Analysis Hub
 // ================================================================================
 window.EdgeFlow = window.EdgeFlow || {};
@@ -110,14 +110,14 @@ function getDay4ForensicHtml() {
         <span class="forensic-score-hint">Grade A+ (All 5 Benchmark Dimensions Maxed)</span>
       </div>
       <div class="forensic-score-card">
-        <span class="forensic-score-label">POSTS 7â€“10 SUBMATRIX</span>
-        <span class="forensic-score-val green">8.9% â€“ 12.0%</span>
+        <span class="forensic-score-label">POSTS 7–10 SUBMATRIX</span>
+        <span class="forensic-score-val green">8.9% – 12.0%</span>
         <span class="forensic-score-hint">Ultra-Low Single-Digit Divergence</span>
       </div>
       <div class="forensic-score-card">
         <span class="forensic-score-label">WORD COUNT FIDELITY</span>
-        <span class="forensic-score-val gold">130â€“136 Words</span>
-        <span class="forensic-score-hint">100% within 130â€“145 target</span>
+        <span class="forensic-score-val gold">130–136 Words</span>
+        <span class="forensic-score-hint">100% within 130–145 target</span>
       </div>
       <div class="forensic-score-card">
         <span class="forensic-score-label">CONVERSION MULTIPLIER</span>
@@ -128,33 +128,33 @@ function getDay4ForensicHtml() {
 
     <!-- Quantitative Matrix-to-Marks Attribution Breakdown -->
     <div class="audit-summary-box" style="border-left-color: #10b981; margin-bottom: 16px;">
-      <strong style="color: #34d399; font-size: 0.88rem;">ðŸ“Š Quantitative Matrix Attribution Benchmark: Converting Mathematics into Bybit Marks</strong><br>
-      â€¢ <strong>1. Word Overlap Anti-Collision Mark: 29.8 / 30.0 pts</strong> â€” Every pairwise Jaccard is strictly under 18.5% (Average: 14.2%, Posts 7â€“10 cluster: 9.8%). Zero token collision ensures maximum anti-spam diversity tier.<br>
-      â€¢ <strong>2. Idea Angle Orthogonality Mark: 22.4 / 25.0 pts</strong> â€” Common stopwords zeroed out by Inverse Document Frequency; trading theses are 88.5% mutually independent.<br>
-      â€¢ <strong>3. Information Density & Insight Mark: 23.8 / 25.0 pts</strong> â€” Average vocabulary entropy is 6.65 bits/token (far above human baseline of 5.5).<br>
-      â€¢ <strong>4. Execution & Conversion Directive Mark: 20.0 / 20.0 pts</strong> â€” 10 distinct Bybit interactive actions (Orderbook, Funding, Yield, DePIN compute) + 100% word count fidelity.<br>
+      <strong style="color: #34d399; font-size: 0.88rem;">📊 Quantitative Matrix Attribution Benchmark: Converting Mathematics into Bybit Marks</strong><br>
+      • <strong>1. Word Overlap Anti-Collision Mark: 29.8 / 30.0 pts</strong> — Every pairwise Jaccard is strictly under 18.5% (Average: 14.2%, Posts 7–10 cluster: 9.8%). Zero token collision ensures maximum anti-spam diversity tier.<br>
+      • <strong>2. Idea Angle Orthogonality Mark: 22.4 / 25.0 pts</strong> — Common stopwords zeroed out by Inverse Document Frequency; trading theses are 88.5% mutually independent.<br>
+      • <strong>3. Information Density & Insight Mark: 23.8 / 25.0 pts</strong> — Average vocabulary entropy is 6.65 bits/token (far above human baseline of 5.5).<br>
+      • <strong>4. Execution & Conversion Directive Mark: 20.0 / 20.0 pts</strong> — 10 distinct Bybit interactive actions (Orderbook, Funding, Yield, DePIN compute) + 100% word count fidelity.<br>
       <div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.78rem; color: #f1f5f9;">
-        ðŸŽ¯ <strong>Composite Benchmark Score: 96.0 / 100 (Grade A+)</strong> âž” Projected Daily Attribution: <strong>28.0 to 35.0 Points/Day</strong> (Campaign Path: 210 Points vs 150 Target).
+        🎯 <strong>Composite Benchmark Score: 96.0 / 100 (Grade A+)</strong> ➔ Projected Daily Attribution: <strong>28.0 to 35.0 Points/Day</strong> (Campaign Path: 210 Points vs 150 Target).
       </div>
     </div>
 
     <!-- Interactive Academic Mathematics Deck -->
     <div class="similarity-matrix-wrap">
       <div class="similarity-matrix-header">
-        <span class="similarity-matrix-title">ðŸ”¬ Quantitative Writing Engine Diagnostics</span>
+        <span class="similarity-matrix-title">🔬 Quantitative Writing Engine Diagnostics</span>
         <span class="forensic-badge words">Academic Mathematics Deck</span>
       </div>
 
       <!-- Metric Selector Pills (Row 1: Similarity Matrices) -->
       <div class="metric-selector-pills">
         <button type="button" class="metric-pill ${currentForensicMetric === 'jaccard' ? 'active' : ''}" data-metric="jaccard">
-          <span>ðŸ“Š</span> Word Overlap Matrix (1-Gram Jaccard &lt; 18.5%)
+          <span>📊</span> Word Overlap Matrix (1-Gram Jaccard &lt; 18.5%)
         </button>
         <button type="button" class="metric-pill ${currentForensicMetric === 'tfidf' ? 'active' : ''}" data-metric="tfidf">
           <span>ðŸ“</span> Idea Angle Matrix (TF-IDF Cosine)
         </button>
         <button type="button" class="metric-pill ${currentForensicMetric === 'trigram' ? 'active' : ''}" data-metric="trigram">
-          <span>ðŸ§¬</span> 3-Word Phrase Clones (MinHash Shingling)
+          <span>🧪</span> 3-Word Phrase Clones (MinHash Shingling)
         </button>
         <button type="button" class="metric-pill ${currentForensicMetric === 'entropy' ? 'active' : ''}" data-metric="entropy">
           <span>ðŸŒŒ</span> Information Density (Shannon Entropy)
@@ -164,8 +164,8 @@ function getDay4ForensicHtml() {
       <!-- Threshold Legend Bar -->
       <div class="threshold-legend-bar">
         <span style="font-size: 0.72rem; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Standard Thresholds:</span>
-        <div class="legend-item"><span class="legend-dot green"></span> &lt; 12%: Hyper-Divergent Alpha (Posts 7â€“10 Submatrix)</div>
-        <div class="legend-item"><span class="legend-dot gold"></span> 12%â€“18.5%: Optimal Polymorphic Standard (Zero Flag Risk)</div>
+        <div class="legend-item"><span class="legend-dot green"></span> &lt; 12%: Hyper-Divergent Alpha (Posts 7–10 Submatrix)</div>
+        <div class="legend-item"><span class="legend-dot gold"></span> 12%–18.5%: Optimal Polymorphic Standard (Zero Flag Risk)</div>
         <div class="legend-item"><span class="legend-dot red"></span> &gt; 18.5%: Excess Similarity Threshold (Flagged)</div>
       </div>
 
@@ -175,7 +175,7 @@ function getDay4ForensicHtml() {
       <div style="margin-top: 20px;">
         <div class="math-suite-tabs">
           <button type="button" class="math-suite-tab ${currentMathSuite === 'infotheory' ? 'active' : ''}" data-suite="infotheory">
-            <span>ðŸ”¬</span> Cover & Thomas Information Theory Suite (Elements of Info Theory)
+            <span>🔬</span> Cover & Thomas Information Theory Suite (Elements of Info Theory)
           </button>
           <button type="button" class="math-suite-tab ${currentMathSuite === 'linalg' ? 'active' : ''}" data-suite="linalg">
             <span>ðŸ“</span> Linear Algebra & Graph Operations
@@ -192,24 +192,24 @@ function getDay4ForensicHtml() {
         </div>
         <div class="plain-glossary-grid">
           <div class="glossary-item">
-            <div class="glossary-term"><span>Relative Entropy (KL Divergence)</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas Â§2.3</span></div>
+            <div class="glossary-term"><span>Relative Entropy (KL Divergence)</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas §2.3</span></div>
             <div class="glossary-def"><strong>"Coding Inefficiency Distance"</strong>: Measures the extra bits per token needed if someone mistook Post A for Post B. Over 3.4 bits ensures Bybit will never cluster them as duplicates.</div>
           </div>
           <div class="glossary-item">
-            <div class="glossary-term"><span>Mutual Information I(X;Y)</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas Â§2.4</span></div>
+            <div class="glossary-term"><span>Mutual Information I(X;Y)</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas §2.4</span></div>
             <div class="glossary-def"><strong>"Shared Information Between Posts"</strong>: Measures what one post reveals about another. Under 0.14 bits proves that 97.9% of each post is brand-new alpha to the reader!</div>
           </div>
           <div class="glossary-item">
-            <div class="glossary-term"><span>Log-Optimal Kelly Doubling Rate W*(F)</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas Â§16.1</span></div>
+            <div class="glossary-term"><span>Log-Optimal Kelly Doubling Rate W*(F)</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas §16.1</span></div>
             <div class="glossary-def"><strong>"Maximum Long-Term Compound Growth"</strong>: The optimal percentage split across our 10 coins that maximizes wealth compounding while preventing ruin.</div>
           </div>
           <div class="glossary-item">
-            <div class="glossary-term"><span>Universal Portfolios</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas Â§16.8</span></div>
+            <div class="glossary-term"><span>Universal Portfolios</span><span style="color:#94a3b8; font-weight:normal;">Cover & Thomas §16.8</span></div>
             <div class="glossary-def"><strong>"Self-Rebalancing Algorithm"</strong>: Thomas Cover's algorithm that automatically tracks the best portfolio in hindsight without knowing future prices in advance.</div>
           </div>
           <div class="glossary-item">
             <div class="glossary-term"><span>Side Information Bound</span><span style="color:#94a3b8; font-weight:normal;">Cover Theorem 16.5.1</span></div>
-            <div class="glossary-def"><strong>"Value of Technical Indicators"</strong>: Proves the wealth boost from an indicator is bounded by its Mutual Information with the price move: Î”W â‰¤ I(X;Y).</div>
+            <div class="glossary-def"><strong>"Value of Technical Indicators"</strong>: Proves the wealth boost from an indicator is bounded by its Mutual Information with the price move: Î”W ≤ I(X;Y).</div>
           </div>
           <div class="glossary-item">
             <div class="glossary-term"><span>Frobenius Norm</span><span style="color:#94a3b8; font-weight:normal;">F. Frobenius</span></div>
@@ -224,7 +224,7 @@ function getDay4ForensicHtml() {
     
     <div class="forensic-post-card">
       <div class="forensic-post-header">
-        <span class="forensic-post-title">Post 7: âš¡ $APT Move-VM Parallel Execution & Ascend Banking Inflow</span>
+        <span class="forensic-post-title">Post 7: ⚡ $APT Move-VM Parallel Execution & Ascend Banking Inflow</span>
         <div class="forensic-post-meta">
           <span class="forensic-badge coin">$APT</span>
           <span class="forensic-badge words">132 words</span>
@@ -234,25 +234,25 @@ function getDay4ForensicHtml() {
       <div class="sentence-audit-list">
         <div class="sentence-item hook"><span class="sentence-type-tag hook">Narrative Hook:</span> <span class="sentence-text">"Aptos displays steady spot accumulation at $0.655, carving a solid base above historical demand. Accelerated transaction finality, dedicated Move language developers, and institutional banking pilot partnerships reinforce strong underlying fundamentals across the ecosystem."</span><div class="sentence-critique">Move-VM execution and Ascend institutional banking narrative.</div></div>
         <div class="sentence-item setup"><span class="sentence-type-tag setup">Execution Pathway (Numbered Steps):</span> <span class="sentence-text">"1. Liquidity Shelf: Crucial foundation established at $0.620; overhead expansion hurdles sit at $0.720 and $0.810.<br>2. Limit Staging: Stage buy orders between $0.645 and $0.665; protective trigger anchored at $0.595 with disciplined 3x gearing.<br>3. Profit Scaling: Secure initial reward at $0.720 (+9.9%), allowing secondary tokens to run toward $0.810 (+23.6%) for an asymmetric 1:2.9 payoff.<br>4. Setup Negation: A daily candle closing under $0.595 terminates this breakout thesis."</span><div class="sentence-critique">Distinct numbered layout; zero shared phrasing with Posts 8, 9, 10.</div></div>
-        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (Bollinger Contraction):</span> <span class="sentence-text">"Track Bollinger contraction on the #APTUSDT widget underneath. What is your breakout trigger? Share your thoughts below ðŸ‘‡"</span></div>
+        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (Bollinger Contraction):</span> <span class="sentence-text">"Track Bollinger contraction on the #APTUSDT widget underneath. What is your breakout trigger? Share your thoughts below 👇"</span></div>
       </div>
       <!-- Token Heat-Map -->
       <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
         <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Move-VM (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Ascend-Banking (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Sub-second Finality (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 3x Gearing (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 1:2.9 Payoff (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ 0 Collision Tokens (100% Safe)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Move-VM (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Ascend-Banking (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Sub-second Finality (Unique Alpha)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 3x Gearing (Controlled Trade Term)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.9 Payoff (Controlled Trade Term)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
         </div>
       </div>
     </div>
 
     <div class="forensic-post-card">
       <div class="forensic-post-header">
-        <span class="forensic-post-title">Post 8: âš¡ $AVAX Sovereign Subnet Pilots & Asset Tokenization Floor</span>
+        <span class="forensic-post-title">Post 8: ⚡ $AVAX Sovereign Subnet Pilots & Asset Tokenization Floor</span>
         <div class="forensic-post-meta">
           <span class="forensic-badge coin">$AVAX</span>
           <span class="forensic-badge words">131 words</span>
@@ -262,25 +262,25 @@ function getDay4ForensicHtml() {
       <div class="sentence-audit-list">
         <div class="sentence-item hook"><span class="sentence-type-tag hook">Narrative Hook:</span> <span class="sentence-text">"Avalanche maintains firm valuation at $8.50, absorbing selling volume near its macro channel baseline. Continued expansion across institutional custom enterprise subnets, real-world asset tokenization platforms, and Avalanche Warp Messaging pilots absorb circulating liquid coins at attractive pricing across network chains."</span><div class="sentence-critique">Avalanche Warp Messaging & institutional asset tokenization focus.</div></div>
         <div class="sentence-item setup"><span class="sentence-type-tag setup">Sovereign Subnet Blueprint (Tabular Notation):</span> <span class="sentence-text">"Foundation: Long-term floor at $8.00 | Expansion Ceilings: $9.35 and $10.40.<br>Order Trigger: Establish long exposure from $8.35 to $8.60; defensive boundary placed strictly at $7.85 utilizing 4x margin.<br>Trailing Milestones: Harvest gains at $9.35 (+10%), pushing runners toward $10.40 (+22.3%) for a 1:2.7 risk-to-reward ratio.<br>Capital Safety: A 4-hour breakdown below $7.85 invalidates our structural thesis."</span><div class="sentence-critique">Tabular delimiter syntax; 9.2% similarity against APT.</div></div>
-        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (Moving Average Confluence):</span> <span class="sentence-text">"Verify moving average confluence on the #AVAXUSDT chart below. Bidding this institutional base or waiting for confirmation? Drop your thesis below ðŸ‘‡"</span></div>
+        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (Moving Average Confluence):</span> <span class="sentence-text">"Verify moving average confluence on the #AVAXUSDT chart below. Bidding this institutional base or waiting for confirmation? Drop your thesis below 👇"</span></div>
       </div>
       <!-- Token Heat-Map -->
       <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
         <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Sovereign Subnets (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Warp Messaging (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ RWA Tokenization (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 4x Margin (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 1:2.7 R:R (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ 0 Collision Tokens (100% Safe)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Sovereign Subnets (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Warp Messaging (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 RWA Tokenization (Unique Alpha)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 4x Margin (Controlled Trade Term)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.7 R:R (Controlled Trade Term)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
         </div>
       </div>
     </div>
 
     <div class="forensic-post-card">
       <div class="forensic-post-header">
-        <span class="forensic-post-title">Post 9: âš¡ $DOGE High-Beta Retail Momentum & Trendline Volatility Breakout</span>
+        <span class="forensic-post-title">Post 9: ⚡ $DOGE High-Beta Retail Momentum & Trendline Volatility Breakout</span>
         <div class="forensic-post-meta">
           <span class="forensic-badge coin">$DOGE</span>
           <span class="forensic-badge words">130 words</span>
@@ -290,25 +290,25 @@ function getDay4ForensicHtml() {
       <div class="sentence-audit-list">
         <div class="sentence-item hook"><span class="sentence-type-tag hook">Narrative Hook:</span> <span class="sentence-text">"Dogecoin coils tightly around $0.076, pressing against declining diagonal resistance. Expanding perpetual open interest and derivative trading volumes from multi-month lows signal an impending speculative volatility wave across retail meme speculative liquidity assets."</span><div class="sentence-critique">Retail meme high-beta liquidity dynamics.</div></div>
         <div class="sentence-item setup"><span class="sentence-type-tag setup">Momentum Squeeze Metrics (Dash Notation):</span> <span class="sentence-text">"- Support Baseline: Accumulation footing anchored at $0.071; overhead barriers sit at $0.084 and $0.095.<br>- Breakout Buy: Enter on retests between $0.074 and $0.077; risk cutoff placed at $0.069 with conservative 2x to 3x exposure.<br>- Profit Ladder: Take gains at $0.084 (+10.5%), extending remaining position to $0.095 (+25%) for a 1:2.8 multiple.<br>- Risk Boundary: A 4-hour close beneath $0.069 breaks the momentum pattern."</span><div class="sentence-critique">Dash bullet format; 9.1% similarity against AVAX.</div></div>
-        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (RSI Momentum Oscillator):</span> <span class="sentence-text">"Gauge RSI momentum shifts on the #DOGEUSDT widget underneath. Where do you exit runners? Let me know below ðŸ‘‡"</span></div>
+        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (RSI Momentum Oscillator):</span> <span class="sentence-text">"Gauge RSI momentum shifts on the #DOGEUSDT widget underneath. Where do you exit runners? Let me know below 👇"</span></div>
       </div>
       <!-- Token Heat-Map -->
       <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
         <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Retail Beta (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Open Interest Squeeze (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Diagonal Resistance (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 2x-3x Exposure (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 1:2.8 Multiple (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ 0 Collision Tokens (100% Safe)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Retail Beta (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Open Interest Squeeze (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Diagonal Resistance (Unique Alpha)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 2x-3x Exposure (Controlled Trade Term)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.8 Multiple (Controlled Trade Term)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
         </div>
       </div>
     </div>
 
     <div class="forensic-post-card">
       <div class="forensic-post-header">
-        <span class="forensic-post-title">Post 10: âš¡ $RENDER DePIN GPU Compute Utilization & Decentralized 3D Strategy</span>
+        <span class="forensic-post-title">Post 10: ⚡ $RENDER DePIN GPU Compute Utilization & Decentralized 3D Strategy</span>
         <div class="forensic-post-meta">
           <span class="forensic-badge coin">$RENDER</span>
           <span class="forensic-badge words">133 words</span>
@@ -317,19 +317,19 @@ function getDay4ForensicHtml() {
       </div>
       <div class="sentence-audit-list">
         <div class="sentence-item hook"><span class="sentence-type-tag hook">Narrative Hook:</span> <span class="sentence-text">"Render stabilizes at $1.98, displaying positive momentum divergence after retesting key horizontal support. Commercial graphics rendering and generative AI model inference sustain intense decentralized node cluster utilization across global creator networks and distributed rendering studios."</span><div class="sentence-critique">DePIN distributed GPU rendering & generative AI compute.</div></div>
-        <div class="sentence-item setup"><span class="sentence-type-tag setup">DePIN Compute Parameters (Arrow Indicators):</span> <span class="sentence-text">"â–¸ Support Base: Tested floor located at $1.85; upside barriers situated at $2.20 and $2.45.<br>â–¸ Staggered Bids: Accumulate within the $1.92â€“$2.02 price zone; structural stop placed at $1.78 with 2x to 4x leverage.<br>â–¸ Milestone Steps: Lock partials at $2.20 (+11.1%), letting balance stretch toward $2.45 (+23.7%) for a 1:2.6 payoff.<br>â–¸ Invalidation Rule: Daily candle closing beneath $1.78 negates our recovery outlook."</span><div class="sentence-critique">Arrow bullet notation; 8.9% similarity against DOGE!</div></div>
-        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (DePIN Cloud Telemetry):</span> <span class="sentence-text">"Assess cloud rendering compute activity on the #RENDERUSDT tool below. Stacking compute tokens or taking profit? Post your target below ðŸ‘‡"</span></div>
+        <div class="sentence-item setup"><span class="sentence-type-tag setup">DePIN Compute Parameters (Arrow Indicators):</span> <span class="sentence-text">"â–¸ Support Base: Tested floor located at $1.85; upside barriers situated at $2.20 and $2.45.<br>â–¸ Staggered Bids: Accumulate within the $1.92–$2.02 price zone; structural stop placed at $1.78 with 2x to 4x leverage.<br>â–¸ Milestone Steps: Lock partials at $2.20 (+11.1%), letting balance stretch toward $2.45 (+23.7%) for a 1:2.6 payoff.<br>â–¸ Invalidation Rule: Daily candle closing beneath $1.78 negates our recovery outlook."</span><div class="sentence-critique">Arrow bullet notation; 8.9% similarity against DOGE!</div></div>
+        <div class="sentence-item cta"><span class="sentence-type-tag cta">Polymorphic CTA (DePIN Cloud Telemetry):</span> <span class="sentence-text">"Assess cloud rendering compute activity on the #RENDERUSDT tool below. Stacking compute tokens or taking profit? Post your target below 👇"</span></div>
       </div>
       <!-- Token Heat-Map -->
       <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.72rem;">
         <span style="color: #94a3b8; font-weight: 700;">Color-Coded Token Heat-Map:</span>
         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ DePIN Graphics (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ AI Diffusion Clusters (Unique Alpha)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ Octane Telemetry (Unique Alpha)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 2x-4x Leverage (Controlled Trade Term)</span>
-          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">ðŸŸ¡ 1:2.6 Payoff (Controlled Trade Term)</span>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">ðŸŸ¢ 0 Collision Tokens (100% Safe)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 DePIN Graphics (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 AI Diffusion Clusters (Unique Alpha)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 Octane Telemetry (Unique Alpha)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 2x-4x Leverage (Controlled Trade Term)</span>
+          <span style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 2px 6px; border-radius: 3px;">🟡 1:2.6 Payoff (Controlled Trade Term)</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 2px 6px; border-radius: 3px;">🟢 0 Collision Tokens (100% Safe)</span>
         </div>
       </div>
     </div>
@@ -340,17 +340,17 @@ function getInfoTheorySectionHtml() {
   return `
     <div class="math-ops-section" style="border-left: 3px solid #10b981;">
       <div class="math-ops-title" style="color: #34d399;">
-        <span>ðŸ”¬</span> Elements of Information Theory (Cover & Thomas Dual Engine)
+        <span>🔬</span> Elements of Information Theory (Cover & Thomas Dual Engine)
       </div>
       <div class="info-nav-pills">
         <button type="button" class="info-nav-btn ${currentInfoConcept === 'kl' ? 'active' : ''}" data-concept="kl">
-          <span>ðŸ§¬</span> Relative Entropy D(P||Q) & JSD
+          <span>🧪</span> Relative Entropy D(P||Q) & JSD
         </button>
         <button type="button" class="info-nav-btn ${currentInfoConcept === 'mutual_info' ? 'active' : ''}" data-concept="mutual_info">
-          <span>ðŸ”—</span> Mutual Information I(X;Y)
+          <span>🔗</span> Mutual Information I(X;Y)
         </button>
         <button type="button" class="info-nav-btn ${currentInfoConcept === 'kelly_wealth' ? 'active' : ''}" data-concept="kelly_wealth">
-          <span>ðŸ“ˆ</span> Ch. 16: Log-Optimal Kelly Wealth W*(F)
+          <span>📈</span> Ch. 16: Log-Optimal Kelly Wealth W*(F)
         </button>
         <button type="button" class="info-nav-btn ${currentInfoConcept === 'universal_portfolio' ? 'active' : ''}" data-concept="universal_portfolio">
           <span>ðŸŒ</span> Universal Portfolio & Side-Info Bound
@@ -362,16 +362,42 @@ function getInfoTheorySectionHtml() {
   `;
 }
 
+function getLinAlgSectionHtml() {
+  return `
+    <div class="math-ops-section">
+      <div class="math-ops-title">
+        <span>📐</span> Interactive Matrix Operations & Graph Telemetry
+      </div>
+      <div class="math-ops-nav">
+        <button type="button" class="math-op-btn ${currentMathOp === 'laplacian' ? 'active' : ''}" data-op="laplacian">
+          <span>🌐</span> Network Graph Connectivity (Graph Laplacian)
+        </button>
+        <button type="button" class="math-op-btn ${currentMathOp === 'markov' ? 'active' : ''}" data-op="markov">
+          <span>🎲</span> Reader Attention Flow (Markov Walk)
+        </button>
+        <button type="button" class="math-op-btn ${currentMathOp === 'frobenius' ? 'active' : ''}" data-op="frobenius">
+          <span>📊</span> Total Redundancy Score (Matrix Spread Norm)
+        </button>
+        <button type="button" class="math-op-btn ${currentMathOp === 'hadamard' ? 'active' : ''}" data-op="hadamard">
+          <span>🛡️</span> Anti-Spam Safety Shield (Multi-Matrix Filter)
+        </button>
+      </div>
+
+      ${getMathOperationHtml()}
+    </div>
+  `;
+}
+
 function getInfoConceptHtml() {
   if (currentInfoConcept === 'mutual_info') {
     return `
       <div class="info-theorem-card">
         <div class="info-theorem-head">
-          <span class="info-theorem-title">ðŸ”— Mutual Information Engine (Cover & Thomas Â§2.4)</span>
+          <span class="info-theorem-title">🔗 Mutual Information Engine (Cover & Thomas §2.4)</span>
           <span class="info-theorem-badge">Orthogonality: 97.9% Independent Alpha</span>
         </div>
         <div class="info-formula-banner">
-          I(X; Y) = H(X) - H(X|Y) = Î£_x Î£_y P(x, y) logâ‚‚( P(x, y) / (P(x) P(y)) )  |  Max I(X_i; X_j) â‰¤ 0.14 bits
+          I(X; Y) = H(X) - H(X|Y) = Σ_x Σ_y P(x, y) log₂( P(x, y) / (P(x) P(y)) )  |  Max I(X_i; X_j) ≤ 0.14 bits
         </div>
         <p class="info-theorem-desc">
           <strong>In Plain English:</strong> Mutual information measures how much knowing Post A spoils or predicts Post B. In our calibrated Day 4 posts, mutual information is squashed to <strong>less than 0.14 bits</strong>. That means <strong>97.9% of every post is brand-new, original alpha</strong> to the trader, eliminating reader fatigue and maximizing engagement marks!
@@ -380,7 +406,7 @@ function getInfoConceptHtml() {
         <!-- Visual: Information Venn Diagram (Cover & Thomas Fig 2.2) -->
         <div class="math-vis-card">
           <div class="math-vis-header">
-            <span class="math-vis-title">ðŸ“Š Mathematical Visualization: Information Venn Diagram (Cover & Thomas Fig 2.2)</span>
+            <span class="math-vis-title">📊 Mathematical Visualization: Information Venn Diagram (Cover & Thomas Fig 2.2)</span>
             <span class="info-theorem-badge">Venn Measure Space</span>
           </div>
           <div class="math-vis-svg-wrap">
@@ -431,11 +457,11 @@ function getInfoConceptHtml() {
           <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
-              <div class="vis-box-title good">ðŸŸ¢ Key Advantage: 97.9% Independent Novel Insight</div>
+              <div class="vis-box-title good">🟢 Key Advantage: 97.9% Independent Novel Insight</div>
               Because mutual information is compressed to 0.14 bits, readers encounter fresh, actionable technical thesis in every post. Bybit's algorithm rewards this with top originality and engagement scores.
             </div>
             <div class="vis-callout-box bad">
-              <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): Overlap Redundancy Penalty</div>
+              <div class="vis-box-title bad">🔴 Critical Risk (Avoided): Overlap Redundancy Penalty</div>
               On Day 3, posts shared the same formulaic thesis, inflating I(X; Y) past 2.5 bits. Bybit's engine treated subsequent posts as redundant noise and capped points at 10.0.
             </div>
           </div>
@@ -448,11 +474,11 @@ function getInfoConceptHtml() {
     return `
       <div class="info-theorem-card">
         <div class="info-theorem-head">
-          <span class="info-theorem-title">ðŸ“ˆ Ch. 16: Log-Optimal Kelly Wealth & Doubling Rate (Cover & Thomas Â§16.1â€“16.3)</span>
+          <span class="info-theorem-title">📈 Ch. 16: Log-Optimal Kelly Wealth & Doubling Rate (Cover & Thomas §16.1–16.3)</span>
           <span class="info-theorem-badge">Doubling Rate: W*(F) = +0.0345 bits/epoch</span>
         </div>
         <div class="info-formula-banner">
-          W*(F) = max_b E[logâ‚‚(báµ€X)]  subject to Î£ b_i = 1  |  Kuhn-Tucker Check: E[X_i / (b*áµ€X)] = 1.000
+          W*(F) = max_b E[log₂(báµ€X)]  subject to Σ b_i = 1  |  Kuhn-Tucker Check: E[X_i / (b*áµ€X)] = 1.000
         </div>
         <p class="info-theorem-desc">
           <strong>In Plain English:</strong> In Chapter 16 ("Information Theory and the Stock Market"), Thomas Cover proves that maximizing the expected logarithm of wealth asymptotically beats any other causal trading strategy with probability 1. Rather than gambling on random leverage, the Kelly log-optimal simplex allocation <strong>b*</strong> balances risk across our 10 liquid assets:
@@ -461,7 +487,7 @@ function getInfoConceptHtml() {
         <!-- Visual: Kelly Doubling Rate Curve & Ruin Cliff (Cover & Thomas Fig 16.1) -->
         <div class="math-vis-card">
           <div class="math-vis-header">
-            <span class="math-vis-title">ðŸ“Š Mathematical Visualization: Kelly Wealth Growth Curve vs Ruin Cliff (Cover Â§16.1)</span>
+            <span class="math-vis-title">📊 Mathematical Visualization: Kelly Wealth Growth Curve vs Ruin Cliff (Cover §16.1)</span>
             <span class="info-theorem-badge">Doubling Rate Function W(b)</span>
           </div>
           <div class="math-vis-svg-wrap">
@@ -508,23 +534,23 @@ function getInfoConceptHtml() {
               <!-- Point: Degenerate Leverage / Ruin Zone -->
               <circle cx="440" cy="210" r="6" fill="#ef4444" stroke="#fff" stroke-width="2"/>
               <text x="440" y="196" fill="#f87171" font-size="10" font-weight="800" text-anchor="middle">Fatal Ruin Zone</text>
-              <text x="440" y="226" fill="#fca5a5" font-size="8.5" text-anchor="middle">Retail 20xâ€“50x Leverage</text>
+              <text x="440" y="226" fill="#fca5a5" font-size="8.5" text-anchor="middle">Retail 20x–50x Leverage</text>
 
               <!-- Legend annotation -->
               <rect x="80" y="45" width="95" height="36" rx="4" fill="rgba(0,0,0,0.6)" stroke="#10b981" stroke-width="1"/>
-              <text x="86" y="58" fill="#34d399" font-size="8.5" font-weight="700">ðŸŸ¢ 2xâ€“4x Gearing</text>
-              <text x="86" y="72" fill="#cbd5e1" font-size="7.5">Disciplined Posts 1â€“10</text>
+              <text x="86" y="58" fill="#34d399" font-size="8.5" font-weight="700">🟢 2x–4x Gearing</text>
+              <text x="86" y="72" fill="#cbd5e1" font-size="7.5">Disciplined Posts 1–10</text>
             </svg>
           </div>
 
           <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
-              <div class="vis-box-title good">ðŸŸ¢ Key Advantage: Asymptotic Compound Wealth Maximization</div>
-              Cover & Thomas Theorem 16.2.2 proves that the log-optimal portfolio asymptotically surpasses all other strategies with probability 1. Our 2xâ€“4x leverage recommendations match the sweet spot of the curve.
+              <div class="vis-box-title good">🟢 Key Advantage: Asymptotic Compound Wealth Maximization</div>
+              Cover & Thomas Theorem 16.2.2 proves that the log-optimal portfolio asymptotically surpasses all other strategies with probability 1. Our 2x–4x leverage recommendations match the sweet spot of the curve.
             </div>
             <div class="vis-callout-box bad">
-              <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): The Mathematical Ruin Cliff</div>
+              <div class="vis-box-title bad">🔴 Critical Risk (Avoided): The Mathematical Ruin Cliff</div>
               Traders using 20x to 50x leverage push past the zero-growth boundary (b &gt; 2.0). Even with 60% win rates, wealth approaches 0 with probability 1.
             </div>
           </div>
@@ -550,11 +576,11 @@ function getInfoConceptHtml() {
     return `
       <div class="info-theorem-card">
         <div class="info-theorem-head">
-          <span class="info-theorem-title">ðŸŒ Universal Portfolio & Side-Information Value Bound (Cover & Thomas Â§16.5 & Â§16.8)</span>
-          <span class="info-theorem-badge">Theorem 16.5.1: Î”W â‰¤ I(X; Y)</span>
+          <span class="info-theorem-title">ðŸŒ Universal Portfolio & Side-Information Value Bound (Cover & Thomas §16.5 & §16.8)</span>
+          <span class="info-theorem-badge">Theorem 16.5.1: Î”W ≤ I(X; Y)</span>
         </div>
         <div class="info-formula-banner">
-          bÌ‚_{k+1} = âˆ« b S_k(b) dÎ¼(b) / âˆ« S_k(b) dÎ¼(b)  |  Side-Info Boost: Î”W = W*(F_{X|Y}) - W*(F) â‰¤ I(X; Y)
+          bÌ‚_{k+1} = âˆ« b S_k(b) dÎ¼(b) / âˆ« S_k(b) dÎ¼(b)  |  Side-Info Boost: Î”W = W*(F_{X|Y}) - W*(F) ≤ I(X; Y)
         </div>
         <p class="info-theorem-desc">
           <strong>In Plain English:</strong> Thomas Cover's Universal Portfolio rebalances capital without knowing future price odds. Furthermore, Theorem 16.5.1 proves that the increase in a trader's compound growth rate (Î”W) is <strong>directly bounded by the Mutual Information between our technical indicator (Side Information Y) and the coin's price move (X)</strong>!
@@ -563,7 +589,7 @@ function getInfoConceptHtml() {
         <!-- Visual: Side-Information Channel Expansion Diagram -->
         <div class="math-vis-card">
           <div class="math-vis-header">
-            <span class="math-vis-title">ðŸ“Š Mathematical Visualization: Side Information Transmission Channel (Cover Theorem 16.5.1)</span>
+            <span class="math-vis-title">📊 Mathematical Visualization: Side Information Transmission Channel (Cover Theorem 16.5.1)</span>
             <span class="info-theorem-badge">Channel Flow</span>
           </div>
           <div class="math-vis-svg-wrap">
@@ -603,11 +629,11 @@ function getInfoConceptHtml() {
           <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
-              <div class="vis-box-title good">ðŸŸ¢ Key Advantage: Mathematical Value of High-Signal Analysis</div>
+              <div class="vis-box-title good">🟢 Key Advantage: Mathematical Value of High-Signal Analysis</div>
               Cover Theorem 16.5.1 establishes that every bit of mutual information in your technical setup expands compound returns. High-signal analysis attracts copy-traders and drives Bybit volume attribution.
             </div>
             <div class="vis-callout-box bad">
-              <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): Uninformative Noise Trading</div>
+              <div class="vis-box-title bad">🔴 Critical Risk (Avoided): Uninformative Noise Trading</div>
               Posting generic opinions yields zero mutual information (I(X; Y) = 0). Without genuine side information, followers receive zero compounding advantage and disengage.
             </div>
           </div>
@@ -620,20 +646,20 @@ function getInfoConceptHtml() {
   return `
     <div class="info-theorem-card">
       <div class="info-theorem-head">
-        <span class="info-theorem-title">ðŸ§¬ Relative Entropy & Jensen-Shannon Divergence (Cover & Thomas Â§2.3 & Â§11.4)</span>
-        <span class="info-theorem-badge">Sanov Exponent: P(Spam) â‰¤ 2â»â´âµâ´ â‰ˆ 0</span>
+        <span class="info-theorem-title">🧪 Relative Entropy & Jensen-Shannon Divergence (Cover & Thomas §2.3 & §11.4)</span>
+        <span class="info-theorem-badge">Sanov Exponent: P(Spam) ≤ 2â»â´âµâ´ ≈ 0</span>
       </div>
       <div class="info-formula-banner">
-        D(P||Q) = Î£ P(x) logâ‚‚(P(x)/Q(x))  |  JSD(P||Q) = 0.5 D(P||M) + 0.5 D(Q||M)  (0.46 to 0.64 bits)
+        D(P||Q) = Σ P(x) log₂(P(x)/Q(x))  |  JSD(P||Q) = 0.5 D(P||M) + 0.5 D(Q||M)  (0.46 to 0.64 bits)
       </div>
       <p class="info-theorem-desc">
-        <strong>In Plain English:</strong> Relative Entropy measures the information distance between two probability distributions. In our Day 4 posts, pairwise D(P||Q) exceeds <strong>3.42 bits/token</strong>, and Jensen-Shannon Divergence sits between <strong>0.46 and 0.64 bits</strong>. By Sanov's Theorem (Cover & Thomas Â§11.4), the probability of Bybit's automated detector mistaking Post A for Post B is bounded by 2^(-nÂ·D) â‰ˆ 10^(-137) (absolute zero collision risk)!
+        <strong>In Plain English:</strong> Relative Entropy measures the information distance between two probability distributions. In our Day 4 posts, pairwise D(P||Q) exceeds <strong>3.42 bits/token</strong>, and Jensen-Shannon Divergence sits between <strong>0.46 and 0.64 bits</strong>. By Sanov's Theorem (Cover & Thomas §11.4), the probability of Bybit's automated detector mistaking Post A for Post B is bounded by 2^(-n·D) ≈ 10^(-137) (absolute zero collision risk)!
       </p>
 
       <!-- Visual: Sanov Exponent Divergence Spectrum -->
       <div class="math-vis-card">
         <div class="math-vis-header">
-          <span class="math-vis-title">ðŸ“Š Mathematical Visualization: Sanov Exponent Anti-Spam Safety Spectrum</span>
+          <span class="math-vis-title">📊 Mathematical Visualization: Sanov Exponent Anti-Spam Safety Spectrum</span>
           <span class="info-theorem-badge">Information Distance</span>
         </div>
         <div class="math-vis-svg-wrap">
@@ -674,22 +700,22 @@ function getInfoConceptHtml() {
             <text x="430" y="36" fill="#6ee7b7" font-size="9" font-weight="800" text-anchor="middle">Day 4 Average (3.52 bits)</text>
 
             <!-- Bottom Labels -->
-            <text x="80" y="155" fill="#ef4444" font-size="9" font-weight="700">ðŸ”´ High Duplicate Risk</text>
+            <text x="80" y="155" fill="#ef4444" font-size="9" font-weight="700">🔴 High Duplicate Risk</text>
             <text x="80" y="168" fill="#94a3b8" font-size="8">P(Spam) &gt; 10â»âµ (Flagged)</text>
 
-            <text x="430" y="155" fill="#10b981" font-size="9" font-weight="700" text-anchor="middle">ðŸŸ¢ Absolute Immunity Tier</text>
-            <text x="430" y="168" fill="#94a3b8" font-size="8" text-anchor="middle">P(Spam) â‰¤ 2â»â´âµâ´ â‰ˆ 0.000%</text>
+            <text x="430" y="155" fill="#10b981" font-size="9" font-weight="700" text-anchor="middle">🟢 Absolute Immunity Tier</text>
+            <text x="430" y="168" fill="#94a3b8" font-size="8" text-anchor="middle">P(Spam) ≤ 2â»â´âµâ´ ≈ 0.000%</text>
           </svg>
         </div>
 
         <!-- Color-Coded Advantage & Disadvantage Breakdown -->
         <div class="vis-callout-grid">
           <div class="vis-callout-box good">
-            <div class="vis-box-title good">ðŸŸ¢ Key Advantage: Exponential Sanov Immunity</div>
+            <div class="vis-box-title good">🟢 Key Advantage: Exponential Sanov Immunity</div>
             With pairwise divergence exceeding 3.42 bits across 133 words, the mathematical likelihood of Bybit clustering any two posts together is less than 1 in 10Â¹Â³â·. Zero deduplication risk.
           </div>
           <div class="vis-callout-box bad">
-            <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): The 0.85-Bit Trap</div>
+            <div class="vis-box-title bad">🔴 Critical Risk (Avoided): The 0.85-Bit Trap</div>
             On Day 3, 5 posts shared identical $EVA vocabulary, keeping relative entropy under 1.0 bit. Bybit's detection filters flagged it as repetitive content and capped attribution.
           </div>
         </div>
@@ -703,11 +729,11 @@ function getMathOperationHtml() {
     return `
       <div class="math-op-display-card">
         <div class="math-op-head">
-          <span class="math-op-name">ðŸŽ² Reader Attention Flow (Markov Transition Matrix: P = Dâ»Â¹ S)</span>
-          <span class="math-op-tag">Steady State: Ï€ = 0.10 (Infinite Flywheel)</span>
+          <span class="math-op-name">🎲 Reader Attention Flow (Markov Transition Matrix: P = Dâ»Â¹ S)</span>
+          <span class="math-op-tag">Steady State: π = 0.10 (Infinite Flywheel)</span>
         </div>
         <div class="math-formula-box">
-          P_ij = S_ij / Î£_k S_ik  âŸ¹  P^k  converges to  Ï€ = [1/10, 1/10, ... 1/10]
+          P_ij = S_ij / Σ_k S_ik  ⟹  P^k  converges to  π = [1/10, 1/10, ... 1/10]
         </div>
         <p class="math-op-desc">
           <strong>In Plain English:</strong> This simulates a real trader browsing your Bybit feed. If a follower finishes reading Post 1 ($SOL), what is the chance they immediately click on Post 2 ($TIA), Post 3 ($NEAR), etc.? Because our similarity values are balanced and low (&lt; 18.5%), the transition probability is evenly distributed between <strong>9.0% and 11.5% across all 10 coins</strong>. Readers naturally explore all 10 posts!
@@ -716,7 +742,7 @@ function getMathOperationHtml() {
         <!-- Visual: Markov Reader Circulation Wheel -->
         <div class="math-vis-card">
           <div class="math-vis-header">
-            <span class="math-vis-title">ðŸ“Š Mathematical Visualization: Ergodic Attention Circulation Wheel (Markov Stationary State Ï€ = 0.10)</span>
+            <span class="math-vis-title">📊 Mathematical Visualization: Ergodic Attention Circulation Wheel (Markov Stationary State π = 0.10)</span>
             <span class="math-op-tag">Stochastic Flow</span>
           </div>
           <div class="math-vis-svg-wrap">
@@ -734,7 +760,7 @@ function getMathOperationHtml() {
               <!-- Center Hub -->
               <circle cx="270" cy="120" r="32" fill="rgba(15,23,42,0.8)" stroke="#38bdf8" stroke-width="1.5"/>
               <text x="270" y="116" fill="#38bdf8" font-size="9" font-weight="800" text-anchor="middle">STATIONARY</text>
-              <text x="270" y="130" fill="#34d399" font-size="11" font-weight="900" text-anchor="middle">Ï€ = 10%</text>
+              <text x="270" y="130" fill="#34d399" font-size="11" font-weight="900" text-anchor="middle">π = 10%</text>
 
               <!-- 10 Nodes on Circle -->
               <!-- SOL -->
@@ -762,12 +788,12 @@ function getMathOperationHtml() {
               <path d="M 270 30 Q 370 30 370 120 Q 370 210 270 210 Q 170 210 170 120 Q 170 30 270 30" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4 4"/>
               
               <!-- Left Annotation: Day 4 -->
-              <text x="90" y="60" fill="#34d399" font-size="10" font-weight="800">ðŸŸ¢ Day 4 Flywheel</text>
+              <text x="90" y="60" fill="#34d399" font-size="10" font-weight="800">🟢 Day 4 Flywheel</text>
               <text x="90" y="74" fill="#94a3b8" font-size="8">10.0% Uniform Distribution</text>
               <text x="90" y="86" fill="#94a3b8" font-size="8">Zero Reader Dropoff</text>
 
               <!-- Right Annotation: Day 3 -->
-              <text x="450" y="60" fill="#f87171" font-size="10" font-weight="800" text-anchor="middle">ðŸ”´ Day 3 Bottleneck</text>
+              <text x="450" y="60" fill="#f87171" font-size="10" font-weight="800" text-anchor="middle">🔴 Day 3 Bottleneck</text>
               <text x="450" y="74" fill="#fca5a5" font-size="8" text-anchor="middle">55.5% Attention Trapped in $EVA</text>
               <text x="450" y="86" fill="#fca5a5" font-size="8" text-anchor="middle">High Bounce Rate</text>
             </svg>
@@ -776,11 +802,11 @@ function getMathOperationHtml() {
           <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
-              <div class="vis-box-title good">ðŸŸ¢ Key Advantage: 10x Exposure Flywheel</div>
+              <div class="vis-box-title good">🟢 Key Advantage: 10x Exposure Flywheel</div>
               Because every transition probability sits between 9.0% and 11.5%, readers cycle across all 10 coins. You capture Bybit's 3x comment bonus on every single asset.
             </div>
             <div class="vis-callout-box bad">
-              <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): Absorbing Dead-End Trap</div>
+              <div class="vis-box-title bad">🔴 Critical Risk (Avoided): Absorbing Dead-End Trap</div>
               On Day 3, 5 of 9 posts covered $EVA. Readers who did not trade micro-caps bounced immediately, cutting profile session duration by 62%.
             </div>
           </div>
@@ -797,7 +823,7 @@ function getMathOperationHtml() {
           <span class="math-op-tag">Score: 0.82 (66.9% Reduction vs Day 3)</span>
         </div>
         <div class="math-formula-box">
-          ||S - I||_F = âˆš(Î£_{i â‰  j} S_ijÂ²)  |  Day 3 = 2.48 âž” Day 4 = 0.82
+          ||S - I||_F = âˆš(Σ_{i â‰  j} S_ijÂ²)  |  Day 3 = 2.48 ➔ Day 4 = 0.82
         </div>
         <p class="math-op-desc">
           <strong>In Plain English:</strong> This formula squashes the entire table into <strong>one master score measuring total repetition</strong> across your posts. On Day 3, this score was a dangerous <strong>2.48</strong>. Today, it collapsed to <strong>0.82</strong>, representing a <strong>66.9% drop in total writing redundancy</strong>!
@@ -806,7 +832,7 @@ function getMathOperationHtml() {
         <!-- Visual: Frobenius Matrix Heatmap & Comparison Bar -->
         <div class="math-vis-card">
           <div class="math-vis-header">
-            <span class="math-vis-title">ðŸ“Š Mathematical Visualization: Frobenius Matrix Redundancy & Decay Comparison</span>
+            <span class="math-vis-title">📊 Mathematical Visualization: Frobenius Matrix Redundancy & Decay Comparison</span>
             <span class="math-op-tag">Matrix Spread Norm</span>
           </div>
           <div class="math-vis-svg-wrap">
@@ -878,11 +904,11 @@ function getMathOperationHtml() {
           <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
-              <div class="vis-box-title good">ðŸŸ¢ Key Advantage: 66.9% Redundancy Collapse</div>
+              <div class="vis-box-title good">🟢 Key Advantage: 66.9% Redundancy Collapse</div>
               Squashing 45 pairwise similarity values from 2.48 to 0.82 ensures your entire profile exhibits institutional-grade lexical variety. Zero risk of batch deduplication.
             </div>
             <div class="vis-callout-box bad">
-              <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): The 2.0+ Norm Ceiling</div>
+              <div class="vis-box-title bad">🔴 Critical Risk (Avoided): The 2.0+ Norm Ceiling</div>
               When Frobenius redundancy exceeds 2.0, Bybit's quality filter assumes automated content generation and caps rewards to minimum participation tiers.
             </div>
           </div>
@@ -899,16 +925,16 @@ function getMathOperationHtml() {
           <span class="math-op-tag">Max Risk: 0.0018 / 0.0500 Threshold (99.8% Safe)</span>
         </div>
         <div class="math-formula-box">
-          (S_total)_ij = (S_J)_ij Ã— (S_cos)_ij Ã— (S_tri)_ij  |  Safe Threshold &lt; 0.0500
+          (S_total)_ij = (S_J)_ij × (S_cos)_ij × (S_tri)_ij  |  Safe Threshold &lt; 0.0500
         </div>
         <p class="math-op-desc">
-          <strong>In Plain English:</strong> Bybitâ€™s algorithm checks words, sentence order, and concepts all at once. The Multi-Matrix Filter multiplies all three tests together element-by-element. On Day 4, our highest pair is only <strong>0.0018 (0.18%)</strong>, passing Bybit's anti-spam checks with a <strong>99.8% safety clearance margin</strong>!
+          <strong>In Plain English:</strong> Bybit's algorithm checks words, sentence order, and concepts all at once. The Multi-Matrix Filter multiplies all three tests together element-by-element. On Day 4, our highest pair is only <strong>0.0018 (0.18%)</strong>, passing Bybit's anti-spam checks with a <strong>99.8% safety clearance margin</strong>!
         </p>
 
         <!-- Visual: Multi-Matrix Hadamard Triple-Filter Funnel -->
         <div class="math-vis-card">
           <div class="math-vis-header">
-            <span class="math-vis-title">ðŸ“Š Mathematical Visualization: 3-Layer Hadamard Collision Shield</span>
+            <span class="math-vis-title">📊 Mathematical Visualization: 3-Layer Hadamard Collision Shield</span>
             <span class="math-op-tag">Multi-Matrix Filter</span>
           </div>
           <div class="math-vis-svg-wrap">
@@ -962,11 +988,11 @@ function getMathOperationHtml() {
           <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
-              <div class="vis-box-title good">ðŸŸ¢ Key Advantage: 99.8% Multi-Layer Safety Margin</div>
+              <div class="vis-box-title good">🟢 Key Advantage: 99.8% Multi-Layer Safety Margin</div>
               Because word overlap (18.5%), concept cosine (20.0%), and trigram clones (12.8%) are all suppressed, their element-wise product collapses to 0.0018. Complete anti-spam clearance.
             </div>
             <div class="vis-callout-box bad">
-              <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): Simultaneous Layer Tripping</div>
+              <div class="vis-box-title bad">🔴 Critical Risk (Avoided): Simultaneous Layer Tripping</div>
               If two posts share vocabulary AND sentence syntax AND trading structure, their product crosses 0.0500, triggering an instant shadowban by Bybit's neural filters.
             </div>
           </div>
@@ -980,19 +1006,19 @@ function getMathOperationHtml() {
     <div class="math-op-display-card">
       <div class="math-op-head">
         <span class="math-op-name">ðŸŒ Network Graph Connectivity (Graph Laplacian: L = D - S)</span>
-        <span class="math-op-tag">Fiedler Value: Î»â‚ = 0.88 / 1.00 (Zero Topic Clumping)</span>
+        <span class="math-op-tag">Fiedler Value: λâ‚ = 0.88 / 1.00 (Zero Topic Clumping)</span>
       </div>
       <div class="math-formula-box">
-        L = D - S  where  D_ii = Î£_j S_ij  |  Î»â‚ = 0.88
+        L = D - S  where  D_ii = Σ_j S_ij  |  λâ‚ = 0.88
       </div>
       <p class="math-op-desc">
-        <strong>In Plain English:</strong> Think of our 10 posts as 10 cities, and the similarity percentages as bridges between them. The Graph Laplacian measures whether our feed forms healthy, wide-open roads or if certain posts form a crowded, repetitive "traffic jam". The Fiedler eigenvalue of <strong>0.88</strong> mathematically proves zero cluster clumpingâ€”every post explores a completely distinct crypto sector!
+        <strong>In Plain English:</strong> Think of our 10 posts as 10 cities, and the similarity percentages as bridges between them. The Graph Laplacian measures whether our feed forms healthy, wide-open roads or if certain posts form a crowded, repetitive "traffic jam". The Fiedler eigenvalue of <strong>0.88</strong> mathematically proves zero cluster clumping—every post explores a completely distinct crypto sector!
       </p>
 
       <!-- Visual: 10-Node Topological Graph Network -->
       <div class="math-vis-card">
         <div class="math-vis-header">
-          <span class="math-vis-title">ðŸ“Š Mathematical Visualization: 10-Node Topological Network Graph (Algebraic Connectivity Î»â‚ = 0.88)</span>
+          <span class="math-vis-title">📊 Mathematical Visualization: 10-Node Topological Network Graph (Algebraic Connectivity λâ‚ = 0.88)</span>
           <span class="math-op-tag">Graph Theory</span>
         </div>
         <div class="math-vis-svg-wrap">
@@ -1036,7 +1062,7 @@ function getMathOperationHtml() {
 
             <!-- Center Badge -->
             <circle cx="270" cy="135" r="34" fill="rgba(15,23,42,0.85)" stroke="#34d399" stroke-width="2"/>
-            <text x="270" y="128" fill="#38bdf8" font-size="8.5" font-weight="700" text-anchor="middle">FIEDLER Î»â‚</text>
+            <text x="270" y="128" fill="#38bdf8" font-size="8.5" font-weight="700" text-anchor="middle">FIEDLER λâ‚</text>
             <text x="270" y="145" fill="#34d399" font-size="14" font-weight="900" text-anchor="middle">0.88</text>
             <text x="270" y="156" fill="#a7f3d0" font-size="7" text-anchor="middle">Zero Clumping</text>
 
@@ -1053,20 +1079,20 @@ function getMathOperationHtml() {
             <g transform="translate(214, 58)"><circle cx="0" cy="0" r="14" fill="#0f172a" stroke="#10b981" stroke-width="2"/><text x="0" y="4" fill="#34d399" font-size="7.5" font-weight="800" text-anchor="middle">RNDR</text></g>
 
             <!-- Legend on sides -->
-            <text x="80" y="35" fill="#10b981" font-size="9" font-weight="700">ðŸŸ¢ &lt; 12%: Hyper-Divergent</text>
-            <text x="80" y="48" fill="#f59e0b" font-size="9" font-weight="700">ðŸŸ¡ 12%â€“18.5%: Controlled</text>
-            <text x="80" y="61" fill="#ef4444" font-size="9" font-weight="700">ðŸ”´ &gt; 18.5%: ZERO Red Lines!</text>
+            <text x="80" y="35" fill="#10b981" font-size="9" font-weight="700">🟢 &lt; 12%: Hyper-Divergent</text>
+            <text x="80" y="48" fill="#f59e0b" font-size="9" font-weight="700">🟡 12%–18.5%: Controlled</text>
+            <text x="80" y="61" fill="#ef4444" font-size="9" font-weight="700">🔴 &gt; 18.5%: ZERO Red Lines!</text>
           </svg>
         </div>
 
         <!-- Color-Coded Advantage & Disadvantage Breakdown -->
         <div class="vis-callout-grid">
           <div class="vis-callout-box good">
-            <div class="vis-box-title good">ðŸŸ¢ Key Advantage: High Algebraic Connectivity (Î»â‚ = 0.88)</div>
+            <div class="vis-box-title good">🟢 Key Advantage: High Algebraic Connectivity (λâ‚ = 0.88)</div>
             The Fiedler eigenvalue proves that our 10 posts form an open, well-balanced graph. There are no dense topical clusters to trigger Bybit's anti-spam deduplication algorithms.
           </div>
           <div class="vis-callout-box bad">
-            <div class="vis-box-title bad">ðŸ”´ Critical Risk (Avoided): Clustered Topic Congestion</div>
+            <div class="vis-box-title bad">🔴 Critical Risk (Avoided): Clustered Topic Congestion</div>
             On Day 3, 5 posts formed an isolated clique around $EVA with pairwise overlap reaching 42.0%. The Laplacian eigenvalue plummeted to 0.12, causing Bybit's filters to flag the entire day as repetitive spam.
           </div>
         </div>
@@ -1107,7 +1133,7 @@ function getDay4ActiveMetricHtml() {
   if (currentForensicMetric === 'trigram') {
     return `
       <p class="similarity-matrix-desc">
-        <strong>ðŸ§¬ 3-Word Phrase Clones (MinHash Shingling):</strong> Measures exact 3-word phrase sequence overlap. Overlap ranges between <strong>4.2% and 12.8%</strong> across all pairs (100% in the green zone), mathematically proving <strong>zero sentence-level template cloning</strong>. Bybit's anti-spam engine rewards this high syntactic diversity.
+        <strong>🧪 3-Word Phrase Clones (MinHash Shingling):</strong> Measures exact 3-word phrase sequence overlap. Overlap ranges between <strong>4.2% and 12.8%</strong> across all pairs (100% in the green zone), mathematically proving <strong>zero sentence-level template cloning</strong>. Bybit's anti-spam engine rewards this high syntactic diversity.
       </p>
       <table class="similarity-table">
         <thead>
@@ -1140,7 +1166,7 @@ function getDay4ActiveMetricHtml() {
       </p>
       <div class="entropy-spectrum-grid">
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 1: $SOL</span><span class="forensic-badge score">99/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 1: $SOL</span><span class="forensic-badge score">99/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.66 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.78 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.82 (Rich Vocab)</strong></div>
@@ -1149,7 +1175,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 2: $TIA</span><span class="forensic-badge score">98/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 2: $TIA</span><span class="forensic-badge score">98/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.69 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.81 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.84 (Rich Vocab)</strong></div>
@@ -1158,7 +1184,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 3: $NEAR</span><span class="forensic-badge score">99/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 3: $NEAR</span><span class="forensic-badge score">99/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.69 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.47 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.84 (Rich Vocab)</strong></div>
@@ -1167,7 +1193,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 4: $FET</span><span class="forensic-badge score">98/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 4: $FET</span><span class="forensic-badge score">98/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.73 bits (Max Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.59 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.84 (Rich Vocab)</strong></div>
@@ -1176,7 +1202,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 5: $INJ</span><span class="forensic-badge score">98/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 5: $INJ</span><span class="forensic-badge score">98/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.60 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.56 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.80 (Rich Vocab)</strong></div>
@@ -1185,7 +1211,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 6: $AAVE</span><span class="forensic-badge score">98/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 6: $AAVE</span><span class="forensic-badge score">98/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.61 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.68 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.81 (Rich Vocab)</strong></div>
@@ -1194,7 +1220,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 7: $APT</span><span class="forensic-badge score">99/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 7: $APT</span><span class="forensic-badge score">99/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.65 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.87 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.82 (Rich Vocab)</strong></div>
@@ -1203,7 +1229,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 8: $AVAX</span><span class="forensic-badge score">99/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 8: $AVAX</span><span class="forensic-badge score">99/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.62 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.35 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.81 (Rich Vocab)</strong></div>
@@ -1212,7 +1238,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 9: $DOGE</span><span class="forensic-badge score">98/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 9: $DOGE</span><span class="forensic-badge score">98/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.59 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.43 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.80 (Rich Vocab)</strong></div>
@@ -1221,7 +1247,7 @@ function getDay4ActiveMetricHtml() {
         </div>
 
         <div class="entropy-spectrum-card">
-          <div class="entropy-card-head"><span class="entropy-card-coin">âš¡ Post 10: $RENDER</span><span class="forensic-badge score">99/100</span></div>
+          <div class="entropy-card-head"><span class="entropy-card-coin">⚡ Post 10: $RENDER</span><span class="forensic-badge score">99/100</span></div>
           <div class="entropy-stat-row"><span>Shannon Entropy (H):</span><strong>6.64 bits (High Alpha)</strong></div>
           <div class="entropy-stat-row"><span>Sentence Burstiness (Ïƒ):</span><strong>4.78 words (Dynamic)</strong></div>
           <div class="entropy-stat-row"><span>Type-Token Ratio (TTR):</span><strong>0.81 (Rich Vocab)</strong></div>
@@ -1235,7 +1261,7 @@ function getDay4ActiveMetricHtml() {
   // Default: 'jaccard'
   return `
     <p class="similarity-matrix-desc">
-      <strong>ðŸ“Š Word Overlap Matrix (1-Gram Jaccard):</strong> Measures vocabulary intersection over union. Following the total lexical rewriting of Posts 7, 8, 9, and 10, the <strong>4-post submatrix has collapsed to single digits (8.9% to 12.0%)</strong>, and the <strong>global maximum across all 45 pairs is only 18.5%</strong>! 100% of the matrix sits in the ultra-lean green zone.
+      <strong>📊 Word Overlap Matrix (1-Gram Jaccard):</strong> Measures vocabulary intersection over union. Following the total lexical rewriting of Posts 7, 8, 9, and 10, the <strong>4-post submatrix has collapsed to single digits (8.9% to 12.0%)</strong>, and the <strong>global maximum across all 45 pairs is only 18.5%</strong>! 100% of the matrix sits in the ultra-lean green zone.
     </p>
     <table class="similarity-table">
       <thead>
@@ -1289,7 +1315,7 @@ function getDay3ForensicHtml() {
 
     <div class="audit-summary-box" style="border-left-color: #ef4444; margin-bottom: 16px;">
       <strong>âš ï¸ Why Day 3 was Capped at 10.0 Points (The Post-Mortem Diagnosis):</strong><br>
-      Surface text quality was high (92â€“98/100), but Bybit's algorithm rejected high point attribution due to three structural bottlenecks:<br>
+      Surface text quality was high (92–98/100), but Bybit's algorithm rejected high point attribution due to three structural bottlenecks:<br>
       1. <strong>Single-Asset Saturation:</strong> Posting 5 times about $EVA triggered anti-spam deduplication filters. Thin liquidity prevented follower trade volume.<br>
       2. <strong>Template Syntactic Cloning:</strong> Posts 5, 6, and 8 shared a 42.0% identical grammatical structure, flagging template generation.<br>
       3. <strong>Missing Trade CTAs:</strong> Without "Tap the widget below" instructions, zero reader trades were attributed to your creator UID.
@@ -1299,14 +1325,14 @@ function getDay3ForensicHtml() {
     <div class="threshold-legend-bar">
       <span style="font-size: 0.72rem; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Standard Thresholds:</span>
       <div class="legend-item"><span class="legend-dot green"></span> &lt; 12%: Hyper-Divergent Alpha</div>
-      <div class="legend-item"><span class="legend-dot gold"></span> 12%â€“18.5%: Optimal Polymorphic Standard</div>
+      <div class="legend-item"><span class="legend-dot gold"></span> 12%–18.5%: Optimal Polymorphic Standard</div>
       <div class="legend-item"><span class="legend-dot red"></span> &gt; 18.5%: Excess Similarity (Flagged)</div>
     </div>
 
     <!-- Pairwise Jaccard Similarity Matrix Table for Day 3 -->
     <div class="similarity-matrix-wrap">
       <div class="similarity-matrix-header">
-        <span class="similarity-matrix-title">ðŸ“Š Day 3 Jaccard Similarity Matrix (%)</span>
+        <span class="similarity-matrix-title">📊 Day 3 Jaccard Similarity Matrix (%)</span>
         <span class="forensic-badge score" style="background: rgba(239, 68, 68, 0.15); color: #f87171;">High Redundancy Detected</span>
       </div>
       <p class="similarity-matrix-desc">
@@ -1334,25 +1360,25 @@ function getDay3ForensicHtml() {
     </div>
 
     <!-- Comparative Table: Day 3 vs Day 4 Strategic Pivots -->
-    <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin: 20px 0 12px 0;">âš¡ 5 Strategic Pivots: How Day 4 Fixes Day 3</h3>
+    <h3 style="font-size: 0.95rem; font-weight: 800; color: #fff; margin: 20px 0 12px 0;">⚡ 5 Strategic Pivots: How Day 4 Fixes Day 3</h3>
     <div class="audit-item success-border" style="margin-bottom: 10px;">
-      <div class="audit-item-title">1. Asset Diversity: 1 Token Saturation âž” 10 Independent Market Communities</div>
+      <div class="audit-item-title">1. Asset Diversity: 1 Token Saturation ➔ 10 Independent Market Communities</div>
       <p class="audit-item-desc">Day 3 posted 5 times on $EVA (thin liquidity). Day 4 covers 10 liquid high-volume pairs ($SOL, $TIA, $NEAR, $FET, $INJ, $AAVE, $APT, $AVAX, $DOGE, $RENDER), tapping 10 independent trader bases.</p>
     </div>
     <div class="audit-item success-border" style="margin-bottom: 10px;">
-      <div class="audit-item-title">2. Structural Variation: Template Clones âž” Unique Coin Catalysts & Schemas</div>
+      <div class="audit-item-title">2. Structural Variation: Template Clones ➔ Unique Coin Catalysts & Schemas</div>
       <p class="audit-item-desc">Eliminated the 42% formulaic clone. Day 4 gives each coin an organic thesis and varied schema (Machine Learning framing, Supply squeeze, Credit liquidity, Volatility squeeze).</p>
     </div>
     <div class="audit-item success-border" style="margin-bottom: 10px;">
-      <div class="audit-item-title">3. Trade Conversion: Passive Opinion âž” Polymorphic CTAs</div>
+      <div class="audit-item-title">3. Trade Conversion: Passive Opinion ➔ Polymorphic CTAs</div>
       <p class="audit-item-desc">Deployed 10 distinct Bybit portal directives (Orderbook depth, Perpetual funding spread, Liquidation clusters, Position sizing, Staking yield), unlocking Bybit's trading volume multiplier.</p>
     </div>
     <div class="audit-item success-border" style="margin-bottom: 10px;">
-      <div class="audit-item-title">4. Comment Multiplier: Generic Sign-Offs âž” High-Engagement Prompts</div>
-      <p class="audit-item-desc">Replaced passive questions with actionable entry prompts ("Drop your entry below ðŸ‘‡"), capturing Bybit's 3x comment weighting.</p>
+      <div class="audit-item-title">4. Comment Multiplier: Generic Sign-Offs ➔ High-Engagement Prompts</div>
+      <p class="audit-item-desc">Replaced passive questions with actionable entry prompts ("Drop your entry below 👇"), capturing Bybit's 3x comment weighting.</p>
     </div>
     <div class="audit-item success-border">
-      <div class="audit-item-title">5. Daily Quota: 9/10 Incomplete âž” 10/10 Verified Posts</div>
+      <div class="audit-item-title">5. Daily Quota: 9/10 Incomplete ➔ 10/10 Verified Posts</div>
       <p class="audit-item-desc">All 10 slots populated and calibrated between 130 and 136 words, securing Bybit's daily completion bonus.</p>
     </div>
   `;

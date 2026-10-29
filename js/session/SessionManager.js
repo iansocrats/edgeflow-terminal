@@ -1,4 +1,4 @@
-﻿// ================================================================================
+// ================================================================================
 // EdgeFlow Terminal: Session & Scores Hub Manager (OOAD Implementation)
 // ================================================================================
 window.EdgeFlow = window.EdgeFlow || {};
@@ -607,28 +607,6 @@ function initSessionAndPointsHub() {
   renderAttributionMatrix();
   renderDynamicDayAudit();
 }
-
-// --------------------------------------------------------------------------------
-// Offline PWA Service Worker Registration
-// --------------------------------------------------------------------------------
-function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .then((reg) => console.log('EdgeFlow PWA Service Worker Active:', reg.scope))
-      .catch((err) => console.log('SW registration error:', err));
-  }
-}
-
-// Start app
-document.addEventListener('DOMContentLoaded', () => {
-  initApp();
-  registerServiceWorker();
-});
-
-
-// ==============================================================================
-// Real-time Benchmark Engine: Rust WebAssembly vs JavaScript Engine
-// ==============================================================================
 
 /**
  * Object-Oriented Session Manager Class

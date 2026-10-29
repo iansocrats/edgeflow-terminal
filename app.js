@@ -1,4 +1,4 @@
-﻿// ================================================================================
+// ================================================================================
 // EdgeFlow Terminal: Main Application Orchestrator
 // Modular Architecture (OOAD Refactoring):
 //   â”œâ”€â”€ js/data/preloadedSlots.js       -> Day 4 preloaded setups & slot templates
@@ -36,6 +36,8 @@ initRustWasm();
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
 const STORAGE_KEY = 'byx_post_studio_day3_fresh_v29';
+const SESSION_KEY = 'byx_active_session_id_v29';
+let currentSessionId = 'day4';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -697,6 +699,9 @@ function renderUnderlinedView(text) {
 }
 
 function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 // View Mode Toggle (Clean Plain Text vs Subtle Underlined Issues)
 // --------------------------------------------------------------------------------
 function setViewMode(mode) {
@@ -1878,13 +1883,6 @@ function setupEvents() {
 }
 
 // ================================================================================
-// Bybit Daily Points Attribution & Day Session Management Engine
-// ================================================================================
-
-const SESSION_KEY = 'byx_active_session_id_v29';
-let currentSessionId = 'day4';
-
-// DOM elements for Daily Points Hub
 // Real-time Benchmark Engine: Rust WebAssembly vs JavaScript Engine
 // ==============================================================================
 function runRustVsJsBenchmark() {
@@ -2008,5 +2006,19 @@ function updateBenchmarkDisplay(data) {
   `;
 }
 
-
 // ================================================================================
+// Application Bootstrapping & Service Worker Registration
+// ================================================================================
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then((reg) => console.log('EdgeFlow PWA Service Worker Active:', reg.scope))
+      .catch((err) => console.log('SW registration error:', err));
+  }
+}
+
+// Start app
+document.addEventListener('DOMContentLoaded', () => {
+  initApp();
+  registerServiceWorker();
+});
