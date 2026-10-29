@@ -200,14 +200,18 @@ async function runE2ETest() {
     const purpleVal = parseInt(gltrPurple);
     const greenVal = parseInt(gltrGreen);
 
-    if (yellowVal < 38 || yellowVal > 58) {
-      throw new Error(`Expected Contextual Words to be in 38-58% range (Target: 40-50%), got ${yellowVal}%`);
+    const hasContextualPill = await evalBrowser('document.querySelector(".gltr-token-pill.contextual") !== null');
+    console.log(`✅ PASS: GLTR Contextual tokens explicitly tagged: ${hasContextualPill}`);
+    if (!hasContextualPill) throw new Error('Expected GLTR contextual tokens to be tagged in diagnostics');
+
+    if (yellowVal < 30 || yellowVal > 52) {
+      throw new Error(`Expected Contextual Words to be in 30-52% range (Target: 35-45%), got ${yellowVal}%`);
     }
-    if (purpleVal < 18 || purpleVal > 35) {
-      throw new Error(`Expected Creative Leaps to be in 18-35% range (Target: 20-30%), got ${purpleVal}%`);
+    if (purpleVal < 20 || purpleVal > 40) {
+      throw new Error(`Expected Creative Leaps to be in 20-40% range (Target: 25-35%), got ${purpleVal}%`);
     }
-    if (greenVal > 38) {
-      throw new Error(`Expected Top-10 Predictable to be <= 38%, got ${greenVal}%`);
+    if (greenVal > 35) {
+      throw new Error(`Expected Top-10 Predictable to be <= 35%, got ${greenVal}%`);
     }
     if (!gltrVerdict.includes('PASSED')) {
       throw new Error(`Expected GLTR Verdict to be PASSED, got "${gltrVerdict}"`);

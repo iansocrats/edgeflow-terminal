@@ -2081,9 +2081,11 @@ body {
   background: rgba(16, 185, 129, 0.14);
   color: #34d399;
 }
-.gltr-token-pill.top100 {
-  background: rgba(245, 158, 11, 0.14);
+.gltr-token-pill.top100,
+.gltr-token-pill.contextual {
+  background: rgba(245, 158, 11, 0.16);
   color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.28);
 }
 .gltr-token-pill.creative {
   background: rgba(168, 85, 247, 0.14);

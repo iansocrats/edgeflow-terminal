@@ -265,7 +265,7 @@ class MathematicalGatekeeper:
             "name": "8. Harvard GLTR Token Predictability (Rank Optimization)",
             "passed": passed,
             "value": f"Contextual: {yellow}% | Creative: {purple}% | Top-10: {green}%",
-            "threshold": "Contextual: 38%–58% (Target: 40–50%) | Creative: 18%–35% (Target: 20–30%)",
+            "threshold": "Contextual: 30%–50% (Target: 35–45%) | Creative: 20%–40% (Target: 25–35%)",
             "details": ev,
             "message": "Balanced contextual flow and rich creative domain alpha verified." if passed else "Token distribution outside calibrated Harvard GLTR bounds."
         }
