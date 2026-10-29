@@ -160,6 +160,19 @@ function getDay4PreloadedSlots() {
         { category: "word", description: "Financial formatting ($2,350, $2,240, $2,230, $2,250, $2,185, $2,420, $2,120, 3x, 1:2.8)." },
         { category: "spacing", description: "On-chain liquidation blueprint arrow layout & funding rate depth widget." }
       ]
+    },
+    {
+      id: 13,
+      coin: '$BTC',
+      title: 'Post 13: ⚡ $BTC Sovereign Bond Yield Spike & $79,200 Algorithmic Absorption',
+      status: 'ready',
+      raw: "For our next post today, let's look at Bitcoin BTC USDT which just had a very similar flash drop to Ethereum. Bitcoin shed about 2.9% across the session, falling from 81800 to probe 79200 as surging Treasury yields and hawkish Fed statements dampened risk appetite. The swift pullback wiped 120M in futures open interest, flattening basis while institutional algorithms captured sell-side pressure along this structural shelf. Support is confirmed around 78800 with overhead resistance bands at 81500 and 83200. Tactical entries: deploy limit buys between 79100 and 79550, anchoring stops under 78150 with 3x leverage. Targets: take first profit at 81500 and let secondary runners challenge 83200 for a 1:2.7 payoff. An invalidation close below 78150 cancels our recovery. Check the orderbook tool below. Are you buying this dip or waiting for 75000? Post your view below.",
+      improved: "⚡ #BTCUSDT: Sovereign Bond Yield Spike & $79,200 Algorithmic Absorption\n\nBitcoin shed 2.9% today, falling from $81,800 to probe $79,200 as surging bond yields and hawkish Fed statements dampened speculative sentiment. The abrupt pullback wiped $120M in futures open interest, flattening basis while institutional algorithms captured sell-side pressure along this structural shelf.\n\nInstitutional Liquidity Framework:\n▪ Structural Base: Confirmed demand around $78,800; upper hurdle bands loom at $81,500 and $83,200.\n▪ Laddered Entries: Deploy limit buys across $79,100 to $79,550; capital safeguard anchored under $78,150 with 3x leverage.\n▪ Profit Objectives: Bank first scale at $81,500 (+2.9%), trailing secondary exposure toward $83,200 (+5.0%) for an asymmetric 1:2.7 payoff.\n▪ Setup Invalidation: A 4-hour close below $78,150 terminates our recovery arc.\n\nMonitor bid-ask orderflow on the #BTCUSDT module underneath. Accumulating into this retracement or expecting $75,000? Share your thesis below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 5, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Financial formatting ($81,800, $79,200, $120M, $78,800, $81,500, $83,200, $79,100, $79,550, $78,150, 3x, 1:2.7)." },
+        { category: "spacing", description: "Institutional liquidity framework square bullet layout & orderflow depth module." }
+      ]
     }
   ];
 }function createEmptySlots() {

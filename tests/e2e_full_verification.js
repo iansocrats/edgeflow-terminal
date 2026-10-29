@@ -146,10 +146,10 @@ async function runE2ETest() {
       console.log('✅ PASS: Initial page load completed with ZERO JavaScript exceptions.');
     }
 
-    // 2. Check 12-Post Pills rendered
+    // 2. Check 13-Post Pills rendered
     const pillCount = await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item").length');
     console.log(`✅ PASS: Found ${pillCount} post pills in carousel.`);
-    if (pillCount !== 12) throw new Error(`Expected 12 pills, got ${pillCount}`);
+    if (pillCount !== 13) throw new Error(`Expected 13 pills, got ${pillCount}`);
 
     // 3. Check Post 1 Content loaded
     const postTitle = await evalBrowser('document.getElementById("currentPostTitle").textContent');
@@ -189,6 +189,17 @@ async function runE2ETest() {
     console.log(`✅ PASS: Post 12 Content loaded (${contentP12.length} chars, contains: "${contentP12.slice(0, 40)}...")`);
     if (!titleP12.includes('ETH')) throw new Error('Expected Post 12 to be ETH');
     if (!contentP12.includes('ETH')) throw new Error('Expected Post 12 content to contain ETH');
+
+    // 4d. Test clicking Pill 13 ($BTC Yield Spike & Absorption)
+    console.log('\n--- TESTING PILL 13 ($BTC) NAVIGATION & COPY FEATURE ---');
+    await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[12].click()');
+    await new Promise(r => setTimeout(r, 300));
+    const titleP13 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
+    const contentP13 = await evalBrowser('document.getElementById("polishedContent").value');
+    console.log(`✅ PASS: Clicked Pill 13 -> New Title: "${titleP13}"`);
+    console.log(`✅ PASS: Post 13 Content loaded (${contentP13.length} chars, contains: "${contentP13.slice(0, 40)}...")`);
+    if (!titleP13.includes('BTC')) throw new Error('Expected Post 13 to be BTC');
+    if (!contentP13.includes('BTC')) throw new Error('Expected Post 13 content to contain BTC');
 
     // Test Copy Polished Post button trigger
     const copyPolishedBtnExists = await evalBrowser('document.getElementById("copyPolishedBtn") !== null');
