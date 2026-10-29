@@ -245,7 +245,11 @@ async function runE2ETest() {
     await evalBrowser('document.querySelector(\'.math-suite-tab[data-suite="infotheory"]\').click()');
     await new Promise(r => setTimeout(r, 300));
 
-    const infoConcepts = ['kl', 'mutual_info', 'kelly_wealth', 'universal_portfolio', 'aep', 'channel_capacity', 'rate_distortion'];
+    const infoConcepts = [
+      'kl', 'mutual_info', 'kelly_wealth', 'universal_portfolio',
+      'aep', 'channel_capacity', 'rate_distortion',
+      'waterfilling', 'kolmogorov', 'markov_rate', 'inequalities'
+    ];
     for (const concept of infoConcepts) {
       await evalBrowser(`document.querySelector('.info-nav-btn[data-concept="${concept}"]').click()`);
       await new Promise(r => setTimeout(r, 200));
