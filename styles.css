@@ -4196,3 +4196,92 @@ body {
   color: #34d399;
   font-weight: 800;
 }
+/* ==========================================================================
+   Academic Mathematics Deck: Visualizations & Color Coding
+   ========================================================================== */
+.math-vis-card {
+  background: rgba(10, 15, 29, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin: 14px 0 10px 0;
+}
+
+.math-vis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+}
+
+.math-vis-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.math-vis-svg-wrap {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px;
+}
+
+.math-vis-svg-wrap svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.vis-callout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.vis-callout-box {
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+
+.vis-callout-box.good {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #d1fae5;
+}
+
+.vis-callout-box.bad {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #fee2e2;
+}
+
+.vis-callout-box.warn {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #fef3c7;
+}
+
+.vis-box-title {
+  font-weight: 800;
+  font-size: 0.76rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.vis-box-title.good { color: #34d399; }
+.vis-box-title.bad { color: #f87171; }
+.vis-box-title.warn { color: #fbbf24; }
