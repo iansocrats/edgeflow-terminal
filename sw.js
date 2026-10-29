@@ -1,5 +1,5 @@
 // EdgeFlow Terminal Service Worker — Fast Offline Cache
-const CACHE_NAME = 'edgeflow-v56';
+const CACHE_NAME = 'edgeflow-v57';
 const ASSETS = [
   './',
   './index.html',
