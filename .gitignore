@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Rust / Cargo
+edgeflow_core/target/
+edgeflow_core/Cargo.lock
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# Scratch / logs
+scratch/
+*.log
