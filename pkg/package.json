@@ -1,0 +1,15 @@
+{
+  "name": "edgeflow_core",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "edgeflow_core_bg.wasm",
+    "edgeflow_core.js",
+    "edgeflow_core.d.ts"
+  ],
+  "main": "edgeflow_core.js",
+  "types": "edgeflow_core.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

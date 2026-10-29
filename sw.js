@@ -1,12 +1,14 @@
 // EdgeFlow Terminal Service Worker — Fast Offline Cache
-const CACHE_NAME = 'edgeflow-v44';
+const CACHE_NAME = 'edgeflow-v45';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
   './posts.json',
-  './manifest.json'
+  './manifest.json',
+  './pkg/edgeflow_core.js',
+  './pkg/edgeflow_core_bg.wasm'
 ];
 
 self.addEventListener('install', (event) => {

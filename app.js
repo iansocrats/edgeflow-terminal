@@ -1,3 +1,23 @@
+// Rust WebAssembly Core Integration
+let rustCore = null;
+let isRustReady = false;
+
+async function initRustWasm() {
+  try {
+    const wasmModule = await import('./pkg/edgeflow_core.js');
+    await wasmModule.default();
+    rustCore = wasmModule;
+    isRustReady = true;
+    console.log('⚡ [EdgeFlow Rust Core] WebAssembly Engine Online & Active!');
+    if (document.getElementById('currentDateBadge')) {
+      const badge = document.getElementById('currentDateBadge');
+      badge.innerHTML = '⚡ Rust WASM Active • ' + badge.textContent;
+    }
+  } catch (err) {
+    console.warn('Rust WASM falling back to native JS engine:', err);
+  }
+}
+initRustWasm();
 // Post Studio Bridge — Multi-Detector & Humanizer Client Application
 // Enforces Strict Polishing Rules:
 // Rule 1: Punctuation Only
@@ -3805,6 +3825,15 @@ function setSessionScore(sessionId, score) {
 }
 
 function calculatePostDimensionScore(text) {
+  if (isRustReady && rustCore && typeof rustCore.score_post === 'function') {
+    try {
+      const jsonRes = rustCore.score_post(text);
+      const parsed = JSON.parse(jsonRes);
+      return parsed.total || 0;
+    } catch (e) {
+      console.warn('Rust score_post error, using JS fallback:', e);
+    }
+  }
   if (!text || text.startsWith('Awaiting your voice notes')) return 0;
   const clean = text.trim();
 
