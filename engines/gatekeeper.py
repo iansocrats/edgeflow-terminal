@@ -15,6 +15,8 @@ Benchmarks:
 """
 
 import math
+import os
+import json
 import re
 import zlib
 from collections import Counter
@@ -28,10 +30,55 @@ def tokenize(text: str) -> List[str]:
 
 
 class MathematicalGatekeeper:
-    def __init__(self, existing_posts: List[Dict[str, Any]] = None):
+    def __init__(self, existing_posts: List[Dict[str, Any]] = None, reference_posts: List[Dict[str, Any]] = None):
         self.existing_posts = existing_posts or []
-        self.existing_texts = [p.get("improved", p.get("raw", "")) for p in self.existing_posts]
-        self.existing_corpus = [tokenize(t) for t in self.existing_texts]
+        self.reference_posts = reference_posts if reference_posts is not None else self._load_default_reference_anchor()
+
+        # Build unified dual-scope corpus (Inter-Day Reference Anchor + Intra-Day Active Posts)
+        self.corpus_entries = []
+        seen_texts = set()
+
+        # 1. Add Reference Posts (e.g. Day 4 Anchor)
+        for i, p in enumerate(self.reference_posts):
+            t = p.get("improved", p.get("raw", ""))
+            coin = p.get("coin", f"Ref-{i+1}")
+            if t and len(t.strip()) > 30 and t.strip() not in seen_texts:
+                seen_texts.add(t.strip())
+                self.corpus_entries.append({
+                    "label": f"Day 4 Anchor ({coin})",
+                    "text": t,
+                    "tokens": tokenize(t)
+                })
+
+        # 2. Add Active Day Posts (e.g. Today / Day 5 Staged Posts)
+        for i, p in enumerate(self.existing_posts):
+            t = p.get("improved", p.get("raw", ""))
+            coin = p.get("coin", f"Post {i+1}")
+            if t and len(t.strip()) > 30:
+                if t.strip() not in seen_texts:
+                    seen_texts.add(t.strip())
+                    self.corpus_entries.append({
+                        "label": f"Today ({coin})",
+                        "text": t,
+                        "tokens": tokenize(t)
+                    })
+
+    def _load_default_reference_anchor(self) -> List[Dict[str, Any]]:
+        """Loads the persistent historical anchor (Day 4) to ensure cold-start posts have a baseline."""
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for fn in [
+            os.path.join(base_dir, "contracts", "posts.json"),
+            os.path.join(base_dir, "posts.json")
+        ]:
+            if os.path.exists(fn):
+                try:
+                    with open(fn, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        if isinstance(data, list) and len(data) >= 5:
+                            return data
+                except Exception:
+                    pass
+        return []
 
     def check_word_count(self, text: str) -> Dict[str, Any]:
         words = text.split()
@@ -99,9 +146,10 @@ class MathematicalGatekeeper:
         comp_bytes = len(zlib.compress(text.encode("utf-8"), level=9))
         ratio = round(comp_bytes / raw_bytes, 3) if raw_bytes > 0 else 0.0
 
-        # Pairwise NCD against all OTHER existing posts (exclude self)
+        # Pairwise NCD against all dual-scope entries (excluding self)
         ncd_values = []
-        for other in self.existing_texts:
+        for entry in self.corpus_entries:
+            other = entry["text"]
             if other.strip() == text.strip():
                 continue
             c_other = len(zlib.compress(other.encode("utf-8"), level=9))
@@ -119,26 +167,26 @@ class MathematicalGatekeeper:
             "passed": passed,
             "value": f"LZW: {ratio} | Min NCD: {min_ncd}",
             "threshold": "LZW >= 0.55 & Min NCD >= 0.65",
-            "message": "Algorithmic incompressibility verified (zero AI-template overlap)." if passed else "Text compressible into existing setups; increase distinct phrasing."
+            "message": "Dual-scope algorithmic incompressibility verified." if passed else "Text compressible into reference/existing setups; increase distinct phrasing."
         }
 
     def check_similarity_barrier(self, text: str) -> Dict[str, Any]:
         tokens = set(tokenize(text))
-        if not self.existing_corpus or not tokens:
+        if not self.corpus_entries or not tokens:
             return {"name": "5. Max Pairwise Jaccard Similarity", "passed": True, "value": "0.0%", "threshold": "<= 18.5%"}
 
         max_jaccard = 0.0
-        most_similar_idx = -1
-        for i, other_tokens in enumerate(self.existing_corpus):
-            if self.existing_texts[i].strip() == text.strip():
+        most_similar_label = "None"
+        for entry in self.corpus_entries:
+            if entry["text"].strip() == text.strip():
                 continue  # Exclude self comparison
-            other_set = set(other_tokens)
+            other_set = set(entry["tokens"])
             inter = len(tokens.intersection(other_set))
             union = len(tokens.union(other_set))
             sim = inter / union if union > 0 else 0.0
             if sim > max_jaccard:
                 max_jaccard = sim
-                most_similar_idx = i
+                most_similar_label = entry["label"]
 
         pct = round(max_jaccard * 100, 1)
         passed = pct <= 18.5
@@ -147,8 +195,8 @@ class MathematicalGatekeeper:
             "passed": passed,
             "value": f"{pct}%",
             "threshold": "<= 18.5%",
-            "most_similar_post_index": most_similar_idx + 1 if most_similar_idx >= 0 else None,
-            "message": "Hyper-divergent alpha verified." if passed else f"Cross-post collision with Post {most_similar_idx + 1}; prune shared words."
+            "most_similar_post": most_similar_label if max_jaccard > 0 else None,
+            "message": "Dual-scope hyper-divergent alpha verified." if passed else f"Cross-corpus collision with {most_similar_label} ({pct}% > 18.5%); prune shared words."
         }
 
     def check_markov_narrative_flow(self, text: str) -> Dict[str, Any]:

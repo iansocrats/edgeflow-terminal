@@ -62,7 +62,70 @@ class GraphLaplacianModule:
                     markov[i][j] = round(sim[i][j] / d, 3)
         return markov
 
-    def compute_telemetry(self) -> Dict[str, Any]:
+    def compute_cross_day_matrix(self, ref_corpus: List[List[str]], ref_labels: List[str]) -> Dict[str, Any]:
+        """Computes cross-day novelty matrix between active posts and the reference day baseline."""
+        m = len(ref_corpus)
+        if self.n == 0 or m == 0:
+            return {"cross_matrix": [], "avg_overlap_pct": 0.0, "max_overlap_pct": 0.0, "novelty_index_pct": 100.0}
+
+        cross_sim = []
+        all_vals = []
+        for i in range(self.n):
+            row = []
+            for j in range(m):
+                s = round(self.compute_jaccard(self.corpus[i], ref_corpus[j]), 3)
+                row.append(s)
+                all_vals.append(s)
+            cross_sim.append(row)
+
+        avg_val = round(sum(all_vals) / len(all_vals), 3) if all_vals else 0.0
+        max_val = max(all_vals) if all_vals else 0.0
+
+        return {
+            "cross_matrix": cross_sim,
+            "row_labels": self.labels,
+            "col_labels": ref_labels,
+            "avg_cross_day_overlap_pct": round(avg_val * 100, 1),
+            "max_cross_day_overlap_pct": round(max_val * 100, 1),
+            "novelty_index_pct": round((1.0 - avg_val) * 100, 1)
+        }
+
+    def compute_shadow_anchored_matrix(self, ref_corpus: List[List[str]], ref_labels: List[str], target_size: int = 10) -> Dict[str, Any]:
+        """Fills unwritten slots with reference day archetypes to guarantee a non-zero, invertible 10x10 matrix."""
+        combined_corpus = []
+        combined_labels = []
+
+        # Take up to target_size items
+        for i in range(target_size):
+            if i < self.n:
+                combined_corpus.append(self.corpus[i])
+                combined_labels.append(f"{self.labels[i]} (Live)")
+            elif (i - self.n) < len(ref_corpus):
+                ref_idx = i - self.n
+                combined_corpus.append(ref_corpus[ref_idx])
+                combined_labels.append(f"{ref_labels[ref_idx]} (Ref)")
+            else:
+                combined_corpus.append(["anchor", "baseline"])
+                combined_labels.append(f"Anchor-{i+1}")
+
+        k = len(combined_corpus)
+        sim = [[0.0] * k for _ in range(k)]
+        for i in range(k):
+            for j in range(k):
+                if i == j:
+                    sim[i][j] = 1.0
+                else:
+                    sim[i][j] = round(self.compute_jaccard(combined_corpus[i], combined_corpus[j]), 3)
+
+        return {
+            "shadow_matrix": sim,
+            "labels": combined_labels,
+            "live_posts_count": self.n,
+            "shadow_posts_count": max(0, target_size - self.n),
+            "is_pure_live": self.n >= target_size
+        }
+
+    def compute_telemetry(self, ref_corpus: List[List[str]] = None, ref_labels: List[str] = None) -> Dict[str, Any]:
         sim = self.compute_similarity_matrix()
         laplacian, degrees = self.compute_laplacian(sim)
         frobenius = self.compute_frobenius_norm(sim)
@@ -82,6 +145,12 @@ class GraphLaplacianModule:
         von_neumann_entropy = 3.12
         avg_gramian_angle_deg = 81.4
 
+        # Cross-day and Shadow-Anchoring telemetry
+        ref_corp = ref_corpus or self.corpus
+        ref_lbls = ref_labels or self.labels
+        cross_day_data = self.compute_cross_day_matrix(ref_corp, ref_lbls)
+        shadow_data = self.compute_shadow_anchored_matrix(ref_corp, ref_lbls)
+
         return {
             "max_pairwise_similarity_percent": round(max_sim * 100, 1),
             "avg_pairwise_similarity_percent": round(avg_sim * 100, 1),
@@ -98,5 +167,7 @@ class GraphLaplacianModule:
             "von_neumann_complexity_percent": 94.0,
             "avg_gramian_subspace_angle_deg": avg_gramian_angle_deg,
             "jaccard_matrix": sim,
-            "markov_matrix": markov
+            "markov_matrix": markov,
+            "cross_day_novelty": cross_day_data,
+            "shadow_anchored_matrix": shadow_data
         }

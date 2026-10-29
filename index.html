@@ -25,12 +25,13 @@
           <div class="session-selector-wrap">
             <span class="session-label">DESK:</span>
             <select id="daySessionSelect" class="session-dropdown" title="Switch active day or view archived posts">
-              <option value="day4" selected>📅 Day 4 (Today)</option>
+              <option value="day5">📅 Day 5 (Tomorrow)</option>
+              <option value="day4" selected>📅 Day 4 (Today: 11 Posts)</option>
               <option value="day3">📅 Day 3 (10.0p)</option>
               <option value="day2">📅 Day 2 (11.0p)</option>
               <option value="day1">📅 Day 1 (9.0p)</option>
             </select>
-            <button id="btnCycleDay" type="button" class="btn-cycle-day" title="Cycle day session: Day 1 → 2 → 3 → 4">
+            <button id="btnCycleDay" type="button" class="btn-cycle-day" title="Cycle day session: Day 1 → 2 → 3 → 4 → 5">
               <span>↻ Cycle</span>
             </button>
             <button id="btnOpenScoresModal" class="btn-nav-action scores-pill" title="View Daily Scores & Leaderboard Engine">
@@ -534,8 +535,11 @@
             <button type="button" class="chip-day" id="chipDay3" title="Day 3 (Oct 28): 10.0 pts (10 posts)">
               <span class="chip-day-tag">D3</span><span class="chip-pts">10.0p</span>
             </button>
-            <button type="button" class="chip-day active" id="chipDay4" title="Day 4: Today (Oct 29) — 10 Fresh Setups">
+            <button type="button" class="chip-day active" id="chipDay4" title="Day 4: Today (Oct 29) — 11 Completed Setups">
               <span class="chip-day-tag active">D4</span><span class="chip-pts" id="chipTodayScore">Active</span>
+            </button>
+            <button type="button" class="chip-day" id="chipDay5" title="Day 5: Tomorrow (Oct 30) — Cold-Start Dual-Scope Protected">
+              <span class="chip-day-tag">D5</span><span class="chip-pts" id="chipDay5Score">Next</span>
             </button>
           </div>
         </div>

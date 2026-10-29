@@ -200,6 +200,8 @@ function setTodayDate() {
       currentDateBadge.textContent = 'Day 2 Archive (11.0 pts)';
     } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day3') {
       currentDateBadge.textContent = 'Day 3 Archive (10.0 pts)';
+    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day5') {
+      currentDateBadge.textContent = 'Day 5 Desk (Day 4 Dual-Anchor)';
     } else {
       currentDateBadge.textContent = 'Day 4 Active Desk (11/11 Ready)';
     }

@@ -285,6 +285,17 @@ async function runE2ETest() {
       console.log(`  ✓ Linear Algebra Op "${op}" rendered graph SVG: ${hasSvg} | "${opTitle.slice(0, 45)}..."`);
     }
 
+    // Test Streaming Cold-Start Matrix Mode Selector Pills
+    console.log('\n--- TESTING STREAMING COLD-START MATRIX MODES ---');
+    const matrixModes = ['shadow', 'cross', 'live'];
+    for (const mode of matrixModes) {
+      await evalBrowser(`document.querySelector('.matrix-mode-pill[data-matrix-mode="${mode}"]').click()`);
+      await new Promise(r => setTimeout(r, 150));
+      const activeMode = await evalBrowser('currentMatrixMode');
+      console.log(`  ✓ Matrix Mode pill "${mode}" clicked -> currentMatrixMode is "${activeMode}"`);
+      if (activeMode !== mode) throw new Error(`Expected currentMatrixMode to be "${mode}", got "${activeMode}"`);
+    }
+
     // Test Information Theory Suite
     console.log('\n--- TESTING COVER & THOMAS INFORMATION THEORY DECK ---');
     await evalBrowser('document.querySelector(\'.math-suite-tab[data-suite="infotheory"]\').click()');
@@ -339,6 +350,12 @@ async function runE2ETest() {
     await new Promise(r => setTimeout(r, 200));
     const chipSession = await evalBrowser('currentSessionId');
     console.log(`  ✓ Clicked #chipDay2: active session is now "${chipSession}"`);
+
+    await evalBrowser('document.getElementById("chipDay5").click()');
+    await new Promise(r => setTimeout(r, 200));
+    const chipSessionD5 = await evalBrowser('currentSessionId');
+    console.log(`  ✓ Clicked #chipDay5: active session is now "${chipSessionD5}" (Tomorrow Cold-Start Ready)`);
+    if (chipSessionD5 !== 'day5') throw new Error(`Expected active session to be day5, got ${chipSessionD5}`);
 
     // Reset back to Day 4
     await evalBrowser('switchDaySession("day4")');

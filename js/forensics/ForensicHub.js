@@ -8,7 +8,8 @@ let currentForensicMetric = 'jaccard'; // 'jaccard' | 'tfidf' | 'trigram' | 'ent
 let currentMathSuite = 'infotheory'; // 'infotheory' | 'linalg'
 let currentMathOp = 'laplacian'; // 'laplacian' | 'markov' | 'frobenius' | 'hadamard'
 let currentInfoConcept = 'kl';
-let currentChaosConcept = 'attractor'; // 'attractor' | 'hurst' | 'lyapunov' // 'kl' | 'mutual_info' | 'kelly_wealth' | 'universal_portfolio'
+let currentChaosConcept = 'attractor'; // 'attractor' | 'hurst' | 'lyapunov'
+let currentMatrixMode = 'shadow'; // 'shadow' | 'cross' | 'live'
 
 function initForensicAnalysisHub() {
   const btnD4 = document.getElementById('btnForensicDay4');
@@ -89,6 +90,18 @@ function bindMetricPills() {
       const concept = btn.getAttribute('data-concept');
       if (concept && concept !== currentChaosConcept) {
         currentChaosConcept = concept;
+        renderForensicAnalysisHub();
+      }
+    });
+  });
+
+  // Streaming Cold-Start Matrix Mode Pills
+  const matrixPills = document.querySelectorAll('.matrix-mode-pill');
+  matrixPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const mode = pill.getAttribute('data-matrix-mode');
+      if (mode && mode !== currentMatrixMode) {
+        currentMatrixMode = mode;
         renderForensicAnalysisHub();
       }
     });
@@ -429,9 +442,31 @@ function getInfoTheorySectionHtml() {
 function getLinAlgSectionHtml() {
   return `
     <div class="math-ops-section">
-      <div class="math-ops-title">
-        <span>📐</span> Spectral Linear Algebra & Graph Geometry
+      <div class="math-ops-title" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div><span>📐</span> Spectral Linear Algebra & Graph Geometry</div>
+        <div style="font-size: 0.72rem; color: #10b981; font-weight: 700; background: rgba(16,185,129,0.12); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(16,185,129,0.25);">
+          Dual-Scope Anchor Active
+        </div>
       </div>
+
+      <!-- Cold-Start Matrix Stream Selector -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px 0; background: rgba(15,23,42,0.6); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+        <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+          <span>🎛️</span> Cold-Start Matrix Stream:
+        </div>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          <button type="button" class="matrix-mode-pill ${currentMatrixMode === 'shadow' ? 'active' : ''}" data-matrix-mode="shadow" title="Populates unwritten slots with Day 4 reference archetypes so the matrix is always 100% full, non-zero, and invertible">
+            🛡️ Shadow 10×10 Anchor
+          </button>
+          <button type="button" class="matrix-mode-pill ${currentMatrixMode === 'cross' ? 'active' : ''}" data-matrix-mode="cross" title="Measures cross-day novelty distance against Day 4's complete corpus to prevent template fatigue">
+            🔗 Cross-Day Novelty Matrix
+          </button>
+          <button type="button" class="matrix-mode-pill ${currentMatrixMode === 'live' ? 'active' : ''}" data-matrix-mode="live" title="Visualizes the growing intra-day submatrix as new posts are staged">
+            ⚡ Intra-Day Streaming (Live)
+          </button>
+        </div>
+      </div>
+
       <div class="math-ops-nav">
         <button type="button" class="math-op-btn ${currentMathOp === 'laplacian' ? 'active' : ''}" data-op="laplacian">
           <span>🌐</span> Network Graph Connectivity (Graph Laplacian)

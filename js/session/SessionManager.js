@@ -205,7 +205,15 @@ function updateWeeklyProgress() {
     const d4Display = day4Score > 0 ? `${day4Score.toFixed(1)}p` : 'Active';
     chipDay4.innerHTML = `<span class="chip-day-tag active">D4</span><span class="chip-pts" id="chipTodayScore">${d4Display}</span>`;
     chipDay4.className = `chip-day ${currentSessionId === 'day4' ? 'active' : 'pending'}`;
-    chipDay4.title = `Day 4: Today (Oct 29) — 10 Fresh Setups — Click to view`;
+    chipDay4.title = `Day 4: Today (Oct 29) — 11 Completed Setups — Click to view`;
+  }
+  const chipDay5 = document.getElementById('chipDay5');
+  if (chipDay5) {
+    const day5Score = getSessionScore('day5') || 0;
+    const d5Display = day5Score > 0 ? `${day5Score.toFixed(1)}p` : 'Next';
+    chipDay5.innerHTML = `<span class="chip-day-tag ${currentSessionId === 'day5' ? 'active' : ''}">D5</span><span class="chip-pts" id="chipDay5Score">${d5Display}</span>`;
+    chipDay5.className = `chip-day ${currentSessionId === 'day5' ? 'active' : 'pending'}`;
+    chipDay5.title = `Day 5: Tomorrow (Oct 30) — Cold-Start Dual-Scope Protected — Click to view`;
   }
 
   if (chipTodayScore) {
@@ -553,6 +561,22 @@ function switchDaySession(newSessionId, forceFresh = false) {
     postsData = serverPosts && serverPosts.length === 10 ? JSON.parse(JSON.stringify(serverPosts)) : createEmptySlots();
   } else if (currentSessionId === 'day4') {
     postsData = getDay4PreloadedSlots();
+  } else if (currentSessionId === 'day5') {
+    let savedD5 = localStorage.getItem(getDaySessionStorageKey('day5'));
+    if (savedD5) {
+      try {
+        postsData = JSON.parse(savedD5);
+      } catch (e) {
+        postsData = createEmptySlots();
+      }
+    } else {
+      postsData = createEmptySlots();
+      // Ensure Day 4 is safely stored as baseline reference anchor in localStorage
+      if (!localStorage.getItem('byx_session_posts_day4')) {
+        localStorage.setItem('byx_session_posts_day4', JSON.stringify(getDay4PreloadedSlots()));
+      }
+      localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
+    }
   } else {
     postsData = createEmptySlots();
   }
@@ -565,13 +589,20 @@ function switchDaySession(newSessionId, forceFresh = false) {
   renderAttributionMatrix();
   updateWeeklyProgress();
   renderDynamicDayAudit();
-  showToast(`📂 Switched to ${currentSessionId === 'day4' ? 'Day 4: Today (Oct 29)' : currentSessionId === 'day3' ? 'Day 3: Yesterday (Oct 28)' : currentSessionId === 'day2' ? 'Day 2: Oct 27' : 'Day 1: Oct 26'}!`);
+  const dayLabels = {
+    day5: 'Day 5: Tomorrow (Oct 30) — Cold-Start Protected',
+    day4: 'Day 4: Today (Oct 29)',
+    day3: 'Day 3: Yesterday (Oct 28)',
+    day2: 'Day 2: Oct 27',
+    day1: 'Day 1: Oct 26'
+  };
+  showToast(`📂 Switched to ${dayLabels[currentSessionId] || currentSessionId}!`);
 }
 
 function startTomorrowDesk() {
-  const confirmMsg = "✨ Start a fresh desk for Day 3 (Today, Oct 28)?\n\nYesterday's 10 completed posts ($BTC to $SUI) and 11.0 points will remain safely preserved in Day 2.\n\nYou can switch back to view or copy yesterday's posts anytime from the top dropdown!";
+  const confirmMsg = "✨ Start a fresh desk for Day 5 (Tomorrow, Oct 30)?\n\nDay 4's 11 audited setups ($SOL to $MSFT) will remain permanently preserved as your reference baseline anchor.\n\nAll math matrices and similarity checks will anchor against Day 4 to prevent template fatigue!";
   if (window.confirm(confirmMsg)) {
-    switchDaySession('day3', true);
+    switchDaySession('day5', true);
   }
 }
 
@@ -602,7 +633,8 @@ function initSessionAndPointsHub() {
     { id: 'chipDay1', sid: 'day1' },
     { id: 'chipDay2', sid: 'day2' },
     { id: 'chipDay3', sid: 'day3' },
-    { id: 'chipDay4', sid: 'day4' }
+    { id: 'chipDay4', sid: 'day4' },
+    { id: 'chipDay5', sid: 'day5' }
   ].forEach(({ id, sid }) => {
     const chip = document.getElementById(id);
     if (chip) {
@@ -615,7 +647,7 @@ function initSessionAndPointsHub() {
   // Header Cycle Day Button
   const btnCycleDay = document.getElementById('btnCycleDay');
   if (btnCycleDay) {
-    const cycleOrder = ['day1', 'day2', 'day3', 'day4'];
+    const cycleOrder = ['day1', 'day2', 'day3', 'day4', 'day5'];
     btnCycleDay.addEventListener('click', () => {
       const idx = cycleOrder.indexOf(currentSessionId);
       const nextIdx = (idx + 1) % cycleOrder.length;
