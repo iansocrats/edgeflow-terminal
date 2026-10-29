@@ -787,7 +787,8 @@ function renderPills() {
   postsData.forEach((post, idx) => {
     const pill = document.createElement('button');
     const isWaiting = post.status === 'waiting';
-    pill.className = `pill-item ${idx === currentPostIndex ? 'active' : ''} ${isWaiting ? 'waiting' : ''}`;
+    const isActive = idx === currentPostIndex && currentDeskView === 'posts';
+    pill.className = `pill-item ${isActive ? 'active' : ''} ${isWaiting ? 'waiting' : ''}`;
     pill.innerHTML = `
       <span>Post ${idx + 1}</span>
       <span class="pill-coin">${post.coin || ''}</span>
@@ -802,6 +803,7 @@ function renderPills() {
 // Display Post by Index
 function displayPost(index) {
   if (index < 0 || index >= postsData.length) return;
+  setDeskView('posts');
   currentPostIndex = index;
 
   const post = postsData[index];
@@ -2718,19 +2720,94 @@ function setViewMode(mode) {
 }
 
 // --------------------------------------------------------------------------------
-// Switch Tabs (Polished vs Draft vs Raw)
+// Three Independent Engine Desk Views: 'posts' | 'scores' | 'analysis'
+// --------------------------------------------------------------------------------
+let currentDeskView = 'posts';
+
+function setDeskView(viewMode) {
+  currentDeskView = viewMode;
+  const postWorkspace = document.getElementById('postWorkspaceWrapper');
+  const viewScoresHub = document.getElementById('viewScoresHub');
+  const viewAnalysisDeck = document.getElementById('viewAnalysisDeck');
+  const appFooter = document.querySelector('.app-footer');
+
+  const pillBarScoresBtn = document.getElementById('pillBarScoresBtn');
+  const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
+  const btnOpenScoresModal = document.getElementById('btnOpenScoresModal');
+  const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
+
+  if (viewMode === 'posts') {
+    if (postWorkspace) postWorkspace.classList.remove('hidden');
+    if (viewScoresHub) viewScoresHub.classList.add('hidden');
+    if (viewAnalysisDeck) viewAnalysisDeck.classList.add('hidden');
+    if (appFooter) appFooter.classList.remove('hidden');
+
+    if (pillBarScoresBtn) pillBarScoresBtn.classList.remove('active');
+    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.remove('active');
+    if (btnOpenScoresModal) btnOpenScoresModal.classList.remove('active');
+    if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.remove('active');
+
+    // Highlight active post pill in carousel
+    const pills = document.querySelectorAll('.pill-item');
+    pills.forEach((p, idx) => {
+      p.classList.toggle('active', idx === currentPostIndex);
+    });
+  } else if (viewMode === 'scores') {
+    if (postWorkspace) postWorkspace.classList.add('hidden');
+    if (viewScoresHub) viewScoresHub.classList.remove('hidden');
+    if (viewAnalysisDeck) viewAnalysisDeck.classList.add('hidden');
+    if (appFooter) appFooter.classList.add('hidden');
+
+    if (pillBarScoresBtn) pillBarScoresBtn.classList.add('active');
+    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.remove('active');
+    if (btnOpenScoresModal) btnOpenScoresModal.classList.add('active');
+    if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.remove('active');
+
+    const pills = document.querySelectorAll('.pill-item');
+    pills.forEach(p => p.classList.remove('active'));
+
+    if (typeof renderAttributionMatrix === 'function') renderAttributionMatrix();
+    if (typeof updateWeeklyProgress === 'function') updateWeeklyProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else if (viewMode === 'analysis') {
+    if (postWorkspace) postWorkspace.classList.add('hidden');
+    if (viewScoresHub) viewScoresHub.classList.add('hidden');
+    if (viewAnalysisDeck) viewAnalysisDeck.classList.remove('hidden');
+    if (appFooter) appFooter.classList.add('hidden');
+
+    if (pillBarScoresBtn) pillBarScoresBtn.classList.remove('active');
+    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.add('active');
+    if (btnOpenScoresModal) btnOpenScoresModal.classList.remove('active');
+    if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.add('active');
+
+    const pills = document.querySelectorAll('.pill-item');
+    pills.forEach(p => p.classList.remove('active'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// --------------------------------------------------------------------------------
+// Switch Tabs inside Posts Workspace (Polished vs Draft vs Raw)
 // --------------------------------------------------------------------------------
 function switchTab(tabName) {
+  if (tabName === 'scores') {
+    setDeskView('scores');
+    return;
+  }
+  if (tabName === 'analysis') {
+    setDeskView('analysis');
+    return;
+  }
+
+  // Ensure Posts Workspace is active
+  setDeskView('posts');
+
   if (tabPolishedBtn) { tabPolishedBtn.classList.toggle('active', tabName === 'polished'); tabPolishedBtn.setAttribute('aria-selected', tabName === 'polished' ? 'true' : 'false'); }
   if (tabDraftBtn) { tabDraftBtn.classList.toggle('active', tabName === 'draft'); tabDraftBtn.setAttribute('aria-selected', tabName === 'draft' ? 'true' : 'false'); }
-  if (tabScoresBtn) { tabScoresBtn.classList.toggle('active', tabName === 'scores'); tabScoresBtn.setAttribute('aria-selected', tabName === 'scores' ? 'true' : 'false'); }
-  if (tabAnalysisBtn) { tabAnalysisBtn.classList.toggle('active', tabName === 'analysis'); tabAnalysisBtn.setAttribute('aria-selected', tabName === 'analysis' ? 'true' : 'false'); }
   if (tabRawBtn) { tabRawBtn.classList.toggle('active', tabName === 'raw'); tabRawBtn.setAttribute('aria-selected', tabName === 'raw' ? 'true' : 'false'); }
 
   if (panePolished) panePolished.classList.toggle('active', tabName === 'polished');
   if (paneDraft) paneDraft.classList.toggle('active', tabName === 'draft');
-  if (paneScores) paneScores.classList.toggle('active', tabName === 'scores');
-  if (paneAnalysis) paneAnalysis.classList.toggle('active', tabName === 'analysis');
   if (paneRaw) paneRaw.classList.toggle('active', tabName === 'raw');
 }
 
@@ -3572,38 +3649,28 @@ function injectTradeContext(type) {
 
 // Setup Event Listeners
 function setupEvents() {
-  // Wire up Top Header & Post Carousel Action Pills (Scores & Performance Audit)
+  // Wire up Independent Engine Desk Switchers (Posts, Scores, Performance Audit)
   const btnOpenScoresModal = document.getElementById('btnOpenScoresModal');
   const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
   const pillBarScoresBtn = document.getElementById('pillBarScoresBtn');
   const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
+  const returnPostsFromScoresBtn = document.getElementById('returnPostsFromScoresBtn');
+  const returnPostsFromAnalysisBtn = document.getElementById('returnPostsFromAnalysisBtn');
 
-  function openScoresView() {
-    switchTab('scores');
-    if (pillBarScoresBtn) pillBarScoresBtn.classList.add('active');
-    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.remove('active');
-  }
-
-  function openAnalysisView() {
-    switchTab('analysis');
-    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.add('active');
-    if (pillBarScoresBtn) pillBarScoresBtn.classList.remove('active');
-  }
-
-  if (btnOpenScoresModal) btnOpenScoresModal.addEventListener('click', openScoresView);
-  if (btnOpenAnalysisModal) btnOpenAnalysisModal.addEventListener('click', openAnalysisView);
-  if (pillBarScoresBtn) pillBarScoresBtn.addEventListener('click', openScoresView);
-  if (pillBarAnalysisBtn) pillBarAnalysisBtn.addEventListener('click', openAnalysisView);
+  if (btnOpenScoresModal) btnOpenScoresModal.addEventListener('click', () => setDeskView('scores'));
+  if (btnOpenAnalysisModal) btnOpenAnalysisModal.addEventListener('click', () => setDeskView('analysis'));
+  if (pillBarScoresBtn) pillBarScoresBtn.addEventListener('click', () => setDeskView('scores'));
+  if (pillBarAnalysisBtn) pillBarAnalysisBtn.addEventListener('click', () => setDeskView('analysis'));
+  if (returnPostsFromScoresBtn) returnPostsFromScoresBtn.addEventListener('click', () => setDeskView('posts'));
+  if (returnPostsFromAnalysisBtn) returnPostsFromAnalysisBtn.addEventListener('click', () => setDeskView('posts'));
 
   const runBenchmarkBtn = document.getElementById('runBenchmarkBtn');
   if (runBenchmarkBtn) {
     runBenchmarkBtn.addEventListener('click', runRustVsJsBenchmark);
   }
-  // Tabs
+  // Post Workspace Tabs
   if (tabPolishedBtn) tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
   if (tabDraftBtn) tabDraftBtn.addEventListener('click', () => switchTab('draft'));
-  if (tabScoresBtn) tabScoresBtn.addEventListener('click', () => switchTab('scores'));
-  if (tabAnalysisBtn) tabAnalysisBtn.addEventListener('click', () => switchTab('analysis'));
   if (tabRawBtn) tabRawBtn.addEventListener('click', () => switchTab('raw'));
 
   // Cashtag & Trade Context Quick Injectors
@@ -3848,9 +3915,10 @@ function getSessionScore(sessionId) {
   if (saved !== null && saved !== undefined && saved !== '') {
     return parseFloat(saved) || 0;
   }
-  // Default fallbacks
+  // Default fallbacks (Day 1: 9.0, Day 2: 11.0, Day 3: 10.0 = 30.0 Total Points)
   if (sessionId === 'day1') return 9.0;
   if (sessionId === 'day2') return 11.0;
+  if (sessionId === 'day3') return 10.0;
   return 0.0;
 }
 
@@ -3978,24 +4046,26 @@ function updateWeeklyProgress() {
   const day1Score = getSessionScore('day1');
   const day2Score = getSessionScore('day2');
   const day3Score = getSessionScore('day3');
-  const day4Score = getSessionScore('day4') || (currentSessionId === 'day4' ? 10.0 : 0);
+  const day4Score = getSessionScore('day4') || (currentSessionId === 'day4' ? 0.0 : 0);
   const weeklyTotal = day1Score + day2Score + day3Score + day4Score;
+  const targetPoints = 150.0;
 
   if (weeklyAccumTotalText) {
-    weeklyAccumTotalText.textContent = `${weeklyTotal.toFixed(1)} / 100 Pts`;
+    weeklyAccumTotalText.textContent = `${weeklyTotal.toFixed(1)} / ${targetPoints} Pts`;
   }
 
-  const percent = Math.min(100, (weeklyTotal / 100) * 100);
+  const percent = Math.min(100, (weeklyTotal / targetPoints) * 100);
   if (weeklyProgressBarFill) {
     weeklyProgressBarFill.style.width = `${percent}%`;
   }
 
   if (weeklyPercentText) {
-    if (weeklyTotal >= 100) {
+    if (weeklyTotal >= targetPoints) {
       weeklyPercentText.innerHTML = `🎉 <strong>100% UNLOCKED (REWARDS ACTIVE)</strong>`;
       weeklyPercentText.style.color = '#10b981';
     } else {
-      weeklyPercentText.textContent = `${percent.toFixed(1)}% to Reward Benchmark`;
+      const remaining = (targetPoints - weeklyTotal).toFixed(1);
+      weeklyPercentText.textContent = `${percent.toFixed(1)}% (${remaining} pts to 150 Pt Minimum Reward Pool)`;
       weeklyPercentText.style.color = '#f59e0b';
     }
   }
@@ -4009,8 +4079,13 @@ function updateWeeklyProgress() {
     chipDay2.className = `chip-day ${currentSessionId === 'day2' ? 'active' : ''}`;
   }
   if (chipDay3) {
-    chipDay3.innerHTML = `📅 Day 3 (Today): <strong>${day3Score > 0 ? day3Score.toFixed(1) + ' pts' : 'Active'}</strong> (${currentSessionId === 'day3' ? '10 Fresh Slots' : '10 slots'})`;
-    chipDay3.className = `chip-day ${currentSessionId === 'day3' ? 'active' : 'pending'}`;
+    chipDay3.innerHTML = `📅 Day 3 (Oct 28): <strong>${day3Score.toFixed(1)} pts</strong> (10 posts)`;
+    chipDay3.className = `chip-day ${currentSessionId === 'day3' ? 'active' : ''}`;
+  }
+  const chipDay4 = document.getElementById('chipDay4');
+  if (chipDay4) {
+    chipDay4.innerHTML = `📅 Day 4 (Today): <strong>${day4Score > 0 ? day4Score.toFixed(1) + ' pts' : 'Active'}</strong> (10 slots)`;
+    chipDay4.className = `chip-day ${currentSessionId === 'day4' ? 'active' : 'pending'}`;
   }
 
   if (chipTodayScore) {
@@ -4018,11 +4093,11 @@ function updateWeeklyProgress() {
   }
 
   if (pointsHubStatusBadge) {
-    if (weeklyTotal >= 100) {
-      pointsHubStatusBadge.textContent = 'REWARDS UNLOCKED (≥ 100 PTS)';
+    if (weeklyTotal >= targetPoints) {
+      pointsHubStatusBadge.textContent = 'REWARDS UNLOCKED (≥ 150 PTS)';
       pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
     } else {
-      pointsHubStatusBadge.textContent = 'ACCUMULATING WEEKLY POINTS';
+      pointsHubStatusBadge.textContent = `${weeklyTotal.toFixed(1)} / 150 PTS (URGENT CATCH-UP SPRINT)`;
       pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
     }
   }
