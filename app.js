@@ -69,9 +69,13 @@ const byxStatusPill = document.getElementById('byxStatusPill');
 // 3 Tabs
 const tabPolishedBtn = document.getElementById('tabPolishedBtn');
 const tabDraftBtn = document.getElementById('tabDraftBtn');
+const tabScoresBtn = document.getElementById('tabScoresBtn');
+const tabAnalysisBtn = document.getElementById('tabAnalysisBtn');
 const tabRawBtn = document.getElementById('tabRawBtn');
 const panePolished = document.getElementById('panePolished');
 const paneDraft = document.getElementById('paneDraft');
+const paneScores = document.getElementById('paneScores');
+const paneAnalysis = document.getElementById('paneAnalysis');
 const paneRaw = document.getElementById('paneRaw');
 const draftChangeCountBadge = document.getElementById('draftChangeCountBadge');
 
@@ -2717,16 +2721,17 @@ function setViewMode(mode) {
 // Switch Tabs (Polished vs Draft vs Raw)
 // --------------------------------------------------------------------------------
 function switchTab(tabName) {
-  tabPolishedBtn.classList.toggle('active', tabName === 'polished');
-  tabPolishedBtn.setAttribute('aria-selected', tabName === 'polished' ? 'true' : 'false');
-  tabDraftBtn.classList.toggle('active', tabName === 'draft');
-  tabDraftBtn.setAttribute('aria-selected', tabName === 'draft' ? 'true' : 'false');
-  tabRawBtn.classList.toggle('active', tabName === 'raw');
-  tabRawBtn.setAttribute('aria-selected', tabName === 'raw' ? 'true' : 'false');
+  if (tabPolishedBtn) { tabPolishedBtn.classList.toggle('active', tabName === 'polished'); tabPolishedBtn.setAttribute('aria-selected', tabName === 'polished' ? 'true' : 'false'); }
+  if (tabDraftBtn) { tabDraftBtn.classList.toggle('active', tabName === 'draft'); tabDraftBtn.setAttribute('aria-selected', tabName === 'draft' ? 'true' : 'false'); }
+  if (tabScoresBtn) { tabScoresBtn.classList.toggle('active', tabName === 'scores'); tabScoresBtn.setAttribute('aria-selected', tabName === 'scores' ? 'true' : 'false'); }
+  if (tabAnalysisBtn) { tabAnalysisBtn.classList.toggle('active', tabName === 'analysis'); tabAnalysisBtn.setAttribute('aria-selected', tabName === 'analysis' ? 'true' : 'false'); }
+  if (tabRawBtn) { tabRawBtn.classList.toggle('active', tabName === 'raw'); tabRawBtn.setAttribute('aria-selected', tabName === 'raw' ? 'true' : 'false'); }
 
-  panePolished.classList.toggle('active', tabName === 'polished');
-  paneDraft.classList.toggle('active', tabName === 'draft');
-  paneRaw.classList.toggle('active', tabName === 'raw');
+  if (panePolished) panePolished.classList.toggle('active', tabName === 'polished');
+  if (paneDraft) paneDraft.classList.toggle('active', tabName === 'draft');
+  if (paneScores) paneScores.classList.toggle('active', tabName === 'scores');
+  if (paneAnalysis) paneAnalysis.classList.toggle('active', tabName === 'analysis');
+  if (paneRaw) paneRaw.classList.toggle('active', tabName === 'raw');
 }
 
 // Copy Clean Plain Text to Clipboard
@@ -3572,9 +3577,11 @@ function setupEvents() {
     runBenchmarkBtn.addEventListener('click', runRustVsJsBenchmark);
   }
   // Tabs
-  tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
-  tabDraftBtn.addEventListener('click', () => switchTab('draft'));
-  tabRawBtn.addEventListener('click', () => switchTab('raw'));
+  if (tabPolishedBtn) tabPolishedBtn.addEventListener('click', () => switchTab('polished'));
+  if (tabDraftBtn) tabDraftBtn.addEventListener('click', () => switchTab('draft'));
+  if (tabScoresBtn) tabScoresBtn.addEventListener('click', () => switchTab('scores'));
+  if (tabAnalysisBtn) tabAnalysisBtn.addEventListener('click', () => switchTab('analysis'));
+  if (tabRawBtn) tabRawBtn.addEventListener('click', () => switchTab('raw'));
 
   // Cashtag & Trade Context Quick Injectors
   const btnInjectTradeSetup = document.getElementById('btnInjectTradeSetup');

@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#090c13" />
-  <link rel="stylesheet" href="styles.css?v=47" />
+  <link rel="stylesheet" href="styles.css?v=48" />
 </head>
 <body>
   <div class="app-shell">
@@ -76,6 +76,16 @@
         <span class="tab-icon">🔍</span>
         <span class="tab-text">Draft & Rules</span>
         <span class="tab-chip muted" id="draftChangeCountBadge">Suggestions</span>
+      </button>
+      <button class="tab-btn" id="tabScoresBtn" role="tab" aria-selected="false" data-tab="scores">
+        <span class="tab-icon">🏆</span>
+        <span class="tab-text">Daily Scores & Attribution</span>
+        <span class="tab-chip gold" id="tabScoresBadge">30.0 / 150 Pts</span>
+      </button>
+      <button class="tab-btn" id="tabAnalysisBtn" role="tab" aria-selected="false" data-tab="analysis">
+        <span class="tab-icon">📊</span>
+        <span class="tab-text">Post Analysis & Audit</span>
+        <span class="tab-chip" id="tabAnalysisBadge">Audit Review</span>
       </button>
       <button class="tab-btn" id="tabRawBtn" role="tab" aria-selected="false" data-tab="raw">
         <span class="tab-icon">🎙️</span>
@@ -358,6 +368,112 @@
       </div>
 
       <!-- 🏆 Bybit Daily Points & Post Attribution Hub -->
+      <!-- 3 Immutable Foundational Dictation Safeguards -->
+        <div class="safeguards-box">
+          <span class="safeguards-title">🔒 3 FOUNDATIONAL CREATOR VOICE SAFEGUARDS (ZERO SENTENCE REWRITES)</span>
+          <div class="safeguards-row">
+            <div class="sg-pill"><span class="sg-icon">1️⃣</span> <strong>Punctuation Only:</strong> Commas, periods, question marks. Zero sentence changes.</div>
+            <div class="sg-pill"><span class="sg-icon">2️⃣</span> <strong>Word/Number Fixes:</strong> e.g. 79659 ➔ $79,659. Zero phrase re-structuring.</div>
+            <div class="sg-pill"><span class="sg-icon">3️⃣</span> <strong>Spacing & Emojis:</strong> Spoken thought line breaks & mobile bullets.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color-Coded Category Legend & Counts -->
+      <div class="sugg-category-bar">
+        <div class="sugg-badge sugg-punct">
+          <span class="dot green"></span>
+          <span>✍️ Punctuation: <strong id="punctSuggCount">0</strong></span>
+        </div>
+        <div class="sugg-badge sugg-word">
+          <span class="dot yellow"></span>
+          <span>🔤 Word Fixes: <strong id="wordSuggCount">0</strong></span>
+        </div>
+        <div class="sugg-badge sugg-spacing">
+          <span class="dot purple"></span>
+          <span>💡 Emojis & Bullets: <strong id="spacingSuggCount">0</strong></span>
+        </div>
+      </div>
+
+      <!-- Strategic Evaluation & Next Steps Recommendation Engine -->
+      <div class="content-card draft-next-actions-card" id="draftNextActionsCard">
+        <div class="card-header">
+          <div class="badge-group">
+            <span class="pill-badge pill-purple">🎯 POST EVALUATION & NEXT STEPS</span>
+            <span class="pill-badge pill-gold" id="nextActionAiBadge">Analyzing Next Steps...</span>
+          </div>
+          <button id="btnApplyNextStepHumanization" class="btn-next-action-apply">
+            <span>🚀 Apply High-Entropy Humanization (90%+ Entropy & &lt;10% AI)</span>
+          </button>
+        </div>
+        <div id="draftNextActionsContent" class="next-actions-body">
+          <!-- Dynamically populated with real-time evaluation and what to do next -->
+        </div>
+      </div>
+
+      <!-- Bybit Cashtag & Trade Context Quick Injector (Draft View) -->
+      <div class="trade-context-bar">
+        <span class="trade-bar-label">🎯 ByX Cashtag & Trade Context:</span>
+        <button id="btnInjectTradeSetupDraft" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
+          <span>🟢 + Active Trade Setup</span>
+        </button>
+        <button id="btnInjectTradeFollowupDraft" class="btn-trade-inject followup" title="Insert historical follow-up trade with realized profit %">
+          <span>🏆 + Historical Follow-Up (Realized Profit)</span>
+        </button>
+      </div>
+
+      <!-- Content Box: Clean Final Post or Highlighted Suggestions -->
+      <div class="content-card">
+        <div class="card-header">
+          <div class="badge-group">
+            <span class="pill-badge pill-purple" id="draftViewBadge">📄 Clean Final Post</span>
+            <span class="pill-badge pill-gold" id="draftWordCountBadge">0 words</span>
+            <span class="pill-badge pill-green" id="draftValidBadge">VALID POST (≥ 40)</span>
+          </div>
+          <span class="quick-copy-text">Tap box to copy clean text</span>
+        </div>
+
+        <!-- Version 1: Clean Final Post (Default view for instant copying) -->
+        <textarea id="draftCleanContent" class="post-textarea polished" placeholder="Audited draft will appear here..."></textarea>
+
+        <!-- Version 2: Color-Coded Suggestions View -->
+        <div id="draftSuggestionsDisplay" class="draft-diff-box hidden">
+          <!-- Dynamically populated with color-coded suggestions -->
+        </div>
+
+        <div class="draft-action-footer">
+          <button id="applyDraftBtn" class="btn-apply-draft">
+            <span>✅ Apply & Lock Into Polished Base</span>
+          </button>
+          <button id="copyDraftBtn" class="action-btn-sm">
+            <span>📋 Copy Clean Draft</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sentence-by-Sentence AI Risk Audit & Human Suggestion Studio in Draft -->
+      <div class="content-card draft-ai-audit-card">
+        <div class="card-header">
+          <div class="badge-group">
+            <span class="pill-badge pill-red" id="draftAiFlagCountBadge">0 AI Flags Detected</span>
+            <span class="pill-badge pill-gold" id="draftAiOverallRiskBadge">AI Risk: --%</span>
+          </div>
+          <button id="resolveAllDraftAiBtn" class="btn-resolve-all-draft">
+            <span>🚀 Resolve All AI Flags & Maximize Human Voice</span>
+          </button>
+        </div>
+        <p class="section-hint" style="margin: 4px 0 10px 0; font-size: 0.68rem; color: var(--text-dim);">
+          Detailed sentence-by-sentence analysis of RoBERTa repetition, GLTR predictability, and sterile token clustering. Review Antigravity human suggestions below or tap <strong>✏️ Custom Edit</strong>.
+        </p>
+        <div id="draftSentenceRiskList" class="draft-sentence-risk-container">
+          <!-- Dynamically populated with individual sentence risk cards -->
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Tab 3: Dedicated Bybit Daily Scores & Point Attribution Hub -->
+    <section class="tab-pane" id="paneScores" role="tabpanel">
       <div class="rules-card byx-points-hub-card" id="byxPointsHubCard">
         <div class="byx-header-wrap">
           <div class="rules-header">
@@ -700,110 +816,54 @@
           </div>
         </div>
 
-        <!-- 3 Immutable Foundational Dictation Safeguards -->
-        <div class="safeguards-box">
-          <span class="safeguards-title">🔒 3 FOUNDATIONAL CREATOR VOICE SAFEGUARDS (ZERO SENTENCE REWRITES)</span>
-          <div class="safeguards-row">
-            <div class="sg-pill"><span class="sg-icon">1️⃣</span> <strong>Punctuation Only:</strong> Commas, periods, question marks. Zero sentence changes.</div>
-            <div class="sg-pill"><span class="sg-icon">2️⃣</span> <strong>Word/Number Fixes:</strong> e.g. 79659 ➔ $79,659. Zero phrase re-structuring.</div>
-            <div class="sg-pill"><span class="sg-icon">3️⃣</span> <strong>Spacing & Emojis:</strong> Spoken thought line breaks & mobile bullets.</div>
+        
+    </section>
+
+    <!-- Tab 4: Dedicated Post Analysis & What Went Wrong / What Went Well -->
+    <section class="tab-pane" id="paneAnalysis" role="tabpanel">
+      <div class="analysis-deck">
+        <div class="analysis-header-card">
+          <div class="analysis-title-row">
+            <h2>📊 Strategic Performance Analysis: Why We're Behind & How to Hit 150 Pts</h2>
+            <span class="status-badge-urgent">URGENT CATCH-UP SPRINT</span>
           </div>
+          <p class="analysis-sub">Fact-checked audit of the first 3 days (Mon Oct 26: 9.0 pts | Tue Oct 27: 11.0 pts | Wed Oct 28: 10.0 pts = 30.0 Total). Target required: 150 pts by Sunday midnight to unlock payout.</p>
         </div>
-      </div>
 
-      <!-- Color-Coded Category Legend & Counts -->
-      <div class="sugg-category-bar">
-        <div class="sugg-badge sugg-punct">
-          <span class="dot green"></span>
-          <span>✍️ Punctuation: <strong id="punctSuggCount">0</strong></span>
-        </div>
-        <div class="sugg-badge sugg-word">
-          <span class="dot yellow"></span>
-          <span>🔤 Word Fixes: <strong id="wordSuggCount">0</strong></span>
-        </div>
-        <div class="sugg-badge sugg-spacing">
-          <span class="dot purple"></span>
-          <span>💡 Emojis & Bullets: <strong id="spacingSuggCount">0</strong></span>
-        </div>
-      </div>
+        <div class="analysis-grid-split">
+          <!-- Card 1: What Went Wrong -->
+          <div class="analysis-card danger-border">
+            <div class="card-badge red">❌ WHAT WENT WRONG (THE 30-POINT CEILING)</div>
+            <h3>1. The Zero-Conversion Text Trap</h3>
+            <p>Our post content scored 100/100 on ByX dimensions, but Bybit's algorithm calculates <code>Impact = Valid Traders × Volume × Quality</code>. We posted raw text without users clicking an embedded trading widget. Without trade executions, Bybit defaults to the base ~1.0 pt participation drip.</p>
 
-      <!-- Strategic Evaluation & Next Steps Recommendation Engine -->
-      <div class="content-card draft-next-actions-card" id="draftNextActionsCard">
-        <div class="card-header">
-          <div class="badge-group">
-            <span class="pill-badge pill-purple">🎯 POST EVALUATION & NEXT STEPS</span>
-            <span class="pill-badge pill-gold" id="nextActionAiBadge">Analyzing Next Steps...</span>
+            <h3>2. Low-Float Micro-Caps vs. High-Volume Pairs</h3>
+            <p>Coins like  and  had limited trading interest among general Bybit users. The accounts ranking #1 (136 pts) and #2 (96 pts) focus almost exclusively on high-beta liquid perps (, , , , ) where community volume is massive.</p>
+
+            <h3>3. Missing Widget Conversion Call-to-Action</h3>
+            <p>Posts ended with passive rhetorical questions instead of explicit directions telling users to tap the Bybit Trade Widget to enter limit orders.</p>
           </div>
-          <button id="btnApplyNextStepHumanization" class="btn-next-action-apply">
-            <span>🚀 Apply High-Entropy Humanization (90%+ Entropy & &lt;10% AI)</span>
-          </button>
-        </div>
-        <div id="draftNextActionsContent" class="next-actions-body">
-          <!-- Dynamically populated with real-time evaluation and what to do next -->
-        </div>
-      </div>
 
-      <!-- Bybit Cashtag & Trade Context Quick Injector (Draft View) -->
-      <div class="trade-context-bar">
-        <span class="trade-bar-label">🎯 ByX Cashtag & Trade Context:</span>
-        <button id="btnInjectTradeSetupDraft" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
-          <span>🟢 + Active Trade Setup</span>
-        </button>
-        <button id="btnInjectTradeFollowupDraft" class="btn-trade-inject followup" title="Insert historical follow-up trade with realized profit %">
-          <span>🏆 + Historical Follow-Up (Realized Profit)</span>
-        </button>
-      </div>
+          <!-- Card 2: What Went Well & How We Win -->
+          <div class="analysis-card green-border">
+            <div class="card-badge green">✅ WHAT WENT WELL & THE ROAD TO 150 PTS</div>
+            <h3>1. Flawless 10/10 Daily Streak & Quota Multiplier</h3>
+            <p>We achieved 100% pass rates across Day 1, 2, and 3. Bybit's weekly valid post multiplier is maxed out. No accounts above us have higher content quality ratings.</p>
 
-      <!-- Content Box: Clean Final Post or Highlighted Suggestions -->
-      <div class="content-card">
-        <div class="card-header">
-          <div class="badge-group">
-            <span class="pill-badge pill-purple" id="draftViewBadge">📄 Clean Final Post</span>
-            <span class="pill-badge pill-gold" id="draftWordCountBadge">0 words</span>
-            <span class="pill-badge pill-green" id="draftValidBadge">VALID POST (≥ 40)</span>
+            <h3>2. Sub-Millisecond Rust WASM Scoring</h3>
+            <p>Our scoring engine now evaluates text, sentence burstiness, and token unpredictability with zero lag and zero browser memory bloat.</p>
+
+            <h3>3. Today's Uplift Playbook (Need ~30 pts/day across Thu, Fri, Sat, Sun):</h3>
+            <ul class="action-check-list">
+              <li><strong>Action 1:</strong> Attach the Bybit Trade Widget on every single post via the Bybit editor toolbar.</li>
+              <li><strong>Action 2:</strong> High-Conversion Closer: Direct users to tap the trade widget for execution.</li>
+              <li><strong>Action 3:</strong> Trade High-Volume Catalysts: Today's 10 brand new coins (, , , , , , , , , ) are the #1 traded contracts on Bybit today.</li>
+            </ul>
           </div>
-          <span class="quick-copy-text">Tap box to copy clean text</span>
-        </div>
-
-        <!-- Version 1: Clean Final Post (Default view for instant copying) -->
-        <textarea id="draftCleanContent" class="post-textarea polished" placeholder="Audited draft will appear here..."></textarea>
-
-        <!-- Version 2: Color-Coded Suggestions View -->
-        <div id="draftSuggestionsDisplay" class="draft-diff-box hidden">
-          <!-- Dynamically populated with color-coded suggestions -->
-        </div>
-
-        <div class="draft-action-footer">
-          <button id="applyDraftBtn" class="btn-apply-draft">
-            <span>✅ Apply & Lock Into Polished Base</span>
-          </button>
-          <button id="copyDraftBtn" class="action-btn-sm">
-            <span>📋 Copy Clean Draft</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Sentence-by-Sentence AI Risk Audit & Human Suggestion Studio in Draft -->
-      <div class="content-card draft-ai-audit-card">
-        <div class="card-header">
-          <div class="badge-group">
-            <span class="pill-badge pill-red" id="draftAiFlagCountBadge">0 AI Flags Detected</span>
-            <span class="pill-badge pill-gold" id="draftAiOverallRiskBadge">AI Risk: --%</span>
-          </div>
-          <button id="resolveAllDraftAiBtn" class="btn-resolve-all-draft">
-            <span>🚀 Resolve All AI Flags & Maximize Human Voice</span>
-          </button>
-        </div>
-        <p class="section-hint" style="margin: 4px 0 10px 0; font-size: 0.68rem; color: var(--text-dim);">
-          Detailed sentence-by-sentence analysis of RoBERTa repetition, GLTR predictability, and sterile token clustering. Review Antigravity human suggestions below or tap <strong>✏️ Custom Edit</strong>.
-        </p>
-        <div id="draftSentenceRiskList" class="draft-sentence-risk-container">
-          <!-- Dynamically populated with individual sentence risk cards -->
         </div>
       </div>
     </section>
-
-    <!-- Tab 3: Raw Dictation (What I Wrote) -->
+<!-- Tab 3: Raw Dictation (What I Wrote) -->
     <section class="tab-pane" id="paneRaw" role="tabpanel">
       <div class="copy-bar-wrap">
         <button class="btn-copy-secondary" id="copyRawBtn">
@@ -903,6 +963,6 @@
     <span class="toast-msg" id="toastMsg">Copied clean text to clipboard!</span>
   </div>
 
-  <script src="app.js?v=47"></script>
+  <script src="app.js?v=48"></script>
 </body>
 </html>
