@@ -295,6 +295,27 @@ async function runE2ETest() {
       console.log(`  ✓ Metric pill "${metric}" clicked -> currentForensicMetric is "${activeMetric}"`);
     }
 
+    // Verify Dynamic 13-Post Similarity Matrix in Forensic Hub
+    console.log('\n--- TESTING DYNAMIC 13x13 MATRIX IN FORENSIC HUB ---');
+    const headerCols = await evalBrowser(`
+      Array.from(document.querySelectorAll('.similarity-table thead th')).map(th => th.textContent.trim()).filter(t => t !== 'ASSET')
+    `);
+    const rowCoins = await evalBrowser(`
+      Array.from(document.querySelectorAll('.similarity-table tbody tr th')).map(th => th.textContent.trim())
+    `);
+    console.log(`  ✓ Dynamic Similarity Matrix header columns count: ${headerCols.length} (${headerCols.join(', ')})`);
+    console.log(`  ✓ Dynamic Similarity Matrix body rows count: ${rowCoins.length} (${rowCoins.join(', ')})`);
+    if (headerCols.length !== 13 || rowCoins.length !== 13) {
+      throw new Error(`Expected 13x13 matrix in Forensic Hub, got ${headerCols.length} columns and ${rowCoins.length} rows`);
+    }
+    if (!headerCols.includes('$MSFT') || !headerCols.includes('$ETH') || !headerCols.includes('$BTC')) {
+      throw new Error('Matrix headers missing Post 11 ($MSFT), Post 12 ($ETH), or Post 13 ($BTC)');
+    }
+    if (!rowCoins.includes('$MSFT') || !rowCoins.includes('$ETH') || !rowCoins.includes('$BTC')) {
+      throw new Error('Matrix rows missing Post 11 ($MSFT), Post 12 ($ETH), or Post 13 ($BTC)');
+    }
+    console.log('✅ PASS: All 13 posts (including $MSFT, $ETH, $BTC) fully incorporated into Dynamic Similarity Matrix!');
+
     // Test Math Suite Tabs: Linear Algebra & Graph Operations
     console.log('\n--- TESTING ACADEMIC MATHEMATICS DECK (LINEAR ALGEBRA & GRAPH OPS) ---');
     await evalBrowser('document.querySelector(\'.math-suite-tab[data-suite="linalg"]\').click()');
