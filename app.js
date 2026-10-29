@@ -221,6 +221,15 @@ async function loadPostsData() {
         }
       }
     }
+    // Preload quantitative forensics contract if available
+    try {
+      const fRes = await fetch('contracts/forensics.json?v=' + Date.now());
+      if (fRes.ok) {
+        window.forensicsContract = await fRes.json();
+      }
+    } catch (fErr) {
+      console.log('Forensics contract fetch bypassed:', fErr);
+    }
   } catch (err) {
     console.log('Error fetching serverPosts:', err);
   }

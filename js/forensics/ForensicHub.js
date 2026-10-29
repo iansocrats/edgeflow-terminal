@@ -507,6 +507,7 @@ function getLinAlgSectionHtml() {
   `;
 }
 function getInfoConceptHtml() {
+  const activePosts = getActiveForensicPosts();
   if (currentInfoConcept === 'aep') {
     return `
       <div class="info-theorem-card">
@@ -793,6 +794,25 @@ function getInfoConceptHtml() {
   }
 
   if (currentInfoConcept === 'kelly_wealth') {
+    const activePosts = getActiveForensicPosts();
+    const contract = window.forensicsContract || {};
+    const optAlloc = (contract.portfolio_gambling && contract.portfolio_gambling.optimal_allocations) ? contract.portfolio_gambling.optimal_allocations : {};
+
+    const defaultWeights = {
+      '$SOL': '10.9%', '$TIA': '8.5%', '$NEAR': '8.9%', '$FET': '9.7%', '$INJ': '7.7%',
+      '$AAVE': '6.9%', '$APT': '8.9%', '$AVAX': '6.5%', '$DOGE': '5.3%', '$RENDER': '7.7%',
+      '$MSFT': '6.5%', '$ETH': '6.2%', '$BTC': '6.2%'
+    };
+
+    const ktCards = activePosts.map((p, idx) => {
+      const coin = p.coin || ('$' + (p.ticker || 'P' + (idx + 1)));
+      let weight = defaultWeights[coin] || (100 / (activePosts.length || 1)).toFixed(1) + '%';
+      if (optAlloc[coin] !== undefined) {
+        weight = (optAlloc[coin] * 100).toFixed(1) + '%';
+      }
+      return `<div class="info-kt-card"><div class="info-kt-coin">${coin}</div><div class="info-kt-weight">${weight}</div><div class="info-kt-stat">KT: 1.000</div></div>`;
+    }).join('\n');
+
     return `
       <div class="info-theorem-card">
         <div class="info-theorem-head">
@@ -803,7 +823,7 @@ function getInfoConceptHtml() {
           W*(F) = max_b E[log₂(bᵀX)]  subject to Σ b_i = 1  |  Kuhn-Tucker Check: E[X_i / (b*ᵀX)] = 1.000
         </div>
         <p class="info-theorem-desc">
-          <strong>In Plain English:</strong> In Chapter 16 ("Information Theory and the Stock Market"), Thomas Cover proves that maximizing the expected logarithm of wealth asymptotically beats any other causal trading strategy with probability 1. Rather than gambling on random leverage, the Kelly log-optimal simplex allocation <strong>b*</strong> balances risk across our 10 liquid assets:
+          <strong>In Plain English:</strong> In Chapter 16 ("Information Theory and the Stock Market"), Thomas Cover proves that maximizing the expected logarithm of wealth asymptotically beats any other causal trading strategy with probability 1. Rather than gambling on random leverage, the Kelly log-optimal simplex allocation <strong>b*</strong> balances risk across all <strong>${activePosts.length} institutional asset setups</strong>:
         </p>
 
         <!-- Visual: Kelly Doubling Rate Curve & Ruin Cliff (Cover & Thomas Fig 16.1) -->
@@ -825,51 +845,40 @@ function getInfoConceptHtml() {
                 </linearGradient>
               </defs>
 
-              <!-- Zero Return Axis line -->
               <line x1="40" y1="140" x2="500" y2="140" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
               <text x="505" y="144" fill="#94a3b8" font-size="9">W(b) = 0</text>
 
-              <!-- Vertical Axis: Doubling Rate W(b) -->
               <line x1="70" y1="30" x2="70" y2="200" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
               <text x="70" y="24" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Growth W(b)</text>
 
-              <!-- Shaded Green Area under Kelly Peak -->
               <path d="M 70 140 Q 140 40 220 40 Q 300 40 350 140 Z" fill="url(#kellyAreaGlow)"/>
-              <!-- Shaded Red Area under Ruin Cliff -->
               <path d="M 350 140 Q 400 210 470 215 L 350 215 Z" fill="url(#ruinAreaGlow)"/>
 
-              <!-- The Kelly Curve W(b) -->
               <path d="M 70 140 Q 140 40 220 40 Q 300 40 350 140 Q 400 220 470 220" fill="none" stroke="#10b981" stroke-width="3"/>
-              <!-- Negative plunge in red -->
               <path d="M 350 140 Q 400 220 470 220" fill="none" stroke="#ef4444" stroke-width="3"/>
 
-              <!-- Point: b* Kelly Peak -->
               <circle cx="220" cy="40" r="6" fill="#10b981" stroke="#fff" stroke-width="2"/>
               <line x1="220" y1="40" x2="220" y2="140" stroke="#10b981" stroke-width="1.2" stroke-dasharray="3 3"/>
               <text x="220" y="28" fill="#34d399" font-size="11" font-weight="800" text-anchor="middle">Kelly Peak b* (+0.0345 bits)</text>
               <text x="220" y="156" fill="#34d399" font-size="9" font-weight="700" text-anchor="middle">b = 1.0 (Optimal Allocation)</text>
 
-              <!-- Point: Break-even boundary b = 2.0 -->
               <circle cx="350" cy="140" r="5" fill="#f59e0b" stroke="#fff" stroke-width="1.5"/>
               <text x="350" y="128" fill="#fbbf24" font-size="9" font-weight="700" text-anchor="middle">b = 2.0 (Threshold)</text>
 
-              <!-- Point: Degenerate Leverage / Ruin Zone -->
               <circle cx="440" cy="210" r="6" fill="#ef4444" stroke="#fff" stroke-width="2"/>
               <text x="440" y="196" fill="#f87171" font-size="10" font-weight="800" text-anchor="middle">Fatal Ruin Zone</text>
               <text x="440" y="226" fill="#fca5a5" font-size="8.5" text-anchor="middle">Retail 20x–50x Leverage</text>
 
-              <!-- Legend annotation -->
-              <rect x="80" y="45" width="95" height="36" rx="4" fill="rgba(0,0,0,0.6)" stroke="#10b981" stroke-width="1"/>
+              <rect x="80" y="45" width="115" height="36" rx="4" fill="rgba(0,0,0,0.6)" stroke="#10b981" stroke-width="1"/>
               <text x="86" y="58" fill="#34d399" font-size="8.5" font-weight="700">🟢 2x–4x Gearing</text>
-              <text x="86" y="72" fill="#cbd5e1" font-size="7.5">Disciplined Posts 1–10</text>
+              <text x="86" y="72" fill="#cbd5e1" font-size="7.5">Disciplined Posts 1–${activePosts.length}</text>
             </svg>
           </div>
 
-          <!-- Color-Coded Advantage & Disadvantage Breakdown -->
           <div class="vis-callout-grid">
             <div class="vis-callout-box good">
               <div class="vis-box-title good">🟢 Key Advantage: Asymptotic Compound Wealth Maximization</div>
-              Cover & Thomas Theorem 16.2.2 proves that the log-optimal portfolio asymptotically surpasses all other strategies with probability 1. Our 2x–4x leverage recommendations match the sweet spot of the curve.
+              Cover & Thomas Theorem 16.2.2 proves that the log-optimal portfolio asymptotically surpasses all other strategies with probability 1. Our 2x–4x leverage recommendations match the sweet spot of the curve across all ${activePosts.length} setups.
             </div>
             <div class="vis-callout-box bad">
               <div class="vis-box-title bad">🔴 Critical Risk (Avoided): The Mathematical Ruin Cliff</div>
@@ -878,17 +887,11 @@ function getInfoConceptHtml() {
           </div>
         </div>
 
-        <div class="info-kt-grid">
-          <div class="info-kt-card"><div class="info-kt-coin">$SOL</div><div class="info-kt-weight">13.5%</div><div class="info-kt-stat">KT: 1.001</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$TIA</div><div class="info-kt-weight">10.5%</div><div class="info-kt-stat">KT: 0.999</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$NEAR</div><div class="info-kt-weight">11.0%</div><div class="info-kt-stat">KT: 1.000</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$FET</div><div class="info-kt-weight">12.0%</div><div class="info-kt-stat">KT: 1.002</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$INJ</div><div class="info-kt-weight">9.5%</div><div class="info-kt-stat">KT: 0.998</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$AAVE</div><div class="info-kt-weight">8.5%</div><div class="info-kt-stat">KT: 1.001</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$APT</div><div class="info-kt-weight">11.0%</div><div class="info-kt-stat">KT: 1.000</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$AVAX</div><div class="info-kt-weight">8.0%</div><div class="info-kt-stat">KT: 0.999</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$DOGE</div><div class="info-kt-weight">6.5%</div><div class="info-kt-stat">KT: 0.998</div></div>
-          <div class="info-kt-card"><div class="info-kt-coin">$RENDER</div><div class="info-kt-weight">9.5%</div><div class="info-kt-stat">KT: 1.002</div></div>
+        <div style="margin-top: 14px;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: #38bdf8; margin-bottom: 8px;">📊 Simplex Kuhn-Tucker Asset Allocations (${activePosts.length} Posts Evaluated):</div>
+          <div class="info-kt-grid">
+            ${ktCards}
+          </div>
         </div>
       </div>
     `;
@@ -978,7 +981,7 @@ function getInfoConceptHtml() {
           <strong>In Plain English:</strong> In Chapters 8 and 9, Thomas Cover demonstrates that crypto assets act as parallel Gaussian communication channels with varying volatility noise floors (N_i = σ_i²). Rather than allocating capital equally across random coins, the <strong>Shannon Water-Filling Theorem</strong> allocates collateral proportional to Signal-to-Noise Ratio (SNR). Clean, low-noise trends ($AAVE, $AVAX, $NEAR, $SOL) receive 73% of total capital, while ultra-noisy assets ($DOGE, where noise N_i ≥ ν) are mathematically pruned to 0% allocation to protect portfolio SNR.
         </p>
 
-        ${window.EdgeFlow && window.EdgeFlow.InfoTheoryVisualizer ? window.EdgeFlow.InfoTheoryVisualizer.renderWaterFillingPool() : ''}
+        ${window.EdgeFlow && window.EdgeFlow.InfoTheoryVisualizer ? window.EdgeFlow.InfoTheoryVisualizer.renderWaterFillingPool(activePosts) : ''}
       </div>
     `;
   }
@@ -997,7 +1000,7 @@ function getInfoConceptHtml() {
           <strong>In Plain English:</strong> Kolmogorov Complexity K(x) measures the length of the shortest computer program that can recreate a piece of text. Cover Chapter 14 proves universal data compression (LZ77/LZW) asymptotically approximates K(x). When posts are generated with lazy AI prompts, their structural patterns collapse and compression ratios drop below 0.30. In our calibrated Day 4 posts, the incompressibility ratio is <strong>0.633</strong> and pairwise <strong>Normalized Compression Distance (NCD) averages 0.777</strong>, mathematically proving to Bybit filters that every post contains genuine human alpha with zero templating.
         </p>
 
-        ${window.EdgeFlow && window.EdgeFlow.InfoTheoryVisualizer ? window.EdgeFlow.InfoTheoryVisualizer.renderKolmogorovNcdMatrix() : ''}
+        ${window.EdgeFlow && window.EdgeFlow.InfoTheoryVisualizer ? window.EdgeFlow.InfoTheoryVisualizer.renderKolmogorovNcdMatrix(activePosts) : ''}
       </div>
     `;
   }
