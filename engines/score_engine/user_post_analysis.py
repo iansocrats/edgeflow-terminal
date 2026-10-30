@@ -71,6 +71,20 @@ class BybitUserPostAnalyzer:
                     "Day 4 covered single isolated assets. This post runs a multi-token comparative thesis, giving users multiple instruments to trade.",
                     "Author personally responds to commenters in the thread, boosting community trust and algorithmic distribution."
                 ]
+            elif p["post_id"] == "4035225266125856630":
+                audit["title"] = "Post 3: $VVVUSDT Parabolic Trend Management & Dynamic Trailing Stop"
+                audit["key_strengths"] = [
+                    "High-Energy Active Trade Hook: 'VVV just went absolutely vertical, and this is exactly where real wealth is built in this market... I am actively managing it to squeeze every drop of profit.'",
+                    "Dual Technical Perspective: Balances expansion indicators (MACD wide open, EMA cluster fanning) with explicit exhaustion warnings (RSI6 at 76.16, piercing Bollinger Band).",
+                    "Dynamic Stop-Loss Rule: Uses EMA7 (24.650) as an active trailing floor instead of static price targets ('I do not try to guess the top. Guessing tops is how you lose money.').",
+                    "Disciplined Capital Preservation & FOMO Warning: Warns followers who missed the blast not to FOMO chase green candles, but to wait for a micro-pullback or flag.",
+                    "Earned 41 Likes, demonstrating high community resonance for momentum/trend execution."
+                ]
+                audit["contrasts_with_day4"] = [
+                    "Day 4 posts used static take-profit and entry tables. This post teaches active trade management and trailing dynamic stops.",
+                    "Day 4 lacked urgent psychological guardrails ('do not FOMO chase this massive green candle').",
+                    "Incorporates both $VVVUSDT and $ETHUSDT with #ByXIMPACT #IMPACTbyTrade."
+                ]
                 
             audit_results.append(audit)
             
@@ -80,10 +94,11 @@ class BybitUserPostAnalyzer:
             "universal_creator_patterns": [
                 "1. Always include official campaign hashtags: #ByXIMPACT #IMPACTbyTrade.",
                 "2. Keep readability between Grade 3 and Grade 7 (avoid academic textbook phrasing).",
-                "3. Express personal positioning ('I already have my trade on this').",
-                "4. Anchor risk in clear conversational language ('the idea is wrong if it closes under $2,225').",
-                "5. End with a specific comparative or level question ('Where's your line...?', 'Your pick...?').",
-                "6. Actively reply to comments in the thread to unlock Bybit's 3x community comment weighting."
+                "3. Express personal positioning ('I already have my trade on this', 'I am actively managing it').",
+                "4. Anchor risk in dynamic trader terminology ('aggressively trailing my stop loss', 'the idea is wrong if it closes under X').",
+                "5. Provide actionable guidance for non-positioned traders ('do not FOMO chase... wait for a micro-pullback').",
+                "6. End with a specific engagement question ('Are you riding this parabolic move, or are you waiting...?').",
+                "7. Actively reply to comments in the thread to unlock Bybit's 3x community comment weighting."
             ]
         }
 

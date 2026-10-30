@@ -9,8 +9,8 @@
     "total_creator_likes": 120520,
     "profile_url": "https://www.bybit.com/press/community/535233761"
   },
-  "extracted_at": "2026-10-30T07:58:00Z",
-  "total_posts": 2,
+  "extracted_at": "2026-10-30T05:11:10.791826Z",
+  "total_posts": 3,
   "posts": [
     {
       "post_id": "576460752305256405",
@@ -183,6 +183,68 @@
         "credibility_risk": 19.5,
         "presentation_cta": 20.0,
         "total_byx_score": 99.0,
+        "grade": "A+",
+        "valid_post": true
+      }
+    },
+    {
+      "post_id": "4035225266125856630",
+      "url": "https://www.bybit.com/press/community/4035225266125856630?share_to=link",
+      "symbols": [
+        "VVVUSDT",
+        "ETHUSDT"
+      ],
+      "created_at_unix": 1793292957,
+      "created_at_iso": "2026-10-29T19:55:57",
+      "engagement": {
+        "like_count": 41,
+        "comment_count": 1,
+        "share_count": 1,
+        "creator_replied_to_comments": false
+      },
+      "content": "VVV just went absolutely vertical, and this is exactly where real wealth is built in this market. I am not just watching this parabolic move; I am actively managing it to squeeze every drop of profit out of the trend.\n\nLook at this 1-hour chart. We saw a textbook launch from the 22.852 base, ripping straight through the EMAs to a peak of 25.940. The volume spike here is the engine, confirming this is backed by real, aggressive buyers.\n\nHere is my technical game plan:\n\nThe Power: The MACD is wide open to the upside, and the EMA cluster is fanning out beautifully. \nThe Exhaustion Risk: Yes, the RSI6 is hot at 76.16, and we are piercing the upper Bollinger Band. The move is extended.\n\nMy Execution Strategy:\nI do not try to guess the top. Guessing tops is how you lose money. I ride the momentum until the market tells me it's over.\n\nMy anchor is the EMA7 at 24.650. I am aggressively trailing my stop loss just below that level. As long as VVV holds above this dynamic support, I let the profit run toward new highs. If the price breaks below it, I secure my gains and step away. No emotions, just pure price action.\n\nFor those who missed the initial blast: do not FOMO chase this massive green candle. Wait for a micro-pullback or a tight flag to form. Let the price come to you.\n\nThe market is offering a massive opportunity. I am staying disciplined, riding the trend, and protecting my capital.\n\nAre you riding this parabolic move, or are you waiting for the dust to settle?\n$VVVUSDT $ETHUSDT #ByXIMPACT #IMPACTbyTrade ",
+      "metrics": {
+        "word_count": 276,
+        "sentence_count": 27,
+        "avg_words_per_sentence": 10.2,
+        "flesch_kincaid_grade": 5.2,
+        "vocabulary_entropy_bits": 6.828,
+        "detected_colloquial_markers": [
+          "went absolutely vertical",
+          "real wealth is built",
+          "squeeze every drop of profit",
+          "textbook launch",
+          "volume spike here is the engine",
+          "guessing tops is how you lose money",
+          "aggressively trailing my stop loss",
+          "no emotions, just pure price action",
+          "do not fomo chase",
+          "let the price come to you"
+        ],
+        "colloquial_density_score": 10,
+        "campaign_hashtags": {
+          "#ByXIMPACT": true,
+          "#IMPACTbyTrade": true
+        }
+      },
+      "comments": [
+        {
+          "comment_id": "2305843009217804213",
+          "username": "Youno",
+          "user_id": "580812985",
+          "content": "580812985",
+          "like_count": 1,
+          "created_at_unix": "1793295279",
+          "replies": []
+        }
+      ],
+      "byx_evaluation": {
+        "originality": 20.0,
+        "depth_structure": 19.5,
+        "relevance": 20.0,
+        "credibility_risk": 19.5,
+        "presentation_cta": 16.0,
+        "total_byx_score": 95.0,
         "grade": "A+",
         "valid_post": true
       }
