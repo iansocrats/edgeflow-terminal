@@ -22,7 +22,7 @@ function getDayScoreKey(sessionId) {
 }
 
 function getDaySessionStorageKey(sessionId) {
-  return `byx_session_posts_v74_${sessionId}`;
+  return `byx_session_posts_v76_${sessionId}`;
 }
 
 function getSessionScore(sessionId) {
@@ -667,7 +667,7 @@ function switchDaySession(newSessionId, forceFresh = false) {
 
   if (currentSessionId === 'day5') {
     const d5First = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5First.includes('$1.2658') || d5First.includes('#') || d5First.includes('|') || !d5First.includes('matters because')) {
+    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5First.includes('$1.2658') || d5First.includes('#') || d5First.includes('|') || (d5First.split('\n')[0] || '').length > 50) {
       postsData = typeof getDay5PreloadedSlots === 'function' ? getDay5PreloadedSlots() : createEmptySlots();
       if (!localStorage.getItem('byx_session_posts_day4')) {
         localStorage.setItem('byx_session_posts_day4', JSON.stringify(getDay4PreloadedSlots()));

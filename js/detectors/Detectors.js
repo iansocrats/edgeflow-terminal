@@ -1445,7 +1445,8 @@ function runByxDimensionsScore(text) {
     subCred.innerHTML = `<strong>How Audited:</strong> ☑ 25% Hard Stop Level • ☑ 25% Asset Risk Context • ☑ 25% Standalone Risk Line • ☑ 25% Single Setup Block`;
   }
   if (subPres) {
-    subPres.innerHTML = `<strong>How Audited:</strong> ☑ 25% 4-Step Hook Title • ☑ 25% Clean • Bullets (0 #/|) • ☑ 25% Punctuation Cadence • ☑ 25% Mobile Span (${wordCount}w)`;
+    const titleLen = ((clean.split('\n')[0] || '').trim()).length;
+    subPres.innerHTML = `<strong>How Audited:</strong> ${titleLen <= 50 ? '☑' : '☐'} 25% Hook Title (${titleLen}/50c ≤50 Max) • ☑ 25% Clean • Bullets (0 #/|) • ☑ 25% Punctuation • ☑ 25% Mobile Span (${wordCount}w)`;
   }
 
   [

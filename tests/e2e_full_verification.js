@@ -249,6 +249,67 @@ async function runE2ETest() {
     console.log(`✅ PASS: Copy Polished Post button exists: ${copyPolishedBtnExists}`);
     if (!copyPolishedBtnExists) throw new Error('Expected copyPolishedBtn to exist');
 
+    // 4c-1b. Test Strict <=50 Character Title Limit & Gamified Daily Completion Tracker
+    console.log('\n--- TESTING ≤50 CHAR TITLE ENFORCER & GAMIFIED DAILY POST COMPLETION TRACKER ---');
+    const title50Audit = await evalBrowser(`
+      (() => {
+        const over50 = [];
+        postsData.forEach((p, idx) => {
+          const tLen = (p.title || '').length;
+          const hLine = ((p.improved || '').split('\\n')[0] || '').trim();
+          const hLen = hLine.length;
+          if (tLen > 50) over50.push('Post ' + (idx + 1) + ' title (' + tLen + 'c): ' + p.title);
+          if (hLen > 50) over50.push('Post ' + (idx + 1) + ' headline (' + hLen + 'c): ' + hLine);
+        });
+        const badgeText = document.getElementById('titleCharCountBadge') ? document.getElementById('titleCharCountBadge').textContent : '';
+        return { over50, badgeText };
+      })()
+    `);
+    console.log(`✅ PASS: ≤50 Char Title Audit -> Over 50 count: ${title50Audit.over50.length} | Live Badge: "${title50Audit.badgeText}"`);
+    if (title50Audit.over50.length > 0 || !title50Audit.badgeText.includes('≤50 PASS')) {
+      throw new Error(`≤50 Char Title check failed: ${JSON.stringify(title50Audit)}`);
+    }
+
+    await evalBrowser('document.getElementById("btnTogglePostDone").click()');
+    await new Promise(r => setTimeout(r, 150));
+    const questAfter1 = await evalBrowser(`
+      (() => ({
+        p1Done: Boolean(postsData[0].done),
+        pillHasDone: document.querySelectorAll('#pillsContainer .pill-item')[0].classList.contains('post-done'),
+        stepHasDone: document.querySelectorAll('#questStepsContainer .quest-step-btn')[0].classList.contains('done'),
+        progressText: document.getElementById('questProgressText').textContent,
+        barWidth: document.getElementById('questProgressBarFill').style.width
+      }))()
+    `);
+    console.log(`✅ PASS: Marked Post 1 Done -> Progress: "${questAfter1.progressText}" | Bar Width: ${questAfter1.barWidth}`);
+    if (!questAfter1.p1Done || !questAfter1.pillHasDone || !questAfter1.stepHasDone || questAfter1.barWidth !== '10%') {
+      throw new Error(`Gamified Quest Tracker failed after Post 1: ${JSON.stringify(questAfter1)}`);
+    }
+
+    await evalBrowser(`
+      for (let i = 1; i < postsData.length; i++) {
+        if (!postsData[i].done) togglePostDone(i);
+      }
+    `);
+    await new Promise(r => setTimeout(r, 150));
+    const questAfterAll = await evalBrowser(`
+      (() => ({
+        doneCount: postsData.filter(p => p.done).length,
+        progressText: document.getElementById('questProgressText').textContent,
+        barWidth: document.getElementById('questProgressBarFill').style.width
+      }))()
+    `);
+    console.log(`✅ PASS: Marked All 10 Posts Done -> Progress: "${questAfterAll.progressText}" | Bar Width: ${questAfterAll.barWidth}`);
+    if (questAfterAll.doneCount !== 10 || !questAfterAll.progressText.includes('ALL DONE!') || questAfterAll.barWidth !== '100%') {
+      throw new Error(`Gamified Quest Tracker failed at 100%: ${JSON.stringify(questAfterAll)}`);
+    }
+
+    await evalBrowser('document.getElementById("btnResetQuestTrack").click()');
+    await new Promise(r => setTimeout(r, 150));
+    const questAfterReset = await evalBrowser('postsData.filter(p => p.done).length');
+    console.log(`✅ PASS: Reset Quest Track -> Done count restored to ${questAfterReset}/10`);
+    if (questAfterReset !== 0) throw new Error(`Expected 0 done posts after reset, got ${questAfterReset}`);
+
     // 4c-2. Test Day 5 Clean Formatting Rules, Zero # Tags, Single Setup Block, & High-Entropy Humanization Fixers
     console.log('\n--- TESTING DAY 5 CLEAN RULES (ZERO #, CLEAN • BULLETS, STANDALONE RISK, SIMPLE CTA, ZERO FIXERS) ---');
     const day5RuleAudit = await evalBrowser(`

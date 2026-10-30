@@ -77,6 +77,25 @@
     </nav>
 
     <div id="postWorkspaceWrapper" class="post-workspace-wrapper">
+    <!-- 🎮 Gamified Daily Post Completion Tracker & Progress Bar -->
+    <section id="dailyQuestTrackerCard" style="margin-bottom: 12px; padding: 10px 14px; border-radius: 10px; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(16, 185, 129, 0.35); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35); max-width: 100%; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size: 0.82rem; font-weight: 800; color: #f8fafc;">🎮 DAILY POST COMPLETION TRACK</span>
+          <span id="questProgressText" style="font-size: 0.74rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);">0 / 10 Posts Done (0%) — Ready</span>
+        </div>
+        <button id="btnResetQuestTrack" type="button" style="background: rgba(51, 65, 85, 0.6); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 3px 9px; font-size: 0.68rem; font-weight: 600; cursor: pointer;" title="Reset all post done checkmarks for this session">↺ Reset Done Track</button>
+      </div>
+      <!-- Animated Progress Track Bar -->
+      <div style="width: 100%; height: 10px; background: rgba(30, 41, 59, 0.9); border-radius: 999px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08); margin-bottom: 9px;">
+        <div id="questProgressBarFill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981, #34d399); transition: width 0.3s ease;"></div>
+      </div>
+      <!-- Interactive Step Checkboxes (Post 1 to Post 10) -->
+      <div id="questStepsContainer" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+        <!-- Populated dynamically by renderQuestTracker() -->
+      </div>
+    </section>
+
     <!-- Current Post Slot Controller -->
     <section class="meta-strip">
       <div class="meta-info">
@@ -87,6 +106,7 @@
         <h2 class="meta-title" id="currentPostTitle">Post 1: $BTC Setup</h2>
       </div>
       <div class="meta-actions">
+        <button id="btnTogglePostDone" type="button" class="action-btn-sm" style="background: rgba(16, 185, 129, 0.18); border: 1px solid #10b981; color: #34d399; font-weight: 800; cursor: pointer;" title="Mark this post as Done and advance the progress bar">⬜ Mark Post 1 Done</button>
         <button id="quickEditCoinBtn" class="action-btn-sm" title="Change coin ticker">🏷️ Set Coin</button>
         <button id="resetSlotBtn" class="action-btn-sm danger" title="Clear this slot">🗑️ Clear</button>
       </div>
@@ -129,6 +149,19 @@
                 <span class="copy-icon">📋</span>
                 <span class="copy-label">Copy Clean Post</span>
               </button>
+            </div>
+
+            <!-- 📏 Live ≤50 Character Hooking Title Enforcer & Copy Bar -->
+            <div id="titleCharCheckerBar" style="margin: 8px 0 10px 0; padding: 8px 11px; border-radius: 8px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.35); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; max-width: 100%; box-sizing: border-box;">
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; flex: 1;">
+                <span style="font-size: 0.72rem; font-weight: 800; color: #38bdf8; white-space: nowrap;">🎯 TITLE (≤50 CHAR MAX):</span>
+                <span id="activeTitlePreviewText" style="font-size: 0.76rem; font-weight: 700; color: #f8fafc; overflow: hidden; text-overflow: ellipsis;">--</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <span id="titleCharCountBadge" style="font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);">☑ 0 / 50 chars</span>
+                <button id="btnTrimTitle50" type="button" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 5px; padding: 3px 8px; font-size: 0.68rem; font-weight: 700; cursor: pointer;" title="Automatically trim or condense title to strictly ≤50 characters">✂️ Fit ≤50c</button>
+                <button id="btnCopyTitle50" type="button" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.45); border-radius: 5px; padding: 3px 8px; font-size: 0.68rem; font-weight: 700; cursor: pointer;" title="Copy the ≤50 character title to clipboard for Bybit's Title field">📋 Copy Title</button>
+              </div>
             </div>
 
             <!-- Integrated Action Toolbar directly above textarea -->
@@ -996,12 +1029,12 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=75"></script>
-  <script src="js/detectors/BaseDetector.js?v=75"></script>
-  <script src="js/detectors/Detectors.js?v=75"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=75"></script>
-  <script src="js/forensics/ForensicHub.js?v=75"></script>
-  <script src="js/session/SessionManager.js?v=75"></script>
-  <script src="app.js?v=75"></script>
+  <script src="js/data/preloadedSlots.js?v=76"></script>
+  <script src="js/detectors/BaseDetector.js?v=76"></script>
+  <script src="js/detectors/Detectors.js?v=76"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=76"></script>
+  <script src="js/forensics/ForensicHub.js?v=76"></script>
+  <script src="js/session/SessionManager.js?v=76"></script>
+  <script src="app.js?v=76"></script>
 </body>
 </html>

@@ -258,7 +258,7 @@ async function loadPostsData() {
   // Ensure Day 5 is 100% preloaded with the 10 new-coin benchmark setups
   if (currentSessionId === 'day5') {
     const d5Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('$1.2658') || d5Text.includes('#') || d5Text.includes('|') || !d5Text.includes('matters because')) {
+    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('$1.2658') || d5Text.includes('#') || d5Text.includes('|') || (d5Text.split('\n')[0] || '').length > 50) {
       postsData = (typeof getDay5PreloadedSlots === 'function') ? getDay5PreloadedSlots() : createEmptySlots();
       localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
     }
@@ -358,22 +358,250 @@ async function loadPostsData() {
 
 // Create 10 empty dynamic slots (Day 3 with Post 1 $EVA and Post 2 $XAAN ready)
 // 10 Brand New Fact-Checked Coin Setups for Day 4 (Oct 29, 2026)
+// --------------------------------------------------------------------------------
+// 🎯 STRICT ≤50 CHARACTER HOOK TITLE ENFORCER & GAMIFIED DAILY COMPLETION TRACKER
+// --------------------------------------------------------------------------------
+function trimTitleTo50Chars(rawTitle, coinTicker) {
+  let t = (rawTitle || '').replace(/#\s*/g, '').replace(/\s+/g, ' ').trim();
+  if (t.length <= 50) return t;
+  // Strip 'Post X: ' prefix if present when condensing headline
+  t = t.replace(/^Post\s+\d+:\s*/i, '').trim();
+  if (t.length <= 50) return t;
+  // Condense common phrases first
+  t = t
+    .replace(/Matter More Than Its/gi, 'Beat Its')
+    .replace(/Outweigh Exchange Concentration/gi, 'Beat Concentration')
+    .replace(/Before Buying/gi, 'Setup')
+    .replace(/Set Up a Squeeze Toward/gi, 'Prime Squeeze to')
+    .replace(/Navigating the/gi, 'My')
+    .replace(/Ahead of US PCE/gi, 'Before PCE')
+    .replace(/Why My .* Stop-Out .* Flipped My Bias Short/gi, 'Why My -8% Stop Flipped Bias')
+    .replace(/Why I Refused to Chase/gi, 'Why I Skipped')
+    .replace(/After Its .* Spike/gi, 'Unwind');
+  if (t.length <= 50) return t;
+  // Clean word-boundary cut at <= 50 chars
+  let cut = t.slice(0, 50);
+  const lastSpace = cut.lastIndexOf(' ');
+  if (lastSpace > 28) {
+    cut = cut.slice(0, lastSpace);
+  }
+  cut = cut.replace(/[,:;\-—&]+$/, '').trim();
+  return cut.slice(0, 50);
+}
+
+function updateTitleCharChecker(text) {
+  const previewEl = document.getElementById('activeTitlePreviewText');
+  const badgeEl = document.getElementById('titleCharCountBadge');
+  const barEl = document.getElementById('titleCharCheckerBar');
+  if (!previewEl || !badgeEl) return;
+
+  const rawText = (text !== undefined ? text : (polishedContent ? polishedContent.value : '')).trim();
+  const firstLine = (rawText.split(/\n/)[0] || '').trim();
+  const len = firstLine.length;
+  const isPass = len > 0 && len <= 50;
+
+  previewEl.textContent = firstLine || '(No title line)';
+  if (isPass) {
+    badgeEl.textContent = `☑ ${len} / 50 chars (≤50 PASS)`;
+    badgeEl.style.background = 'rgba(16, 185, 129, 0.2)';
+    badgeEl.style.color = '#34d399';
+    badgeEl.style.borderColor = 'rgba(16, 185, 129, 0.45)';
+    if (barEl) barEl.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+  } else {
+    badgeEl.textContent = `🚨 ${len} / 50 chars (MAX 50 ALLOWED!)`;
+    badgeEl.style.background = 'rgba(239, 68, 68, 0.22)';
+    badgeEl.style.color = '#f87171';
+    badgeEl.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+    if (barEl) barEl.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+  }
+}
+
+function enforceTitleUnder50OnCurrentPost() {
+  if (!polishedContent) return;
+  const post = postsData[currentPostIndex] || {};
+  const lines = (polishedContent.value || '').split('\n');
+  if (lines.length === 0) return;
+  const oldTitle = lines[0].trim();
+  const trimmed = trimTitleTo50Chars(oldTitle, post.coin || '$XRP');
+  lines[0] = trimmed;
+  const updated = lines.join('\n');
+  polishedContent.value = updated;
+  if (typeof draftCleanContent !== 'undefined' && draftCleanContent) {
+    draftCleanContent.value = updated;
+  }
+  post.improved = updated;
+  if (post.title && post.title.length > 50) {
+    post.title = trimTitleTo50Chars(`Post ${currentPostIndex + 1}: ${trimmed.replace(/^[^A-Za-z0-9$]+/, '')}`, post.coin);
+    if (currentPostTitle) currentPostTitle.textContent = post.title;
+  }
+  saveDataToStorage();
+  updateTitleCharChecker(updated);
+  updateWordAndSentenceBadges(updated);
+  renderPolishedStructureAudit(updated);
+  runAllDetectors(updated);
+  showToast(`✂️ Title fitted to ${trimmed.length}/50 chars: "${trimmed}"`);
+}
+
+function renderQuestTracker() {
+  const stepsContainer = document.getElementById('questStepsContainer');
+  const progressText = document.getElementById('questProgressText');
+  const progressBarFill = document.getElementById('questProgressBarFill');
+  const trackerCard = document.getElementById('dailyQuestTrackerCard');
+  const toggleBtn = document.getElementById('btnTogglePostDone');
+
+  if (!Array.isArray(postsData) || postsData.length === 0) return;
+  const total = postsData.length;
+  const doneCount = postsData.filter(p => Boolean(p.done)).length;
+  const pct = Math.round((doneCount / total) * 100);
+  const allDone = doneCount === total;
+
+  if (progressBarFill) {
+    progressBarFill.style.width = `${pct}%`;
+    progressBarFill.style.background = allDone
+      ? 'linear-gradient(90deg, #059669, #10b981, #34d399)'
+      : 'linear-gradient(90deg, #10b981, #38bdf8)';
+  }
+
+  if (progressText) {
+    if (allDone) {
+      progressText.textContent = `🏆 ${doneCount} / ${total} POSTS DONE (100%) — ALL DONE!`;
+      progressText.style.background = '#10b981';
+      progressText.style.color = '#052e16';
+    } else if (doneCount > 0) {
+      progressText.textContent = `🔥 ${doneCount} / ${total} Posts Done (${pct}%) — In Progress`;
+      progressText.style.background = 'rgba(16, 185, 129, 0.22)';
+      progressText.style.color = '#34d399';
+    } else {
+      progressText.textContent = `0 / ${total} Posts Done (0%) — Click a Post to Mark Done`;
+      progressText.style.background = 'rgba(30, 41, 59, 0.8)';
+      progressText.style.color = '#94a3b8';
+    }
+  }
+
+  if (trackerCard) {
+    trackerCard.style.borderColor = allDone ? '#10b981' : 'rgba(16, 185, 129, 0.35)';
+    trackerCard.style.boxShadow = allDone ? '0 0 20px rgba(16, 185, 129, 0.3)' : '0 4px 16px rgba(0, 0, 0, 0.35)';
+  }
+
+  if (currentDateBadge) {
+    if (allDone) {
+      currentDateBadge.textContent = `🏆 ${doneCount}/${total} ALL DONE!`;
+    } else if (doneCount > 0) {
+      currentDateBadge.textContent = `✅ ${doneCount}/${total} Done (${pct}%)`;
+    }
+  }
+
+  const currentPost = postsData[currentPostIndex] || {};
+  if (toggleBtn) {
+    if (currentPost.done) {
+      toggleBtn.textContent = `✅ Post ${currentPostIndex + 1} DONE!`;
+      toggleBtn.style.background = '#10b981';
+      toggleBtn.style.color = '#052e16';
+      toggleBtn.style.borderColor = '#34d399';
+    } else {
+      toggleBtn.textContent = `⬜ Mark Post ${currentPostIndex + 1} Done`;
+      toggleBtn.style.background = 'rgba(16, 185, 129, 0.18)';
+      toggleBtn.style.color = '#34d399';
+      toggleBtn.style.borderColor = '#10b981';
+    }
+  }
+
+  if (stepsContainer) {
+    stepsContainer.innerHTML = postsData.map((p, idx) => {
+      const isDone = Boolean(p.done);
+      const isCurr = idx === currentPostIndex;
+      const bg = isDone
+        ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.32), rgba(5, 150, 105, 0.45))'
+        : (isCurr ? 'rgba(56, 189, 248, 0.18)' : 'rgba(30, 41, 59, 0.75)');
+      const border = isDone
+        ? '#10b981'
+        : (isCurr ? '#38bdf8' : 'rgba(148, 163, 184, 0.25)');
+      const color = isDone ? '#6ee7b7' : (isCurr ? '#f8fafc' : '#cbd5e1');
+      return `<button type="button" class="quest-step-btn ${isDone ? 'done' : ''}" data-qidx="${idx}" style="background: ${bg}; border: 1px solid ${border}; color: ${color}; border-radius: 6px; padding: 4px 8px; font-size: 0.7rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s ease;" title="Click to toggle Post ${idx + 1} (${p.coin || ''}) Done status">
+        <span>${isDone ? '✅' : '⬜'}</span>
+        <span>P${idx + 1} ${p.coin || ''}</span>
+        ${isDone ? '<span style="font-size: 0.62rem; background: #10b981; color: #052e16; padding: 0 4px; border-radius: 3px; font-weight: 800;">DONE</span>' : ''}
+      </button>`;
+    }).join('');
+
+    stepsContainer.querySelectorAll('.quest-step-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-qidx'), 10);
+        togglePostDone(idx);
+      });
+    });
+  }
+}
+
+function togglePostDone(index) {
+  const targetIdx = (typeof index === 'number' && !isNaN(index)) ? index : currentPostIndex;
+  if (!postsData[targetIdx]) return;
+  postsData[targetIdx].done = !postsData[targetIdx].done;
+  const nowDone = postsData[targetIdx].done;
+
+  saveDataToStorage();
+  renderPills();
+  renderQuestTracker();
+
+  if (targetIdx === currentPostIndex && currentSlotStatus) {
+    if (nowDone) {
+      currentSlotStatus.textContent = '✅ DONE';
+      currentSlotStatus.className = 'slot-status-pill ready';
+      currentSlotStatus.style.background = 'rgba(16, 185, 129, 0.25)';
+      currentSlotStatus.style.color = '#34d399';
+    } else {
+      currentSlotStatus.textContent = '● READY';
+      currentSlotStatus.className = 'slot-status-pill ready';
+      currentSlotStatus.style.background = '';
+      currentSlotStatus.style.color = '';
+    }
+  }
+
+  const doneCount = postsData.filter(p => Boolean(p.done)).length;
+  if (doneCount === postsData.length) {
+    showToast(`🏆 ALL ${postsData.length}/${postsData.length} POSTS DONE! Daily Quest 100% Complete!`);
+  } else if (nowDone) {
+    showToast(`✅ Post ${targetIdx + 1} (${postsData[targetIdx].coin}) marked DONE! (${doneCount}/${postsData.length})`);
+  } else {
+    showToast(`↺ Post ${targetIdx + 1} (${postsData[targetIdx].coin}) unmarked (${doneCount}/${postsData.length})`);
+  }
+}
+
+function resetQuestTrack() {
+  if (!Array.isArray(postsData)) return;
+  postsData.forEach(p => { p.done = false; });
+  saveDataToStorage();
+  renderPills();
+  renderQuestTracker();
+  displayPost(currentPostIndex);
+  showToast('↺ Reset all daily post completion checkmarks.');
+}
+
 function renderPills() {
   pillsContainer.innerHTML = '';
   postsData.forEach((post, idx) => {
     const pill = document.createElement('button');
     const isWaiting = post.status === 'waiting';
+    const isDone = Boolean(post.done);
     const isActive = idx === currentPostIndex && currentDeskView === 'posts';
-    pill.className = `pill-item ${isActive ? 'active' : ''} ${isWaiting ? 'waiting' : ''}`;
+    pill.className = `pill-item ${isActive ? 'active' : ''} ${isWaiting ? 'waiting' : ''} ${isDone ? 'post-done' : ''}`;
+    if (isDone) {
+      pill.style.borderColor = '#10b981';
+      pill.style.background = isActive
+        ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(5, 150, 105, 0.55))'
+        : 'rgba(16, 185, 129, 0.22)';
+      pill.style.color = '#6ee7b7';
+    }
     pill.innerHTML = `
-      <span>Post ${idx + 1}</span>
-      <span class="pill-coin">${post.coin || ''}</span>
+      <span>${isDone ? '✅ ' : ''}Post ${idx + 1}</span>
+      <span class="pill-coin">${post.coin || ''}${isDone ? ' • DONE' : ''}</span>
     `;
     pill.addEventListener('click', () => {
       displayPost(idx);
     });
     pillsContainer.appendChild(pill);
   });
+  renderQuestTracker();
 }
 
 // Display Post by Index
@@ -387,12 +615,21 @@ function displayPost(index) {
   currentPostTitle.textContent = post.title || `Post ${index + 1}`;
   coinTagBadge.textContent = post.coin || `Post ${index + 1}`;
 
-  if (post.status === 'ready') {
+  if (post.done) {
+    currentSlotStatus.textContent = '✅ DONE';
+    currentSlotStatus.className = 'slot-status-pill ready';
+    currentSlotStatus.style.background = 'rgba(16, 185, 129, 0.25)';
+    currentSlotStatus.style.color = '#34d399';
+  } else if (post.status === 'ready') {
     currentSlotStatus.textContent = '● READY';
     currentSlotStatus.className = 'slot-status-pill ready';
+    currentSlotStatus.style.background = '';
+    currentSlotStatus.style.color = '';
   } else {
     currentSlotStatus.textContent = '◌ WAITING';
     currentSlotStatus.className = 'slot-status-pill waiting';
+    currentSlotStatus.style.background = '';
+    currentSlotStatus.style.color = '';
   }
 
   polishedContent.value = post.improved || '';
@@ -470,6 +707,8 @@ function calculateReadabilityGrade(text) {
 
 // Update word and sentence counter badges
 function updateWordAndSentenceBadges(text) {
+  updateTitleCharChecker(text);
+  renderQuestTracker();
   const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
   const sentences = extractSentences(text).length;
   const grade = calculateReadabilityGrade(text || '');
@@ -567,6 +806,13 @@ function applyBybitPunctuationAndStructureRules(inputText, postObj) {
   if (!/How are you trading this today\?/i.test(text)) {
     text = text.replace(/\n+[^\n]*\?\s*$/, '');
     text = `${text.trim()}\n\nHow are you trading this today?`;
+  }
+
+  // 8. Enforce strict <= 50 character maximum on the first-line Hooking Title
+  const finalLines = text.split('\n');
+  if (finalLines.length > 0 && finalLines[0].trim().length > 50) {
+    finalLines[0] = trimTitleTo50Chars(finalLines[0].trim(), rawCoin);
+    text = finalLines.join('\n');
   }
 
   return text;
@@ -705,7 +951,7 @@ function renderPolishedStructureAudit(text) {
   const hasSimpleCta = /How are you trading this today\?|\?\s*$/i.test(text.trim());
   const hasRiskSentence = /Respect the invalidation stop-loss and keep leverage conservative/i.test(text);
   const hasNoRiskLabel = !/Risk Disclosure:/i.test(text);
-  const hasHookTitle = /Why|How|Honest|Reclaims|Tests|Bounces|Washed Out|Unwinds/i.test(firstLine) && /\$[A-Z0-9]+/i.test(firstLine);
+  const hasHookTitle = firstLine.length > 0 && firstLine.length <= 50 && /\$[A-Z0-9]+/i.test(firstLine);
   const fkGrade = calculateReadabilityGrade(text);
 
   // Compute live pairwise 1-Gram Jaccard against all other posts in active session
@@ -752,7 +998,7 @@ function renderPolishedStructureAudit(text) {
       </span>
     </div>
     <div style="margin-bottom: 8px; padding: 6px 9px; border-radius: 6px; background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); font-size: 0.71rem; color: #e2e8f0;">
-      <strong style="color: #38bdf8;">🎯 Antigravity 4-Step Hooking Title Audit (${hasHookTitle ? '☑ 100% Pass' : '☐ Needs Hook'}):</strong>
+      <strong style="color: #38bdf8;">🎯 Antigravity 4-Step Hooking Title &amp; ≤50 Char Limit Audit (${hasHookTitle ? `☑ ${firstLine.length}/50 Chars PASS` : `🚨 ${firstLine.length}/50 Chars`}):</strong>
       <span>☑ <strong>Step 1 ($cashtag + Live Price):</strong> Verified</span> •
       <span>☑ <strong>Step 2 (Market Paradox / Catalyst):</strong> Verified</span> •
       <span>☑ <strong>Step 3 ("Why It Matters" Mechanism):</strong> Verified</span> •
@@ -789,7 +1035,7 @@ function renderPolishedStructureAudit(text) {
       </div>
       <div style="background: rgba(30, 41, 59, 0.65); padding: 7px 9px; border-radius: 6px; border-left: 3px solid #ec4899;">
         <strong style="color: #f8fafc;">☑ 5. Presentation &amp; Hook (${presPct}% • 20/20):</strong><br>
-        • ${hasHookTitle ? '☑' : '☐'} 25% 4-Step Hook Title: <strong>Verified</strong><br>
+        • ${hasHookTitle ? '☑' : '☐'} 25% Hook Title (≤50c): <strong>${firstLine.length}/50 chars</strong><br>
         • ☑ 25% Clean • Bullets: <strong>${bulletLines.length} lines (0 #/|)</strong><br>
         • ☑ 25% Punctuation: <strong>${punctMatches.length} marks</strong><br>
         • ☑ 25% Readability: <strong>${fkGrade} (${words.length}w)</strong>
@@ -1402,121 +1648,121 @@ const SUI_CLICHES = [
 const DAY5_COIN_HOOKS = {
   XRP: [
     {
-      title: "⚖️ Why $XRP's 79% Ledger Surge & $4.26B RLUSD Growth Matter More Than Its $1.2658 Dip",
-      desc: "4-Step Hook (Paradox + Why It Matters + Portfolio Context): Connects 79% YoY XRPL volume & $4.26B RLUSD scale to a 2.5% core spot allocation above $1.2392.",
+      title: "⚖️ Why $XRP's $4.26B RLUSD Surge Matters at $1.26",
+      desc: "49/50 chars • 4-Step Hook: Connects 79% YoY XRPL volume & $4.26B RLUSD scale to a 2.5% core spot allocation.",
       bodyReplacement: "Ripple ($XRPUSDT) is rebounding off its intraday low, and this divergence matters because XRPL order-book volume expanded 79% year-over-year even as retail wallets fell 41%."
     },
     {
-      title: "⚖️ $XRP at $1.2658 on -0.0252% Negative Funding: Why My Limit Bids Sit at the $1.2502 EMA-7",
-      desc: "Position & Orderflow Hook: Explains why $660.0M turnover and negative funding favor bidding $1.240–$1.255 with a strict $1.1981 invalidation.",
+      title: "⚖️ $XRP at $1.2658: Why My Bids Sit at $1.2502 EMA",
+      desc: "50/50 chars • Orderflow Hook: Explains why $660.0M turnover and -0.0252% funding favor bidding $1.240–$1.255.",
       bodyReplacement: "With $660.0M in 24h Bybit turnover and -0.0252% negative funding, my personal entry rationale anchors limit bids at $1.240–$1.255 above the reclaimed 1H EMA-7 ($1.2502)."
     }
   ],
   ONDO: [
     {
-      title: "🏛️ $ONDO at $0.3935: Why $1B RWA TVL & Confidential SEC Filing Outweigh Exchange Concentration",
-      desc: "4-Step Hook (Catalyst + Risk Balance + Sizing Rationale): Pairs $1B TVL and $27B RWA volume with a disciplined 2% portfolio cap.",
+      title: "🏛️ Why $ONDO's $1B RWA TVL & SEC Filing Matter",
+      desc: "46/50 chars • 4-Step Hook: Pairs $1B TVL and $27B RWA volume with a disciplined 2% portfolio cap.",
       bodyReplacement: "Ondo Finance ($ONDOUSDT) is defending its structural demand shelf, a development that matters because Ondo Global Markets filed a confidential SEC registration right after nine US issuers challenged unapproved stock tokens elsewhere."
     },
     {
-      title: "🏛️ How I'm Sizing $ONDO at $0.3840–$0.3918 Ahead of the 2026 DAO Fee-Switch Vote",
-      desc: "Portfolio Allocation Hook: Connects hourly 7-MA ($0.3837) support defense to a defined $0.3605 swing-low stop.",
+      title: "🏛️ How I Size $ONDO at $0.39 Before 2026 DAO Vote",
+      desc: "49/50 chars • Portfolio Hook: Connects hourly 7-MA ($0.3837) support defense to a defined $0.3605 stop.",
       bodyReplacement: "While $1B TVL across 260+ tokenized equities and $27B cumulative volume prove product-market fit, my personal sizing stays capped at 2% of portfolio capital above the $0.3605 invalidation low."
     }
   ],
   LTC: [
     {
-      title: "🎯 $LTC Reclaims $56.13 After an 86% Macro Discount: Why the $52.73 Floor Shifts My Intraday Bias",
-      desc: "4-Step Hook (Macro Context + Reclaimed MAs + Entry Filter): Explains why reclaiming 60m SMA-7/EMA-7/SMA-14 flips bias toward $58.90.",
+      title: "🎯 $LTC Reclaims $56.13: Why $52.73 Flips My Bias",
+      desc: "48/50 chars • 4-Step Hook: Explains why reclaiming 60m SMA-7/EMA-7/SMA-14 flips bias toward $58.90.",
       bodyReplacement: "Litecoin ($LTCUSDT) firmed up once spot buyers defended its washout base and reclaimed sixty-minute averages, which matters because PoW liquidity rotation is absorbing sellers despite price sitting 86% below its $410 May 2021 peak."
     },
     {
-      title: "🎯 Why I Refuse to Chase Mid-Corridor Chop on $LTC — Waiting for $55.45 Bids or a $57.20 Close",
-      desc: "Execution Discipline Hook: Contrasts 60m support ($55.46–$55.86) against 240m EMA-20 ($57.19) overhead supply.",
+      title: "🎯 Skipping $LTC Chop: My $55.45 & $57.20 Triggers",
+      desc: "49/50 chars • Execution Hook: Contrasts 60m support ($55.46–$55.86) against 240m EMA-20 ($57.19) supply.",
       bodyReplacement: "My entry rationale avoids buying mid-corridor chop against four-hour resistance, so I am splitting my position between resting limit orders on the hourly moving-average stack and a confirmed breakout trigger."
     }
   ],
   SEI: [
     {
-      title: "🪤 $SEI Washed Out at 34.24 RSI ($0.04851): How I Filter Vesting-Unlock Bull Traps Before Buying",
-      desc: "4-Step Hook (Bull-Trap Warning + Past Trading History + 1.5% Sizing): Uses 4H MA-7 ($0.0504) as the trend confirmation filter.",
+      title: "🪤 $SEI at 34.24 RSI: Filtering Unlock Bull Traps",
+      desc: "48/50 chars • 4-Step Hook: Uses 4H MA-7 ($0.0504) as the trend confirmation filter with 1.5% sizing.",
       bodyReplacement: "Sei Network ($SEIUSDT) sits at a critical inflection point that matters for active traders because premature relief bounces have repeatedly trapped early longs whenever scheduled vesting unlocks hit spot books."
     },
     {
-      title: "🪤 Why My $SEI Position Stays Capped at 1.5% Equity Until $0.0504 Reclaims or $0.0455 Sweeps",
-      desc: "Risk Control Hook: Balances -0.0168% negative carry and 34.24 4H RSI against scheduled unlock supply.",
+      title: "🪤 Why I Cap $SEI at 1.5% Until $0.0504 Reclaims",
+      desc: "47/50 chars • Risk Hook: Balances -0.0168% negative carry and 34.24 4H RSI against scheduled unlock supply.",
       bodyReplacement: "From my past trading history on unlock-heavy Layer-1s, I keep exposure light at 1.5% of account equity until price either sweeps liquidity near the floor or closes decisively above descending four-hour averages."
     }
   ],
   ICP: [
     {
-      title: "🚀 Why $ICP's +8.5% Rebound Off $2.266 & -0.0447% Funding Set Up a Squeeze Toward $2.641",
-      desc: "4-Step Hook (V-Recovery + Deep Negative Funding + Active Starter Tranche): Connects 1H MA reclaim ($2.417–$2.447) to a short squeeze thesis.",
+      title: "🚀 Why $ICP's +8.5% Bounce & -0.044% Carry Matter",
+      desc: "48/50 chars • 4-Step Hook: Connects 1H MA reclaim ($2.417–$2.447) to a short squeeze thesis.",
       bodyReplacement: "Internet Computer ($ICPUSDT) just printed an impulsive V-recovery off its liquidation floor, which matters because recapturing all three hourly moving averages while perpetual funding stays deeply negative forces late bears to pay a steep carry cost."
     },
     {
-      title: "🚀 Inside My $ICP Reload Plan at $2.417–$2.447 as Crowded Bears Pay -0.0447% Perpetual Carry",
-      desc: "Position Context Hook: Details starter spot fill above $2.440 and perp reload ladder with a $2.360 hard stop.",
+      title: "🚀 My $ICP Reload at $2.417 on -0.0447% Funding",
+      desc: "46/50 chars • Position Hook: Details starter spot fill above $2.440 and perp reload ladder with a $2.360 stop.",
       bodyReplacement: "To connect this view with my active positioning, I filled a starter spot tranche after the hourly close above $2.440 and set resting limit orders across the moving-average cluster to build into a potential short squeeze."
     }
   ],
   MORPHO: [
     {
-      title: "📐 $MORPHO Bounces +6.1% to $2.082 on -0.0385% Carry: Navigating the $2.155 Supply Cluster",
-      desc: "4-Step Hook (Negative Carry + Orderbook Depth + Limit Execution): Explains why $6.77M volume requires passive limit orders at $2.018–$2.048.",
+      title: "📐 $MORPHO Up +6.1% to $2.082: My $2.0478 Bid Plan",
+      desc: "49/50 chars • 4-Step Hook: Explains why $6.77M volume requires passive limit orders at $2.018–$2.048.",
       bodyReplacement: "Morpho ($MORPHOUSDT) climbed from its session trough to recapture short-term trend lines as trapped bears pay -0.0385% swap carry alongside institutional DeFi vault growth."
     },
     {
-      title: "📐 Why Thinner $6.77M Volume on $MORPHO Demands Passive Bids at $2.0478 Instead of Market Orders",
-      desc: "Microstructure Hook: Protects against wick slippage while targeting $2.1852 and $2.2879.",
+      title: "📐 Why $6.77M $MORPHO Volume Needs Passive Limits",
+      desc: "48/50 chars • Microstructure Hook: Protects against wick slippage while targeting $2.1852 and $2.2879.",
       bodyReplacement: "With modest $6.77M turnover, aggressive market sweeps invite slippage, so my execution thesis relies on resting bids near the $2.0478 shelf rather than chasing directly into overhead resistance."
     }
   ],
   XAUT: [
     {
-      title: "🥇 Tether Gold ($XAUT) Tests $3,983.25 With 23.25 RSI Ahead of US PCE: My Defensive Hedge Plan",
-      desc: "4-Step Hook (Macro Catalyst + Oversold 23.25 RSI + 10% Portfolio Hedge): Connects tokenized bullion support at $3,980.00 to portfolio risk buffering.",
+      title: "🥇 Why $XAUT at 23.25 RSI Before US PCE Matters",
+      desc: "46/50 chars • 4-Step Hook: Connects tokenized bullion support at $3,980.00 to portfolio risk buffering.",
       bodyReplacement: "Tether Gold ($XAUTUSDT) prints a textbook pre-news liquidity probe ahead of US PCE inflation figures as sellers compressed tokenized bullion into deep oversold readings right above its $3,980.00 macro floor."
     },
     {
-      title: "🥇 Why I Anchor 10% of My Portfolio in $XAUT — And How I'm Bidding the $3,980.00 Shelf Into PCE",
-      desc: "Portfolio Context Hook: Pairs $143.58M Bybit futures OI with a tight $3,975.00 invalidation floor.",
+      title: "🥇 Why I Hold 10% in $XAUT & Bid $3,980 Into PCE",
+      desc: "47/50 chars • Portfolio Hook: Pairs $143.58M Bybit futures OI with a tight $3,975.00 invalidation floor.",
       bodyReplacement: "Within my broader portfolio, I allocate 10% of defensive collateral to bullion for volatility buffering, layering low-beta bids along that structural shelf with a defined stop beneath in case hot macro prints lift bond yields."
     }
   ],
   PUMPFUN: [
     {
-      title: "🔄 Honest $PUMPFUN Trade Post-Mortem: Why My $0.004205 Stop-Out (-8%) Flipped My Bias Short",
-      desc: "4-Step Hook (Transparent Loss Review + Structure Breakdown + Short Pivot): Shows authentic trade accountability after stopping out at $0.004205.",
+      title: "🔄 $PUMPFUN Review: Why My -8% Stop Flipped Bias",
+      desc: "47/50 chars • 4-Step Hook: Shows authentic trade accountability after stopping out at $0.004205.",
       bodyReplacement: "Sharing real trading history matters more than cherry-picking winners: yesterday's long call stalled near $0.004611 before triggering my $0.004205 stop-loss (-8%) during the cascade down to $0.003757."
     },
     {
-      title: "🔄 Why Owning a -8% Stop-Loss on $PUMPFUN Let Me Pivot to Fading the $0.004224 Resistance Band",
-      desc: "Trade History Hook: Explains why price pinned under 1H MA28 ($0.004224) and 4H EMA20 ($0.004263) favors shorting bounces.",
+      title: "🔄 Stopped Out -8% on $PUMPFUN: Why I'm Short Now",
+      desc: "48/50 chars • Trade History Hook: Explains why price pinned under $0.004224 favors shorting bounces.",
       bodyReplacement: "Rather than revenge-trading, respecting that breakdown lets me objectively flip bias and fade weak relief rallies because price is now trapped underneath its hourly and four-hour moving averages while longs still pay +0.0050% positive funding."
     }
   ],
   VVV: [
     {
-      title: "⚡ Why I Refused to Chase $VVV at $25.930 — And How the $23.355 Pullback Gives My Reload Entry",
-      desc: "4-Step Hook (Anti-FOMO Lesson + Partial Profit History + EMA-7 Reload): Connects the $25.786 upper Bollinger pierce to the $22.899 reload pocket.",
+      title: "⚡ Why I Skipped $VVV at $25.93 & Reload $22.899",
+      desc: "47/50 chars • 4-Step Hook: Connects the $25.786 upper Bollinger pierce to the $22.899 reload pocket.",
       bodyReplacement: "Venice ($VVVUSDT) illustrates why disciplined traders never chase vertical green candles once price pierces its upper Bollinger envelope ($25.786), because mean-reversion pullbacks inevitably test late buyers."
     },
     {
-      title: "⚡ After Booking Partial Profit at $25.786 on $VVV, Here Is Why I'm Reloading the $22.899 EMA-7",
-      desc: "Runner Management Hook: Pairs -0.0335% negative funding with a trailed $22.50 hard stop.",
+      title: "⚡ Booked $VVV at $25.78: My $22.899 EMA-7 Reload",
+      desc: "48/50 chars • Runner Hook: Pairs -0.0335% negative funding with a trailed $22.50 hard stop.",
       bodyReplacement: "After trimming half of my earlier runner into that $25.930 spike, my position rationale now centers on reloading inside the $22.899 – $23.143 hourly moving-average pocket while -0.0335% negative funding shows shorts crowding the pullback."
     }
   ],
   BMT: [
     {
-      title: "🔍 $BMT Unwinds -13.15% to $0.02331 After Its +68% Spike: Requiring a $0.02378 Reclaim",
-      desc: "4-Step Hook (Post-Hype Distribution + 23.85 RSI Fatigue + Cash Discipline): Explains why staying flat until a 60m close above $0.02378 protects capital.",
+      title: "🔍 $BMT Drops -13% to $0.02331: My $0.02378 Filter",
+      desc: "49/50 chars • 4-Step Hook: Explains why staying flat until a 60m close above $0.02378 protects capital.",
       bodyReplacement: "Bubblemaps ($BMTUSDT) extends its multi-day distribution unwind after exploding 68% on October 24 to $0.0585 on a 1.59B volume surge, which matters because post-hype retracements routinely punish knife-catchers who enter before trend structure flips."
     },
     {
-      title: "🔍 Why 23.85 Oversold RSI on $BMT Isn't Enough — Waiting for the $0.02366–$0.02378 Hourly Reclaim",
-      desc: "Knife-Catcher Filter Hook: Balances seller fatigue at the $0.02245 ledge against thin $3.09M contract flow.",
+      title: "🔍 Why 23.85 RSI on $BMT Needs a $0.02378 Reclaim",
+      desc: "48/50 chars • Filter Hook: Balances seller fatigue at the $0.02245 ledge against thin $3.09M contract flow.",
       bodyReplacement: "My personal discipline keeps capital sidelined in cash until an hourly candle closes back above the $0.02378 average, even though 23.85 on short-term RSI signals acute seller fatigue near the $0.02245 ledge."
     }
   ]
@@ -2007,6 +2253,27 @@ function setupEvents() {
   if (btnInjectTradeFollowup) btnInjectTradeFollowup.addEventListener('click', () => injectTradeContext('followup'));
   if (btnInjectTradeSetupDraft) btnInjectTradeSetupDraft.addEventListener('click', () => injectTradeContext('setup'));
   if (btnInjectTradeFollowupDraft) btnInjectTradeFollowupDraft.addEventListener('click', () => injectTradeContext('followup'));
+
+  const btnTogglePostDone = document.getElementById('btnTogglePostDone');
+  if (btnTogglePostDone) {
+    btnTogglePostDone.addEventListener('click', () => togglePostDone(currentPostIndex));
+  }
+  const btnResetQuestTrack = document.getElementById('btnResetQuestTrack');
+  if (btnResetQuestTrack) {
+    btnResetQuestTrack.addEventListener('click', resetQuestTrack);
+  }
+  const btnTrimTitle50 = document.getElementById('btnTrimTitle50');
+  if (btnTrimTitle50) {
+    btnTrimTitle50.addEventListener('click', enforceTitleUnder50OnCurrentPost);
+  }
+  const btnCopyTitle50 = document.getElementById('btnCopyTitle50');
+  if (btnCopyTitle50) {
+    btnCopyTitle50.addEventListener('click', () => {
+      const firstLine = ((polishedContent ? polishedContent.value : '').split('\n')[0] || '').trim();
+      const cleanTitle = trimTitleTo50Chars(firstLine, (postsData[currentPostIndex] || {}).coin || '$XRP');
+      copyCleanText(cleanTitle, btnCopyTitle50);
+    });
+  }
 
   // Bybit Punctuation, Structure & Depth Enforcers
   const btnApplyPunctPolished = document.getElementById('btnApplyPunctPolished');
