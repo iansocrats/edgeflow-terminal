@@ -160,7 +160,7 @@ async function runE2ETest() {
 
     // Verify all 10 Day 5 coins match the new-coin portfolio
     const day5Coins = await evalBrowser('postsData.map(p => p.coin)');
-    const expectedDay5Coins = ['$XRP', '$ONDO', '$LTC', '$SEI', '$ICP', '$MORPHO', '$XAUT', '$PUMPFUN', '$VVV', '$BMT'];
+    const expectedDay5Coins = ['$XRP', '$PARTI', '$LTC', '$SEI', '$ICP', '$MORPHO', '$XAUT', '$PUMPFUN', '$VVV', '$ONDO'];
     console.log(`✅ PASS: Day 5 10 New-Coin Portfolio: ${day5Coins.join(', ')}`);
     if (JSON.stringify(day5Coins) !== JSON.stringify(expectedDay5Coins)) {
       throw new Error(`Expected Day 5 coins ${expectedDay5Coins.join(', ')}, got ${day5Coins.join(', ')}`);
@@ -174,7 +174,7 @@ async function runE2ETest() {
     const contentP2 = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Clicked Pill 2 -> New Title: "${titleP2}"`);
     console.log(`✅ PASS: Post 2 Content loaded (${contentP2.length} chars, contains: "${contentP2.slice(0, 40)}...")`);
-    if (!titleP2.includes('ONDO')) throw new Error('Expected Post 2 on Day 5 to be ONDO');
+    if (!titleP2.includes('PARTI')) throw new Error('Expected Post 2 on Day 5 to be PARTI');
 
     // 4b. Test Day 4 Certified Archive Preservation (13 posts, $MSFT, $ETH, $BTC)
     console.log('\n--- TESTING DAY 4 CERTIFIED ARCHIVE PRESERVATION ---');

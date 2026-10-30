@@ -432,27 +432,13 @@ function getDay5PreloadedSlots() {
     },
     {
         "id": 2,
-        "coin": "$ONDO",
-        "title": "Post 2: Why $ONDO's $1B RWA & SEC Filing Matter",
+        "title": "Post 2: Why $PARTI's 14x Perp Squeeze Whipsaws",
+        "coin": "$PARTI",
         "status": "ready",
         "done": false,
-        "raw": "ONDO is quoted at $0.3935 (-3.17% over 24h) on Bybit within a $0.3605 to $0.4357 span on $87.89M volume, $44.78M OI, and -0.0080% funding. Why this matters: Ondo crossed $1B TVL across 260+ tokenized stocks/ETFs with $27B cumulative volume (26x turnover) and a confidential SEC registration following the Sept 17 tokenization exemption. My portfolio context: I size ONDO at 2% of equity because 89% volume concentration on Bitget and zero token fee capture until the 2026 DAO vote require disciplined sizing above hourly 7-MA ($0.3837) and 7-EMA ($0.3890). Bid $0.3840 to $0.3918, targets $0.4109 and $0.4357, stop beneath $0.3605. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
-        "improved": "🏛️ Why $ONDO's $1B RWA TVL & SEC Filing Matter\n\nOndo Finance ($ONDOUSDT) is defending its structural demand shelf, a development that matters because Ondo Global Markets filed a confidential SEC registration right after nine US issuers challenged unapproved stock tokens elsewhere.\n\nWhile $1B TVL across 260+ tokenized equities and $27B cumulative volume prove product-market fit, my personal sizing stays capped at 2% of portfolio capital since 89% of RWA trading sits on Bitget and governance lacks fee capture until the 2026 DAO vote.\n\nONDOUSDT Quantitative Telemetry:\n• Current Valuation: $0.3935 (-3.17% change)\n• Intraday Spread: $0.3605 bottom up to $0.4357 top\n• Contract Depth: $87.89M volume paired with $44.78M OI and -0.0080% rate\n• Trend Averages: Holding hourly 7-MA ($0.3837) alongside 7-EMA ($0.3890)\n\nONDOUSDT Execution Levels:\n• Accumulation Window: $0.3840 – $0.3918 (retest of 1H moving-average confluence)\n• Profit Milestones: $0.4109 (four-hour 14-MA) followed by $0.4357 ($0.4369 upper band)\n• Thesis Negation: $0.3605 swing low\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
-        "rules_summary": {
-            "punctuation_count": 14,
-            "word_replacement_count": 10,
-            "emoji_spacing_count": 6
-        },
-        "suggestions": [
-            {
-                "category": "word",
-                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $ONDO."
-            },
-            {
-                "category": "spacing",
-                "description": "Strict <=50 char Hooking Title, clean • bulleted numbers, standalone risk line, and genuine community question."
-            }
-        ]
+        "archetype": "microstructure_manipulation_audit",
+        "raw": "PARTIUSDT on Bybit just pumped +107.52% from $0.03123 to $0.06481 and pulled back 35.82% to $0.05278 (+33.65% 24h). Perpetual turnover is $69.07M vs only $4.87M spot (14.17x perp-to-spot multiple). Information theory shows 64.84% 2h VPIN toxicity (55.27% live tick VPIN), 0.6660 bits/tick 3-gram Shannon block entropy (33.40% deterministic sweep index), 0.3586 bits KL divergence (8.03% regime shift), and 0.3577 5m Hurst exponent (64.23% push-back probability; 91.76% on 15m Hurst 0.0824 with 0.7933 variance ratio). OI flushed -14.21% from 68.10M to 58.43M PARTI ($3.09M) with 60.2% shorts paying -0.0199% funding. I am bidding $0.04910 to $0.05218 (1H MA-28 and EMA-20) with 1.5% equity, targeting $0.05602 and $0.06150, hard stop $0.04520.",
+        "improved": "🧬 Why $PARTI's 14x Perp Squeeze Whipsaws 64%\n\nParticle Network ($PARTIUSDT) illustrates derivative-led manipulation, which matters because 24h perpetual turnover hit $69.07M against just $4.87M in spot volume (a 14.17x perp-to-spot multiple).\n\nInstead of chasing the +107.52% squeeze from $0.03123 to $0.06481, my personal execution waits for the mean-reversion push-back into structural moving-average support with 1.5% of account equity.\n\nPARTIUSDT Manipulation & Information Theory Telemetry:\n• Order-Flow Toxicity (VPIN): 64.84% on the 2h spike (55.27% live tick VPIN across 1,000 trades), thinning top-50 orderbook depth to $18,089 bids vs $23,877 asks (-13.79% ask imbalance).\n• Shannon Block Entropy & Divergence: 0.6660 bits/tick (33.40% deterministic sweep index) with 0.3586 bits KL divergence (8.03% regime shift) and 0.0127 bits spot-to-perp transfer entropy.\n• Whipsaw Push-Back Probability: 5m Hurst exponent at 0.3577 (64.23% push-back probability) and 15m Hurst at 0.0824 (91.76% mean-reversion rate), backed by a 0.7933 variance ratio.\n• Observed Retracement & Moving Averages: Price pulled back 35.82% of the pump range to $0.05278 (44.75 1H RSI-6), testing 1H EMA-20 ($0.05218) above 1H MA-28 ($0.04910) while below 1H MA-7 ($0.05379) and 1H MA-14 ($0.05602).\n• Open Interest & Crowded Short Fuel: Open interest flushed -14.21% from 68.10M to 58.43M PARTI ($3.09M) while 60.2% of accounts stay short paying -0.0199% negative 4h funding.\n\nBecause 64.23% to 91.76% of impulsive moves in this low-Hurst regime snap back, bidding the 35.8% to 50.0% retracement pocket avoids buying top-wick exhaustion while capturing the secondary short squeeze.\n\nPARTIUSDT Tactical Ping-Pong Setup:\n• Passive Reload Zone: $0.04910 – $0.05218 (50% pump retracement floor at $0.04802 confluent with 1H MA-28 at $0.04910 and 1H EMA-20 at $0.05218).\n• Upside Squeeze Targets: $0.05602 (1H MA-14 reclaim, +8.5%) and $0.06150 (upper liquidity sweep, +19.2%, 1:2.6 risk-reward).\n• Hard Invalidation Stop-Loss: $0.04520 (below the 61.8% golden-pocket breakdown where the perp squeeze fully unwinds).\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?"
     },
     {
         "id": 3,
@@ -624,12 +610,12 @@ function getDay5PreloadedSlots() {
     },
     {
         "id": 10,
-        "coin": "$BMT",
-        "title": "Post 10: $BMT at 23.85 RSI: My $0.02378 Filter",
+        "coin": "$ONDO",
+        "title": "Post 10: Why $ONDO's $1B RWA & SEC Filing Matter",
         "status": "ready",
         "done": false,
-        "raw": "Bubblemaps ($BMTUSDT) settles at $0.02331 (-13.15%) on Bybit across a $0.02245 to $0.026904 band with $3.09M contract flow, $1.85M active OI, and +0.0013% funding. Following its Oct 24 +68% surge to $0.0585 on 1.59B volume, extended distribution pushed price down to $0.02245, driving 60m RSI6 to 23.85 (240m RSI14 at 37.07). Entry rationale: I remain flat right now and wait for a confirmed 60m reclaim of 7-MA/7-EMA ($0.02366 to $0.02378), targets $0.02517 and $0.02682, invalidation under $0.02245. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
-        "improved": "🔍 $BMT Drops -13% to $0.02331: My $0.02378 Filter\n\nBubblemaps ($BMTUSDT) extends its multi-day distribution unwind after exploding 68% on October 24 to $0.0585 on a 1.59B volume surge, which matters because post-hype retracements routinely punish knife-catchers who enter before trend structure flips.\n\nMy personal discipline keeps capital sidelined in cash until an hourly candle closes back above the $0.02378 average, even though 23.85 on short-term RSI signals acute seller fatigue near the $0.02245 ledge.\n\nBMTUSDT Telemetry:\n• Spot Print: $0.02331 (-13.15% over 24h)\n• Range Boundaries: $0.02245 support ledge to $0.02690 peak\n• Derivative Depth: $3.09M contract flow, $1.85M active contracts, +0.0013% rate\n• Oscillator Fatigue: 60-min RSI-6 plunged to 23.85, 4-hour RSI-14 at 37.07\n\nBMTUSDT Orders:\n• Entry Filter: Hourly reclaim of $0.02366 (7-MA) and $0.02378 (7-EMA)\n• Profit Targets: $0.02517 first, $0.02682 second\n• Invalidation Line: $0.02245 ledge\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "raw": "ONDO is quoted at $0.3935 (-3.17% over 24h) on Bybit within a $0.3605 to $0.4357 span on $87.89M volume, $44.78M OI, and -0.0080% funding. Why this matters: Ondo crossed $1B TVL across 260+ tokenized stocks/ETFs with $27B cumulative volume (26x turnover) and a confidential SEC registration following the Sept 17 tokenization exemption. My portfolio context: I size ONDO at 2% of equity because 89% volume concentration on Bitget and zero token fee capture until the 2026 DAO vote require disciplined sizing above hourly 7-MA ($0.3837) and 7-EMA ($0.3890). Bid $0.3840 to $0.3918, targets $0.4109 and $0.4357, stop beneath $0.3605. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🏛️ Why $ONDO's $1B RWA TVL & SEC Filing Matter\n\nOndo Finance ($ONDOUSDT) is defending its structural demand shelf, a development that matters because Ondo Global Markets filed a confidential SEC registration right after nine US issuers challenged unapproved stock tokens elsewhere.\n\nWhile $1B TVL across 260+ tokenized equities and $27B cumulative volume prove product-market fit, my personal sizing stays capped at 2% of portfolio capital since 89% of RWA trading sits on Bitget and governance lacks fee capture until the 2026 DAO vote.\n\nONDOUSDT Quantitative Telemetry:\n• Current Valuation: $0.3935 (-3.17% change)\n• Intraday Spread: $0.3605 bottom up to $0.4357 top\n• Contract Depth: $87.89M volume paired with $44.78M OI and -0.0080% rate\n• Trend Averages: Holding hourly 7-MA ($0.3837) alongside 7-EMA ($0.3890)\n\nONDOUSDT Execution Levels:\n• Accumulation Window: $0.3840 – $0.3918 (retest of 1H moving-average confluence)\n• Profit Milestones: $0.4109 (four-hour 14-MA) followed by $0.4357 ($0.4369 upper band)\n• Thesis Negation: $0.3605 swing low\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
         "rules_summary": {
             "punctuation_count": 14,
             "word_replacement_count": 10,
@@ -638,7 +624,7 @@ function getDay5PreloadedSlots() {
         "suggestions": [
             {
                 "category": "word",
-                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $BMT."
+                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $ONDO."
             },
             {
                 "category": "spacing",

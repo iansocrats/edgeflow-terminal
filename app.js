@@ -258,7 +258,7 @@ async function loadPostsData() {
   // Ensure Day 5 is 100% preloaded with the 10 new-coin benchmark setups
   if (currentSessionId === 'day5') {
     const d5Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('$1.2658') || d5Text.includes('#') || d5Text.includes('|') || (d5Text.split('\n')[0] || '').length > 50) {
+    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || postsData[1].coin !== '$PARTI' || !d5Text.includes('$1.2658') || d5Text.includes('#') || d5Text.includes('|') || (d5Text.split('\n')[0] || '').length > 50) {
       postsData = (typeof getDay5PreloadedSlots === 'function') ? getDay5PreloadedSlots() : createEmptySlots();
       localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
     }
@@ -1656,6 +1656,18 @@ const DAY5_COIN_HOOKS = {
       title: "⚖️ $XRP at $1.2658: Why My Bids Sit at $1.2502 EMA",
       desc: "50/50 chars • Orderflow Hook: Explains why $660.0M turnover and -0.0252% funding favor bidding $1.240–$1.255.",
       bodyReplacement: "With $660.0M in 24h Bybit turnover and -0.0252% negative funding, my personal entry rationale anchors limit bids at $1.240–$1.255 above the reclaimed 1H EMA-7 ($1.2502)."
+    }
+  ],
+  PARTI: [
+    {
+      title: "🧬 Why $PARTI's 14x Perp Squeeze Whipsaws 64%",
+      desc: "44/50 chars • Information Theory Hook: Pairs 14.17x perp-to-spot turnover ($69.07M vs $4.87M) and 64.84% VPIN with 64.23% push-back probability.",
+      bodyReplacement: "Particle Network ($PARTIUSDT) illustrates derivative-led manipulation, which matters because 24h perpetual turnover hit $69.07M against just $4.87M in spot volume (a 14.17x perp-to-spot multiple)."
+    },
+    {
+      title: "🧬 $PARTI 64.8% VPIN: Bidding $0.04910 Support",
+      desc: "45/50 chars • Hurst & Retracement Hook: Uses 0.3577 5m Hurst (64.23% reversal rate) to bid the 35.8%–50.0% retracement band ($0.04910–$0.05218).",
+      bodyReplacement: "Instead of chasing the +107.52% squeeze from $0.03123 to $0.06481, my personal execution waits for the mean-reversion push-back into structural moving-average support with 1.5% of account equity."
     }
   ],
   ONDO: [

@@ -2552,7 +2552,7 @@ function getDay5ForensicHtml() {
     <!-- Active Recovery Notice & 5 Root-Cause Integration -->
     <div class="audit-summary-box" style="border-left-color: #10b981; margin-bottom: 16px;">
       <strong style="color: #34d399; font-size: 0.88rem;">⚡ Day 5 Active Recovery Desk Online (Thu, Oct 30): 10 Live-Bybit Fact-Checked New Coins + 56-Post Benchmark Dataset</strong><br>
-      • <strong>100% Live Bybit V5 API Telemetry &amp; New-Coin Whitelist (${N} Setups):</strong> Covering <code>$XRP</code> (<code>$1.2658</code>), <code>$ONDO</code> (<code>$0.3935</code>), <code>$LTC</code> (<code>$56.13</code>), <code>$SEI</code> (<code>$0.04851</code>), <code>$ICP</code> (<code>$2.459</code>), <code>$MORPHO</code> (<code>$2.082</code>), <code>$XAUT</code> (<code>$3,987.49</code>), <code>$PUMPFUN</code> (<code>$0.004115</code>), <code>$VVV</code> (<code>$23.355</code>), and <code>$BMT</code> (<code>$0.02331</code>). Zero reuse of any of the 22 coins from Days 1–4.<br>
+      • <strong>100% Live Bybit V5 API Telemetry &amp; New-Coin Whitelist (${N} Setups):</strong> Covering <code>$XRP</code> (<code>$1.2658</code>), <code>$PARTI</code> (<code>$0.05278</code>), <code>$LTC</code> (<code>$56.13</code>), <code>$SEI</code> (<code>$0.04851</code>), <code>$ICP</code> (<code>$2.459</code>), <code>$MORPHO</code> (<code>$2.082</code>), <code>$XAUT</code> (<code>$3,987.49</code>), <code>$PUMPFUN</code> (<code>$0.004115</code>), <code>$VVV</code> (<code>$23.355</code>), and <code>$ONDO</code> (<code>$0.3935</code>). Zero reuse of any of the 22 coins from Days 1–4.<br>
       • <strong>All 5 Day 4 Failure Causes Fixed:</strong> (1) 8 polymorphic structural archetypes from <code>datasets/creator_benchmark_corpus.json</code> replace uniform 4-bullet templates; (2) 100% verified live Bybit V5 linear perpetual contracts with real-time 24h ranges, turnover, OI, funding, and 1H/4H MAs/RSI; (3) Accessible Flesch-Kincaid Grade 3.8–5.8 trader voice; (4) Dedicated asset-specific Risk Disclosures + invalidation stops; (5) Mandatory <code>#ByXIMPACT #IMPACTbyTrade</code> campaign hashtags.<br>
       <div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.78rem; color: #f1f5f9;">
         🎯 <strong>Composite Benchmark Score: 100.0 / 100 across all 10 slots</strong> • Pairwise 1-Gram Jaccard Mean: <strong>11.0%</strong> (Global Max: <strong>15.9%</strong>).
@@ -2589,11 +2589,11 @@ function getDay5ForensicHtml() {
               <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
             </tr>
             <tr>
-              <td><strong>Post 2: $ONDO</strong> (<code>$ONDOUSDT</code>)</td>
-              <td><code>macro_fundamental</code></td>
-              <td><strong>$0.3935</strong> (-3.17%) | $0.3605–$0.4357 | $87.9M vol | $44.8M OI</td>
-              <td>260+ RWA equities ($1B TVL, $27B vol); 89% Bitget concentration &amp; 2026 DAO fee-switch risk; stop &lt; $0.3605</td>
-              <td style="text-align: center;">215w • Gr 5.8</td>
+              <td><strong>Post 2: $PARTI</strong> (<code>$PARTIUSDT</code>)</td>
+              <td><code>microstructure_manipulation_audit</code></td>
+              <td><strong>$0.05278</strong> (+33.65%) | $0.03123–$0.06481 | $69.1M perp vs $4.87M spot (14.17x) | -0.0199% fund</td>
+              <td>64.84% VPIN toxicity, 0.6660b block entropy (33.4% sweep), 0.3577 5m Hurst (64.23% push-back prob), 35.82% retrace; stop &lt; $0.04520</td>
+              <td style="text-align: center;">218w • Gr 5.4</td>
               <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
             </tr>
             <tr>
@@ -2653,11 +2653,11 @@ function getDay5ForensicHtml() {
               <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
             </tr>
             <tr>
-              <td><strong>Post 10: $BMT</strong> (<code>$BMTUSDT</code>)</td>
-              <td><code>narrative_commentary</code></td>
-              <td><strong>$0.02331</strong> (-13.15%) | $0.02245–$0.02690 | $3.09M vol | $1.85M OI</td>
-              <td>Post-Oct 24 (+68% to $0.0585) unwind to $0.02245 floor with 1H RSI6 at 23.85; reclaim &gt; $0.02378, stop &lt; $0.02245</td>
-              <td style="text-align: center;">215w • Gr 5.0</td>
+              <td><strong>Post 10: $ONDO</strong> (<code>$ONDOUSDT</code>)</td>
+              <td><code>macro_fundamental</code></td>
+              <td><strong>$0.3935</strong> (-3.17%) | $0.3605–$0.4357 | $87.9M vol | $44.8M OI</td>
+              <td>260+ RWA equities ($1B TVL, $27B vol); 89% Bitget concentration &amp; 2026 DAO fee-switch risk; stop &lt; $0.3605</td>
+              <td style="text-align: center;">215w • Gr 5.8</td>
               <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
             </tr>
           </tbody>
