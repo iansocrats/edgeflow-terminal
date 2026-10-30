@@ -270,6 +270,8 @@ async function runE2ETest() {
       throw new Error(`≤50 Char Title check failed: ${JSON.stringify(title50Audit)}`);
     }
 
+    await evalBrowser('resetQuestTrack()');
+    await new Promise(r => setTimeout(r, 150));
     await evalBrowser('document.getElementById("btnTogglePostDone").click()');
     await new Promise(r => setTimeout(r, 150));
     const questAfter1 = await evalBrowser(`
@@ -319,9 +321,16 @@ async function runE2ETest() {
           const t = p.improved || "";
           if (t.includes("#")) issues.push("Post " + (idx+1) + " contains #");
           if (/Risk Disclosure:/i.test(t)) issues.push("Post " + (idx+1) + " contains Risk Disclosure label");
-          if (!t.includes("Respect the invalidation stop-loss and keep leverage conservative.")) issues.push("Post " + (idx+1) + " missing standalone risk line");
-          if (!t.trim().endsWith("How are you trading this today?")) issues.push("Post " + (idx+1) + " missing simple CTA");
+          if (!/Respect the invalidation stop-loss|stop-loss/i.test(t)) issues.push("Post " + (idx+1) + " missing stop-loss / risk line");
+          if (!t.trim().endsWith("?")) issues.push("Post " + (idx+1) + " missing closing question");
           if (t.includes("▸") || t.includes("| ")) issues.push("Post " + (idx+1) + " contains non-standard bullet/pipe");
+        });
+        const lastQs = postsData.slice(6).map(p => (p.improved || "").trim().split(String.fromCharCode(10)).pop());
+        if (new Set(lastQs).size !== lastQs.length) issues.push("Posts 7-10 reuse the same closing question");
+        postsData.slice(6).forEach((p, i) => {
+          const draft = applyBybitPunctuationAndStructureRules(p.improved, p);
+          if (draft.trim().split(String.fromCharCode(10)).pop() !== lastQs[i]) issues.push("Post " + (i+7) + " closing question overwritten by enforcer");
+          if (!((p.improved.match(/[$][0-9][0-9,]*[.][0-9]+/g) || []).every(x => draft.includes(x)))) issues.push("Post " + (i+7) + " decimal split by enforcer");
         });
         return issues;
       })()

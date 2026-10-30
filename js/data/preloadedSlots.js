@@ -411,7 +411,7 @@ function getDay5PreloadedSlots() {
         "coin": "$XRP",
         "title": "Post 1: Why $XRP's $4.26B RLUSD Surge Matters",
         "status": "ready",
-        "done": false,
+        "done": true,
         "raw": "XRP trades at $1.2658 (-2.09% in 24h) on Bybit inside a $1.1981 to $1.3178 daily range with $660.0M 24h turnover, $280.3M open interest, and -0.0252% negative funding. Why this matters: XRPL Q2 order-book volume rose 79% YoY while active retail wallets dropped 41%, proving institutional RLUSD settlement ($99M to $4.26B under Moody's A2/P-1 rating and Coinbase Prime custody) drives real demand despite 32.6B XRP in escrow. In my portfolio, I hold a 2.5% core spot allocation and staged limit bids above 1H MA7 ($1.2392) and EMA7 ($1.2502) with RSI6 at 62.72. Entry $1.240 to $1.255, targets $1.298 (4H MA14) and $1.318 (24h high), invalidation below $1.1981. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
         "improved": "⚖️ Why $XRP's $4.26B RLUSD Surge Matters at $1.26\n\nRipple ($XRPUSDT) is rebounding off its intraday low, and this divergence matters because XRPL order-book volume expanded 79% year-over-year even as retail wallets fell 41%.\n\nThat shift confirms institutional settlement via RLUSD and tokenized treasuries scaling from $99M to $4.26B under Moody's A2/P-1 rating and Coinbase Prime custody is absorbing monthly 32.6B escrow supply.\n\nIn my own portfolio, I maintain a 2.5% spot position and placed perpetual limit bids near reclaimed hourly averages rather than chasing mid-range candles.\n\nXRPUSDT Market Numbers:\n• Spot Quote: $1.2658 (-2.09% daily)\n• Session Extremes: $1.1981 floor versus $1.3178 ceiling\n• Perpetual Activity: $660.0M turnover, $280.3M Open Interest\n• Technical Readout: -0.0252% funding, above 1H MA7 ($1.2392) & EMA7 ($1.2502), RSI6 at 62.72\n\nXRPUSDT Setup & Entry Rationale:\n• Bid Zone: $1.240 – $1.255 (aligned with reclaimed 1H EMA7 support)\n• Upside Targets: $1.298 (4H MA14), then $1.318 session peak\n• Hard Stop: $1.1981 (beneath $1.3005 EMA50 overhead barrier)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
         "rules_summary": {
@@ -435,7 +435,7 @@ function getDay5PreloadedSlots() {
         "title": "Post 2: Why $PARTI's $69M Perp Pump Pulled Back",
         "coin": "$PARTI",
         "status": "ready",
-        "done": false,
+        "done": true,
         "archetype": "tactical_signal",
         "raw": "PARTIUSDT on Bybit is at $0.05278 (+33.65% 24h) after surging from $0.03123 to $0.06481 and pulling back 35.8% of the move. 24h perpetual volume hit $69.07M vs only $4.87M on spot (14x more volume on futures). Around 64% of thin-book spikes push back after a flush, with $18,089 bids vs $23,877 asks in top-50 orderbook depth. Price is holding 1H EMA-20 ($0.05218) and 1H MA-28 ($0.04910) with 1H RSI-6 at 44.75, below 1H MA-7 ($0.05379) and 1H MA-14 ($0.05602). Open interest cooled -14.2% from 68.10M to 58.43M PARTI ($3.09M) while 60.2% of accounts are short paying -0.0199% funding. I am bidding $0.04910 to $0.05218 with 1.5% equity, targeting $0.05602 and $0.06150, stop-loss at $0.04520.",
         "improved": "🎯 Why $PARTI's $69M Perp Spike Pulled Back 36%\n\nParticle Network ($PARTIUSDT) jumped +33.65% today, and this move matters because 24h perpetual volume hit $69.07M compared to just $4.87M on spot (14x more volume on futures).\n\nInstead of chasing the spike to $0.06481, I am keeping my size at 1.5% of account equity and waiting for price to settle into hourly support.\n\nPARTIUSDT Live Bybit Market Data:\n• Price & 24h Range: Trading at $0.05278 after surging from $0.03123 to $0.06481 and pulling back 35.8% of the rally.\n• Futures vs Spot Volume: $69.07M in perp turnover against $4.87M spot shows leveraged futures drove the move rather than spot accumulation.\n• Pullback Odds & Order Book: Roughly 64% of thin-book spikes push back after a flush, with top-50 book depth showing $18,089 in bids vs $23,877 in asks.\n• Hourly Moving Averages & RSI: Holding 1H EMA-20 ($0.05218) and 1H MA-28 ($0.04910) with 1H RSI-6 at 44.75, below 1H MA-7 ($0.05379) and 1H MA-14 ($0.05602).\n• Open Interest & Short Crowding: Open interest cooled -14.2% from 68.10M to 58.43M PARTI ($3.09M), while 60.2% of accounts are short paying -0.0199% funding.\n\nBecause crowded shorts are paying negative funding while price rests on its 20-hour average, buying the support dip is much safer than chasing green candles.\n\nPARTIUSDT Trade Setup:\n• Entry Zone: $0.04910 – $0.05218 (bidding between the 1H MA-28 at $0.04910 and 1H EMA-20 at $0.05218).\n• Upside Targets: $0.05602 (1H MA-14 reclaim, +8.5%) and $0.06150 (prior supply zone, +19.2%, 1:2.6 risk-reward).\n• Hard Invalidation Stop-Loss: $0.04520 (below the 61.8% retracement floor where the pump structure fails).\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?"
@@ -445,7 +445,7 @@ function getDay5PreloadedSlots() {
         "coin": "$LTC",
         "title": "Post 3: $LTC at $56.13: Why $52.73 Flips My Bias",
         "status": "ready",
-        "done": false,
+        "done": true,
         "raw": "Litecoin changes hands at $56.13 (-1.78%) on Bybit across a $52.73 to $58.90 corridor with $43.94M notional flow, $62.51M derivative positioning, and +0.0010% funding. Valuation sits 86% beneath its $410 May 2021 peak yet reclaimed 60m MA7 ($55.46), EMA7 ($55.83), and MA14 ($55.86). Overhead hurdles sit at 60m MA28 ($56.79) and 240m EMA20 ($57.19). Entry rationale: I avoid mid-corridor chop and only trigger above $57.20 or bid pullbacks at $55.45 to $55.85, targets $58.90 and $59.46 (upper BB), stop under $54.40. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
         "improved": "🎯 $LTC Reclaims $56.13: Why $52.73 Flips My Bias\n\nLitecoin ($LTCUSDT) firmed up once spot buyers defended its washout base and reclaimed sixty-minute averages, which matters because PoW liquidity rotation is absorbing sellers despite price sitting 86% below its $410 May 2021 peak.\n\nMy entry rationale avoids buying mid-corridor chop against four-hour resistance, so I am splitting my position between resting limit orders on the hourly moving-average stack and a confirmed breakout trigger.\n\nLTCUSDT Orderflow Breakdown:\n• Active Print: $56.13 (-1.78% in 24 hours)\n• Daily Corridor: $52.73 washout base to $58.90 resistance\n• Futures Positioning: $43.94M notional flow, $62.51M derivative positioning, +0.0010% yield\n• Reclaimed Stack: 60m SMA-7 ($55.46), EMA-7 ($55.83), plus SMA-14 ($55.86)\n• Overhead Hurdles: 60m SMA-28 ($56.79) and 240m EMA-20 ($57.19) with 44.10 oscillator reading\n\nLTCUSDT Tactical Plan:\n• Long Triggers: Staged limit orders at $55.45 – $55.85 or 240m bar closing beyond $57.20\n• Expansion Objectives: $58.90 high then $59.46 Bollinger envelope\n• Risk Boundary: $54.40 protective exit\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
         "rules_summary": {
@@ -469,7 +469,7 @@ function getDay5PreloadedSlots() {
         "coin": "$SEI",
         "title": "Post 4: $SEI 34.24 RSI: Filtering Unlock Traps",
         "status": "ready",
-        "done": false,
+        "done": true,
         "raw": "SEI hovers at $0.04851 (-5.88%) on Bybit inside a $0.04503 to $0.05397 band with $14.58M contract volume, $7.87M outstanding contracts, and -0.0168% negative funding. 4H RSI14 sits at 34.24 after bouncing off $0.04503 to reclaim 1H MA7 ($0.0478) and EMA7 ($0.0483). Overhead resistance sits at 4H MA7 ($0.0504) and MA14 ($0.0517) while scheduled vesting unlocks test spot absorption. Trading history lesson: I keep position size at 1.5% and only enter above $0.0504 or bid sweep at $0.0455 to $0.0468, targets $0.0517 and $0.0540, invalidation below $0.04503. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
         "improved": "🪤 $SEI at 34.24 RSI: Filtering Unlock Bull Traps\n\nSei Network ($SEIUSDT) sits at a critical inflection point that matters for active traders because premature relief bounces have repeatedly trapped early longs whenever scheduled vesting unlocks hit spot books.\n\nFrom my past trading history on unlock-heavy Layer-1s, I keep exposure light at 1.5% of account equity until price either sweeps liquidity near the floor or closes decisively above descending four-hour averages.\n\nSEIUSDT Live Figures:\n• Exchange Rate: $0.04851 (-5.88% session move)\n• 24-Hour Span: $0.04503 wick low to $0.05397 high\n• Contract Participation: $14.58M volume, $7.87M outstanding contracts, -0.0168% negative carry\n• Support Reclaim: 34.24 on four-hour RSI-14, recaptured hourly MA-7 ($0.0478) & EMA-7 ($0.0483)\n• Supply Ceiling: Four-hour MA-7 ($0.0504), MA-14 ($0.0517), and 50-EMA ($0.0537)\n\nSEIUSDT Position Parameters:\n• Buy Pocket: Passive absorption inside $0.0455 – $0.0468 or 4H settlement above $0.0504\n• Take-Profit Ladder: $0.0517 first, $0.0540 second ($0.0543 upper band)\n• Setup Negation: $0.04503 trough\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
         "rules_summary": {
@@ -493,7 +493,7 @@ function getDay5PreloadedSlots() {
         "coin": "$ICP",
         "title": "Post 5: Why $ICP's +8.5% Rebound Primes a Squeeze",
         "status": "ready",
-        "done": false,
+        "done": true,
         "raw": "Internet Computer is priced at $2.459 (-3.15%) on Bybit across a $2.266 to $2.641 window with $15.88M activity, $12.88M open contracts, and deep negative funding at -0.0447%. After flushing from the $2.641 peak to $2.266, ICP rebounded +8.5% to reclaim 1H MA7 ($2.417), EMA7 ($2.440), and MA14 ($2.447) with 1H RSI6 at 55.63. Position context: I entered an initial spot tranche on the reclaim and placed perp reload bids at $2.417-$2.447 targeting 4H MA7 ($2.513), 4H MA14 ($2.561), and $2.641, invalidation below $2.360. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
         "improved": "🚀 Why $ICP's +8.5% Bounce & -0.044% Carry Matter\n\nInternet Computer ($ICPUSDT) just printed an impulsive V-recovery off its liquidation floor, which matters because recapturing all three hourly moving averages while perpetual funding stays deeply negative forces late bears to pay a steep carry cost.\n\nTo connect this view with my active positioning, I filled a starter spot tranche after the hourly close above $2.440 and set resting limit orders across the moving-average cluster to build into a potential short squeeze.\n\nICPUSDT Key Metrics:\n• Market Print: $2.459 (-3.15% move), +8.5% rebound from $2.266\n• Trading Window: $2.266 liquidation trough to $2.641 top\n• Book Velocity: $15.88M 24h activity, $12.88M open contracts, -0.0447% discount\n• One-Hour Trio: $2.417 (7-MA), $2.440 (7-EMA), and $2.447 (14-MA) with 55.63 on RSI-6\n• Macro Gauge: Pressing $2.509 (28-MA) with 38.63 on 4H RSI-14 underneath $2.631 (50-EMA)\n\nICPUSDT Blueprint:\n• Pullback Reload: $2.417 – $2.447 confluence band\n• Target Tiers: $2.513, $2.561, and $2.641 ceiling\n• Line in the Sand: $2.360 breakdown\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
         "rules_summary": {
@@ -517,7 +517,7 @@ function getDay5PreloadedSlots() {
         "coin": "$MORPHO",
         "title": "Post 6: $MORPHO +6.1% Bounce & $2.0478 Bid Plan",
         "status": "ready",
-        "done": false,
+        "done": true,
         "raw": "MORPHO prints $2.082 (-4.21%) on Bybit inside a $1.9614 to $2.2879 bracket with $6.77M daily volume, $6.63M futures positioning, and -0.0385% negative funding. Price climbed +6.1% off the $1.9614 low to reclaim 60m MA7 ($2.0187) and EMA7 ($2.0478) with RSI6 at 53.87. Key overhead cluster sits at 60m MA14 ($2.1031), 240m MA28 ($2.1472), and 240m MA7 ($2.1552). Portfolio rationale: thinner $6.77M book depth requires passive limit execution at $2.018-$2.048 targeting $2.1852 and $2.2879, stop below $1.9614. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
         "improved": "📐 $MORPHO Up +6.1% to $2.082: My $2.0478 Bid Plan\n\nMorpho ($MORPHOUSDT) climbed from its session trough to recapture short-term trend lines as trapped bears pay -0.0385% swap carry alongside institutional DeFi vault growth.\n\nWith modest $6.77M turnover, aggressive market sweeps invite slippage, so my execution thesis relies on resting bids near the $2.0478 shelf rather than chasing directly into overhead resistance.\n\nMORPHOUSDT Data Readout:\n• Benchmark Print: $2.082 (-4.21%) after +6.1% recovery\n• Price Bracket: $1.9614 bottom to $2.2879 extreme\n• Derivatives Footprint: $6.77M volume beside $6.63M futures positioning and -0.0385% carry\n• Intraday Recovery: $2.0187 (7-period average) & $2.0478 (exponential line) with 53.87 momentum\n• Supply Cluster: $2.1031, $2.1472, and $2.1552 multi-hour ceiling\n\nMORPHOUSDT Structure:\n• Limit Pocket: $2.018 – $2.048 dip or candle settlement above $2.1552\n• Harvest Zones: $2.1852 first, $2.2879 peak second\n• Cut-Loss Trigger: $1.9614\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
         "rules_summary": {
@@ -538,99 +538,43 @@ function getDay5PreloadedSlots() {
     },
     {
         "id": 7,
+        "title": "Post 7: $XAUT RSI at 9: Why I Won't Short Gold",
         "coin": "$XAUT",
-        "title": "Post 7: Why $XAUT 23.25 RSI Before PCE Matters",
         "status": "ready",
         "done": false,
-        "raw": "Tether Gold ($XAUTUSDT, $3B market cap) holds $3,987.49 (-1.06%) on Bybit across a $3,983.25 to $4,034.68 bracket with $35.71M bullion turnover, $143.58M futures interest, and +0.0050% funding. Bullion pulled back from $4,034.68 (4H EMA50 at $4,033.88) to test $3,983.25 right above the $3,980.00 macro shelf, pushing 1H RSI6 to 23.25 and 4H RSI14 to 35.88 ahead of US PCE inflation data. Portfolio context: I hold 10% of my defensive collateral in XAUT and added limit bids at $3,980-$3,988, targets $4,020.35 and $4,034.68, invalidation below $3,975.00. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
-        "improved": "🥇 Why $XAUT at 23.25 RSI Before US PCE Matters\n\nTether Gold ($XAUTUSDT) prints a textbook pre-news liquidity probe ahead of US PCE inflation figures as sellers compressed tokenized bullion into deep oversold readings right above its $3,980.00 macro floor.\n\nWithin my broader portfolio, I allocate 10% of defensive collateral to bullion for volatility buffering, layering low-beta bids along that structural shelf with a defined stop beneath in case hot macro prints lift bond yields.\n\nXAUTUSDT Bullion Metrics:\n• Ounce Valuation: $3,987.49 (-1.06% drift) on $3B capitalization\n• Bullion Range: $3,983.25 dip (above $3,980.00 floor) up to $4,034.68 high\n• Active Depth: $35.71M bullion turnover, $143.58M futures interest, +0.0050% rate\n• Exhaustion Readings: Oversold 23.25 on 1-hour RSI-6 and 35.88 on 4-hour RSI-14 under $4,033.88\n\nXAUTUSDT Allocation Plan:\n• Confirmation Filter: $3,980.00 – $3,988.00 zone or hourly reclaim of $3,996.70\n• Upside Checkpoints: $4,020.35 first, $4,034.68 second\n• Risk Floor: $3,975.00\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
-        "rules_summary": {
-            "punctuation_count": 14,
-            "word_replacement_count": 10,
-            "emoji_spacing_count": 6
-        },
-        "suggestions": [
-            {
-                "category": "word",
-                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $XAUT."
-            },
-            {
-                "category": "spacing",
-                "description": "Strict <=50 char Hooking Title, clean • bulleted numbers, standalone risk line, and genuine community question."
-            }
-        ]
+        "archetype": "human_trader_story",
+        "raw": "🥇 $XAUT RSI at 9: Why I Won't Short Gold Here\n\nGold just dropped 3% in a day, and I can feel the panic on the timeline. Everyone wants to short it now.\n\nI'm doing the opposite of panic. I'm not shorting a market this stretched, and I'm not catching the knife either.\n\nLooking at the 1-hour chart, $XAUT slid from $4,028 to $3,893 and is sitting around $3,900 right now. Here is what I'm watching:\n\n1. The 1-hour RSI is at 9, which is about as oversold as gold ever gets.\n2. Price has closed below the lower Bollinger Band at $3,915, so sellers are stretched.\n3. The 20-hour average sits way up at $3,981, which leaves a lot of room for a snap-back.\n\nLate shorts here are selling at the worst possible price.\n\nMy execution plan:\n• Trigger: a 1-hour close back above $3,915\n• First target: $3,950\n• Second target: $3,981\n• Stop-loss: below $3,880\n\nIf the trigger never comes, I don't trade. Small size, hard stop, no exceptions.\n\nFear sells the bottom. Patience buys it back cheaper.\n\nAre you shorting gold here, or waiting for the bounce?",
+        "improved": "🥇 $XAUT RSI at 9: Why I Won't Short Gold Here\n\nGold just dropped 3% in a day, and I can feel the panic on the timeline. Everyone wants to short it now.\n\nI'm doing the opposite of panic. I'm not shorting a market this stretched, and I'm not catching the knife either.\n\nLooking at the 1-hour chart, $XAUT slid from $4,028 to $3,893 and is sitting around $3,900 right now. Here is what I'm watching:\n\n1. The 1-hour RSI is at 9, which is about as oversold as gold ever gets.\n2. Price has closed below the lower Bollinger Band at $3,915, so sellers are stretched.\n3. The 20-hour average sits way up at $3,981, which leaves a lot of room for a snap-back.\n\nLate shorts here are selling at the worst possible price.\n\nMy execution plan:\n• Trigger: a 1-hour close back above $3,915\n• First target: $3,950\n• Second target: $3,981\n• Stop-loss: below $3,880\n\nIf the trigger never comes, I don't trade. Small size, hard stop, no exceptions.\n\nFear sells the bottom. Patience buys it back cheaper.\n\nAre you shorting gold here, or waiting for the bounce?"
     },
     {
         "id": 8,
+        "title": "Post 8: $PUMPFUN Is Stuck in a Range",
         "coin": "$PUMPFUN",
-        "title": "Post 8: $PUMPFUN Review: Why -8% Stop Flipped Me",
         "status": "ready",
         "done": false,
-        "raw": "PUMPFUNUSDT marks $0.004115 (-2.79%) on Bybit across a $0.003757 to $0.004655 swing with $63.69M perp volume, $31.46M active OI, and +0.0050% funding. Honest trade history review: yesterday's long topped around the $0.004655 peak ($0.004611) and hit my $0.004205 stop (-8%) during the flush to $0.003757. Now price sits below 1H MA28 ($0.004224), 4H EMA20 ($0.004263), and 4H EMA50 ($0.004334) with 4H RSI14 at 44.92. Short bounce $0.004224 to $0.004263, targets $0.004002 (1H MA7) and $0.003757 (24h low), stop above $0.004334. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
-        "improved": "🔄 $PUMPFUN Review: Why My -8% Stop Flipped Bias\n\nSharing real trading history matters more than cherry-picking winners: yesterday's long call stalled near $0.004611 before triggering my $0.004205 stop-loss (-8%) during the cascade down to $0.003757.\n\nRather than revenge-trading, respecting that breakdown lets me objectively flip bias and fade weak relief rallies because price is now trapped underneath its hourly and four-hour moving averages while longs still pay +0.0050% positive funding.\n\nPUMPFUNUSDT Tape Statistics:\n• Last Trade: $0.004115 (-2.79%) following yesterday's $0.004205 stop-out (-8%)\n• Daily Swing: $0.003757 low versus $0.004655 top\n• Speculative Flow: $63.69M perp volume, $31.46M active OI, +0.0050% fee\n• Overhead Cap: Pinned beneath $0.004224 (1H 28-MA), $0.004263 (4H 20-EMA), and $0.004334 (4H 50-EMA) at 44.92 RSI\n\nPUMPFUNUSDT Strategy:\n• Short Reload Area: $0.004224 – $0.004263 resistance band\n• Downside Objectives: $0.004002 first, $0.003757 low second\n• Bailout Point: $0.004334\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
-        "rules_summary": {
-            "punctuation_count": 14,
-            "word_replacement_count": 10,
-            "emoji_spacing_count": 6
-        },
-        "suggestions": [
-            {
-                "category": "word",
-                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $PUMPFUN."
-            },
-            {
-                "category": "spacing",
-                "description": "Strict <=50 char Hooking Title, clean • bulleted numbers, standalone risk line, and genuine community question."
-            }
-        ]
+        "archetype": "human_trader_story",
+        "raw": "🔄 $PUMPFUN Is Stuck in a Range. I'm Trading It\n\n$PUMPFUN is down 9% today, and half the timeline is calling the bottom while the other half calls it dead.\n\nI don't need to pick a side. I just need to know where the range is.\n\nLooking at the 1-hour chart, price has bounced between $0.00376 and $0.00466 over the last day and now trades at $0.00411, right in the middle. Here is how I read it:\n\n1. Price is holding above the 20-hour average at $0.00404, so buyers still defend dips.\n2. The upper Bollinger Band at $0.00419 has capped every push over the last 12 hours.\n3. Funding is positive at +0.005%, so longs are paying and chasing the middle is a trap.\n\nThe middle of a range is where accounts get chopped up.\n\nMy execution plan:\n• Buy zone: $0.00399 to $0.00404\n• First target: $0.00420\n• Second target: $0.00440\n• Stop-loss: below $0.00389\n\nNo fill at my level means no trade. I keep it to a small position.\n\nRanges reward the patient and punish the impatient.\n\nAre you buying the bottom of this range, or waiting for a breakout?",
+        "improved": "🔄 $PUMPFUN Is Stuck in a Range. I'm Trading It\n\n$PUMPFUN is down 9% today, and half the timeline is calling the bottom while the other half calls it dead.\n\nI don't need to pick a side. I just need to know where the range is.\n\nLooking at the 1-hour chart, price has bounced between $0.00376 and $0.00466 over the last day and now trades at $0.00411, right in the middle. Here is how I read it:\n\n1. Price is holding above the 20-hour average at $0.00404, so buyers still defend dips.\n2. The upper Bollinger Band at $0.00419 has capped every push over the last 12 hours.\n3. Funding is positive at +0.005%, so longs are paying and chasing the middle is a trap.\n\nThe middle of a range is where accounts get chopped up.\n\nMy execution plan:\n• Buy zone: $0.00399 to $0.00404\n• First target: $0.00420\n• Second target: $0.00440\n• Stop-loss: below $0.00389\n\nNo fill at my level means no trade. I keep it to a small position.\n\nRanges reward the patient and punish the impatient.\n\nAre you buying the bottom of this range, or waiting for a breakout?"
     },
     {
         "id": 9,
+        "title": "Post 9: $VVV Fell 14% From $25.93: My Lesson",
         "coin": "$VVV",
-        "title": "Post 9: Why I Skipped $VVV $25.93 to Bid $22.89",
         "status": "ready",
         "done": false,
-        "raw": "VVVUSDT consolidates at $23.355 (-0.23%) on Bybit across a $21.759 to $25.930 trajectory with $16.86M traded value, $22.67M open positioning, and -0.0335% negative funding. After surging from $21.759 to $25.930 (above 1H upper Bollinger Band at $25.786), VVV cooled off cleanly to hold above 1H MA7 ($22.608), EMA7 ($22.899), and MA14 ($23.143) with 1H RSI6 reset to 60.45. Trade history & position context: I booked partial profit near the $25.786 upper band, trailed my stop to $22.50, and reload at $22.90 to $23.35 targeting $24.153 and $25.930. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
-        "improved": "⚡ Why I Skipped $VVV at $25.93 & Reload $22.899\n\nVenice ($VVVUSDT) illustrates why disciplined traders never chase vertical green candles once price pierces its upper Bollinger envelope ($25.786), because mean-reversion pullbacks inevitably test late buyers.\n\nAfter trimming half of my earlier runner into that $25.930 spike, my position rationale now centers on reloading inside the $22.899 – $23.143 hourly moving-average pocket while -0.0335% negative funding shows shorts crowding the pullback.\n\nVVVUSDT Board Summary:\n• Clearing Price: $23.355 (-0.23% consolidation)\n• Trajectory Bounds: $21.759 launchpad to $25.930 zenith ($25.786 Bollinger barrier)\n• Liquidity Profile: $16.86M traded value, $22.67M open positioning, -0.0335% funding\n• Trend Stack: Defending $23.143 (H1 MA14), $22.899 (H1 EMA7), and $22.608 (H1 MA7) at 60.45 gauge\n\nVVVUSDT Roadmap:\n• Bid Corridor: $22.90 – $23.35 demand pocket (trailing anchor at $22.899)\n• Objective Zones: $24.153 (below $24.603 overhead level) then $25.786 – $25.930 retest\n• Stop Trigger: $22.50\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
-        "rules_summary": {
-            "punctuation_count": 14,
-            "word_replacement_count": 10,
-            "emoji_spacing_count": 6
-        },
-        "suggestions": [
-            {
-                "category": "word",
-                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $VVV."
-            },
-            {
-                "category": "spacing",
-                "description": "Strict <=50 char Hooking Title, clean • bulleted numbers, standalone risk line, and genuine community question."
-            }
-        ]
+        "archetype": "human_trader_story",
+        "raw": "⚡ $VVV Fell 14% From $25.93. Here's My Lesson\n\n$VVV ripped to $25.93 yesterday. Today it trades near $22.10, down 14%.\n\nEveryone who bought the top is now holding a bag and hoping. This is exactly why I take profits into strength instead of falling in love with a chart.\n\nLooking at the 1-hour chart, price is drifting toward the lower edge of its range. Here is what I see:\n\n1. The 1-hour RSI is at 32, so sellers are getting tired but haven't stopped yet.\n2. Price is sitting just above the lower Bollinger Band at $21.90 and the daily low at $21.76.\n3. Funding has flipped slightly negative, so shorts are starting to crowd in.\n\nIf $21.76 holds, crowded shorts become fuel for a bounce.\n\nMy execution plan:\n• Buy zone: $21.80 to $22.00\n• First target: $22.60, the 20-hour average\n• Second target: $23.30\n• Stop-loss: below $21.40\n\nIf $21.40 breaks, I'm out quickly. I'm keeping this one light.\n\nProfits are only real when you book them.\n\nDid you take profits near $25, or are you still holding?",
+        "improved": "⚡ $VVV Fell 14% From $25.93. Here's My Lesson\n\n$VVV ripped to $25.93 yesterday. Today it trades near $22.10, down 14%.\n\nEveryone who bought the top is now holding a bag and hoping. This is exactly why I take profits into strength instead of falling in love with a chart.\n\nLooking at the 1-hour chart, price is drifting toward the lower edge of its range. Here is what I see:\n\n1. The 1-hour RSI is at 32, so sellers are getting tired but haven't stopped yet.\n2. Price is sitting just above the lower Bollinger Band at $21.90 and the daily low at $21.76.\n3. Funding has flipped slightly negative, so shorts are starting to crowd in.\n\nIf $21.76 holds, crowded shorts become fuel for a bounce.\n\nMy execution plan:\n• Buy zone: $21.80 to $22.00\n• First target: $22.60, the 20-hour average\n• Second target: $23.30\n• Stop-loss: below $21.40\n\nIf $21.40 breaks, I'm out quickly. I'm keeping this one light.\n\nProfits are only real when you book them.\n\nDid you take profits near $25, or are you still holding?"
     },
     {
         "id": 10,
+        "title": "Post 10: $ONDO Is Quietly Bouncing",
         "coin": "$ONDO",
-        "title": "Post 10: Why $ONDO's $1B RWA & SEC Filing Matter",
         "status": "ready",
         "done": false,
-        "raw": "ONDO is quoted at $0.3935 (-3.17% over 24h) on Bybit within a $0.3605 to $0.4357 span on $87.89M volume, $44.78M OI, and -0.0080% funding. Why this matters: Ondo crossed $1B TVL across 260+ tokenized stocks/ETFs with $27B cumulative volume (26x turnover) and a confidential SEC registration following the Sept 17 tokenization exemption. My portfolio context: I size ONDO at 2% of equity because 89% volume concentration on Bitget and zero token fee capture until the 2026 DAO vote require disciplined sizing above hourly 7-MA ($0.3837) and 7-EMA ($0.3890). Bid $0.3840 to $0.3918, targets $0.4109 and $0.4357, stop beneath $0.3605. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
-        "improved": "🏛️ Why $ONDO's $1B RWA TVL & SEC Filing Matter\n\nOndo Finance ($ONDOUSDT) is defending its structural demand shelf, a development that matters because Ondo Global Markets filed a confidential SEC registration right after nine US issuers challenged unapproved stock tokens elsewhere.\n\nWhile $1B TVL across 260+ tokenized equities and $27B cumulative volume prove product-market fit, my personal sizing stays capped at 2% of portfolio capital since 89% of RWA trading sits on Bitget and governance lacks fee capture until the 2026 DAO vote.\n\nONDOUSDT Quantitative Telemetry:\n• Current Valuation: $0.3935 (-3.17% change)\n• Intraday Spread: $0.3605 bottom up to $0.4357 top\n• Contract Depth: $87.89M volume paired with $44.78M OI and -0.0080% rate\n• Trend Averages: Holding hourly 7-MA ($0.3837) alongside 7-EMA ($0.3890)\n\nONDOUSDT Execution Levels:\n• Accumulation Window: $0.3840 – $0.3918 (retest of 1H moving-average confluence)\n• Profit Milestones: $0.4109 (four-hour 14-MA) followed by $0.4357 ($0.4369 upper band)\n• Thesis Negation: $0.3605 swing low\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
-        "rules_summary": {
-            "punctuation_count": 14,
-            "word_replacement_count": 10,
-            "emoji_spacing_count": 6
-        },
-        "suggestions": [
-            {
-                "category": "word",
-                "description": "Verified live Bybit V5 figures, 'Why It Matters' reasoning, and authentic position/portfolio context for $ONDO."
-            },
-            {
-                "category": "spacing",
-                "description": "Strict <=50 char Hooking Title, clean • bulleted numbers, standalone risk line, and genuine community question."
-            }
-        ]
+        "archetype": "human_trader_story",
+        "raw": "🏛️ $ONDO Is Quietly Bouncing. I'm Not Chasing\n\n$ONDO is still down 7% on the day, but nobody is talking about the quiet recovery.\n\nPrice climbed from $0.3843 to almost $0.40 over the last few hours while shorts kept paying funding.\n\nLooking at the 1-hour chart, here is why I'm still not buying right here:\n\n1. The short-term RSI is near 70, so this leg is already stretched.\n2. Price is pressing the upper Bollinger Band at $0.4018.\n3. The 12-hour high at $0.4037 is right overhead, and that's where sellers stepped in before.\n\nBuying straight into resistance is how a good idea becomes a bad trade.\n\nMy execution plan:\n• Buy zone: $0.388 to $0.391, the 20-hour average\n• First target: $0.4037\n• Second target: $0.4150\n• Stop-loss: below $0.3800\n\nIf the dip never comes, I'm happy to miss it. I'm keeping my size small.\n\nGood entries come from waiting, not chasing.\n\nAre you buying ONDO right here, or waiting for the pullback?",
+        "improved": "🏛️ $ONDO Is Quietly Bouncing. I'm Not Chasing\n\n$ONDO is still down 7% on the day, but nobody is talking about the quiet recovery.\n\nPrice climbed from $0.3843 to almost $0.40 over the last few hours while shorts kept paying funding.\n\nLooking at the 1-hour chart, here is why I'm still not buying right here:\n\n1. The short-term RSI is near 70, so this leg is already stretched.\n2. Price is pressing the upper Bollinger Band at $0.4018.\n3. The 12-hour high at $0.4037 is right overhead, and that's where sellers stepped in before.\n\nBuying straight into resistance is how a good idea becomes a bad trade.\n\nMy execution plan:\n• Buy zone: $0.388 to $0.391, the 20-hour average\n• First target: $0.4037\n• Second target: $0.4150\n• Stop-loss: below $0.3800\n\nIf the dip never comes, I'm happy to miss it. I'm keeping my size small.\n\nGood entries come from waiting, not chasing.\n\nAre you buying ONDO right here, or waiting for the pullback?"
     }
 ];
 }

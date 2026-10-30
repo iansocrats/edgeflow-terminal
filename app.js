@@ -760,7 +760,7 @@ function applyBybitPunctuationAndStructureRules(inputText, postObj) {
       }
     }
     // Convert ▸, ▪, ►, -, *, or 1. / [1] at start of line to '• '
-    t = t.replace(/^(?:[▸▪►‣\*]|\[\d+\]|\d+\.)\s+/, '• ');
+    t = t.replace(/^(?:[▸▪►‣\*]|\[\d+\])\s+/, '• ');
     t = t.replace(/^-\s+(?=[A-Z0-9$])/, '• ');
 
     // 3. Remove 'Risk Disclosure:' prefix and replace with standalone natural risk sentence
@@ -784,8 +784,8 @@ function applyBybitPunctuationAndStructureRules(inputText, postObj) {
     }
 
     // 5. Break long squeezed prose lines (where 3+ sentences are crammed into a single paragraph)
-    if (!t.startsWith('•') && !t.endsWith(':')) {
-      const sents = t.match(/[^.!?]+[.!?]+/g) || [t];
+    if (!t.startsWith('•') && !/^\d+\.\s/.test(t) && !t.endsWith(':')) {
+      const sents = t.split(/(?<=[.!?])\s+(?=[A-Z$"'(])/);
       if (sents.length >= 2) {
         cleanedLines.push(sents.map(s => s.trim()).join('\n\n'));
         continue;
@@ -798,13 +798,12 @@ function applyBybitPunctuationAndStructureRules(inputText, postObj) {
   text = cleanedLines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 
   // 6. Ensure standalone risk sentence is present without 'Risk Disclosure:' prefix
-  if (!/Respect the invalidation stop-loss and keep leverage conservative/i.test(text)) {
+  if (!/stop-loss|stop loss|invalidation|hard stop|I'm out|I am out/i.test(text)) {
     text = `${text}\n\nRespect the invalidation stop-loss and keep leverage conservative.`;
   }
 
   // 7. Ensure clean Call to Action at the end
-  if (!/How are you trading this today\?/i.test(text)) {
-    text = text.replace(/\n+[^\n]*\?\s*$/, '');
+  if (!/\?\s*$/.test(text.trim())) {
     text = `${text.trim()}\n\nHow are you trading this today?`;
   }
 
@@ -949,7 +948,7 @@ function renderPolishedStructureAudit(text) {
   const hasCashtag = /\$[A-Z0-9]{2,10}/i.test(text);
   const hasNoHashtags = !text.includes('#');
   const hasSimpleCta = /How are you trading this today\?|\?\s*$/i.test(text.trim());
-  const hasRiskSentence = /Respect the invalidation stop-loss and keep leverage conservative/i.test(text);
+  const hasRiskSentence = /Respect the invalidation stop-loss|stop-loss|stop loss|hard stop/i.test(text);
   const hasNoRiskLabel = !/Risk Disclosure:/i.test(text);
   const hasHookTitle = firstLine.length > 0 && firstLine.length <= 50 && /\$[A-Z0-9]+/i.test(firstLine);
   const fkGrade = calculateReadabilityGrade(text);
@@ -1672,14 +1671,14 @@ const DAY5_COIN_HOOKS = {
   ],
   ONDO: [
     {
-      title: "🏛️ Why $ONDO's $1B RWA TVL & SEC Filing Matter",
-      desc: "46/50 chars • 4-Step Hook: Pairs $1B TVL and $27B RWA volume with a disciplined 2% portfolio cap.",
-      bodyReplacement: "Ondo Finance ($ONDOUSDT) is defending its structural demand shelf, a development that matters because Ondo Global Markets filed a confidential SEC registration right after nine US issuers challenged unapproved stock tokens elsewhere."
+      title: "🏛️ $ONDO Is Quietly Bouncing. I'm Not Chasing",
+      desc: "46/50 chars • Human trader hook: crowd emotion vs my plan.",
+      bodyReplacement: "Price climbed from $0.3843 to almost $0.40 over the last few hours while shorts kept paying funding."
     },
     {
-      title: "🏛️ How I Size $ONDO at $0.39 Before 2026 DAO Vote",
-      desc: "49/50 chars • Portfolio Hook: Connects hourly 7-MA ($0.3837) support defense to a defined $0.3605 stop.",
-      bodyReplacement: "While $1B TVL across 260+ tokenized equities and $27B cumulative volume prove product-market fit, my personal sizing stays capped at 2% of portfolio capital above the $0.3605 invalidation low."
+      title: "🏛️ $ONDO Near $0.40: Why I Wait for $0.39",
+      desc: "42/50 chars • Human trader hook: 1-hour chart levels + plan.",
+      bodyReplacement: "Price climbed from $0.3843 to almost $0.40 over the last few hours while shorts kept paying funding."
     }
   ],
   LTC: [
@@ -1732,38 +1731,38 @@ const DAY5_COIN_HOOKS = {
   ],
   XAUT: [
     {
-      title: "🥇 Why $XAUT at 23.25 RSI Before US PCE Matters",
-      desc: "46/50 chars • 4-Step Hook: Connects tokenized bullion support at $3,980.00 to portfolio risk buffering.",
-      bodyReplacement: "Tether Gold ($XAUTUSDT) prints a textbook pre-news liquidity probe ahead of US PCE inflation figures as sellers compressed tokenized bullion into deep oversold readings right above its $3,980.00 macro floor."
+      title: "🥇 $XAUT RSI at 9: Why I Won't Short Gold Here",
+      desc: "46/50 chars • Human trader hook: crowd emotion vs my plan.",
+      bodyReplacement: "I'm doing the opposite of panic. I'm not shorting a market this stretched, and I'm not catching the knife either."
     },
     {
-      title: "🥇 Why I Hold 10% in $XAUT & Bid $3,980 Into PCE",
-      desc: "47/50 chars • Portfolio Hook: Pairs $143.58M Bybit futures OI with a tight $3,975.00 invalidation floor.",
-      bodyReplacement: "Within my broader portfolio, I allocate 10% of defensive collateral to bullion for volatility buffering, layering low-beta bids along that structural shelf with a defined stop beneath in case hot macro prints lift bond yields."
+      title: "🥇 Gold Panic on $XAUT: My $3,915 Trigger",
+      desc: "41/50 chars • Human trader hook: 1-hour chart levels + plan.",
+      bodyReplacement: "I'm doing the opposite of panic. I'm not shorting a market this stretched, and I'm not catching the knife either."
     }
   ],
   PUMPFUN: [
     {
-      title: "🔄 $PUMPFUN Review: Why My -8% Stop Flipped Bias",
-      desc: "47/50 chars • 4-Step Hook: Shows authentic trade accountability after stopping out at $0.004205.",
-      bodyReplacement: "Sharing real trading history matters more than cherry-picking winners: yesterday's long call stalled near $0.004611 before triggering my $0.004205 stop-loss (-8%) during the cascade down to $0.003757."
+      title: "🔄 $PUMPFUN Is Stuck in a Range. I'm Trading It",
+      desc: "47/50 chars • Human trader hook: crowd emotion vs my plan.",
+      bodyReplacement: "I don't need to pick a side. I just need to know where the range is."
     },
     {
-      title: "🔄 Stopped Out -8% on $PUMPFUN: Why I'm Short Now",
-      desc: "48/50 chars • Trade History Hook: Explains why price pinned under $0.004224 favors shorting bounces.",
-      bodyReplacement: "Rather than revenge-trading, respecting that breakdown lets me objectively flip bias and fade weak relief rallies because price is now trapped underneath its hourly and four-hour moving averages while longs still pay +0.0050% positive funding."
+      title: "🔄 $PUMPFUN: Buy $0.00399, Sell $0.00420",
+      desc: "40/50 chars • Human trader hook: 1-hour chart levels + plan.",
+      bodyReplacement: "I don't need to pick a side. I just need to know where the range is."
     }
   ],
   VVV: [
     {
-      title: "⚡ Why I Skipped $VVV at $25.93 & Reload $22.899",
-      desc: "47/50 chars • 4-Step Hook: Connects the $25.786 upper Bollinger pierce to the $22.899 reload pocket.",
-      bodyReplacement: "Venice ($VVVUSDT) illustrates why disciplined traders never chase vertical green candles once price pierces its upper Bollinger envelope ($25.786), because mean-reversion pullbacks inevitably test late buyers."
+      title: "⚡ $VVV Fell 14% From $25.93. Here's My Lesson",
+      desc: "45/50 chars • Human trader hook: crowd emotion vs my plan.",
+      bodyReplacement: "Everyone who bought the top is now holding a bag and hoping. This is exactly why I take profits into strength instead of falling in love with a chart."
     },
     {
-      title: "⚡ Booked $VVV at $25.78: My $22.899 EMA-7 Reload",
-      desc: "48/50 chars • Runner Hook: Pairs -0.0335% negative funding with a trailed $22.50 hard stop.",
-      bodyReplacement: "After trimming half of my earlier runner into that $25.930 spike, my position rationale now centers on reloading inside the $22.899 – $23.143 hourly moving-average pocket while -0.0335% negative funding shows shorts crowding the pullback."
+      title: "⚡ $VVV Bagholders, Read This First",
+      desc: "34/50 chars • Human trader hook: 1-hour chart levels + plan.",
+      bodyReplacement: "Everyone who bought the top is now holding a bag and hoping. This is exactly why I take profits into strength instead of falling in love with a chart."
     }
   ],
   BMT: [
