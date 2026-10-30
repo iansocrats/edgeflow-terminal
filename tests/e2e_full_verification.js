@@ -270,6 +270,13 @@ async function runE2ETest() {
       throw new Error("Day 5 clean rules audit failed: " + day5RuleAudit.join("; "));
     }
 
+    const dimOrigBadgeText = await evalBrowser('document.getElementById("byxDimOriginality").textContent.trim()');
+    const dimSubRelHtml = await evalBrowser('document.getElementById("dimSubRelevance") ? document.getElementById("dimSubRelevance").innerHTML : ""');
+    console.log(`✅ PASS: Live ByX Dimension Percentage Badge: "${dimOrigBadgeText}" | Relevance How-Audited Length: ${dimSubRelHtml.length} chars`);
+    if (!dimOrigBadgeText.includes('☑') || !dimOrigBadgeText.includes('%') || !dimSubRelHtml.includes('How Audited:')) {
+      throw new Error(`Expected live percentage ticks and How Audited breakdown, got badge="${dimOrigBadgeText}", subRel="${dimSubRelHtml}"`);
+    }
+
     const initialFlagBadge = await evalBrowser('document.getElementById("draftAiFlagCountBadge").textContent.trim()');
     console.log(`✅ PASS: Initial Draft AI Flag Badge on Day 5: "${initialFlagBadge}"`);
     if (initialFlagBadge !== "0 AI Flags Detected") {

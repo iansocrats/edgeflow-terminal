@@ -505,66 +505,71 @@
           <p class="byx-rules-desc">Bybit ByX algorithm evaluates every post across 5 content quality dimensions. Posts with <strong>Content Quality Score &ge; 40</strong> are officially certified as Valid Posts and unlock creator rewards.</p>
         </div>
 
-        <!-- 5 ByX Content Dimensions Grid -->
+        <!-- 5 ByX Content Dimensions Grid (With Live Percentage Ticks & How-We-Audit Breakdown) -->
         <div class="byx-dimensions-grid">
           <div class="dimension-card" id="dimCardOriginality">
             <div class="dim-head">
               <span class="dim-icon">🧠</span>
               <div class="dim-title-wrap">
-                <span class="dim-name">1. Originality</span>
-                <span class="dim-weight">20 Pts Max</span>
+                <span class="dim-name">1. Originality &amp; Value</span>
+                <span class="dim-weight">20 Pts (100%)</span>
               </div>
               <span class="dim-score-badge" id="byxDimOriginality">--/20</span>
             </div>
-            <p class="dim-desc">Strictly NO AI-templated phrasing. Authentic human trader voice with zero copy-pasted consensus clichés.</p>
+            <p class="dim-desc">Original market insights &amp; personal trader voice. Repetitive, templated, or substantially similar content across posts is filtered out.</p>
+            <div id="dimSubOriginality" style="margin-top: 6px; font-size: 0.68rem; color: #94a3b8; line-height: 1.4;"></div>
           </div>
 
           <div class="dimension-card" id="dimCardDepth">
             <div class="dim-head">
               <span class="dim-icon">📊</span>
               <div class="dim-title-wrap">
-                <span class="dim-name">2. Depth & Structure</span>
-                <span class="dim-weight">20 Pts Max</span>
+                <span class="dim-name">2. Depth &amp; Structure</span>
+                <span class="dim-weight">20 Pts (100%)</span>
               </div>
               <span class="dim-score-badge" id="byxDimDepth">--/20</span>
             </div>
-            <p class="dim-desc">Logical multi-point narrative anchored by concrete verified live Bybit data (prices, 24h range, turnover, OI, MAs/RSI).</p>
+            <p class="dim-desc">Informative, useful financial analysis anchored by verified live Bybit V5 data (spot quote, 24h range, turnover, OI, funding, MAs/RSI).</p>
+            <div id="dimSubDepth" style="margin-top: 6px; font-size: 0.68rem; color: #94a3b8; line-height: 1.4;"></div>
           </div>
 
           <div class="dimension-card" id="dimCardRelevance">
             <div class="dim-head">
               <span class="dim-icon">🔥</span>
               <div class="dim-title-wrap">
-                <span class="dim-name">3. Relevance</span>
-                <span class="dim-weight">20 Pts Max</span>
+                <span class="dim-name">3. Trading Relevance</span>
+                <span class="dim-weight">20 Pts (100%)</span>
               </div>
               <span class="dim-score-badge" id="byxDimRelevance">--/20</span>
             </div>
-            <p class="dim-desc">Timely setup on active market hotspots, clear Bybit perpetual cashtags ($XRPUSDT), and #ByXIMPACT #IMPACTbyTrade tags.</p>
+            <p class="dim-desc">Explains <strong>why</strong> the asset/movement matters, shares authentic <code>$cashtag</code> position, entry rationale, trading history, or portfolio context, and helps users make decisions (0 <code>#</code> tags).</p>
+            <div id="dimSubRelevance" style="margin-top: 6px; font-size: 0.68rem; color: #94a3b8; line-height: 1.4;"></div>
           </div>
 
           <div class="dimension-card" id="dimCardCredibility">
             <div class="dim-head">
               <span class="dim-icon">🛡️</span>
               <div class="dim-title-wrap">
-                <span class="dim-name">4. Credibility & Risk</span>
-                <span class="dim-weight">20 Pts Max</span>
+                <span class="dim-name">4. Credibility &amp; Risk</span>
+                <span class="dim-weight">20 Pts (100%)</span>
               </div>
               <span class="dim-score-badge" id="byxDimCredibility">--/20</span>
             </div>
-            <p class="dim-desc">Clear invalidation price triggers, explicit asset-specific risk disclosures, and disciplined leverage sizing.</p>
+            <p class="dim-desc">Defined invalidation price triggers, honest asset-specific risk context, single unified setup block, and standalone risk discipline sentence.</p>
+            <div id="dimSubCredibility" style="margin-top: 6px; font-size: 0.68rem; color: #94a3b8; line-height: 1.4;"></div>
           </div>
 
           <div class="dimension-card" id="dimCardPresentation">
             <div class="dim-head">
               <span class="dim-icon">✨</span>
               <div class="dim-title-wrap">
-                <span class="dim-name">5. Presentation</span>
-                <span class="dim-weight">20 Pts Max</span>
+                <span class="dim-name">5. Presentation &amp; Hook</span>
+                <span class="dim-weight">20 Pts (100%)</span>
               </div>
               <span class="dim-score-badge" id="byxDimPresentation">--/20</span>
             </div>
-            <p class="dim-desc">Scannable mobile line breaks, clean punctuation pauses, polymorphic bullet/numbered/table schemas, and Grade 4–6 readability.</p>
+            <p class="dim-desc">4-Step Hooking Title, breathable 1-sentence prose paragraphs separated from clean <code>•</code> number bullets, natural punctuation, and simple question CTA.</p>
+            <div id="dimSubPresentation" style="margin-top: 6px; font-size: 0.68rem; color: #94a3b8; line-height: 1.4;"></div>
           </div>
         </div>
 
@@ -592,46 +597,47 @@
         </div>
 
         <!-- ByX Measurement Technology Breakdown Card -->
+        <!-- ByX Measurement Technology & Official IMPACT Evaluation Rules Breakdown Card -->
         <div class="byx-tech-breakdown-card">
           <div class="tech-breakdown-header">
             <span class="tech-icon">🔬</span>
-            <span class="tech-title">Real Evaluation Technologies Behind the 5 Dimensions</span>
+            <span class="tech-title">How IMPACT Is Evaluated Live &amp; The 6 Official ByX Content Guidelines</span>
           </div>
           <div class="tech-grid">
             <div class="tech-item">
               <div class="tech-item-head">
-                <span class="tech-dim-name">1. Originality</span>
-                <span class="tech-engine-badge">MinHash 3-Gram LSH & Shannon Entropy</span>
+                <span class="tech-dim-name">1. Content Value &amp; Originality</span>
+                <span class="tech-engine-badge">Original, Informative &amp; Useful</span>
               </div>
-              <p class="tech-dim-desc">Measures vocabulary richness ($H \ge 3.8\text{ bits/token}$) and cross-references against 25+ common crowd consensus clichés.</p>
+              <p class="tech-dim-desc">High-quality posts help users better understand markets, asset strategies, or opportunities. Repetitive, templated, or low-information content may not be counted.</p>
             </div>
             <div class="tech-item">
               <div class="tech-item-head">
-                <span class="tech-dim-name">2. Depth & Structure</span>
-                <span class="tech-engine-badge">Financial Named Entity Recognition (NER)</span>
+                <span class="tech-dim-name">2. Consistency &amp; Anti-Similarity</span>
+                <span class="tech-engine-badge">Pairwise Jaccard &lt; 18.5%</span>
               </div>
-              <p class="tech-dim-desc">Extracts concrete quantitative price anchors ($1.2658, $660M vol, $4.26B RLUSD) and audits multi-paragraph structural narrative flow.</p>
+              <p class="tech-dim-desc">Creators who contribute useful content consistently build IMPACT over time. Excessive posting or publishing substantially similar content creates zero scoring advantage.</p>
             </div>
             <div class="tech-item">
               <div class="tech-item-head">
-                <span class="tech-dim-name">3. Relevance</span>
-                <span class="tech-engine-badge">Market Catalyst Vector Lexicon</span>
+                <span class="tech-dim-name">3. Trading Relevance &amp; $cashtag Context</span>
+                <span class="tech-engine-badge">Why It Matters + Position Rationale</span>
               </div>
-              <p class="tech-dim-desc">Detects live Bybit perpetual cashtags ($XRPUSDT), 24h turnover/OI, funding rates, and timely execution timeframe catalysts.</p>
+              <p class="tech-dim-desc">Explain <strong>why</strong> an asset/movement matters and share authentic position entry rationale, trading history, or portfolio context. Adding a component alone does not guarantee a higher score; breadth of users influenced matters more than isolated large transactions.</p>
             </div>
             <div class="tech-item">
               <div class="tech-item-head">
-                <span class="tech-dim-name">4. Credibility & Risk</span>
-                <span class="tech-engine-badge">Invalidation Boundary Classifier</span>
+                <span class="tech-dim-name">4. Integrity &amp; Risk Control</span>
+                <span class="tech-engine-badge">Quality Eligibility &amp; Stop-Loss</span>
               </div>
-              <p class="tech-dim-desc">Verifies presence of defined invalidation price levels, explicit Risk Disclosure sections, and disciplined leverage caps.</p>
+              <p class="tech-dim-desc">ByX applies quality eligibility and risk controls for fair competition. Every post defines exact invalidation levels, single setup structure, and standalone risk discipline.</p>
             </div>
             <div class="tech-item">
               <div class="tech-item-head">
-                <span class="tech-dim-name">5. Presentation</span>
-                <span class="tech-engine-badge">Flesch-Kincaid Readability & Punctuation</span>
+                <span class="tech-dim-name">5. 6 Official Content Guidelines</span>
+                <span class="tech-engine-badge">4-Step Hook &amp; Community Question</span>
               </div>
-              <p class="tech-dim-desc">Formula: $0.39(W/S) + 11.8(Y/W) - 15.59$. Confirms Grade 4–6 mobile scannability, proper punctuation, and polymorphic spacing.</p>
+              <p class="tech-dim-desc">1) Share original insights/ideas; 2) Explain why movement matters; 3) Add reasoning/personal insight vs repeating news; 4) Help discover opportunities; 5) Engage genuinely; 6) Connect <code>$cashtag</code> views with real trading activity.</p>
             </div>
           </div>
         </div>
@@ -801,47 +807,47 @@
         </div>
       </div>
 
-      <!-- 🎯 Bybit ByX Impact Leaderboard Official Announcement Rules & Cashtag Mechanism -->
+      <!-- 🎯 Bybit ByX Impact Leaderboard Official Evaluation Rules & $cashtag Context -->
       <div class="rules-card byx-impact-rules-card" id="byxImpactRulesCard">
         <div class="byx-header-wrap">
           <div class="rules-header">
-            <span class="rules-title">🎯 Official Bybit ByX IMPACT Rules: Up to 5,230 USDT Weekly</span>
-            <span class="rules-badge byx-valid-badge">TOP 100 CREATORS REWARDED WEEKLY</span>
+            <span class="rules-title">🎯 Official Updated Bybit ByX IMPACT Evaluation &amp; Content Guidelines</span>
+            <span class="rules-badge byx-valid-badge">CONTENT VALUE • CONSISTENCY • RELEVANCE • INTEGRITY</span>
           </div>
-          <p class="byx-rules-desc">Examining Bybit's official announcement rules: How direct trade conversion, cashtag widgets, and historical follow-up posts drive the highest creator IMPACT multipliers.</p>
+          <p class="byx-rules-desc">Updated ByX rules place greater emphasis on full trading context when relevant. Adding a trading component alone does not guarantee a higher score — IMPACT evaluates original content value, why a movement matters, entry rationale, and breadth of users influenced.</p>
         </div>
 
         <div class="impact-rules-grid">
           <div class="impact-rule-card">
             <div class="impact-rule-head">
-              <span class="impact-icon">💰</span>
-              <h4>1. 5,230 USDT Weekly Prize Pool</h4>
+              <span class="impact-icon">💎</span>
+              <h4>1. Content Value &amp; $cashtag Context</h4>
             </div>
-            <p>Weekly competition cycle runs from <strong>Monday 00:00 UTC to Sunday 23:59 UTC</strong>. Expanded to distribute cash rewards across the <strong>Top 100 verified creators</strong> weekly, with rewards scaling up to 5,230 USDT.</p>
+            <p>Original, informative, and useful content is rewarded. High-quality posts help users better understand markets, asset strategies, or trading opportunities. Use the <code>$cashtag</code> trading component when posting to show <strong>authentic positions, trading history, entry rationale, or portfolio context</strong> alongside your market view. Repetitive, templated, or low-information content may not be counted.</p>
           </div>
 
           <div class="impact-rule-card">
             <div class="impact-rule-head">
-              <span class="impact-icon">🏷️</span>
-              <h4>2. Cashtags & Trade Attribution Rule</h4>
+              <span class="impact-icon">⚖️</span>
+              <h4>2. Consistency (Anti-Similarity Rule)</h4>
             </div>
-            <p>Attaching real <strong>Cashtags / Trading Pair widgets</strong> (e.g. <code>#BTCUSDT</code>, <code>#SOLUSDT</code>) is the primary score accelerator. When community members click your cashtag and execute a trade, that volume is <strong>directly attributed to your post</strong>. Each trade is credited to the most recent post clicked.</p>
+            <p>Creators who contribute useful content consistently can build IMPACT over time. However, <strong>excessive posting or publishing substantially similar content does not create an additional scoring advantage</strong>. Every post must feature distinct vocabulary and non-templated reasoning.</p>
           </div>
 
           <div class="impact-rule-card">
             <div class="impact-rule-head">
-              <span class="impact-icon">🟢</span>
-              <h4>3. Why Active Trade Setups Win</h4>
+              <span class="impact-icon">🔥</span>
+              <h4>3. Trading Relevance &amp; Breadth</h4>
             </div>
-            <p>Posts that detail concrete trade setups (Direction, Entry Zone, Invalidation / SL, Take-Profit % targets, and Risk-Reward ratio) trigger immediate reader execution. Passive opinion gets views, but <strong>actionable setups convert into Bybit trading volume</strong>.</p>
+            <p>Content that helps users discover markets and make trading decisions contributes to IMPACT. <strong>Genuine trading participation and the breadth of users influenced matter more than isolated large transactions</strong>. Share authentic entry context, trade history, or outcome rather than generic tags.</p>
           </div>
 
           <div class="impact-rule-card">
             <div class="impact-rule-head">
-              <span class="impact-icon">🏆</span>
-              <h4>4. Why Follow-Up Profit Posts Excel</h4>
+              <span class="impact-icon">🛡️</span>
+              <h4>4. Integrity &amp; The 6 Content Guidelines</h4>
             </div>
-            <p>Posts reviewing past trades (e.g., <em>"Entered at $0.85, hit TP1 at $0.92 for +8.2% realized profit, trailing stop to breakeven"</em>) provide transparent accountability. Readers trust proven track records, creating compounding dwell time and repeat trade clicks.</p>
+            <p>ByX applies quality eligibility and risk controls to maintain fair competition. Follow the 6 guidelines: <strong>(1)</strong> Share original insights &amp; ideas; <strong>(2)</strong> Explain <em>why</em> an asset/event/movement matters; <strong>(3)</strong> Add reasoning &amp; personal insight vs repeating news; <strong>(4)</strong> Help users discover opportunities; <strong>(5)</strong> Engage genuinely; <strong>(6)</strong> Connect <code>$cashtag</code> views with real trading activity.</p>
           </div>
         </div>
       </div>
@@ -990,12 +996,12 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=73"></script>
-  <script src="js/detectors/BaseDetector.js?v=73"></script>
-  <script src="js/detectors/Detectors.js?v=73"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=73"></script>
-  <script src="js/forensics/ForensicHub.js?v=73"></script>
-  <script src="js/session/SessionManager.js?v=73"></script>
-  <script src="app.js?v=73"></script>
+  <script src="js/data/preloadedSlots.js?v=75"></script>
+  <script src="js/detectors/BaseDetector.js?v=75"></script>
+  <script src="js/detectors/Detectors.js?v=75"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=75"></script>
+  <script src="js/forensics/ForensicHub.js?v=75"></script>
+  <script src="js/session/SessionManager.js?v=75"></script>
+  <script src="app.js?v=75"></script>
 </body>
 </html>
