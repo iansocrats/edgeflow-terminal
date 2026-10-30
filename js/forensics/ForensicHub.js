@@ -2837,6 +2837,75 @@ function getComparisonForensicHtml() {
         </div>
       </div>
     </div>
+
+    <!-- Section 4: Cross-Platform Benchmark Expansion (Bybit ByX vs Binance Square) -->
+    <div class="similarity-matrix-wrap" style="margin-bottom: 20px;">
+      <div class="similarity-matrix-header">
+        <span class="similarity-matrix-title">🌐 Multi-Platform Expansion: Bybit ByX (Buzz) vs Binance Square Ingestion</span>
+        <span class="forensic-badge words" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border-color: rgba(168, 85, 247, 0.4);">
+          7 Multi-Platform Posts Ingested
+        </span>
+      </div>
+      <p style="font-size: 0.8rem; color: #94a3b8; margin: 8px 0 12px 0; line-height: 1.4;">
+        Our ingestion pipeline harvests from both <strong>Bybit ByX (#ByXIMPACT / #IMPACTbyTrade)</strong> and <strong>Binance Square</strong>. Analysis reveals top creators like <strong>Crypto BOSS (@traderboos)</strong> cross-post across both ecosystems, adjusting conversion widgets and community prompts to match each platform's algorithm:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 10px;">
+        <!-- Card 1: Binance Square @traderboos $NEAR -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="color: #fbbf24; font-size: 0.86rem;">🟡 Binance Square: $NEAR Short Setup</strong>
+            <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Oct 30 Today • @traderboos</span>
+          </div>
+          <div style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px;">
+            <em>"🔴 SHORT on a bounce | Entry 4.30 - 4.36 | TP1 4.10 | SL 4.52<br>
+            <strong>👉 Tap $NEAR to place your trade fast</strong><br>
+            NEAR hit 3.909 today, lowest in 100 4H candles. RSI is 36, so I'm not chasing it. The plan is to sell a bounce..."</em>
+          </div>
+          <div style="font-size: 0.72rem; color: #34d399;">
+            🎯 <strong>Key Innovation:</strong> Direct Binance Widget CTA (tap ticker to trade) drives instant conversion and volume attribution.
+          </div>
+        </div>
+
+        <!-- Card 2: Binance Square @traderboos $PUMP -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="color: #fbbf24; font-size: 0.86rem;">🟡 Binance Square: $PUMP Post-Mortem & Flip</strong>
+            <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Oct 29 • @traderboos</span>
+          </div>
+          <div style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px;">
+            <em>"<strong>Honest update first:</strong> my 16:49 UTC LONG on Pump.fun did not work... hit 0.0042 stop at -8%. Since then the picture flipped: PUMP is down 11.3% under 4H moving averages while BTC sits under 79K after hawkish Fed hold. New SHORT entry: 0.004041 - 0.004057..."</em>
+          </div>
+          <div style="font-size: 0.72rem; color: #34d399;">
+            🎯 <strong>Key Innovation:</strong> Transparent loss disclosure (-8%) builds massive authority, establishing trust before new setup execution.
+          </div>
+        </div>
+
+        <!-- Card 3: Bybit ByX Leaderboard Post ($BTC / $SOL) -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="color: #34d399; font-size: 0.86rem;">⚡ Bybit ByX: 26-Comment Community Loop</strong>
+            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Post 7493989779945249793</span>
+          </div>
+          <div style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px;">
+            <em>"24h Move: +1.9% • Bitcoin is approaching key zone. Support: 73,000 / 71,600 • Resistance: 75,200 / 76,900...<br>
+            $BTCUSDT #BitcoinSlidesBelow$80K #ByXMayPostingLeaderboard #ShowMyRWATrades"</em>
+          </div>
+          <div style="font-size: 0.72rem; color: #38bdf8;">
+            🎯 <strong>Key Innovation:</strong> Post triggered <strong>26 comments</strong> with traders posting full SOL & BTC setups in replies, capturing Bybit's 3x comment weighting.
+          </div>
+        </div>
+      </div>
+
+      <!-- Ingestion Pipeline Architecture Box -->
+      <div style="margin-top: 14px; padding: 12px; background: rgba(30, 41, 59, 0.4); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: #94a3b8; line-height: 1.5;">
+        <strong style="color: #f1f5f9;">🛠️ How EdgeFlow Ingestion Automatically Picks Up These Posts:</strong><br>
+        • <strong>Bybit Community (ByX / Buzz):</strong> Native SSR state extraction parses <code>initialPostDetail</code>, <code>post_topics</code>, and nested comment trees directly from topic hubs like <code>#ByXIMPACT</code> (Topic 3458764513820570953) and <code>#IMPACTbyTrade</code> (Topic 60096).<br>
+        • <strong>Binance Square:</strong> Automated headless Chrome CDP pipeline renders dynamic SPAs, solves client-side challenge walls, and harvests live trade signals, widget CTAs, and community sentiment.<br>
+        • <strong>Persistent Multi-Platform Dataset:</strong> Stored under <code>datasets/creator_benchmark_corpus.json</code> to calibrate our qualitative writing engine against real, multi-exchange trader habits.
+      </div>
+    </div>
+
   `;
 }
 

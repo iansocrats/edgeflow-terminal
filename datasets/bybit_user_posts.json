@@ -10,7 +10,7 @@
     "profile_url": "https://www.bybit.com/press/community/535233761"
   },
   "extracted_at": "2026-10-30T05:11:10.791826Z",
-  "total_posts": 3,
+  "total_posts": 4,
   "posts": [
     {
       "post_id": "576460752305256405",
@@ -247,6 +247,38 @@
         "total_byx_score": 95.0,
         "grade": "A+",
         "valid_post": true
+      }
+    },
+    {
+      "post_id": "7493989779945249793",
+      "platform": "Bybit Community (ByX)",
+      "creator": {
+        "username": "ByX Leaderboard Trader",
+        "user_id": "203434249",
+        "profile_url": "https://www.bybit.com/press/community/7493989779945249793"
+      },
+      "url": "https://www.bybit.com/press/community/7493989779945249793",
+      "symbols": [
+        "BTCUSDT",
+        "SOLUSDT"
+      ],
+      "created_at_iso": "2026-10-29T18:40:00",
+      "engagement": {
+        "like_count": 11,
+        "comment_count": 26,
+        "share_count": 1
+      },
+      "content": "24h Move: +1.9%\nBitcoin is approaching a key zone where price usually reacts. Movement is steady but sensitive.\n\nSupport Levels: 73,000, 71,600\nResistance Levels: 75,200, 76,900\n\nPrice: 74,224\nEMA Levels: EMA 20 → 73,500 | EMA 50 → 72,300\n\nNext move depends on reaction here.\n\n#Crypto #BTC #Bitcoin #Altcoins #ByXMayPostingLeaderboard\n\n$BTCUSDT #BitcoinSlidesBelow$80K #ByXMayPostingLeaderboard #ShowMyRWATrades #MetalsMarketTurmoil #BoostBattleUSStock $BTCUSDT $SOLUSDT",
+      "metrics": {
+        "word_count": 64,
+        "flesch_kincaid_grade": 10.4,
+        "vocabulary_entropy_bits": 5.633,
+        "campaign_hashtags": [
+          "#ByXMayPostingLeaderboard",
+          "#BitcoinSlidesBelow$80K",
+          "#ShowMyRWATrades"
+        ],
+        "notable_feature": "Generates 26 community comments with full liquidity setups in replies"
       }
     }
   ]

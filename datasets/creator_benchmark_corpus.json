@@ -1,0 +1,401 @@
+{
+  "corpus_name": "Multi-Platform Crypto Creator Benchmark Corpus",
+  "updated_at": "2026-10-30T08:52:00Z",
+  "platforms": {
+    "bybit_byx": {
+      "platform_name": "Bybit Community (ByX / Bybit Buzz)",
+      "primary_campaigns": [
+        "#ByXIMPACT",
+        "#IMPACTbyTrade",
+        "#ByXMayPostingLeaderboard"
+      ],
+      "posts_count": 4,
+      "posts": [
+        {
+          "post_id": "576460752305256405",
+          "url": "https://www.bybit.com/press/community/576460752305256405?share_to=link",
+          "symbols": [
+            "ETHUSDT"
+          ],
+          "created_at_unix": 1793312998,
+          "created_at_iso": "2026-10-30T01:29:58",
+          "engagement": {
+            "like_count": 25,
+            "comment_count": 4,
+            "share_count": 3,
+            "creator_replied_to_comments": false
+          },
+          "content": "ETH just handed us what looks like a dip-buying opportunity.\n\nIt climbed through the afternoon and topped out at $2,379.49 around 17:00, then sellers took over. At 21:00 one huge red candle dragged it from about $2,337 down to $2,232.40, the kind of candle that shakes a lot of people out. But buyers stepped in right at that low, the bounce at 22:00 took it back to $2,274, and it's holding at $2,270 with the hourly RSI under 30. That's often how a bottoming zone looks.\n\nI already have my trade on this, so for me it's about the zone and not chasing. The area worth watching is $2,245 to $2,270, and the idea is wrong if it closes under $2,225. The first target is around $2,320 and the second near $2,375, roughly 2 to 1 and 3.5 to 1. It's still a bounce against the short-term trend, so size it with that in mind.\n\nWhere's your line on this dip, $2,232 or a daily close?\n\nJust my read, not advice.\n$ETHUSDT #ByXIMPACT #IMPACTbyTrade ",
+          "metrics": {
+            "word_count": 188,
+            "sentence_count": 15,
+            "avg_words_per_sentence": 12.5,
+            "flesch_kincaid_grade": 3.7,
+            "vocabulary_entropy_bits": 6.506,
+            "detected_colloquial_markers": [
+              "dip-buying",
+              "shakes a lot of people out",
+              "holding at",
+              "bottoming zone",
+              "already have my trade",
+              "not chasing",
+              "idea is wrong if",
+              "roughly 2 to 1",
+              "size it with that in mind",
+              "where's your line",
+              "just my read",
+              "not advice"
+            ],
+            "colloquial_density_score": 12,
+            "campaign_hashtags": {
+              "#ByXIMPACT": true,
+              "#IMPACTbyTrade": true
+            }
+          },
+          "comments": [
+            {
+              "comment_id": "4035225266128014706",
+              "username": "kas***@****",
+              "user_id": "392099719",
+              "content": "где лайки не вижу я 😂",
+              "like_count": 0,
+              "created_at_unix": "1793327212",
+              "replies": []
+            },
+            {
+              "comment_id": "6052837899189996913",
+              "username": "kas***@****",
+              "user_id": "392099719",
+              "content": "всех на кол 😂 не расстраивайтесь ребята един к 75 биток , хорошей дороги 👍держитесь крепче , из Дагестана привет Трампу 😂",
+              "like_count": 0,
+              "created_at_unix": "1793327139",
+              "replies": []
+            },
+            {
+              "comment_id": "4323455642279786486",
+              "username": "cha***@****",
+              "user_id": "543886328",
+              "content": "Is it a temporary decline?",
+              "like_count": 0,
+              "created_at_unix": "1793318635",
+              "replies": []
+            },
+            {
+              "comment_id": "5476377146886603623",
+              "username": "GTMC101",
+              "user_id": "150902891",
+              "content": "boss i want to be a bybit merchant",
+              "like_count": 0,
+              "created_at_unix": "1793317276",
+              "replies": []
+            }
+          ],
+          "byx_evaluation": {
+            "originality": 20.0,
+            "depth_structure": 19.5,
+            "relevance": 20.0,
+            "credibility_risk": 19.5,
+            "presentation_cta": 20.0,
+            "total_byx_score": 99.0,
+            "grade": "A+",
+            "valid_post": true
+          }
+        },
+        {
+          "post_id": "8070450532249793081",
+          "url": "https://www.bybit.com/press/community/8070450532249793081?share_to=link",
+          "symbols": [
+            "XAUTUSDT",
+            "PARTIUSDT"
+          ],
+          "created_at_unix": 1793308911,
+          "created_at_iso": "2026-10-30T00:21:51",
+          "engagement": {
+            "like_count": 45,
+            "comment_count": 4,
+            "share_count": 3,
+            "creator_replied_to_comments": true
+          },
+          "content": "XAUT vs $PAXG vs $XAG: Two Gold Tokens and Silver After a Red Day\nToday's move\nGold: about $4,024, down 1.1%\nSilver ($XAG): about $52.4, down 2.9%\n$XAUT and $PAXG: both down about 0.6%, tracking gold\n\nWhat separates them\n$XAUT (Tether Gold): the larger gold token, with a market cap near $3B\n\n$PAXG (Pax Gold): the smaller one, near $1.8B, also backed by one ounce of gold per token\n\n$XAG: silver, which moves more than gold in both directions\n\nThe bigger picture\nGold is about 28% below its January record\nSilver is down about 26% this year and 13% in the last month\n\nThe gold-to-silver ratio sits near 77, so silver has been the weaker of the two\n\nWhat I'm watching: the next US inflation data (PCE), since rate expectations drive both metals. The gold tokens give gold exposure on-chain, while $XAG is the higher-volatility way to trade the same theme.\n\nYour pick: $XAUT, $PAXG or $XAG into the next data release? Tell me why.\n$XAUTUSDT $PARTIUSDT #ByXIMPACT #IMPACTbyTrade ",
+          "metrics": {
+            "word_count": 170,
+            "sentence_count": 10,
+            "avg_words_per_sentence": 17.0,
+            "flesch_kincaid_grade": 7.3,
+            "vocabulary_entropy_bits": 6.345,
+            "detected_colloquial_markers": [
+              "today's move",
+              "what separates them",
+              "the bigger picture",
+              "what i'm watching",
+              "your pick",
+              "tell me why"
+            ],
+            "colloquial_density_score": 6,
+            "campaign_hashtags": {
+              "#ByXIMPACT": true,
+              "#IMPACTbyTrade": true
+            }
+          },
+          "comments": [
+            {
+              "comment_id": "3458764513824651250",
+              "username": "BITPIA",
+              "user_id": "122342505",
+              "content": "well said analysis",
+              "like_count": 1,
+              "created_at_unix": "1793316477",
+              "replies": [
+                {
+                  "reply_id": "2882303761521227764",
+                  "username": "Crypto BOSS",
+                  "user_id": "535233761",
+                  "content": "thnx bro",
+                  "like_count": 1,
+                  "created_at_unix": "1793317282"
+                }
+              ]
+            },
+            {
+              "comment_id": "5188146770734891877",
+              "username": "pir***@****",
+              "user_id": "592367730",
+              "content": "good",
+              "like_count": 1,
+              "created_at_unix": "1793315363",
+              "replies": [
+                {
+                  "reply_id": "2882303761521227761",
+                  "username": "Crypto BOSS",
+                  "user_id": "535233761",
+                  "content": "thnx bro",
+                  "like_count": 1,
+                  "created_at_unix": "1793315413"
+                }
+              ]
+            }
+          ],
+          "byx_evaluation": {
+            "originality": 20.0,
+            "depth_structure": 19.5,
+            "relevance": 20.0,
+            "credibility_risk": 19.5,
+            "presentation_cta": 20.0,
+            "total_byx_score": 99.0,
+            "grade": "A+",
+            "valid_post": true
+          }
+        },
+        {
+          "post_id": "4035225266125856630",
+          "url": "https://www.bybit.com/press/community/4035225266125856630?share_to=link",
+          "symbols": [
+            "VVVUSDT",
+            "ETHUSDT"
+          ],
+          "created_at_unix": 1793292957,
+          "created_at_iso": "2026-10-29T19:55:57",
+          "engagement": {
+            "like_count": 41,
+            "comment_count": 1,
+            "share_count": 1,
+            "creator_replied_to_comments": false
+          },
+          "content": "VVV just went absolutely vertical, and this is exactly where real wealth is built in this market. I am not just watching this parabolic move; I am actively managing it to squeeze every drop of profit out of the trend.\n\nLook at this 1-hour chart. We saw a textbook launch from the 22.852 base, ripping straight through the EMAs to a peak of 25.940. The volume spike here is the engine, confirming this is backed by real, aggressive buyers.\n\nHere is my technical game plan:\n\nThe Power: The MACD is wide open to the upside, and the EMA cluster is fanning out beautifully. \nThe Exhaustion Risk: Yes, the RSI6 is hot at 76.16, and we are piercing the upper Bollinger Band. The move is extended.\n\nMy Execution Strategy:\nI do not try to guess the top. Guessing tops is how you lose money. I ride the momentum until the market tells me it's over.\n\nMy anchor is the EMA7 at 24.650. I am aggressively trailing my stop loss just below that level. As long as VVV holds above this dynamic support, I let the profit run toward new highs. If the price breaks below it, I secure my gains and step away. No emotions, just pure price action.\n\nFor those who missed the initial blast: do not FOMO chase this massive green candle. Wait for a micro-pullback or a tight flag to form. Let the price come to you.\n\nThe market is offering a massive opportunity. I am staying disciplined, riding the trend, and protecting my capital.\n\nAre you riding this parabolic move, or are you waiting for the dust to settle?\n$VVVUSDT $ETHUSDT #ByXIMPACT #IMPACTbyTrade ",
+          "metrics": {
+            "word_count": 276,
+            "sentence_count": 27,
+            "avg_words_per_sentence": 10.2,
+            "flesch_kincaid_grade": 5.2,
+            "vocabulary_entropy_bits": 6.828,
+            "detected_colloquial_markers": [
+              "went absolutely vertical",
+              "real wealth is built",
+              "squeeze every drop of profit",
+              "textbook launch",
+              "volume spike here is the engine",
+              "guessing tops is how you lose money",
+              "aggressively trailing my stop loss",
+              "no emotions, just pure price action",
+              "do not fomo chase",
+              "let the price come to you"
+            ],
+            "colloquial_density_score": 10,
+            "campaign_hashtags": {
+              "#ByXIMPACT": true,
+              "#IMPACTbyTrade": true
+            }
+          },
+          "comments": [
+            {
+              "comment_id": "2305843009217804213",
+              "username": "Youno",
+              "user_id": "580812985",
+              "content": "580812985",
+              "like_count": 1,
+              "created_at_unix": "1793295279",
+              "replies": []
+            }
+          ],
+          "byx_evaluation": {
+            "originality": 20.0,
+            "depth_structure": 19.5,
+            "relevance": 20.0,
+            "credibility_risk": 19.5,
+            "presentation_cta": 16.0,
+            "total_byx_score": 95.0,
+            "grade": "A+",
+            "valid_post": true
+          }
+        },
+        {
+          "post_id": "7493989779945249793",
+          "platform": "Bybit Community (ByX)",
+          "creator": {
+            "username": "ByX Leaderboard Trader",
+            "user_id": "203434249",
+            "profile_url": "https://www.bybit.com/press/community/7493989779945249793"
+          },
+          "url": "https://www.bybit.com/press/community/7493989779945249793",
+          "symbols": [
+            "BTCUSDT",
+            "SOLUSDT"
+          ],
+          "created_at_iso": "2026-10-29T18:40:00",
+          "engagement": {
+            "like_count": 11,
+            "comment_count": 26,
+            "share_count": 1
+          },
+          "content": "24h Move: +1.9%\nBitcoin is approaching a key zone where price usually reacts. Movement is steady but sensitive.\n\nSupport Levels: 73,000, 71,600\nResistance Levels: 75,200, 76,900\n\nPrice: 74,224\nEMA Levels: EMA 20 → 73,500 | EMA 50 → 72,300\n\nNext move depends on reaction here.\n\n#Crypto #BTC #Bitcoin #Altcoins #ByXMayPostingLeaderboard\n\n$BTCUSDT #BitcoinSlidesBelow$80K #ByXMayPostingLeaderboard #ShowMyRWATrades #MetalsMarketTurmoil #BoostBattleUSStock $BTCUSDT $SOLUSDT",
+          "metrics": {
+            "word_count": 64,
+            "flesch_kincaid_grade": 10.4,
+            "vocabulary_entropy_bits": 5.633,
+            "campaign_hashtags": [
+              "#ByXMayPostingLeaderboard",
+              "#BitcoinSlidesBelow$80K",
+              "#ShowMyRWATrades"
+            ],
+            "notable_feature": "Generates 26 community comments with full liquidity setups in replies"
+          }
+        }
+      ]
+    },
+    "binance_square": {
+      "platform_name": "Binance Square",
+      "primary_campaigns": [
+        "Square Creator Awards",
+        "Crypto Signals & Analysis"
+      ],
+      "posts_count": 3,
+      "posts": [
+        {
+          "post_id": "382729304369457",
+          "platform": "Binance Square",
+          "creator": {
+            "username": "Crypto Signals and Analysis",
+            "handle": "@traderboos",
+            "profile_url": "https://www.binance.com/en/square/profile/traderboos"
+          },
+          "url": "https://www.binance.com/en/square/post/382729304369457",
+          "symbols": [
+            "NEARUSDT"
+          ],
+          "created_at_iso": "2026-10-30T03:28:00Z",
+          "engagement": {
+            "views": "228M Traded",
+            "sentiment": "Bearish",
+            "rating": "5/5 Bearish Signals"
+          },
+          "content": "$NEAR Price Prediction Today (Oct 30): NEAR Protocol Crypto Signal & Technical Analysis 📊\n🔴 SHORT on a bounce | Entry 4.30 - 4.36 | TP1 4.10 | SL 4.52\n👉 Tap $NEAR to place your trade fast\n🕒 Updated: Oct 30, 03:28 UTC · price 4.096\n\nNEAR is one of Square's most-searched coins and one of the weakest large caps: down 7.4% in 24h and 17.4% on the week, with about 228M traded on Binance. It hit 3.909 today, the lowest in the last 100 4H candles. RSI is 36, so I'm not chasing it. The plan is to sell a bounce into 4.30 - 4.36.\n\nOpen plans update: BTC, SOL, XRP and DOGE bounce entries are still not reached, so no trades are open.\n\n📌 NEAR TRADING SIGNAL (Moderate: trend 5/5 bearish, RSI 36)\nEntry: 4.30 - 4.36 (only on a bounce)\nTake profit 1: 4.10 (+5.3%)\nTake profit 2: 3.92 (+9.5%)\nStop loss: 4.52 (-4.1%)\n\nRisk management: 2% capital per trade. If RSI dips under 30 without reaching 4.30, cancel this setup.",
+          "metrics": {
+            "word_count": 172,
+            "flesch_kincaid_grade": 6.1,
+            "vocabulary_entropy_bits": 6.42,
+            "features": [
+              "Direct Binance Widget CTA (Tap $NEAR to place your trade fast)",
+              "Clear Tiered Take-Profits",
+              "Explicit Invalidation Condition"
+            ]
+          }
+        },
+        {
+          "post_id": "382665568956282",
+          "platform": "Binance Square",
+          "creator": {
+            "username": "Crypto Signals and Analysis",
+            "handle": "@traderboos",
+            "profile_url": "https://www.binance.com/en/square/profile/traderboos"
+          },
+          "url": "https://www.binance.com/en/square/post/382665568956282",
+          "symbols": [
+            "PUMPUSDT"
+          ],
+          "created_at_iso": "2026-10-29T23:15:00Z",
+          "engagement": {
+            "sentiment": "Bearish",
+            "rating": "Strong 5/5 Signals"
+          },
+          "content": "$PUMP Price Prediction Today (Oct 29): Pump.fun Crypto Signal & Technical Analysis 📊\n🔴 SHORT | Entry 0.004041 - 0.004057 | TP1 0.003725 | SL 0.004373\n👉 Tap $PUMP to place your trade fast\n🕒 Updated: Oct 29, 23:15 UTC · price 0.004019\n\nHonest update first: my 16:49 UTC LONG on Pump.fun did not work. Price topped at 0.004611, never reached TP1 (0.004937), and hit the 0.004205 stop at 20:40 UTC during the market-wide drop. That call is closed at -8%.\n\nSince then the picture has flipped. PUMP is down 11.3% in 24h, trades under both 4H moving averages, and is one of the 25 most-traded USDT pairs on Binance today, while BTC sits under 79K after a hawkish Fed hold.\n\n📌 PUMP.FUN TRADING SIGNAL (Strong, 5/5 signals agree)\nEntry: 0.004041 - 0.004057\nTake profit 1: 0.003725 (+8.1%)\nTake profit 2: 0.003410 (+15.8%)\nStop loss: 0.004373 (-7.8%)\n\nDiscipline is what keeps you in the game. When a stop hits, accept it, re-analyze, and take the next clean setup.",
+          "metrics": {
+            "word_count": 185,
+            "flesch_kincaid_grade": 5.8,
+            "vocabulary_entropy_bits": 6.38,
+            "features": [
+              "Transparent Post-Mortem (-8% loss review)",
+              "Post-FOMC Macro Context",
+              "Binance Trading Widget CTA"
+            ]
+          }
+        },
+        {
+          "post_id": "350726691872529",
+          "platform": "Binance Square",
+          "creator": {
+            "username": "waqas_ahmah",
+            "handle": "@Square-Creator-d8a0fb96d474",
+            "profile_url": "https://www.binance.com/en/square/profile/Square-Creator-d8a0fb96d474"
+          },
+          "url": "https://www.binance.com/en/square/post/350726691872529",
+          "symbols": [
+            "BTCUSDT"
+          ],
+          "created_at_iso": "2026-07-31T12:00:00Z",
+          "engagement": {
+            "sentiment": "Educational Signal"
+          },
+          "content": "If you're asking about Binance Square trading analysis (how to analyze markets and publish useful analysis on Binance Square), a structured format works best.\n\nExample Trading Analysis $BTC \n\nAsset: $BTC/USDT\nTrend: Bullish above key support, bearish below.\n\nTechnical Analysis\nTrend: Check 4H and 1D charts first.\nSupport: Previous swing low and 20 EMA.\nResistance: Previous swing high and psychological levels.\nIndicators: RSI for overbought/oversold, MACD for momentum shifts.\n\nTrade Strategy\nLong setup: Wait for a pullback to support and confirmation of reversal.\nShort setup: Look for rejection at resistance with bearish volume.\nRisk Management: Never risk more than 1-2% per trade. Always set an invalidation stop loss.\n\nInteractive Call to Action:\nWhat is your bias on Bitcoin going into the weekly close? Drop your targets below 👇",
+          "metrics": {
+            "word_count": 132,
+            "flesch_kincaid_grade": 7.4,
+            "vocabulary_entropy_bits": 6.12,
+            "features": [
+              "Standard Binance Square Signal Archetype",
+              "Direct Comment Prompt",
+              "Risk Management Guardrails"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "total_benchmark_posts": 7,
+  "cross_platform_insights": [
+    {
+      "dimension": "Widget & Conversion CTAs",
+      "bybit_byx": "Cashtags like #ETHUSDT trigger trading pair preview card; official campaign tags #ByXIMPACT required for leaderboard tracking.",
+      "binance_square": "Explicit action triggers like '👉 Tap $NEAR to place your trade fast' embedded directly next to signal levels, maximizing conversion rate."
+    },
+    {
+      "dimension": "Loss Transparency & Post-Mortems",
+      "bybit_byx": "Creators frequently post bottoming entries after massive liquidation wipes (e.g. 21:00 red candle sweep).",
+      "binance_square": "High-performing creators like @traderboos publish transparent loss reviews ('Honest update first: my LONG hit the 0.0042 stop at -8%') to build authentic authority before issuing new setups."
+    },
+    {
+      "dimension": "Comment Engagement Loops",
+      "bybit_byx": "Top posts generate active secondary trade setups inside comments (e.g. 26 comments on Post 7493989779945249793), unlocking the platform's 3x comment multiplier.",
+      "binance_square": "Creators prompt for directional bias ('What is your bias on Bitcoin? Drop your targets below 👇') driving community reach."
+    }
+  ]
+}
