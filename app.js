@@ -35,9 +35,9 @@ initRustWasm();
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_day3_fresh_v29';
-const SESSION_KEY = 'byx_active_session_id_v29';
-let currentSessionId = 'day4';
+const STORAGE_KEY = 'byx_post_studio_day5_fresh_v30';
+const SESSION_KEY = 'byx_active_session_id_v30';
+let currentSessionId = 'day5';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -200,10 +200,10 @@ function setTodayDate() {
       currentDateBadge.textContent = 'Day 2 Archive (11.0 pts)';
     } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day3') {
       currentDateBadge.textContent = 'Day 3 Archive (10.0 pts)';
-    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day5') {
-      currentDateBadge.textContent = 'Day 5 Desk (Day 4 Dual-Anchor)';
+    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day4') {
+      currentDateBadge.textContent = 'Day 4 Archive (7.0 pts • 13 Posts)';
     } else {
-      currentDateBadge.textContent = 'Day 4 Active Desk (11/11 Ready)';
+      currentDateBadge.textContent = 'Day 5 Active Desk (Thu, Oct 30) • Recovery Sprint';
     }
   }
 }
@@ -242,6 +242,15 @@ async function loadPostsData() {
     } catch (e) {
       console.error('Error parsing session data:', e);
       postsData = null;
+    }
+  }
+
+  // Ensure Day 5 is 100% preloaded with the 8 polymorphic high-conviction recovery setups
+  if (currentSessionId === 'day5') {
+    const d5Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
+    if (!postsData || postsData.length < 8 || !d5Text.includes('Asia Open Liquidation Sweep')) {
+      postsData = (typeof getDay5PreloadedSlots === 'function') ? getDay5PreloadedSlots() : createEmptySlots();
+      localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
     }
   }
 
@@ -1663,6 +1672,7 @@ function setupEvents() {
 
   const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
   const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
+  const pillBarCrossAnalysisBtn = document.getElementById('pillBarCrossAnalysisBtn');
   const returnPostsFromAnalysisBtn = document.getElementById('returnPostsFromAnalysisBtn');
   const goToScoresFromAnalysisBtn = document.getElementById('goToScoresFromAnalysisBtn');
 
@@ -1672,6 +1682,16 @@ function setupEvents() {
 
   if (btnOpenAnalysisModal) btnOpenAnalysisModal.addEventListener('click', () => setDeskView('analysis'));
   if (pillBarAnalysisBtn) pillBarAnalysisBtn.addEventListener('click', () => setDeskView('analysis'));
+  if (pillBarCrossAnalysisBtn) {
+    pillBarCrossAnalysisBtn.addEventListener('click', () => {
+      if (typeof window.EdgeFlow !== 'undefined' && typeof window.EdgeFlow.setForensicDay === 'function') {
+        window.EdgeFlow.setForensicDay('cross');
+      } else if (typeof currentForensicDay !== 'undefined') {
+        currentForensicDay = 'cross';
+      }
+      setDeskView('analysis');
+    });
+  }
   if (returnPostsFromAnalysisBtn) returnPostsFromAnalysisBtn.addEventListener('click', () => setDeskView('posts'));
   if (goToScoresFromAnalysisBtn) goToScoresFromAnalysisBtn.addEventListener('click', () => setDeskView('scores'));
 

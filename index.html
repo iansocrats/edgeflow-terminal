@@ -25,17 +25,17 @@
           <div class="session-selector-wrap">
             <span class="session-label">DESK:</span>
             <select id="daySessionSelect" class="session-dropdown" title="Switch active day or view archived posts">
-              <option value="day5">📅 Day 5 (Tomorrow)</option>
-              <option value="day4" selected>📅 Day 4 (Today: 11 Posts)</option>
-              <option value="day3">📅 Day 3 (10.0p)</option>
-              <option value="day2">📅 Day 2 (11.0p)</option>
-              <option value="day1">📅 Day 1 (9.0p)</option>
+              <option value="day5" selected>📅 Day 5: Thu, Oct 30 (Active Desk)</option>
+              <option value="day4">📁 Day 4: Wed, Oct 29 (7.0p Archive)</option>
+              <option value="day3">📁 Day 3: Oct 28 (10.0p Archive)</option>
+              <option value="day2">📁 Day 2: Oct 27 (11.0p Archive)</option>
+              <option value="day1">📁 Day 1: Oct 26 (9.0p Archive)</option>
             </select>
             <button id="btnCycleDay" type="button" class="btn-cycle-day" title="Cycle day session: Day 1 → 2 → 3 → 4 → 5">
               <span>↻ Cycle</span>
             </button>
             <button id="btnOpenScoresModal" class="btn-nav-action scores-pill" title="View Daily Scores & Leaderboard Engine">
-              <span>🏆 Scores (30p)</span>
+              <span>🏆 Scores (37.0p)</span>
             </button>
             <button id="btnOpenAnalysisModal" class="btn-nav-action analysis-pill" title="View Deep Forensic Trade & Writing Analysis">
               <span>🔬 Analysis</span>
@@ -58,11 +58,15 @@
       <div class="pills-pinned-actions">
         <button id="pillBarScoresBtn" class="pill-action-btn scores" title="Open Daily Scores Hub">
           <span class="icon">🏆</span>
-          <span class="label">Scores (30.0 Pts)</span>
+          <span class="label">Scores (37.0 Pts)</span>
         </button>
         <button id="pillBarAnalysisBtn" class="pill-action-btn analysis" title="Open Forensic Trade & Writing Analysis">
           <span class="icon">🔬</span>
           <span class="label">Trade Analysis</span>
+        </button>
+        <button id="pillBarCrossAnalysisBtn" class="pill-action-btn cross-analysis" title="Open Days 1–4 Cross-Analysis & Post-Mortem">
+          <span class="icon">📈</span>
+          <span class="label">Cross-Analysis</span>
         </button>
       </div>
     </nav>
@@ -849,17 +853,27 @@
           <p class="byx-rules-desc">Forensic sentence-by-sentence analysis measuring textual similarity, structural templates, originality, depth, risk disclosure, and the Bybit trade widget conversion multiplier.</p>
         </div>
 
-        <!-- Interactive Epoch Tabs (Day 4 Today vs Day 3 Yesterday) -->
+        <!-- Interactive Epoch Tabs (Cross-Analysis, Day 5 Active Desk, Day 4 Archive, Day 3 Archive) -->
         <div class="forensic-epoch-tabs" role="tablist">
-          <button class="forensic-tab-btn active" id="btnForensicDay4" data-fday="day4" role="tab" aria-selected="true" title="Day 4: Today (Oct 29) — 10 High-Conversion Setups">
-            <span class="epoch-icon">●</span>
-            <span class="epoch-title">Day 4: Today</span>
-            <span class="epoch-subtag">10 Setups</span>
+          <button class="forensic-tab-btn cross active" id="btnForensicCross" data-fday="cross" role="tab" aria-selected="true" title="Days 1–4 Attribution Cross-Analysis & Post-Mortem">
+            <span class="epoch-icon">📈</span>
+            <span class="epoch-title">Cross-Analysis</span>
+            <span class="epoch-subtag">Post-Mortem</span>
           </button>
-          <button class="forensic-tab-btn" id="btnForensicDay3" data-fday="day3" role="tab" aria-selected="false" title="Day 3: Yesterday (Oct 28) — Post-Mortem & Similarity Diagnosis">
-            <span class="epoch-icon">✓</span>
-            <span class="epoch-title">Day 3: Yesterday</span>
-            <span class="epoch-subtag">Audit</span>
+          <button class="forensic-tab-btn" id="btnForensicDay5" data-fday="day5" role="tab" aria-selected="false" title="Day 5: Today (Thu, Oct 30) — 8 Setups Active Desk">
+            <span class="epoch-icon">●</span>
+            <span class="epoch-title">Day 5: Today</span>
+            <span class="epoch-subtag">8 Setups</span>
+          </button>
+          <button class="forensic-tab-btn" id="btnForensicDay4" data-fday="day4" role="tab" aria-selected="false" title="Day 4 Archive: Yesterday (Oct 29) — 13 Posts (7.0 pts)">
+            <span class="epoch-icon">📁</span>
+            <span class="epoch-title">Day 4 Archive</span>
+            <span class="epoch-subtag">7.0p</span>
+          </button>
+          <button class="forensic-tab-btn" id="btnForensicDay3" data-fday="day3" role="tab" aria-selected="false" title="Day 3 Archive: Oct 28 — 9 Posts (10.0 pts)">
+            <span class="epoch-icon">📁</span>
+            <span class="epoch-title">Day 3 Archive</span>
+            <span class="epoch-subtag">10.0p</span>
           </button>
         </div>
 

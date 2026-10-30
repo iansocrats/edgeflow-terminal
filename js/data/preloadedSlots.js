@@ -403,10 +403,136 @@ function getDay4PreloadedSlots() {
   }
   return slots;
 }
+
+function getDay5PreloadedSlots() {
+  return [
+    {
+      id: 1,
+      coin: '$SOL',
+      title: 'Post 1: ⚡ $SOL Asia Open Liquidation Sweep & $174.20 Rebound',
+      status: 'ready',
+      raw: 'Tokyo open liquidation sweep on Solana perps, $14M flushed, buying absorption at $174.20.',
+      improved: "⚡ #SOLUSDT: Asia Open Liquidation Sweep & $174.20 Rebound\n\nTokyo open just triggered a sharp $14M liquidation flush across Solana perps, sweeping the $174.20 liquidity pocket before aggressive spot and algorithmic buyer absorption kicked in. Aggregate open interest contracted 3.2% within thirty minutes, wiping over-leveraged longs and resetting perpetual funding rates back to neutral.\n\nLive Execution Framework:\nSweeping the $174.20 liquidity shelf offers an asymmetric entry with clear risk parameters. Deploying disciplined 3x longs across the $174.40 to $175.20 accumulation band. Protective stop-loss is placed firmly at $173.60. Banking first scale profits at $182.50 (+4.4%), while trailing remainder exposure toward $188.00 (+7.6%). A 15-minute close below $173.60 terminates the recovery thesis.\n\nTap the #SOLUSDT perpetual trading widget below to track real-time book depth. Bidding this flush or waiting for confirmation? Drop your view below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Financial formatting ($14M, $174.20, 3.2%, 3x, $174.40, $175.20, $173.60, $182.50, +4.4%, $188.00, +7.6%)." },
+        { category: "spacing", description: "Schema A: Breaking Liquidation Flash structure with live execution parameters." }
+      ]
+    },
+    {
+      id: 2,
+      coin: '$BTC',
+      title: 'Post 2: ⚡ $BTC Liquidation Heatmap Trap & $79,200 Algorithmic Absorption',
+      status: 'ready',
+      raw: 'Bitcoin liquidation heatmap shows $240M short cluster, demand holding at $79,200.',
+      improved: "⚡ #BTCUSDT: Liquidation Heatmap Trap & $79,200 Algorithmic Absorption\n\nCoinglass liquidation heatmaps reveal over $240M in clustered short leverage between $81,200 and $82,600, while sell-side pressure completely dried up around the $79,200 demand base. Market makers engineered a swift liquidity hunt into morning support, but cumulative volume delta (CVD) shows spot buyers aggressively absorbing every market sell order.\n\n1. Institutional Demand: Confirmed absorption along the $78,800 to $79,200 structural floor.\n2. Execution Ladder: Deploying laddered bids from $79,250 to $79,600 with conservative 3x leverage.\n3. Invalidation & Risk: Capital preservation stop is set firmly at $78,650.\n4. Scale Targets: Sweeping short clusters at $81,400 (+2.6%) and $82,700 (+4.2%).\n\nCheck live orderbook imbalances on the #BTCUSDT module underneath. Taking this mean reversion long or waiting for $78,000? Let me know below 👇",
+      rules_summary: { punctuation_count: 9, word_replacement_count: 5, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Quantitative entity anchors ($240M, $81,200, $82,600, $79,200, $78,800, $79,250, $79,600, $78,650, $81,400, $82,700)." },
+        { category: "spacing", description: "Schema B: Liquidation Heatmap Trap with numbered execution pathway." }
+      ]
+    },
+    {
+      id: 3,
+      coin: '$ETH',
+      title: 'Post 3: ⚡ $ETH Volatility Compression & $2,240 Rebound Execution',
+      status: 'ready',
+      raw: 'Ethereum volatility wedge post 3.4% dip to $2,240, funding reset, spot accumulation.',
+      improved: "⚡ #ETHUSDT: Volatility Compression & $2,240 Rebound Execution\n\nEthereum is coiling into a tight four-hour volatility wedge after yesterday's aggressive 3.4% flash decline to $2,240. The perpetual funding rate has flattened to 0.001%, reflecting complete exhaustion among late short sellers. On-chain exchange reserves dropped another 45,000 ETH overnight, highlighting continuous spot accumulation during this localized market shakeout.\n\nPrecision Level Execution:\n▸ Range Pivot: The $2,240 wick marks our primary structural pivot.\n▸ Accumulation Band: Entering long on consolidation between $2,260 and $2,295 with 3x leverage.\n▸ Risk Invalidation: Protective risk boundary is anchored beneath $2,225.\n▸ Expansion Targets: First scale objective at $2,385 (+4.6%), trailing toward $2,460 (+7.8%).\n\nOpen the #ETHUSDT chart and execution module below to monitor live taker flow. Accumulating the range low or anticipating further downside? Share your thoughts below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Derivative metrics and levels ($2,240, 0.001%, 45,000 ETH, $2,260, $2,295, $2,225, $2,385, $2,460)." },
+        { category: "spacing", description: "Schema C: Range Squeeze & Level Execution with arrow bullet indicators." }
+      ]
+    },
+    {
+      id: 4,
+      coin: '$SUI',
+      title: 'Post 4: ⚡ $SUI Contrarian Sentiment Divergence & $1.82 Accumulation Setup',
+      status: 'ready',
+      raw: 'Sui social sentiment 74% bearish but TVL at ATH $1.18B, contrarian long entry.',
+      improved: "⚡ #SUIUSDT: Contrarian Sentiment Divergence & $1.82 Accumulation Setup\n\nCommunity sentiment on social feeds has plummeted to 74% bearish following recent market-wide pullbacks, yet on-chain data presents an entirely contrasting reality. Sui total value locked (TVL) just printed a record high of $1.18B, while daily decentralized exchange volume surged 28% week-over-week. When retail emotion decouples from underlying ecosystem liquidity, asymmetric trading setups emerge.\n\nContrarian Trade Strategy:\nFading prevailing retail panic into the $1.82 to $1.87 accumulation zone with disciplined 3x leverage. Our clear downside risk invalidation sits at $1.74. First scale target is set at $2.14 (+16.3%), with secondary expansion aiming for $2.38 (+29.3%). A sustained four-hour close below $1.74 terminates our bullish thesis.\n\nInspect real-time open interest and funding on the #SUIUSDT widget below. Are you following crowd sentiment or taking the contrarian long? Debate below 👇",
+      rules_summary: { punctuation_count: 7, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Sentiment metrics and levels (74%, $1.18B, 28%, $1.82, $1.87, $1.74, $2.14, +16.3%, $2.38, +29.3%)." },
+        { category: "spacing", description: "Schema D: Contrarian Sentiment Debate layout with community engagement driver." }
+      ]
+    },
+    {
+      id: 5,
+      coin: '$DOGE',
+      title: 'Post 5: ⚡ $DOGE High-Beta Volume Surge & $0.158 Breakout Retest',
+      status: 'ready',
+      raw: 'Dogecoin 8.4% volume expansion, OI over $980M, $0.158 retest defended.',
+      improved: "⚡ #DOGEUSDT: High-Beta Volume Surge & $0.158 Breakout Retest\n\nDogecoin is demonstrating significant relative strength this morning, posting an 8.4% volume expansion while broader altcoins struggle for direction. Derivatives open interest pushed past $980M across major exchanges, with aggressive spot buying defending the $0.158 retest level. Whale transactions exceeding $100K jumped 42% over the last twelve hours, signaling institutional participation.\n\nHigh-Beta Execution Setup:\nDefending the $0.158 breakout retest presents an attractive risk-reward entry. Accumulating long positions between $0.159 and $0.163 using 3x leverage. Protective stop-loss is placed at $0.152. Primary profit target sits at $0.178 (+10.5%), trailing secondary targets toward $0.192 (+19.2%). A 4-hour close below $0.152 invalidates the breakout thesis.\n\nCheck live depth and taker volume on the #DOGEUSDT trade module underneath. Riding this high-beta continuation or waiting for deeper pullbacks? Let me know below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "High-beta indicators and price thresholds (8.4%, $980M, $0.158, $100K, 42%, $0.159, $0.163, $0.152, $0.178, $0.192)." },
+        { category: "spacing", description: "Schema A: High-Beta Flash setup with orderbook depth CTA." }
+      ]
+    },
+    {
+      id: 6,
+      coin: '$PEPE',
+      title: 'Post 6: ⚡ $PEPE Short Squeeze Liquidity Hunt & Support Sweep',
+      status: 'ready',
+      raw: 'Pepe short liquidation cluster at 0.0000096 to 0.0000102, spot CVD positive.',
+      improved: "⚡ #PEPEUSDT: Short Squeeze Liquidity Hunt & Support Sweep\n\nDerivatives orderbooks reveal a massive cluster of short liquidations stacked tightly between $0.0000096 and $0.0000102. Market makers orchestrated an early morning dip to sweep weak spot hands at $0.0000088, but spot cumulative volume delta rapidly reversed positive. Aggressive buyers stepped in to defend the multi-week baseline shelf, setting up conditions for an explosive short squeeze.\n\n1. Structural Shelf: Defending the $0.0000088 to $0.0000091 demand shelf.\n2. Execution Bias: Initiating 3x long exposure on positive delta confirmation.\n3. Stop-Loss Trigger: Capital preservation stop-loss set beneath $0.0000084.\n4. Squeeze Targets: First take-profit at $0.0000099 (+9.8%), trailing runners toward $0.0000108 (+19.7%).\n\nTrack the live orderbook liquidation map on the #PEPEUSDT widget below. Are you positioning for this squeeze or fading meme beta? Comment below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Micro-decimal perpetual levels ($0.0000096, $0.0000102, $0.0000088, $0.0000091, $0.0000084, $0.0000099, $0.0000108)." },
+        { category: "spacing", description: "Schema B: Liquidation Heatmap Trap with numbered trigger thresholds." }
+      ]
+    },
+    {
+      id: 7,
+      coin: '$TIA',
+      title: 'Post 7: ⚡ $TIA Modular Staking Compression & $5.10 Floor Absorption',
+      status: 'ready',
+      raw: 'Celestia post-unlock compression, $5.10 floor absorption, staking absorbing float.',
+      improved: "⚡ #TIAUSDT: Modular Staking Compression & $5.10 Floor Absorption\n\nCelestia has compressed into a multi-day accumulation coil following its recent token unlock absorption, with price action tightly respecting the $5.10 support floor. Daily staking inflows have absorbed over 65% of secondary market float, and derivatives open interest is beginning to drift upward from historic cycle lows, indicating early institutional positioning.\n\nRange Squeeze Execution:\n▸ Accumulation Floor: The $5.05 to $5.20 range floor provides an asymmetric boundary.\n▸ Trade Execution: Establishing 3x long positions from $5.15 to $5.28.\n▸ Downside Invalidation: Strict capital preservation stop-loss is placed at $4.94.\n▸ Expansion Targets: First scale-out at $5.88 (+12.6%), trailing toward $6.40 (+22.6%).\n\nOpen the #TIAUSDT trading module below to inspect real-time funding rates. Accumulating this modular floor or expecting lower prices? Drop your analysis below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Fundamental modular metrics ($5.10, 65%, $5.05, $5.20, $5.15, $5.28, $4.94, $5.88, $6.40)." },
+        { category: "spacing", description: "Schema C: Range Squeeze with clear bracket levels." }
+      ]
+    },
+    {
+      id: 8,
+      coin: '$NEAR',
+      title: 'Post 8: ⚡ $NEAR Decentralized AI Compute Demand & $4.65 Demand Shelf',
+      status: 'ready',
+      raw: 'Near Protocol 3.2M active accounts, pulling back into $4.65 demand shelf.',
+      improved: "⚡ #NEARUSDT: Decentralized AI Compute Demand & $4.65 Demand Shelf\n\nWhile retail traders debate broader macroeconomic headwinds, Near Protocol continues to see record daily active accounts, surpassing 3.2M unique addresses driven by decentralized AI user adoption. Price action has pulled back directly into the high-volume historical demand shelf at $4.65, where institutional algorithmic bids have previously ignited multi-week rallies.\n\nInstitutional Level Setup:\nAccumulating spot and 3x perpetual long exposure within the $4.68 to $4.82 reaction pocket. Invalidation boundary is anchored beneath key support at $4.48. Primary profit target is set at $5.35 (+12.8%), trailing secondary runners toward $5.80 (+22.3%) for an asymmetric 1:3.1 payoff. A daily close beneath $4.48 invalidates the bullish continuation thesis.\n\nCheck live bid-ask spreads and orderflow on the #NEARUSDT widget below. Are you accumulating this AI infrastructure dip or staying sidelined? Share your thoughts below 👇",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "AI ecosystem metrics (3.2M addresses, $4.65, $4.68, $4.82, $4.48, $5.35, $5.80, 1:3.1)." },
+        { category: "spacing", description: "Schema D: Infrastructure debate with direct orderflow widget callout." }
+      ]
+    },
+    {
+      id: 9,
+      coin: '+ New Coin',
+      title: "Post 9: Ready for Today's Intraday Catalyst",
+      status: 'waiting',
+      raw: '',
+      improved: ''
+    },
+    {
+      id: 10,
+      coin: '+ New Coin',
+      title: "Post 10: Ready for Today's NY Close Setup",
+      status: 'waiting',
+      raw: '',
+      improved: ''
+    }
+  ];
+}
 // Render 10 Post Carousel Pills
 
 // Namespace Export
 window.EdgeFlow.SlotsData = {
+  getDay5PreloadedSlots,
   getDay4PreloadedSlots,
   createEmptySlots
 };

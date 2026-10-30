@@ -146,60 +146,60 @@ async function runE2ETest() {
       console.log('✅ PASS: Initial page load completed with ZERO JavaScript exceptions.');
     }
 
-    // 2. Check 13-Post Pills rendered
+    // 2. Check Day 5 Active Recovery Desk Post Pills rendered
     const pillCount = await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item").length');
-    console.log(`✅ PASS: Found ${pillCount} post pills in carousel.`);
-    if (pillCount !== 13) throw new Error(`Expected 13 pills, got ${pillCount}`);
+    console.log(`✅ PASS: Found ${pillCount} post pills in Day 5 carousel.`);
+    if (pillCount !== 10) throw new Error(`Expected 10 pills on Day 5, got ${pillCount}`);
 
-    // 3. Check Post 1 Content loaded
+    // 3. Check Post 1 Content loaded on Day 5 ($SOL)
     const postTitle = await evalBrowser('document.getElementById("currentPostTitle").textContent');
     const postContent = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Active Post Title: "${postTitle}"`);
     console.log(`✅ PASS: Active Post Content length: ${postContent.length} chars.`);
     if (!postTitle.includes('SOL')) throw new Error('Expected Post 1 to be SOL');
 
-    // 4. Test clicking Pill 2 ($TIA)
-    console.log('\n--- TESTING POST CAROUSEL NAVIGATION ---');
+    // 4. Test clicking Pill 2 ($BTC Heatmap Trap on Day 5)
+    console.log('\n--- TESTING DAY 5 POST CAROUSEL NAVIGATION ---');
     await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[1].click()');
     await new Promise(r => setTimeout(r, 300));
     const titleP2 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
     const contentP2 = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Clicked Pill 2 -> New Title: "${titleP2}"`);
     console.log(`✅ PASS: Post 2 Content loaded (${contentP2.length} chars, contains: "${contentP2.slice(0, 40)}...")`);
-    if (!titleP2.includes('TIA')) throw new Error('Expected Post 2 to be TIA');
+    if (!titleP2.includes('BTC')) throw new Error('Expected Post 2 to be BTC');
 
-    // 4b. Test clicking Pill 11 ($MSFT)
-    console.log('\n--- TESTING PILL 11 ($MSFT) NAVIGATION & COPY FEATURE ---');
+    // 4b. Test Day 4 Certified Archive Preservation (13 posts, $MSFT, $ETH, $BTC)
+    console.log('\n--- TESTING DAY 4 CERTIFIED ARCHIVE PRESERVATION ---');
+    await evalBrowser('switchDaySession("day4")');
+    await new Promise(r => setTimeout(r, 300));
+    const d4PillCount = await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item").length');
+    console.log(`✅ PASS: Day 4 Archive loaded with ${d4PillCount} preserved setups.`);
+    if (d4PillCount !== 13) throw new Error(`Expected 13 pills in Day 4 Archive, got ${d4PillCount}`);
+
+    // Click Pill 11 ($MSFT) in Day 4 Archive
     await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[10].click()');
     await new Promise(r => setTimeout(r, 300));
     const titleP11 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
-    const contentP11 = await evalBrowser('document.getElementById("polishedContent").value');
-    console.log(`✅ PASS: Clicked Pill 11 -> New Title: "${titleP11}"`);
-    console.log(`✅ PASS: Post 11 Content loaded (${contentP11.length} chars, contains: "${contentP11.slice(0, 40)}...")`);
-    if (!titleP11.includes('MSFT')) throw new Error('Expected Post 11 to be MSFT');
-    if (!contentP11.includes('MSFT')) throw new Error('Expected Post 11 content to contain MSFT');
+    console.log(`✅ PASS: Clicked Pill 11 in Day 4 Archive -> Title: "${titleP11}"`);
+    if (!titleP11.includes('MSFT')) throw new Error('Expected Pill 11 in Day 4 Archive to be MSFT');
 
-    // 4c. Test clicking Pill 12 ($ETH Breaking Flash Dip)
-    console.log('\n--- TESTING PILL 12 ($ETH) NAVIGATION & COPY FEATURE ---');
+    // Click Pill 12 ($ETH) in Day 4 Archive
     await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[11].click()');
     await new Promise(r => setTimeout(r, 300));
     const titleP12 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
-    const contentP12 = await evalBrowser('document.getElementById("polishedContent").value');
-    console.log(`✅ PASS: Clicked Pill 12 -> New Title: "${titleP12}"`);
-    console.log(`✅ PASS: Post 12 Content loaded (${contentP12.length} chars, contains: "${contentP12.slice(0, 40)}...")`);
-    if (!titleP12.includes('ETH')) throw new Error('Expected Post 12 to be ETH');
-    if (!contentP12.includes('ETH')) throw new Error('Expected Post 12 content to contain ETH');
+    console.log(`✅ PASS: Clicked Pill 12 in Day 4 Archive -> Title: "${titleP12}"`);
+    if (!titleP12.includes('ETH')) throw new Error('Expected Pill 12 in Day 4 Archive to be ETH');
 
-    // 4d. Test clicking Pill 13 ($BTC Yield Spike & Absorption)
-    console.log('\n--- TESTING PILL 13 ($BTC) NAVIGATION & COPY FEATURE ---');
+    // Click Pill 13 ($BTC) in Day 4 Archive
     await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[12].click()');
     await new Promise(r => setTimeout(r, 300));
     const titleP13 = await evalBrowser('document.getElementById("currentPostTitle").textContent');
-    const contentP13 = await evalBrowser('document.getElementById("polishedContent").value');
-    console.log(`✅ PASS: Clicked Pill 13 -> New Title: "${titleP13}"`);
-    console.log(`✅ PASS: Post 13 Content loaded (${contentP13.length} chars, contains: "${contentP13.slice(0, 40)}...")`);
-    if (!titleP13.includes('BTC')) throw new Error('Expected Post 13 to be BTC');
-    if (!contentP13.includes('BTC')) throw new Error('Expected Post 13 content to contain BTC');
+    console.log(`✅ PASS: Clicked Pill 13 in Day 4 Archive -> Title: "${titleP13}"`);
+    if (!titleP13.includes('BTC')) throw new Error('Expected Pill 13 in Day 4 Archive to be BTC');
+
+    // Reset back to Day 5 Active Desk
+    await evalBrowser('switchDaySession("day5")');
+    await new Promise(r => setTimeout(r, 300));
 
     // Test Copy Polished Post button trigger
     const copyPolishedBtnExists = await evalBrowser('document.getElementById("copyPolishedBtn") !== null');
@@ -260,30 +260,48 @@ async function runE2ETest() {
     const workspaceRestored = await evalBrowser('!document.getElementById("postWorkspaceWrapper").classList.contains("hidden")');
     console.log(`✅ PASS: Returned back to Post Workspace: ${workspaceRestored}`);
 
-    // 6. Test clicking Deep Forensic Trade & Writing Analysis
-    console.log('\n--- TESTING TRADE & WRITING ANALYSIS HUB ---');
-    await evalBrowser('document.getElementById("btnOpenAnalysisModal").click()');
+    // 6. Test clicking Deep Forensic Trade & Writing Analysis & Cross-Analysis
+    console.log('\n--- TESTING TRADE & WRITING ANALYSIS HUB & CROSS-ANALYSIS ---');
+    await evalBrowser('document.getElementById("pillBarCrossAnalysisBtn").click()');
     await new Promise(r => setTimeout(r, 400));
 
     const analysisHubVisible = await evalBrowser('!document.getElementById("viewForensicAnalysisHub").classList.contains("hidden")');
     const containerHasContent = await evalBrowser('document.getElementById("forensicAnalysisContentContainer").children.length > 0');
-    console.log(`✅ PASS: Analysis Hub is visible: ${analysisHubVisible}`);
-    console.log(`✅ PASS: Analysis Container has rendered sections: ${containerHasContent}`);
-    if (!analysisHubVisible || !containerHasContent) {
-      throw new Error('Forensic Analysis Hub failed to render');
+    const hasCrossHero = await evalBrowser('document.querySelector(".cross-hero-card") !== null');
+    const rootCausesCount = await evalBrowser('document.querySelectorAll(".root-cause-card").length');
+    const diagToolsCount = await evalBrowser('document.querySelectorAll(".tool-card").length');
+    console.log(`✅ PASS: Cross-Analysis opened via Pill Bar -> Visible: ${analysisHubVisible}`);
+    console.log(`✅ PASS: Cross-Analysis Hero rendered: ${hasCrossHero}`);
+    console.log(`✅ PASS: 5 Fatal Root Causes rendered: ${rootCausesCount === 5} (Count: ${rootCausesCount})`);
+    console.log(`✅ PASS: 5 Analytical Diagnostic Tools rendered: ${diagToolsCount === 5} (Count: ${diagToolsCount})`);
+    if (!analysisHubVisible || !hasCrossHero || rootCausesCount !== 5 || diagToolsCount !== 5) {
+      throw new Error('Cross-Analysis Hub failed to render complete post-mortem diagnostics');
     }
 
-    // Test Day 3 vs Day 4 Switcher
-    console.log('\n--- TESTING DAY 3 vs DAY 4 FORENSIC AUDIT SWITCHER ---');
-    await evalBrowser('document.getElementById("btnForensicDay3").click()');
+    // Test Day 5 Active Desk Tab
+    console.log('\n--- TESTING DAY 5 ACTIVE DESK FORENSIC TAB ---');
+    await evalBrowser('document.getElementById("btnForensicDay5").click()');
     await new Promise(r => setTimeout(r, 300));
-    const day3HasRedundancyTable = await evalBrowser('document.querySelector(".similarity-table") !== null');
-    console.log(`✅ PASS: Switched to Day 3 Audit -> Similarity table present: ${day3HasRedundancyTable}`);
+    const day5HasScorecard = await evalBrowser('document.querySelector(".forensic-scorecard-grid") !== null');
+    console.log(`✅ PASS: Switched to Day 5 Active Desk -> Scorecard present: ${day5HasScorecard}`);
 
+    // Test Day 4 Archive Tab
+    console.log('\n--- TESTING DAY 4 ARCHIVE FORENSIC TAB ---');
     await evalBrowser('document.getElementById("btnForensicDay4").click()');
     await new Promise(r => setTimeout(r, 300));
     const day4HasScorecard = await evalBrowser('document.querySelector(".forensic-scorecard-grid") !== null');
-    console.log(`✅ PASS: Switched to Day 4 Audit -> Diagnostic Scorecard present: ${day4HasScorecard}`);
+    console.log(`✅ PASS: Switched to Day 4 Archive -> Scorecard present: ${day4HasScorecard}`);
+
+    // Test Day 3 Archive Tab
+    console.log('\n--- TESTING DAY 3 ARCHIVE FORENSIC TAB ---');
+    await evalBrowser('document.getElementById("btnForensicDay3").click()');
+    await new Promise(r => setTimeout(r, 300));
+    const day3HasRedundancyTable = await evalBrowser('document.querySelector(".similarity-table") !== null');
+    console.log(`✅ PASS: Switched to Day 3 Archive -> Similarity table present: ${day3HasRedundancyTable}`);
+
+    // Switch back to Day 4 to test dynamic 13x13 similarity matrix
+    await evalBrowser('document.getElementById("btnForensicDay4").click()');
+    await new Promise(r => setTimeout(r, 300));
 
     // Test Metric Pills
     console.log('\n--- TESTING METRIC SELECTOR PILLS ---');

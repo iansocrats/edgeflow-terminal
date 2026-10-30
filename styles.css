@@ -3323,6 +3323,15 @@ body {
   color: #38bdf8;
 }
 
+.pill-action-btn.cross-analysis {
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+}
+
+.pill-action-btn.cross-analysis:hover {
+  background: rgba(168, 85, 247, 0.15);
+}
+
 .pill-action-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-1px);
@@ -3722,6 +3731,168 @@ body {
 .forensic-tab-btn.active .epoch-subtag {
   background: rgba(56, 189, 248, 0.2);
   color: #7dd3fc;
+}
+
+.forensic-tab-btn.cross.active {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(126, 34, 206, 0.35));
+  border-color: #c084fc;
+  color: #e9d5ff;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
+}
+
+.forensic-tab-btn.cross.active .epoch-subtag {
+  background: rgba(168, 85, 247, 0.25);
+  color: #f3e8ff;
+}
+
+/* Cross Analysis & Post-Mortem Dashboard Styles */
+.cross-hero-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 27, 75, 0.7));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cross-hero-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.cross-hero-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cross-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.cross-kpi-box {
+  background: rgba(11, 15, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cross-kpi-box.highlight {
+  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(88, 28, 135, 0.2);
+}
+
+.cross-kpi-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cross-kpi-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cross-kpi-sub {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.root-cause-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.root-cause-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-left: 4px solid #ef4444;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.root-cause-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.root-cause-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.root-cause-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.root-cause-desc {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.diagnostic-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.tool-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-left: 3px solid #38bdf8;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.tool-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tool-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #e0f2fe;
+}
+
+.tool-desc {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  line-height: 1.4;
 }
 
 .forensic-scorecard-grid {

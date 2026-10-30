@@ -29,9 +29,15 @@ class ByxEvaluatorModule:
         has_structure = ("•" in text or "1." in text or "-" in text or "▸" in text or "|" in text)
         depth = 19.5 if has_structure else 13.0
 
-        # 3. Relevance (0-20)
+        # 3. Relevance & Tradable Asset Whitelist (0-20)
         coin = post.get("coin", "")
-        relevance = 20.0 if coin and coin not in ["+ New Coin"] else 12.0
+        non_tradable_equities = ["$MSFT", "$AAPL", "$NVDA", "$GOOGL", "$META", "$TSLA", "#MSFT"]
+        if coin in non_tradable_equities:
+            relevance = 0.0  # Violation: Non-tradable equity on Bybit Crypto Derivatives Exchange
+        elif coin and coin not in ["+ New Coin"]:
+            relevance = 20.0
+        else:
+            relevance = 12.0
 
         # 4. Presentation & Word Count (0-20)
         word_fidelity = 20.0 if (130 <= word_count <= 145) else (15.0 if (120 <= word_count <= 155) else 10.0)
