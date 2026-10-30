@@ -30,10 +30,11 @@ function getSessionScore(sessionId) {
   if (saved !== null && saved !== undefined && saved !== '') {
     return parseFloat(saved) || 0;
   }
-  // Default fallbacks (Day 1: 9.0, Day 2: 11.0, Day 3: 10.0 = 30.0 Total Points)
+  // Default fallbacks (Day 1: 9.0, Day 2: 11.0, Day 3: 10.0, Day 4: 7.0 = 37.0 Total Points)
   if (sessionId === 'day1') return 9.0;
   if (sessionId === 'day2') return 11.0;
   if (sessionId === 'day3') return 10.0;
+  if (sessionId === 'day4') return 7.0;
   return 0.0;
 }
 
@@ -285,27 +286,27 @@ function renderWeeklyAuditTable() {
     },
     {
       epoch: 'Day 4',
-      date: 'Wed, Oct 29 (Today)',
-      posts: currentSessionId === 'day4' && postsData ? (postsData.filter(p => p.status === 'ready' && p.raw && p.raw.length > 20).length + ' / 10 Ready') : '10 Fresh Setups',
+      date: 'Wed, Oct 29',
+      posts: '13 posts',
       score: day4Pts,
-      avg: day4Pts > 0 ? (day4Pts / 10).toFixed(2) : '--',
-      passRate: '100% (10/10)',
+      avg: (day4Pts / 13).toFixed(2),
+      passRate: '13/13 (0.54 pts/post)',
       cumulative: (day1Pts + day2Pts + day3Pts + day4Pts).toFixed(1),
-      status: 'ACTIVE DESK',
-      badgeClass: 'active',
-      valuation: 'Leaderboard Surge (30 pts)'
+      status: 'OFFICIAL',
+      badgeClass: 'danger',
+      valuation: 'Underperformed (7.0 pts)'
     },
     {
       epoch: 'Day 5',
-      date: 'Thu, Oct 30',
-      posts: '10 slots',
-      score: day5Pts,
-      avg: '--',
-      passRate: 'Upcoming',
-      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + day5Pts).toFixed(1),
-      status: 'SCHEDULED',
-      badgeClass: 'upcoming',
-      valuation: 'US GDP Print'
+      date: 'Thu, Oct 30 (Today)',
+      posts: '8 high-conviction slots',
+      score: day5Pts > 0 ? day5Pts : 18.8,
+      avg: '2.35',
+      passRate: 'Recovery Desk',
+      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + (day5Pts > 0 ? day5Pts : 18.8)).toFixed(1),
+      status: 'ACTIVE DESK',
+      badgeClass: 'active',
+      valuation: 'Recovery Target: 18.8 pts'
     },
     {
       epoch: 'Day 6',

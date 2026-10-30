@@ -22,14 +22,15 @@ class CampaignTrackerModule:
             "day1": 9.0,
             "day2": 11.0,
             "day3": 10.0,
-            "day4": 30.0
+            "day4": 7.0
         }
 
     def compute_campaign_trajectory(self) -> Dict[str, Any]:
         accumulated_to_date = sum(self.scores.values())
         days_remaining = 6 # Days 5 through 10
-        projected_daily_rate = 30.0
-        projected_future_points = days_remaining * projected_daily_rate
+        pts_needed = max(0.0, self.PRIZE_FLOOR_POINTS - accumulated_to_date)
+        required_daily_rate = round(pts_needed / days_remaining, 2)
+        projected_future_points = days_remaining * required_daily_rate
         final_projected_total = round(accumulated_to_date + projected_future_points, 1)
 
         progress_percent = round((accumulated_to_date / self.PRIZE_FLOOR_POINTS) * 100, 1)
@@ -39,13 +40,13 @@ class CampaignTrackerModule:
             {"day": "Day 1 (Oct 26)", "status": "Archived", "posts": 5, "score": self.scores.get("day1", 9.0), "pts_per_post": 1.80},
             {"day": "Day 2 (Oct 27)", "status": "Archived", "posts": 10, "score": self.scores.get("day2", 11.0), "pts_per_post": 1.10},
             {"day": "Day 3 (Oct 28)", "status": "Archived", "posts": 9, "score": self.scores.get("day3", 10.0), "pts_per_post": 1.11},
-            {"day": "Day 4 (Oct 29)", "status": "Active (Calibrated)", "posts": 10, "score": self.scores.get("day4", 30.0), "pts_per_post": 3.00},
-            {"day": "Day 5 (Oct 30)", "status": "Projected", "posts": 10, "score": 30.0, "pts_per_post": 3.00},
-            {"day": "Day 6 (Oct 31)", "status": "Projected", "posts": 10, "score": 30.0, "pts_per_post": 3.00},
-            {"day": "Day 7 (Nov 01)", "status": "Projected", "posts": 10, "score": 30.0, "pts_per_post": 3.00},
-            {"day": "Day 8 (Nov 02)", "status": "Projected", "posts": 10, "score": 30.0, "pts_per_post": 3.00},
-            {"day": "Day 9 (Nov 03)", "status": "Projected", "posts": 10, "score": 30.0, "pts_per_post": 3.00},
-            {"day": "Day 10 (Nov 04)", "status": "Projected", "posts": 10, "score": 30.0, "pts_per_post": 3.00}
+            {"day": "Day 4 (Oct 29)", "status": "Official (Underperformed)", "posts": 13, "score": self.scores.get("day4", 7.0), "pts_per_post": 0.54},
+            {"day": "Day 5 (Oct 30)", "status": "Target Recovery", "posts": 8, "score": required_daily_rate, "pts_per_post": round(required_daily_rate / 8, 2)},
+            {"day": "Day 6 (Oct 31)", "status": "Projected", "posts": 8, "score": required_daily_rate, "pts_per_post": round(required_daily_rate / 8, 2)},
+            {"day": "Day 7 (Nov 01)", "status": "Projected", "posts": 8, "score": required_daily_rate, "pts_per_post": round(required_daily_rate / 8, 2)},
+            {"day": "Day 8 (Nov 02)", "status": "Projected", "posts": 8, "score": required_daily_rate, "pts_per_post": round(required_daily_rate / 8, 2)},
+            {"day": "Day 9 (Nov 03)", "status": "Projected", "posts": 8, "score": required_daily_rate, "pts_per_post": round(required_daily_rate / 8, 2)},
+            {"day": "Day 10 (Nov 04)", "status": "Projected", "posts": 8, "score": required_daily_rate, "pts_per_post": round(required_daily_rate / 8, 2)}
         ]
 
         return {
