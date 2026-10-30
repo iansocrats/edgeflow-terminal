@@ -1660,14 +1660,14 @@ const DAY5_COIN_HOOKS = {
   ],
   PARTI: [
     {
-      title: "🧬 Why $PARTI's 14x Perp Squeeze Whipsaws 64%",
-      desc: "44/50 chars • Information Theory Hook: Pairs 14.17x perp-to-spot turnover ($69.07M vs $4.87M) and 64.84% VPIN with 64.23% push-back probability.",
-      bodyReplacement: "Particle Network ($PARTIUSDT) illustrates derivative-led manipulation, which matters because 24h perpetual turnover hit $69.07M against just $4.87M in spot volume (a 14.17x perp-to-spot multiple)."
+      title: "🎯 Why $PARTI's $69M Perp Spike Pulled Back 36%",
+      desc: "46/50 chars • Perp vs Spot Volume Hook: Pairs $69.07M perp turnover (14x spot) with the 35.8% pullback to $0.05218 support.",
+      bodyReplacement: "Particle Network ($PARTIUSDT) jumped +33.65% today, and this move matters because 24h perpetual volume hit $69.07M compared to just $4.87M on spot (14x more volume on futures)."
     },
     {
-      title: "🧬 $PARTI 64.8% VPIN: Bidding $0.04910 Support",
-      desc: "45/50 chars • Hurst & Retracement Hook: Uses 0.3577 5m Hurst (64.23% reversal rate) to bid the 35.8%–50.0% retracement band ($0.04910–$0.05218).",
-      bodyReplacement: "Instead of chasing the +107.52% squeeze from $0.03123 to $0.06481, my personal execution waits for the mean-reversion push-back into structural moving-average support with 1.5% of account equity."
+      title: "🎯 $PARTI Pulls Back to $0.052: My $0.04910 Bid",
+      desc: "46/50 chars • Support & Short-Squeeze Hook: Connects 60.2% crowded shorts (-0.0199% funding) to bidding 1H MA-28 ($0.04910).",
+      bodyReplacement: "Instead of chasing the spike to $0.06481, I am keeping my size at 1.5% of account equity and waiting for price to settle into hourly support."
     }
   ],
   ONDO: [

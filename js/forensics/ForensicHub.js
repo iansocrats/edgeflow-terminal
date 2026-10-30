@@ -2590,9 +2590,9 @@ function getDay5ForensicHtml() {
             </tr>
             <tr>
               <td><strong>Post 2: $PARTI</strong> (<code>$PARTIUSDT</code>)</td>
-              <td><code>microstructure_manipulation_audit</code></td>
+              <td><code>tactical_signal</code></td>
               <td><strong>$0.05278</strong> (+33.65%) | $0.03123–$0.06481 | $69.1M perp vs $4.87M spot (14.17x) | -0.0199% fund</td>
-              <td>64.84% VPIN toxicity, 0.6660b block entropy (33.4% sweep), 0.3577 5m Hurst (64.23% push-back prob), 35.82% retrace; stop &lt; $0.04520</td>
+              <td>14x perp-to-spot vol ($69.07M vs $4.87M), 35.8% pullback to 1H EMA20 ($0.05218) &amp; MA28 ($0.04910), 60.2% shorts; stop &lt; $0.04520</td>
               <td style="text-align: center;">218w • Gr 5.4</td>
               <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
             </tr>
