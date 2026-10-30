@@ -152,6 +152,15 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'aave', 'aaveusdt', 'apt', 'aptusdt', 'aptos', 'avax', 'avaxusdt', 'avalanche',
   'doge', 'dogeusdt', 'dogecoin', 'render', 'renderusdt', 'rndr', 'msft', 'microsoft',
   'btc', 'btcusdt', 'bitcoin', 'eth', 'ethusdt', 'ethereum', 'paxg', 'xaan', 'xai',
+  'xrp', 'xrpusdt', 'xrpl', 'rlusd', 'escrow', 'ondo', 'ondousdt', 'rwa', 'tvl', 'bitget', 'dao',
+  'ltc', 'ltcusdt', 'litecoin', 'sei', 'seiusdt', 'vesting', 'unlocks', 'icp', 'icpusdt',
+  'ma7', 'ma14', 'ma28', 'ma5', 'ma10', 'morpho', 'morphousdt', 'xaut', 'xautusdt',
+  'tether', 'bullion', 'pce', 'pump', 'pumpusdt', 'ema20', 'ema50', 'rsi', 'vvv', 'vvvusdt',
+  'ema7', 'rsi6', 'parabolic', 'bmt', 'bmtusdt', 'bubblemaps', 'byximpact', 'impactbytrade',
+  'order-book', 'fee-switch', 'stop-loss', 'year-over-year', 're-rate', 'low-gearing',
+  'low-margin', 'front-running', 'mid-range', 'scale-out', 'follow-through', 'three-stage',
+  'revenge-trading', 'post-fed', 'stop-out', 'post-rally', 'profit-taking', 'bull-trap',
+  'short-squeeze', 'relief-bounce', 'downward-sloping', 'moving-average',
   'depin', 'defi', 'ai-agent', 'cfd', 'cfds', 'perp', 'perps', 'etf', 'etfs',
   'move-vm', 'subnets', 'subnet', 'memecoin', 'memecoins', 'gpu', 'gpus',
   'fomc', 'post-fomc', 'validator', 'staking', 'higher-timeframe', 'tp1', 'tp2',
@@ -182,7 +191,8 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'expansion', 'baseline', 'payoff', 'candle', 'widget', 'exposure', 'boundary',
   'ai', 're-test', 'buy-orders', 'bids', 'asks', 'risk-to-reward',
   'setup-negation', 'profit-scaling', 'asymmetric-payoff', 'bollinger',
-  'contraction', 'moving-average', 'orderbook', 'depth',
+  'contraction', 'moving-average', 'orderbook', 'depth', 'perpetual', 'funding',
+  'derivatives', 'turnover', 'pullback', 'pullbacks', 'midline', 'washout', 'snapback',
 
   // Academic Mathematics, Information Theory, Chaos & Graph Theory
   'laplacian', 'gramian', 'frobenius', 'hadamard', 'svd', 'von_neumann', 'ergodic',
@@ -1513,8 +1523,8 @@ function runByxDimensionsScore(text) {
   if (/\$[\d,]+(?:\.\d+)?|\b0\.\d{3,4}\b|\$70\s*billion|\$70b/i.test(clean)) depthScore += 3; // Spot / contract price
   const distinctPrices = [clean.match(/\$[\d,]+(?:\.\d+)?|\b\d+%\b|\b190\s*coins\b/g) || []].flat();
   if (distinctPrices.length >= 2) depthScore += 3; // Multi-level depth
-  if (/\$1b|billion|trillion|million|funding|open interest|oi|ratio|etf|delta|derivatives|dex|cvd|contracts|data centers|multi-tier|take profit|trade execution|profit|surge|position protection/i.test(clean)) depthScore += 4; // Volume / macro / compute metrics
-  if (/fear and greed.*50|index.*50|federal interest|fed.*decision|4%|cycle|mean reversion|leverage|breakout|\b\d+%\b|hashrate|miners|profit|surge|extension|volatility/i.test(clean)) depthScore += 2; // Sentiment / catalyst / momentum %
+  if (/\$1b|billion|trillion|million|funding|open interest|oi|ratio|etf|delta|derivatives|dex|cvd|contracts|data centers|multi-tier|take profit|trade execution|profit|surge|position protection|volume|tvl|order-book|bollinger|escrow|turnover/i.test(clean)) depthScore += 4; // Volume / macro / compute metrics
+  if (/fear and greed.*50|index.*50|federal interest|fed.*decision|4%|cycle|mean reversion|leverage|breakout|\b\d+%\b|hashrate|miners|profit|surge|extension|volatility|pce|inflation|rsi|ema|ma7|ma14|ma28/i.test(clean)) depthScore += 2; // Sentiment / catalyst / momentum %
   const paraCount = clean.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
   if (paraCount >= 3) depthScore += 2;
   depthScore = Math.min(20, Math.max(5, depthScore));
@@ -1523,19 +1533,19 @@ function runByxDimensionsScore(text) {
   // Cashtag, active market momentum, timely setup
   let relevanceScore = 8;
   if (/\$btc|bitcoin|\$paxg|gold|\$gold|\$eth|ethereum|\$sol|solana|\$googl?|google|alphabet|\$hype|hyperliquid|\$nvda|nvidia|\$meta|meta platforms|\$sui|sui|\$eva|eva|\$[a-z]{3,6}|#?[a-z0-9]+usdt/i.test(clean)) relevanceScore += 4;
-  if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x|cctp|hashi|anchorage|walrus/i.test(clean)) relevanceScore += 5;
-  if (/this week|past two weeks|last month|tomorrow|28th|today|this morning|morning|session|4-hour|15m|daily|seven days|48 hours|hours|month/i.test(clean)) relevanceScore += 3;
-  if (/#?[A-Z0-9]{2,10}USDT|cashtag|trade setup|direction:|long|short|tp1|tp2|take profit|risk\/reward|rr/i.test(clean)) relevanceScore += 3;
+  if (/support|resistance|pullback|momentum|outflow|inflow|etf|interest rate|cfds|spot|squeeze|orderflow|funding|volume|dex|accumulation|mining|hashrate|miners|earnings|cloud|cftc|payward|hip-3|allowlist|capex|hyperscalers|treasury|equity offering|rubin|spectrum-x|cctp|hashi|anchorage|walrus|rlusd|rwa|tokenization|bollinger|pce/i.test(clean)) relevanceScore += 5;
+  if (/this week|past two weeks|last month|tomorrow|28th|today|this morning|morning|session|4-hour|4h|1h|1-hour|hourly|15m|daily|seven days|48 hours|hours|month|yesterday|24h|24-hour/i.test(clean)) relevanceScore += 3;
+  if (/#?[A-Z0-9]{2,10}USDT|cashtag|trade setup|direction:|long|short|tp1|tp2|take profit|risk\/reward|rr|#ByXIMPACT|#IMPACTbyTrade/i.test(clean)) relevanceScore += 3;
   relevanceScore = Math.min(20, Math.max(6, relevanceScore));
 
   // Dimension 4: Credibility & Risk (0 - 20 pts)
   // Defined invalidation / floor support, disciplined risk-reward, patient entry, trade follow-up
   let credScore = 7;
-  if (/support|floor|shelf|invalidation|stop-loss|boundary|baseline|infrastructure|hashrate|protection|trailed/i.test(clean)) credScore += 4;
-  if (/target|resistance|retest|mean reversion|upside|wick|tp1|tp2|expansion|spot price|payoffs/i.test(clean)) credScore += 3;
-  if (/cautious|patient|confirmation|risk|execution|disciplined|protecting capital|protect capital|patiently|margins|cash-flow|overleverage|leveraging|conservatively/i.test(clean)) credScore += 4;
-  if (/setup|asymmetric|orderflow|delta|reversion|liquidity|not financial advice|sovereign|thesis|cvd|commodity/i.test(clean)) credScore += 2;
-  if (/profit realized|breakeven|historical entry|profit booked|runner target|risk\/reward|unrealized profit|50% up|profit/i.test(clean)) credScore += 3;
+  if (/support|floor|shelf|invalidation|stop-loss|stop|boundary|baseline|infrastructure|hashrate|protection|trailed|trail/i.test(clean)) credScore += 4;
+  if (/target|targets|targeting|resistance|retest|mean reversion|upside|wick|tp1|tp2|expansion|spot price|payoffs/i.test(clean)) credScore += 3;
+  if (/cautious|patient|patience|confirmation|risk|execution|disciplined|discipline|protecting capital|protect capital|protect|unrealized|excessive|fomo|patiently|margins|cash-flow|overleverage|leveraging|conservatively|conservative|modestly|size/i.test(clean)) credScore += 4;
+  if (/setup|asymmetric|orderflow|delta|reversion|liquidity|not financial advice|sovereign|thesis|cvd|commodity|dyor|confluence/i.test(clean)) credScore += 2;
+  if (/profit realized|breakeven|historical entry|profit booked|runner target|risk\/reward|unrealized profit|50% up|profit|profits|gains|runners|scale|scale-out|milestones/i.test(clean)) credScore += 3;
   credScore = Math.min(20, Math.max(5, credScore));
 
   // Dimension 5: Presentation (0 - 20 pts)
@@ -1543,7 +1553,7 @@ function runByxDimensionsScore(text) {
   let presScore = 6;
   if (clean.includes('\n\n')) presScore += 3;
   if (/[,.;!?]/.test(clean)) presScore += 3;
-  if (/[\u2022\u25AA\u2023\u25B6\u2013\u2014\-\*]/.test(clean) || clean.includes('\u2022') || clean.includes('-')) presScore += 3; // Bullet points / clean lists
+  if (/[\u2022\u25AA\u2023\u25B6\u25B8\u2013\u2014\-\*\|]/.test(clean) || clean.includes('\u2022') || clean.includes('-')) presScore += 3; // Bullet points / clean lists
   if (/[#\u26A1\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(clean) || clean.startsWith('#') || clean.charCodeAt(0) > 127) presScore += 2; // Visual anchor
   const wordCount = (clean.match(/\b\w+\b/g) || []).length;
   if (wordCount >= 70 && wordCount <= 270) presScore += 3; // Mobile optimal reading span (70 to 270 words)

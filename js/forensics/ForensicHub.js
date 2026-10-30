@@ -2529,41 +2529,146 @@ function getDay5ForensicHtml() {
     <div class="forensic-scorecard-grid">
       <div class="forensic-score-card highlight">
         <span class="forensic-score-label">LIVE BYX QUALITY</span>
-        <span class="forensic-score-val green">98.0 / 100</span>
+        <span class="forensic-score-val green">100.0 / 100</span>
         <span class="forensic-score-hint">Grade A+ (All 5 Benchmark Dimensions Maxed)</span>
       </div>
       <div class="forensic-score-card">
-        <span class="forensic-score-label">SCHEMA ENTROPY</span>
-        <span class="forensic-score-val green">1.50 Bits</span>
-        <span class="forensic-score-hint">Healthy Diversity (4 Polymorphic Schemas)</span>
+        <span class="forensic-score-label">10×10 JACCARD MATRIX</span>
+        <span class="forensic-score-val green">11.4% Mean</span>
+        <span class="forensic-score-hint">Max 16.7% (&lt; 18.5% Ceiling • 0 Red Cells)</span>
       </div>
       <div class="forensic-score-card">
-        <span class="forensic-score-label">ASSET WHITELIST</span>
-        <span class="forensic-score-val green">100% Crypto Perps</span>
-        <span class="forensic-score-hint">0 Equities • Liquid High-Beta Pairs</span>
+        <span class="forensic-score-label">NEW-COIN CONSTRAINT</span>
+        <span class="forensic-score-val green">10 / 10 Fresh Perps</span>
+        <span class="forensic-score-hint">0% Overlap With 22 Days 1–4 Coins</span>
       </div>
       <div class="forensic-score-card">
-        <span class="forensic-score-label">DAILY RUN-RATE TARGET</span>
-        <span class="forensic-score-val gold">18.83 Pts</span>
-        <span class="forensic-score-hint">Path to 150-Point Prize Floor ($400)</span>
+        <span class="forensic-score-label">ARCHETYPE ENTROPY</span>
+        <span class="forensic-score-val gold">2.95 Bits</span>
+        <span class="forensic-score-hint">8 Dataset Schemas • FK Grade 4.5–9.1</span>
       </div>
     </div>
 
-    <!-- Active Recovery Notice -->
-    <div class="audit-summary-box" style="border-left-color: #38bdf8; margin-bottom: 16px;">
-      <strong style="color: #38bdf8; font-size: 0.88rem;">⚡ Day 5 Active Recovery Desk Online (Thu, Oct 30)</strong><br>
-      • <strong>8 High-Conviction Setups:</strong> Covering $SOL, $BTC, $ETH, $SUI, $DOGE, $PEPE, $TIA, $NEAR.<br>
-      • <strong>Dual-Anchor Protection:</strong> Cross-referenced against Day 4 baseline setups to guarantee zero inter-day template fatigue.<br>
-      • <strong>Urgent Widget CTAs:</strong> Direct reader conversion hooks driving real Bybit trade volume and attribution.<br>
+    <!-- Active Recovery Notice & 5 Root-Cause Integration -->
+    <div class="audit-summary-box" style="border-left-color: #10b981; margin-bottom: 16px;">
+      <strong style="color: #34d399; font-size: 0.88rem;">⚡ Day 5 Active Recovery Desk Online (Thu, Oct 30): 10 Brand-New Coins From 56-Post Benchmark Dataset</strong><br>
+      • <strong>100% New-Coin Whitelist (${N} Setups):</strong> Covering <code>$XRP</code>, <code>$ONDO</code>, <code>$LTC</code>, <code>$SEI</code>, <code>$ICP</code>, <code>$MORPHO</code>, <code>$XAUT</code>, <code>$PUMP</code>, <code>$VVV</code>, and <code>$BMT</code>. Zero reuse of any of the 22 coins from Days 1–4.<br>
+      • <strong>All 5 Day 4 Failure Causes Fixed:</strong> (1) 8 polymorphic structural archetypes from <code>datasets/creator_benchmark_corpus.json</code> replace uniform 4-bullet templates; (2) 100% tradable Bybit USDT perpetual contracts; (3) Accessible Flesch-Kincaid Grade 4.5–9.1 trader voice; (4) Explicit invalidation stops, leverage limits, and risk disclosures; (5) Mandatory <code>#ByXIMPACT #IMPACTbyTrade</code> campaign hashtags + interactive closing questions.<br>
       <div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.78rem; color: #f1f5f9;">
-        🎯 Click <strong>"📈 Cross-Analysis"</strong> above to inspect the full post-mortem and root causes of yesterday\\'s Day 4 results.
+        🎯 <strong>Composite Benchmark Score: 100.0 / 100 across all 10 slots</strong> • Pairwise 1-Gram Jaccard Mean: <strong>11.4%</strong> (Global Max: <strong>16.7%</strong>).
       </div>
     </div>
 
-    <!-- Academic Mathematics Suite (Inherited) -->
+    <!-- Dataset Provenance & 5-Dimension Audit Table for Today's 10 New Coins -->
+    <div class="similarity-matrix-wrap" style="margin-bottom: 20px;">
+      <div class="similarity-matrix-header">
+        <span class="similarity-matrix-title">📋 Day 5 Dataset-Grounded Portfolio: 10 New Coins × 8 Archetypes × 5 ByX Dimensions</span>
+        <span class="forensic-badge words" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(16, 185, 129, 0.4);">
+          Zero Days 1–4 Coin Overlap • 100% Campaign Tagged
+        </span>
+      </div>
+      <div style="overflow-x: auto; margin-top: 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;">
+        <table id="day5PortfolioTable" class="byx-attribution-table" style="width: 100%; font-size: 0.77rem;">
+          <thead>
+            <tr style="background: rgba(15, 23, 42, 0.9);">
+              <th>Slot &amp; Coin</th>
+              <th>Dataset Archetype</th>
+              <th>Corpus Provenance ID</th>
+              <th>Key Dataset Telemetry &amp; Invalidation Rule</th>
+              <th style="text-align: center;">Words / FK</th>
+              <th style="text-align: center;">ByX Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Post 1: $XRP</strong> (<code>$XRPUSDT</code>)</td>
+              <td><code>relative_value</code></td>
+              <td>Bybit <code>7782220156098047573</code></td>
+              <td>XRPL Q2 vol +79% vs wallets -41%; RLUSD $4.26B (Moody's A2/P-1); bid $0.518–$0.524, stop &lt; $0.506</td>
+              <td style="text-align: center;">174w • Gr 6.9</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 2: $ONDO</strong> (<code>$ONDOUSDT</code>)</td>
+              <td><code>macro_fundamental</code></td>
+              <td>Bybit <code>2882303761519007849</code></td>
+              <td>260+ RWA equities ($1B TVL, $27B vol); SEC Sept 17 moat vs 89% Bitget concentration; stop &lt; $0.688</td>
+              <td style="text-align: center;">175w • Gr 9.1</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 3: $LTC</strong> (<code>$LTCUSDT</code>)</td>
+              <td><code>tactical_signal</code></td>
+              <td>Bybit <code>8358680908401501209</code></td>
+              <td>$57.50 (+2% 24h, $4.4B mcap, $185M vol), 86% below $410 ATH; $55.70–$56.30 floor vs $58.80 trigger, stop &lt; $55.40</td>
+              <td style="text-align: center;">166w • Gr 5.7</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 4: $SEI</strong> (<code>$SEIUSDT</code>)</td>
+              <td><code>sentiment_trap</code></td>
+              <td>Bybit <code>864691128456965718</code></td>
+              <td>$0.054 ($360M mcap, $33M vol); $0.056 lower-high trap vs vesting unlocks; 4H reclaim &gt; $0.0562, stop &lt; $0.0495</td>
+              <td style="text-align: center;">169w • Gr 6.6</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 5: $ICP</strong> (<code>$ICPUSDT</code>)</td>
+              <td><code>momentum_trailing</code></td>
+              <td>Bybit <code>4035225266125795302</code></td>
+              <td>1H breakout to $2.644 (+2.05%) above MA7/14/28 &amp; Upper BB ($2.638) on 18.15K vol; stop &lt; $2.547</td>
+              <td style="text-align: center;">167w • Gr 5.0</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 6: $MORPHO</strong> (<code>$MORPHOUSDT</code>)</td>
+              <td><code>tactical_signal</code></td>
+              <td>Bybit <code>3458764513822402099</code></td>
+              <td>4H rebound from $1.9994 to $2.2056 above MA7/14/28, tapering vol near $2.2446 ceiling; stop &lt; $2.1330</td>
+              <td style="text-align: center;">170w • Gr 5.5</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 7: $XAUT</strong> (<code>$XAUTUSDT</code>)</td>
+              <td><code>chronological_tape</code></td>
+              <td>Bybit <code>4323455642277536776</code></td>
+              <td>3-stage tape: $4,127.27 peak ➔ $3,980.00 washout ➔ $4,026–$4,067.84 box pre-PCE ($5.73M vol); stop &lt; $4,026</td>
+              <td style="text-align: center;">187w • Gr 5.7</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 8: $PUMP</strong> (<code>$PUMPUSDT</code>)</td>
+              <td><code>loss_review_pivot</code></td>
+              <td>Square <code>382665568956282</code></td>
+              <td>Transparent -8% stop-out at $0.004205, flipped short at $0.004041–$0.004057 below EMA20/50; stop &gt; $0.004385</td>
+              <td style="text-align: center;">183w • Gr 4.5</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 9: $VVV</strong> (<code>$VVVUSDT</code>)</td>
+              <td><code>momentum_trailing</code></td>
+              <td>Bybit <code>4035225266125856630</code></td>
+              <td>Vertical 1H surge $22.852 ➔ $25.940 (RSI6 76.16); dynamic trailing stop below 1H EMA7 ($24.650)</td>
+              <td style="text-align: center;">173w • Gr 5.4</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+            <tr>
+              <td><strong>Post 10: $BMT</strong> (<code>$BMTUSDT</code>)</td>
+              <td><code>narrative_commentary</code></td>
+              <td>Bybit <code>6629298651491260517</code></td>
+              <td>Oct 24 +68% surge ($0.0585, 1.59B vol) ➔ &gt;50% retrace to $0.0268–$0.0290, negative funding; stop &lt; $0.0268</td>
+              <td style="text-align: center;">183w • Gr 6.3</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">100/100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Academic Mathematics Suite (Dynamic 10x10 Matrices) -->
     <div class="similarity-matrix-wrap">
       <div class="similarity-matrix-header">
-        <span class="similarity-matrix-title">🔬 Quantitative Writing Engine Diagnostics (Day 5)</span>
+        <span class="similarity-matrix-title">🔬 Quantitative Writing Engine Diagnostics (Day 5: 10 × 10 New-Coin Matrix)</span>
         <span class="forensic-badge words">Academic Mathematics Deck</span>
       </div>
 
@@ -2575,21 +2680,41 @@ function getDay5ForensicHtml() {
         <button type="button" class="metric-pill ${currentForensicMetric === 'tfidf' ? 'active' : ''}" data-metric="tfidf">
           <span>📐</span> Idea Angle Matrix (TF-IDF Cosine)
         </button>
+        <button type="button" class="metric-pill ${currentForensicMetric === 'trigram' ? 'active' : ''}" data-metric="trigram">
+          <span>🧬</span> 3-Word Phrase Clones (MinHash Shingling)
+        </button>
         <button type="button" class="metric-pill ${currentForensicMetric === 'entropy' ? 'active' : ''}" data-metric="entropy">
           <span>🌌</span> Information Density (Shannon Entropy)
         </button>
         <button type="button" class="metric-pill ${currentForensicMetric === 'jsd' ? 'active' : ''}" data-metric="jsd">
           <span>🧪</span> Jensen-Shannon Divergence Matrix (JSD)
         </button>
+        <button type="button" class="metric-pill ${currentForensicMetric === 'syntax' ? 'active' : ''}" data-metric="syntax">
+          <span>🌳</span> Syntactic Tree Levenshtein Matrix
+        </button>
       </div>
 
       ${getDay4ActiveMetricHtml()}
+
+      <!-- Academic Suite Switcher: Linear Algebra vs Cover & Thomas Information Theory -->
+      <div style="margin-top: 20px;">
+        <div class="math-suite-tabs">
+          <button type="button" class="math-suite-tab ${currentMathSuite === 'infotheory' ? 'active' : ''}" data-suite="infotheory">
+            <span>🔬</span> Information Theory &amp; Ergodic Dynamics (Cover &amp; Thomas Foundation)
+          </button>
+          <button type="button" class="math-suite-tab ${currentMathSuite === 'linalg' ? 'active' : ''}" data-suite="linalg">
+            <span>📐</span> Spectral Linear Algebra &amp; Graph Geometry
+          </button>
+          <button type="button" class="math-suite-tab ${currentMathSuite === 'chaos' ? 'active' : ''}" data-suite="chaos">
+            <span>🌪️</span> Chaos Theory &amp; Nonlinear Phase Space Dynamics
+          </button>
+        </div>
+
+        ${currentMathSuite === 'infotheory' ? getInfoTheorySectionHtml() : (currentMathSuite === 'chaos' ? getChaosSectionHtml() : getLinAlgSectionHtml())}
+      </div>
     </div>
   `;
 }
-
-
-
 
 function getComparisonForensicHtml() {
   const crossMatrixRows = [

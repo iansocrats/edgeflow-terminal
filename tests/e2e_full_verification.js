@@ -151,14 +151,22 @@ async function runE2ETest() {
     console.log(`✅ PASS: Found ${pillCount} post pills in Day 5 carousel.`);
     if (pillCount !== 10) throw new Error(`Expected 10 pills on Day 5, got ${pillCount}`);
 
-    // 3. Check Post 1 Content loaded on Day 5 ($SOL)
+    // 3. Check Post 1 Content loaded on Day 5 ($XRP)
     const postTitle = await evalBrowser('document.getElementById("currentPostTitle").textContent');
     const postContent = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Active Post Title: "${postTitle}"`);
     console.log(`✅ PASS: Active Post Content length: ${postContent.length} chars.`);
-    if (!postTitle.includes('SOL')) throw new Error('Expected Post 1 to be SOL');
+    if (!postTitle.includes('XRP')) throw new Error('Expected Post 1 on Day 5 to be XRP');
 
-    // 4. Test clicking Pill 2 ($BTC Heatmap Trap on Day 5)
+    // Verify all 10 Day 5 coins match the new-coin portfolio
+    const day5Coins = await evalBrowser('postsData.map(p => p.coin)');
+    const expectedDay5Coins = ['$XRP', '$ONDO', '$LTC', '$SEI', '$ICP', '$MORPHO', '$XAUT', '$PUMP', '$VVV', '$BMT'];
+    console.log(`✅ PASS: Day 5 10 New-Coin Portfolio: ${day5Coins.join(', ')}`);
+    if (JSON.stringify(day5Coins) !== JSON.stringify(expectedDay5Coins)) {
+      throw new Error(`Expected Day 5 coins ${expectedDay5Coins.join(', ')}, got ${day5Coins.join(', ')}`);
+    }
+
+    // 4. Test clicking Pill 2 ($ONDO RWA Milestone on Day 5)
     console.log('\n--- TESTING DAY 5 POST CAROUSEL NAVIGATION ---');
     await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item")[1].click()');
     await new Promise(r => setTimeout(r, 300));
@@ -166,7 +174,7 @@ async function runE2ETest() {
     const contentP2 = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Clicked Pill 2 -> New Title: "${titleP2}"`);
     console.log(`✅ PASS: Post 2 Content loaded (${contentP2.length} chars, contains: "${contentP2.slice(0, 40)}...")`);
-    if (!titleP2.includes('BTC')) throw new Error('Expected Post 2 to be BTC');
+    if (!titleP2.includes('ONDO')) throw new Error('Expected Post 2 on Day 5 to be ONDO');
 
     // 4b. Test Day 4 Certified Archive Preservation (13 posts, $MSFT, $ETH, $BTC)
     console.log('\n--- TESTING DAY 4 CERTIFIED ARCHIVE PRESERVATION ---');
@@ -278,12 +286,17 @@ async function runE2ETest() {
       throw new Error('Cross-Analysis Hub failed to render complete post-mortem diagnostics');
     }
 
-    // Test Day 5 Active Desk Tab
+    // Test Day 5 Active Desk Tab (10x10 New-Coin Matrix & Portfolio Table)
     console.log('\n--- TESTING DAY 5 ACTIVE DESK FORENSIC TAB ---');
     await evalBrowser('document.getElementById("btnForensicDay5").click()');
     await new Promise(r => setTimeout(r, 300));
     const day5HasScorecard = await evalBrowser('document.querySelector(".forensic-scorecard-grid") !== null');
-    console.log(`✅ PASS: Switched to Day 5 Active Desk -> Scorecard present: ${day5HasScorecard}`);
+    const day5PortfolioRows = await evalBrowser('document.querySelectorAll("#day5PortfolioTable tbody tr").length');
+    const day5MatrixRows = await evalBrowser('document.querySelectorAll(".similarity-table tbody tr").length');
+    console.log(`✅ PASS: Switched to Day 5 Active Desk -> Scorecard: ${day5HasScorecard}, Portfolio Rows: ${day5PortfolioRows}, 10x10 Matrix Rows: ${day5MatrixRows}`);
+    if (!day5HasScorecard || day5PortfolioRows !== 10 || day5MatrixRows !== 10) {
+      throw new Error(`Expected Day 5 Forensic Hub to have 10 portfolio rows and 10x10 matrix, got portfolio=${day5PortfolioRows}, matrix=${day5MatrixRows}`);
+    }
 
     // Test Day 4 Archive Tab
     console.log('\n--- TESTING DAY 4 ARCHIVE FORENSIC TAB ---');

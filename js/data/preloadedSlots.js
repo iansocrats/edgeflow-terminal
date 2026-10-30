@@ -408,123 +408,153 @@ function getDay5PreloadedSlots() {
   return [
     {
       id: 1,
-      coin: '$SOL',
-      title: 'Post 1: ⚡ $SOL Asia Open Liquidation Sweep & $174.20 Rebound',
+      coin: '$XRP',
+      archetype: 'relative_value',
+      corpus_ref: 'Bybit ByX IDs 7782220156098047573 & 2305843009215555177',
+      title: 'Post 1: ⚖️ $XRP Relative Value Divergence: Order-Book Volume +79% vs RLUSD $4.26B Expansion',
       status: 'ready',
-      raw: 'Tokyo open liquidation sweep on Solana perps, $14M flushed, buying absorption at $174.20.',
-      improved: "⚡ #SOLUSDT: Asia Open Liquidation Sweep & $174.20 Rebound\n\nTokyo open just triggered a sharp $14M liquidation flush across Solana perps, sweeping the $174.20 liquidity pocket before aggressive spot and algorithmic buyer absorption kicked in. Aggregate open interest contracted 3.2% within thirty minutes, wiping over-leveraged longs and resetting perpetual funding rates back to neutral.\n\nLive Execution Framework:\nSweeping the $174.20 liquidity shelf offers an asymmetric entry with clear risk parameters. Deploying disciplined 3x longs across the $174.40 to $175.20 accumulation band. Protective stop-loss is placed firmly at $173.60. Banking first scale profits at $182.50 (+4.4%), while trailing remainder exposure toward $188.00 (+7.6%). A 15-minute close below $173.60 terminates the recovery thesis.\n\nTap the #SOLUSDT perpetual trading widget below to track real-time book depth. Bidding this flush or waiting for confirmation? Drop your view below 👇",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      raw: "On-chain metrics on XRPL show a sharp split right now. Active wallet addresses dropped 41% year-over-year, yet native order-book volume jumped 79% over that exact Q2 window as RLUSD and tokenized value scaled from $99M to $4.26B backed by Moody's A2/P-1 rating and Coinbase Prime custody. With 32.6B coins locked in escrow, spot bids defend the $0.518 to $0.524 demand shelf. Entry zone $0.518 to $0.524, targets $0.548 and $0.572, invalidation under $0.506.",
+      improved: "⚖️ $XRP Relative Value Divergence: Order-Book Volume +79% vs RLUSD $4.26B Expansion\n\nOn-chain metrics across XRPL show a sharp divergence today. Active wallet addresses dropped 41% year-over-year, yet native order-book trading volume jumped 79% over that exact Q2 window. Retail activity cooled, while institutional settlement flow does the heavy lifting as RLUSD and tokenized value on the ledger scaled from $99M to $4.26B across six quarters, backed by Moody's A2/P-1 rating and Coinbase Prime custody.\n\nWith 32.6B coins locked inside escrow, spot bids quietly defend the $0.518–$0.524 demand shelf.\n▸ Entry Zone: $0.518 to $0.524 on calm pullbacks\n▸ Upside Targets: $0.548 (TP1) then $0.572 (TP2)\n▸ Invalidation: A 4-hour candle close under $0.506 proves this thesis wrong\n\nKeep position sizing conservative at 2x–3x max leverage—personal market read, not financial advice. Tap the $XRPUSDT perpetual widget below to inspect live orderbook depth. Are you trading institutional RLUSD adoption or waiting for retail wallets?\n\n#XRPUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 5, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "Financial formatting ($14M, $174.20, 3.2%, 3x, $174.40, $175.20, $173.60, $182.50, +4.4%, $188.00, +7.6%)." },
-        { category: "spacing", description: "Schema A: Breaking Liquidation Flash structure with live execution parameters." }
+        { category: "word", description: "Dataset Grounded (Bybit IDs 7782220156098047573 & 2305843009215555177): XRPL +79% volume vs -41% wallets, RLUSD $4.26B, Moody's A2/P-1, 32.6B escrow." },
+        { category: "spacing", description: "Archetype: Relative Value Divergence (FK Grade 6.9) with arrow levels & campaign tags." }
       ]
     },
     {
       id: 2,
-      coin: '$BTC',
-      title: 'Post 2: ⚡ $BTC Liquidation Heatmap Trap & $79,200 Algorithmic Absorption',
+      coin: '$ONDO',
+      archetype: 'macro_fundamental',
+      corpus_ref: 'Bybit ByX ID 2882303761519007849',
+      title: 'Post 2: 🏛️ $ONDO RWA Milestone: $1B TVL, $27B Volume & SEC Registration Path',
       status: 'ready',
-      raw: 'Bitcoin liquidation heatmap shows $240M short cluster, demand holding at $79,200.',
-      improved: "⚡ #BTCUSDT: Liquidation Heatmap Trap & $79,200 Algorithmic Absorption\n\nCoinglass liquidation heatmaps reveal over $240M in clustered short leverage between $81,200 and $82,600, while sell-side pressure completely dried up around the $79,200 demand base. Market makers engineered a swift liquidity hunt into morning support, but cumulative volume delta (CVD) shows spot buyers aggressively absorbing every market sell order.\n\n1. Institutional Demand: Confirmed absorption along the $78,800 to $79,200 structural floor.\n2. Execution Ladder: Deploying laddered bids from $79,250 to $79,600 with conservative 3x leverage.\n3. Invalidation & Risk: Capital preservation stop is set firmly at $78,650.\n4. Scale Targets: Sweeping short clusters at $81,400 (+2.6%) and $82,700 (+4.2%).\n\nCheck live orderbook imbalances on the #BTCUSDT module underneath. Taking this mean reversion long or waiting for $78,000? Let me know below 👇",
+      raw: "Ondo Finance crossed $1B TVL across 260+ tokenized stocks and ETFs with $27B cumulative volume (26x turnover). After the SEC Sept 17 tokenization exemption, nine US issuers objected to unapproved listings on rival venues, making Ondo Global Markets confidential SEC filing a real moat. 89% volume sits on Bitget and governance awaits the 2026 DAO fee-switch vote. Bid $0.715 to $0.732, targets $0.785 and $0.835, stop below $0.688.",
+      improved: "🏛️ $ONDO RWA Milestone: $1B TVL, $27B Volume & SEC Registration Path\n\nOndo Finance just crossed $1 billion locked across 260+ tokenized stocks and ETFs, generating $27 billion in cumulative volume (a 26x turnover ratio). After the SEC outlined its Sept 17 tokenization exemption, nine US corporate issuers objected to unapproved listings on rival venues. That makes Ondo Global Markets' confidential SEC filing a durable regulatory moat for this thesis.\n\nTwo concentration risks still require discipline: 89% of trading volume sits on Bitget alone, and governance holders await the 2026 DAO fee-switch vote before capturing direct protocol revenue.\n\n1. Bid Zone: Accumulate spot or low-gearing perps from $0.715 to $0.732.\n2. Profit Ladder: Scale out at $0.785 first, leaving runners for $0.835.\n3. Hard Stop: Exit immediately if a 4H bar closes beneath $0.688.\n\nRisk at most 1.5% of account equity here; independent research, manage your own risk. Click the $ONDOUSDT chart module underneath to check RWA orderflow—will the 2026 fee-switch re-rate $ONDO?\n\n#ONDOUSDT #ByXIMPACT #IMPACTbyTrade",
       rules_summary: { punctuation_count: 9, word_replacement_count: 5, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "Quantitative entity anchors ($240M, $81,200, $82,600, $79,200, $78,800, $79,250, $79,600, $78,650, $81,400, $82,700)." },
-        { category: "spacing", description: "Schema B: Liquidation Heatmap Trap with numbered execution pathway." }
+        { category: "word", description: "Dataset Grounded (Bybit ID 2882303761519007849): $1B TVL, $27B volume (26x), SEC Sept 17 exemption, 89% Bitget concentration, 2026 DAO fee-switch." },
+        { category: "spacing", description: "Archetype: Macro & Fundamental Catalyst with numbered checklist & explicit concentration risk disclosure." }
       ]
     },
     {
       id: 3,
-      coin: '$ETH',
-      title: 'Post 3: ⚡ $ETH Volatility Compression & $2,240 Rebound Execution',
+      coin: '$LTC',
+      archetype: 'tactical_signal',
+      corpus_ref: 'Bybit ByX ID 8358680908401501209',
+      title: 'Post 3: 🎯 $LTC Tactical Range Compression: $55.70 Floor Defense Ahead of $60.00 Breakout Wall',
       status: 'ready',
-      raw: 'Ethereum volatility wedge post 3.4% dip to $2,240, funding reset, spot accumulation.',
-      improved: "⚡ #ETHUSDT: Volatility Compression & $2,240 Rebound Execution\n\nEthereum is coiling into a tight four-hour volatility wedge after yesterday's aggressive 3.4% flash decline to $2,240. The perpetual funding rate has flattened to 0.001%, reflecting complete exhaustion among late short sellers. On-chain exchange reserves dropped another 45,000 ETH overnight, highlighting continuous spot accumulation during this localized market shakeout.\n\nPrecision Level Execution:\n▸ Range Pivot: The $2,240 wick marks our primary structural pivot.\n▸ Accumulation Band: Entering long on consolidation between $2,260 and $2,295 with 3x leverage.\n▸ Risk Invalidation: Protective risk boundary is anchored beneath $2,225.\n▸ Expansion Targets: First scale objective at $2,385 (+4.6%), trailing toward $2,460 (+7.8%).\n\nOpen the #ETHUSDT chart and execution module below to monitor live taker flow. Accumulating the range low or anticipating further downside? Share your thoughts below 👇",
+      raw: "Litecoin is grinding around $57.50 today (+2% in 24h) with a $4.4B market cap and $185M daily turnover, 86% below its $410 May 2021 peak. Dip buyers defended the $55.70 to $56.30 support pocket and test $58.40 to $58.80 supply. Breakout trigger 4H close above $58.80 or pullback bid $56.30, targets $60.20 and $62.50, stop below $55.40.",
+      improved: "🎯 $LTC Tactical Range Compression: $55.70 Floor Defense Ahead of $60.00 Breakout Wall\n\nLitecoin grinds around $57.50 today (+2% in 24h) backed by a $4.4B valuation and $185M daily turnover. Valuation sits 86% below its $410 May 2021 record, yet short-term structure tightens as dip buyers repeatedly defended the $55.70–$56.30 demand pocket.\n\nBulls now press directly against the $58.40–$58.80 overhead barrier. Avoid front-running mid-range chop; let price confirm a breakout or retest support first:\n- Trigger A (Breakout): 4-hour candle closing above $58.80 on expanding volume\n- Trigger B (Pullback): Staged limit bids around $56.30 support\n- Upside Targets: $60.20 (TP1) and $62.50 (TP2)\n- Invalidation: Clean stop-loss below $55.40 negates this setup\n\nStick to disciplined risk limits and low-margin sizing (DYOR, not financial advice). Open the $LTCUSDT perpetual ticket to configure price alerts. Do you see $LTC clearing $60 this session or rejecting into range chop?\n\n#LTCUSDT #ByXIMPACT #IMPACTbyTrade",
       rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "Derivative metrics and levels ($2,240, 0.001%, 45,000 ETH, $2,260, $2,295, $2,225, $2,385, $2,460)." },
-        { category: "spacing", description: "Schema C: Range Squeeze & Level Execution with arrow bullet indicators." }
+        { category: "word", description: "Dataset Grounded (Bybit ID 8358680908401501209): $57.50 (+2% 24h), $4.4B mcap, $185M volume, 86% below $410 ATH, $55.70-$56.30 floor vs $58.80 wall." },
+        { category: "spacing", description: "Archetype: Tactical Signal (FK Grade 5.7) with dual-trigger execution rules." }
       ]
     },
     {
       id: 4,
-      coin: '$SUI',
-      title: 'Post 4: ⚡ $SUI Contrarian Sentiment Divergence & $1.82 Accumulation Setup',
+      coin: '$SEI',
+      archetype: 'sentiment_trap',
+      corpus_ref: 'Bybit ByX ID 864691128456965718',
+      title: 'Post 4: 🪤 $SEI Liquidity Trap Audit: Will $0.056 Break Cleanly or Print Another Lower High?',
       status: 'ready',
-      raw: 'Sui social sentiment 74% bearish but TVL at ATH $1.18B, contrarian long entry.',
-      improved: "⚡ #SUIUSDT: Contrarian Sentiment Divergence & $1.82 Accumulation Setup\n\nCommunity sentiment on social feeds has plummeted to 74% bearish following recent market-wide pullbacks, yet on-chain data presents an entirely contrasting reality. Sui total value locked (TVL) just printed a record high of $1.18B, while daily decentralized exchange volume surged 28% week-over-week. When retail emotion decouples from underlying ecosystem liquidity, asymmetric trading setups emerge.\n\nContrarian Trade Strategy:\nFading prevailing retail panic into the $1.82 to $1.87 accumulation zone with disciplined 3x leverage. Our clear downside risk invalidation sits at $1.74. First scale target is set at $2.14 (+16.3%), with secondary expansion aiming for $2.38 (+29.3%). A sustained four-hour close below $1.74 terminates our bullish thesis.\n\nInspect real-time open interest and funding on the #SUIUSDT widget below. Are you following crowd sentiment or taking the contrarian long? Debate below 👇",
-      rules_summary: { punctuation_count: 7, word_replacement_count: 4, emoji_spacing_count: 5 },
+      raw: "Hovering around $0.054 with a $360M market cap and $33M 24h volume, $SEI sits at a classic inflection point as scheduled token vesting unlocks test spot absorption. Wait for a 4H close above $0.0562 or bid the downside liquidity sweep at $0.0512 to $0.0520, targets $0.0605 and $0.0648, invalidation below $0.0495.",
+      improved: "🪤 $SEI Liquidity Trap Audit: Will $0.056 Break Cleanly or Print Another Lower High?\n\nHovering at $0.054 with a $360M market cap and $33M in 24-hour volume, $SEI faces a classic inflection test. Every minor green bounce recently lured impatient breakout chasers right before scheduled vesting unlocks pushed price into another lower high.\n\nInstead of chasing green wicks into overhead supply, wait for this bull-trap risk to resolve:\n• Bullish Trigger: Enter long only after a 4-hour candle closes firmly above $0.0562 and holds that shelf.\n• Liquidity Sweep Bid: Should sellers flush weak hands first, watch for spot absorption inside the $0.0512–$0.0520 demand zone.\n• Expansion Objectives: $0.0605 initial target, $0.0648 secondary runner.\n• Setup Negation: Any 4-hour close beneath $0.0495 invalidates the trade.\n\nProtect capital and size conservatively around unlock windows—just my chart read, not advice. Pull up the $SEIUSDT orderbook module to check funding rates. Is $0.056 a true reversal or another trap?\n\n#SEIUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "Sentiment metrics and levels (74%, $1.18B, 28%, $1.82, $1.87, $1.74, $2.14, +16.3%, $2.38, +29.3%)." },
-        { category: "spacing", description: "Schema D: Contrarian Sentiment Debate layout with community engagement driver." }
+        { category: "word", description: "Dataset Grounded (Bybit ID 864691128456965718): $0.054 price, $360M mcap, $33M volume, $0.056 lower-high bull-trap test & vesting unlock absorption." },
+        { category: "spacing", description: "Archetype: Sentiment & Liquidity Trap (FK Grade 6.6) with anti-FOMO confirmation filter." }
       ]
     },
     {
       id: 5,
-      coin: '$DOGE',
-      title: 'Post 5: ⚡ $DOGE High-Beta Volume Surge & $0.158 Breakout Retest',
+      coin: '$ICP',
+      archetype: 'momentum_trailing',
+      corpus_ref: 'Bybit ByX ID 4035225266125795302',
+      title: 'Post 5: 🚀 $ICP 1H Bollinger Breakout: Volume Spikes to 18.15K Above Stacked Moving Averages',
       status: 'ready',
-      raw: 'Dogecoin 8.4% volume expansion, OI over $980M, $0.158 retest defended.',
-      improved: "⚡ #DOGEUSDT: High-Beta Volume Surge & $0.158 Breakout Retest\n\nDogecoin is demonstrating significant relative strength this morning, posting an 8.4% volume expansion while broader altcoins struggle for direction. Derivatives open interest pushed past $980M across major exchanges, with aggressive spot buying defending the $0.158 retest level. Whale transactions exceeding $100K jumped 42% over the last twelve hours, signaling institutional participation.\n\nHigh-Beta Execution Setup:\nDefending the $0.158 breakout retest presents an attractive risk-reward entry. Accumulating long positions between $0.159 and $0.163 using 3x leverage. Protective stop-loss is placed at $0.152. Primary profit target sits at $0.178 (+10.5%), trailing secondary targets toward $0.192 (+19.2%). A 4-hour close below $0.152 invalidates the breakout thesis.\n\nCheck live depth and taker volume on the #DOGEUSDT trade module underneath. Riding this high-beta continuation or waiting for deeper pullbacks? Let me know below 👇",
+      raw: "Internet Computer lifted off the $2.547 session low to tag a 24h high at $2.644 (+2.05%), reclaiming MA7 ($2.586), MA14 ($2.594), and MA28 ($2.594) while piercing the upper Bollinger Band at $2.638 on 18.15K volume vs MA5 (11.19K) and MA10 (15.09K). Reload $2.594 to $2.602, targets $2.740 and $2.850, stop below $2.547.",
+      improved: "🚀 $ICP 1H Bollinger Breakout: Volume Spikes to 18.15K Above Stacked Moving Averages\n\nInternet Computer printed a crisp hourly impulse, lifting off its $2.547 session low to tag a 24h high at $2.644 (+2.05%). What makes this move stand out is structural alignment: price reclaimed MA7 ($2.586), MA14 ($2.594), and MA28 ($2.594) in one sweep while clearing the upper Bollinger Band at $2.638.\n\nSpot turnover confirms genuine breakout strength, surging to 18.15K tokens on the impulse bar versus the MA5 (11.19K) and MA10 (15.09K) averages.\n\n| Parameter | Execution Level & Rule |\n| Pullback Reload | $2.594 – $2.602 (Bollinger midline & MA14 confluence) |\n| Profit Milestones | $2.740 (TP1) and $2.850 (TP2) |\n| Hard Invalidation | Drop below the $2.547 swing floor |\n\nAvoid buying extended candles above the upper band; let the retest come to your limit bids and cap risk at 1% per trade. Review 1H Bollinger bands via the $ICPUSDT tool—are you riding this momentum wave?\n\n#ICPUSDT #ByXIMPACT #IMPACTbyTrade",
       rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "High-beta indicators and price thresholds (8.4%, $980M, $0.158, $100K, 42%, $0.159, $0.163, $0.152, $0.178, $0.192)." },
-        { category: "spacing", description: "Schema A: High-Beta Flash setup with orderbook depth CTA." }
+        { category: "word", description: "Dataset Grounded (Bybit ID 4035225266125795302): $2.644 high (+2.05%), $2.547 low, MA7 ($2.586), MA14/MA28 ($2.594), Upper BB ($2.638), Vol 18.15K vs MA5 (11.19K)." },
+        { category: "spacing", description: "Archetype: Momentum & Trailing Stop (FK Grade 5.0) using pipe-delimited parameter table." }
       ]
     },
     {
       id: 6,
-      coin: '$PEPE',
-      title: 'Post 6: ⚡ $PEPE Short Squeeze Liquidity Hunt & Support Sweep',
+      coin: '$MORPHO',
+      archetype: 'tactical_signal',
+      corpus_ref: 'Bybit ByX ID 3458764513822402099',
+      title: 'Post 6: 📐 $MORPHO 4H Recovery Structure: Stacked Above MA7/MA14/MA28 But Watch Volume at $2.2446',
       status: 'ready',
-      raw: 'Pepe short liquidation cluster at 0.0000096 to 0.0000102, spot CVD positive.',
-      improved: "⚡ #PEPEUSDT: Short Squeeze Liquidity Hunt & Support Sweep\n\nDerivatives orderbooks reveal a massive cluster of short liquidations stacked tightly between $0.0000096 and $0.0000102. Market makers orchestrated an early morning dip to sweep weak spot hands at $0.0000088, but spot cumulative volume delta rapidly reversed positive. Aggressive buyers stepped in to defend the multi-week baseline shelf, setting up conditions for an explosive short squeeze.\n\n1. Structural Shelf: Defending the $0.0000088 to $0.0000091 demand shelf.\n2. Execution Bias: Initiating 3x long exposure on positive delta confirmation.\n3. Stop-Loss Trigger: Capital preservation stop-loss set beneath $0.0000084.\n4. Squeeze Targets: First take-profit at $0.0000099 (+9.8%), trailing runners toward $0.0000108 (+19.7%).\n\nTrack the live orderbook liquidation map on the #PEPEUSDT widget below. Are you positioning for this squeeze or fading meme beta? Comment below 👇",
+      raw: "After bottoming at $1.9994 earlier this week, $MORPHO climbed back to $2.2056 (+2.18% today) inside a $2.1455 to $2.2446 range, holding above MA7 ($2.1984), MA14 ($2.1699), and MA28 ($2.1330). Follow-through volume tapered off approaching $2.2446 resistance. Wait for 4H close above $2.2450 or bid MA14 at $2.1700, targets $2.2800 and $2.3650, stop below $2.1330.",
+      improved: "📐 $MORPHO 4H Recovery Structure: Stacked Above MA7/MA14/MA28 But Watch Volume at $2.2446\n\nAfter bottoming at $1.9994 earlier this week, $MORPHO climbed back to $2.2056 (+2.18% today), trading inside a tight $2.1455–$2.2446 intraday band. On the 4-hour chart, the moving-average stack aligns constructively with price holding above MA7 ($2.1984), MA14 ($2.1699), and MA28 ($2.1330).\n\nHowever, tape readers should note one caution flag: follow-through volume tapered off approaching the $2.2446 overhead resistance. That divergence means breakout buyers need confirmation before sizing up.\n\n▸ Breakout Trigger: Wait for a high-volume 4H close above $2.2450, or bid the MA14 pullback at $2.1700.\n▸ Profit Targets: $2.2800 initial scale-out, $2.3650 full extension.\n▸ Invalidation Stop: Close below MA28 at $2.1330 invalidates this recovery thesis.\n\nKeep leverage under 3x and respect volume divergence—personal playbook, manage risk wisely. Inspect 4H candle volume on the $MORPHOUSDT chart—will bulls punch through $2.2446 today?\n\n#MORPHOUSDT #ByXIMPACT #IMPACTbyTrade",
       rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "Micro-decimal perpetual levels ($0.0000096, $0.0000102, $0.0000088, $0.0000091, $0.0000084, $0.0000099, $0.0000108)." },
-        { category: "spacing", description: "Schema B: Liquidation Heatmap Trap with numbered trigger thresholds." }
+        { category: "word", description: "Dataset Grounded (Bybit ID 3458764513822402099): $1.9994 low to $2.2056 (+2.18%), range $2.1455-$2.2446, MA7 ($2.1984), MA14 ($2.1699), MA28 ($2.1330)." },
+        { category: "spacing", description: "Archetype: Tactical Signal (FK Grade 5.5) highlighting volume divergence caution." }
       ]
     },
     {
       id: 7,
-      coin: '$TIA',
-      title: 'Post 7: ⚡ $TIA Modular Staking Compression & $5.10 Floor Absorption',
+      coin: '$XAUT',
+      archetype: 'chronological_tape',
+      corpus_ref: 'Bybit ByX IDs 4323455642277536776 & 8070450532249793081',
+      title: 'Post 7: 🥇 $XAUT Chronological Tape Read: $3,980 Washout, 4H Snapback & Pre-PCE Box Compression',
       status: 'ready',
-      raw: 'Celestia post-unlock compression, $5.10 floor absorption, staking absorbing float.',
-      improved: "⚡ #TIAUSDT: Modular Staking Compression & $5.10 Floor Absorption\n\nCelestia has compressed into a multi-day accumulation coil following its recent token unlock absorption, with price action tightly respecting the $5.10 support floor. Daily staking inflows have absorbed over 65% of secondary market float, and derivatives open interest is beginning to drift upward from historic cycle lows, indicating early institutional positioning.\n\nRange Squeeze Execution:\n▸ Accumulation Floor: The $5.05 to $5.20 range floor provides an asymmetric boundary.\n▸ Trade Execution: Establishing 3x long positions from $5.15 to $5.28.\n▸ Downside Invalidation: Strict capital preservation stop-loss is placed at $4.94.\n▸ Expansion Targets: First scale-out at $5.88 (+12.6%), trailing toward $6.40 (+22.6%).\n\nOpen the #TIAUSDT trading module below to inspect real-time funding rates. Accumulating this modular floor or expecting lower prices? Drop your analysis below 👇",
+      raw: "Tether Gold ($3B market cap) delivered a three-stage tape sequence on the 4H chart ahead of US PCE inflation data: sellers drove bullion from $4,127.27 to $3,980.00, buyers printed a tall green snapback reclaiming $4,026.00, and now $XAUT drifts sideways at $4,053 inside $4,026.00 to $4,067.84 on $5.73M turnover. Long above $4,067.84 targeting $4,090.45 and $4,127.27, stop below $4,026.00.",
+      improved: "🥇 $XAUT Chronological Tape Read: $3,980 Washout, 4H Snapback & Pre-PCE Box Compression\n\nTether Gold ($3B market cap) delivered a textbook three-stage tape sequence on the 4-hour chart ahead of US PCE inflation data. First, sellers drove bullion down from the $4,127.27 peak to a sharp washout bottom at $3,980.00. Second, institutional buyers stepped in immediately, printing a tall green snapback candle that reclaimed the $4,026.00 handle.\n\nNow in stage three, $XAUT drifts sideways around $4,053 on quiet $5.73M daily turnover, coiled between $4,026.00 support and $4,067.84 resistance.\n\nMy execution rule is patience: stay flat inside the $4,026–$4,067 chop box. Trigger a long only when a 4H bar closes cleanly above $4,067.84, targeting $4,090.45 (TP1) and $4,127.27 (TP2). Slipping back under $4,026.00—or breaking the $3,980.00 floor—kills this bullish thesis.\n\nSize modestly ahead of macro inflation releases; commodity trade notes, not financial advice. Open the $XAUTUSDT perpetual widget—how are you positioning for the PCE print?\n\n#XAUTUSDT #ByXIMPACT #IMPACTbyTrade",
       rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "Fundamental modular metrics ($5.10, 65%, $5.05, $5.20, $5.15, $5.28, $4.94, $5.88, $6.40)." },
-        { category: "spacing", description: "Schema C: Range Squeeze with clear bracket levels." }
+        { category: "word", description: "Dataset Grounded (Bybit IDs 4323455642277536776 & 8070450532249793081): $4,127.27 peak -> $3,980.00 washout -> $4,026.00-$4,067.84 box, $5.73M turnover, US PCE." },
+        { category: "spacing", description: "Archetype: Chronological Tape Read (FK Grade 5.7) with zero-bullet fluid narrative." }
       ]
     },
     {
       id: 8,
-      coin: '$NEAR',
-      title: 'Post 8: ⚡ $NEAR Decentralized AI Compute Demand & $4.65 Demand Shelf',
+      coin: '$PUMP',
+      archetype: 'loss_review_pivot',
+      corpus_ref: 'Binance Square ID 382665568956282 (@traderboos)',
+      title: 'Post 8: 🔄 $PUMP Post-Mortem & Directional Flip: Stopped at -8% on the Flush, Now Shorting the Bounce',
       status: 'ready',
-      raw: 'Near Protocol 3.2M active accounts, pulling back into $4.65 demand shelf.',
-      improved: "⚡ #NEARUSDT: Decentralized AI Compute Demand & $4.65 Demand Shelf\n\nWhile retail traders debate broader macroeconomic headwinds, Near Protocol continues to see record daily active accounts, surpassing 3.2M unique addresses driven by decentralized AI user adoption. Price action has pulled back directly into the high-volume historical demand shelf at $4.65, where institutional algorithmic bids have previously ignited multi-week rallies.\n\nInstitutional Level Setup:\nAccumulating spot and 3x perpetual long exposure within the $4.68 to $4.82 reaction pocket. Invalidation boundary is anchored beneath key support at $4.48. Primary profit target is set at $5.35 (+12.8%), trailing secondary runners toward $5.80 (+22.3%) for an asymmetric 1:3.1 payoff. A daily close beneath $4.48 invalidates the bullish continuation thesis.\n\nCheck live bid-ask spreads and orderflow on the #NEARUSDT widget below. Are you accumulating this AI infrastructure dip or staying sidelined? Share your thoughts below 👇",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      raw: "Honest update first: my 16:49 UTC long call yesterday topped at $0.004611 and hit the $0.004205 stop-loss at 20:40 UTC during the post-Fed drop (-8%). Now $PUMP trades around $0.004019 (-11.3% 24h, 4H RSI 41) beneath sloping EMA20 ($0.004317) and EMA50 ($0.004385). Short relief bounce $0.004041 to $0.004057, targets $0.003950, $0.003832, $0.003725, $0.003466, invalidation above $0.004385.",
+      improved: "🔄 $PUMP Post-Mortem & Directional Flip: Stopped at -8% on the Flush, Now Shorting the Bounce\n\nHonest update first: yesterday's 16:49 UTC long call topped at $0.004611 before hitting our $0.004205 stop-loss at 20:40 UTC during the post-Fed flush. That position closed at -8%. Own the loss, respect your stop, and read live orderflow.\n\nMomentum has completely flipped. $PUMP trades at $0.004019 (-11.3% over 24h) with 4H RSI printing 41, capped beneath downward-sloping EMA20 ($0.004317) and EMA50 ($0.004385) dynamic ceilings. Rather than revenge-trading, the disciplined play fades weak relief-bounce wicks into broken support:\n- Direction: SHORT bounce entries inside $0.004041 – $0.004057\n- Downside Targets: Book partial profit at $0.003950 and $0.003832 floors, aiming runners at $0.003725 and $0.003466\n- Invalidation: 4H candle closing above EMA50 ($0.004385) cancels this short setup\n\nLimit risk under 1% on volatile meme perps—personal trade log, not financial advice. Track the 4H EMA20 slope on $PUMPUSDT below. Do you flip bias after a stop-out or step aside?\n\n#PUMPUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 9, word_replacement_count: 4, emoji_spacing_count: 5 },
       suggestions: [
-        { category: "word", description: "AI ecosystem metrics (3.2M addresses, $4.65, $4.68, $4.82, $4.48, $5.35, $5.80, 1:3.1)." },
-        { category: "spacing", description: "Schema D: Infrastructure debate with direct orderflow widget callout." }
+        { category: "word", description: "Dataset Grounded (Binance Square ID 382665568956282): -8% stop-out at $0.004205, flipped short at $0.004041-$0.004057 below EMA20 ($0.004317) & EMA50 ($0.004385)." },
+        { category: "spacing", description: "Archetype: Loss Review & Directional Pivot (FK Grade 4.5) building maximum trader credibility." }
       ]
     },
     {
       id: 9,
-      coin: '+ New Coin',
-      title: "Post 9: Ready for Today's Intraday Catalyst",
-      status: 'waiting',
-      raw: '',
-      improved: ''
+      coin: '$VVV',
+      archetype: 'momentum_trailing',
+      corpus_ref: 'Bybit ByX ID 4035225266125856630 (Crypto BOSS)',
+      title: 'Post 9: ⚡ $VVV Parabolic Surge From $22.852 to $25.940: Managing Exhaustion With an EMA7 Trailing Stop',
+      status: 'ready',
+      raw: "VVV went vertical on the 1H chart from its $22.852 base to $25.940 peak on heavy volume expansion. RSI6 is hot at 76.16 piercing the upper Bollinger Band. Never FOMO chase green candles; trail stop-loss below 1H EMA7 at $24.650 targeting $26.40 and $27.80, or bid a controlled pullback to $24.65 to $24.90 with hard stop under $24.10.",
+      improved: "⚡ $VVV Parabolic Surge From $22.852 to $25.940: Managing Exhaustion With an EMA7 Trailing Stop\n\n$VVV went vertical on the hourly chart, rocketing off its $22.852 accumulation base to print a $25.940 peak on heavy buyer volume. Bulls command the trend, yet short-term exhaustion signals flash: 6-period RSI runs hot at 76.16 while price pokes past the outer volatility band.\n\nRule number one on a parabolic runner: never FOMO chase giant green candles at the top. Let price come to you.\n\nFor traders holding longs from the base, my dynamic anchor is 1H EMA7 sitting at $24.650. Trail your stop-loss underneath $24.650 to lock in gains while targeting $26.40 and $27.80 expansion levels. If flat, wait for a controlled dip into $24.65–$24.90 with invalidation under $24.10.\n\nProtect unrealized profits and avoid excessive leverage on vertical charts—personal thesis, DYOR. Monitor 1H EMA7 on the $VVVUSDT widget below. Where do you trail stops on parabolic runners?\n\n#VVVUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Dataset Grounded (Bybit ID 4035225266125856630): $22.852 base to $25.940 peak, RSI6 at 76.16, dynamic trailing stop anchored below 1H EMA7 ($24.650)." },
+        { category: "spacing", description: "Archetype: Parabolic Momentum & EMA7 Trailing Stop (FK Grade 5.4) with anti-FOMO discipline." }
+      ]
     },
     {
       id: 10,
-      coin: '+ New Coin',
-      title: "Post 10: Ready for Today's NY Close Setup",
-      status: 'waiting',
-      raw: '',
-      improved: ''
+      coin: '$BMT',
+      archetype: 'narrative_commentary',
+      corpus_ref: 'Bybit ByX ID 6629298651491260517',
+      title: 'Post 10: 🔍 $BMT Post-Blowoff Base Building: 68% Surge, 50% Retrace & Negative Perpetual Funding',
+      status: 'ready',
+      raw: "Bubblemaps ($BMT) surged 68% on Oct 24 to $0.0585 on 1.59B volume, retraced over 50% to $0.0281 by Oct 27, and rebounded off the $0.0268 Oct 28 low toward $0.0290 as open interest dipped 1.3% and perpetual funding flipped negative. Watch $0.0282 to $0.0290 base, reclaim trigger $0.0310 targeting $0.0345 and $0.0388, invalidation below $0.0268.",
+      improved: "🔍 $BMT Post-Blowoff Base Building: 68% Surge, 50% Retrace & Negative Perpetual Funding\n\nBubblemaps ($BMT) delivered wild volatility this week. On October 24, the token exploded 68% to a $0.0585 peak on a massive 1.59B token volume spike. Over the following three sessions, profit-taking dragged price down more than 50% to $0.0281 by October 27, before spot buyers defended the $0.0268 October 28 floor to nudge price toward $0.0290.\n\nWhat makes this base compelling is derivatives positioning: open interest dipped 1.3% while perpetual funding flipped negative, meaning late shorts pay longs to hold support.\n\n1. Base Accumulation: Monitor spot defense between $0.0282 and $0.0290.\n2. Short-Squeeze Trigger: A 4H reclaim of $0.0310 forces late shorts to cover toward $0.0345 (TP1) and $0.0388 (TP2).\n3. Thesis Invalidation: A breakdown below the $0.0268 swing low kills the setup.\n\nSize conservatively on post-rally retracements—personal analysis, not financial advice. Tap the $BMTUSDT perpetual widget below to inspect live funding rates. Will negative funding fuel a squeeze above $0.0310?\n\n#BMTUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Dataset Grounded (Bybit ID 6629298651491260517): Oct 24 +68% surge to $0.0585 on 1.59B BMT volume, >50% pullback to $0.0268-$0.0290, negative funding & -1.3% OI." },
+        { category: "spacing", description: "Archetype: Narrative Market Commentary & Funding Squeeze (FK Grade 6.3)." }
+      ]
     }
   ];
 }
