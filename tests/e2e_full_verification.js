@@ -393,6 +393,28 @@ async function runE2ETest() {
       console.log(`  ✓ Chaos Concept "${concept}" rendered card: ${hasTheoremCard} | "${theoremTitle.slice(0, 45)}..."`);
     }
 
+    // Test Cross-Creator Matrix Comparison & Other Creator Desk
+    console.log('\n--- TESTING CROSS-CREATOR MATRIX COMPARISON & BENCHMARK DESK ---');
+    await evalBrowser('document.getElementById("btnForensicComparison").click()');
+    await new Promise(r => setTimeout(r, 250));
+    const isComparisonDay = await evalBrowser('currentForensicDay === "comparison"');
+    const compMatrixHeader = await evalBrowser('document.querySelector(".similarity-matrix-title") ? document.querySelector(".similarity-matrix-title").textContent : ""');
+    const compRowsCount = await evalBrowser('document.querySelectorAll("#crossJaccardTable tbody tr").length');
+    console.log(`  ✓ Clicked #btnForensicComparison -> currentForensicDay: ${isComparisonDay}, title: "${compMatrixHeader.slice(0, 45)}...", matrix rows: ${compRowsCount}`);
+    if (!isComparisonDay || compRowsCount !== 13) {
+      throw new Error(`Expected comparison tab with 13 rows, got isComparisonDay=${isComparisonDay}, rows=${compRowsCount}`);
+    }
+
+    // Test Crypto BOSS Benchmark Tab
+    await evalBrowser('document.getElementById("btnForensicCreatorBoss").click()');
+    await new Promise(r => setTimeout(r, 250));
+    const isBossDay = await evalBrowser('currentForensicDay === "creator_boss"');
+    const bossTitle = await evalBrowser('document.querySelector(".cross-hero-heading") ? document.querySelector(".cross-hero-heading").textContent : ""');
+    console.log(`  ✓ Clicked #btnForensicCreatorBoss -> currentForensicDay: ${isBossDay}, title: "${bossTitle.slice(0, 45)}..."`);
+    if (!isBossDay || !bossTitle.includes('Crypto BOSS')) {
+      throw new Error(`Expected Crypto BOSS tab, got isBossDay=${isBossDay}, title=${bossTitle}`);
+    }
+
     // Return to workspace
     await evalBrowser('document.getElementById("returnPostsFromAnalysisBtn").click()');
     await new Promise(r => setTimeout(r, 300));
@@ -421,6 +443,30 @@ async function runE2ETest() {
     const chipSessionD5 = await evalBrowser('currentSessionId');
     console.log(`  ✓ Clicked #chipDay5: active session is now "${chipSessionD5}" (Tomorrow Cold-Start Ready)`);
     if (chipSessionD5 !== 'day5') throw new Error(`Expected active session to be day5, got ${chipSessionD5}`);
+
+    // Test switching to Crypto BOSS in Post Studio
+    console.log('\n--- TESTING OTHER CREATOR IN POST STUDIO CAROUSEL ---');
+    await evalBrowser('switchDaySession("creator_boss")');
+    await new Promise(r => setTimeout(r, 200));
+    const bossSessionPills = await evalBrowser('document.querySelectorAll(".pill-item").length');
+    const bossPost1Coin = await evalBrowser('postsData[0].coin');
+    console.log(`  ✓ Switched session to "creator_boss": ${bossSessionPills} pills rendered, Post 1 coin: ${bossPost1Coin}`);
+    if (bossSessionPills !== 3 || bossPost1Coin !== '$ETH') {
+      throw new Error(`Expected 3 pills and $ETH for creator_boss, got ${bossSessionPills} pills, ${bossPost1Coin}`);
+    }
+
+    // Test #pillBarComparisonBtn directly from Post Studio
+    await evalBrowser('document.getElementById("pillBarComparisonBtn").click()');
+    await new Promise(r => setTimeout(r, 250));
+    const compActiveFromPill = await evalBrowser('currentForensicDay === "comparison" && !document.getElementById("viewForensicAnalysisHub").classList.contains("hidden")');
+    console.log(`  ✓ Clicked #pillBarComparisonBtn from Post Studio: opened comparison desk: ${compActiveFromPill}`);
+    if (!compActiveFromPill) {
+      throw new Error('Expected #pillBarComparisonBtn to open comparison desk in Analysis Hub');
+    }
+
+    // Return to workspace for reset
+    await evalBrowser('document.getElementById("returnPostsFromAnalysisBtn").click()');
+    await new Promise(r => setTimeout(r, 200));
 
     // Reset back to Day 4
     await evalBrowser('switchDaySession("day4")');

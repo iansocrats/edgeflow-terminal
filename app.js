@@ -202,6 +202,8 @@ function setTodayDate() {
       currentDateBadge.textContent = 'Day 3 Archive (10.0 pts)';
     } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day4') {
       currentDateBadge.textContent = 'Day 4 Archive (7.0 pts • 13 Posts)';
+    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'creator_boss') {
+      currentDateBadge.textContent = '👤 Crypto BOSS Benchmark Archive (3 Setups • UID 535233761)';
     } else {
       currentDateBadge.textContent = 'Day 5 Active Desk (Thu, Oct 30) • Recovery Sprint';
     }
@@ -242,6 +244,14 @@ async function loadPostsData() {
     } catch (e) {
       console.error('Error parsing session data:', e);
       postsData = null;
+    }
+  }
+
+  // Ensure Crypto BOSS benchmark archive is preloaded with all 3 analyzed Bybit setups
+  if (currentSessionId === 'creator_boss') {
+    if (!postsData || postsData.length < 3 || postsData[0].coin !== '$ETH') {
+      postsData = (typeof getCryptoBossPreloadedSlots === 'function') ? getCryptoBossPreloadedSlots() : [];
+      localStorage.setItem(getDaySessionStorageKey('creator_boss'), JSON.stringify(postsData));
     }
   }
 
@@ -756,9 +766,10 @@ function setDeskView(viewMode) {
   const btnOpenScoresModal = document.getElementById('btnOpenScoresModal');
   const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
   const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
+  const pillBarComparisonBtn = document.getElementById('pillBarComparisonBtn');
 
   // Reset active classes on all nav buttons
-  [pillBarScoresBtn, btnOpenScoresModal, pillBarAnalysisBtn, btnOpenAnalysisModal].forEach(b => {
+  [pillBarScoresBtn, btnOpenScoresModal, pillBarAnalysisBtn, btnOpenAnalysisModal, pillBarComparisonBtn].forEach(b => {
     if (b) b.classList.remove('active');
   });
 
@@ -795,7 +806,11 @@ function setDeskView(viewMode) {
     if (viewAnalysisHub) viewAnalysisHub.classList.remove('hidden');
     if (appFooter) appFooter.classList.add('hidden');
 
-    if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.add('active');
+    if (typeof currentForensicDay !== 'undefined' && currentForensicDay === 'comparison') {
+      if (pillBarComparisonBtn) pillBarComparisonBtn.classList.add('active');
+    } else {
+      if (pillBarAnalysisBtn) pillBarAnalysisBtn.classList.add('active');
+    }
     if (btnOpenAnalysisModal) btnOpenAnalysisModal.classList.add('active');
 
     const pills = document.querySelectorAll('.pill-item');
@@ -1673,6 +1688,7 @@ function setupEvents() {
   const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
   const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
   const pillBarCrossAnalysisBtn = document.getElementById('pillBarCrossAnalysisBtn');
+  const pillBarComparisonBtn = document.getElementById('pillBarComparisonBtn');
   const returnPostsFromAnalysisBtn = document.getElementById('returnPostsFromAnalysisBtn');
   const goToScoresFromAnalysisBtn = document.getElementById('goToScoresFromAnalysisBtn');
 
@@ -1688,6 +1704,16 @@ function setupEvents() {
         window.EdgeFlow.setForensicDay('cross');
       } else if (typeof currentForensicDay !== 'undefined') {
         currentForensicDay = 'cross';
+      }
+      setDeskView('analysis');
+    });
+  }
+  if (pillBarComparisonBtn) {
+    pillBarComparisonBtn.addEventListener('click', () => {
+      if (typeof window.EdgeFlow !== 'undefined' && typeof window.EdgeFlow.setForensicDay === 'function') {
+        window.EdgeFlow.setForensicDay('comparison');
+      } else if (typeof currentForensicDay !== 'undefined') {
+        currentForensicDay = 'comparison';
       }
       setDeskView('analysis');
     });

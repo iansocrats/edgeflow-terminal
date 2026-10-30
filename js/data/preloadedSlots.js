@@ -528,10 +528,54 @@ function getDay5PreloadedSlots() {
     }
   ];
 }
+function getCryptoBossPreloadedSlots() {
+  return [
+    {
+      id: 1,
+      coin: '$ETH',
+      title: 'Post 1: ⚡ $ETHUSDT Dip-Buying Opportunity & Bottoming Zone',
+      status: 'ready',
+      raw: "ETH just handed us what looks like a dip-buying opportunity.\n\nIt climbed through the afternoon and topped out at $2,379.49 around 17:00, then sellers took over. At 21:00 one huge red candle dragged it from about $2,337 down to $2,232.40, the kind of candle that shakes a lot of people out. But buyers stepped in right at that low, the bounce at 22:00 took it back to $2,274, and it's holding at $2,270 with the hourly RSI under 30. That's often how a bottoming zone looks.\n\nI already have my trade on this, so for me it's about the zone and not chasing. The area worth watching is $2,245 to $2,270, and the idea is wrong if it closes under $2,225. The first target is around $2,320 and the second near $2,375, roughly 2 to 1 and 3.5 to 1. It's still a bounce against the short-term trend, so size it with that in mind.\n\nWhere's your line on this dip, $2,232 or a daily close?\n\nJust my read, not advice.\n$ETHUSDT #ByXIMPACT #IMPACTbyTrade",
+      improved: "ETH just handed us what looks like a dip-buying opportunity.\n\nIt climbed through the afternoon and topped out at $2,379.49 around 17:00, then sellers took over. At 21:00 one huge red candle dragged it from about $2,337 down to $2,232.40, the kind of candle that shakes a lot of people out. But buyers stepped in right at that low, the bounce at 22:00 took it back to $2,274, and it's holding at $2,270 with the hourly RSI under 30. That's often how a bottoming zone looks.\n\nI already have my trade on this, so for me it's about the zone and not chasing. The area worth watching is $2,245 to $2,270, and the idea is wrong if it closes under $2,225. The first target is around $2,320 and the second near $2,375, roughly 2 to 1 and 3.5 to 1. It's still a bounce against the short-term trend, so size it with that in mind.\n\nWhere's your line on this dip, $2,232 or a daily close?\n\nJust my read, not advice.\n$ETHUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 9, word_replacement_count: 0, emoji_spacing_count: 4 },
+      suggestions: [
+        { category: "word", description: "Author: Crypto BOSS (UID: 535233761) | 25 Likes, 4 Comments, 3 Shares" },
+        { category: "spacing", description: "Grade 3.7 Readability | Fluid conversational narrative with dynamic invalidation" }
+      ]
+    },
+    {
+      id: 2,
+      coin: '$XAUT',
+      title: "Post 2: ⚡ $XAUT vs $PAXG vs $XAG: Two Gold Tokens & Silver",
+      status: 'ready',
+      raw: "XAUT vs $PAXG vs $XAG: Two Gold Tokens and Silver After a Red Day\n\nToday's move\nGold: about $4,024, down 1.1%\nSilver ($XAG): about $52.4, down 2.9%\n$XAUT and $PAXG: both down about 0.6%, tracking gold\n\nWhat separates them\n$XAUT (Tether Gold): the larger gold token, with a market cap near $3B\n\n$PAXG (Pax Gold): the smaller one, near $1.8B, also backed by one ounce of gold per token\n\n$XAG: silver, which moves more than gold in both directions\n\nThe bigger picture\nGold is about 28% below its January record\nSilver is down about 26% this year and 13% in the last month\n\nThe gold-to-silver ratio sits near 77, so silver has been the weaker of the two\n\nWhat I'm watching: the next US inflation data (PCE), since rate expectations drive both metals. The gold tokens give gold exposure on-chain, while $XAG is the higher-volatility way to trade the same theme.\n\nYour pick: $XAUT, $PAXG or $XAG into the next data release? Tell me why.\n$XAUTUSDT $PARTIUSDT #ByXIMPACT #IMPACTbyTrade",
+      improved: "XAUT vs $PAXG vs $XAG: Two Gold Tokens and Silver After a Red Day\n\nToday's move\nGold: about $4,024, down 1.1%\nSilver ($XAG): about $52.4, down 2.9%\n$XAUT and $PAXG: both down about 0.6%, tracking gold\n\nWhat separates them\n$XAUT (Tether Gold): the larger gold token, with a market cap near $3B\n\n$PAXG (Pax Gold): the smaller one, near $1.8B, also backed by one ounce of gold per token\n\n$XAG: silver, which moves more than gold in both directions\n\nThe bigger picture\nGold is about 28% below its January record\nSilver is down about 26% this year and 13% in the last month\n\nThe gold-to-silver ratio sits near 77, so silver has been the weaker of the two\n\nWhat I'm watching: the next US inflation data (PCE), since rate expectations drive both metals. The gold tokens give gold exposure on-chain, while $XAG is the higher-volatility way to trade the same theme.\n\nYour pick: $XAUT, $PAXG or $XAG into the next data release? Tell me why.\n$XAUTUSDT $PARTIUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 8, word_replacement_count: 0, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Author: Crypto BOSS | 45 Likes, 4 Comments (Creator replied 'thnx bro')" },
+        { category: "spacing", description: "Grade 7.3 Readability | Cross-commodity on-chain relative value framework" }
+      ]
+    },
+    {
+      id: 3,
+      coin: '$VVV',
+      title: 'Post 3: ⚡ $VVV Parabolic Move & Aggressive EMA7 Trailing Stop',
+      status: 'ready',
+      raw: "VVV just went absolutely vertical, and this is exactly where real wealth is built in this market. I am not just watching this parabolic move; I am actively managing it to squeeze every drop of profit out of the trend.\n\nLook at this 1-hour chart. We saw a textbook launch from the 22.852 base, ripping straight through the EMAs to a peak of 25.940. The volume spike here is the engine, confirming this is backed by real, aggressive buyers.\n\nHere is my technical game plan:\n\nThe Power: The MACD is wide open to the upside, and the EMA cluster is fanning out beautifully.\nThe Exhaustion Risk: Yes, the RSI6 is hot at 76.16, and we are piercing the upper Bollinger Band. The move is extended.\n\nMy Execution Strategy:\nI do not try to guess the top. Guessing tops is how you lose money. I ride the momentum until the market tells me it's over.\n\nMy anchor is the EMA7 at 24.650. I am aggressively trailing my stop loss just below that level. As long as VVV holds above this dynamic support, I let the profit run toward new highs. If the price breaks below it, I secure my gains and step away. No emotions, just pure price action.\n\nFor those who missed the initial blast: do not FOMO chase this massive green candle. Wait for a micro-pullback or a tight flag to form. Let the price come to you.\n\nThe market is offering a massive opportunity. I am staying disciplined, riding the trend, and protecting my capital.\n\nAre you riding this parabolic move, or are you waiting for the dust to settle?\n$VVVUSDT $ETHUSDT #ByXIMPACT #IMPACTbyTrade",
+      improved: "VVV just went absolutely vertical, and this is exactly where real wealth is built in this market. I am not just watching this parabolic move; I am actively managing it to squeeze every drop of profit out of the trend.\n\nLook at this 1-hour chart. We saw a textbook launch from the 22.852 base, ripping straight through the EMAs to a peak of 25.940. The volume spike here is the engine, confirming this is backed by real, aggressive buyers.\n\nHere is my technical game plan:\n\nThe Power: The MACD is wide open to the upside, and the EMA cluster is fanning out beautifully.\nThe Exhaustion Risk: Yes, the RSI6 is hot at 76.16, and we are piercing the upper Bollinger Band. The move is extended.\n\nMy Execution Strategy:\nI do not try to guess the top. Guessing tops is how you lose money. I ride the momentum until the market tells me it's over.\n\nMy anchor is the EMA7 at 24.650. I am aggressively trailing my stop loss just below that level. As long as VVV holds above this dynamic support, I let the profit run toward new highs. If the price breaks below it, I secure my gains and step away. No emotions, just pure price action.\n\nFor those who missed the initial blast: do not FOMO chase this massive green candle. Wait for a micro-pullback or a tight flag to form. Let the price come to you.\n\nThe market is offering a massive opportunity. I am staying disciplined, riding the trend, and protecting my capital.\n\nAre you riding this parabolic move, or are you waiting for the dust to settle?\n$VVVUSDT $ETHUSDT #ByXIMPACT #IMPACTbyTrade",
+      rules_summary: { punctuation_count: 10, word_replacement_count: 0, emoji_spacing_count: 5 },
+      suggestions: [
+        { category: "word", description: "Author: Crypto BOSS | 41 Likes, 1 Comment, 1 Share" },
+        { category: "spacing", description: "Grade 5.2 Readability | Dynamic trailing stop & retail FOMO protection" }
+      ]
+    }
+  ];
+}
 // Render 10 Post Carousel Pills
 
 // Namespace Export
 window.EdgeFlow.SlotsData = {
+  getCryptoBossPreloadedSlots,
   getDay5PreloadedSlots,
   getDay4PreloadedSlots,
   createEmptySlots

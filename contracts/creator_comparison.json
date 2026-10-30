@@ -1,0 +1,140 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-10-30T08:15:00Z",
+  "creator_a": {
+    "name": "My Desk (EdgeFlow / Day 4 Archive)",
+    "post_count": 13,
+    "avg_word_count": 138,
+    "avg_flesch_grade": 11.2,
+    "structure_style": "Algorithmic 4-bullet liquidity framework with entry/invalidation/targets",
+    "voice": "Technical & macro institutional analysis",
+    "official_score": 7.0
+  },
+  "creator_b": {
+    "name": "Crypto BOSS (Top Bybit Creator, UID: 535233761)",
+    "post_count": 3,
+    "avg_word_count": 211,
+    "avg_flesch_grade": 5.4,
+    "structure_style": "Narrative timeline with dynamic EMA trailing stop and FOMO warnings",
+    "voice": "Conversational trader with high emotional resonance & personal skin-in-the-game",
+    "total_creator_likes": 120520,
+    "sample_avg_likes": 37.0
+  },
+  "cross_jaccard_matrix": {
+    "rows_labels": [
+      "$SOL",
+      "$TIA",
+      "$NEAR",
+      "$FET",
+      "$INJ",
+      "$AAVE",
+      "$APT",
+      "$AVAX",
+      "$DOGE",
+      "$RENDER",
+      "$MSFT",
+      "$ETH",
+      "$BTC"
+    ],
+    "cols_labels": [
+      "Other P1 (ETHUSDT)",
+      "Other P2 (XAUTUSDT)",
+      "Other P3 (VVVUSDT)"
+    ],
+    "matrix": [
+      [
+        6.3,
+        5.6,
+        8.0
+      ],
+      [
+        5.9,
+        6.2,
+        6.8
+      ],
+      [
+        7.7,
+        6.5,
+        8.8
+      ],
+      [
+        5.6,
+        5.4,
+        6.6
+      ],
+      [
+        7.8,
+        8.2,
+        7.1
+      ],
+      [
+        6.7,
+        3.9,
+        8.4
+      ],
+      [
+        7.9,
+        6.8,
+        8.1
+      ],
+      [
+        6.2,
+        6.0,
+        7.9
+      ],
+      [
+        7.2,
+        3.9,
+        8.4
+      ],
+      [
+        7.1,
+        4.9,
+        7.4
+      ],
+      [
+        8.3,
+        5.1,
+        8.0
+      ],
+      [
+        8.4,
+        5.7,
+        8.5
+      ],
+      [
+        8.1,
+        6.5,
+        7.4
+      ]
+    ],
+    "avg_cross_similarity": 6.9,
+    "max_cross_similarity": 8.8
+  },
+  "strategic_lessons": [
+    {
+      "dimension": "1. Structural Script",
+      "my_style": "Identical 4 bullets across all 13 posts (RoBERTa Cosine > 0.88)",
+      "other_style": "Polymorphic freeform narrative (P1 timeline, P2 thematic contrast, P3 parabolic trailing stop)",
+      "takeaway": "Adopt polymorphic layouts to eliminate sentence embedding cloning."
+    },
+    {
+      "dimension": "2. Language Accessibility",
+      "my_style": "Grade 11.2 ('disciplined 3x gearing', 'asymmetric payoff')",
+      "other_style": "Grade 5.4 ('the idea is wrong if it closes under X', 'size it with that in mind')",
+      "takeaway": "Shift to conversational retail trader English to increase readability and dwell time."
+    },
+    {
+      "dimension": "3. Platform Campaign Tags",
+      "my_style": "Only used coin cashtags (#BTCUSDT)",
+      "other_style": "Always attaches #ByXIMPACT and #IMPACTbyTrade",
+      "takeaway": "Mandatory inclusion of #ByXIMPACT and #IMPACTbyTrade for platform campaign tracking."
+    },
+    {
+      "dimension": "4. Community Interaction Loop",
+      "my_style": "Zero post-publication replies to comments",
+      "other_style": "Personally replies to comments ('thnx bro'), driving comment count",
+      "takeaway": "Active comment interaction unlocks Bybit's 3x comment weighting multiplier."
+    }
+  ]
+}

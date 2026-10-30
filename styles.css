@@ -3332,6 +3332,15 @@ body {
   background: rgba(168, 85, 247, 0.15);
 }
 
+.pill-action-btn.comp {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+.pill-action-btn.comp:hover {
+  background: rgba(245, 158, 11, 0.15);
+}
+
 .pill-action-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-1px);
@@ -3743,6 +3752,30 @@ body {
 .forensic-tab-btn.cross.active .epoch-subtag {
   background: rgba(168, 85, 247, 0.25);
   color: #f3e8ff;
+}
+
+.forensic-tab-btn.comp.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.35));
+  border-color: #fbbf24;
+  color: #fef3c7;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+.forensic-tab-btn.comp.active .epoch-subtag {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fffbeb;
+}
+
+.forensic-tab-btn.creator.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.35));
+  border-color: #34d399;
+  color: #ecfdf5;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+}
+
+.forensic-tab-btn.creator.active .epoch-subtag {
+  background: rgba(16, 185, 129, 0.25);
+  color: #d1fae5;
 }
 
 /* Cross Analysis & Post-Mortem Dashboard Styles */

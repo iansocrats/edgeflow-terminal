@@ -26,6 +26,7 @@
             <span class="session-label">DESK:</span>
             <select id="daySessionSelect" class="session-dropdown" title="Switch active day or view archived posts">
               <option value="day5" selected>📅 Day 5: Thu, Oct 30 (Active Desk)</option>
+              <option value="creator_boss">👤 Other Creator: Crypto BOSS (3 Setups)</option>
               <option value="day4">📁 Day 4: Wed, Oct 29 (7.0p Archive)</option>
               <option value="day3">📁 Day 3: Oct 28 (10.0p Archive)</option>
               <option value="day2">📁 Day 2: Oct 27 (11.0p Archive)</option>
@@ -67,6 +68,10 @@
         <button id="pillBarCrossAnalysisBtn" class="pill-action-btn cross-analysis" title="Open Days 1–4 Cross-Analysis & Post-Mortem">
           <span class="icon">📈</span>
           <span class="label">Cross-Analysis</span>
+        </button>
+        <button id="pillBarComparisonBtn" class="pill-action-btn comp" title="Open Matrix Comparison: Mine vs Other Creator">
+          <span class="icon">⚖️</span>
+          <span class="label">Compare Matrices</span>
         </button>
       </div>
     </nav>
@@ -853,12 +858,22 @@
           <p class="byx-rules-desc">Forensic sentence-by-sentence analysis measuring textual similarity, structural templates, originality, depth, risk disclosure, and the Bybit trade widget conversion multiplier.</p>
         </div>
 
-        <!-- Interactive Epoch Tabs (Cross-Analysis, Day 5 Active Desk, Day 4 Archive, Day 3 Archive) -->
+        <!-- Interactive Epoch Tabs (Cross-Analysis, Matrix Comparison, Other Creator, Day 5 Active Desk, Day 4 Archive, Day 3 Archive) -->
         <div class="forensic-epoch-tabs" role="tablist">
           <button class="forensic-tab-btn cross active" id="btnForensicCross" data-fday="cross" role="tab" aria-selected="true" title="Days 1–4 Attribution Cross-Analysis & Post-Mortem">
             <span class="epoch-icon">📈</span>
             <span class="epoch-title">Cross-Analysis</span>
             <span class="epoch-subtag">Post-Mortem</span>
+          </button>
+          <button class="forensic-tab-btn comp" id="btnForensicComparison" data-fday="comparison" role="tab" aria-selected="false" title="Matrix Comparison: Mine vs Other Creator">
+            <span class="epoch-icon">⚖️</span>
+            <span class="epoch-title">Matrix Comparison</span>
+            <span class="epoch-subtag">Mine vs Other</span>
+          </button>
+          <button class="forensic-tab-btn creator" id="btnForensicCreatorBoss" data-fday="creator_boss" role="tab" aria-selected="false" title="Other Creator Benchmark: Crypto BOSS Trade Analysis">
+            <span class="epoch-icon">👤</span>
+            <span class="epoch-title">Other Creator</span>
+            <span class="epoch-subtag">Crypto BOSS</span>
           </button>
           <button class="forensic-tab-btn" id="btnForensicDay5" data-fday="day5" role="tab" aria-selected="false" title="Day 5: Today (Thu, Oct 30) — 8 Setups Active Desk">
             <span class="epoch-icon">●</span>

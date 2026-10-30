@@ -35,6 +35,7 @@ function getSessionScore(sessionId) {
   if (sessionId === 'day2') return 11.0;
   if (sessionId === 'day3') return 10.0;
   if (sessionId === 'day4') return 7.0;
+  if (sessionId === 'creator_boss') return 97.7;
   return 0.0;
 }
 
@@ -519,6 +520,34 @@ const DAILY_AUDIT_DATA = {
       }
     ],
     tacticalFix: "Publish 8 setups spaced 2.5 hours apart. Track live trade conversions using Bybit perpetual widgets to achieve the 18.8 pts/day recovery trajectory."
+  },
+  creator_boss: {
+    title: "👤 Other Creator Benchmark: Crypto BOSS (UID: 535233761)",
+    score: "120.5K Total Likes (37.0 Avg Likes)",
+    avgPost: "Grade 5.4 Readability",
+    quota: "3 Setups Analyzed",
+    summary: "External Bybit Creator benchmark audit analyzing top creator 'Crypto BOSS'. Highlights fluid narrative trade setups, dynamic trailing stops on EMA7, precious metal relative value analysis, and strict adherence to #ByXIMPACT and #IMPACTbyTrade campaign tags.",
+    whatWentWrong: [
+      {
+        title: "1. Language Accessibility Contrast",
+        detail: "Crypto BOSS writes at Grade 3.7–7.3 conversational English, while our Day 4 posts used Grade 11.2 academic language ('disciplined 3x gearing')."
+      },
+      {
+        title: "2. Rigid 4-Bullet Schema vs Fluid Story",
+        detail: "Our Day 4 posts forced 13 posts into the identical 4-bullet structure. Crypto BOSS alternates between chronological timelines, multi-asset comparative tables, and parabolic momentum management."
+      }
+    ],
+    whatWentRight: [
+      {
+        title: "1. High Comment Engagement (3x Weighting)",
+        detail: "Creator actively answers reader questions in the comments ('thnx bro'), capturing Bybit's 3x comment interaction algorithm bonus."
+      },
+      {
+        title: "2. Personal Skin-In-The-Game",
+        detail: "Phrases like 'I already have my trade on this' and 'my anchor is EMA7' build immediate trust with retail traders."
+      }
+    ],
+    tacticalFix: "Incorporate conversational risk phrasing and official campaign tags (#ByXIMPACT #IMPACTbyTrade) into all our posts."
   }
 };
 
@@ -611,6 +640,8 @@ function switchDaySession(newSessionId, forceFresh = false) {
     }
   } else if (currentSessionId === 'day2') {
     postsData = serverPosts && serverPosts.length === 10 ? JSON.parse(JSON.stringify(serverPosts)) : createEmptySlots();
+  } else if (currentSessionId === 'creator_boss') {
+    postsData = typeof getCryptoBossPreloadedSlots === 'function' ? getCryptoBossPreloadedSlots() : createEmptySlots();
   } else if (currentSessionId === 'day4') {
     postsData = typeof getDay4PreloadedSlots === 'function' ? getDay4PreloadedSlots() : createEmptySlots();
   } else if (currentSessionId === 'day5') {
@@ -642,6 +673,7 @@ function switchDaySession(newSessionId, forceFresh = false) {
   updateWeeklyProgress();
   renderDynamicDayAudit();
   const dayLabels = {
+    creator_boss: '👤 Other Creator: Crypto BOSS (Benchmark Archive)',
     day5: 'Day 5: Thu, Oct 30 (Active Recovery Desk)',
     day4: 'Day 4 Archive: Wed, Oct 29 (7.0 pts • 13 Posts)',
     day3: 'Day 3 Archive: Oct 28 (10.0 pts)',
