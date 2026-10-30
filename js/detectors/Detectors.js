@@ -117,6 +117,9 @@ function runAllDetectors(text) {
   runByxDimensionsScore(text);
   renderDraftAiAuditStudio(text);
   renderDraftNextActions(text);
+  if (typeof renderPolishedStructureAudit === 'function') {
+    renderPolishedStructureAudit(text);
+  }
 }
 
 // --------------------------------------------------------------------------------

@@ -209,6 +209,41 @@ async function runE2ETest() {
     await evalBrowser('switchDaySession("day5")');
     await new Promise(r => setTimeout(r, 300));
 
+    // 4c. Test Draft & Rules Tab + Punctuation, Depth, Structure & 5-Dimension Checks
+    console.log('\n--- TESTING DRAFT & RULES TAB, PUNCTUATION ENFORCER & POLISHED STRUCTURE AUDIT ---');
+    const polishedAuditHtml = await evalBrowser('document.getElementById("polishedStructureAuditBox") ? document.getElementById("polishedStructureAuditBox").innerHTML : ""');
+    const byxScoreText = await evalBrowser('document.getElementById("byxTotalScore") ? document.getElementById("byxTotalScore").textContent.trim() : ""');
+    const byxCardInWorkspace = await evalBrowser('document.getElementById("postWorkspaceWrapper").contains(document.querySelector(".byx-rules-card"))');
+    console.log(`✅ PASS: Polished Structure Audit Box rendered (${polishedAuditHtml.length} chars) | ByX Score: ${byxScoreText}/100 | In Post Workspace: ${byxCardInWorkspace}`);
+    if (polishedAuditHtml.length < 200 || byxScoreText !== '100' || !byxCardInWorkspace) {
+      throw new Error(`Expected Polished Structure Audit Box and 100/100 ByX card in Post Workspace, got len=${polishedAuditHtml.length}, score=${byxScoreText}, inWorkspace=${byxCardInWorkspace}`);
+    }
+
+    // Click Draft Tab (#tabDraftBtn) and verify #draftCleanContent is populated (NOT blank!)
+    await evalBrowser('document.getElementById("tabDraftBtn").click()');
+    await new Promise(r => setTimeout(r, 250));
+    const draftCleanVal = await evalBrowser('document.getElementById("draftCleanContent").value');
+    const draftDiffHtml = await evalBrowser('document.getElementById("draftSuggestionsDisplay").innerHTML');
+    const punctCount = await evalBrowser('parseInt(document.getElementById("punctSuggCount").textContent)');
+    const wordCount = await evalBrowser('parseInt(document.getElementById("wordSuggCount").textContent)');
+    const spacingCount = await evalBrowser('parseInt(document.getElementById("spacingSuggCount").textContent)');
+    console.log(`✅ PASS: Draft Clean Textarea populated (${draftCleanVal.length} chars) | Highlighted Diff (${draftDiffHtml.length} chars)`);
+    console.log(`✅ PASS: Rule Counts -> Punctuation=${punctCount}, Figures/Indicators=${wordCount}, Structure/Risk=${spacingCount}`);
+    if (draftCleanVal.length < 500 || draftDiffHtml.length < 500 || punctCount <= 0 || wordCount <= 0 || spacingCount <= 0) {
+      throw new Error(`Draft tab failed to populate properly: cleanLen=${draftCleanVal.length}, diffLen=${draftDiffHtml.length}, counts=${punctCount}/${wordCount}/${spacingCount}`);
+    }
+
+    // Test clicking #btnApplyPunctDraft and #applyDraftBtn
+    await evalBrowser('document.getElementById("btnApplyPunctDraft").click()');
+    await new Promise(r => setTimeout(r, 200));
+    await evalBrowser('document.getElementById("applyDraftBtn").click()');
+    await new Promise(r => setTimeout(r, 200));
+    const activeTabAfterApply = await evalBrowser('document.getElementById("panePolished").classList.contains("active")');
+    console.log(`✅ PASS: Clicked #btnApplyPunctDraft & #applyDraftBtn -> Switched to Polished Post: ${activeTabAfterApply}`);
+    if (!activeTabAfterApply) {
+      throw new Error('Expected #applyDraftBtn to switch back to #panePolished');
+    }
+
     // Test Copy Polished Post button trigger
     const copyPolishedBtnExists = await evalBrowser('document.getElementById("copyPolishedBtn") !== null');
     console.log(`✅ PASS: Copy Polished Post button exists: ${copyPolishedBtnExists}`);

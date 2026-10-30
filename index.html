@@ -143,6 +143,9 @@
                 <button id="saveBaseBtn" class="btn-save-base" title="Save current text as new base content to allow further stacked changes">
                   <span>💾 Save Base</span>
                 </button>
+                <button id="btnApplyPunctPolished" class="btn-trade-inject" title="Apply Bybit Leaderboard punctuation, live number formatting, and polymorphic structure rules">
+                  <span>✍️ Punctuation &amp; Structure</span>
+                </button>
                 <button id="btnInjectTradeSetup" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
                   <span>🟢 + Trade Setup</span>
                 </button>
@@ -162,6 +165,11 @@
             <!-- Version 2: Subtle Underlined View (Reduced font, minimal markup, subtle sub-labels) -->
             <div id="annotatedDisplay" class="annotated-box hidden">
               <!-- Populated when switching to Underlined Issues view -->
+            </div>
+
+            <!-- Live Structure, Depth, Uniqueness & 5-Dimension Verification Panel on Polished Post -->
+            <div id="polishedStructureAuditBox" class="math-telemetry-box" style="margin-top: 12px; border: 1px solid rgba(16, 185, 129, 0.3); background: rgba(15, 23, 42, 0.85); max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
+              <!-- Dynamically populated by renderPolishedStructureAudit(text) -->
             </div>
           </div>
         </div>
@@ -399,6 +407,9 @@
             </div>
           </div>
           <div class="action-btn-group">
+            <button id="btnApplyPunctDraft" class="btn-trade-inject" title="Apply Bybit Leaderboard punctuation, live number formatting, and polymorphic structure rules to Draft">
+              <span>✍️ Apply Punctuation &amp; Rules</span>
+            </button>
             <button id="btnInjectTradeSetupDraft" class="btn-trade-inject" title="Insert active trade setup with entry, target % and invalidation">
               <span>🟢 + Setup</span>
             </button>
@@ -483,6 +494,180 @@
         </div>
       </div>
     </section>
+
+      <!-- Official ByX 5 Content Dimensions & Benchmark Banner (Always Visible in Post Workspace) -->
+      <div class="rules-card byx-rules-card" style="margin-top: 16px; max-width: 100%; box-sizing: border-box; overflow-x: hidden;">
+        <div class="byx-header-wrap">
+          <div class="rules-header">
+            <span class="rules-title">🏆 Official Bybit ByX Content Dimensions</span>
+            <span class="rules-badge byx-valid-badge">BENCHMARK: SCORE ≥ 40 QUALIFIES FOR REWARDS</span>
+          </div>
+          <p class="byx-rules-desc">Bybit ByX algorithm evaluates every post across 5 content quality dimensions. Posts with <strong>Content Quality Score &ge; 40</strong> are officially certified as Valid Posts and unlock creator rewards.</p>
+        </div>
+
+        <!-- 5 ByX Content Dimensions Grid -->
+        <div class="byx-dimensions-grid">
+          <div class="dimension-card" id="dimCardOriginality">
+            <div class="dim-head">
+              <span class="dim-icon">🧠</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">1. Originality</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimOriginality">--/20</span>
+            </div>
+            <p class="dim-desc">Strictly NO AI-templated phrasing. Authentic human trader voice with zero copy-pasted consensus clichés.</p>
+          </div>
+
+          <div class="dimension-card" id="dimCardDepth">
+            <div class="dim-head">
+              <span class="dim-icon">📊</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">2. Depth & Structure</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimDepth">--/20</span>
+            </div>
+            <p class="dim-desc">Logical multi-point narrative anchored by concrete verified live Bybit data (prices, 24h range, turnover, OI, MAs/RSI).</p>
+          </div>
+
+          <div class="dimension-card" id="dimCardRelevance">
+            <div class="dim-head">
+              <span class="dim-icon">🔥</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">3. Relevance</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimRelevance">--/20</span>
+            </div>
+            <p class="dim-desc">Timely setup on active market hotspots, clear Bybit perpetual cashtags ($XRPUSDT), and #ByXIMPACT #IMPACTbyTrade tags.</p>
+          </div>
+
+          <div class="dimension-card" id="dimCardCredibility">
+            <div class="dim-head">
+              <span class="dim-icon">🛡️</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">4. Credibility & Risk</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimCredibility">--/20</span>
+            </div>
+            <p class="dim-desc">Clear invalidation price triggers, explicit asset-specific risk disclosures, and disciplined leverage sizing.</p>
+          </div>
+
+          <div class="dimension-card" id="dimCardPresentation">
+            <div class="dim-head">
+              <span class="dim-icon">✨</span>
+              <div class="dim-title-wrap">
+                <span class="dim-name">5. Presentation</span>
+                <span class="dim-weight">20 Pts Max</span>
+              </div>
+              <span class="dim-score-badge" id="byxDimPresentation">--/20</span>
+            </div>
+            <p class="dim-desc">Scannable mobile line breaks, clean punctuation pauses, polymorphic bullet/numbered/table schemas, and Grade 4–6 readability.</p>
+          </div>
+        </div>
+
+        <!-- Live ByX Content Quality Score Bar -->
+        <div class="byx-total-score-card">
+          <div class="byx-score-left">
+            <span class="byx-score-label">BYX QUALITY SCORE</span>
+            <div class="byx-score-num-wrap">
+              <span class="byx-score-num" id="byxTotalScore">--</span>
+              <span class="byx-score-max">/ 100</span>
+            </div>
+          </div>
+          <div class="byx-score-mid">
+            <div class="byx-score-bar-bg">
+              <div class="byx-score-bar-fill" id="byxScoreBar" style="width: 0%"></div>
+              <div class="byx-threshold-marker" title="Minimum Valid Post Threshold (40 Pts)">
+                <span>40 PT REWARD THRESHOLD</span>
+              </div>
+            </div>
+            <span class="byx-status-desc" id="byxStatusDesc">Calculating dimensions on active post...</span>
+          </div>
+          <div class="byx-score-right">
+            <span class="byx-status-pill pending" id="byxStatusPill">AUDITING</span>
+          </div>
+        </div>
+
+        <!-- ByX Measurement Technology Breakdown Card -->
+        <div class="byx-tech-breakdown-card">
+          <div class="tech-breakdown-header">
+            <span class="tech-icon">🔬</span>
+            <span class="tech-title">Real Evaluation Technologies Behind the 5 Dimensions</span>
+          </div>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">1. Originality</span>
+                <span class="tech-engine-badge">MinHash 3-Gram LSH & Shannon Entropy</span>
+              </div>
+              <p class="tech-dim-desc">Measures vocabulary richness ($H \ge 3.8\text{ bits/token}$) and cross-references against 25+ common crowd consensus clichés.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">2. Depth & Structure</span>
+                <span class="tech-engine-badge">Financial Named Entity Recognition (NER)</span>
+              </div>
+              <p class="tech-dim-desc">Extracts concrete quantitative price anchors ($1.2658, $660M vol, $4.26B RLUSD) and audits multi-paragraph structural narrative flow.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">3. Relevance</span>
+                <span class="tech-engine-badge">Market Catalyst Vector Lexicon</span>
+              </div>
+              <p class="tech-dim-desc">Detects live Bybit perpetual cashtags ($XRPUSDT), 24h turnover/OI, funding rates, and timely execution timeframe catalysts.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">4. Credibility & Risk</span>
+                <span class="tech-engine-badge">Invalidation Boundary Classifier</span>
+              </div>
+              <p class="tech-dim-desc">Verifies presence of defined invalidation price levels, explicit Risk Disclosure sections, and disciplined leverage caps.</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-head">
+                <span class="tech-dim-name">5. Presentation</span>
+                <span class="tech-engine-badge">Flesch-Kincaid Readability & Punctuation</span>
+              </div>
+              <p class="tech-dim-desc">Formula: $0.39(W/S) + 11.8(Y/W) - 15.59$. Confirms Grade 4–6 mobile scannability, proper punctuation, and polymorphic spacing.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ⚡ Rust (WASM) vs JavaScript Performance Benchmark Engine -->
+        <div class="rules-card benchmark-card" id="rustBenchmarkCard">
+          <div class="byx-header-wrap">
+            <div class="rules-header">
+              <span class="rules-title">⚡ Rust (WASM) vs JavaScript Live Benchmark Engine</span>
+              <span class="rules-badge byx-valid-badge">NATIVE SPEEDUP</span>
+            </div>
+            <p class="byx-rules-desc">Compare execution speed, memory footprint, and garbage collection pauses between the legacy JavaScript JIT engine and our native Rust WebAssembly (WASM) pipeline across 100 deep NLP audit loops.</p>
+          </div>
+          <div class="benchmark-ctrl-row">
+            <button id="runBenchmarkBtn" class="btn-run-benchmark">
+              <span>🚀 Run Live Benchmark (100 Iterations)</span>
+            </button>
+            <span class="benchmark-note">Zero-GC • Sub-millisecond Per-Post Processing</span>
+          </div>
+          <div id="benchmarkResultContainer" class="benchmark-result-container">
+            <div class="benchmark-placeholder-text">Click "Run Live Benchmark" above to benchmark your browser's execution engine.</div>
+          </div>
+        </div>
+
+        <!-- 🔒 3 Foundational Creator Voice Safeguards (Platform Drafting Rules) -->
+        <div class="rules-card safeguards-rules-card" style="margin-top: 14px;">
+          <div class="safeguards-box">
+            <span class="safeguards-title">🔒 3 FOUNDATIONAL CREATOR VOICE SAFEGUARDS (DRAFTING &amp; PUNCTUATION RULES)</span>
+            <div class="safeguards-row">
+              <div class="sg-pill"><span class="sg-icon">1️⃣</span> <strong>Punctuation &amp; Pauses:</strong> Commas, periods, colons, em-dashes, and question hooks.</div>
+              <div class="sg-pill"><span class="sg-icon">2️⃣</span> <strong>Live Bybit Data &amp; Fixes:</strong> Verified live V5 prices, 24h range, turnover, OI, funding &amp; MAs.</div>
+              <div class="sg-pill"><span class="sg-icon">3️⃣</span> <strong>Polymorphic Structure:</strong> 8 dataset schemas, explicit Risk Disclosure &amp; #ByXIMPACT tags.</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div><!-- End postWorkspaceWrapper -->
 
@@ -660,180 +845,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Official ByX 5 Content Dimensions & Benchmark Banner -->
-      <div class="rules-card byx-rules-card">
-        <div class="byx-header-wrap">
-          <div class="rules-header">
-            <span class="rules-title">🏆 Official Bybit ByX Content Dimensions</span>
-            <span class="rules-badge byx-valid-badge">BENCHMARK: SCORE ≥ 40 QUALIFIES FOR REWARDS</span>
-          </div>
-          <p class="byx-rules-desc">Bybit ByX algorithm evaluates every post across 5 content quality dimensions. Posts with <strong>Content Quality Score &ge; 40</strong> are officially certified as Valid Posts and unlock creator rewards.</p>
-        </div>
-
-        <!-- 5 ByX Content Dimensions Grid -->
-        <div class="byx-dimensions-grid">
-          <div class="dimension-card" id="dimCardOriginality">
-            <div class="dim-head">
-              <span class="dim-icon">🧠</span>
-              <div class="dim-title-wrap">
-                <span class="dim-name">1. Originality</span>
-                <span class="dim-weight">20 Pts Max</span>
-              </div>
-              <span class="dim-score-badge" id="byxDimOriginality">--/20</span>
-            </div>
-            <p class="dim-desc">Strictly NO AI-templated phrasing. Authentic human trader voice with zero copy-pasted consensus clichés.</p>
-          </div>
-
-          <div class="dimension-card" id="dimCardDepth">
-            <div class="dim-head">
-              <span class="dim-icon">📊</span>
-              <div class="dim-title-wrap">
-                <span class="dim-name">2. Depth & Structure</span>
-                <span class="dim-weight">20 Pts Max</span>
-              </div>
-              <span class="dim-score-badge" id="byxDimDepth">--/20</span>
-            </div>
-            <p class="dim-desc">Logical multi-point narrative anchored by concrete verified data ($79,659, $1B outflows, $76,000 floor).</p>
-          </div>
-
-          <div class="dimension-card" id="dimCardRelevance">
-            <div class="dim-head">
-              <span class="dim-icon">🔥</span>
-              <div class="dim-title-wrap">
-                <span class="dim-name">3. Relevance</span>
-                <span class="dim-weight">20 Pts Max</span>
-              </div>
-              <span class="dim-score-badge" id="byxDimRelevance">--/20</span>
-            </div>
-            <p class="dim-desc">Timely setup on active market hotspots, clear cashtags ($BTC), and actionable market narrative.</p>
-          </div>
-
-          <div class="dimension-card" id="dimCardCredibility">
-            <div class="dim-head">
-              <span class="dim-icon">🛡️</span>
-              <div class="dim-title-wrap">
-                <span class="dim-name">4. Credibility & Risk</span>
-                <span class="dim-weight">20 Pts Max</span>
-              </div>
-              <span class="dim-score-badge" id="byxDimCredibility">--/20</span>
-            </div>
-            <p class="dim-desc">Clear invalidation price triggers, disciplined risk management, and asymmetric risk-reward framing.</p>
-          </div>
-
-          <div class="dimension-card" id="dimCardPresentation">
-            <div class="dim-head">
-              <span class="dim-icon">✨</span>
-              <div class="dim-title-wrap">
-                <span class="dim-name">5. Presentation</span>
-                <span class="dim-weight">20 Pts Max</span>
-              </div>
-              <span class="dim-score-badge" id="byxDimPresentation">--/20</span>
-            </div>
-            <p class="dim-desc">Scannable mobile line breaks, clean punctuation pauses, bullet points, and Flesch-Kincaid Grade 7 readability.</p>
-          </div>
-        </div>
-
-        <!-- Live ByX Content Quality Score Bar -->
-        <div class="byx-total-score-card">
-          <div class="byx-score-left">
-            <span class="byx-score-label">BYX QUALITY SCORE</span>
-            <div class="byx-score-num-wrap">
-              <span class="byx-score-num" id="byxTotalScore">--</span>
-              <span class="byx-score-max">/ 100</span>
-            </div>
-          </div>
-          <div class="byx-score-mid">
-            <div class="byx-score-bar-bg">
-              <div class="byx-score-bar-fill" id="byxScoreBar" style="width: 0%"></div>
-              <div class="byx-threshold-marker" title="Minimum Valid Post Threshold (40 Pts)">
-                <span>40 PT REWARD THRESHOLD</span>
-              </div>
-            </div>
-            <span class="byx-status-desc" id="byxStatusDesc">Calculating dimensions on active post...</span>
-          </div>
-          <div class="byx-score-right">
-            <span class="byx-status-pill pending" id="byxStatusPill">AUDITING</span>
-          </div>
-        </div>
-
-        <!-- ByX Measurement Technology Breakdown Card -->
-        <div class="byx-tech-breakdown-card">
-          <div class="tech-breakdown-header">
-            <span class="tech-icon">🔬</span>
-            <span class="tech-title">Real Evaluation Technologies Behind the 5 Dimensions</span>
-          </div>
-          <div class="tech-grid">
-            <div class="tech-item">
-              <div class="tech-item-head">
-                <span class="tech-dim-name">1. Originality</span>
-                <span class="tech-engine-badge">MinHash 3-Gram LSH & Shannon Entropy</span>
-              </div>
-              <p class="tech-dim-desc">Measures vocabulary richness ($H \ge 3.8\text{ bits/token}$) and cross-references against 25+ common crowd consensus clichés.</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-head">
-                <span class="tech-dim-name">2. Depth & Structure</span>
-                <span class="tech-engine-badge">Financial Named Entity Recognition (NER)</span>
-              </div>
-              <p class="tech-dim-desc">Extracts concrete quantitative price anchors ($79,659, $1B, 50 index) and audits multi-paragraph structural narrative flow.</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-head">
-                <span class="tech-dim-name">3. Relevance</span>
-                <span class="tech-engine-badge">Market Catalyst Vector Lexicon</span>
-              </div>
-              <p class="tech-dim-desc">Detects cashtags ($BTC), ETF inflow/outflow metrics, spot volume, and timely execution timeframe catalysts.</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-head">
-                <span class="tech-dim-name">4. Credibility & Risk</span>
-                <span class="tech-engine-badge">Invalidation Boundary Classifier</span>
-              </div>
-              <p class="tech-dim-desc">Verifies presence of defined invalidation price levels ($76K / $84K), risk management disclosures, and disciplined RR framing.</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-head">
-                <span class="tech-dim-name">5. Presentation</span>
-                <span class="tech-engine-badge">Flesch-Kincaid Grade 7 Readability</span>
-              </div>
-              <p class="tech-dim-desc">Formula: $0.39(W/S) + 11.8(Y/W) - 15.59$. Confirms Grade 6-8 mobile scannability, proper punctuation, and bullet spacing.</p>
-            </div>
-          </div>
-        </div>
-
-                <!-- ⚡ Rust (WASM) vs JavaScript Performance Benchmark Engine -->
-        <div class="rules-card benchmark-card" id="rustBenchmarkCard">
-          <div class="byx-header-wrap">
-            <div class="rules-header">
-              <span class="rules-title">⚡ Rust (WASM) vs JavaScript Live Benchmark Engine</span>
-              <span class="rules-badge byx-valid-badge">NATIVE SPEEDUP</span>
-            </div>
-            <p class="byx-rules-desc">Compare execution speed, memory footprint, and garbage collection pauses between the legacy JavaScript JIT engine and our native Rust WebAssembly (WASM) pipeline across 100 deep NLP audit loops.</p>
-          </div>
-          <div class="benchmark-ctrl-row">
-            <button id="runBenchmarkBtn" class="btn-run-benchmark">
-              <span>🚀 Run Live Benchmark (100 Iterations)</span>
-            </button>
-            <span class="benchmark-note">Zero-GC • Sub-millisecond Per-Post Processing</span>
-          </div>
-          <div id="benchmarkResultContainer" class="benchmark-result-container">
-            <div class="benchmark-placeholder-text">Click "Run Live Benchmark" above to benchmark your browser's execution engine.</div>
-          </div>
-        </div>
-
-        <!-- 🔒 3 Foundational Creator Voice Safeguards (Platform Drafting Rules) -->
-        <div class="rules-card safeguards-rules-card" style="margin-top: 14px;">
-          <div class="safeguards-box">
-            <span class="safeguards-title">🔒 3 FOUNDATIONAL CREATOR VOICE SAFEGUARDS (ZERO SENTENCE REWRITES)</span>
-            <div class="safeguards-row">
-              <div class="sg-pill"><span class="sg-icon">1️⃣</span> <strong>Punctuation Only:</strong> Commas, periods, question marks. Zero sentence changes.</div>
-              <div class="sg-pill"><span class="sg-icon">2️⃣</span> <strong>Word/Number Fixes:</strong> e.g. 79659 ➔ $79,659. Zero phrase re-structuring.</div>
-              <div class="sg-pill"><span class="sg-icon">3️⃣</span> <strong>Spacing & Emojis:</strong> Spoken thought line breaks & mobile bullets.</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Standalone View 2: Deep Forensic Trade & Writing Analysis Hub -->
@@ -979,12 +990,12 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=70"></script>
-  <script src="js/detectors/BaseDetector.js?v=70"></script>
-  <script src="js/detectors/Detectors.js?v=70"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=70"></script>
-  <script src="js/forensics/ForensicHub.js?v=70"></script>
-  <script src="js/session/SessionManager.js?v=70"></script>
-  <script src="app.js?v=70"></script>
+  <script src="js/data/preloadedSlots.js?v=71"></script>
+  <script src="js/detectors/BaseDetector.js?v=71"></script>
+  <script src="js/detectors/Detectors.js?v=71"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=71"></script>
+  <script src="js/forensics/ForensicHub.js?v=71"></script>
+  <script src="js/session/SessionManager.js?v=71"></script>
+  <script src="app.js?v=71"></script>
 </body>
 </html>
