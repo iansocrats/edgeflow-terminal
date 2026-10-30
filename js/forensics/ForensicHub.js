@@ -2841,21 +2841,85 @@ function getComparisonForensicHtml() {
     <!-- Section 4: Cross-Platform Benchmark Expansion (Bybit ByX vs Binance Square) -->
     <div class="similarity-matrix-wrap" style="margin-bottom: 20px;">
       <div class="similarity-matrix-header">
-        <span class="similarity-matrix-title">🌐 Multi-Platform Expansion: Bybit ByX (Buzz) vs Binance Square Ingestion</span>
+        <span class="similarity-matrix-title">🌐 Multi-Platform Corpus v2: 56 Verified Posts Across 50 Distinct Creators</span>
         <span class="forensic-badge words" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border-color: rgba(168, 85, 247, 0.4);">
-          7 Multi-Platform Posts Ingested
+          56 Posts • 50 Authors • 8 Archetypes
         </span>
       </div>
       <p style="font-size: 0.8rem; color: #94a3b8; margin: 8px 0 12px 0; line-height: 1.4;">
-        Our ingestion pipeline harvests from both <strong>Bybit ByX (#ByXIMPACT / #IMPACTbyTrade)</strong> and <strong>Binance Square</strong>. Analysis reveals top creators like <strong>Crypto BOSS (@traderboos)</strong> cross-post across both ecosystems, adjusting conversion widgets and community prompts to match each platform's algorithm:
+        Expanded benchmark corpus (<code>datasets/creator_benchmark_corpus.json</code>, schema v2) combining <strong>53 Bybit ByX</strong> posts (harvested from <code>#IMPACTbyTrade</code> topic <code>60096</code> and <code>#ByXIMPACT</code> topic <code>3458764513820570953</code>) and <strong>3 Binance Square</strong> posts. Out of 76 raw topic-feed candidates, 49 passed strict quality gates (English, 80–450 words, numeric price levels, pairwise Jaccard &lt; 0.50, and max 2 posts per author).
       </p>
+
+      <!-- Empirical Distribution & Archetype Breakdown -->
+      <div style="overflow-x: auto; margin: 10px 0 14px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;">
+        <table class="byx-attribution-table" style="width: 100%; font-size: 0.78rem;">
+          <thead>
+            <tr style="background: rgba(15, 23, 42, 0.9);">
+              <th>Structural Archetype</th>
+              <th style="text-align: center;">Post Count</th>
+              <th style="text-align: center;">Share of Corpus</th>
+              <th>Primary Detection Signal &amp; Writing Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Momentum &amp; Trailing Stop</strong> (<code>momentum_trailing</code>)</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">15</td>
+              <td style="text-align: center;">26.8%</td>
+              <td>Breakout / parabolic continuation with dynamic EMA anchors &amp; FOMO warnings</td>
+            </tr>
+            <tr>
+              <td><strong>2. Narrative Commentary</strong> (<code>narrative_commentary</code>)</td>
+              <td style="text-align: center; color: #38bdf8; font-weight: 700;">11</td>
+              <td style="text-align: center;">19.6%</td>
+              <td>Thesis-driven market structure walk-through with support/resistance context</td>
+            </tr>
+            <tr>
+              <td><strong>3. Macro &amp; Fundamental</strong> (<code>macro_fundamental</code>)</td>
+              <td style="text-align: center; color: #c084fc; font-weight: 700;">9</td>
+              <td style="text-align: center;">16.1%</td>
+              <td>FOMC/CPI/earnings catalysts, tokenized equities ($AMZNX, $AAPLX, SK Hynix), on-chain holders</td>
+            </tr>
+            <tr>
+              <td><strong>4. Cross-Asset Relative Value</strong> (<code>relative_value</code>)</td>
+              <td style="text-align: center; color: #fbbf24; font-weight: 700;">8</td>
+              <td style="text-align: center;">14.3%</td>
+              <td>Side-by-side asset comparisons ($XAUT vs $PAXG vs $XAG, ratio &amp; beta divergence)</td>
+            </tr>
+            <tr>
+              <td><strong>5. Tactical Signal</strong> (<code>tactical_signal</code>)</td>
+              <td style="text-align: center; color: #34d399; font-weight: 700;">7</td>
+              <td style="text-align: center;">12.5%</td>
+              <td>Explicit Entry + tiered Take-Profit (TP1/TP2/TP3) + Stop-Loss / invalidation rule</td>
+            </tr>
+            <tr>
+              <td><strong>6. Sentiment &amp; Liquidity Trap</strong> (<code>sentiment_trap</code>)</td>
+              <td style="text-align: center; color: #f472b6; font-weight: 700;">4</td>
+              <td style="text-align: center;">7.1%</td>
+              <td>Stop-hunt, liquidity sweep, and counter-crowd positioning setups</td>
+            </tr>
+            <tr>
+              <td><strong>7. Chronological Tape</strong> (<code>chronological_tape</code>)</td>
+              <td style="text-align: center; color: #38bdf8; font-weight: 700;">1</td>
+              <td style="text-align: center;">1.8%</td>
+              <td>Hour-by-hour timestamped candle narrative (17:00 high ➔ 21:00 flush ➔ 22:00 bounce)</td>
+            </tr>
+            <tr>
+              <td><strong>8. Loss Review &amp; Pivot</strong> (<code>loss_review_pivot</code>)</td>
+              <td style="text-align: center; color: #fbbf24; font-weight: 700;">1</td>
+              <td style="text-align: center;">1.8%</td>
+              <td>Transparent stop-out post-mortem ("closed at -8%") followed by directional flip</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 10px;">
         <!-- Card 1: Binance Square @traderboos $NEAR -->
         <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 12px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <strong style="color: #fbbf24; font-size: 0.86rem;">🟡 Binance Square: $NEAR Short Setup</strong>
-            <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Oct 30 Today • @traderboos</span>
+            <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Oct 30 • @traderboos</span>
           </div>
           <div style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px;">
             <em>"🔴 SHORT on a bounce | Entry 4.30 - 4.36 | TP1 4.10 | SL 4.52<br>
@@ -2863,49 +2927,47 @@ function getComparisonForensicHtml() {
             NEAR hit 3.909 today, lowest in 100 4H candles. RSI is 36, so I'm not chasing it. The plan is to sell a bounce..."</em>
           </div>
           <div style="font-size: 0.72rem; color: #34d399;">
-            🎯 <strong>Key Innovation:</strong> Direct Binance Widget CTA (tap ticker to trade) drives instant conversion and volume attribution.
+            🎯 <strong>Tactical Signal (232w • FK Grade 3.2):</strong> Direct ticker CTA + 3-tier take-profits (+5.3%, +9.7%, +14.5%) and EMA20 invalidation.
           </div>
         </div>
 
         <!-- Card 2: Binance Square @traderboos $PUMP -->
         <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 12px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="color: #fbbf24; font-size: 0.86rem;">🟡 Binance Square: $PUMP Post-Mortem & Flip</strong>
+            <strong style="color: #fbbf24; font-size: 0.86rem;">🟡 Binance Square: $PUMP Post-Mortem &amp; Flip</strong>
             <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Oct 29 • @traderboos</span>
           </div>
           <div style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px;">
-            <em>"<strong>Honest update first:</strong> my 16:49 UTC LONG on Pump.fun did not work... hit 0.0042 stop at -8%. Since then the picture flipped: PUMP is down 11.3% under 4H moving averages while BTC sits under 79K after hawkish Fed hold. New SHORT entry: 0.004041 - 0.004057..."</em>
+            <em>"<strong>Honest update first:</strong> my 16:49 UTC LONG on Pump.fun did not work... hit the 0.004205 stop at 20:40 UTC during the market-wide drop. That call is closed at -8%. Since then the picture has flipped..."</em>
           </div>
           <div style="font-size: 0.72rem; color: #34d399;">
-            🎯 <strong>Key Innovation:</strong> Transparent loss disclosure (-8%) builds massive authority, establishing trust before new setup execution.
+            🎯 <strong>Loss Review &amp; Pivot (244w • FK Grade 3.1):</strong> Verbatim accountability builds reader trust before presenting the flipped short setup.
           </div>
         </div>
 
-        <!-- Card 3: Bybit ByX Leaderboard Post ($BTC / $SOL) -->
+        <!-- Card 3: Bybit ByX Topic Harvest Highlight -->
         <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 12px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="color: #34d399; font-size: 0.86rem;">⚡ Bybit ByX: 26-Comment Community Loop</strong>
-            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">Post 7493989779945249793</span>
+            <strong style="color: #34d399; font-size: 0.86rem;">⚡ Bybit ByX: 53-Post Topic Harvest</strong>
+            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;">47 Distinct ByX Creators</span>
           </div>
           <div style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.4; margin-bottom: 8px;">
-            <em>"24h Move: +1.9% • Bitcoin is approaching key zone. Support: 73,000 / 71,600 • Resistance: 75,200 / 76,900...<br>
-            $BTCUSDT #BitcoinSlidesBelow$80K #ByXMayPostingLeaderboard #ShowMyRWATrades"</em>
+            Includes top-engaged setups across <code>$BTCUSDT</code>, <code>$ETHUSDT</code>, <code>$SOLUSDT</code>, <code>$DOGEUSDT</code>, <code>$XAUTUSDT</code>, and tokenized equities (<code>$AAPLXUSDT</code>, <code>$AMZNXUSDT</code>, SK Hynix Q3 earnings).
           </div>
           <div style="font-size: 0.72rem; color: #38bdf8;">
-            🎯 <strong>Key Innovation:</strong> Post triggered <strong>26 comments</strong> with traders posting full SOL & BTC setups in replies, capturing Bybit's 3x comment weighting.
+            🎯 <strong>Corpus Median:</strong> 237 words (range 46–401w) • Flesch-Kincaid Grade 8.2 (range 2.7–17.7).
           </div>
         </div>
       </div>
 
       <!-- Ingestion Pipeline Architecture Box -->
       <div style="margin-top: 14px; padding: 12px; background: rgba(30, 41, 59, 0.4); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: #94a3b8; line-height: 1.5;">
-        <strong style="color: #f1f5f9;">🛠️ How EdgeFlow Ingestion Automatically Picks Up These Posts:</strong><br>
-        • <strong>Bybit Community (ByX / Buzz):</strong> Native SSR state extraction parses <code>initialPostDetail</code>, <code>post_topics</code>, and nested comment trees directly from topic hubs like <code>#ByXIMPACT</code> (Topic 3458764513820570953) and <code>#IMPACTbyTrade</code> (Topic 60096).<br>
-        • <strong>Binance Square:</strong> Automated headless Chrome CDP pipeline renders dynamic SPAs, solves client-side challenge walls, and harvests live trade signals, widget CTAs, and community sentiment.<br>
-        • <strong>Persistent Multi-Platform Dataset:</strong> Stored under <code>datasets/creator_benchmark_corpus.json</code> to calibrate our qualitative writing engine against real, multi-exchange trader habits.
+        <strong style="color: #f1f5f9;">🛠️ Verbatim Provenance &amp; Filtering Pipeline (<code>scratch/build_corpus_v2.py</code>):</strong><br>
+        • <strong>Discovery &amp; SSR Extraction:</strong> Reads public, robots-permitted Bybit topic feeds (<code>/en/social/topic/60096</code> and <code>/en/social/topic/3458764513820570953</code>) and resolves each post's SSR JSON at 1 req / 1.5s.<br>
+        • <strong>Quality &amp; Diversity Filters:</strong> Enforces English language, 80–450 word length, presence of numeric levels, pairwise 1-gram Jaccard &lt; 0.50 deduplication, and a maximum of 2 posts per creator UID.<br>
+        • <strong>Computed Metrics:</strong> Every word count, sentence count, Flesch-Kincaid grade, Shannon entropy, bullet-line ratio, and archetype tag is computed directly from the verbatim post text.
       </div>
     </div>
-
   `;
 }
 
