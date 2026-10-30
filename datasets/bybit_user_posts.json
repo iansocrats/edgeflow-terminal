@@ -1,0 +1,191 @@
+{
+  "dataset_name": "Bybit Creator Post Analysis Dataset",
+  "creator_profile": {
+    "username": "Crypto BOSS",
+    "user_id": "535233761",
+    "user_badges": [
+      "USER_BADGES_INTELLIGENT"
+    ],
+    "total_creator_likes": 120520,
+    "profile_url": "https://www.bybit.com/press/community/535233761"
+  },
+  "extracted_at": "2026-10-30T07:58:00Z",
+  "total_posts": 2,
+  "posts": [
+    {
+      "post_id": "576460752305256405",
+      "url": "https://www.bybit.com/press/community/576460752305256405?share_to=link",
+      "symbols": [
+        "ETHUSDT"
+      ],
+      "created_at_unix": 1793312998,
+      "created_at_iso": "2026-10-30T01:29:58",
+      "engagement": {
+        "like_count": 25,
+        "comment_count": 4,
+        "share_count": 3,
+        "creator_replied_to_comments": false
+      },
+      "content": "ETH just handed us what looks like a dip-buying opportunity.\n\nIt climbed through the afternoon and topped out at $2,379.49 around 17:00, then sellers took over. At 21:00 one huge red candle dragged it from about $2,337 down to $2,232.40, the kind of candle that shakes a lot of people out. But buyers stepped in right at that low, the bounce at 22:00 took it back to $2,274, and it's holding at $2,270 with the hourly RSI under 30. That's often how a bottoming zone looks.\n\nI already have my trade on this, so for me it's about the zone and not chasing. The area worth watching is $2,245 to $2,270, and the idea is wrong if it closes under $2,225. The first target is around $2,320 and the second near $2,375, roughly 2 to 1 and 3.5 to 1. It's still a bounce against the short-term trend, so size it with that in mind.\n\nWhere's your line on this dip, $2,232 or a daily close?\n\nJust my read, not advice.\n$ETHUSDT #ByXIMPACT #IMPACTbyTrade ",
+      "metrics": {
+        "word_count": 188,
+        "sentence_count": 15,
+        "avg_words_per_sentence": 12.5,
+        "flesch_kincaid_grade": 3.7,
+        "vocabulary_entropy_bits": 6.506,
+        "detected_colloquial_markers": [
+          "dip-buying",
+          "shakes a lot of people out",
+          "holding at",
+          "bottoming zone",
+          "already have my trade",
+          "not chasing",
+          "idea is wrong if",
+          "roughly 2 to 1",
+          "size it with that in mind",
+          "where's your line",
+          "just my read",
+          "not advice"
+        ],
+        "colloquial_density_score": 12,
+        "campaign_hashtags": {
+          "#ByXIMPACT": true,
+          "#IMPACTbyTrade": true
+        }
+      },
+      "comments": [
+        {
+          "comment_id": "4035225266128014706",
+          "username": "kas***@****",
+          "user_id": "392099719",
+          "content": "где лайки не вижу я 😂",
+          "like_count": 0,
+          "created_at_unix": "1793327212",
+          "replies": []
+        },
+        {
+          "comment_id": "6052837899189996913",
+          "username": "kas***@****",
+          "user_id": "392099719",
+          "content": "всех на кол 😂 не расстраивайтесь ребята един к 75 биток , хорошей дороги 👍держитесь крепче , из Дагестана привет Трампу 😂",
+          "like_count": 0,
+          "created_at_unix": "1793327139",
+          "replies": []
+        },
+        {
+          "comment_id": "4323455642279786486",
+          "username": "cha***@****",
+          "user_id": "543886328",
+          "content": "Is it a temporary decline?",
+          "like_count": 0,
+          "created_at_unix": "1793318635",
+          "replies": []
+        },
+        {
+          "comment_id": "5476377146886603623",
+          "username": "GTMC101",
+          "user_id": "150902891",
+          "content": "boss i want to be a bybit merchant",
+          "like_count": 0,
+          "created_at_unix": "1793317276",
+          "replies": []
+        }
+      ],
+      "byx_evaluation": {
+        "originality": 20.0,
+        "depth_structure": 19.5,
+        "relevance": 20.0,
+        "credibility_risk": 19.5,
+        "presentation_cta": 20.0,
+        "total_byx_score": 99.0,
+        "grade": "A+",
+        "valid_post": true
+      }
+    },
+    {
+      "post_id": "8070450532249793081",
+      "url": "https://www.bybit.com/press/community/8070450532249793081?share_to=link",
+      "symbols": [
+        "XAUTUSDT",
+        "PARTIUSDT"
+      ],
+      "created_at_unix": 1793308911,
+      "created_at_iso": "2026-10-30T00:21:51",
+      "engagement": {
+        "like_count": 45,
+        "comment_count": 4,
+        "share_count": 3,
+        "creator_replied_to_comments": true
+      },
+      "content": "XAUT vs $PAXG vs $XAG: Two Gold Tokens and Silver After a Red Day\nToday's move\nGold: about $4,024, down 1.1%\nSilver ($XAG): about $52.4, down 2.9%\n$XAUT and $PAXG: both down about 0.6%, tracking gold\n\nWhat separates them\n$XAUT (Tether Gold): the larger gold token, with a market cap near $3B\n\n$PAXG (Pax Gold): the smaller one, near $1.8B, also backed by one ounce of gold per token\n\n$XAG: silver, which moves more than gold in both directions\n\nThe bigger picture\nGold is about 28% below its January record\nSilver is down about 26% this year and 13% in the last month\n\nThe gold-to-silver ratio sits near 77, so silver has been the weaker of the two\n\nWhat I'm watching: the next US inflation data (PCE), since rate expectations drive both metals. The gold tokens give gold exposure on-chain, while $XAG is the higher-volatility way to trade the same theme.\n\nYour pick: $XAUT, $PAXG or $XAG into the next data release? Tell me why.\n$XAUTUSDT $PARTIUSDT #ByXIMPACT #IMPACTbyTrade ",
+      "metrics": {
+        "word_count": 170,
+        "sentence_count": 10,
+        "avg_words_per_sentence": 17.0,
+        "flesch_kincaid_grade": 7.3,
+        "vocabulary_entropy_bits": 6.345,
+        "detected_colloquial_markers": [
+          "today's move",
+          "what separates them",
+          "the bigger picture",
+          "what i'm watching",
+          "your pick",
+          "tell me why"
+        ],
+        "colloquial_density_score": 6,
+        "campaign_hashtags": {
+          "#ByXIMPACT": true,
+          "#IMPACTbyTrade": true
+        }
+      },
+      "comments": [
+        {
+          "comment_id": "3458764513824651250",
+          "username": "BITPIA",
+          "user_id": "122342505",
+          "content": "well said analysis",
+          "like_count": 1,
+          "created_at_unix": "1793316477",
+          "replies": [
+            {
+              "reply_id": "2882303761521227764",
+              "username": "Crypto BOSS",
+              "user_id": "535233761",
+              "content": "thnx bro",
+              "like_count": 1,
+              "created_at_unix": "1793317282"
+            }
+          ]
+        },
+        {
+          "comment_id": "5188146770734891877",
+          "username": "pir***@****",
+          "user_id": "592367730",
+          "content": "good",
+          "like_count": 1,
+          "created_at_unix": "1793315363",
+          "replies": [
+            {
+              "reply_id": "2882303761521227761",
+              "username": "Crypto BOSS",
+              "user_id": "535233761",
+              "content": "thnx bro",
+              "like_count": 1,
+              "created_at_unix": "1793315413"
+            }
+          ]
+        }
+      ],
+      "byx_evaluation": {
+        "originality": 20.0,
+        "depth_structure": 19.5,
+        "relevance": 20.0,
+        "credibility_risk": 19.5,
+        "presentation_cta": 20.0,
+        "total_byx_score": 99.0,
+        "grade": "A+",
+        "valid_post": true
+      }
+    }
+  ]
+}
