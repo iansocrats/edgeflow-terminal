@@ -35,8 +35,8 @@ initRustWasm();
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_day5_fresh_v31';
-const SESSION_KEY = 'byx_active_session_id_v31';
+const STORAGE_KEY = 'byx_post_studio_day5_fresh_v32';
+const SESSION_KEY = 'byx_active_session_id_v32';
 let currentSessionId = 'day5';
 let currentPostIndex = 0;
 let postsData = [];
@@ -258,7 +258,7 @@ async function loadPostsData() {
   // Ensure Day 5 is 100% preloaded with the 10 new-coin benchmark setups
   if (currentSessionId === 'day5') {
     const d5Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('RLUSD')) {
+    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('$1.2658')) {
       postsData = (typeof getDay5PreloadedSlots === 'function') ? getDay5PreloadedSlots() : createEmptySlots();
       localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
     }

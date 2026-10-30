@@ -155,7 +155,7 @@ const GLTR_CREATIVE_TOKENS = new Set([
   'xrp', 'xrpusdt', 'xrpl', 'rlusd', 'escrow', 'ondo', 'ondousdt', 'rwa', 'tvl', 'bitget', 'dao',
   'ltc', 'ltcusdt', 'litecoin', 'sei', 'seiusdt', 'vesting', 'unlocks', 'icp', 'icpusdt',
   'ma7', 'ma14', 'ma28', 'ma5', 'ma10', 'morpho', 'morphousdt', 'xaut', 'xautusdt',
-  'tether', 'bullion', 'pce', 'pump', 'pumpusdt', 'ema20', 'ema50', 'rsi', 'vvv', 'vvvusdt',
+  'tether', 'bullion', 'pce', 'pump', 'pumpusdt', 'pumpfun', 'pumpfunusdt', 'ema20', 'ema50', 'rsi', 'rsi14', 'rsi-6', 'rsi-14', '7-ma', '7-ema', '14-ma', '20-ema', '28-ma', '50-ema', '60m', '240m', 'oi', 'vvv', 'vvvusdt',
   'ema7', 'rsi6', 'parabolic', 'bmt', 'bmtusdt', 'bubblemaps', 'byximpact', 'impactbytrade',
   'order-book', 'fee-switch', 'stop-loss', 'year-over-year', 're-rate', 'low-gearing',
   'low-margin', 'front-running', 'mid-range', 'scale-out', 'follow-through', 'three-stage',

@@ -160,7 +160,7 @@ async function runE2ETest() {
 
     // Verify all 10 Day 5 coins match the new-coin portfolio
     const day5Coins = await evalBrowser('postsData.map(p => p.coin)');
-    const expectedDay5Coins = ['$XRP', '$ONDO', '$LTC', '$SEI', '$ICP', '$MORPHO', '$XAUT', '$PUMP', '$VVV', '$BMT'];
+    const expectedDay5Coins = ['$XRP', '$ONDO', '$LTC', '$SEI', '$ICP', '$MORPHO', '$XAUT', '$PUMPFUN', '$VVV', '$BMT'];
     console.log(`✅ PASS: Day 5 10 New-Coin Portfolio: ${day5Coins.join(', ')}`);
     if (JSON.stringify(day5Coins) !== JSON.stringify(expectedDay5Coins)) {
       throw new Error(`Expected Day 5 coins ${expectedDay5Coins.join(', ')}, got ${day5Coins.join(', ')}`);
