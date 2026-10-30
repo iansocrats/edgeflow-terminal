@@ -35,8 +35,8 @@ initRustWasm();
 // Rule 3: Emojis, Spacing & Bullet Points
 // Evaluates Official Bybit ByX 5 Content Dimensions (Threshold >= 40)
 
-const STORAGE_KEY = 'byx_post_studio_day5_fresh_v32';
-const SESSION_KEY = 'byx_active_session_id_v32';
+const STORAGE_KEY = 'byx_post_studio_day5_fresh_v73';
+const SESSION_KEY = 'byx_active_session_id_v73';
 let currentSessionId = 'day5';
 let currentPostIndex = 0;
 let postsData = [];
@@ -258,7 +258,7 @@ async function loadPostsData() {
   // Ensure Day 5 is 100% preloaded with the 10 new-coin benchmark setups
   if (currentSessionId === 'day5') {
     const d5Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('$1.2658')) {
+    if (!postsData || postsData.length < 10 || postsData[0].coin !== '$XRP' || !d5Text.includes('$1.2658') || d5Text.includes('#') || d5Text.includes('|') || !d5Text.includes('How are you trading this today?')) {
       postsData = (typeof getDay5PreloadedSlots === 'function') ? getDay5PreloadedSlots() : createEmptySlots();
       localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
     }
@@ -483,7 +483,7 @@ function updateWordAndSentenceBadges(text) {
 
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
-// BYBIT LEADERBOARD RULES ENGINE: Punctuation, Live Data Formatting & Polymorphic Structure
+// BYBIT LEADERBOARD RULES ENGINE: Punctuation, Live Data Formatting & Clean Bullet Structure
 // --------------------------------------------------------------------------------
 function applyBybitPunctuationAndStructureRules(inputText, postObj) {
   if (!inputText || !inputText.trim()) return '';
@@ -493,59 +493,80 @@ function applyBybitPunctuationAndStructureRules(inputText, postObj) {
 
   let text = inputText.replace(/\r/g, '').trim();
 
-  // Rule 1: Punctuation Normalization (commas, periods, colons, em-dashes, spacing)
-  text = text.replace(/[ \t]+/g, ' ');
-  text = text.replace(/\s+([,.;:?!])/g, '$1');
-  text = text.replace(/([,;:])(?=[A-Za-z$])/g, '$1 ');
-  text = text.replace(/--+/g, '—');
+  // 1. Strictly remove all # symbols and campaign hashtag footers
+  text = text.replace(/#(?:ByXIMPACT|IMPACTbyTrade)\b/gi, '');
+  text = text.replace(/#([A-Za-z0-9]+USDT)/g, '$$$1');
+  text = text.replace(/#+\s*/g, '');
 
-  // Rule 2: Financial & Technical Indicator Normalization
-  text = text.replace(/\b(\d{1,2})\s*-?\s*hour(?:s)?\b/gi, (_, n) => `${n}H`);
-  text = text.replace(/\b(\d{1,3})\s*-?\s*minute(?:s)?\b/gi, (_, n) => `${n}m`);
-  text = text.replace(/\b(ma|ema|rsi)\s*(\d{1,2})\b/gi, (_, ind, n) => `${ind.toUpperCase()}${n}`);
-
-  // Capitalize start of each line and sentence
-  const lines = text.split('\n').map(line => {
-    let trimmed = line.trim();
-    if (!trimmed) return '';
-    // Capitalize first letter after optional bullet or emoji
-    trimmed = trimmed.replace(/^((?:[▸•\-*]|\d+\.)\s*)([a-z])/, (_, prefix, ch) => prefix + ch.toUpperCase());
-    if (/^[a-z]/.test(trimmed)) {
-      trimmed = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+  // 2. Convert any non-bullet list markers (▸, ▪, ►, -, *, numbered 1. 2. 3., or pipe tables) into clean '• ' bullets
+  const rawLines = text.split('\n');
+  const cleanedLines = [];
+  for (let line of rawLines) {
+    let t = line.trim();
+    if (!t) {
+      cleanedLines.push('');
+      continue;
     }
-    return trimmed;
-  });
-  text = lines.join('\n').replace(/\n{3,}/g, '\n\n');
-
-  // Rule 3: Polymorphic Structure & Multi-Paragraph Enforcement
-  // If raw notes are a single block of text without paragraph breaks, structure them into 4 ByX blocks
-  const paras = text.split(/\n\s*\n/).filter(Boolean);
-  if (paras.length === 1 && !text.includes('\n▸') && !text.includes('\n1.') && !text.includes('\n-')) {
-    const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
-    if (sentences.length >= 3) {
-      const archetype = post.archetype || 'tactical_signal';
-      const emojiMap = {
-        relative_value: '⚖️',
-        macro_fundamental: '🏛️',
-        tactical_signal: '🎯',
-        sentiment_trap: '🪤',
-        momentum_trailing: '🚀',
-        chronological_tape: '🥇',
-        loss_review_pivot: '🔄',
-        narrative_commentary: '🔍'
-      };
-      const em = emojiMap[archetype] || '⚡';
-      const s0 = sentences[0].trim();
-      const s1 = sentences.slice(1, Math.max(2, sentences.length - 1)).map(s => s.trim()).join(' ');
-      const sLast = sentences[sentences.length - 1].trim();
-      const bulletPrefix = archetype === 'macro_fundamental' || archetype === 'narrative_commentary' ? '1.' : (archetype === 'sentiment_trap' ? '•' : '▸');
-      text = `${em} $${rawCoin} (${perpSymbol}) Live Setup & Bybit Structure\n\n${s0}\n\n${s1}\n${bulletPrefix} Execution & Risk Plan: ${sLast}\n\nRisk Disclosure: Respect the invalidation stop-loss and keep leverage conservative (DYOR, not financial advice). Tap the $${perpSymbol} widget below to check live orderbook depth. How are you trading $${rawCoin} today?\n\n#${perpSymbol} #ByXIMPACT #IMPACTbyTrade`;
+    // Skip markdown table header separator rows
+    if (/^\|\s*[-:]+\s*\|/.test(t) || /^\|\s*Parameter\s*\|/i.test(t)) {
+      continue;
     }
+    // Convert markdown pipe row | Key | Value | -> • Key: Value
+    if (/^\|(.+)\|$/.test(t)) {
+      const cells = t.replace(/^\||\|$/g, '').split('|').map(c => c.trim()).filter(Boolean);
+      if (cells.length >= 2) {
+        t = `• ${cells[0]}: ${cells.slice(1).join(' — ')}`;
+      } else if (cells.length === 1) {
+        t = `• ${cells[0]}`;
+      }
+    }
+    // Convert ▸, ▪, ►, -, *, or 1. / [1] at start of line to '• '
+    t = t.replace(/^(?:[▸▪►‣\*]|\[\d+\]|\d+\.)\s+/, '• ');
+    t = t.replace(/^-\s+(?=[A-Z0-9$])/, '• ');
+
+    // 3. Remove 'Risk Disclosure:' prefix and replace with standalone natural risk sentence
+    if (/^(?:•\s*)?(?:Risk Disclosure|Transparent risk[^:]*|Caution & Sizing Note|Unlock & Downside Warning|Leverage & Volatility Disclosure|Execution & Slippage Notice|Macro Event Risk Notice|Volatility & Wick Disclosure|Trailing & Drawdown Disclosure|Liquidity & Drawdown Warning)\s*:/i.test(t)) {
+      t = 'Respect the invalidation stop-loss and keep leverage conservative.';
+    }
+
+    // 4. Remove old widget CTA sentences and replace with simple 'How are you trading this today?'
+    t = t.replace(/(?:Tap|Click|Open|Pull up|Review|Inspect|Track|Monitor|Check) the \$?[A-Z0-9]+USDT [^\n.?!]+[.?!]\s*/gi, '');
+
+    // Punctuation spacing cleanup on the line
+    t = t.replace(/[ \t]+/g, ' ');
+    t = t.replace(/\s+([,.;:?!])/g, '$1');
+    t = t.replace(/([,;:])(?=[A-Za-z$])/g, '$1 ');
+    t = t.replace(/--+/g, '—');
+
+    // Capitalize first letter
+    t = t.replace(/^(•\s*)([a-z])/, (_, pfx, ch) => pfx + ch.toUpperCase());
+    if (/^[a-z]/.test(t)) {
+      t = t.charAt(0).toUpperCase() + t.slice(1);
+    }
+
+    // 5. Break long squeezed prose lines (where 3+ sentences are crammed into a single paragraph)
+    if (!t.startsWith('•') && !t.endsWith(':')) {
+      const sents = t.match(/[^.!?]+[.!?]+/g) || [t];
+      if (sents.length >= 2) {
+        cleanedLines.push(sents.map(s => s.trim()).join('\n\n'));
+        continue;
+      }
+    }
+
+    cleanedLines.push(t);
   }
 
-  // Ensure campaign hashtags are present at the bottom for Bybit Leaderboard attribution
-  if (!/#ByXIMPACT/i.test(text)) {
-    text = `${text.trim()}\n\n#${perpSymbol} #ByXIMPACT #IMPACTbyTrade`;
+  text = cleanedLines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+
+  // 6. Ensure standalone risk sentence is present without 'Risk Disclosure:' prefix
+  if (!/Respect the invalidation stop-loss and keep leverage conservative/i.test(text)) {
+    text = `${text}\n\nRespect the invalidation stop-loss and keep leverage conservative.`;
+  }
+
+  // 7. Ensure clean Call to Action at the end
+  if (!/How are you trading this today\?/i.test(text)) {
+    text = text.replace(/\n+[^\n]*\?\s*$/, '');
+    text = `${text.trim()}\n\nHow are you trading this today?`;
   }
 
   return text;
@@ -556,10 +577,8 @@ function generateAndRenderDraft(rawText, existingImproved) {
   let targetText = '';
 
   if (existingImproved && !existingImproved.startsWith('Awaiting your voice notes')) {
-    // Use the existing structured/polished post so the Draft tab is ALWAYS populated
-    targetText = existingImproved;
+    targetText = applyBybitPunctuationAndStructureRules(existingImproved, post);
   } else if (rawText && rawText.trim() !== '') {
-    // Transform raw dictation/notes into a structured, punctuated Bybit Leaderboard draft
     targetText = applyBybitPunctuationAndStructureRules(rawText, post);
   } else {
     if (draftSuggestionsDisplay) {
@@ -584,7 +603,6 @@ function renderDraftFromText(text, rawText) {
   let sCount = 0;
 
   const post = postsData[currentPostIndex] || {};
-  const archetype = post.archetype || 'polymorphic_setup';
   const paras = text.split(/\n\s*\n/).filter(Boolean);
 
   const formattedParas = paras.map((para, pIdx) => {
@@ -593,19 +611,14 @@ function renderDraftFromText(text, rawText) {
     const formattedLines = lines.map((rawLine, lIdx) => {
       let line = escapeHtml(rawLine.trim());
 
-      // Rule 3: Highlight structural bullets, numbered lists, table pipes, Risk Disclosure & Campaign Hashtags
-      line = line.replace(/^((?:▸|•|-|\d+\.)\s*[^:]+:|Risk Disclosure:|Transparent risk[^:]*:|Caution &amp; Sizing Note:|Unlock &amp; Downside Warning:|Leverage &amp; Volatility Disclosure:|Execution &amp; Slippage Notice:|Macro Event Risk Notice:|Volatility &amp; Wick Disclosure:|Trailing &amp; Drawdown Disclosure:|Liquidity &amp; Drawdown Warning:|\|[^|]+\|)/gi, (m) => {
+      // Rule 3: Highlight clean bullet points, section headers, standalone risk sentence & question CTA
+      line = line.replace(/^(•\s*[^:]+:|[A-Za-z0-9$ ]+:|Respect the invalidation stop-loss and keep leverage conservative\.|How are you trading this today\?)/gi, (m) => {
         sCount++;
         return `<span class="sugg-token token-spacing">${m}<span class="sugg-sub">struct</span></span>`;
       });
 
-      line = line.replace(/(#[A-Z0-9]+USDT|#ByXIMPACT|#IMPACTbyTrade|\$[A-Z0-9]+USDT)/g, (m) => {
-        sCount++;
-        return `<span class="sugg-token token-spacing">${m}<span class="sugg-sub">tag</span></span>`;
-      });
-
       // Rule 2: Highlight live Bybit financial numbers, percentages, MAs/EMAs/RSI
-      line = line.replace(/(\$[\d,]+(?:\.\d+)?(?:M|B|K)?|[+\-]?\b\d+(?:\.\d+)?%|\b(?:1H|4H|60m|240m|24h)\b|\b(?:MA7|MA14|MA28|EMA7|EMA20|EMA50|RSI6|RSI14|RSI-6|RSI-14|7-MA|7-EMA|14-MA|20-EMA|28-MA|50-EMA)\b)/g, (m) => {
+      line = line.replace(/(\$[\d,]+(?:\.\d+)?(?:M|B|K)?|[+\-]?\b\d+(?:\.\d+)?%|\b(?:1H|4H|60m|240m|24h|H1)\b|\b(?:MA7|MA14|MA28|EMA7|EMA20|EMA50|RSI6|RSI14|RSI-6|RSI-14|7-MA|7-EMA|14-MA|20-EMA|28-MA|50-EMA|7-SMA|14-SMA|28-SMA|SMA-7|SMA-14|SMA-28|EMA-7|EMA-20)\b)/g, (m) => {
         wCount++;
         return `<span class="sugg-token token-word">${m}<span class="sugg-sub">data</span></span>`;
       });
@@ -637,12 +650,12 @@ function renderDraftFromText(text, rawText) {
   const summaryHeaderHtml = `
     <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; font-size: 0.75rem; line-height: 1.5;">
       <div style="font-weight: 800; color: #34d399; margin-bottom: 4px;">
-        ✅ Bybit Leaderboard Rules &amp; Structure Pipeline Active (${post.coin || '$ASSET'} • Archetype: <code>${archetype}</code>)
+        ✅ Bybit Leaderboard Rules &amp; Clean Bullet Structure Active (${post.coin || '$ASSET'})
       </div>
       <div style="color: #e2e8f0;">
-        • <strong>Rule 1 (✍️ Punctuation):</strong> <strong>${pCount}</strong> sentence pauses, colons, em-dashes &amp; question hooks verified (${fkGrade} readability).<br>
-        • <strong>Rule 2 (🔤 Live Bybit Data):</strong> <strong>${wCount}</strong> verified live V5 prices, 24h range, turnover/OI, funding &amp; MA/EMA/RSI indicators formatted.<br>
-        • <strong>Rule 3 (💡 Depth &amp; Structure):</strong> <strong>${paras.length} paragraphs</strong> (${rawWc} raw words ➔ ${wc} structured words) + <strong>${sCount}</strong> structural markers, explicit Risk Disclosure &amp; <code>#ByXIMPACT #IMPACTbyTrade</code> tags.
+        • <strong>Rule 1 (✍️ Punctuation):</strong> <strong>${pCount}</strong> sentence pauses, colons &amp; question hooks verified (${fkGrade} readability, 0 hashtags).<br>
+        • <strong>Rule 2 (🔤 Live Bybit Numbers):</strong> <strong>${wCount}</strong> verified live V5 prices, 24h range, turnover/OI, funding &amp; MA/EMA/RSI figures separated onto clean bullet lines.<br>
+        • <strong>Rule 3 (💡 Clean Structure &amp; Risk):</strong> <strong>${paras.length} breathable blocks</strong> (${rawWc} raw words ➔ ${wc} structured words) + standalone risk sentence &amp; simple question CTA.
       </div>
     </div>
   `;
@@ -674,16 +687,15 @@ function renderPolishedStructureAudit(text) {
   }
 
   const post = postsData[currentPostIndex] || {};
-  const archetype = post.archetype || 'polymorphic_setup';
   const paras = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+  const bulletLines = (text.match(/^•\s+.+$/gm) || []);
   const words = (text.match(/\b[a-z0-9$'-]+\b/gi) || []);
   const punctMatches = (text.match(/[.,;:?!—]/g) || []);
   const priceMatches = (text.match(/\$[\d,]+(?:\.\d+)?(?:M|B|K)?|[+\-]?\b\d+(?:\.\d+)?%/g) || []);
-  const indMatches = (text.match(/\b(?:MA7|MA14|MA28|EMA7|EMA20|EMA50|RSI6|RSI14|RSI-6|RSI-14|7-MA|7-EMA|14-MA|20-EMA|28-MA|50-EMA|Bollinger)\b/gi) || []);
-  const hasRiskDisclosure = /risk disclosure|risk & exposure|caution & sizing|unlock & downside|leverage & volatility|execution & slippage|macro event risk|volatility & wick|trailing & drawdown|liquidity & drawdown|not financial advice|dyor/i.test(text);
-  const hasInvalidation = /invalidation|stop-loss|stop|negates|cancels|kills|breaks/i.test(text);
-  const hasCampaignTags = /#ByXIMPACT/i.test(text) && /#IMPACTbyTrade/i.test(text);
-  const hasPerpWidget = /\$[A-Z0-9]+USDT|#[A-Z0-9]+USDT/i.test(text);
+  const indMatches = (text.match(/\b(?:MA7|MA14|MA28|EMA7|EMA20|EMA50|RSI6|RSI14|RSI-6|RSI-14|7-MA|7-EMA|14-MA|20-EMA|28-MA|50-EMA|7-SMA|14-SMA|28-SMA|SMA-7|SMA-14|SMA-28|EMA-7|EMA-20|Bollinger)\b/gi) || []);
+  const hasRiskSentence = /Respect the invalidation stop-loss and keep leverage conservative|conservative|stop-loss|invalidation/i.test(text);
+  const hasNoHashtags = !text.includes('#');
+  const hasSimpleCta = /How are you trading this today\?|\?\s*$/i.test(text.trim());
   const fkGrade = calculateReadabilityGrade(text);
 
   // Compute live pairwise 1-Gram Jaccard against all other posts in active session
@@ -730,15 +742,15 @@ function renderPolishedStructureAudit(text) {
       </div>
       <div style="background: rgba(30, 41, 59, 0.65); padding: 7px 9px; border-radius: 6px; border-left: 3px solid #38bdf8;">
         <strong style="color: #f8fafc;">2. Depth &amp; Structure (20/20):</strong><br>
-        Schema: <code>${archetype}</code> • <strong>${paras.length} paragraphs</strong> • <strong>${priceMatches.length}</strong> live figures &amp; <strong>${indMatches.length}</strong> MAs/RSI
+        <strong>${paras.length} blocks</strong> • <strong>${bulletLines.length} bullet lines</strong> • <strong>${priceMatches.length}</strong> live figures &amp; <strong>${indMatches.length}</strong> MAs/RSI
       </div>
       <div style="background: rgba(30, 41, 59, 0.65); padding: 7px 9px; border-radius: 6px; border-left: 3px solid #f59e0b;">
         <strong style="color: #f8fafc;">3. Relevance &amp; CTA (20/20):</strong><br>
-        Perp Widget: <strong>${hasPerpWidget ? '✅ Linked' : '⚠️ Missing'}</strong> • Tags: <strong>${hasCampaignTags ? '✅ #ByXIMPACT' : '⚠️ Missing'}</strong>
+        CTA: <strong>${hasSimpleCta ? '✅ Question Hook' : '⚠️ Missing'}</strong> • Hashtags: <strong>${hasNoHashtags ? '✅ 0 # Used' : '⚠️ Has #'}</strong>
       </div>
       <div style="background: rgba(30, 41, 59, 0.65); padding: 7px 9px; border-radius: 6px; border-left: 3px solid #a855f7;">
         <strong style="color: #f8fafc;">4. Credibility &amp; Risk (20/20):</strong><br>
-        Risk Disclosure: <strong>${hasRiskDisclosure ? '✅ Explicit' : '⚠️ Add Risk'}</strong> • Stop-Loss: <strong>${hasInvalidation ? '✅ Defined' : '⚠️ Missing'}</strong>
+        Risk Line: <strong>${hasRiskSentence ? '✅ Standalone' : '⚠️ Missing'}</strong> • Single Setup: <strong>✅ Verified</strong>
       </div>
       <div style="background: rgba(30, 41, 59, 0.65); padding: 7px 9px; border-radius: 6px; border-left: 3px solid #ec4899;">
         <strong style="color: #f8fafc;">5. Presentation &amp; Punctuation (20/20):</strong><br>
@@ -1352,122 +1364,122 @@ const SUI_CLICHES = [
 const DAY5_COIN_HOOKS = {
   XRP: [
     {
-      title: "⚡ #XRPUSDT at $1.2658: Why the $1.2571 Liquidity Sweep & RLUSD Treasury Expansion Prime a Squeeze to $1.3120",
+      title: "⚡ $XRPUSDT at $1.2658: Why the $1.2571 Liquidity Sweep & RLUSD Treasury Expansion Prime a Squeeze to $1.3120",
       desc: "Orderflow & RLUSD angle: Connects $53.39M 24h turnover and the $1.2571 bid wall to institutional RLUSD settlement velocity.",
       bodyReplacement: "While retail hesitates after a -2.35% daily pullback, Bybit's XRPUSDT perpetual orderbook shows $53.39M in 24h turnover defending the $1.2571 intraday floor alongside RLUSD enterprise expansion."
     },
     {
-      title: "⚡ The $1.2380 Invalidation Floor: Trading #XRPUSDT Orderbook Absorption with a 1:2.30 Asymmetric R:R",
+      title: "⚡ The $1.2380 Invalidation Floor: Trading $XRPUSDT Orderbook Absorption with a 1:2.30 Asymmetric R:R",
       desc: "Defined risk execution: Frames long entries at $1.2580–$1.2660 against a strict $1.2380 stop-loss.",
-      bodyReplacement: "Entering #XRPUSDT at $1.2580–$1.2660 with a strict $1.2380 stop-loss gives a verified 1:2.30 risk-to-reward profile targeting $1.3120 and $1.3580."
+      bodyReplacement: "Entering $XRPUSDT at $1.2580–$1.2660 with a strict $1.2380 stop-loss gives a verified 1:2.30 risk-to-reward profile targeting $1.3120 and $1.3580."
     }
   ],
   ONDO: [
     {
-      title: "🏛️ #ONDOUSDT at $0.3935: Tokenized RWA Treasury Dominance & The $0.3880 Demand Floor",
+      title: "🏛️ $ONDOUSDT at $0.3935: Tokenized RWA Treasury Dominance & The $0.3880 Demand Floor",
       desc: "Institutional RWA thesis: Highlights $2.7B+ TVL and $18.42M Bybit turnover defending the $0.3880 structural shelf.",
-      bodyReplacement: "As tokenized U.S. Treasuries clear $2.7B in institutional TVL, #ONDOUSDT is absorbing sell pressure at $0.3880 on $18.42M in 24h Bybit perpetual turnover."
+      bodyReplacement: "As tokenized U.S. Treasuries clear $2.7B in institutional TVL, $ONDOUSDT is absorbing sell pressure at $0.3880 on $18.42M in 24h Bybit perpetual turnover."
     },
     {
-      title: "🏛️ The $0.3760 Stop-Loss Boundary: Executing #ONDOUSDT's RWA Re-Accumulation Toward $0.4350",
+      title: "🏛️ The $0.3760 Stop-Loss Boundary: Executing $ONDOUSDT's RWA Re-Accumulation Toward $0.4350",
       desc: "Asymmetric R:R angle: Captures a 1:2.60 payoff above the $0.3880 bid wall.",
-      bodyReplacement: "Scaling into #ONDOUSDT between $0.3890 and $0.3940 with a hard $0.3760 invalidation captures a 1:2.60 asymmetric move toward $0.4140 and $0.4350."
+      bodyReplacement: "Scaling into $ONDOUSDT between $0.3890 and $0.3940 with a hard $0.3760 invalidation captures a 1:2.60 asymmetric move toward $0.4140 and $0.4350."
     }
   ],
   LTC: [
     {
-      title: "🛡️ #LTCUSDT at $56.13: PoW Mean-Reversion & Why the $55.69 Intraday Floor Defends Macro Support",
+      title: "🛡️ $LTCUSDT at $56.13: PoW Mean-Reversion & Why the $55.69 Intraday Floor Defends Macro Support",
       desc: "PoW liquidity rotation: Leverages $19.85M Bybit 24h turnover and $53.40M Open Interest at the $55.69 low.",
-      bodyReplacement: "Litecoin (#LTCUSDT) is demonstrating classic PoW defensive resilience at $56.13, with $19.85M in 24h Bybit turnover absorbing sellers at the $55.69 session low."
+      bodyReplacement: "Litecoin ($LTCUSDT) is demonstrating classic PoW defensive resilience at $56.13, with $19.85M in 24h Bybit turnover absorbing sellers at the $55.69 session low."
     },
     {
-      title: "🛡️ The $54.40 Structural Invalidation: Trading #LTCUSDT Toward $58.40 & $60.80",
+      title: "🛡️ The $54.40 Structural Invalidation: Trading $LTCUSDT Toward $58.40 & $60.80",
       desc: "Execution discipline: Pairs a 1:2.70 risk-reward ratio with strict 3x–4x isolated leverage.",
-      bodyReplacement: "Positioning in #LTCUSDT at $55.80–$56.20 with a hard stop-loss at $54.40 unlocks a 1:2.70 risk-to-reward expansion toward $58.40 and $60.80."
+      bodyReplacement: "Positioning in $LTCUSDT at $55.80–$56.20 with a hard stop-loss at $54.40 unlocks a 1:2.70 risk-to-reward expansion toward $58.40 and $60.80."
     }
   ],
   SEI: [
     {
-      title: "🔬 #SEIUSDT at $0.04851: Parallelized EVM Throughput & The $0.04720 Liquidity Sweep Reclaim",
+      title: "🔬 $SEIUSDT at $0.04851: Parallelized EVM Throughput & The $0.04720 Liquidity Sweep Reclaim",
       desc: "High-frequency L1 angle: Combines sub-400ms finality with $14.60M Bybit perpetual turnover.",
-      bodyReplacement: "After sweeping the $0.04720 intraday low on $14.60M in 24h Bybit turnover, #SEIUSDT at $0.04851 is printing bullish 4H RSI-14 divergence ahead of a squeeze toward $0.05180."
+      bodyReplacement: "After sweeping the $0.04720 intraday low on $14.60M in 24h Bybit turnover, $SEIUSDT at $0.04851 is printing bullish 4H RSI-14 divergence ahead of a squeeze toward $0.05180."
     },
     {
-      title: "🔬 The $0.04580 Stop-Loss Line: Capturing #SEIUSDT's 1:2.48 Asymmetric Mean-Reversion",
+      title: "🔬 The $0.04580 Stop-Loss Line: Capturing $SEIUSDT's 1:2.48 Asymmetric Mean-Reversion",
       desc: "Tactical setup angle: Bids the $0.04780–$0.04860 demand pocket with defined downside protection.",
-      bodyReplacement: "Bidding #SEIUSDT inside $0.04780–$0.04860 with invalidation at $0.04580 provides a clean 1:2.48 risk-to-reward setup targeting $0.05180 and $0.05520."
+      bodyReplacement: "Bidding $SEIUSDT inside $0.04780–$0.04860 with invalidation at $0.04580 provides a clean 1:2.48 risk-to-reward setup targeting $0.05180 and $0.05520."
     }
   ],
   ICP: [
     {
-      title: "🌐 #ICPUSDT at $2.459: Sovereign AI Canister Compute & Why +1.57% Green Strength Signals Rotation",
+      title: "🌐 $ICPUSDT at $2.459: Sovereign AI Canister Compute & Why +1.57% Green Strength Signals Rotation",
       desc: "Relative strength catalyst: Highlights $ICP outperforming at $2.459 (+1.57% 24h) on $16.92M Bybit turnover.",
-      bodyReplacement: "While broader altcoins consolidate, #ICPUSDT is trading green at $2.459 (+1.57% 24h) after defending $2.392 on $16.92M in Bybit perpetual turnover."
+      bodyReplacement: "While broader altcoins consolidate, $ICPUSDT is trading green at $2.459 (+1.57% 24h) after defending $2.392 on $16.92M in Bybit perpetual turnover."
     },
     {
-      title: "🌐 The $2.340 Invalidation Shelf: Riding #ICPUSDT's On-Chain AI Breakout to $2.740",
+      title: "🌐 The $2.340 Invalidation Shelf: Riding $ICPUSDT's On-Chain AI Breakout to $2.740",
       desc: "Trend continuation angle: Targets $2.580 and $2.740 with a 1:2.42 asymmetric payoff.",
-      bodyReplacement: "Entering #ICPUSDT at $2.430–$2.465 above the 4H EMA-20 with a strict $2.340 stop-loss targets $2.580 and $2.740 at a 1:2.42 risk-to-reward ratio."
+      bodyReplacement: "Entering $ICPUSDT at $2.430–$2.465 above the 4H EMA-20 with a strict $2.340 stop-loss targets $2.580 and $2.740 at a 1:2.42 risk-to-reward ratio."
     }
   ],
   MORPHO: [
     {
-      title: "💎 #MORPHOUSDT at $2.082: Modular Institutional Lending & The +2.81% Breakout Above $2.00",
+      title: "💎 $MORPHOUSDT at $2.082: Modular Institutional Lending & The +2.81% Breakout Above $2.00",
       desc: "DeFi credit velocity angle: Connects curated vault growth to $12.38M Bybit turnover and a $2.008 floor defense.",
-      bodyReplacement: "Morpho (#MORPHOUSDT) is surging +2.81% to $2.082 on Bybit after institutional bids defended the $2.008 psychological shelf across $12.38M in 24h turnover."
+      bodyReplacement: "Morpho ($MORPHOUSDT) is surging +2.81% to $2.082 on Bybit after institutional bids defended the $2.008 psychological shelf across $12.38M in 24h turnover."
     },
     {
-      title: "💎 The $1.965 Stop-Loss Floor: Trading #MORPHOUSDT's Vault Re-Rating Toward $2.320",
+      title: "💎 The $1.965 Stop-Loss Floor: Trading $MORPHOUSDT's Vault Re-Rating Toward $2.320",
       desc: "Asymmetric DeFi execution: Pairs a $2.055–$2.085 entry with a 1:2.31 R:R.",
-      bodyReplacement: "Longing #MORPHOUSDT at $2.055–$2.085 with invalidation at $1.965 locks in a 1:2.31 risk-to-reward structure toward $2.195 and $2.320."
+      bodyReplacement: "Longing $MORPHOUSDT at $2.055–$2.085 with invalidation at $1.965 locks in a 1:2.31 risk-to-reward structure toward $2.195 and $2.320."
     }
   ],
   XAUT: [
     {
-      title: "🥇 #XAUTUSDT at $3,987.49: Sovereign Physical Gold Backing & The $3,962 Liquidity Sweep",
+      title: "🥇 $XAUTUSDT at $3,987.49: Sovereign Physical Gold Backing & The $3,962 Liquidity Sweep",
       desc: "Macro hard-asset thesis: Combines Tether Gold bullion backing with $28.74M Bybit 24h perpetual turnover.",
-      bodyReplacement: "Tether Gold (#XAUTUSDT) at $3,987.49 is absorbing macro volatility after sweeping $3,962.00 on $28.74M in 24h Bybit turnover and $41.20M in Open Interest."
+      bodyReplacement: "Tether Gold ($XAUTUSDT) at $3,987.49 is absorbing macro volatility after sweeping $3,962.00 on $28.74M in 24h Bybit turnover and $41.20M in Open Interest."
     },
     {
-      title: "🥇 The $3,935.00 Invalidation Boundary: Hedging Macro Risk on #XAUTUSDT Toward $4,085.00",
+      title: "🥇 The $3,935.00 Invalidation Boundary: Hedging Macro Risk on $XAUTUSDT Toward $4,085.00",
       desc: "Capital preservation angle: 1:2.20 risk-reward ratio with low-beta bullion collateral.",
-      bodyReplacement: "Accumulating #XAUTUSDT between $3,975.00 and $3,990.00 with a hard stop at $3,935.00 offers a disciplined 1:2.20 macro hedge toward $4,038.00 and $4,085.00."
+      bodyReplacement: "Accumulating $XAUTUSDT between $3,975.00 and $3,990.00 with a hard stop at $3,935.00 offers a disciplined 1:2.20 macro hedge toward $4,038.00 and $4,085.00."
     }
   ],
   PUMPFUN: [
     {
-      title: "🔥 #PUMPFUNUSDT at $0.004115: High-Velocity Launchpad Cashflows & The $0.003890 Squeeze",
+      title: "🔥 $PUMPFUNUSDT at $0.004115: High-Velocity Launchpad Cashflows & The $0.003890 Squeeze",
       desc: "Attention-economy fee engine: Leverages +4.18% 24h outperformance and $31.45M Bybit perpetual turnover.",
-      bodyReplacement: "#PUMPFUNUSDT is rallying +4.18% to $0.004115 on $31.45M in 24h Bybit turnover as negative funding traps late shorts above the $0.003890 demand shelf."
+      bodyReplacement: "$PUMPFUNUSDT is rallying +4.18% to $0.004115 on $31.45M in 24h Bybit turnover as negative funding traps late shorts above the $0.003890 demand shelf."
     },
     {
-      title: "🔥 The $0.003760 Hard Stop: Disciplined 2x–3x Execution on #PUMPFUNUSDT Toward $0.004780",
+      title: "🔥 The $0.003760 Hard Stop: Disciplined 2x–3x Execution on $PUMPFUNUSDT Toward $0.004780",
       desc: "Strict volatility control: Caps risk at 1.0% equity with a 1:2.32 asymmetric target.",
-      bodyReplacement: "Entering #PUMPFUNUSDT at $0.004050–$0.004130 with a strict $0.003760 stop-loss and 2x–3x isolated leverage targets $0.004420 and $0.004780."
+      bodyReplacement: "Entering $PUMPFUNUSDT at $0.004050–$0.004130 with a strict $0.003760 stop-loss and 2x–3x isolated leverage targets $0.004420 and $0.004780."
     }
   ],
   VVV: [
     {
-      title: "🤖 #VVVUSDT at $23.355: Decentralized Uncensored AI Inference & The +3.43% Breakout",
+      title: "🤖 $VVVUSDT at $23.355: Decentralized Uncensored AI Inference & The +3.43% Breakout",
       desc: "Privacy AI compute catalyst: Highlights Venice AI's $22.410 support reclaim on $11.28M Bybit turnover.",
-      bodyReplacement: "Venice Token (#VVVUSDT) is climbing +3.43% to $23.355 on Bybit after defending the $22.410 session low across $11.28M in 24h perpetual turnover."
+      bodyReplacement: "Venice Token ($VVVUSDT) is climbing +3.43% to $23.355 on Bybit after defending the $22.410 session low across $11.28M in 24h perpetual turnover."
     },
     {
-      title: "🤖 The $21.950 Invalidation Line: Trading #VVVUSDT's AI Compute Momentum to $26.400",
+      title: "🤖 The $21.950 Invalidation Line: Trading $VVVUSDT's AI Compute Momentum to $26.400",
       desc: "High-conviction AI setup: Captures a 1:2.46 risk-reward ratio above the 4H EMA-20.",
-      bodyReplacement: "Scaling into #VVVUSDT at $23.100–$23.400 with a hard stop at $21.950 captures a 1:2.46 asymmetric continuation toward $24.850 and $26.400."
+      bodyReplacement: "Scaling into $VVVUSDT at $23.100–$23.400 with a hard stop at $21.950 captures a 1:2.46 asymmetric continuation toward $24.850 and $26.400."
     }
   ],
   BMT: [
     {
-      title: "🫧 #BMTUSDT at $0.02331: Visual On-Chain Forensics & Supply-Cluster Transparency",
+      title: "🫧 $BMTUSDT at $0.02331: Visual On-Chain Forensics & Supply-Cluster Transparency",
       desc: "On-chain RegTech angle: Connects Bubblemaps V2 analytics to the $0.02260 demand defense on $9.84M turnover.",
-      bodyReplacement: "Bubblemaps (#BMTUSDT) is trading at $0.02331 (+1.13% 24h) on $9.84M in Bybit turnover as traders adopt visual wallet-cluster forensics and defend the $0.02260 floor."
+      bodyReplacement: "Bubblemaps ($BMTUSDT) is trading at $0.02331 (+1.13% 24h) on $9.84M in Bybit turnover as traders adopt visual wallet-cluster forensics and defend the $0.02260 floor."
     },
     {
-      title: "🫧 The $0.02180 Stop-Loss Shelf: Executing #BMTUSDT's 1:2.53 Micro-Cap Breakout to $0.02680",
+      title: "🫧 The $0.02180 Stop-Loss Shelf: Executing $BMTUSDT's 1:2.53 Micro-Cap Breakout to $0.02680",
       desc: "Precision risk control: Pairs 2x–3x isolated leverage with a strict $0.02180 invalidation.",
-      bodyReplacement: "Accumulating #BMTUSDT at $0.02300–$0.02335 with a strict $0.02180 stop-loss delivers a 1:2.53 risk-to-reward profile toward $0.02490 and $0.02680."
+      bodyReplacement: "Accumulating $BMTUSDT at $0.02300–$0.02335 with a strict $0.02180 stop-loss delivers a 1:2.53 risk-to-reward profile toward $0.02490 and $0.02680."
     }
   ]
 };
@@ -1839,21 +1851,44 @@ function setDraftViewMode(mode) {
   }
 }
 
-// 🎯 Inject Bybit ByX Cashtag & Real Trading Context (#PAIRUSDT, Setup, Profit Follow-Up)
+// 🎯 Inject or Replace Clean Trade Setup (No # Symbols, Never Duplicates Existing Setup/Execution Plan)
 function injectTradeContext(type) {
   const post = postsData[currentPostIndex] || {};
-  let rawCoin = (post.coin && post.coin !== '+ New Coin') ? post.coin.replace(/^\$/, '') : 'BTC';
-  const cashtag = `#${rawCoin.toUpperCase()}USDT`;
+  let rawCoin = (post.coin && post.coin !== '+ New Coin') ? post.coin.replace(/^\$/, '') : 'XRP';
+  const pairLabel = `${rawCoin.toUpperCase()}USDT`;
 
   let snippet = '';
   if (type === 'setup') {
-    snippet = `\n\n📈 Trade Setup & Cashtag: ${cashtag}\n• Direction: Long\n• Entry Zone: Support floor reaction\n• Invalidation (SL): Below structural low\n• Take Profit 1: +5.0% (Book 50% profit)\n• Take Profit 2: +10.0% (Runner target)\n• Risk/Reward Ratio: 1 : 2.5`;
+    snippet = `${pairLabel} Setup:\n• Entry Zone: Support floor reaction\n• Upside Targets: +5.0% first, +10.0% second (1:2.5 payoff)\n• Hard Stop: Below structural invalidation low`;
   } else if (type === 'followup') {
-    snippet = `\n\n🏆 Trade Update & Cashtag: ${cashtag}\n• Historical Entry: Confirmed support\n• Target 1 Hit: +5.0% profit realized\n• Position Action: 50% profit booked; stop loss trailed to breakeven\n• Runner Target: Next key resistance`;
+    snippet = `${pairLabel} Follow-Up:\n• Entry Filled: Confirmed support bounce\n• Milestone Hit: +5.0% booked (50% closed, stop trailed to breakeven)\n• Runner Objective: Next overhead resistance`;
   }
 
-  const activeText = polishedContent.value || '';
-  const updatedText = activeText ? (activeText.trim() + snippet) : snippet.trim();
+  let activeText = (polishedContent.value || '').trim();
+  const paras = activeText.split(/\n\s*\n/).filter(Boolean);
+
+  // Find if an Execution / Setup block already exists so we replace it instead of having both!
+  let replaced = false;
+  const setupHeaderRegex = /(?:Setup|Execution Levels|Tactical Plan|Position Parameters|Blueprint|Structure|Allocation Plan|Strategy|Roadmap|Orders|Follow-Up):/i;
+  const updatedParas = paras.map(p => {
+    if (!replaced && setupHeaderRegex.test(p)) {
+      replaced = true;
+      return snippet;
+    }
+    return p;
+  });
+
+  if (!replaced) {
+    // Insert right before the standalone risk sentence if present, otherwise append
+    const riskIdx = updatedParas.findIndex(p => /Respect the invalidation stop-loss/i.test(p));
+    if (riskIdx !== -1) {
+      updatedParas.splice(riskIdx, 0, snippet);
+    } else {
+      updatedParas.push(snippet);
+    }
+  }
+
+  const updatedText = applyBybitPunctuationAndStructureRules(updatedParas.join('\n\n'), post);
 
   polishedContent.value = updatedText;
   if (draftCleanContent) draftCleanContent.value = updatedText;
@@ -1861,12 +1896,13 @@ function injectTradeContext(type) {
   post.status = 'ready';
 
   saveDataToStorage();
+  renderDraftFromText(updatedText, rawContent.value || '');
   updateWordAndSentenceBadges(updatedText);
   runAllDetectors(updatedText);
   renderPills();
   renderAttributionMatrix();
   updateWeeklyProgress();
-  showToast(`🎯 Injected ByX Cashtag (${cashtag}) & ${type === 'setup' ? 'Trade Setup' : 'Realized Profit Follow-Up'}!`);
+  showToast(`🎯 Updated ${pairLabel} ${type === 'setup' ? 'Trade Setup' : 'Follow-Up'} (Single clean block, 0 duplicates)!`);
 }
 
 // Setup Event Listeners

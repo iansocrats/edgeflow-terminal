@@ -407,157 +407,238 @@ function getDay4PreloadedSlots() {
 function getDay5PreloadedSlots() {
   return [
     {
-      id: 1,
-      coin: '$XRP',
-      archetype: 'relative_value',
-      corpus_ref: 'Live Bybit V5 API + ByX IDs 7782220156098047573 & 2305843009215555177',
-      title: 'Post 1: ⚖️ $XRP Live at $1.266 (-2.09%): $660M Turnover, -0.0252% Funding & RLUSD $4.26B Growth',
-      status: 'ready',
-      raw: "XRP trades at $1.2658 (-2.09% in 24h) on Bybit inside a $1.1981 to $1.3178 daily range with $660.0M 24h turnover, $280.3M open interest, and -0.0252% negative funding. XRPL Q2 order-book volume rose 79% YoY while active wallets dropped 41%, and RLUSD plus tokenized value scaled from $99M to $4.26B backed by Moody's A2/P-1 rating and Coinbase Prime custody alongside 32.6B XRP in escrow. Price holds above 1H MA7 ($1.2392) and EMA7 ($1.2502) with RSI6 at 62.72. Entry $1.240 to $1.255, targets $1.298 (4H MA14) and $1.318 (24h high), invalidation below $1.198.",
-      improved: "⚖️ $XRP Live at $1.266 (-2.09%): $660M Turnover, -0.0252% Funding & RLUSD $4.26B Growth\n\n$XRPUSDT trades at $1.2658 today (-2.09% in 24h), rebounding off its $1.1981 daily low toward the $1.3178 session high on $660.0M perpetual turnover and $280.3M open interest. On-chain XRPL data shows active wallets fell 41% year-over-year while native order-book volume jumped 79%, driven by institutional settlement as RLUSD and tokenized value scaled from $99M to $4.26B across six quarters (Moody's A2/P-1 rating, Coinbase Prime custody).\n\nPerpetual funding sits negative at -0.0252% while price holds above 1H MA7 ($1.2392) and EMA7 ($1.2502) with RSI6 at 62.72:\n▸ Bid Zone: $1.240 – $1.255 (1H EMA7/MA14 support cluster)\n▸ Upside Targets: $1.298 (4H MA14, TP1) then $1.318 (24h high, TP2)\n▸ Invalidation: A 4-hour candle close under the $1.1981 daily floor proves this thesis wrong\n\nRisk Disclosure: 32.6B XRP remains in escrow (monthly unlock schedule) and 4H EMA50 ($1.3005) caps overhead—keep leverage at 2x–3x max, not financial advice. Tap the $XRPUSDT widget below to check live book depth. Are negative funding shorts about to get squeezed above $1.298?\n\n#XRPUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 5, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($1.2658, $1.1981–$1.3178, $660M turnover, $280.3M OI, -0.0252% funding) + ByX IDs 7782220156098047573 & 2305843009215555177." },
-        { category: "spacing", description: "Archetype: Relative Value Divergence (FK Grade 4.1) with explicit 32.6B escrow & 4H EMA50 risk disclosure." }
-      ]
+        "id": 1,
+        "coin": "$XRP",
+        "title": "Post 1: ⚖️ $XRP Live at $1.2658 (-2.09%): $660M Turnover & RLUSD $4.26B Growth",
+        "status": "ready",
+        "raw": "XRP trades at $1.2658 (-2.09% in 24h) on Bybit inside a $1.1981 to $1.3178 daily range with $660.0M 24h turnover, $280.3M open interest, and -0.0252% negative funding. XRPL Q2 order-book volume rose 79% YoY while active wallets dropped 41%, and RLUSD plus tokenized value scaled from $99M to $4.26B backed by Moody's A2/P-1 rating and Coinbase Prime custody alongside 32.6B XRP in escrow. Price holds above 1H MA7 ($1.2392) and EMA7 ($1.2502) with RSI6 at 62.72. Entry $1.240 to $1.255, targets $1.298 (4H MA14) and $1.318 (24h high), invalidation below $1.1981. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "⚖️ $XRP Live at $1.2658 (-2.09%): $660M Turnover & RLUSD $4.26B Growth\n\nRipple ($XRPUSDT) rebounds from its daily trough as institutional settlement expands across XRPL, even while 32.6B tokens remain subject to monthly escrow releases.\n\nNative ledger volume rose 79% year-over-year despite active retail wallets falling 41%, driven by RLUSD and tokenized value scaling from $99M to $4.26B under Moody's A2/P-1 rating and Coinbase Prime custody.\n\nXRPUSDT Market Numbers:\n• Spot Quote: $1.2658 (-2.09% daily)\n• Session Extremes: $1.1981 floor versus $1.3178 ceiling\n• Perpetual Activity: $660.0M turnover, $280.3M Open Interest\n• Technical Readout: -0.0252% funding, Above 1H MA7 ($1.2392) & EMA7 ($1.2502), RSI6 at 62.72\n\nXRPUSDT Setup:\n• Bid Zone: $1.240 – $1.255\n• Upside Targets: $1.298 (4H MA14), $1.318 session peak\n• Hard Stop: $1.1981 (beneath $1.3005 EMA50 overhead barrier)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $XRP."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 2,
-      coin: '$ONDO',
-      archetype: 'macro_fundamental',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 2882303761519007849',
-      title: 'Post 2: 🏛️ $ONDO Quoted at $0.3935 (-3.17%): $1B RWA TVL, $27B Volume & Concentration Disclosure',
-      status: 'ready',
-      raw: "ONDO is quoted at $0.3935 (-3.17% over 24h) on Bybit within a $0.3605 to $0.4357 span on $87.89M volume, $44.78M OI, and -0.0080% funding. Ondo crossed $1B TVL across 260+ tokenized stocks/ETFs with $27B cumulative volume (26x turnover) and a confidential SEC registration following the Sept 17 tokenization exemption. Risks: 89% volume concentration on Bitget and no token revenue capture until the 2026 DAO fee-switch vote. Holding above hourly 7-MA ($0.3837) and 7-EMA ($0.3890). Bid $0.384 to $0.392, targets $0.4109 and $0.4357, stop beneath $0.3605.",
-      improved: "🏛️ $ONDO Quoted at $0.3935 (-3.17%): $1B RWA TVL, $27B Volume & Concentration Disclosure\n\n$ONDOUSDT is quoted at $0.3935 (-3.17% over the past day) within a $0.3605–$0.4357 span on $87.89M volume, $44.78M OI, and -0.0080% funding. Fundamentally, Ondo crossed $1 billion locked across 260+ tokenized stocks and ETFs with $27 billion in cumulative volume (26x velocity), backed by Ondo Global Markets' confidential SEC filing after nine US issuers objected to unapproved listings on rival venues.\n\nTransparent risk & exposure disclosure requires noting two structural headwinds: 89% of RWA trading liquidity sits concentrated on Bitget, and governance token holders capture zero direct fee revenue until the 2026 DAO fee-switch vote.\n\n1. Accumulation Pocket: Bid $0.3840 to $0.3918 above hourly 7-MA ($0.3837) and 7-EMA ($0.3890).\n2. Profit Ladder: Scale out at $0.4109 (four-hour 14-MA) and $0.4357 (session peak & hourly upper Bollinger Band at $0.4369).\n3. Hard Stop: Exit immediately if a four-hour bar closes beneath the $0.3605 swing bottom.\n\nAllocate at most 1.5% of account equity—independent research, manage your own capital. Click the $ONDOUSDT chart module underneath to inspect RWA orderflow. Will buyers reclaim the four-hour 20-EMA ($0.4086)?\n\n#ONDOUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 9, word_replacement_count: 5, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($0.3935, $0.3605–$0.4357, $87.89M turnover, $44.78M OI) + ByX ID 2882303761519007849 ($1B TVL, $27B vol, 89% Bitget concentration)." },
-        { category: "spacing", description: "Archetype: Macro & Fundamental Catalyst (FK Grade 5.8) with numbered checklist & explicit concentration disclosure." }
-      ]
+        "id": 2,
+        "coin": "$ONDO",
+        "title": "Post 2: 🏛️ $ONDO Quoted at $0.3935 (-3.17%): $1B RWA TVL & $27B Volume",
+        "status": "ready",
+        "raw": "ONDO is quoted at $0.3935 (-3.17% over 24h) on Bybit within a $0.3605 to $0.4357 span on $87.89M volume, $44.78M OI, and -0.0080% funding. Ondo crossed $1B TVL across 260+ tokenized stocks/ETFs with $27B cumulative volume (26x turnover) and a confidential SEC registration following the Sept 17 tokenization exemption. Risks: 89% volume concentration on Bitget and no token revenue capture until the 2026 DAO fee-switch vote. Holding above hourly 7-MA ($0.3837) and 7-EMA ($0.3890). Bid $0.3840 to $0.3918, targets $0.4109 and $0.4357, stop beneath $0.3605. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🏛️ $ONDO Quoted at $0.3935 (-3.17%): $1B RWA TVL & $27B Cumulative Volume\n\nOndo Finance ($ONDOUSDT) defends its structural shelf backed by Ondo Global Markets' confidential SEC registration after nine US issuers objected to unapproved listings on rival venues.\n\nTwo concentration factors still warrant attention: 89% of RWA trading liquidity sits on Bitget, and governance holders capture zero direct fee revenue until the 2026 DAO fee-switch vote.\n\nONDOUSDT Quantitative Telemetry:\n• Current Valuation: $0.3935 (-3.17% change)\n• Intraday Spread: $0.3605 bottom up to $0.4357 top\n• Contract Depth: $87.89M volume paired with $44.78M OI and -0.0080% rate\n• RWA Footprint: $1B TVL across 260+ tokenized equities, $27B cumulative volume (26x velocity)\n• Trend Averages: Holding hourly 7-MA ($0.3837) alongside 7-EMA ($0.3890)\n\nONDOUSDT Execution Levels:\n• Accumulation Window: $0.3840 – $0.3918\n• Profit Milestones: $0.4109 (four-hour 14-MA) followed by $0.4357 ($0.4369 upper band)\n• Thesis Negation: $0.3605 swing low\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $ONDO."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 3,
-      coin: '$LTC',
-      archetype: 'tactical_signal',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 8358680908401501209',
-      title: 'Post 3: 🎯 $LTC Changing Hands at $56.13 (-1.78%): Defending $52.73 Base & Probing $57.19 EMA20',
-      status: 'ready',
-      raw: "Litecoin changes hands at $56.13 (-1.78%) on Bybit across a $52.73 to $58.90 corridor with $43.94M notional flow, $62.51M derivative positioning, and +0.0010% funding. Valuation sits 86% beneath its $410 May 2021 peak yet reclaimed 60m MA7 ($55.46), EMA7 ($55.83), and MA14 ($55.86). Overhead hurdles sit at 60m MA28 ($56.79) and 240m EMA20 ($57.19). Trigger breakout above $57.20 or pullback bid $55.45 to $55.85, targets $58.90 and $59.46 (upper BB), stop under $54.40.",
-      improved: "🎯 $LTC Changing Hands at $56.13 (-1.78%): Defending $52.73 Base & Probing $57.19 EMA20\n\nLitecoin ($LTCUSDT) changes hands at $56.13 (-1.78%) across a $52.73–$58.90 corridor, backed by $43.94M notional flow, $62.51M derivative positioning, and +0.0010% funding. Valuation remains 86% discounted from its $410 May 2021 record, yet intraday structure firmed up once spot demand defended the $52.73 washout base and reclaimed 60m averages at $55.46 (MA7), $55.83 (EMA7), and $55.86 (MA14).\n\nBuyers now confront the 60m MA28 ($56.79) and 240m EMA20 ($57.19) ceiling. Skip mid-corridor chop; wait for clean confirmation:\n- Trigger A (Breakout): Four-hour bar closing beyond $57.20 on expanding participation\n- Trigger B (Pullback): Staged limit orders between $55.45 and $55.85\n- Expansion Objectives: $58.90 (intraday peak) followed by $59.46 (60m upper Bollinger envelope)\n- Risk Boundary: Protective stop-loss under $54.40 (structural failure below $52.73)\n\nCaution & Sizing Note: Four-hour RSI-14 reads neutral-soft at 44.10; stick to conservative margin sizing (DYOR). Open the $LTCUSDT contract ticket to configure price alerts. Does $LTC clear $57.20 soon?\n\n#LTCUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($56.13, $52.73–$58.90, $43.94M turnover, $62.51M OI, 1H MA7 $55.46, 4H EMA20 $57.19) + ByX ID 8358680908401501209." },
-        { category: "spacing", description: "Archetype: Tactical Signal (FK Grade 4.2) with dual-trigger execution rules & 4H RSI-14 caution disclosure." }
-      ]
+        "id": 3,
+        "coin": "$LTC",
+        "title": "Post 3: 🎯 $LTC Changing Hands at $56.13 (-1.78%): Defending $52.73 Base & Probing $57.19",
+        "status": "ready",
+        "raw": "Litecoin changes hands at $56.13 (-1.78%) on Bybit across a $52.73 to $58.90 corridor with $43.94M notional flow, $62.51M derivative positioning, and +0.0010% funding. Valuation sits 86% beneath its $410 May 2021 peak yet reclaimed 60m MA7 ($55.46), EMA7 ($55.83), and MA14 ($55.86). Overhead hurdles sit at 60m MA28 ($56.79) and 240m EMA20 ($57.19). Trigger breakout above $57.20 or pullback bid $55.45 to $55.85, targets $58.90 and $59.46 (upper BB), stop under $54.40. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🎯 $LTC Changing Hands at $56.13 (-1.78%): Defending $52.73 Base & Probing $57.19\n\nLitecoin ($LTCUSDT) firmed up once spot demand defended its washout base and reclaimed sixty-minute averages, though price remains 86% discounted from its $410 May 2021 record.\n\nBulls now confront overhead supply while four-hour momentum reads neutral-soft, making patient confirmation essential rather than chasing mid-corridor chop.\n\nLTCUSDT Orderflow Breakdown:\n• Active Print: $56.13 (-1.78% in 24 hours)\n• Daily Corridor: $52.73 washout base to $58.90 resistance\n• Futures Positioning: $43.94M notional flow, $62.51M derivative positioning, +0.0010% yield\n• Reclaimed Stack: 60m SMA-7 ($55.46), EMA-7 ($55.83), plus SMA-14 ($55.86)\n• Overhead Hurdles: 60m SMA-28 ($56.79) and 240m EMA-20 ($57.19) with 44.10 oscillator reading\n\nLTCUSDT Tactical Plan:\n• Long Triggers: Staged limit orders at $55.45 – $55.85 or 240m bar closing beyond $57.20\n• Expansion Objectives: $58.90 high then $59.46 Bollinger envelope\n• Risk Boundary: $54.40 protective exit\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $LTC."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 4,
-      coin: '$SEI',
-      archetype: 'sentiment_trap',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 864691128456965718',
-      title: 'Post 4: 🪤 $SEI Hovering at $0.0485 (-5.88%): 4H RSI Washed Out at 34.24 & Bull-Trap Filter at $0.0504',
-      status: 'ready',
-      raw: "SEI hovers at $0.04851 (-5.88%) on Bybit inside a $0.04503 to $0.05397 band with $14.58M contract volume, $7.87M outstanding contracts, and -0.0168% negative funding. 4H RSI14 sits at 34.24 after bouncing off $0.04503 to reclaim 1H MA7 ($0.0478) and EMA7 ($0.0483). Overhead resistance sits at 4H MA7 ($0.0504) and MA14 ($0.0517) while scheduled vesting unlocks test spot absorption. Enter above $0.0504 or bid sweep at $0.0455 to $0.0468, targets $0.0517 and $0.0540, invalidation below $0.04503.",
-      improved: "🪤 $SEI Hovering at $0.0485 (-5.88%): 4H RSI Washed Out at 34.24 & Bull-Trap Filter at $0.0504\n\nHovering around $0.04851 (-5.88%) within a $0.04503–$0.05397 band on $14.58M contract activity and $7.87M open positioning, $SEIUSDT faces a decisive inflection test. Although four-hour RSI-14 compressed down to 34.24 and swap funding flipped negative (-0.0168%), premature relief rallies recently trapped impatient chasers whenever scheduled token vesting unlocks hit the tape and printed another lower peak.\n\nSpot bids reclaimed the hourly 7-MA ($0.0478) and 7-EMA ($0.0483), yet higher-timeframe moving averages still cap upside momentum:\n• Bullish Validation: Enter long solely after a 240m candle settles firmly above the four-hour 7-MA ($0.0504) and converts it into support.\n• Liquidity Sweep Entry: If sellers retest the trough first, watch for passive absorption inside $0.0455–$0.0468.\n• Take-Profit Levels: $0.0517 (four-hour 14-MA) and $0.0540 ($0.05397 session top & hourly upper Bollinger Band at $0.0543).\n• Setup Negation: Any settlement under the $0.04503 trough cancels the trade.\n\nUnlock & Downside Warning: Vesting supply overhang plus a descending 4H 50-EMA ($0.0537) demand disciplined position sizing—personal market notes only. Pull up the $SEIUSDT orderbook to monitor funding shifts. Is $0.0504 a genuine reversal or another trap?\n\n#SEIUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($0.04851, $0.04503–$0.05397, $14.58M turnover, $7.87M OI, -0.0168% funding, 4H RSI 34.24) + ByX ID 864691128456965718." },
-        { category: "spacing", description: "Archetype: Sentiment & Liquidity Trap (FK Grade 5.5) with vesting unlock & 4H EMA50 risk disclosure." }
-      ]
+        "id": 4,
+        "coin": "$SEI",
+        "title": "Post 4: 🪤 $SEI Hovering at $0.04851 (-5.88%): 4H RSI Washed Out at 34.24 & Bull-Trap Filter",
+        "status": "ready",
+        "raw": "SEI hovers at $0.04851 (-5.88%) on Bybit inside a $0.04503 to $0.05397 band with $14.58M contract volume, $7.87M outstanding contracts, and -0.0168% negative funding. 4H RSI14 sits at 34.24 after bouncing off $0.04503 to reclaim 1H MA7 ($0.0478) and EMA7 ($0.0483). Overhead resistance sits at 4H MA7 ($0.0504) and MA14 ($0.0517) while scheduled vesting unlocks test spot absorption. Enter above $0.0504 or bid sweep at $0.0455 to $0.0468, targets $0.0517 and $0.0540, invalidation below $0.04503. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🪤 $SEI Hovering at $0.04851 (-5.88%): Washed-Out 34.24 RSI & Bull-Trap Filter\n\nSei Network ($SEIUSDT) faces a decisive inflection test because premature relief bounces recently trapped impatient chasers whenever scheduled token vesting unlocks hit the tape.\n\nSpot bids recaptured short-term averages, yet descending multi-hour moving averages still cap upside continuation until proven otherwise.\n\nSEIUSDT Live Figures:\n• Exchange Rate: $0.04851 (-5.88% session move)\n• 24-Hour Span: $0.04503 wick low to $0.05397 high\n• Contract Participation: $14.58M volume, $7.87M outstanding contracts, -0.0168% negative carry\n• Support Reclaim: 34.24 on four-hour RSI-14, Recaptured hourly MA-7 ($0.0478) & EMA-7 ($0.0483)\n• Supply Ceiling: Four-hour MA-7 ($0.0504), MA-14 ($0.0517), and 50-EMA ($0.0537)\n\nSEIUSDT Position Parameters:\n• Buy Pocket: Passive absorption inside $0.0455 – $0.0468 or settlement above $0.0504\n• Take-Profit Ladder: $0.0517 first, $0.0540 second ($0.0543 upper band)\n• Setup Negation: $0.04503 trough\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $SEI."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 5,
-      coin: '$ICP',
-      archetype: 'momentum_trailing',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 4035225266125795302',
-      title: 'Post 5: 🚀 $ICP Priced at $2.459 (-3.15%): +8.5% Rebound Off $2.266 Trough & -0.0447% Short Squeeze',
-      status: 'ready',
-      raw: "Internet Computer is priced at $2.459 (-3.15%) on Bybit across a $2.266 to $2.641 window with $15.88M activity, $12.88M open contracts, and deep negative funding at -0.0447%. After flushing from the $2.641 peak to $2.266, ICP rebounded +8.5% to reclaim 1H MA7 ($2.417), EMA7 ($2.440), and MA14 ($2.447) with 1H RSI6 at 55.63. Overhead targets sit at 4H MA7 ($2.513), 4H MA14 ($2.561), and 24h peak ($2.641). Invalidation below $2.360.",
-      improved: "🚀 $ICP Priced at $2.459 (-3.15%): +8.5% Rebound Off $2.266 Trough & -0.0447% Short Squeeze\n\nInternet Computer ($ICPUSDT) is priced at $2.459 (-3.15%) on $15.88M 24-hour activity and $12.88M open contracts. Following an earlier flush from its $2.641 top down to the $2.266 liquidation trough, responsive buyers sparked an 8.5% intraday bounce that recaptured the hourly moving-average trio—MA7 ($2.417), EMA7 ($2.440), and MA14 ($2.447)—while lifting hourly RSI-6 to 55.63.\n\nCrucially, swap funding prints deeply negative at -0.0447%, meaning crowded late bears are paying a hefty premium as momentum presses toward hourly MA28 ($2.509):\n\n| Parameter | Verified Bybit Level & Execution Rule |\n| Pullback Reload | $2.417 – $2.447 (hourly MA7, EMA7 & MA14 confluence zone) |\n| Target Milestones | $2.513 (4H MA7), $2.561 (4H MA14), and $2.641 (24-hour ceiling) |\n| Hard Invalidation | Breakdown beneath $2.360 (invalidates the $2.266 recovery structure) |\n\nLeverage & Volatility Disclosure: Because four-hour RSI-14 remains subdued at 38.63 underneath the 4H 50-EMA ($2.631), avoid chasing resistance and cap exposure at 1% per trade. Review hourly moving averages via the $ICPUSDT tool—will negative funding fuel a short squeeze toward $2.641?\n\n#ICPUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($2.459, $2.266–$2.641, $15.88M turnover, $12.88M OI, -0.0447% funding, 1H MA7/EMA7/MA14) + ByX ID 4035225266125795302." },
-        { category: "spacing", description: "Archetype: Momentum & Funding Squeeze (FK Grade 5.2) using pipe-delimited parameter table." }
-      ]
+        "id": 5,
+        "coin": "$ICP",
+        "title": "Post 5: 🚀 $ICP Priced at $2.459 (-3.15%): +8.5% Rebound Off $2.266 & -0.0447% Squeeze",
+        "status": "ready",
+        "raw": "Internet Computer is priced at $2.459 (-3.15%) on Bybit across a $2.266 to $2.641 window with $15.88M activity, $12.88M open contracts, and deep negative funding at -0.0447%. After flushing from the $2.641 peak to $2.266, ICP rebounded +8.5% to reclaim 1H MA7 ($2.417), EMA7 ($2.440), and MA14 ($2.447) with 1H RSI6 at 55.63. Overhead targets sit at 4H MA7 ($2.513), 4H MA14 ($2.561), and 24h peak ($2.641). Invalidation below $2.360. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🚀 $ICP Priced at $2.459 (-3.15%): +8.5% Rebound Off $2.266 & -0.0447% Squeeze\n\nInternet Computer ($ICPUSDT) sparked an impulsive recovery after flushing to its liquidation floor, recapturing its entire one-hour moving-average trio.\n\nDeeply negative swap carry means crowded bears pay a steep premium as price presses toward overhead resistance.\n\nICPUSDT Key Metrics:\n• Market Print: $2.459 (-3.15% move), +8.5% rebound from $2.266\n• Trading Window: $2.266 liquidation trough to $2.641 top\n• Book Velocity: $15.88M 24h activity, $12.88M open contracts, -0.0447% discount\n• One-Hour Trio: $2.417 (7-MA), $2.440 (7-EMA), and $2.447 (14-MA) with 55.63 on RSI-6\n• Macro Gauge: Pressing $2.509 (28-MA) with 38.63 on 4H RSI-14 underneath $2.631 (50-EMA)\n\nICPUSDT Blueprint:\n• Pullback Reload: $2.417 – $2.447 confluence band\n• Target Tiers: $2.513, $2.561, and $2.641 ceiling\n• Line in the Sand: $2.360 breakdown\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $ICP."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 6,
-      coin: '$MORPHO',
-      archetype: 'tactical_signal',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 3458764513822402099',
-      title: 'Post 6: 📐 $MORPHO Prints $2.082 (-4.21%): +6.1% Bounce From $1.9614 Low Into $2.155 Supply Cluster',
-      status: 'ready',
-      raw: "MORPHO prints $2.082 (-4.21%) on Bybit inside a $1.9614 to $2.2879 bracket with $6.77M daily volume, $6.63M futures positioning, and -0.0385% negative funding. Price climbed +6.1% off the $1.9614 low to reclaim 60m MA7 ($2.0187) and EMA7 ($2.0478) with RSI6 at 53.87. Key overhead cluster sits at 60m MA14 ($2.1031), 240m MA28 ($2.1472), and 240m MA7 ($2.1552). Targets $2.1852 and $2.2879, stop below $1.9614.",
-      improved: "📐 $MORPHO Prints $2.082 (-4.21%): +6.1% Bounce From $1.9614 Low Into $2.155 Supply Cluster\n\nAfter sweeping a $1.9614 intraday bottom earlier, $MORPHOUSDT climbed 6.1% back to $2.082 (-4.21%) inside a wide $1.9614–$2.2879 bracket on $6.77M volume and $6.63M futures positioning. On the 60-minute timeframe, bids recaptured the 7-period simple ($2.0187) and exponential ($2.0478) averages with RSI-6 recovering to 53.87, accompanied by -0.0385% negative funding.\n\nEven so, disciplined execution requires respecting overhead supply: 60m MA14 ($2.1031), 240m MA28 ($2.1472), and 240m MA7 ($2.1552) sit stacked directly overhead.\n\n▸ Breakout Trigger: Demand a high-volume 240m close beyond $2.1552, or bid the 60m pullback pocket at $2.018–$2.048.\n▸ Upside Payoffs: $2.1852 (240m MA14) followed by $2.2879 (session extreme).\n▸ Invalidation Stop: Any settlement under the $1.9614 floor negates this recovery thesis.\n\nExecution & Slippage Notice: Lighter $6.77M liquidity can amplify wick slippage during volatility spikes—keep leverage under 3x and size prudently. Inspect 240m candle volume on the $MORPHOUSDT chart—can bulls clear $2.155?\n\n#MORPHOUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($2.082, $1.9614–$2.2879, $6.77M turnover, $6.63M OI, -0.0385% funding, 1H MA7 $2.0187, 4H MA7 $2.1552) + ByX ID 3458764513822402099." },
-        { category: "spacing", description: "Archetype: Tactical Signal (FK Grade 5.1) highlighting overhead moving-average supply & slippage caution." }
-      ]
+        "id": 6,
+        "coin": "$MORPHO",
+        "title": "Post 6: 📐 $MORPHO Prints $2.082 (-4.21%): +6.1% Bounce From $1.9614 Into $2.155 Cluster",
+        "status": "ready",
+        "raw": "MORPHO prints $2.082 (-4.21%) on Bybit inside a $1.9614 to $2.2879 bracket with $6.77M daily volume, $6.63M futures positioning, and -0.0385% negative funding. Price climbed +6.1% off the $1.9614 low to reclaim 60m MA7 ($2.0187) and EMA7 ($2.0478) with RSI6 at 53.87. Key overhead cluster sits at 60m MA14 ($2.1031), 240m MA28 ($2.1472), and 240m MA7 ($2.1552). Targets $2.1852 and $2.2879, stop below $1.9614. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "📐 $MORPHO Prints $2.082 (-4.21%): +6.1% Bounce From $1.9614 Into $2.155 Cluster\n\nMorpho ($MORPHOUSDT) climbed from its intraday low to recapture sixty-minute trend lines while negative perpetual carry pressures late sellers.\n\nLighter orderbook liquidity can amplify wick slippage during volatility spikes, requiring strict attention to the stacked supply cluster directly overhead.\n\nMORPHOUSDT Data Readout:\n• Benchmark Price: $2.082 (-4.21%) after +6.1% recovery\n• Price Bracket: $1.9614 bottom to $2.2879 extreme\n• Derivatives Footprint: $6.77M volume beside $6.63M futures positioning and -0.0385% carry\n• Short-Term Recovery: $2.0187 (60m 7-SMA) & $2.0478 (60m 7-EMA) with 53.87 momentum\n• Supply Cluster: $2.1031 (60m 14-SMA), $2.1472 (240m 28-SMA), plus $2.1552 (240m 7-SMA)\n\nMORPHOUSDT Structure:\n• Limit Pocket: $2.018 – $2.048 dip or 240m settlement beyond $2.1552\n• Harvest Zones: $2.1852 (240m 14-SMA) then $2.2879 peak\n• Cut-Loss Trigger: $1.9614\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $MORPHO."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 7,
-      coin: '$XAUT',
-      archetype: 'chronological_tape',
-      corpus_ref: 'Live Bybit V5 API + ByX IDs 4323455642277536776 & 8070450532249793081',
-      title: 'Post 7: 🥇 $XAUT Holding $3,987.49 (-1.06%): Probing $3,983.25 Shelf With 1H RSI6 Oversold at 23.25',
-      status: 'ready',
-      raw: "Tether Gold ($XAUTUSDT, $3B market cap) holds $3,987.49 (-1.06%) on Bybit across a $3,983.25 to $4,034.68 bracket with $35.71M bullion turnover, $143.58M futures interest, and +0.0050% funding. Bullion pulled back from $4,034.68 (4H EMA50 at $4,033.88) to test $3,983.25 right above the $3,980.00 macro shelf, pushing 1H RSI6 to 23.25 and 4H RSI14 to 35.88 ahead of US PCE inflation data. Reclaim trigger $3,996.70 (1H EMA7), targets $4,020.35 (4H EMA20) and $4,034.68, invalidation below $3,975.00.",
-      improved: "🥇 $XAUT Holding $3,987.49 (-1.06%): Probing $3,983.25 Shelf With 1H RSI6 Oversold at 23.25\n\nTether Gold ($XAUTUSDT, $3B valuation) is printing a textbook pre-news liquidity test ahead of the US PCE inflation release, holding $3,987.49 (-1.06%) on $35.71M bullion turnover, $143.58M futures interest, and +0.0050% funding. Sellers pressed tokenized gold down from its $4,034.68 top (right at 4H EMA50 resistance of $4,033.88) to probe $3,983.25—just above the major $3,980.00 macro shelf.\n\nThat dip drove 1-hour RSI6 into deep oversold territory at 23.25 (with 4H RSI14 at 35.88), signaling short-term seller exhaustion right around support.\n\nMy trading rule here prioritizes patience: never knife-catch blindly inside the $3,980.00–$3,988.00 zone. Trigger a long entry only once a 1-hour bar reclaims 1H MA7/EMA7 at $3,996.70, targeting 4H EMA20 at $4,020.35 first and the $4,034.68 high second. A 4-hour close below $3,975.00 breaks the $3,980.00 shelf and kills this bullish setup.\n\nMacro Event Risk Notice: PCE inflation surprises can whip gold spreads violently; size modestly, commodity desk notes only. Open the $XAUTUSDT perpetual widget—does $3,980 hold into PCE?\n\n#XAUTUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($3,987.49, $3,983.25–$4,034.68, $35.71M turnover, $143.58M OI, 1H RSI6 23.25) + ByX IDs 4323455642277536776 & 8070450532249793081." },
-        { category: "spacing", description: "Archetype: Chronological Tape Read (FK Grade 3.8) with zero-bullet fluid narrative & PCE macro risk notice." }
-      ]
+        "id": 7,
+        "coin": "$XAUT",
+        "title": "Post 7: 🥇 $XAUT Holding $3,987.49 (-1.06%): Probing $3,983.25 Shelf With Oversold 23.25 RSI",
+        "status": "ready",
+        "raw": "Tether Gold ($XAUTUSDT, $3B market cap) holds $3,987.49 (-1.06%) on Bybit across a $3,983.25 to $4,034.68 bracket with $35.71M bullion turnover, $143.58M futures interest, and +0.0050% funding. Bullion pulled back from $4,034.68 (4H EMA50 at $4,033.88) to test $3,983.25 right above the $3,980.00 macro shelf, pushing 1H RSI6 to 23.25 and 4H RSI14 to 35.88 ahead of US PCE inflation data. Reclaim trigger $3,996.70 (1H EMA7), targets $4,020.35 (4H EMA20) and $4,034.68, invalidation below $3,975.00. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🥇 $XAUT Holding $3,987.49 (-1.06%): Probing $3,983.25 Shelf Ahead of US PCE Inflation\n\nTether Gold ($XAUTUSDT) prints a textbook pre-news liquidity test ahead of US PCE inflation data as sellers pressed tokenized bullion down toward its macro support floor.\n\nThat retracement drove short-term oscillators into deep oversold territory, signaling seller exhaustion right above structural demand while PCE surprises can still whip spreads.\n\nXAUTUSDT Bullion Metrics:\n• Ounce Valuation: $3,987.49 (-1.06% drift) on $3B market cap\n• Bullion Range: $3,983.25 dip (near $3,980.00 floor) up to $4,034.68 high\n• Active Depth: $35.71M bullion turnover, $143.58M futures interest, +0.0050% rate\n• Exhaustion Readings: Oversold 23.25 on 1-hour RSI-6 and 35.88 on 4-hour RSI-14 under $4,033.88 resistance\n\nXAUTUSDT Allocation Plan:\n• Confirmation Filter: $3,980.00 – $3,988.00 zone or hourly reclaim of $3,996.70\n• Upside Checkpoints: $4,020.35 first, $4,034.68 second\n• Risk Floor: $3,975.00\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $XAUT."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 8,
-      coin: '$PUMPFUN',
-      archetype: 'loss_review_pivot',
-      corpus_ref: 'Live Bybit V5 API (PUMPFUNUSDT) + Square ID 382665568956282',
-      title: 'Post 8: 🔄 $PUMPFUN Marks $0.004115 (-2.79%): Post-Mortem Stop at $0.004205 & Shorting Below EMA20',
-      status: 'ready',
-      raw: "PUMPFUNUSDT marks $0.004115 (-2.79%) on Bybit across a $0.003757 to $0.004655 swing with $63.69M perp volume, $31.46M active OI, and +0.0050% funding. Honest review: yesterday's long topped around the $0.004655 peak ($0.004611) and hit the $0.004205 stop (-8%) during the flush to $0.003757. Now price sits below 1H MA28 ($0.004224), 4H EMA20 ($0.004263), and 4H EMA50 ($0.004334) with 4H RSI14 at 44.92. Short bounce $0.004224 to $0.004263, targets $0.004002 (1H MA7) and $0.003757 (24h low), stop above $0.004334.",
-      improved: "🔄 $PUMPFUN Marks $0.004115 (-2.79%): Post-Mortem Stop at $0.004205 & Shorting Below EMA20\n\nTransparent post-mortem first: yesterday's long call topped around the $0.004655 peak before hitting our $0.004205 stop-loss (-8%) during the cascade down to $0.003757. Own the loss, respect your stop, and adapt to live orderflow.\n\nMomentum remains capped on $PUMPFUNUSDT, marking $0.004115 (-2.79%) on $63.69M perp activity, $31.46M active OI, and +0.0050% funding. With four-hour RSI14 at 44.92, price stays pinned underneath the 1-hour 28-MA ($0.004224), four-hour 20-EMA ($0.004263), and four-hour 50-EMA ($0.004334). Instead of revenge-trading, the disciplined play fades weak relief bounces into overhead resistance:\n- Bias: SHORT bounce entries inside $0.004224 – $0.004263 (1H MA28 to 4H EMA20)\n- Downside Objectives: Book partial profit at 1H MA7 ($0.004002), aiming runners at the $0.003757 low\n- Thesis Cut-Off: Four-hour candle settling above 4H EMA50 ($0.004334) cancels this short setup\n\nVolatility & Wick Disclosure: High-beta meme contracts carry severe squeeze and wick hazard; cap exposure under 1%—personal trade log only. Track the 4H EMA20 slope on $PUMPFUNUSDT below. Do you flip bias after a stop-out or step aside?\n\n#PUMPFUNUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 9, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($PUMPFUNUSDT at $0.004115, $0.003757–$0.004655, $63.69M turnover, $31.46M OI, 4H EMA20 $0.004263) + Square ID 382665568956282." },
-        { category: "spacing", description: "Archetype: Loss Review & Directional Pivot (FK Grade 4.0) building maximum trader credibility." }
-      ]
+        "id": 8,
+        "coin": "$PUMPFUN",
+        "title": "Post 8: 🔄 $PUMPFUN Marks $0.004115 (-2.79%): Post-Mortem Stop at $0.004205 & Shorting Bounce",
+        "status": "ready",
+        "raw": "PUMPFUNUSDT marks $0.004115 (-2.79%) on Bybit across a $0.003757 to $0.004655 swing with $63.69M perp volume, $31.46M active OI, and +0.0050% funding. Honest review: yesterday's long topped around the $0.004655 peak ($0.004611) and hit the $0.004205 stop (-8%) during the flush to $0.003757. Now price sits below 1H MA28 ($0.004224), 4H EMA20 ($0.004263), and 4H EMA50 ($0.004334) with 4H RSI14 at 44.92. Short bounce $0.004224 to $0.004263, targets $0.004002 (1H MA7) and $0.003757 (24h low), stop above $0.004334. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🔄 $PUMPFUN Marks $0.004115 (-2.79%): Post-Mortem Stop at $0.004205 & Shorting Bounce\n\nTransparent post-mortem first: yesterday's long call topped near the peak before hitting our stop-loss during the cascade, proving why disciplined traders own losses and adapt.\n\nInstead of revenge-trading, the objective play fades weak relief bounces because price stays pinned underneath its multi-hour trend lines.\n\nPUMPFUNUSDT Tape Statistics:\n• Last Trade: $0.004115 (-2.79%) following yesterday's $0.004205 stop-out (-8%)\n• Daily Swing: $0.003757 low versus $0.004655 top\n• Speculative Flow: $63.69M perp volume, $31.46M active OI, +0.0050% fee\n• Overhead Cap: Pinned beneath $0.004224 (1H 28-MA), $0.004263 (4H 20-EMA), and $0.004334 (4H 50-EMA) at 44.92 RSI\n\nPUMPFUNUSDT Strategy:\n• Short Reload Area: $0.004224 – $0.004263 resistance band\n• Downside Objectives: $0.004002 first, $0.003757 low second\n• Bailout Point: $0.004334\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $PUMPFUN."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 9,
-      coin: '$VVV',
-      archetype: 'momentum_trailing',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 4035225266125856630 (Crypto BOSS)',
-      title: 'Post 9: ⚡ $VVV Consolidates at $23.355 (-0.23%): Pullback From $25.930 Peak Into $22.899 EMA7 Support',
-      status: 'ready',
-      raw: "VVVUSDT consolidates at $23.355 (-0.23%) on Bybit across a $21.759 to $25.930 trajectory with $16.86M traded value, $22.67M open positioning, and -0.0335% negative funding. After surging from $21.759 to $25.930 (above 1H upper Bollinger Band at $25.786), VVV cooled off cleanly to hold above 1H MA7 ($22.608), EMA7 ($22.899), and MA14 ($23.143) with 1H RSI6 reset to 60.45. Anchor trailing stop or reload at $22.90 to $23.35, targets $24.153 (4H EMA20) and $25.786 to $25.930, hard stop below $22.50.",
-      improved: "⚡ $VVV Consolidates at $23.355 (-0.23%): Pullback From $25.930 Peak Into $22.899 EMA7 Support\n\n$VVVUSDT illustrates why patient operators never FOMO chase vertical green candles at an extreme. After rocketing from its $21.759 base to a $25.930 zenith (piercing the hourly upper Bollinger Band at $25.786), price cooled off to $23.355 (-0.23%) on $16.86M traded value and $22.67M open positioning.\n\nThat healthy consolidation reset hourly RSI-6 to 60.45 while swap funding turned negative at -0.0335%. Most importantly, buyers are defending the hourly trend stack: price holds firmly above 1H MA14 ($23.143), EMA7 ($22.899), and MA7 ($22.608).\n\nFor traders riding this wave, my dynamic anchor sits at 1H EMA7 ($22.899) down to 1H MA7 ($22.608). Reload or trail stops across the $22.90–$23.35 demand pocket, targeting 4H EMA20 at $24.153 first and a retest of the $25.786–$25.930 upper band second. An hourly close under $22.50 invalidates the trend structure.\n\nTrailing & Drawdown Disclosure: Overhead 4H EMA50 ($24.603) can stall rallies; lock in unrealized gains and avoid excessive leverage—personal thesis, DYOR. Monitor 1H EMA7 on the $VVVUSDT widget below. Where do you trail stops on volatile runners?\n\n#VVVUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($23.355, $21.759–$25.930, $16.86M turnover, $22.67M OI, -0.0335% funding, 1H EMA7 $22.899) + ByX ID 4035225266125856630." },
-        { category: "spacing", description: "Archetype: Momentum & EMA7 Trailing Stop (FK Grade 4.2) with anti-FOMO discipline & 4H EMA50 disclosure." }
-      ]
+        "id": 9,
+        "coin": "$VVV",
+        "title": "Post 9: ⚡ $VVV Consolidates at $23.355 (-0.23%): Pullback From $25.930 Into $22.899 Support",
+        "status": "ready",
+        "raw": "VVVUSDT consolidates at $23.355 (-0.23%) on Bybit across a $21.759 to $25.930 trajectory with $16.86M traded value, $22.67M open positioning, and -0.0335% negative funding. After surging from $21.759 to $25.930 (above 1H upper Bollinger Band at $25.786), VVV cooled off cleanly to hold above 1H MA7 ($22.608), EMA7 ($22.899), and MA14 ($23.143) with 1H RSI6 reset to 60.45. Anchor trailing stop or reload at $22.90 to $23.35, targets $24.153 (4H EMA20) and $25.786 to $25.930, hard stop below $22.50. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "⚡ $VVV Consolidates at $23.355 (-0.23%): Pullback From $25.930 Into $22.899 Support\n\nVenice ($VVVUSDT) demonstrates why patient operators never FOMO chase vertical green candles after price pierced its upper Bollinger envelope and cooled off cleanly.\n\nHealthy consolidation reset short-term momentum while swap funding flipped negative and buyers defended the upward trend stack.\n\nVVVUSDT Board Summary:\n• Clearing Price: $23.355 (-0.23% consolidation)\n• Trajectory Bounds: $21.759 launchpad to $25.930 zenith ($25.786 Bollinger barrier)\n• Liquidity Profile: $16.86M traded value, $22.67M open positioning, -0.0335% funding\n• Trend Stack: Defending $23.143 (H1 MA14), $22.899 (H1 EMA7), and $22.608 (H1 MA7) at 60.45 gauge\n\nVVVUSDT Roadmap:\n• Bid Corridor: $22.90 – $23.35 demand pocket (trailing anchor at $22.899)\n• Objective Zones: $24.153 (below $24.603 overhead level) then $25.786 – $25.930 retest\n• Stop Trigger: $22.50\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $VVV."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     },
     {
-      id: 10,
-      coin: '$BMT',
-      archetype: 'narrative_commentary',
-      corpus_ref: 'Live Bybit V5 API + ByX ID 6629298651491260517',
-      title: 'Post 10: 🔍 $BMT Settles at $0.02331 (-13.15%): Defending $0.02245 Ledge With 60m RSI6 at 23.85',
-      status: 'ready',
-      raw: "Bubblemaps ($BMTUSDT) settles at $0.02331 (-13.15%) on Bybit across a $0.02245 to $0.026904 band with $3.09M contract flow, $1.85M active OI, and +0.0013% funding. Following its Oct 24 +68% surge to $0.0585 on 1.59B volume, extended distribution pushed price down to $0.02245, driving 60m RSI6 to 23.85 (240m RSI14 at 37.07). Wait for 60m reclaim of 7-MA/7-EMA ($0.02366 to $0.02378), targets $0.02517 (240m 7-MA) and $0.02682 (240m 20-EMA), invalidation under $0.02245.",
-      improved: "🔍 $BMT Settles at $0.02331 (-13.15%): Defending $0.02245 Ledge With 60m RSI6 at 23.85\n\nBubblemaps ($BMTUSDT) extends its post-blowoff unwind, sliding 13.15% from $0.02690 down to $0.02331 after grazing an intraday bottom at $0.02245 on $3.09M contract flow, $1.85M active OI, and +0.0013% funding. Ever since the token exploded 68% on October 24 to $0.0585 on a 1.59B volume spike, multi-day distribution has punished premature dip buyers.\n\nNow, however, short-term oscillators reflect acute seller fatigue: 60-minute RSI-6 plunged to 23.85 (with 240-minute RSI-14 at 37.07) while bids defend the $0.02245 support ledge.\n\n1. Confirmation Filter: Never catch a falling knife; wait for a 60m bar to recapture the 7-period simple ($0.02366) and exponential ($0.02378) averages.\n2. Mean-Reversion Payoffs: Scale out gains at $0.02517 (240m 7-MA) followed by $0.02682 (240m 20-EMA & $0.02690 session peak).\n3. Thesis Invalidation: A breakdown beneath the $0.02245 trough negates the rebound thesis.\n\nLiquidity & Drawdown Warning: Thin $1.85M derivative depth creates elevated slippage hazard during post-rally retracements—size conservatively, independent market commentary. Check the $BMTUSDT orderbook depth underneath. Does $0.02245 hold or flush lower?\n\n#BMTUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 4, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Live Bybit V5 API ($0.02331, $0.02245–$0.02690, $3.09M turnover, $1.85M OI, 1H RSI6 23.85) + ByX ID 6629298651491260517 (Oct 24 +68% to $0.0585)." },
-        { category: "spacing", description: "Archetype: Narrative Market Commentary (FK Grade 5.0) with oversold confirmation filter & thin-OI slippage disclosure." }
-      ]
+        "id": 10,
+        "coin": "$BMT",
+        "title": "Post 10: 🔍 $BMT Settles at $0.02331 (-13.15%): Defending $0.02245 Ledge With 23.85 RSI",
+        "status": "ready",
+        "raw": "Bubblemaps ($BMTUSDT) settles at $0.02331 (-13.15%) on Bybit across a $0.02245 to $0.026904 band with $3.09M contract flow, $1.85M active OI, and +0.0013% funding. Following its Oct 24 +68% surge to $0.0585 on 1.59B volume, extended distribution pushed price down to $0.02245, driving 60m RSI6 to 23.85 (240m RSI14 at 37.07). Wait for 60m reclaim of 7-MA/7-EMA ($0.02366 to $0.02378), targets $0.02517 (240m 7-MA) and $0.02682 (240m 20-EMA), invalidation under $0.02245. Respect the invalidation stop-loss and keep leverage conservative. How are you trading this today?",
+        "improved": "🔍 $BMT Settles at $0.02331 (-13.15%): Defending $0.02245 Ledge With 23.85 RSI\n\nBubblemaps ($BMTUSDT) extends its multi-day unwind after exploding 68% on October 24 to $0.0585 on a 1.59B volume spike, punishing premature dip buyers along the way.\n\nShort-term oscillators now reflect acute seller fatigue around support, though thin derivative depth requires waiting for a confirmed reclaim before entering.\n\nBMTUSDT Telemetry:\n• Spot Print: $0.02331 (-13.15% over 24h)\n• Range Boundaries: $0.02245 support ledge to $0.02690 peak\n• Derivative Depth: $3.09M contract flow, $1.85M active contracts, +0.0013% rate\n• Oscillator Fatigue: 60-min RSI-6 plunged to 23.85, 240-min RSI-14 at 37.07\n\nBMTUSDT Orders:\n• Entry Filter: 60-min reclaim of $0.02366 (7-MA) and $0.02378 (7-EMA)\n• Profit Targets: $0.02517 (240m 7-MA), $0.02682 (240m 20-EMA)\n• Invalidation Line: $0.02245 ledge\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nHow are you trading this today?",
+        "rules_summary": {
+            "punctuation_count": 12,
+            "word_replacement_count": 8,
+            "emoji_spacing_count": 6
+        },
+        "suggestions": [
+            {
+                "category": "word",
+                "description": "Verified live Bybit V5 market figures and technical indicators for $BMT."
+            },
+            {
+                "category": "spacing",
+                "description": "Clean paragraph breaks, bulleted numbers, standalone risk sentence, and simple question CTA."
+            }
+        ]
     }
-  ];
+];
 }
+
 function getCryptoBossPreloadedSlots() {
   return [
     {

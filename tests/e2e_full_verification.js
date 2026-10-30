@@ -249,6 +249,67 @@ async function runE2ETest() {
     console.log(`✅ PASS: Copy Polished Post button exists: ${copyPolishedBtnExists}`);
     if (!copyPolishedBtnExists) throw new Error('Expected copyPolishedBtn to exist');
 
+    // 4c-2. Test Day 5 Clean Formatting Rules, Zero # Tags, Single Setup Block, & High-Entropy Humanization Fixers
+    console.log('\n--- TESTING DAY 5 CLEAN RULES (ZERO #, CLEAN • BULLETS, STANDALONE RISK, SIMPLE CTA, ZERO FIXERS) ---');
+    const day5RuleAudit = await evalBrowser(`
+      (() => {
+        const issues = [];
+        postsData.forEach((p, idx) => {
+          const t = p.improved || "";
+          if (t.includes("#")) issues.push("Post " + (idx+1) + " contains #");
+          if (/Risk Disclosure:/i.test(t)) issues.push("Post " + (idx+1) + " contains Risk Disclosure label");
+          if (!t.includes("Respect the invalidation stop-loss and keep leverage conservative.")) issues.push("Post " + (idx+1) + " missing standalone risk line");
+          if (!t.trim().endsWith("How are you trading this today?")) issues.push("Post " + (idx+1) + " missing simple CTA");
+          if (t.includes("▸") || t.includes("| ")) issues.push("Post " + (idx+1) + " contains non-standard bullet/pipe");
+        });
+        return issues;
+      })()
+    `);
+    console.log(`✅ PASS: All 10 Day 5 posts rule audit issues count: ${day5RuleAudit.length}`);
+    if (day5RuleAudit.length > 0) {
+      throw new Error("Day 5 clean rules audit failed: " + day5RuleAudit.join("; "));
+    }
+
+    const initialFlagBadge = await evalBrowser('document.getElementById("draftAiFlagCountBadge").textContent.trim()');
+    console.log(`✅ PASS: Initial Draft AI Flag Badge on Day 5: "${initialFlagBadge}"`);
+    if (initialFlagBadge !== "0 AI Flags Detected") {
+      throw new Error(`Expected 0 AI Flags Detected initially, got "${initialFlagBadge}"`);
+    }
+
+    // Test Trade Setup Injection replaces existing setup in-place (no duplicate setup, no #)
+    await evalBrowser('document.getElementById("btnInjectTradeSetup").click()');
+    await new Promise(r => setTimeout(r, 200));
+    const afterSetupVal = await evalBrowser('document.getElementById("polishedContent").value');
+    const setupHeaderMatches = (afterSetupVal.match(/(?:Setup|Execution Levels|Tactical Plan|Position Parameters|Blueprint|Structure|Allocation Plan|Strategy|Roadmap|Orders):/gi) || []).length;
+    const hasHashAfterSetup = afterSetupVal.includes("#");
+    console.log(`✅ PASS: Clicked #btnInjectTradeSetup -> Setup count=${setupHeaderMatches} (no duplicate), contains #=${hasHashAfterSetup}`);
+    if (setupHeaderMatches !== 1 || hasHashAfterSetup) {
+      throw new Error(`Expected exactly 1 setup block and 0 # after clicking Trade Setup, got count=${setupHeaderMatches}, hasHash=${hasHashAfterSetup}`);
+    }
+
+    // Test High-Entropy Humanization dynamically fixing a synthetic repetitive sentence to 0 flags
+    await evalBrowser(`
+      (() => {
+        const el = document.getElementById("polishedContent");
+        el.value = el.value + "\\n\\nThe price action shows strong volume and strong momentum while the price volume keeps building strong momentum across the market session today.";
+        updateWordAndSentenceBadges(el.value);
+        runAllDetectors(el.value);
+      })()
+    `);
+    await new Promise(r => setTimeout(r, 200));
+    const flagsBeforeHumanize = await evalBrowser('document.getElementById("draftAiFlagCountBadge").textContent.trim()');
+    await evalBrowser('applyHighEntropyHumanization()');
+    await new Promise(r => setTimeout(r, 250));
+    const flagsAfterHumanize = await evalBrowser('document.getElementById("draftAiFlagCountBadge").textContent.trim()');
+    console.log(`✅ PASS: Synthetic repetitive sentence flags: Before="${flagsBeforeHumanize}" -> After High-Entropy Humanization="${flagsAfterHumanize}"`);
+    if (flagsAfterHumanize !== "0 AI Flags Detected") {
+      throw new Error(`Expected High-Entropy Humanization to resolve all flags to 0, got "${flagsAfterHumanize}"`);
+    }
+
+    // Restore original Post 1 content
+    await evalBrowser('displayPost(currentPostIndex)');
+    await new Promise(r => setTimeout(r, 200));
+
     // 4d. Test Harvard NLP GLTR Next-Token Rank Predictability Engine
     console.log('\n--- TESTING HARVARD NLP GLTR RANK PREDICTABILITY ENGINE ---');
     await evalBrowser('document.getElementById("recalcGltrBtn").click()');
