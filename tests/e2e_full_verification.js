@@ -10,7 +10,7 @@ const BASE_DIR = path.resolve(__dirname, '..');
 // 1. Static HTTP Server
 const server = http.createServer((req, res) => {
   let reqPath = req.url.split('?')[0];
-  if (reqPath === '/api/humanizeai-proxy' && req.method === 'POST') {
+  if ((reqPath === '/api/humanizeai' || reqPath === '/api/humanizeai-proxy') && req.method === 'POST') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', () => {
@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
-  if (reqPath === '/api/zerogpt-proxy' && req.method === 'POST') {
+  if ((reqPath === '/api/zerogpt' || reqPath === '/api/zerogpt-proxy') && req.method === 'POST') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', () => {

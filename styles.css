@@ -5029,3 +5029,52 @@ h1, h2, h3, h4, .rules-title, .matrix-title, .forensic-post-title, .analysis-tit
     gap: 20px;
   }
 }
+
+
+/* Day 6 Algorithmic Release Pacing Schedule Bar */
+.pacing-schedule-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md, 8px);
+  padding: 6px 14px;
+  margin: 6px 0 12px 0;
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+}
+.pacing-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+.pacing-waves {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.pacing-chip {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-dim, #94a3b8);
+  font-size: 0.68rem;
+}
+.pacing-chip.done {
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+}
+.pacing-chip.active {
+  border-color: #38bdf8;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  font-weight: 700;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+}
