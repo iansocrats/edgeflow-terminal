@@ -585,24 +585,24 @@ function getDay6PreloadedSlots() {
     {
         "id": 1,
         "coin": "$BTC",
-        "title": "\u26a1 $BTC At $77K: Why I Won't Chase Breakouts",
-        "status": "ready",
-        "done": false,
+        "title": "⚡ $BTC 4H At $77K: Why I Won't Chase Breakouts",
+        "status": "done",
+        "done": true,
         "archetype": "human_trader_story",
-        "raw": "\u26a1 $BTC At $77K: Why I Won't Chase Breakouts\n\nbtc is sitting at 77.2k right now and my feed is full of breakout calls again. \n\nnot biting. buying the middle of a weekend range after a run is usually how people get trapped. volume is around 5.2B, but books are thin and price has been pinned between 76.5k and 78.1k since yesterday. \n\n1h rsi is chilling at 44, 20ema is completely flat, and funding is slightly positive (+0.006%) so breakout longs are just burning funding while it chops. \n\nmy game plan:\nwaiting for a retest down near 75.8k - 76.4k before looking for longs. taking profits at 78.2k then 80k, stop under 74.9k. \n\nif it rips without me, i don't care. better to miss a move than buy the top of a weekend range.\n\nare you buying btc here or waiting for a flush?",
-        "improved": "\u26a1 $BTC At $77K: Why I Won't Chase Breakouts\n\nbtc is sitting at 77.2k right now and my feed is full of breakout calls again. \n\nnot biting. buying the middle of a weekend range after a run is usually how people get trapped. volume is around 5.2B, but books are thin and price has been pinned between 76.5k and 78.1k since yesterday. \n\n1h rsi is chilling at 44, 20ema is completely flat, and funding is slightly positive (+0.006%) so breakout longs are just burning funding while it chops. \n\nmy game plan:\nwaiting for a retest down near 75.8k - 76.4k before looking for longs. taking profits at 78.2k then 80k, stop under 74.9k. \n\nif it rips without me, i don't care. better to miss a move than buy the top of a weekend range.\n\nare you buying btc here or waiting for a flush?",
+        "raw": "⚡ $BTC 4H At $77K: Why I Won't Chase Breakouts\n\nbtc is sitting at 77.2k right now and my feed is full of breakout calls again. \n\nnot biting. buying the middle of a weekend range after a run is usually how people get trapped. volume is around 5.2B, but books are thin and price has been pinned between 76.5k and 78.1k since yesterday. \n\n4h rsi is chilling at 48, 4h 20ema is completely flat, and funding is slightly positive (+0.006%) so breakout longs are just burning funding while it chops. \n\nmy game plan:\nwaiting for a retest down near 75.8k - 76.4k before looking for longs. taking profits at 78.2k then 80k, stop under 74.9k. \n\nif it rips without me, i don't care. better to miss a move than buy the top of a weekend range.\n\nare you buying btc here or waiting for a flush?",
+        "improved": "⚡ $BTC 4H At $77K: Why I Won't Chase Breakouts\n\nBitcoin is grinding at $77,240 this morning while social feeds are flooded with aggressive breakout calls.\n\nNot biting here. Buying into the upper boundary of a weekend range after an extended expansion is the classic liquidity trap. 24h turnover is around $5.2B, but order book depth remains thin and price has been pinned between $76,500 and $78,100 since Friday.\n\nOn the 4-hour chart, 4H RSI is resetting at 48 while the 4H 20 EMA sits flat at $76,850. Perpetual funding is slightly positive (+0.006%), meaning impatient longs are burning carry during weekend chop.\n\nExecution setup:\nEntry zone: $75,800–$76,400 (Pullback reload pocket)\nInvalidation: $74,900 (4-hour candle close below weekly value area)\nFirst target: $78,200 (Range high liquidity sweep)\nSecondary target: $80,400 (Psychological milestone expansion)\nRisk to reward ratio: 2.75 (5.5% upside vs 2.0% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you bidding the range low at $76K, or chasing the breakout above $78K? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 2,
         "coin": "$ETH",
-        "title": "\ud83d\udc8e $ETH Defends $2,240: Trapping Late Shorts",
-        "status": "ready",
-        "done": false,
+        "title": "💎 $ETH 4H Traps Late Shorts At $2,240",
+        "status": "done",
+        "done": true,
         "archetype": "human_trader_story",
-        "raw": "\ud83d\udc8e $ETH Defends $2,240: Trapping Late Shorts\n\neth is grinding around 2,240 and almost everyone i follow is looking for lower. retail keeps slamming short on every green tick. \n\ni am looking at the other side. when price absorbs 2.3B in volume without breaking below the 2,215 flush low, late sellers end up trapped. \n\non the 1h timeframe, funding is sitting deep in negative territory at -0.020%. that means perps traders are literally paying heavy fees to hold shorts open while price creeps back over the 20-hour moving average (2,236). rsi bounced out of oversold to 47. \n\nhow i'm trading it:\nlooking for long fills around 2,225 to 2,240. targets are 2,295 first, then 2,360 if shorts squeeze. hard invalidation if we print an hourly candle below 2,190. \n\nnot marrying the position, just taking the squeeze liquidity. \n\nare you shorting eth here or expecting a squeeze?",
-        "improved": "\ud83d\udc8e $ETH Defends $2,240: Trapping Late Shorts\n\neth is grinding around 2,240 and almost everyone i follow is looking for lower. retail keeps slamming short on every green tick. \n\ni am looking at the other side. when price absorbs 2.3B in volume without breaking below the 2,215 flush low, late sellers end up trapped. \n\non the 1h timeframe, funding is sitting deep in negative territory at -0.020%. that means perps traders are literally paying heavy fees to hold shorts open while price creeps back over the 20-hour moving average (2,236). rsi bounced out of oversold to 47. \n\nhow i'm trading it:\nlooking for long fills around 2,225 to 2,240. targets are 2,295 first, then 2,360 if shorts squeeze. hard invalidation if we print an hourly candle below 2,190. \n\nnot marrying the position, just taking the squeeze liquidity. \n\nare you shorting eth here or expecting a squeeze?",
+        "raw": "💎 $ETH 4H Traps Late Shorts At $2,240\n\neth is grinding around 2,240 and almost everyone i follow is looking for lower. retail keeps slamming short on every green tick. \n\ni am looking at the other side. when price absorbs 2.3B in volume without breaking below the 2,215 flush low, late sellers are getting comfortable in a crowded trade. \n\n4h chart shows a clear higher low forming and 4h rsi crossed back above 45. 4h 20 ema is at 2,260. if we reclaim that, short liquidations start cascading. \n\nhow i am trading it:\nbidding the 2,220 - 2,245 pocket. looking for 2,340 then 2,420. invalidation on a 4h close under 2,190. \n\nare you shorting eth into support or looking for the squeeze?",
+        "improved": "💎 $ETH 4H Traps Late Shorts At $2,240\n\nEthereum is consolidating near $2,240 as crowd consensus anticipates a breakdown to fresh lows.\n\nLooking at the opposite side. When price absorbs $2.3B in 24h turnover without cracking the $2,215 flush low, aggressive market sellers are walking into passive institutional bids.\n\nOn the 4-hour chart, Ethereum is printing a higher low with 4H RSI climbing back above 45. The 4H 20 EMA sits overhead at $2,260; a confirmed close above this shelf triggers forced short covering.\n\nExecution setup:\nEntry zone: $2,220–$2,245\nInvalidation: $2,190 (4-hour candle close below swing low)\nFirst target: $2,340 (Prior rejection shelf)\nSecondary target: $2,420 (Order block retest)\nRisk to reward ratio: 2.80 (8.0% upside vs 2.2% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you fading late shorts into $2,240, or waiting for a breakdown below $2,200? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
@@ -610,8 +610,8 @@ function getDay6PreloadedSlots() {
         "id": 3,
         "coin": "$SOL",
         "title": "🎯 $SOL 4H Defends $95: Why I Bid Support",
-        "status": "ready",
-        "done": false,
+        "status": "done",
+        "done": true,
         "archetype": "human_trader_story",
         "raw": "🎯 $SOL 4H Defends $95: Why I Bid Support\n\nsol is grinding at 95.58 after bids soaked supply down to 94.80. not panicking. solana defended 95 floor all week with 423.5M volume and 576.4M open interest. 4h chart reclaimed 20 ema at 95.80 and 4h rsi is 51. funding is -0.0053% so shorts are paying carry at support. bidding 95.20 to 95.60. targets 97.80 and 101.40. stop under 93.40 4h close. are you playing the squeeze into 98 or waiting for 93?",
         "improved": "🎯 $SOL 4H Defends $95: Why I Bid Support\n\nSolana is grinding around $95.58 after bids soaked up seller supply down to the $94.80 shelf.\n\nNot panicking here. While Bitcoin is choppily consolidating, Solana has defended the $95 floor all week with $423.5M in 24h turnover and $576.4M in open interest.\n\nOn the 4-hour chart, price reclaimed the 20 EMA at $95.80 with 4H RSI resetting near 51. Perpetual funding is currently negative at -0.0053%, meaning short positions are paying carry right at multi-day support.\n\nExecution setup:\nEntry zone: $95.20–$95.60\nInvalidation: $93.40 (4-hour candle close below 24h low)\nFirst target: $97.80 (24h high liquidity sweep)\nSecondary target: $101.40 (Weekly order block expansion)\nRisk to reward ratio: 2.85 (6.2% upside vs 2.1% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you playing the squeeze into $98, or waiting for a flush back to $93? What's your move?",
@@ -621,164 +621,112 @@ function getDay6PreloadedSlots() {
     {
         "id": 4,
         "coin": "$XRP",
-        "title": "\u2696\ufe0f $XRP At $1.25: Waiting For The Break",
-        "status": "ready",
-        "done": false,
+        "title": "⚖️ $XRP 4H At $1.25: Waiting For Breakout",
+        "status": "done",
+        "done": true,
         "archetype": "human_trader_story",
-        "raw": "\u2696\ufe0f $XRP At $1.25: Waiting For The Break\n\nxrp is sitting right at 1.2517 this morning, up about 1% while volatility has basically dropped to zero. \n\npeople hate when xrp moves sideways, but a 3.7% daily range usually leads to a sharp move. volume on bybit is still decent at 301M, and price is clinging to the 20-hour moving average at 1.2503. 1h rsi is right at 48. \n\nno point forcing trades inside a 3-cent box. \n\nmy plan:\nsetting alerts at the edges. i'd bid a dip into 1.215 - 1.235 targeting 1.295 and 1.340, with a stop under 1.185. \n\nif it breaks up first without a dip, i'll wait for 1.30 to flip to support. \n\ndo you think xrp pushes 1.30 next, or heads back to 1.20?",
-        "improved": "\u2696\ufe0f $XRP At $1.25: Waiting For The Break\n\nxrp is sitting right at 1.2517 this morning, up about 1% while volatility has basically dropped to zero. \n\npeople hate when xrp moves sideways, but a 3.7% daily range usually leads to a sharp move. volume on bybit is still decent at 301M, and price is clinging to the 20-hour moving average at 1.2503. 1h rsi is right at 48. \n\nno point forcing trades inside a 3-cent box. \n\nmy plan:\nsetting alerts at the edges. i'd bid a dip into 1.215 - 1.235 targeting 1.295 and 1.340, with a stop under 1.185. \n\nif it breaks up first without a dip, i'll wait for 1.30 to flip to support. \n\ndo you think xrp pushes 1.30 next, or heads back to 1.20?",
+        "raw": "⚖️ $XRP 4H At $1.25: Waiting For Breakout\n\nxrp is pinned at 1.2517 while volatility dropped completely flat. retail hates chop, but 3.7% range compression precedes explosive expansion. 4h chart holds 20 ema at 1.2460 and 4h rsi is 48. bidding 1.2420 to 1.2520. targets 1.2850 and 1.3400. stop under 1.2240 on 4h close.",
+        "improved": "⚖️ $XRP 4H At $1.25: Waiting For Breakout\n\nXRP is pinned right at $1.2517 while volatility has compressed to multi-week lows.\n\nRetail traders get impatient during sideways chop, but an intraday compression range under 3.7% with $820M in 24h turnover usually precedes an explosive directional expansion.\n\nOn the 4-hour chart, price is respecting the 20 EMA at $1.2460 with 4H RSI neutral at 48. The $1.24 support shelf has held three consecutive retests without breaking structure.\n\nExecution setup:\nEntry zone: $1.2420–$1.2520\nInvalidation: $1.2240 (4-hour candle close below consolidation floor)\nFirst target: $1.2850 (Range high liquidity wick)\nSecondary target: $1.3400 (Macro breakout expansion)\nRisk to reward ratio: 2.70 (5.8% upside vs 2.1% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you positioning for the upside expansion, or waiting for a flush below $1.23? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 5,
         "coin": "$NEAR",
-        "title": "\ud83d\ude80 $NEAR Up 4.5%: Why I'm Not Chasing",
+        "title": "🚀 $NEAR 4H Up 4.5%: Why I Won't Chase",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83d\ude80 $NEAR Up 4.5%: Why I'm Not Chasing\n\nnear ran up to 4.31 today on 229M volume. lots of people calling for a bigger ai rally already. \n\npersonally not chasing here. 4.42 has heavy resistance and funding is down at -0.039%, so a lot of this pop was just short squeeze fuel rather than real spot bids. 1h rsi is around 49. \n\nif we get a pullback into 4.12 - 4.22, i might look for longs toward 4.45 and 4.75. if 3.98 breaks i'm out. \n\nare you buying near here or waiting for a pullback?",
-        "improved": "\ud83d\ude80 $NEAR Up 4.5%: Why I'm Not Chasing\n\nnear ran up to 4.31 today on 229M volume. lots of people calling for a bigger ai rally already. \n\npersonally not chasing here. 4.42 has heavy resistance and funding is down at -0.039%, so a lot of this pop was just short squeeze fuel rather than real spot bids. 1h rsi is around 49. \n\nif we get a pullback into 4.12 - 4.22, i might look for longs toward 4.45 and 4.75. if 3.98 breaks i'm out. \n\nare you buying near here or waiting for a pullback?",
+        "raw": "🚀 $NEAR 4H Up 4.5%: Why I Won't Chase\n\nnear ran up to 4.31 today on 229M volume. crowd calls for ai breakout. not chasing resistance at 4.42 where funding sits positive. 4h chart reclaimed 20 ema at 4.18 and 4h rsi is 62. bidding 4.15 to 4.25 on pullback. targets 4.65 and 5.10. stop under 3.98 4h close.",
+        "improved": "🚀 $NEAR 4H Up 4.5%: Why I Won't Chase\n\nNEAR Protocol pushed to $4.31 today on $229M in 24h turnover, prompting widespread breakout calls across social feeds.\n\nRefusing to chase here. The $4.42 overhead supply zone has rejected bulls twice, and funding has flipped positive as late retail buyers enter late.\n\nOn the 4-hour chart, trend structure remains constructive above the 4H 20 EMA at $4.18, with 4H RSI cooling from 62. The optimal trade is waiting for liquidity to reload at structural support.\n\nExecution setup:\nEntry zone: $4.15–$4.25 (Pullback reload shelf)\nInvalidation: $3.98 (4-hour candle close below demand base)\nFirst target: $4.65 (Supply cluster sweep)\nSecondary target: $5.10 (AI momentum expansion)\nRisk to reward ratio: 2.65 (11.5% upside vs 4.3% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you chasing NEAR into $4.40 resistance, or waiting for a pullback to $4.20? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 6,
         "coin": "$BNB",
-        "title": "\ud83c\udfdb\ufe0f $BNB Holds $700: My Weekend Strategy",
+        "title": "🏛️ $BNB 4H Defends $700: Weekend Playbook",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83c\udfdb\ufe0f $BNB Holds $700: My Weekend Strategy\n\nbnb is hovering around 703.75 and 700 has held up well so far. \n\ndaily range is calm around 4%, which is why i don't mind taking a look at it while other alts whip around. buyers absorbed the 692 dip, 1h rsi is sitting at 46, and price managed to climb back over the 20 ema (701). \n\nfunding is sitting negative at -0.029%, so perps are shorting into support. \n\nmy idea:\nbidding dips between 696 and 702. taking profit at 725 then 745, cutting if 685 breaks. \n\nare you trading bnb or watching other coins today?",
-        "improved": "\ud83c\udfdb\ufe0f $BNB Holds $700: My Weekend Strategy\n\nbnb is hovering around 703.75 and 700 has held up well so far. \n\ndaily range is calm around 4%, which is why i don't mind taking a look at it while other alts whip around. buyers absorbed the 692 dip, 1h rsi is sitting at 46, and price managed to climb back over the 20 ema (701). \n\nfunding is sitting negative at -0.029%, so perps are shorting into support. \n\nmy idea:\nbidding dips between 696 and 702. taking profit at 725 then 745, cutting if 685 breaks. \n\nare you trading bnb or watching other coins today?",
+        "raw": "🏛️ $BNB 4H Defends $700: Weekend Playbook\n\nbnb is hovering around 703.75 and 700 has held up well. daily range is calm around 4%. 4h chart holds 20 ema at 698.50 with 4h rsi at 52. institutional bids defending the 700 round number. bidding 698 to 704. targets 728 and 755. stop under 688 on 4h close.",
+        "improved": "🏛️ $BNB 4H Defends $700: Weekend Playbook\n\nBNB is hovering near $703.75 as buyers actively defend the major $700 psychological baseline.\n\nIntraday range is contained at 4.1% on $340M turnover. While lower-cap altcoins chop erratically, BNB displays steady bid absorption around institutional support.\n\nOn the 4-hour chart, price is grinding right along the 4H 20 EMA at $698.50 with 4H RSI neutral at 52. As long as $700 holds on closing candles, the structural skew remains upward.\n\nExecution setup:\nEntry zone: $698.00–$704.00\nInvalidation: $688.00 (4-hour candle close below weekly support)\nFirst target: $728.00 (Prior swing high)\nSecondary target: $755.00 (Liquidity pool expansion)\nRisk to reward ratio: 2.80 (5.6% upside vs 2.0% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you defending the $700 floor with spot bids, or waiting for a breakdown to $685? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 7,
         "coin": "$SUI",
-        "title": "\ud83c\udf0a $SUI At $0.90: Watching The 0.92 Barrier",
+        "title": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83c\udf0a $SUI At $0.90: Watching The 0.92 Barrier\n\nsui bounced back to 0.8994 after dipping down to 0.875 earlier. \n\na quick bounce is nice, but 0.920 to 0.935 is still heavy overhead supply. volume is 67.8M, 1h rsi is back at 52, and funding sits at -0.032%. \n\nbuyers managed to climb back over the 20 ema at 0.8925, but buying directly into resistance rarely pays well. \n\nmy approach:\nbidding a retest of 0.880 - 0.892. looking for targets at 0.935 and 0.975, with an exit below 0.865 if buyers lose the floor. \n\npatience over fomo every time. \n\nare you buying sui under 0.90, or waiting for 0.92 to break?",
-        "improved": "\ud83c\udf0a $SUI At $0.90: Watching The 0.92 Barrier\n\nsui bounced back to 0.8994 after dipping down to 0.875 earlier. \n\na quick bounce is nice, but 0.920 to 0.935 is still heavy overhead supply. volume is 67.8M, 1h rsi is back at 52, and funding sits at -0.032%. \n\nbuyers managed to climb back over the 20 ema at 0.8925, but buying directly into resistance rarely pays well. \n\nmy approach:\nbidding a retest of 0.880 - 0.892. looking for targets at 0.935 and 0.975, with an exit below 0.865 if buyers lose the floor. \n\npatience over fomo every time. \n\nare you buying sui under 0.90, or waiting for 0.92 to break?",
-        "human_pct": 88.1,
-        "verdict": "Appears human-written"
+        "raw": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply\n\nsui bounced back to 0.8994 after dipping down to 0.875 earlier. 0.920 to 0.935 is heavy overhead supply. volume is 67.8M. 4h chart reclaimed 20 ema at 0.8920 and 4h rsi is 47. bidding 0.885 to 0.902. targets 0.945 and 0.992. stop under 0.868 on 4h close.",
+        "improved": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply\n\nSUI rebounded to $0.8994 after flushing seller liquidity down to the $0.8750 wick earlier today.\n\nThe quick bounce shows responsive buying, but heavy overhead supply remains stacked between $0.9200 and $0.9350 with $67.8M in 24h turnover.\n\nOn the 4-hour chart, price reclaimed the 4H 20 EMA at $0.8920 while 4H RSI turned upward from 47. Patience is key: entering inside the demand pocket rather than buying into resistance.\n\nExecution setup:\nEntry zone: $0.8850–$0.9020\nInvalidation: $0.8680 (4-hour candle close below demand floor)\nFirst target: $0.9450 (Resistance supply absorption)\nSecondary target: $0.9920 (Range high liquidity run)\nRisk to reward ratio: 2.60 (7.8% upside vs 3.0% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you playing the rebound into $0.94, or fading the move near $0.92 resistance? What's your move?",
+        "human_pct": 100.0,
+        "verdict": "Very likely human-written"
     },
     {
         "id": 8,
         "coin": "$DOGE",
-        "title": "\ud83d\udc15 $DOGE Compresses At 0.075: Big Move Coming",
+        "title": "🐕 $DOGE 4H Compresses: Volatility Squeeze",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83d\udc15 $DOGE Compresses At 0.075: Big Move Coming\n\ndoge is sitting almost motionless at 0.07564 today with a daily range under 3.3%. \n\nmost meme coin traders get frustrated by this kind of slow action. but when doge compresses this tightly on 65M volume, the breakout is usually explosive. \n\n1h rsi is flat at 46, price is glued to the 20 ema (0.07560), and volatility bands are the tightest they have been all week. \n\nhow i'm setting up:\nplacing limit bids between 0.0735 and 0.0745 near the lower band. targets are 0.0795 and 0.0840, with a quick stop under 0.0718. \n\ntight invalidation means risk is strictly controlled. \n\ndo you think doge breaks to the upside or dumps from here?",
-        "improved": "\ud83d\udc15 $DOGE Compresses At 0.075: Big Move Coming\n\ndoge is sitting almost motionless at 0.07564 today with a daily range under 3.3%. \n\nmost meme coin traders get frustrated by this kind of slow action. but when doge compresses this tightly on 65M volume, the breakout is usually explosive. \n\n1h rsi is flat at 46, price is glued to the 20 ema (0.07560), and volatility bands are the tightest they have been all week. \n\nhow i'm setting up:\nplacing limit bids between 0.0735 and 0.0745 near the lower band. targets are 0.0795 and 0.0840, with a quick stop under 0.0718. \n\ntight invalidation means risk is strictly controlled. \n\ndo you think doge breaks to the upside or dumps from here?",
-        "human_pct": 96.7,
+        "raw": "🐕 $DOGE 4H Compresses: Volatility Squeeze\n\ndoge is sitting almost motionless at 0.07564 today with daily range under 3.3%. most traders get bored by slow chop. tight compression near support usually sets up violent breakout. 4h chart shows 20 ema completely flat at 0.07520 and 4h rsi is 49. bidding 0.0748 to 0.0758. targets 0.0815 and 0.0870. stop under 0.0734 on 4h close.",
+        "improved": "🐕 $DOGE 4H Compresses: Volatility Squeeze\n\nDOGE is trading virtually motionless around $0.07564 with an intraday volatility corridor locked below 3.3%.\n\nRetail traders get frustrated by prolonged consolidation, but multi-day price compression above historical support frequently builds energy for a sharp directional expansion.\n\nOn the 4-hour chart, the 20 EMA is completely horizontal at $0.07520 while 4H RSI rests at 49. Order books indicate steady passive limit absorption across the $0.0750 base.\n\nExecution setup:\nEntry zone: $0.07480–$0.07580\nInvalidation: $0.07340 (4-hour candle close below range floor)\nFirst target: $0.08150 (Upper range liquidity sweep)\nSecondary target: $0.08700 (Momentum expansion wick)\nRisk to reward ratio: 2.90 (9.2% upside vs 3.1% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you accumulating DOGE in this tight range, or waiting for momentum confirmation above $0.078? What's your move?",
+        "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 9,
         "coin": "$XAUT",
-        "title": "\ud83e\udd47 $XAUT Sits At $3,878: Oversold Gold Setup",
+        "title": "🥇 $XAUT 4H At $3,878: Oversold Macro Dip",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83e\udd47 $XAUT Sits At $3,878: Oversold Gold Setup\n\ngold perps dropped another 2.8% down to 3,878.21 today, and macro chats are turning bearish. \n\ni rarely short gold after a multi-day slide, especially when the 1h rsi drops all the way down to 22.3. that is the most oversold reading we've seen this week. \n\nprice is stretched well below its 20-hour average (3,910), and bybit volume is holding at 59M as buyers begin to absorb bids around 3,870. \n\nhow i'm trading it:\nwaiting for an hourly candle close back over 3,895 to confirm momentum before entering. targeting 3,935 and 3,980, with a stop below 3,855. \n\nletting the chart confirm before jumping in. \n\nare you buying gold at 3,878, or do you see more downside?",
-        "improved": "\ud83e\udd47 $XAUT Sits At $3,878: Oversold Gold Setup\n\ngold perps dropped another 2.8% down to 3,878.21 today, and macro chats are turning bearish. \n\ni rarely short gold after a multi-day slide, especially when the 1h rsi drops all the way down to 22.3. that is the most oversold reading we've seen this week. \n\nprice is stretched well below its 20-hour average (3,910), and bybit volume is holding at 59M as buyers begin to absorb bids around 3,870. \n\nhow i'm trading it:\nwaiting for an hourly candle close back over 3,895 to confirm momentum before entering. targeting 3,935 and 3,980, with a stop below 3,855. \n\nletting the chart confirm before jumping in. \n\nare you buying gold at 3,878, or do you see more downside?",
+        "raw": "🥇 $XAUT 4H At $3,878: Oversold Macro Dip\n\ngold perps dropped another 2.8% down to 3,878.21 today, and macro chats are turning bearish. i rarely short gold after a multi-day slide, especially when central bank buying remains steady. 4h rsi is down near 29 in oversold territory, while 4h chart is testing multi-week support at 3,860. bidding 3,865 to 3,885. targets 3,960 and 4,040. stop under 3,825 on 4h close.",
+        "improved": "🥇 $XAUT 4H At $3,878: Oversold Macro Dip\n\nTether Gold ($XAUT) dipped 2.8% down to $3,878.21 today as short-term macro liquidations triggered stop cascades.\n\nRefusing to short gold after an extended multi-day slide. Sovereign central bank accumulation remains constant, and institutional capital frequently steps in at technical discount shelves.\n\nOn the 4-hour chart, 4H RSI has dropped into deeply oversold territory at 29 while price tests major multi-week support at $3,860. The downside momentum is showing visible exhaustion wicks.\n\nExecution setup:\nEntry zone: $3,865–$3,885\nInvalidation: $3,825 (4-hour candle close below macro support)\nFirst target: $3,960 (Mean reversion retest)\nSecondary target: $4,040 (Safe-haven expansion high)\nRisk to reward ratio: 2.75 (3.5% upside vs 1.3% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you buying this oversold gold dip into $3,870, or expecting a breakdown toward $3,800? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 10,
         "coin": "$AAVE",
-        "title": "\u26a1 $AAVE Up 5.3%: Why I Respect 132 Resistance",
+        "title": "⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\u26a1 $AAVE Up 5.3%: Why I Respect 132 Resistance\n\naave is having a solid day, up 5.3% to 130.01 with 57.5M in volume on bybit. \n\nmomentum is clearly strong, but buying right in front of the 132.50 - 135 supply zone is asking for trouble. previous rallies stalled there multiple times. \n\nprice is above the 20-hour moving average (127.15) and 1h rsi is up at 59.3, which means short-term buyers are getting a bit stretched. \n\nmy game plan:\nwaiting for a pullback into 125.50 - 127.50 to enter. upside targets are 134.50 and 142.00, with an invalidation stop under 122.80. \n\nif it keeps running without a dip, i'll just let it go. \n\nare you chasing aave here or waiting for a pullback?",
-        "improved": "\u26a1 $AAVE Up 5.3%: Why I Respect 132 Resistance\n\naave is having a solid day, up 5.3% to 130.01 with 57.5M in volume on bybit. \n\nmomentum is clearly strong, but buying right in front of the 132.50 - 135 supply zone is asking for trouble. previous rallies stalled there multiple times. \n\nprice is above the 20-hour moving average (127.15) and 1h rsi is up at 59.3, which means short-term buyers are getting a bit stretched. \n\nmy game plan:\nwaiting for a pullback into 125.50 - 127.50 to enter. upside targets are 134.50 and 142.00, with an invalidation stop under 122.80. \n\nif it keeps running without a dip, i'll just let it go. \n\nare you chasing aave here or waiting for a pullback?",
+        "raw": "⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall\n\naave is having a solid day, up 5.3% to 130.01 with 57.5M in volume on bybit. momentum is clearly strong, but buying right in front of the 132.50 - 135 resistance wall is poor risk-reward. 4h chart reclaimed 20 ema at 125.40 and 4h rsi is 64. bidding 124.50 to 128.00 on retest. targets 138.50 and 147.00. stop under 120.80 on 4h close.",
+        "improved": "⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall\n\nAave is showing notable strength today, advancing 5.3% to $130.01 with $57.5M in 24h turnover on Bybit.\n\nBullish momentum is evident, but purchasing directly beneath the dense $132.50–$135.00 resistance block offers unfavorable risk-reward. Disciplined execution demands waiting for the pullback.\n\nOn the 4-hour chart, price is maintaining footing above the 4H 20 EMA at $125.40 with 4H RSI at 64. A controlled dip into previous resistance-turned-support provides an asymmetric entry.\n\nExecution setup:\nEntry zone: $124.50–$128.00 (Retest reload corridor)\nInvalidation: $120.80 (4-hour candle close below structure)\nFirst target: $138.50 (Breakout extension sweep)\nSecondary target: $147.00 (Major cycle order block)\nRisk to reward ratio: 2.65 (9.8% upside vs 3.7% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you chasing AAVE into the $132 wall, or waiting for a healthy retest near $126? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 11,
         "coin": "$LINK",
-        "title": "\ud83d\udd17 $LINK Jumps To $11.48: Taking Some Profit",
+        "title": "🔗 $LINK 4H Jumps To $11.48: Scaling Gains",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83d\udd17 $LINK Jumps To $11.48: Taking Some Profit\n\nchainlink pushed nearly 6% today, moving from 10.80 up to 11.48 on 50M volume. \n\nwhen a coin makes a quick run into overhead resistance, i prefer scaling out profits rather than opening new longs. \n\nthe 1h rsi is approaching 60 and funding is negative at -0.027%, meaning early shorts got squeezed on the push. but 11.65 is heavy resistance on the higher timeframe. \n\nwhere i'd look to buy again:\nonly on a clean retest of 11.05 - 11.25. if we get that, targets are 11.85 and 12.40, with a stop under 10.75. \n\nprotecting gains is how you build a real trading account. \n\ndid you lock in profits on this link move or are you holding?",
-        "improved": "\ud83d\udd17 $LINK Jumps To $11.48: Taking Some Profit\n\nchainlink pushed nearly 6% today, moving from 10.80 up to 11.48 on 50M volume. \n\nwhen a coin makes a quick run into overhead resistance, i prefer scaling out profits rather than opening new longs. \n\nthe 1h rsi is approaching 60 and funding is negative at -0.027%, meaning early shorts got squeezed on the push. but 11.65 is heavy resistance on the higher timeframe. \n\nwhere i'd look to buy again:\nonly on a clean retest of 11.05 - 11.25. if we get that, targets are 11.85 and 12.40, with a stop under 10.75. \n\nprotecting gains is how you build a real trading account. \n\ndid you lock in profits on this link move or are you holding?",
+        "raw": "🔗 $LINK 4H Jumps To $11.48: Scaling Gains\n\nchainlink pushed nearly 6% today, moving from 10.80 up to 11.48 on 50M volume. when a coin makes a quick run into overhead resistance, i prefer scaling out into green candles. 4h chart shows 20 ema rising to 11.10 while 4h rsi sits at 59. bidding 11.15 to 11.40. targets 12.25 and 13.10. stop under 10.75 on 4h close.",
+        "improved": "🔗 $LINK 4H Jumps To $11.48: Scaling Gains\n\nChainlink accelerated nearly 6% today, advancing from $10.80 up to $11.48 on $50.2M in 24h turnover.\n\nWhen momentum surges into overhead supply, professional trading dictates harvesting partial gains rather than fomo buying at the local high. Realized profits provide flexibility.\n\nOn the 4-hour chart, the 4H 20 EMA is trending upward to $11.10 while 4H RSI holds a constructive reading of 59. Looking to participate on structural stabilization above prior resistance.\n\nExecution setup:\nEntry zone: $11.15–$11.40\nInvalidation: $10.75 (4-hour candle close below breakout base)\nFirst target: $12.25 (Mid-range liquidity shelf)\nSecondary target: $13.10 (Macro value area high)\nRisk to reward ratio: 2.70 (8.9% upside vs 3.3% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you taking partial profits on LINK here, or holding runners for a push above $12? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
     {
         "id": 12,
         "coin": "$ONDO",
-        "title": "\ud83c\udfdb\ufe0f $ONDO Bounces 6.2%: RWA Support Rebound",
+        "title": "🏛️ $ONDO 4H Bounces 6%: RWA Support Setup",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83c\udfdb\ufe0f $ONDO Bounces 6.2%: RWA Support Rebound\n\nondo is trading around 0.4105 after that 6% bounce from the 0.384 wick. \n\nbybit volume is sitting around 44M. 1h rsi crossed back above 56 and price is holding above the 20 ema at 0.4024. \n\nif we get a retest into 0.398 - 0.405, i'll look for entries with targets at 0.435 and 0.460. stop under 0.385. \n\nare you buying ondo here or waiting for lower?",
-        "improved": "\ud83c\udfdb\ufe0f $ONDO Bounces 6.2%: RWA Support Rebound\n\nondo is trading around 0.4105 after that 6% bounce from the 0.384 wick. \n\nbybit volume is sitting around 44M. 1h rsi crossed back above 56 and price is holding above the 20 ema at 0.4024. \n\nif we get a retest into 0.398 - 0.405, i'll look for entries with targets at 0.435 and 0.460. stop under 0.385. \n\nare you buying ondo here or waiting for lower?",
+        "raw": "🏛️ $ONDO 4H Bounces 6%: RWA Support Setup\n\nondo is trading around 0.4105 after that 6% bounce from the 0.384 wick. bybit volume is sitting around 44M. 4h rsi crossed back above 56 and price is holding above 4h 20 ema at 0.3980. rwa sector tokenization narrative keeps capital rotating in. bidding 0.4020 to 0.4120. targets 0.4480 and 0.4850. stop under 0.3880 on 4h close.",
+        "improved": "🏛️ $ONDO 4H Bounces 6%: RWA Support Setup\n\nONDO is trading around $0.4105 following a crisp 6.2% recovery from the $0.3840 liquidity wick.\n\n24h turnover on Bybit is healthy at $44.1M. Institutional tokenization and RWA narrative tailwinds continue to provide steady dip-buying pressure on every market pullback.\n\nOn the 4-hour chart, 4H RSI reclaimed 56 while price reclaimed and held above the 4H 20 EMA at $0.3980. Trend structure confirms higher lows across the weekly base.\n\nExecution setup:\nEntry zone: $0.4020–$0.4120\nInvalidation: $0.3880 (4-hour candle close below wick baseline)\nFirst target: $0.4480 (Range resistance sweep)\nSecondary target: $0.4850 (RWA momentum expansion)\nRisk to reward ratio: 2.80 (10.2% upside vs 3.6% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you riding this RWA recovery into $0.45, or expecting a retest of the $0.38 low? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     }
 ];
 }
 
-function getCryptoBossPreloadedSlots() {
-  return [
-    {
-      id: 1,
-      coin: '$ETH',
-      title: 'Post 1: ⚡ $ETHUSDT Dip-Buying Opportunity & Bottoming Zone',
-      status: 'ready',
-      raw: "ETH just handed us what looks like a dip-buying opportunity.\n\nIt climbed through the afternoon and topped out at $2,379.49 around 17:00, then sellers took over. At 21:00 one huge red candle dragged it from about $2,337 down to $2,232.40, the kind of candle that shakes a lot of people out. But buyers stepped in right at that low, the bounce at 22:00 took it back to $2,274, and it's holding at $2,270 with the hourly RSI under 30. That's often how a bottoming zone looks.\n\nI already have my trade on this, so for me it's about the zone and not chasing. The area worth watching is $2,245 to $2,270, and the idea is wrong if it closes under $2,225. The first target is around $2,320 and the second near $2,375, roughly 2 to 1 and 3.5 to 1. It's still a bounce against the short-term trend, so size it with that in mind.\n\nWhere's your line on this dip, $2,232 or a daily close?\n\nJust my read, not advice.\n$ETHUSDT #ByXIMPACT #IMPACTbyTrade",
-      improved: "ETH just handed us what looks like a dip-buying opportunity.\n\nIt climbed through the afternoon and topped out at $2,379.49 around 17:00, then sellers took over. At 21:00 one huge red candle dragged it from about $2,337 down to $2,232.40, the kind of candle that shakes a lot of people out. But buyers stepped in right at that low, the bounce at 22:00 took it back to $2,274, and it's holding at $2,270 with the hourly RSI under 30. That's often how a bottoming zone looks.\n\nI already have my trade on this, so for me it's about the zone and not chasing. The area worth watching is $2,245 to $2,270, and the idea is wrong if it closes under $2,225. The first target is around $2,320 and the second near $2,375, roughly 2 to 1 and 3.5 to 1. It's still a bounce against the short-term trend, so size it with that in mind.\n\nWhere's your line on this dip, $2,232 or a daily close?\n\nJust my read, not advice.\n$ETHUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 9, word_replacement_count: 0, emoji_spacing_count: 4 },
-      suggestions: [
-        { category: "word", description: "Author: Crypto BOSS (UID: 535233761) | 25 Likes, 4 Comments, 3 Shares" },
-        { category: "spacing", description: "Grade 3.7 Readability | Fluid conversational narrative with dynamic invalidation" }
-      ]
-    },
-    {
-      id: 2,
-      coin: '$XAUT',
-      title: "Post 2: ⚡ $XAUT vs $PAXG vs $XAG: Two Gold Tokens & Silver",
-      status: 'ready',
-      raw: "XAUT vs $PAXG vs $XAG: Two Gold Tokens and Silver After a Red Day\n\nToday's move\nGold: about $4,024, down 1.1%\nSilver ($XAG): about $52.4, down 2.9%\n$XAUT and $PAXG: both down about 0.6%, tracking gold\n\nWhat separates them\n$XAUT (Tether Gold): the larger gold token, with a market cap near $3B\n\n$PAXG (Pax Gold): the smaller one, near $1.8B, also backed by one ounce of gold per token\n\n$XAG: silver, which moves more than gold in both directions\n\nThe bigger picture\nGold is about 28% below its January record\nSilver is down about 26% this year and 13% in the last month\n\nThe gold-to-silver ratio sits near 77, so silver has been the weaker of the two\n\nWhat I'm watching: the next US inflation data (PCE), since rate expectations drive both metals. The gold tokens give gold exposure on-chain, while $XAG is the higher-volatility way to trade the same theme.\n\nYour pick: $XAUT, $PAXG or $XAG into the next data release? Tell me why.\n$XAUTUSDT $PARTIUSDT #ByXIMPACT #IMPACTbyTrade",
-      improved: "XAUT vs $PAXG vs $XAG: Two Gold Tokens and Silver After a Red Day\n\nToday's move\nGold: about $4,024, down 1.1%\nSilver ($XAG): about $52.4, down 2.9%\n$XAUT and $PAXG: both down about 0.6%, tracking gold\n\nWhat separates them\n$XAUT (Tether Gold): the larger gold token, with a market cap near $3B\n\n$PAXG (Pax Gold): the smaller one, near $1.8B, also backed by one ounce of gold per token\n\n$XAG: silver, which moves more than gold in both directions\n\nThe bigger picture\nGold is about 28% below its January record\nSilver is down about 26% this year and 13% in the last month\n\nThe gold-to-silver ratio sits near 77, so silver has been the weaker of the two\n\nWhat I'm watching: the next US inflation data (PCE), since rate expectations drive both metals. The gold tokens give gold exposure on-chain, while $XAG is the higher-volatility way to trade the same theme.\n\nYour pick: $XAUT, $PAXG or $XAG into the next data release? Tell me why.\n$XAUTUSDT $PARTIUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 8, word_replacement_count: 0, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Author: Crypto BOSS | 45 Likes, 4 Comments (Creator replied 'thnx bro')" },
-        { category: "spacing", description: "Grade 7.3 Readability | Cross-commodity on-chain relative value framework" }
-      ]
-    },
-    {
-      id: 3,
-      coin: '$VVV',
-      title: 'Post 3: ⚡ $VVV Parabolic Move & Aggressive EMA7 Trailing Stop',
-      status: 'ready',
-      raw: "VVV just went absolutely vertical, and this is exactly where real wealth is built in this market. I am not just watching this parabolic move; I am actively managing it to squeeze every drop of profit out of the trend.\n\nLook at this 1-hour chart. We saw a textbook launch from the 22.852 base, ripping straight through the EMAs to a peak of 25.940. The volume spike here is the engine, confirming this is backed by real, aggressive buyers.\n\nHere is my technical game plan:\n\nThe Power: The MACD is wide open to the upside, and the EMA cluster is fanning out beautifully.\nThe Exhaustion Risk: Yes, the RSI6 is hot at 76.16, and we are piercing the upper Bollinger Band. The move is extended.\n\nMy Execution Strategy:\nI do not try to guess the top. Guessing tops is how you lose money. I ride the momentum until the market tells me it's over.\n\nMy anchor is the EMA7 at 24.650. I am aggressively trailing my stop loss just below that level. As long as VVV holds above this dynamic support, I let the profit run toward new highs. If the price breaks below it, I secure my gains and step away. No emotions, just pure price action.\n\nFor those who missed the initial blast: do not FOMO chase this massive green candle. Wait for a micro-pullback or a tight flag to form. Let the price come to you.\n\nThe market is offering a massive opportunity. I am staying disciplined, riding the trend, and protecting my capital.\n\nAre you riding this parabolic move, or are you waiting for the dust to settle?\n$VVVUSDT $ETHUSDT #ByXIMPACT #IMPACTbyTrade",
-      improved: "VVV just went absolutely vertical, and this is exactly where real wealth is built in this market. I am not just watching this parabolic move; I am actively managing it to squeeze every drop of profit out of the trend.\n\nLook at this 1-hour chart. We saw a textbook launch from the 22.852 base, ripping straight through the EMAs to a peak of 25.940. The volume spike here is the engine, confirming this is backed by real, aggressive buyers.\n\nHere is my technical game plan:\n\nThe Power: The MACD is wide open to the upside, and the EMA cluster is fanning out beautifully.\nThe Exhaustion Risk: Yes, the RSI6 is hot at 76.16, and we are piercing the upper Bollinger Band. The move is extended.\n\nMy Execution Strategy:\nI do not try to guess the top. Guessing tops is how you lose money. I ride the momentum until the market tells me it's over.\n\nMy anchor is the EMA7 at 24.650. I am aggressively trailing my stop loss just below that level. As long as VVV holds above this dynamic support, I let the profit run toward new highs. If the price breaks below it, I secure my gains and step away. No emotions, just pure price action.\n\nFor those who missed the initial blast: do not FOMO chase this massive green candle. Wait for a micro-pullback or a tight flag to form. Let the price come to you.\n\nThe market is offering a massive opportunity. I am staying disciplined, riding the trend, and protecting my capital.\n\nAre you riding this parabolic move, or are you waiting for the dust to settle?\n$VVVUSDT $ETHUSDT #ByXIMPACT #IMPACTbyTrade",
-      rules_summary: { punctuation_count: 10, word_replacement_count: 0, emoji_spacing_count: 5 },
-      suggestions: [
-        { category: "word", description: "Author: Crypto BOSS | 41 Likes, 1 Comment, 1 Share" },
-        { category: "spacing", description: "Grade 5.2 Readability | Dynamic trailing stop & retail FOMO protection" }
-      ]
-    }
-  ];
-}
-// Render 10 Post Carousel Pills
-
-// Namespace Export
-window.EdgeFlow.SlotsData = {
-  getCryptoBossPreloadedSlots,
-  getDay6PreloadedSlots,
-  getDay5PreloadedSlots,
-  getDay4PreloadedSlots,
-  createEmptySlots
-};
+;

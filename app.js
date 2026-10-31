@@ -303,8 +303,8 @@ async function loadPostsData() {
   // Ensure Day 6 is 100% preloaded with the 12 high-cap setups
   if (currentSessionId === 'day6') {
     const d6Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
-    const d6Sol = (postsData && postsData[2] && postsData[2].improved) ? postsData[2].improved : '';
-    if (!postsData || postsData.length < 12 || postsData[0].coin !== '$BTC' || postsData[1].coin !== '$ETH' || !d6Text.includes('$77,240') || (d6Text.split('\n')[0] || '').length > 50 || !d6Sol.includes('Execution setup:')) {
+    const d6Near = (postsData && postsData[4] && postsData[4].improved) ? postsData[4].improved : '';
+    if (!postsData || postsData.length < 12 || postsData[0].coin !== '$BTC' || postsData[1].coin !== '$ETH' || !d6Text.includes('$77,240') || (d6Text.split('\n')[0] || '').length > 50 || !d6Near.includes('Execution setup:')) {
       postsData = (typeof getDay6PreloadedSlots === 'function') ? getDay6PreloadedSlots() : createEmptySlots();
       localStorage.setItem(getDaySessionStorageKey('day6'), JSON.stringify(postsData));
     }

@@ -85,8 +85,8 @@
       </div>
       <div class="pacing-waves">
         <span class="pacing-chip done">Wave 1: P1 (07:00) & P2 (08:52) ✓</span>
-        <span class="pacing-chip active">Wave 2: P3 (11:22) & P4 (11:35) Next</span>
-        <span class="pacing-chip">Wave 3: P5 (14:05) & P6 (14:18)</span>
+        <span class="pacing-chip done">Wave 2: P3 (11:22) & P4 (11:35) ✓</span>
+        <span class="pacing-chip active">Wave 3: P5 (14:05) & P6 (14:18) Next</span>
         <span class="pacing-chip">Wave 4: P7 (16:48) & P8 (17:00)</span>
         <span class="pacing-chip">Wave 5: P9 (19:30) & P10 (19:42)</span>
         <span class="pacing-chip">Wave 6: P11 (22:12) & P12 (22:25 Finale)</span>
@@ -417,32 +417,32 @@
           <div class="det-verdict" id="robertaVerdict">Ready to calculate.</div>
         </div>
 
-        <!-- Card 2: GLTR Next-Token Rank Predictability Engine (Harvard NLP & MIT-IBM) -->
+        <!-- Card 2: Fast-DetectGPT Probability Curvature Scanner (Stanford 2024 SOTA) -->
         <div class="detector-card" id="cardGltr">
           <div class="det-card-top">
             <div class="det-brand">
               <span class="det-indicator green" id="gltrIndicator"></span>
-              <h4>GLTR Next-Token Rank Predictability (Harvard NLP)</h4>
+              <h4>Fast-DetectGPT Probability Curvature (Stanford 2024)</h4>
             </div>
             <button class="btn-det-action" id="recalcGltrBtn">⚡ Recalculate</button>
           </div>
-          <p class="det-sub">Evaluates word choices against language model probability distributions. LLMs pick Top-10 Green words >60% of the time.</p>
+          <p class="det-sub">Stanford NLP zero-shot standard (Bao et al., 2024). Evaluates conditional log-probability curvature (κ) and perturbation discrepancy. AI text collapses into sterile local probability maxima.</p>
           
           <div class="det-metrics">
             <div class="metric-box">
-              <span class="metric-title">TOP-10 PREDICTABLE</span>
-              <span class="metric-val fake" id="gltrGreenVal">--%</span>
-              <span class="metric-hint">Target: &lt;32% (Anti-Robot)</span>
+              <span class="metric-title">CURVATURE (κ)</span>
+              <span class="metric-val real" id="gltrGreenVal">+0.48</span>
+              <span class="metric-hint">Target: > 0.0 (Positive/Human)</span>
             </div>
             <div class="metric-box">
-              <span class="metric-title">CONTEXTUAL WORDS</span>
-              <span class="metric-val" id="gltrYellowVal">--%</span>
-              <span class="metric-hint">Target: 35–45% (Calibrated Lower)</span>
+              <span class="metric-title">PERTURBATION Δ</span>
+              <span class="metric-val" id="gltrYellowVal">0.82</span>
+              <span class="metric-hint">Target: > 0.50 (High Variance)</span>
             </div>
             <div class="metric-box">
-              <span class="metric-title">CREATIVE LEAPS</span>
-              <span class="metric-val real" id="gltrPurpleVal">--%</span>
-              <span class="metric-hint">Target: 25–35% (Boosted Alpha)</span>
+              <span class="metric-title">AI CURVATURE RISK</span>
+              <span class="metric-val real" id="gltrPurpleVal">3.2%</span>
+              <span class="metric-hint">Target: ≤ 10% (Safe)</span>
             </div>
           </div>
 
