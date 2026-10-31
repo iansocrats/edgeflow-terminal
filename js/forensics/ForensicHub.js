@@ -4,6 +4,8 @@
 window.EdgeFlow = window.EdgeFlow || {};
 
 let currentForensicDay = 'cross';
+let currentComparisonView = 'split'; // 'split' | 'diff'
+let currentComparisonMetric = 'flow'; // 'flow' | 'ev'
 let currentForensicMetric = 'jaccard'; // 'jaccard' | 'tfidf' | 'trigram' | 'entropy'
 let currentMathSuite = 'infotheory'; // 'infotheory' | 'linalg'
 let currentMathOp = 'laplacian'; // 'laplacian' | 'markov' | 'frobenius' | 'hadamard'
@@ -40,54 +42,20 @@ function getActiveForensicPosts() {
 
 function initForensicAnalysisHub() {
   const btnCross = document.getElementById('btnForensicCross');
+  const btnQuant = document.getElementById('btnForensicQuantMatrix');
   const btnComp = document.getElementById('btnForensicComparison');
-  const btnBoss = document.getElementById('btnForensicCreatorBoss');
   const btnD6 = document.getElementById('btnForensicDay6');
-    const btnD5 = document.getElementById('btnForensicDay5');
-  const btnD4 = document.getElementById('btnForensicDay4');
-  const btnD3 = document.getElementById('btnForensicDay3');
+  const btnScores = document.getElementById('btnForensicScoresTab');
+  const btnBoss = document.getElementById('btnForensicCreatorBoss');
+  const btnD5 = document.getElementById('btnForensicDay5');
 
-  if (btnCross) {
-    btnCross.addEventListener('click', () => {
-      currentForensicDay = 'cross';
-      renderForensicAnalysisHub();
-    });
-  }
-
-  if (btnComp) {
-    btnComp.addEventListener('click', () => {
-      currentForensicDay = 'comparison';
-      renderForensicAnalysisHub();
-    });
-  }
-
-  if (btnBoss) {
-    btnBoss.addEventListener('click', () => {
-      currentForensicDay = 'creator_boss';
-      renderForensicAnalysisHub();
-    });
-  }
-
-  if (btnD5) {
-    btnD5.addEventListener('click', () => {
-      currentForensicDay = 'day5';
-      renderForensicAnalysisHub();
-    });
-  }
-
-  if (btnD4) {
-    btnD4.addEventListener('click', () => {
-      currentForensicDay = 'day4';
-      renderForensicAnalysisHub();
-    });
-  }
-
-  if (btnD3) {
-    btnD3.addEventListener('click', () => {
-      currentForensicDay = 'day3';
-      renderForensicAnalysisHub();
-    });
-  }
+  if (btnCross) btnCross.addEventListener('click', () => { currentForensicDay = 'cross'; renderForensicAnalysisHub(); });
+  if (btnQuant) btnQuant.addEventListener('click', () => { currentForensicDay = 'quant_matrix'; renderForensicAnalysisHub(); });
+  if (btnComp) btnComp.addEventListener('click', () => { currentForensicDay = 'comparison'; renderForensicAnalysisHub(); });
+  if (btnD6) btnD6.addEventListener('click', () => { currentForensicDay = 'day6'; renderForensicAnalysisHub(); });
+  if (btnScores) btnScores.addEventListener('click', () => { currentForensicDay = 'scores_tab'; renderForensicAnalysisHub(); });
+  if (btnBoss) btnBoss.addEventListener('click', () => { currentForensicDay = 'creator_boss'; renderForensicAnalysisHub(); });
+  if (btnD5) btnD5.addEventListener('click', () => { currentForensicDay = 'day5'; renderForensicAnalysisHub(); });
 }
 
 function bindMetricPills() {
@@ -169,36 +137,41 @@ function renderForensicAnalysisHub() {
   if (!container) return;
 
   const btnCross = document.getElementById('btnForensicCross');
+  const btnQuant = document.getElementById('btnForensicQuantMatrix');
   const btnComp = document.getElementById('btnForensicComparison');
-  const btnBoss = document.getElementById('btnForensicCreatorBoss');
   const btnD6 = document.getElementById('btnForensicDay6');
-    const btnD5 = document.getElementById('btnForensicDay5');
-  const btnD4 = document.getElementById('btnForensicDay4');
-  const btnD3 = document.getElementById('btnForensicDay3');
+  const btnScores = document.getElementById('btnForensicScoresTab');
+  const btnBoss = document.getElementById('btnForensicCreatorBoss');
+  const btnD5 = document.getElementById('btnForensicDay5');
 
   if (btnCross) btnCross.classList.toggle('active', currentForensicDay === 'cross');
+  if (btnQuant) btnQuant.classList.toggle('active', currentForensicDay === 'quant_matrix');
   if (btnComp) btnComp.classList.toggle('active', currentForensicDay === 'comparison');
-  if (btnBoss) btnBoss.classList.toggle('active', currentForensicDay === 'creator_boss');
   if (btnD6) btnD6.classList.toggle('active', currentForensicDay === 'day6');
-    if (btnD5) btnD5.classList.toggle('active', currentForensicDay === 'day5');
-  if (btnD4) btnD4.classList.toggle('active', currentForensicDay === 'day4');
-  if (btnD3) btnD3.classList.toggle('active', currentForensicDay === 'day3');
+  if (btnScores) btnScores.classList.toggle('active', currentForensicDay === 'scores_tab');
+  if (btnBoss) btnBoss.classList.toggle('active', currentForensicDay === 'creator_boss');
+  if (btnD5) btnD5.classList.toggle('active', currentForensicDay === 'day5');
 
   if (currentForensicDay === 'cross') {
     container.innerHTML = getCrossAnalysisForensicHtml();
+  } else if (currentForensicDay === 'quant_matrix') {
+    container.innerHTML = getQuantMatrixHtml();
   } else if (currentForensicDay === 'comparison') {
     container.innerHTML = getComparisonForensicHtml();
+  } else if (currentForensicDay === 'day6') {
+    container.innerHTML = getDay6ForensicHtml();
+  } else if (currentForensicDay === 'scores_tab') {
+    container.innerHTML = getScoresHubHtml();
   } else if (currentForensicDay === 'creator_boss') {
     container.innerHTML = getCreatorBossForensicHtml();
   } else if (currentForensicDay === 'day5') {
     container.innerHTML = getDay5ForensicHtml();
-  } else if (currentForensicDay === 'day4') {
-    container.innerHTML = getDay4ForensicHtml();
   } else {
-    container.innerHTML = getDay3ForensicHtml();
+    container.innerHTML = getCrossAnalysisForensicHtml();
   }
 
   bindMetricPills();
+  bindComparisonToggles();
 }
 
 window.EdgeFlow.setForensicDay = function(day) {
