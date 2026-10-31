@@ -609,12 +609,12 @@ function getDay6PreloadedSlots() {
     {
         "id": 3,
         "coin": "$SOL",
-        "title": "\ud83c\udfaf $SOL Holds $95: Why I'm Bidding Support",
+        "title": "🎯 $SOL Holds $95: Why I Bid Support",
         "status": "ready",
         "done": false,
         "archetype": "human_trader_story",
-        "raw": "\ud83c\udfaf $SOL Holds $95: Why I'm Bidding Support\n\nsol is sitting around 96.50 after that dip to 94. \n\nnot panicking here. solana has held 95 as a solid base all week, and volume on bybit is healthy around 510M. \n\non the 1h chart, price reclaimed the 20 ema at 95.80 and rsi is back near 51. funding is still -0.008%, so shorts are paying to stay in trades right at support. \n\nhow i'm playing it:\nbidding 95.20 to 96.10. targets at 100.50 and 105. if we break below 93.80, i cut it. \n\nare you buying sol here or waiting for lower?",
-        "improved": "\ud83c\udfaf $SOL Holds $95: Why I'm Bidding Support\n\nsol is sitting around 96.50 after that dip to 94. \n\nnot panicking here. solana has held 95 as a solid base all week, and volume on bybit is healthy around 510M. \n\non the 1h chart, price reclaimed the 20 ema at 95.80 and rsi is back near 51. funding is still -0.008%, so shorts are paying to stay in trades right at support. \n\nhow i'm playing it:\nbidding 95.20 to 96.10. targets at 100.50 and 105. if we break below 93.80, i cut it. \n\nare you buying sol here or waiting for lower?",
+        "raw": "🎯 $SOL Holds $95: Why I Bid Support\n\nsol is sitting around 95.58 after that dip to 94.80. not panicking. solana is holding 95 as a base all week with 423.5M volume and 576.4M open interest. 1h chart reclaimed 20 ema at 95.80 and rsi is 51. funding is -0.0053% so shorts are paying to stay in trades at support. bidding 95.20 to 95.60. targets 97.80 and 101.40. stop under 93.40. are you buying sol here or waiting for lower?",
+        "improved": "🎯 $SOL Holds $95: Why I Bid Support\n\nSolana is sitting around $95.58 after absorbing seller volume down to $94.80.\n\nNot panicking here. While Bitcoin is choppily consolidating, Solana has defended the $95 support shelf all week with $423.5M in 24h turnover and $576.4M in open interest.\n\nOn the 1-hour chart, price reclaimed the 20 EMA at $95.80 with RSI stabilizing near 51. Perpetual funding is currently negative at -0.0053%, meaning short positions are paying carry right at multi-day support.\n\nExecution setup:\nEntry zone: $95.20–$95.60\nInvalidation: $93.40 (4-hour close below 24h low)\nFirst target: $97.80 (24h high liquidity sweep)\nSecondary target: $101.40 (Weekly order block expansion)\nRisk to reward ratio: 2.85 (6.2% upside vs 2.1% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you playing the squeeze into $98, or waiting for a flush back to $93? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
