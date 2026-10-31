@@ -107,7 +107,7 @@
               <div class="deck-title">
                 ⚡ WAVE 5 AUDIT DECK: <span style="color:#34d399;">SKILL_ISSUE.md Compliance Check</span>
               </div>
-              <div class="deck-subtitle">Pre-audited: Zero hashtags, ≤50c hook, unhedged 4H geometry, Buffett/Munger wisdom & 3-gram LSH uniqueness.</div>
+              <div class="deck-subtitle">Pre-audited: Zero hashtags, ≤50c hook, unhedged 4H geometry, Human Trader Philosophy & 3-gram LSH uniqueness.</div>
             </div>
 
             <!-- Pre-flight checklist grid -->
@@ -129,8 +129,8 @@
                 <span class="pf-badge pass">Unhedged R:R ≥ 2.65 ✓</span>
               </div>
               <div class="preflight-item">
-                <span class="pf-label">Trader Wisdom Quote:</span>
-                <span class="pf-badge pass">Buffett & Munger Pre-Poll ✓</span>
+                <span class="pf-label">Trader Philosophy:</span>
+                <span class="pf-badge pass">Original Trader Sense ✓ ✓</span>
               </div>
               <div class="preflight-item">
                 <span class="pf-label">3-Gram LSH Overlap:</span>

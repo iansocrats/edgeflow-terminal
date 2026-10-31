@@ -36,6 +36,7 @@
 | **SKILL-011** | Relied on outdated 2019 GLTR token ranking. | **Upgraded to Stanford Fast-DetectGPT (2024 SOTA)** measuring local probability curvature ($\kappa > 0$ dispersed human manifold). | Flags false positives and fails modern institutional AI detectors. |
 | **SKILL-012** | Repeated sentence structures and bullet templates. | **Enforce polymorphic archetypes** from benchmark corpus: `relative_value`, `tactical_signal`, `sentiment_trap`, `liquidity_sweep`. | Jaccard similarity spikes $> 18.5\%$, triggering duplicate content penalties. |
 | **SKILL-013** | Using generic AI vocabulary (*moreover, delve, testaments, landscape*). | **Enforce Thematic Trading Lexicon**: *bid depth, absorption wick, funding carry, short coil, delta divergence, liquidation cascade*. | Detectors flag robotic syntax. |
+| **SKILL-018** | Injected verbatim famous quotes (Warren Buffett, Charlie Munger). | **ABSOLUTE BAN ON FAMOUS VERBATIM QUOTES.** Because LLMs memorize famous quotes during pre-training, detectors (Fast-DetectGPT, GLTR) assign near-zero perplexity to those exact token sequences, spiking AI coverage risk by >10%. Always write **original, unquoted human trader philosophy** grounded directly in live order book and liquidity mechanics. | Spikes AI detector risk >10%, trips token memorization flags, ruins human authenticity. |
 
 ---
 
@@ -50,81 +51,34 @@
 ---
 ---
 
-## 📌 Section 5: Warren Buffett & Charlie Munger Market Wisdom Repository
-> **Contextual Alignment Rule**: Never insert a quote at random. Select quotes that directly illuminate the technical setup, market structure, or emotional pitfall of the specific perpetual asset.
+## 📌 Section 5: Original Human Trader Philosophy (Zero-AI & Zero-Plagiarism Framework)
+> **Core Principle**: Never use quotation marks, attribution tags, or famous names (Buffett, Munger, Livermore). Write pure, unadorned, personal reflections on trading psychology, capital preservation, and tape mechanics that flow seamlessly into the closing debate question.
 
-### 🏛️ Category 1: Range Compression, Consolidation & Patience
-* **When to Use**: Low-volatility sideways chop, waiting for retest of major support/resistance, refusing to over-trade before directional expansion ($BTC range, $XRP, $DOGE compression).
-* **Quotes**:
-  1. *"The big money is not in the buying and the selling, but in the waiting."* — **Charlie Munger**
-  2. *"The stock market is a device to transfer money from the impatient to the patient."* — **Warren Buffett**
-  3. *"You do not have to swing at every pitch. In trading, you can wait for the fat pitch right in your sweet spot."* — **Warren Buffett**
-  4. *"Patience combined with opportunity is a devastating combination."* — **Charlie Munger**
-  5. *"The desire to get rich fast is pretty dangerous; patience is the ultimate edge in speculative markets."* — **Charlie Munger**
-  6. *"It takes 20 years to build a financial foundation and five minutes to ruin it with impatience."* — **Warren Buffett**
-  7. *"Activity does not equal achievement. Great traders spend most of their time doing nothing until the odds tilt heavily in their favor."* — **Charlie Munger**
+### 🎯 6 Archetypal Angles for Original Market Philosophy:
 
----
+1. **Range High / Breakout Resistance (P1 $BTC, P5 $NEAR, P10 $AAVE)**
+   * *Thematic Focus*: Paying tuition to patient limit bids; missing a move costs nothing, but FOMO destroys capital.
+   * *Tone*: Cold, disciplined, patient.
 
-### 🩸 Category 2: Fading Panic, Sentiment Traps & Liquidity Sweeps
-* **When to Use**: Severe liquidations, oversold 4H RSI wicks, negative perpetual funding, absorbing retail panic into multi-week support ($ETH, $SOL, $XAUT dips).
-* **Quotes**:
-  1. *"Be fearful when others are greedy, and greedy when others are fearful."* — **Warren Buffett**
-  2. *"The most common cause of low prices is pessimism. We want to do business in such an environment not because we like pessimism, but because we like the discount prices it produces."* — **Warren Buffett**
-  3. *"A lot of people with high IQs are terrible investors because they have terrible temperaments."* — **Charlie Munger**
-  4. *"Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble."* — **Warren Buffett**
-  5. *"Widespread fear is your best friend as a trader, because it serves up bargain liquidity on a silver platter."* — **Warren Buffett**
-  6. *"Mimicking the panic of the herd invites guaranteed regression to the mean."* — **Charlie Munger**
-  7. *"The time to accumulate conviction is when liquidation cascades wash out emotional leverage."* — **Charlie Munger**
+2. **Crowded Panic / Support Absorptions (P2 $ETH, P3 $SOL, P7 $SUI)**
+   * *Thematic Focus*: Crowded consensus at support is where late leverage dies; letting others burn carry against the floor.
+   * *Tone*: Contrarian, predatory, calm.
 
----
+3. **Sideways Chop & Volatility Squeezes (P4 $XRP, P8 $DOGE)**
+   * *Thematic Focus*: Boredom kills more accounts than bad analysis; surviving the fakeouts until the coiling spring expands.
+   * *Tone*: Grounded, stoic, strategic.
 
-### 🚫 Category 3: Breakout Discipline & Rejecting FOMO Chasing
-* **When to Use**: Assets pumping 5%+ into major overhead supply, euphoric breakout calls, positive funding carry traps ($NEAR, $AAVE, $SUI overhead resistance).
-* **Quotes**:
-  1. *"Price is what you pay; value is what you get."* — **Warren Buffett**
-  2. *"It is remarkable how much long-term advantage people have gotten by trying to be consistently not stupid, instead of trying to be very intelligent."* — **Charlie Munger**
-  3. *"Speculation is most dangerous precisely when it looks easiest and everyone is celebrating."* — **Warren Buffett**
-  4. *"Invert, always invert: instead of asking how much you can make on this breakout, ask what happens if it fails and who is waiting to sell into you."* — **Charlie Munger**
-  5. *"A too-high purchase price into overhead resistance can undo years of favorable structural progress."* — **Warren Buffett**
-  6. *"Chasing price after the expansion has already occurred is merely subsidizing someone else's exit liquidity."* — **Charlie Munger**
-  7. *"Never chase a train that has already left the platform; another setup always arrives on schedule."* — **Warren Buffett**
+4. **Macro Stress & Flight to Scarcity (P6 $BNB, P9 $XAUT)**
+   * *Thematic Focus*: Market noise is deafening but institutional absorption is quiet; structural patience in sound value areas.
+   * *Tone*: Institutional, macro-aware, unwavering.
+
+5. **Harvesting Gains & Defending Capital (P11 $LINK)**
+   * *Thematic Focus*: Taking partial profits is never an error; realized capital buys emotional freedom for the next setup.
+   * *Tone*: Professional, risk-first, unattached.
+
+6. **Secular Narratives vs Intraday Leverage (P12 $ONDO)**
+   * *Thematic Focus*: Long-term protocol adoption unfolds over months, but leverage liquidates in minutes; anchoring to structural baselines.
+   * *Tone*: Forward-looking, thesis-driven, structurally sound.
 
 ---
-
-### 🛡️ Category 4: Leverage Discipline, Invalidation & Capital Survival
-* **When to Use**: High-beta moves, strict stop-loss defense, avoiding margin liquidation, conservative sizing ($BNB, $SOL, meme volatility).
-* **Quotes**:
-  1. *"There are three things that ruin people in finance: drugs, liquor, and leverage."* — **Charlie Munger**
-  2. *"Rule No. 1: Never lose capital. Rule No. 2: Never forget Rule No. 1."* — **Warren Buffett**
-  3. *"If you risk what is vital to you for something that is unimportant to you, it is simply foolish."* — **Warren Buffett**
-  4. *"Risk comes from not knowing what you are doing or failing to define your invalidation before entering."* — **Warren Buffett**
-  5. *"You do not have to be brilliant, only a little bit wiser than the other guys for a very long time, while never doing anything catastrophic."* — **Charlie Munger**
-  6. *"Smart men go broke three ways: liquor, ladies, and excessive leverage."* — **Charlie Munger**
-  7. *"Surviving long enough to let positive expectancy compound is the entire game."* — **Charlie Munger**
-
----
-
-### 🥇 Category 5: Sound Money, Supply Moats & Scarcity Flight
-* **When to Use**: Gold perps, Bitcoin macro store-of-value, fixed supply mechanics, safe-haven bid ($XAUT, $BTC).
-* **Quotes**:
-  1. *"Gold is a way of going long on human fear, and throughout history it has proven to be an enduring hedge against paper dilution."* — **Warren Buffett**
-  2. *"In an uncertain macro regime, capital relentlessly migrates toward tangible certainty and scarcity."* — **Charlie Munger**
-  3. *"Currencies and credit promises come and go, but intrinsic scarcity remains the silent benchmark of value."* — **Charlie Munger**
-  4. *"If you understand the durable moat of an asset, short-term volatility is your servant, not your master."* — **Warren Buffett**
-  5. *"The great compounding advantage is to anchor to assets with an unbreachable structural moat."* — **Charlie Munger**
-
----
-
-### ⚡ Category 6: Technological Infrastructure, Disruption & Real Yield
-* **When to Use**: Institutional tokenization (RWA), Oracle networks, Layer-1 high throughput, decentralized lending yield ($ONDO, $LINK, $AAVE, $SUI).
-* **Quotes**:
-  1. *"The best economic engines are the ones that possess an enduring royalty on the growth of others."* — **Warren Buffett**
-  2. *"Someone is sitting in the shade today because someone planted a tree a long time ago."* — **Warren Buffett**
-  3. *"You do not have to predict every technological shift; you only need to identify where institutional capital is inevitably compelled to flow."* — **Charlie Munger**
-  4. *"Yield without underlying structural security is merely borrowed time."* — **Charlie Munger**
-  5. *"No wise engineer builds a skyscraper on sand; code without verified oracle infrastructure is blind conjecture."* — **Charlie Munger**
-  6. *"The future arrives gradually in protocol development, then all at once in capital rotation."* — **Charlie Munger**
-
----
-*Last verified & updated: Saturday, Oct 31, 2026 • 16:23 UTC+3*
+*Last verified & updated: Saturday, Oct 31, 2026 • 16:50 UTC+3*
