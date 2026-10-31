@@ -1,0 +1,100 @@
+{
+  "dataset_name": "External Creator Original Signal Corpus (X.com & Binance Square)",
+  "description": "Curated high-originality signals and execution archetypes extracted from prominent algorithmic and futures creators",
+  "sources": [
+    {
+      "platform": "X.com",
+      "handle": "@Aicrypto786",
+      "url": "https://x.com/Aicrypto786",
+      "creator_type": "On-Chain & Technical Futures Analyst",
+      "core_strengths": [
+        "Unambiguous Entry Zones with strict numerical bounds",
+        "Multi-tiered take-profit staging (TP1 conservative, TP2 expansion, TP3 runner)",
+        "Immediate break-even and hard invalidation stop levels",
+        "Zero conversational fluff or robotic padding"
+      ]
+    },
+    {
+      "platform": "Binance Square",
+      "creator_id": "square-creator-95cad6100a49a",
+      "display_name": "AI Researcher",
+      "url": "https://www.binance.com/en/square/profile/square-creator-95cad6100a49a",
+      "creator_type": "Quantitative Scalper & Derivatives Trader",
+      "stats": {
+        "followers": 59099,
+        "posts": 6400,
+        "win_rate_60d": "40%",
+        "total_roi_60d": "+145.1%",
+        "avg_return_per_trade": "+1.2%"
+      },
+      "core_strengths": [
+        "Direct perpetual futures setup layout",
+        "Explicit risk:reward calibration (minimum 1:2.0 to 1:3.5)",
+        "Order book liquidity sweep trigger rationale"
+      ]
+    }
+  ],
+  "signal_archetypes": [
+    {
+      "symbol": "SOLUSDT",
+      "timeframe": "4H",
+      "source_archetype": "AI Researcher / Binance Square",
+      "direction": "LONG",
+      "title": "SOL 4H Liquidity Sweep Above Support",
+      "market_thesis": "Sellers failed to press SOL below the .80 liquidity cluster. 4H open interest spiked +14% while spot cumulative volume delta turned positive, indicating trapped retail shorts.",
+      "setup": {
+        "entry_zone": ".80 - .60",
+        "tp1": ".50",
+        "tp2": ".40",
+        "tp3": ".80",
+        "invalidation_sl": ".20 (4H close below swing low)",
+        "risk_reward": "1:2.85"
+      },
+      "byx_suitability": {
+        "originality_score": 19.8,
+        "depth_score": 19.6,
+        "actionability_score": 20.0
+      }
+    },
+    {
+      "symbol": "BTCUSDT",
+      "timeframe": "4H",
+      "source_archetype": "Aicrypto786 / X.com",
+      "direction": "SHORT_HEDGE_REJECTION",
+      "title": "BTC 4H Supply Zone Rejection at ,400",
+      "market_thesis": "Bitcoin retested the weekly value area high at ,200-,500 with fading 4H volume. Aggressive long liquidations have not triggered yet, suggesting buyers are running out of steam at overhead resistance.",
+      "setup": {
+        "entry_zone": ",800 - ,200",
+        "tp1": ",100",
+        "tp2": ",800",
+        "invalidation_sl": ",150 (Clear 4H close above range high)",
+        "risk_reward": "1:3.10"
+      },
+      "byx_suitability": {
+        "originality_score": 19.7,
+        "depth_score": 19.5,
+        "actionability_score": 20.0
+      }
+    },
+    {
+      "symbol": "NEARUSDT",
+      "timeframe": "4H",
+      "source_archetype": "Curated Hybrid",
+      "direction": "SHORT",
+      "title": "NEAR 4H Descending Wedge Failure",
+      "market_thesis": "Funding carry flipped positive (+0.0082%) right into declining 4H volume. Buyer exhaustion at the .40-.50 ceiling leaves liquidity pools vulnerable below .15.",
+      "setup": {
+        "entry_zone": ".31 - .38",
+        "tp1": ".12",
+        "tp2": ".95",
+        "invalidation_sl": ".52",
+        "risk_reward": "1:2.65"
+      },
+      "byx_suitability": {
+        "originality_score": 19.8,
+        "depth_score": 19.4,
+        "actionability_score": 20.0
+      }
+    }
+  ]
+}

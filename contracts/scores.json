@@ -165,83 +165,66 @@
     ]
   },
   "campaign_milestones": {
-    "accumulated_points_to_date": 37.0,
+    "campaign_cycle": "Monday to Sunday (7-Day Epoch)",
+    "accumulated_points_to_date": 56.0,
     "prize_floor_points": 150.0,
-    "progress_to_floor_percent": 24.7,
-    "final_projected_points": 150.0,
-    "safety_margin_over_floor": 0.0,
-    "floor_secured": true,
+    "points_remaining_to_floor": 94.0,
+    "days_remaining_in_campaign": 2,
+    "required_pts_per_day_for_floor": 47.0,
+    "progress_to_floor_percent": 37.33,
+    "projected_realistic_finish_pts": 106.0,
+    "next_cycle_start": "Monday (Nov 02)",
+    "floor_secured": false,
     "prize_reward_usd": 400.0,
     "roadmap": [
       {
-        "day": "Day 1 (Oct 26)",
+        "day": "Day 1 (Mon, Oct 26)",
         "status": "Archived",
         "posts": 5,
         "score": 9.0,
         "pts_per_post": 1.8
       },
       {
-        "day": "Day 2 (Oct 27)",
+        "day": "Day 2 (Tue, Oct 27)",
         "status": "Archived",
         "posts": 10,
         "score": 11.0,
         "pts_per_post": 1.1
       },
       {
-        "day": "Day 3 (Oct 28)",
+        "day": "Day 3 (Wed, Oct 28)",
         "status": "Archived",
         "posts": 9,
         "score": 10.0,
         "pts_per_post": 1.11
       },
       {
-        "day": "Day 4 (Oct 29)",
+        "day": "Day 4 (Thu, Oct 29)",
         "status": "Official (Underperformed)",
         "posts": 13,
         "score": 7.0,
         "pts_per_post": 0.54
       },
       {
-        "day": "Day 5 (Oct 30)",
-        "status": "Target Recovery",
-        "posts": 8,
-        "score": 18.83,
-        "pts_per_post": 2.35
+        "day": "Day 5 (Fri, Oct 30)",
+        "status": "Official (Rebound)",
+        "posts": 10,
+        "score": 19.0,
+        "pts_per_post": 1.9
       },
       {
-        "day": "Day 6 (Oct 31)",
-        "status": "Projected",
-        "posts": 8,
-        "score": 18.83,
-        "pts_per_post": 2.35
+        "day": "Day 6 (Sat, Oct 31)",
+        "status": "Active (Today)",
+        "posts": 12,
+        "score": 25.0,
+        "pts_per_post": 2.08
       },
       {
-        "day": "Day 7 (Nov 01)",
-        "status": "Projected",
-        "posts": 8,
-        "score": 18.83,
-        "pts_per_post": 2.35
-      },
-      {
-        "day": "Day 8 (Nov 02)",
-        "status": "Projected",
-        "posts": 8,
-        "score": 18.83,
-        "pts_per_post": 2.35
-      },
-      {
-        "day": "Day 9 (Nov 03)",
-        "status": "Projected",
-        "posts": 8,
-        "score": 18.83,
-        "pts_per_post": 2.35
-      },
-      {
-        "day": "Day 10 (Nov 04)",
-        "status": "Projected",
-        "posts": 8,
-        "score": 18.83,
-        "pts_per_post": 2.35
+        "day": "Day 7 (Sun, Nov 01)",
+        "status": "Final Day (Tomorrow)",
+        "posts": 12,
+        "score": 25.0,
+        "pts_per_post": 2.08
       }
     ]
   },
@@ -267,31 +250,31 @@
     },
     "day5_strategic_overhaul": [
       {
-        "pivot": "1. Volume Cadence: 13-Post Burst \u2794 6\u20138 High-Conviction Setups",
+        "pivot": "1. Volume Cadence: 13-Post Burst ➔ 6–8 High-Conviction Setups",
         "day4_flaw": "13 posts dumped in 24h, triggering burst rate limits and cannibalizing clicks.",
-        "day5_fix": "Limit to 6\u20138 top setups spaced 2.5\u20133 hours apart throughout market sessions (Asia, London, NY opens).",
+        "day5_fix": "Limit to 6–8 top setups spaced 2.5–3 hours apart throughout market sessions (Asia, London, NY opens).",
         "impact": "Eliminates burst penalties and gives each post maximum feed exposure."
       },
       {
-        "pivot": "2. Structural Freeform: 4-Bullet Rigidity \u2794 Polymorphic Layouts",
+        "pivot": "2. Structural Freeform: 4-Bullet Rigidity ➔ Polymorphic Layouts",
         "day4_flaw": "Every post shared the identical: Hook + Intro + 4 bullets + Question CTA.",
         "day5_fix": "Deploy 4 distinct layout schemas: Breaking Liquidation Flash, Heatmap Trap, Chart Squeeze, Contrarian Poll.",
         "impact": "Destroys semantic sentence-embedding clustering (> 0.88 down to < 0.40)."
       },
       {
-        "pivot": "3. Asset Eligibility: Non-Tradable Equity \u2794 100% Bybit Liquid Perpetuals",
+        "pivot": "3. Asset Eligibility: Non-Tradable Equity ➔ 100% Bybit Liquid Perpetuals",
         "day4_flaw": "Post 11 featured $MSFT (zero Bybit trading pairs).",
         "day5_fix": "Strict blacklist of non-crypto equities. Only trade active Bybit perpetual pairs with deep volume ($BTC, $ETH, $SOL, $SUI, $DOGE, $PEPE).",
         "impact": "Guarantees 100% eligibility for Bybit trade volume attribution."
       },
       {
-        "pivot": "4. Tone & Voice: Robotic Textbook \u2794 Authentic Trader Conviction",
+        "pivot": "4. Tone & Voice: Robotic Textbook ➔ Authentic Trader Conviction",
         "day4_flaw": "'Disciplined 3x gearing; Invalidation Boundary: 4-hour close negates thesis.'",
         "day5_fix": "'Swept the $79.2K wick. I'm taking long stabs here with stops under the low. If that breaks, I cut.'",
         "impact": "Triggers genuine community replies and follower copy-trading."
       },
       {
-        "pivot": "5. Trade Execution CTA: Passive Observation \u2794 Direct Conversion Hook",
+        "pivot": "5. Trade Execution CTA: Passive Observation ➔ Direct Conversion Hook",
         "day4_flaw": "'Inspect live bid-ask liquidity on the widget below.'",
         "day5_fix": "'Taking 3x long on Bybit Perps below. Stops tight at $78.8k. Are you fading or longing the sweep?'",
         "impact": "Drives actual Bybit Valid Traders and trading fee multipliers."
@@ -308,7 +291,7 @@
         "pivot": "2. Structural Polymorphism",
         "day3_flaw": "42% formulaic grammatical clone",
         "day4_fix": "Distinct layouts: Numbered pathway, Tabular notation, Dash bullets, Arrow indicators",
-        "impact": "Collapses submatrix similarity to 8.9%\u201312.0%, passing anti-spam checks."
+        "impact": "Collapses submatrix similarity to 8.9%–12.0%, passing anti-spam checks."
       },
       {
         "pivot": "3. Trade Conversion CTAs",
@@ -319,13 +302,13 @@
       {
         "pivot": "4. Comment Weighting Multiplier",
         "day3_flaw": "Generic questions",
-        "day4_fix": "Actionable entry prompts ('Drop your entry below \ud83d\udc47')",
+        "day4_fix": "Actionable entry prompts ('Drop your entry below 👇')",
         "impact": "Captures Bybit's 3x comment weighting algorithm bonus."
       },
       {
         "pivot": "5. Daily Completion Bonus",
         "day3_flaw": "9/10 incomplete slots",
-        "day4_fix": "10/10 verified posts calibrated to 130\u2013136 words",
+        "day4_fix": "10/10 verified posts calibrated to 130–136 words",
         "impact": "Secures full daily completion bonus and maximum point tier."
       }
     ]

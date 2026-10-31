@@ -232,7 +232,7 @@ function updateWeeklyProgress() {
       pointsHubStatusBadge.textContent = 'REWARDS UNLOCKED (≥ 150 PTS)';
       pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
     } else {
-      pointsHubStatusBadge.textContent = `${weeklyTotal.toFixed(1)} / 150 PTS (URGENT RECOVERY SPRINT: 18.8 PTS/DAY)`;
+      pointsHubStatusBadge.textContent = `${weeklyTotal.toFixed(1)} / 150 PTS (SPRINT: 47.0 PTS/DAY (2 DAYS LEFT: TODAY + TOMORROW))`;
       pointsHubStatusBadge.className = 'rules-badge byx-valid-badge';
     }
   }
@@ -256,7 +256,7 @@ function renderWeeklyAuditTable() {
   const weekRows = [
     {
       epoch: 'Day 1',
-      date: 'Sun, Oct 26',
+      date: 'Mon, Oct 26',
       posts: '5 posts',
       score: day1Pts,
       avg: (day1Pts / 5).toFixed(2),
@@ -268,7 +268,7 @@ function renderWeeklyAuditTable() {
     },
     {
       epoch: 'Day 2',
-      date: 'Mon, Oct 27',
+      date: 'Tue, Oct 27',
       posts: '10 posts',
       score: day2Pts,
       avg: (day2Pts / 10).toFixed(2),
@@ -280,7 +280,7 @@ function renderWeeklyAuditTable() {
     },
     {
       epoch: 'Day 3',
-      date: 'Tue, Oct 28',
+      date: 'Wed, Oct 28',
       posts: '10 posts',
       score: day3Pts,
       avg: (day3Pts / 10).toFixed(2),
@@ -292,7 +292,7 @@ function renderWeeklyAuditTable() {
     },
     {
       epoch: 'Day 4',
-      date: 'Wed, Oct 29',
+      date: 'Thu, Oct 29',
       posts: '13 posts',
       score: day4Pts,
       avg: (day4Pts / 13).toFixed(2),
@@ -304,39 +304,39 @@ function renderWeeklyAuditTable() {
     },
     {
       epoch: 'Day 5',
-      date: 'Thu, Oct 30 (Today)',
-      posts: '10 new-coin setups',
-      score: day5Pts > 0 ? day5Pts : 18.8,
-      avg: '1.88',
-      passRate: '10/10 Dataset Verified',
-      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + (day5Pts > 0 ? day5Pts : 18.8)).toFixed(1),
-      status: 'ACTIVE DESK',
-      badgeClass: 'active',
-      valuation: 'Recovery Target: 18.8 pts'
+      date: 'Fri, Oct 30',
+      posts: '10 posts',
+      score: 19.0,
+      avg: '1.90',
+      passRate: '10/10 Rebound Verified',
+      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + 19.0).toFixed(1),
+      status: 'CERTIFIED',
+      badgeClass: 'certified',
+      valuation: 'Rebounded (+171.4%)'
     },
     {
       epoch: 'Day 6',
-      date: 'Fri, Oct 31',
-      posts: '10 slots',
-      score: day6Pts,
+      date: 'Sat, Oct 31 (Today)',
+      posts: '12 4H Setups',
+      score: day6Pts > 0 ? day6Pts : 0,
       avg: '--',
-      passRate: 'Upcoming',
-      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + day5Pts + day6Pts).toFixed(1),
-      status: 'SCHEDULED',
-      badgeClass: 'upcoming',
-      valuation: 'Monthly Close'
+      passRate: 'Wave 1 & 2 Done',
+      cumulative: (56.0 + (day6Pts > 0 ? day6Pts : 0)).toFixed(1),
+      status: 'ACTIVE DESK',
+      badgeClass: 'active',
+      valuation: 'Sprint Run-Rate: 47.0 pts target'
     },
     {
       epoch: 'Day 7',
-      date: 'Sat, Nov 1',
-      posts: '10 slots',
+      date: 'Sun, Nov 1 (Tomorrow)',
+      posts: '12 4H Setups',
       score: day7Pts,
       avg: '--',
-      passRate: 'Upcoming',
-      cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + day5Pts + day6Pts + day7Pts).toFixed(1),
+      passRate: 'Final Day',
+      cumulative: (56.0 + (day6Pts > 0 ? day6Pts : 0) + day7Pts).toFixed(1),
       status: 'SCHEDULED',
       badgeClass: 'upcoming',
-      valuation: 'Epoch Settlement'
+      valuation: 'Campaign Epoch Close (Resets Mon)'
     }
   ];
 
