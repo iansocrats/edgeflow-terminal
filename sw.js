@@ -1,5 +1,5 @@
 // EdgeFlow Terminal Service Worker — Fast Offline Cache
-const CACHE_NAME = 'edgeflow-v87';
+const CACHE_NAME = 'edgeflow-v88';
 const ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS = [
   './js/detectors/Detectors.js',
   './js/forensics/ForensicVisualizer.js',
   './js/forensics/ForensicHub.js',
+  './js/pacing/IncubationShield.js',
   './js/session/SessionManager.js',
   './posts.json',
   './manifest.json',
