@@ -12,9 +12,9 @@
     { id: 4, wave: 'W2', coin: '$XRP', tf: '4H', price: '$1.25',  status: 'ft', score: '3.92', label: 'FT' },
     { id: 5, wave: 'W3', coin: '$NEAR', tf: '4H', price: '$4.31', status: 'ft', score: '3.92', label: 'FT' },
     { id: 6, wave: 'W3', coin: '$BNB', tf: '4H', price: '$703',   status: 'ft', score: '3.92', label: 'FT' },
-    { id: 7, wave: 'W4', coin: '$SUI', tf: '4H', price: '$0.899', status: 'ft', score: '3.92', label: 'FT' },
-    { id: 8, wave: 'W4', coin: '$DOGE', tf: '4H', price: '$0.075', status: 'ft', score: '3.92', label: 'FT' },
-    { id: 9, wave: 'W5', coin: '$XAUT', tf: '4H', price: '$3,878', status: 'live', time: '19:30', label: '19:30 KO' },
+    { id: 7, wave: 'W4', coin: '$SUI', tf: '4H', price: '$0.899', status: 'live', time: '16:48', label: '16:48 KO' },
+    { id: 8, wave: 'W4', coin: '$DOGE', tf: '4H', price: '$0.075', status: 'upcoming', time: '17:00', label: '17:00 KO' },
+    { id: 9, wave: 'W5', coin: '$XAUT', tf: '4H', price: '$3,878', status: 'upcoming', time: '19:30', label: '19:30 KO' },
     { id: 10, wave: 'W5', coin: '$AAVE', tf: '4H', price: '$130.0', status: 'upcoming', time: '19:42', label: '19:42 KO' },
     { id: 11, wave: 'W6', coin: '$LINK', tf: '4H', price: '$11.48', status: 'upcoming', time: '22:12', label: '22:12 KO' },
     { id: 12, wave: 'W6', coin: '$ONDO', tf: '4H', price: '$0.410', status: 'upcoming', time: '22:25', label: 'FINAL' }
