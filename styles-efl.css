@@ -1,0 +1,501 @@
+/* ================================================================================
+   EFL (English Football League) Broadcast Design System
+   Inspired by https://www.efl.com
+   ================================================================================ */
+
+:root {
+  --efl-midnight: #070e1c;
+  --efl-navy-bg: #0b172a;
+  --efl-navy-card: #10203a;
+  --efl-navy-surface: #15294a;
+  --efl-navy-border: #1e3966;
+  --efl-navy-hover: #1b355e;
+  
+  --efl-red: #e10600;
+  --efl-red-glow: rgba(225, 6, 0, 0.35);
+  --efl-sky-blue: #00a3e0;
+  --efl-sky-glow: rgba(0, 163, 224, 0.3);
+  --efl-gold: #f59e0b;
+  --efl-green: #10b981;
+
+  --efl-text-white: #ffffff;
+  --efl-text-primary: #f1f5f9;
+  --efl-text-secondary: #94a3b8;
+  --efl-text-muted: #64748b;
+
+  --efl-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --efl-font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Global Body & Shell Overhaul */
+body {
+  background: var(--efl-midnight) !important;
+  color: var(--efl-text-primary) !important;
+  font-family: var(--efl-font-display) !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 163, 224, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(225, 6, 0, 0.05) 0%, transparent 40%) !important;
+  background-attachment: fixed !important;
+}
+
+.app-shell {
+  max-width: 1480px !important;
+  margin: 0 auto !important;
+  padding: 0 16px 30px 16px !important;
+}
+
+/* ================================================================================
+   1. EFL Top Fixtures / Matchday Ticker Ribbon
+   ================================================================================ */
+.efl-ticker-ribbon {
+  background: #060b17;
+  border-bottom: 2px solid var(--efl-red);
+  margin: 0 -16px 14px -16px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.efl-ticker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--efl-red);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--efl-red-glow);
+}
+
+.efl-fixtures-scroll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--efl-navy-border) transparent;
+  padding-bottom: 3px;
+  flex: 1;
+}
+
+.efl-fixtures-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.efl-fixtures-scroll::-webkit-scrollbar-thumb {
+  background: var(--efl-navy-border);
+  border-radius: 4px;
+}
+
+.efl-match-card {
+  background: var(--efl-navy-card);
+  border: 1px solid var(--efl-navy-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  min-width: 135px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.efl-match-card:hover {
+  background: var(--efl-navy-hover);
+  border-color: var(--efl-sky-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 163, 224, 0.25);
+}
+
+.efl-match-card.active-match {
+  border-color: var(--efl-red);
+  background: linear-gradient(135deg, rgba(225, 6, 0, 0.15), var(--efl-navy-card));
+  box-shadow: 0 0 12px var(--efl-red-glow);
+}
+
+.efl-match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--efl-text-secondary);
+}
+
+.efl-match-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.efl-match-status {
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.efl-match-status.ft {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.efl-match-status.live {
+  background: var(--efl-red);
+  color: #ffffff;
+  animation: pulseLive 1.5s infinite;
+}
+
+.efl-match-status.upcoming {
+  background: rgba(100, 116, 139, 0.25);
+  color: #94a3b8;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+@keyframes pulseLive {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; filter: brightness(1.2); }
+  100% { opacity: 0.85; }
+}
+
+/* ================================================================================
+   2. EFL Header Overhaul
+   ================================================================================ */
+.app-header {
+  background: var(--efl-navy-card) !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  border-top: 3px solid var(--efl-sky-blue) !important;
+  border-radius: 8px !important;
+  padding: 12px 18px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.brand h1 {
+  font-size: 1.25rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.brand h1::before {
+  content: "EFL";
+  background: var(--efl-red);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+}
+
+.header-sub {
+  color: var(--efl-sky-blue) !important;
+  font-weight: 600 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+.daily-badge {
+  background: var(--efl-navy-surface) !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  border-radius: 6px !important;
+}
+
+.daily-badge .badge-label {
+  color: var(--efl-sky-blue) !important;
+  font-weight: 800 !important;
+}
+
+.daily-badge .badge-value {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+/* ================================================================================
+   3. EFL Competition & Division Navigation Tabs
+   ================================================================================ */
+.post-pills-bar {
+  background: var(--efl-navy-card) !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  margin-bottom: 12px !important;
+}
+
+.pill-btn {
+  background: var(--efl-navy-surface) !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  color: var(--efl-text-primary) !important;
+  font-weight: 700 !important;
+  font-size: 0.74rem !important;
+  border-radius: 5px !important;
+  transition: all 0.2s ease !important;
+}
+
+.pill-btn:hover {
+  background: var(--efl-navy-hover) !important;
+  border-color: var(--efl-sky-blue) !important;
+  color: #ffffff !important;
+}
+
+.pill-btn.active {
+  background: var(--efl-red) !important;
+  border-color: var(--efl-red) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px var(--efl-red-glow) !important;
+}
+
+.btn-nav-action.math-hub-pill,
+.pill-action-btn.math-hub-btn {
+  background: linear-gradient(135deg, rgba(0, 163, 224, 0.25), rgba(225, 6, 0, 0.25)) !important;
+  border: 1px solid var(--efl-sky-blue) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+/* ================================================================================
+   4. EFL Match Center & Incubation Shield
+   ================================================================================ */
+.shield-card {
+  background: linear-gradient(135deg, #0e1c33, #091322) !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  border-left: 4px solid var(--efl-sky-blue) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.shield-card.ready-state {
+  border-left-color: var(--efl-green) !important;
+}
+
+.shield-main-label {
+  font-weight: 900 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+}
+
+.shield-timer-block {
+  background: #060c18 !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  border-top: 2px solid var(--efl-red) !important;
+}
+
+.shield-countdown-digits {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+.shield-progress-bar-fill {
+  background: linear-gradient(90deg, var(--efl-sky-blue), var(--efl-red)) !important;
+}
+
+.btn-shield-action.primary {
+  background: var(--efl-red) !important;
+  border-color: var(--efl-red) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+.btn-shield-action.primary:hover {
+  background: #ff1a14 !important;
+  box-shadow: 0 0 12px var(--efl-red-glow) !important;
+}
+
+/* ================================================================================
+   5. EFL Standings & League Table Styling
+   ================================================================================ */
+.efl-standings-card {
+  background: var(--efl-navy-card);
+  border: 1px solid var(--efl-navy-border);
+  border-top: 3px solid var(--efl-red);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.efl-standings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--efl-navy-border);
+  padding-bottom: 8px;
+}
+
+.efl-table-title {
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.efl-table-title span.trophy {
+  color: var(--efl-gold);
+}
+
+.efl-league-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.76rem;
+  text-align: left;
+}
+
+.efl-league-table th {
+  background: #081120;
+  color: var(--efl-text-secondary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.65rem;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--efl-navy-border);
+}
+
+.efl-league-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid rgba(30, 57, 102, 0.5);
+  color: var(--efl-text-primary);
+  font-weight: 600;
+}
+
+.efl-league-table tr:hover {
+  background: var(--efl-navy-hover);
+}
+
+.efl-league-table tr.promotion-zone {
+  border-left: 3px solid var(--efl-green);
+}
+
+.efl-league-table tr.playoff-zone {
+  border-left: 3px solid var(--efl-sky-blue);
+}
+
+.efl-pos-badge {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: 800;
+  font-size: 0.68rem;
+  background: var(--efl-navy-surface);
+  color: #ffffff;
+}
+
+.efl-coin-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.efl-form-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.efl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.efl-dot.w { background: var(--efl-green); box-shadow: 0 0 4px rgba(16, 185, 129, 0.5); }
+.efl-dot.d { background: var(--efl-sky-blue); }
+.efl-dot.l { background: var(--efl-gold); }
+.efl-dot.p { background: #475569; }
+
+/* ================================================================================
+   6. EFL Card Styling for Workspace Cards
+   ================================================================================ */
+.detector-card,
+.workspace-card,
+.raw-card,
+.improved-card,
+.metric-box,
+.stat-card {
+  background: var(--efl-navy-card) !important;
+  border: 1px solid var(--efl-navy-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
+.card-title,
+.detector-title,
+.section-title {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+
+.btn-primary,
+.btn-action-primary,
+.btn-copy {
+  background: var(--efl-red) !important;
+  border-color: var(--efl-red) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+}
+
+.btn-primary:hover,
+.btn-action-primary:hover,
+.btn-copy:hover {
+  background: #ff1a14 !important;
+  box-shadow: 0 0 10px var(--efl-red-glow) !important;
+}
+
+.btn-secondary,
+.btn-action-secondary {
+  background: var(--efl-navy-surface) !important;
+  border-color: var(--efl-navy-border) !important;
+  color: var(--efl-text-primary) !important;
+}
+
+.btn-secondary:hover,
+.btn-action-secondary:hover {
+  background: var(--efl-navy-hover) !important;
+  border-color: var(--efl-sky-blue) !important;
+}
+
+/* Toast EFL Overhaul */
+.shield-toast, .toast {
+  background: #081120 !important;
+  border: 2px solid var(--efl-red) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px var(--efl-red-glow) !important;
+}
