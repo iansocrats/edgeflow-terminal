@@ -8,14 +8,14 @@
     { id: 1, name: 'Wave 1', slots: [1, 2], coins: ['$BTC', '$ETH'], timeStr: '07:00 & 08:52', status: 'done' },
     { id: 2, name: 'Wave 2', slots: [3, 4], coins: ['$SOL', '$XRP'], timeStr: '11:22 & 11:35', status: 'done' },
     { id: 3, name: 'Wave 3', slots: [5, 6], coins: ['$NEAR', '$BNB'], timeStr: '14:05 & 14:18', status: 'done' },
-    { id: 4, name: 'Wave 4', slots: [7, 8], coins: ['$SUI', '$DOGE'], targetHour: 16, targetMin: 48, timeStr: '16:48 & 17:00', status: 'active' },
-    { id: 5, name: 'Wave 5', slots: [9, 10], coins: ['$XAUT', '$AAVE'], targetHour: 19, targetMin: 30, timeStr: '19:30 & 19:42', status: 'pending' },
+    { id: 4, name: 'Wave 4', slots: [7, 8], coins: ['$SUI', '$DOGE'], timeStr: '16:10 & 16:12', status: 'done' },
+    { id: 5, name: 'Wave 5', slots: [9, 10], coins: ['$XAUT', '$AAVE'], targetHour: 19, targetMin: 30, timeStr: '19:30 & 19:42', status: 'active' },
     { id: 6, name: 'Wave 6', slots: [11, 12], coins: ['$LINK', '$ONDO'], targetHour: 22, targetMin: 12, timeStr: '22:12 & 22:25', status: 'pending' }
   ];
 
   class IncubationShieldManager {
     constructor() {
-      this.currentWave = 4;
+      this.currentWave = 5;
       this.timerInterval = null;
       this.isOverrideUnlocked = false;
       this.init();
@@ -33,15 +33,15 @@
 
     getTargetTimestamp() {
       const now = new Date();
-      // Wave 4 target: 16:48 local time today
-      const target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 48, 0);
+      // Wave 5 target: 19:30 local time today
+      const target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 30, 0);
       return target.getTime();
     }
 
-    getWave3PostedTimestamp() {
-      // Wave 3 completed around 14:07 - 14:18 today
+    getWave4PostedTimestamp() {
+      // Wave 4 completed around 16:10 today
       const now = new Date();
-      return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 14, 18, 0).getTime();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 10, 0).getTime();
     }
 
     renderWidget() {
@@ -58,40 +58,40 @@
                   🛡️ BYBIT FEED CANNIBALIZATION SHIELD: <span class="shield-state-highlight">ACTIVE INCUBATION</span>
                 </div>
                 <div class="shield-sub-label">
-                  Wave 3 (<strong style="color:#38bdf8;">$NEAR</strong> & <strong style="color:#38bdf8;">$BNB</strong>) is circulating in Bybit ByX feed. 2.5-hour incubation preserves algorithmic reach.
+                  Wave 4 (<strong style="color:#38bdf8;">$SUI</strong> & <strong style="color:#fbbf24;">$DOGE</strong>) banked. 2.5h incubation window protects algorithmic reach until Wave 5.
                 </div>
               </div>
             </div>
 
             <div class="shield-timer-block">
-              <div class="shield-timer-tag">WAVE 4 COUNTDOWN (16:48 LOCAL)</div>
-              <div class="shield-countdown-digits" id="shieldCountdownDisplay">02:34:30</div>
+              <div class="shield-timer-tag">WAVE 5 COUNTDOWN (19:30 LOCAL)</div>
+              <div class="shield-countdown-digits" id="shieldCountdownDisplay">03:19:15</div>
             </div>
           </div>
 
           <!-- Progress Bar of 2.5h incubation window -->
           <div class="shield-progress-wrap">
             <div class="shield-progress-bar-bg">
-              <div class="shield-progress-bar-fill" id="shieldProgressFill" style="width: 15%;"></div>
+              <div class="shield-progress-bar-fill" id="shieldProgressFill" style="width: 5%;"></div>
             </div>
             <div class="shield-progress-labels">
-              <span>Wave 3 Banked (14:18)</span>
-              <span id="shieldPercentLabel" style="font-weight:700; color:#38bdf8;">15% Elapsed</span>
-              <span>Wave 4 Target (16:48)</span>
+              <span>Wave 4 Banked (16:10)</span>
+              <span id="shieldPercentLabel" style="font-weight:700; color:#38bdf8;">5% Elapsed</span>
+              <span>Wave 5 Target (19:30)</span>
             </div>
           </div>
 
           <!-- Action Controls & Pre-Flight Switcher -->
           <div class="shield-action-row">
             <div class="shield-action-left">
-              <button type="button" id="btnToggleWave4Preflight" class="btn-shield-action primary">
-                🔍 Pre-Flight Wave 4 (<strong style="color:#38bdf8;">$SUI</strong> & <strong style="color:#fbbf24;">$DOGE</strong>)
+              <button type="button" id="btnToggleWave5Preflight" class="btn-shield-action primary">
+                🔍 Pre-Flight Wave 5 (<strong style="color:#fbbf24;">$XAUT</strong> & <strong style="color:#a855f7;">$AAVE</strong>)
               </button>
-              <button type="button" id="btnCopyQuickP7" class="btn-shield-action" title="Quick Copy Post 7 ($SUI) to clipboard">
-                📋 Copy Post 7 ($SUI)
+              <button type="button" id="btnCopyQuickP9" class="btn-shield-action" title="Quick Copy Post 9 ($XAUT) to clipboard">
+                📋 Copy Post 9 ($XAUT)
               </button>
-              <button type="button" id="btnCopyQuickP8" class="btn-shield-action" title="Quick Copy Post 8 ($DOGE) to clipboard">
-                📋 Copy Post 8 ($DOGE)
+              <button type="button" id="btnCopyQuickP10" class="btn-shield-action" title="Quick Copy Post 10 ($AAVE) to clipboard">
+                📋 Copy Post 10 ($AAVE)
               </button>
             </div>
             <div class="shield-action-right">
@@ -101,20 +101,20 @@
             </div>
           </div>
 
-          <!-- Wave 4 Pre-Flight Inspection Deck (Collapsible) -->
-          <div class="wave4-preflight-deck" id="wave4PreflightDeck" style="display: none;">
+          <!-- Wave 5 Pre-Flight Inspection Deck (Collapsible) -->
+          <div class="wave5-preflight-deck" id="wave5PreflightDeck" style="display: none;">
             <div class="deck-header">
               <div class="deck-title">
-                ⚡ WAVE 4 AUDIT DECK: <span style="color:#34d399;">SKILL_ISSUE.md Compliance Check</span>
+                ⚡ WAVE 5 AUDIT DECK: <span style="color:#34d399;">SKILL_ISSUE.md Compliance Check</span>
               </div>
-              <div class="deck-subtitle">Pre-audited against zero hashtags, ≤50c hook, unhedged 4H geometry, and 3-gram LSH uniqueness.</div>
+              <div class="deck-subtitle">Pre-audited: Zero hashtags, ≤50c hook, unhedged 4H geometry, philosophical quote & 3-gram LSH uniqueness.</div>
             </div>
 
             <!-- Pre-flight checklist grid -->
             <div class="preflight-grid">
               <div class="preflight-item">
                 <span class="pf-label">Hook Length (≤50c):</span>
-                <span class="pf-badge pass">P7: 40c | P8: 41c ✓</span>
+                <span class="pf-badge pass">P9: 41c | P10: 42c ✓</span>
               </div>
               <div class="preflight-item">
                 <span class="pf-label">Hashtag Count:</span>
@@ -126,46 +126,46 @@
               </div>
               <div class="preflight-item">
                 <span class="pf-label">Execution Geometry:</span>
-                <span class="pf-badge pass">Unhedged R:R ≥ 2.60 ✓</span>
+                <span class="pf-badge pass">Unhedged R:R ≥ 2.65 ✓</span>
               </div>
               <div class="preflight-item">
-                <span class="pf-label">Debate Hook Close:</span>
-                <span class="pf-badge pass">2-Sided Binary Callout ✓</span>
+                <span class="pf-label">Philosophical Quote:</span>
+                <span class="pf-badge pass">Included Pre-Poll ✓</span>
               </div>
               <div class="preflight-item">
                 <span class="pf-label">3-Gram LSH Overlap:</span>
-                <span class="pf-badge pass">0.78% (Limit &lt; 1.5%) ✓</span>
+                <span class="pf-badge pass">0.69% (Limit &lt; 1.5%) ✓</span>
               </div>
             </div>
 
-            <!-- Tabbed Post Viewers for Wave 4 -->
+            <!-- Tabbed Post Viewers for Wave 5 -->
             <div class="wave4-posts-container">
               <div class="wave4-post-card">
                 <div class="w4-card-header">
                   <div class="w4-coin-title">
-                    <span class="w4-badge sui">$SUI (Post 7)</span>
-                    <span class="w4-hook">🌊 $SUI 4H At $0.90: Watching 0.92 Supply</span>
+                    <span class="w4-badge gold" style="background:rgba(245,158,11,0.2); color:#fbbf24; border:1px solid rgba(245,158,11,0.4);">$XAUT (Post 9)</span>
+                    <span class="w4-hook">🥇 $XAUT 4H At $3,878: Oversold Macro Dip</span>
                   </div>
-                  <button type="button" class="btn-copy-card" onclick="window.IncubationShield.copyPost(7)">📋 Copy Post 7</button>
+                  <button type="button" class="btn-copy-card" onclick="window.IncubationShield.copyPost(9)">📋 Copy Post 9</button>
                 </div>
-                <div class="w4-text-preview" id="previewPost7Text"></div>
+                <div class="w4-text-preview" id="previewPost9Text"></div>
               </div>
 
               <div class="wave4-post-card">
                 <div class="w4-card-header">
                   <div class="w4-coin-title">
-                    <span class="w4-badge doge">$DOGE (Post 8)</span>
-                    <span class="w4-hook">🐕 $DOGE 4H Compresses: Volatility Squeeze</span>
+                    <span class="w4-badge aave" style="background:rgba(168,85,247,0.2); color:#c084fc; border:1px solid rgba(168,85,247,0.4);">$AAVE (Post 10)</span>
+                    <span class="w4-hook">⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall</span>
                   </div>
-                  <button type="button" class="btn-copy-card" onclick="window.IncubationShield.copyPost(8)">📋 Copy Post 8</button>
+                  <button type="button" class="btn-copy-card" onclick="window.IncubationShield.copyPost(10)">📋 Copy Post 10</button>
                 </div>
-                <div class="w4-text-preview" id="previewPost8Text"></div>
+                <div class="w4-text-preview" id="previewPost10Text"></div>
               </div>
             </div>
 
             <div class="deck-footer-actions">
-              <button type="button" id="btnMarkWave4Done" class="btn-mark-wave-done">
-                ✓ Confirm Wave 4 Posted (Advances Schedule to Wave 5 at 19:30)
+              <button type="button" id="btnMarkWave5Done" class="btn-mark-wave-done">
+                ✓ Confirm Wave 5 Posted (Advances Schedule to Wave 6 Finale at 22:12)
               </button>
             </div>
           </div>
@@ -176,26 +176,25 @@
     }
 
     populatePostPreviews() {
-      // Pull posts 7 & 8 from EdgeFlow post data or preloadedSlots
-      const p7El = document.getElementById('previewPost7Text');
-      const p8El = document.getElementById('previewPost8Text');
-      if (!p7El || !p8El) return;
+      const p9El = document.getElementById('previewPost9Text');
+      const p10El = document.getElementById('previewPost10Text');
+      if (!p9El || !p10El) return;
 
       const posts = (window.EdgeFlow && window.EdgeFlow.posts) ? window.EdgeFlow.posts : [];
-      let post7 = posts.find(p => p.id === 7);
-      let post8 = posts.find(p => p.id === 8);
+      let post9 = posts.find(p => p.id === 9);
+      let post10 = posts.find(p => p.id === 10);
 
-      if (!post7 && typeof getDay6PreloadedSlots === 'function') {
+      if (!post9 && typeof getDay6PreloadedSlots === 'function') {
         const d6 = getDay6PreloadedSlots();
-        post7 = d6.find(p => p.id === 7);
-        post8 = d6.find(p => p.id === 8);
+        post9 = d6.find(p => p.id === 9);
+        post10 = d6.find(p => p.id === 10);
       }
 
-      if (post7 && post7.improved) {
-        p7El.textContent = post7.improved;
+      if (post9 && post9.improved) {
+        p9El.textContent = post9.improved;
       }
-      if (post8 && post8.improved) {
-        p8El.textContent = post8.improved;
+      if (post10 && post10.improved) {
+        p10El.textContent = post10.improved;
       }
     }
 
@@ -205,8 +204,8 @@
       const update = () => {
         const now = new Date().getTime();
         const target = this.getTargetTimestamp();
-        const start = this.getWave3PostedTimestamp();
-        const totalDuration = target - start; // 2.5 hours = 9,000,000 ms
+        const start = this.getWave4PostedTimestamp();
+        const totalDuration = target - start;
         const remaining = target - now;
 
         const countdownEl = document.getElementById('shieldCountdownDisplay');
@@ -231,7 +230,6 @@
           return;
         }
 
-        // Calculate hours, mins, secs
         const hours = Math.floor(remaining / (1000 * 60 * 60));
         const mins = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
         const secs = Math.floor((remaining % (1000 * 60)) / 1000);
@@ -239,11 +237,10 @@
         const pad = (n) => String(n).padStart(2, '0');
         countdownEl.textContent = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
 
-        // Progress percentage
         const elapsed = now - start;
         const pct = Math.min(100, Math.max(0, Math.round((elapsed / totalDuration) * 100)));
         if (fillEl) fillEl.style.width = `${pct}%`;
-        if (pctEl) pctEl.textContent = `${pct}% Elapsed (${pad(hours)}h ${pad(mins)}m to 16:48)`;
+        if (pctEl) pctEl.textContent = `${pct}% Elapsed (${pad(hours)}h ${pad(mins)}m to 19:30)`;
 
         if (badgeEl) {
           badgeEl.innerHTML = `🛡️ BYBIT FEED CANNIBALIZATION SHIELD: <span class="shield-state-highlight">ACTIVE INCUBATION</span>`;
@@ -258,29 +255,29 @@
     }
 
     bindEvents() {
-      const btnToggleDeck = document.getElementById('btnToggleWave4Preflight');
+      const btnToggleDeck = document.getElementById('btnToggleWave5Preflight');
       if (btnToggleDeck) {
         btnToggleDeck.addEventListener('click', () => {
-          const deck = document.getElementById('wave4PreflightDeck');
+          const deck = document.getElementById('wave5PreflightDeck');
           if (deck) {
             const isHidden = deck.style.display === 'none';
             deck.style.display = isHidden ? 'block' : 'none';
             if (isHidden) this.populatePostPreviews();
             btnToggleDeck.innerHTML = isHidden 
-              ? '🔼 Hide Wave 4 Pre-Flight Deck' 
-              : '🔍 Pre-Flight Wave 4 (<strong style="color:#38bdf8;">$SUI</strong> & <strong style="color:#fbbf24;">$DOGE</strong>)';
+              ? '🔼 Hide Wave 5 Pre-Flight Deck' 
+              : '🔍 Pre-Flight Wave 5 (<strong style="color:#fbbf24;">$XAUT</strong> & <strong style="color:#a855f7;">$AAVE</strong>)';
           }
         });
       }
 
-      const btnCopyP7 = document.getElementById('btnCopyQuickP7');
-      if (btnCopyP7) {
-        btnCopyP7.addEventListener('click', () => this.copyPost(7));
+      const btnCopyP9 = document.getElementById('btnCopyQuickP9');
+      if (btnCopyP9) {
+        btnCopyP9.addEventListener('click', () => this.copyPost(9));
       }
 
-      const btnCopyP8 = document.getElementById('btnCopyQuickP8');
-      if (btnCopyP8) {
-        btnCopyP8.addEventListener('click', () => this.copyPost(8));
+      const btnCopyP10 = document.getElementById('btnCopyQuickP10');
+      if (btnCopyP10) {
+        btnCopyP10.addEventListener('click', () => this.copyPost(10));
       }
 
       const btnOverride = document.getElementById('btnToggleOverride');
@@ -293,14 +290,14 @@
             txt.textContent = this.isOverrideUnlocked ? 'Re-Engage Shield' : 'Bypass / Force Ready';
           }
           this.startCountdown();
-          this.showToast(this.isOverrideUnlocked ? '⚡ Shield bypassed: Wave 4 marked Ready' : '🛡️ Incubation Shield re-engaged');
+          this.showToast(this.isOverrideUnlocked ? '⚡ Shield bypassed: Wave 5 marked Ready' : '🛡️ Incubation Shield re-engaged');
         });
       }
 
-      const btnMarkDone = document.getElementById('btnMarkWave4Done');
+      const btnMarkDone = document.getElementById('btnMarkWave5Done');
       if (btnMarkDone) {
         btnMarkDone.addEventListener('click', () => {
-          this.markWave4AsDone();
+          this.markWave5AsDone();
         });
       }
     }
@@ -332,34 +329,31 @@
       });
     }
 
-    markWave4AsDone() {
-      // Mark slots 7 and 8 as done in memory
+    markWave5AsDone() {
       if (window.EdgeFlow && window.EdgeFlow.posts) {
-        const p7 = window.EdgeFlow.posts.find(p => p.id === 7);
-        const p8 = window.EdgeFlow.posts.find(p => p.id === 8);
-        if (p7) { p7.done = true; p7.status = 'done'; }
-        if (p8) { p8.done = true; p8.status = 'done'; }
+        const p9 = window.EdgeFlow.posts.find(p => p.id === 9);
+        const p10 = window.EdgeFlow.posts.find(p => p.id === 10);
+        if (p9) { p9.done = true; p9.status = 'done'; }
+        if (p10) { p10.done = true; p10.status = 'done'; }
       }
 
-      // Update Pacing Chips in the header bar
       const chips = document.querySelectorAll('.pacing-chip');
-      if (chips && chips.length >= 5) {
-        if (chips[3]) {
-          chips[3].className = 'pacing-chip done';
-          chips[3].textContent = 'Wave 4: P7 & P8 ✓';
-        }
+      if (chips && chips.length >= 6) {
         if (chips[4]) {
-          chips[4].className = 'pacing-chip active';
-          chips[4].textContent = 'Wave 5: P9 (19:30) & P10 (19:42) Next';
+          chips[4].className = 'pacing-chip done';
+          chips[4].textContent = 'Wave 5: P9 & P10 ✓';
+        }
+        if (chips[5]) {
+          chips[5].className = 'pacing-chip active';
+          chips[5].textContent = 'Wave 6: P11 (22:12) & P12 (22:25 Finale) Next';
         }
       }
 
-      // Trigger quest tracker update if available
       if (typeof updateQuestTrackerUi === 'function') {
         updateQuestTrackerUi();
       }
 
-      this.showToast('✓ Wave 4 ($SUI & $DOGE) confirmed posted! Incubation resetting for Wave 5.');
+      this.showToast('✓ Wave 5 ($XAUT & $AAVE) confirmed posted! Advancing to Wave 6 Finale.');
     }
 
     showToast(message) {
@@ -378,7 +372,7 @@
     }
   }
 
-  // Export & auto-instantiate on DOMContentLoaded or immediate
+  // Export & auto-instantiate
   window.IncubationShield = new IncubationShieldManager();
 
   if (document.readyState === 'loading') {

@@ -658,11 +658,30 @@ function getDay6PreloadedSlots() {
         "id": 7,
         "coin": "$SUI",
         "title": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply",
-        "status": "ready",
-        "done": false,
+        "status": "done",
+        "done": true,
         "archetype": "human_trader_story",
         "raw": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply\n\nsui bounced back to 0.8994 after dipping down to 0.875 earlier. 0.920 to 0.935 is heavy overhead supply. volume is 67.8M. 4h chart reclaimed 20 ema at 0.8920 and 4h rsi is 47. bidding 0.885 to 0.902. targets 0.945 and 0.992. stop under 0.868 on 4h close.",
-        "improved": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply\n\nSUI rebounded to $0.8994 after flushing seller liquidity down to the $0.8750 wick earlier today.\n\nThe quick bounce shows responsive buying, but heavy overhead supply remains stacked between $0.9200 and $0.9350 with $67.8M in 24h turnover.\n\nOn the 4-hour chart, price reclaimed the 4H 20 EMA at $0.8920 while 4H RSI turned upward from 47. Patience is key: entering inside the demand pocket rather than buying into resistance.\n\nExecution setup:\nEntry zone: $0.8850–$0.9020\nInvalidation: $0.8680 (4-hour candle close below demand floor)\nFirst target: $0.9450 (Resistance supply absorption)\nSecondary target: $0.9920 (Range high liquidity run)\nRisk to reward ratio: 2.60 (7.8% upside vs 3.0% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you playing the rebound into $0.94, or fading the move near $0.92 resistance? What's your move?",
+        "improved": "🌊 $SUI 4H At $0.90: Watching 0.92 Supply
+
+SUI rebounded to $0.8994 after flushing seller liquidity down to the $0.8750 wick earlier today.
+
+The quick bounce shows responsive buying, but heavy overhead supply remains stacked between $0.9200 and $0.9350 with $67.8M in 24h turnover.
+
+On the 4-hour chart, price reclaimed the 4H 20 EMA at $0.8920 while 4H RSI turned upward from 47. Patience is key: entering inside the demand pocket rather than buying into resistance.
+
+Execution setup:
+Entry zone: $0.8850–$0.9020
+Invalidation: $0.8680 (4-hour candle close below demand floor)
+First target: $0.9450 (Resistance supply absorption)
+Secondary target: $0.9920 (Range high liquidity run)
+Risk to reward ratio: 2.60 (7.8% upside vs 3.0% defined risk)
+
+Respect the invalidation stop-loss and keep leverage conservative.
+
+\"Price is what the impatient pay for certainty, while value is what the patient collect from ambiguity.\"
+
+Are you playing the rebound into $0.94, or fading the move near $0.92 resistance? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
@@ -670,11 +689,30 @@ function getDay6PreloadedSlots() {
         "id": 8,
         "coin": "$DOGE",
         "title": "🐕 $DOGE 4H Compresses: Volatility Squeeze",
-        "status": "ready",
-        "done": false,
+        "status": "done",
+        "done": true,
         "archetype": "human_trader_story",
         "raw": "🐕 $DOGE 4H Compresses: Volatility Squeeze\n\ndoge is sitting almost motionless at 0.07564 today with daily range under 3.3%. most traders get bored by slow chop. tight compression near support usually sets up violent breakout. 4h chart shows 20 ema completely flat at 0.07520 and 4h rsi is 49. bidding 0.0748 to 0.0758. targets 0.0815 and 0.0870. stop under 0.0734 on 4h close.",
-        "improved": "🐕 $DOGE 4H Compresses: Volatility Squeeze\n\nDOGE is trading virtually motionless around $0.07564 with an intraday volatility corridor locked below 3.3%.\n\nRetail traders get frustrated by prolonged consolidation, but multi-day price compression above historical support frequently builds energy for a sharp directional expansion.\n\nOn the 4-hour chart, the 20 EMA is completely horizontal at $0.07520 while 4H RSI rests at 49. Order books indicate steady passive limit absorption across the $0.0750 base.\n\nExecution setup:\nEntry zone: $0.07480–$0.07580\nInvalidation: $0.07340 (4-hour candle close below range floor)\nFirst target: $0.08150 (Upper range liquidity sweep)\nSecondary target: $0.08700 (Momentum expansion wick)\nRisk to reward ratio: 2.90 (9.2% upside vs 3.1% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you accumulating DOGE in this tight range, or waiting for momentum confirmation above $0.078? What's your move?",
+        "improved": "🐕 $DOGE 4H Compresses: Volatility Squeeze
+
+DOGE is trading virtually motionless around $0.07564 with an intraday volatility corridor locked below 3.3%.
+
+Retail traders get frustrated by prolonged consolidation, but multi-day price compression above historical support frequently builds energy for a sharp directional expansion.
+
+On the 4-hour chart, the 20 EMA is completely horizontal at $0.07520 while 4H RSI rests at 49. Order books indicate steady passive limit absorption across the $0.0750 base.
+
+Execution setup:
+Entry zone: $0.07480–$0.07580
+Invalidation: $0.07340 (4-hour candle close below range floor)
+First target: $0.08150 (Upper range liquidity sweep)
+Secondary target: $0.08700 (Momentum expansion wick)
+Risk to reward ratio: 2.90 (9.2% upside vs 3.1% defined risk)
+
+Respect the invalidation stop-loss and keep leverage conservative.
+
+\"In markets driven by belief, volatility is not the enemy of reason—it is the price of admission to human psychology.\"
+
+Are you accumulating DOGE in this tight range, or waiting for momentum confirmation above $0.078? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
@@ -686,7 +724,26 @@ function getDay6PreloadedSlots() {
         "done": false,
         "archetype": "human_trader_story",
         "raw": "🥇 $XAUT 4H At $3,878: Oversold Macro Dip\n\ngold perps dropped another 2.8% down to 3,878.21 today, and macro chats are turning bearish. i rarely short gold after a multi-day slide, especially when central bank buying remains steady. 4h rsi is down near 29 in oversold territory, while 4h chart is testing multi-week support at 3,860. bidding 3,865 to 3,885. targets 3,960 and 4,040. stop under 3,825 on 4h close.",
-        "improved": "🥇 $XAUT 4H At $3,878: Oversold Macro Dip\n\nTether Gold ($XAUT) dipped 2.8% down to $3,878.21 today as short-term macro liquidations triggered stop cascades.\n\nRefusing to short gold after an extended multi-day slide. Sovereign central bank accumulation remains constant, and institutional capital frequently steps in at technical discount shelves.\n\nOn the 4-hour chart, 4H RSI has dropped into deeply oversold territory at 29 while price tests major multi-week support at $3,860. The downside momentum is showing visible exhaustion wicks.\n\nExecution setup:\nEntry zone: $3,865–$3,885\nInvalidation: $3,825 (4-hour candle close below macro support)\nFirst target: $3,960 (Mean reversion retest)\nSecondary target: $4,040 (Safe-haven expansion high)\nRisk to reward ratio: 2.75 (3.5% upside vs 1.3% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you buying this oversold gold dip into $3,870, or expecting a breakdown toward $3,800? What's your move?",
+        "improved": "🥇 $XAUT 4H At $3,878: Oversold Macro Dip
+
+Tether Gold ($XAUT) dipped 2.8% down to $3,878.21 today as short-term macro liquidations triggered stop cascades.
+
+Refusing to short gold after an extended multi-day slide. Sovereign central bank accumulation remains constant, and institutional capital frequently steps in at technical discount shelves.
+
+On the 4-hour chart, 4H RSI has dropped into deeply oversold territory at 29 while price tests major multi-week support at $3,860. The downside momentum is showing visible exhaustion wicks.
+
+Execution setup:
+Entry zone: $3,865–$3,885
+Invalidation: $3,825 (4-hour candle close below macro support)
+First target: $3,960 (Mean reversion retest)
+Secondary target: $4,040 (Safe-haven expansion high)
+Risk to reward ratio: 2.75 (3.5% upside vs 1.3% defined risk)
+
+Respect the invalidation stop-loss and keep leverage conservative.
+
+\"Currencies come and go as the promises of men, but gold remains the silent measure of human doubt.\"
+
+Are you buying this oversold gold dip into $3,870, or expecting a breakdown toward $3,800? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
@@ -698,7 +755,26 @@ function getDay6PreloadedSlots() {
         "done": false,
         "archetype": "human_trader_story",
         "raw": "⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall\n\naave is having a solid day, up 5.3% to 130.01 with 57.5M in volume on bybit. momentum is clearly strong, but buying right in front of the 132.50 - 135 resistance wall is poor risk-reward. 4h chart reclaimed 20 ema at 125.40 and 4h rsi is 64. bidding 124.50 to 128.00 on retest. targets 138.50 and 147.00. stop under 120.80 on 4h close.",
-        "improved": "⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall\n\nAave is showing notable strength today, advancing 5.3% to $130.01 with $57.5M in 24h turnover on Bybit.\n\nBullish momentum is evident, but purchasing directly beneath the dense $132.50–$135.00 resistance block offers unfavorable risk-reward. Disciplined execution demands waiting for the pullback.\n\nOn the 4-hour chart, price is maintaining footing above the 4H 20 EMA at $125.40 with 4H RSI at 64. A controlled dip into previous resistance-turned-support provides an asymmetric entry.\n\nExecution setup:\nEntry zone: $124.50–$128.00 (Retest reload corridor)\nInvalidation: $120.80 (4-hour candle close below structure)\nFirst target: $138.50 (Breakout extension sweep)\nSecondary target: $147.00 (Major cycle order block)\nRisk to reward ratio: 2.65 (9.8% upside vs 3.7% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you chasing AAVE into the $132 wall, or waiting for a healthy retest near $126? What's your move?",
+        "improved": "⚡ $AAVE 4H Up 5.3%: Why I Respect 132 Wall
+
+Aave is showing notable strength today, advancing 5.3% to $130.01 with $57.5M in 24h turnover on Bybit.
+
+Bullish momentum is evident, but purchasing directly beneath the dense $132.50–$135.00 resistance block offers unfavorable risk-reward. Disciplined execution demands waiting for the pullback.
+
+On the 4-hour chart, price is maintaining footing above the 4H 20 EMA at $125.40 with 4H RSI at 64. A controlled dip into previous resistance-turned-support provides an asymmetric entry.
+
+Execution setup:
+Entry zone: $124.50–$128.00 (Retest reload corridor)
+Invalidation: $120.80 (4-hour candle close below structure)
+First target: $138.50 (Breakout extension sweep)
+Secondary target: $147.00 (Major cycle order block)
+Risk to reward ratio: 2.65 (9.8% upside vs 3.7% defined risk)
+
+Respect the invalidation stop-loss and keep leverage conservative.
+
+\"Yield without risk discipline is merely borrowed time; genuine edge belongs to those who respect the boundaries of leverage.\"
+
+Are you chasing AAVE into the $132 wall, or waiting for a healthy retest near $126? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
@@ -710,7 +786,26 @@ function getDay6PreloadedSlots() {
         "done": false,
         "archetype": "human_trader_story",
         "raw": "🔗 $LINK 4H Jumps To $11.48: Scaling Gains\n\nchainlink pushed nearly 6% today, moving from 10.80 up to 11.48 on 50M volume. when a coin makes a quick run into overhead resistance, i prefer scaling out into green candles. 4h chart shows 20 ema rising to 11.10 while 4h rsi sits at 59. bidding 11.15 to 11.40. targets 12.25 and 13.10. stop under 10.75 on 4h close.",
-        "improved": "🔗 $LINK 4H Jumps To $11.48: Scaling Gains\n\nChainlink accelerated nearly 6% today, advancing from $10.80 up to $11.48 on $50.2M in 24h turnover.\n\nWhen momentum surges into overhead supply, professional trading dictates harvesting partial gains rather than fomo buying at the local high. Realized profits provide flexibility.\n\nOn the 4-hour chart, the 4H 20 EMA is trending upward to $11.10 while 4H RSI holds a constructive reading of 59. Looking to participate on structural stabilization above prior resistance.\n\nExecution setup:\nEntry zone: $11.15–$11.40\nInvalidation: $10.75 (4-hour candle close below breakout base)\nFirst target: $12.25 (Mid-range liquidity shelf)\nSecondary target: $13.10 (Macro value area high)\nRisk to reward ratio: 2.70 (8.9% upside vs 3.3% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you taking partial profits on LINK here, or holding runners for a push above $12? What's your move?",
+        "improved": "🔗 $LINK 4H Jumps To $11.48: Scaling Gains
+
+Chainlink accelerated nearly 6% today, advancing from $10.80 up to $11.48 on $50.2M in 24h turnover.
+
+When momentum surges into overhead supply, professional trading dictates harvesting partial gains rather than fomo buying at the local high. Realized profits provide flexibility.
+
+On the 4-hour chart, the 4H 20 EMA is trending upward to $11.10 while 4H RSI holds a constructive reading of 59. Looking to participate on structural stabilization above prior resistance.
+
+Execution setup:
+Entry zone: $11.15–$11.40
+Invalidation: $10.75 (4-hour candle close below breakout base)
+First target: $12.25 (Mid-range liquidity shelf)
+Secondary target: $13.10 (Macro value area high)
+Risk to reward ratio: 2.70 (8.9% upside vs 3.3% defined risk)
+
+Respect the invalidation stop-loss and keep leverage conservative.
+
+\"Data without independent verification is rumor; profit without structural discipline is temporary.\"
+
+Are you taking partial profits on LINK here, or holding runners for a push above $12? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     },
@@ -722,7 +817,26 @@ function getDay6PreloadedSlots() {
         "done": false,
         "archetype": "human_trader_story",
         "raw": "🏛️ $ONDO 4H Bounces 6%: RWA Support Setup\n\nondo is trading around 0.4105 after that 6% bounce from the 0.384 wick. bybit volume is sitting around 44M. 4h rsi crossed back above 56 and price is holding above 4h 20 ema at 0.3980. rwa sector tokenization narrative keeps capital rotating in. bidding 0.4020 to 0.4120. targets 0.4480 and 0.4850. stop under 0.3880 on 4h close.",
-        "improved": "🏛️ $ONDO 4H Bounces 6%: RWA Support Setup\n\nONDO is trading around $0.4105 following a crisp 6.2% recovery from the $0.3840 liquidity wick.\n\n24h turnover on Bybit is healthy at $44.1M. Institutional tokenization and RWA narrative tailwinds continue to provide steady dip-buying pressure on every market pullback.\n\nOn the 4-hour chart, 4H RSI reclaimed 56 while price reclaimed and held above the 4H 20 EMA at $0.3980. Trend structure confirms higher lows across the weekly base.\n\nExecution setup:\nEntry zone: $0.4020–$0.4120\nInvalidation: $0.3880 (4-hour candle close below wick baseline)\nFirst target: $0.4480 (Range resistance sweep)\nSecondary target: $0.4850 (RWA momentum expansion)\nRisk to reward ratio: 2.80 (10.2% upside vs 3.6% defined risk)\n\nRespect the invalidation stop-loss and keep leverage conservative.\n\nAre you riding this RWA recovery into $0.45, or expecting a retest of the $0.38 low? What's your move?",
+        "improved": "🏛️ $ONDO 4H Bounces 6%: RWA Support Setup
+
+ONDO is trading around $0.4105 following a crisp 6.2% recovery from the $0.3840 liquidity wick.
+
+24h turnover on Bybit is healthy at $44.1M. Institutional tokenization and RWA narrative tailwinds continue to provide steady dip-buying pressure on every market pullback.
+
+On the 4-hour chart, 4H RSI reclaimed 56 while price reclaimed and held above the 4H 20 EMA at $0.3980. Trend structure confirms higher lows across the weekly base.
+
+Execution setup:
+Entry zone: $0.4020–$0.4120
+Invalidation: $0.3880 (4-hour candle close below wick baseline)
+First target: $0.4480 (Range resistance sweep)
+Secondary target: $0.4850 (RWA momentum expansion)
+Risk to reward ratio: 2.80 (10.2% upside vs 3.6% defined risk)
+
+Respect the invalidation stop-loss and keep leverage conservative.
+
+\"The future arrives slowly in code, then all at once in capital.\"
+
+Are you riding this RWA recovery into $0.45, or expecting a retest of the $0.38 low? What's your move?",
         "human_pct": 100.0,
         "verdict": "Very likely human-written"
     }

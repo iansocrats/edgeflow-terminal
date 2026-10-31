@@ -25,6 +25,7 @@
 | **SKILL-008** | Vague, conversational advice without trade geometry. | **Mandatory unhedged line-by-line `Execution setup:` block:**<br>• Entry zone: `[price low - price high]`<br>• Invalidation stop: `exact price (4H close below/above)`<br>• Targets: `TP1, TP2, TP3`<br>• Exact R:R: `e.g. 1:2.85` | Zero trading conversion attribution, failing ByX Trading Relevance. |
 | **SKILL-009** | 1-sided conclusion or rhetorical filler. | **Closing MUST be an authentic 2-sided debate question** inviting capital positioning (e.g. *"Are you longing this dip into support, or waiting for the sweep?"*). | Low dwell time and zero reader interaction. |
 | **SKILL-010** | Spaced posts too tightly (< 45 min apart). | **Strict 2.5-hour wave pacing.** Maximum 2 posts per wave. Never dump posts in bursts. | Feed cannibalization: Bybit algorithm stops distributing post N as soon as post N+1 is dropped. |
+| **SKILL-017** | Missing philosophical market depth before closing poll. | **Mandatory philosophical quote/reflection preceding the closing debate question.** Connect the specific coin's price action to a timeless market truth (patience, risk, human consensus, liquidity cycles). | Elevates content authority above retail noise and boosts dwell time. |
 
 ---
 
@@ -47,4 +48,4 @@
 | **SKILL-016** | Printing raw non-ASCII emojis to Windows PowerShell stdout. | **Always encode with `errors='backslashreplace'` or ASCII fallback** when writing diagnostic python scripts. | `UnicodeEncodeError: 'charmap' codec can't encode character` crashing automation. |
 
 ---
-*Last verified & updated: Saturday, Oct 31, 2026 • 13:02 UTC+3*
+*Last verified & updated: Saturday, Oct 31, 2026 • 16:12 UTC+3*
