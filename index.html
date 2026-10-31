@@ -1055,45 +1055,46 @@
         </div>
 
         <!-- Interactive Epoch Tabs (Cross-Analysis, Matrix Comparison, Other Creator, Day 5 Active Desk, Day 4 Archive, Day 3 Archive) -->
-        <div class="forensic-epoch-tabs" role="tablist">
-          <button class="forensic-tab-btn cross active" id="btnForensicCross" data-fday="cross" role="tab" aria-selected="true" title="Days 1–4 Attribution Cross-Analysis & Post-Mortem">
-            <span class="epoch-icon">📈</span>
-            <span class="epoch-title">Cross-Analysis</span>
-            <span class="epoch-subtag">Post-Mortem</span>
-          </button>
-          <button class="forensic-tab-btn comp" id="btnForensicComparison" data-fday="comparison" role="tab" aria-selected="false" title="Matrix Comparison: Mine vs Other Creator">
-            <span class="epoch-icon">⚖️</span>
-            <span class="epoch-title">Matrix Comparison</span>
-            <span class="epoch-subtag">Mine vs Other</span>
-          </button>
-          <button class="forensic-tab-btn creator" id="btnForensicCreatorBoss" data-fday="creator_boss" role="tab" aria-selected="false" title="Other Creator Benchmark: Crypto BOSS Trade Analysis">
-            <span class="epoch-icon">👤</span>
-            <span class="epoch-title">Other Creator</span>
-            <span class="epoch-subtag">Crypto BOSS</span>
-          </button>
-          <button class="forensic-tab-btn" id="btnForensicDay6" data-fday="day6" role="tab" aria-selected="false" title="Day 6: Saturday, Oct 31 (TODAY) — 12 High-Cap Setups">
-            <span class="epoch-icon">●</span>
-            <span class="epoch-title">Day 6: Today</span>
-            <span class="epoch-subtag">12 Setups</span>
-          </button>
-          <button class="forensic-tab-btn" id="btnForensicDay5" data-fday="day5" role="tab" aria-selected="false" title="Day 5 Archive: Fri, Oct 30 (19.0 pts Winner 🏆)">
-            <span class="epoch-icon">🏆</span>
-            <span class="epoch-title">Day 5 Winner</span>
-            <span class="epoch-subtag">19.0p</span>
-          </button>
-          <button class="forensic-tab-btn" id="btnForensicDay4" data-fday="day4" role="tab" aria-selected="false" title="Day 4 Archive: Yesterday (Oct 29) — 13 Posts (7.0 pts)">
-            <span class="epoch-icon">📁</span>
-            <span class="epoch-title">Day 4 Archive</span>
-            <span class="epoch-subtag">7.0p</span>
-          </button>
-          <button class="forensic-tab-btn" id="btnForensicDay3" data-fday="day3" role="tab" aria-selected="false" title="Day 3 Archive: Oct 28 — 9 Posts (10.0 pts)">
-            <span class="epoch-icon">📁</span>
-            <span class="epoch-title">Day 3 Archive</span>
-            <span class="epoch-subtag">10.0p</span>
-          </button>
-        </div>
+        <!-- Interactive Epoch Tabs (Quant Matrix, Cross-Analysis, Matrix Comparison, Day 6 Active Desk, Daily Scores, Other Creator, Day 5 Winner) -->
+      <div class="forensic-epoch-tabs" role="tablist">
+        <button class="forensic-tab-btn quant active" id="btnForensicQuantMatrix" data-fday="quant_matrix" role="tab" aria-selected="true" title="Academic Mathematics Hub: Information Theory & Multi-Language Quant Suite">
+          <span class="epoch-icon">🔢</span>
+          <span class="epoch-title">Live Quant Matrix</span>
+          <span class="epoch-subtag">6 Visualizers</span>
+        </button>
+        <button class="forensic-tab-btn cross" id="btnForensicCross" data-fday="cross" role="tab" aria-selected="false" title="Days 1–5 Attribution Cross-Analysis & Post-Mortem">
+          <span class="epoch-icon">📈</span>
+          <span class="epoch-title">Cross-Analysis</span>
+          <span class="epoch-subtag">Days 1–5</span>
+        </button>
+        <button class="forensic-tab-btn comp" id="btnForensicComparison" data-fday="comparison" role="tab" aria-selected="false" title="Matrix Comparison: Mine vs Other Creator">
+          <span class="epoch-icon">⚖️</span>
+          <span class="epoch-title">Matrix Comparison</span>
+          <span class="epoch-subtag">Split / Diff Δ</span>
+        </button>
+        <button class="forensic-tab-btn d6" id="btnForensicDay6" data-fday="day6" role="tab" aria-selected="false" title="Day 6: Saturday, Oct 31 (TODAY) — 12 High-Cap Setups">
+          <span class="epoch-icon">🔥</span>
+          <span class="epoch-title">Day 6: Today</span>
+          <span class="epoch-subtag">12 Setups</span>
+        </button>
+        <button class="forensic-tab-btn scores" id="btnForensicScoresTab" data-fday="scores_tab" role="tab" aria-selected="false" title="Bybit Leaderboard Sprint & Daily Scores">
+          <span class="epoch-icon">🏆</span>
+          <span class="epoch-title">Daily Scores</span>
+          <span class="epoch-subtag">56.0 / 150p</span>
+        </button>
+        <button class="forensic-tab-btn creator" id="btnForensicCreatorBoss" data-fday="creator_boss" role="tab" aria-selected="false" title="Other Creator Benchmark: Crypto BOSS Trade Analysis">
+          <span class="epoch-icon">🕵️</span>
+          <span class="epoch-title">Other Creator</span>
+          <span class="epoch-subtag">Crypto BOSS</span>
+        </button>
+        <button class="forensic-tab-btn d5" id="btnForensicDay5" data-fday="day5" role="tab" aria-selected="false" title="Day 5 Archive: Fri, Oct 30 (19.0 pts Winner 🏆)">
+          <span class="epoch-icon">📁</span>
+          <span class="epoch-title">Day 5 Winner</span>
+          <span class="epoch-subtag">19.0p (11 Posts)</span>
+        </button>
+      </div>
 
-        <!-- Dynamic Content Injected via JavaScript -->
+      <!-- Dynamic Content Injected via JavaScript -->
         <div id="forensicAnalysisContentContainer" class="forensic-content-container">
           <!-- Populated by renderForensicAnalysisHub() -->
         </div>

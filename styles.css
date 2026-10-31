@@ -5093,3 +5093,66 @@ h1, h2, h3, h4, .rules-title, .matrix-title, .forensic-post-title, .analysis-tit
   border: 1px solid rgba(168, 85, 247, 0.45);
   font-weight: 800;
 }
+
+/* Matrix Toggle & Quant Tab Styles */
+.btn-matrix-toggle {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-matrix-toggle:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #f8fafc;
+}
+
+.btn-matrix-toggle.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.35)) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+.forensic-tab-btn.quant.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.35));
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+.forensic-tab-btn.quant.active .epoch-subtag {
+  background: rgba(56, 189, 248, 0.25);
+  color: #7dd3fc;
+}
+
+.forensic-tab-btn.d6.active {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.35));
+  border-color: #f87171;
+  color: #fca5a5;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.25);
+}
+
+.forensic-tab-btn.d6.active .epoch-subtag {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fecaca;
+}
+
+.forensic-tab-btn.scores.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.35));
+  border-color: #fbbf24;
+  color: #fef3c7;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.25);
+}
+
+.forensic-tab-btn.scores.active .epoch-subtag {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fffbeb;
+}

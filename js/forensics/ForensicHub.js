@@ -3,7 +3,7 @@
 // ================================================================================
 window.EdgeFlow = window.EdgeFlow || {};
 
-let currentForensicDay = 'cross';
+let currentForensicDay = 'quant_matrix';
 let currentQuantVis = 'markov'; // 'markov' | 'laplacian' | 'waterfilling' | 'takens' | 'radar' | 'lyapunov'
 let currentQuantLang = 'py'; // 'py' | 'rust' | 'js' | 'cpp'
 let currentComparisonView = 'split'; // 'split' | 'diff'

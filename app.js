@@ -2277,8 +2277,22 @@ function setupEvents() {
 
   const btnOpenMathHub = document.getElementById('btnOpenMathHub');
   const pillBarMathHubBtn = document.getElementById('pillBarMathHubBtn');
-  if (btnOpenMathHub) btnOpenMathHub.addEventListener('click', () => setDeskView('analysis'));
-  if (pillBarMathHubBtn) pillBarMathHubBtn.addEventListener('click', () => setDeskView('analysis'));
+  if (btnOpenMathHub) {
+    btnOpenMathHub.addEventListener('click', () => {
+      if (typeof window.EdgeFlow !== 'undefined' && typeof window.EdgeFlow.setForensicDay === 'function') {
+        window.EdgeFlow.setForensicDay('quant_matrix');
+      }
+      setDeskView('analysis');
+    });
+  }
+  if (pillBarMathHubBtn) {
+    pillBarMathHubBtn.addEventListener('click', () => {
+      if (typeof window.EdgeFlow !== 'undefined' && typeof window.EdgeFlow.setForensicDay === 'function') {
+        window.EdgeFlow.setForensicDay('quant_matrix');
+      }
+      setDeskView('analysis');
+    });
+  }
   if (btnOpenScoresModal) btnOpenScoresModal.addEventListener('click', () => setDeskView('scores'));
   if (pillBarScoresBtn) pillBarScoresBtn.addEventListener('click', () => setDeskView('scores'));
   if (returnPostsFromScoresBtn) returnPostsFromScoresBtn.addEventListener('click', () => setDeskView('posts'));
