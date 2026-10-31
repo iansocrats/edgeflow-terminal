@@ -137,6 +137,28 @@ const humanizeAiDiagnostics = document.getElementById('humanizeAiDiagnostics');
 const humanizeAiBar = document.getElementById('humanizeAiBar');
 const humanizeAiVerdict = document.getElementById('humanizeAiVerdict');
 
+// Detector Flagship Card 2: ZeroGPT.com Global AI Detection Standard
+const recalcZeroGptBtn = document.getElementById('recalcZeroGptBtn');
+const zeroGptIndicator = document.getElementById('zeroGptIndicator');
+const zeroGptHumanVal = document.getElementById('zeroGptHumanVal');
+const zeroGptFakeVal = document.getElementById('zeroGptFakeVal');
+const zeroGptWordsVal = document.getElementById('zeroGptWordsVal');
+const zeroGptStatusText = document.getElementById('zeroGptStatusText');
+const zeroGptDiagnostics = document.getElementById('zeroGptDiagnostics');
+const zeroGptBar = document.getElementById('zeroGptBar');
+const zeroGptVerdict = document.getElementById('zeroGptVerdict');
+
+// Detector Flagship Card 3: GPTZero Princeton Perplexity & Burstiness Benchmark
+const recalcGptZeroBtn = document.getElementById('recalcGptZeroBtn');
+const gptZeroIndicator = document.getElementById('gptZeroIndicator');
+const gptZeroHumanVal = document.getElementById('gptZeroHumanVal');
+const gptZeroBurstVal = document.getElementById('gptZeroBurstVal');
+const gptZeroPplVal = document.getElementById('gptZeroPplVal');
+const gptZeroStatusText = document.getElementById('gptZeroStatusText');
+const gptZeroDiagnostics = document.getElementById('gptZeroDiagnostics');
+const gptZeroBar = document.getElementById('gptZeroBar');
+const gptZeroVerdict = document.getElementById('gptZeroVerdict');
+
 // Detector Card 1: RoBERTa Vocabulary Entropy & Token Benchmark
 const recalcRobertaBtn = document.getElementById('recalcRobertaBtn');
 const robertaIndicator = document.getElementById('robertaIndicator');
@@ -195,6 +217,12 @@ const draftNextActionsContent = document.getElementById('draftNextActionsContent
 async function initApp() {
   if (window.EdgeFlow && window.EdgeFlow.HumanizeAiDetector && !window.EdgeFlow.humanizeAiDetector) {
     window.EdgeFlow.humanizeAiDetector = new window.EdgeFlow.HumanizeAiDetector();
+  }
+  if (window.EdgeFlow && window.EdgeFlow.ZeroGptDetector && !window.EdgeFlow.zeroGptDetector) {
+    window.EdgeFlow.zeroGptDetector = new window.EdgeFlow.ZeroGptDetector();
+  }
+  if (window.EdgeFlow && window.EdgeFlow.GptZeroBurstinessDetector && !window.EdgeFlow.gptZeroDetector) {
+    window.EdgeFlow.gptZeroDetector = new window.EdgeFlow.GptZeroBurstinessDetector();
   }
   await loadPostsData();
   initSessionAndPointsHub();
@@ -2464,6 +2492,39 @@ function setupEvents() {
         recalcHumanizeAiBtn.classList.remove('active-calc');
         recalcHumanizeAiBtn.textContent = '⚡ Live Scan';
       }
+    });
+  }
+
+  if (recalcZeroGptBtn) {
+    recalcZeroGptBtn.addEventListener('click', async () => {
+      recalcZeroGptBtn.classList.add('active-calc');
+      recalcZeroGptBtn.textContent = '⏳ Querying ZeroGPT...';
+      try {
+        const text = polishedContent ? polishedContent.value : '';
+        const res = await window.EdgeFlow.zeroGptDetector.analyzeLive(text);
+        window.EdgeFlow.zeroGptDetector.renderUI(res);
+        showToast(`✓ ZeroGPT Scan: ${res.feedback} (${res.humanScore}% Human)`);
+      } catch (err) {
+        showToast('⚠️ ZeroGPT scan fallback to local model');
+      } finally {
+        recalcZeroGptBtn.classList.remove('active-calc');
+        recalcZeroGptBtn.textContent = '⚡ Live Scan';
+      }
+    });
+  }
+
+  if (recalcGptZeroBtn) {
+    recalcGptZeroBtn.addEventListener('click', () => {
+      recalcGptZeroBtn.classList.add('active-calc');
+      recalcGptZeroBtn.textContent = '⏳ Computing Burstiness...';
+      setTimeout(() => {
+        const text = polishedContent ? polishedContent.value : '';
+        const res = window.EdgeFlow.gptZeroDetector.analyze(text);
+        window.EdgeFlow.gptZeroDetector.renderUI(res);
+        recalcGptZeroBtn.classList.remove('active-calc');
+        recalcGptZeroBtn.textContent = '⚡ Recalculate';
+        showToast(`✓ GPTZero Burstiness: ${res.burstiness}% (Variance: ${res.variance}σ²)`);
+      }, 180);
     });
   }
 

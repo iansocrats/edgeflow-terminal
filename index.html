@@ -263,6 +263,96 @@
           <div class="det-verdict" id="humanizeAiVerdict">Ready for analysis.</div>
         </div>
 
+        <!-- Flagship Card 2: ZeroGPT.com Global AI Detection Standard -->
+        <div class="detector-card" id="cardZeroGpt">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="zeroGptIndicator"></span>
+              <h4>ZeroGPT.com Global AI Detection Standard</h4>
+            </div>
+            <button class="btn-det-action" id="recalcZeroGptBtn">⚡ Live Scan</button>
+          </div>
+          <p class="det-sub">Direct sentence-level classifier from the world's most widely referenced AI detection portal. Pinpoints suspected AI words and phrases.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">HUMAN SCORE</span>
+              <span class="metric-val real" id="zeroGptHumanVal">--%</span>
+              <span class="metric-hint">Target: 100%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI / FAKE %</span>
+              <span class="metric-val real" id="zeroGptFakeVal">0.0%</span>
+              <span class="metric-hint">Target: &le;10%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">AI WORDS</span>
+              <span class="metric-val real" id="zeroGptWordsVal">0 / 0</span>
+              <span class="metric-hint">Target: 0</span>
+            </div>
+          </div>
+
+          <!-- Live ZeroGPT Telemetry -->
+          <div class="math-telemetry-box" id="zeroGptTelemetry">
+            <div class="telemetry-status-text" id="zeroGptStatusText">
+              Ready to verify against ZeroGPT.com...
+            </div>
+            <div class="zerogpt-diagnostics" id="zeroGptDiagnostics">
+              <!-- Dynamically populated with ZeroGPT highlighted sentences -->
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="zeroGptBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="zeroGptVerdict">Ready for analysis.</div>
+        </div>
+
+        <!-- Flagship Card 3: GPTZero Princeton Perplexity & Burstiness Benchmark -->
+        <div class="detector-card" id="cardGptZero">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="gptZeroIndicator"></span>
+              <h4>GPTZero Princeton Burstiness & Perplexity Benchmark</h4>
+            </div>
+            <button class="btn-det-action" id="recalcGptZeroBtn">⚡ Recalculate</button>
+          </div>
+          <p class="det-sub">Princeton NLP zero-shot benchmark (Edward Tian). Measures cross-sentence burstiness (Bc) and token perplexity (PPL) to confirm human rhythm.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">HUMAN CADENCE</span>
+              <span class="metric-val real" id="gptZeroHumanVal">--%</span>
+              <span class="metric-hint">Target: &ge;85%</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">BURSTINESS (Bc)</span>
+              <span class="metric-val real" id="gptZeroBurstVal">--%</span>
+              <span class="metric-hint">Dynamic sentence variance</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">PERPLEXITY</span>
+              <span class="metric-val real" id="gptZeroPplVal">-- PPL</span>
+              <span class="metric-hint">Unpredictable token surprise</span>
+            </div>
+          </div>
+
+          <!-- Live GPTZero Telemetry -->
+          <div class="math-telemetry-box" id="gptZeroTelemetry">
+            <div class="telemetry-status-text" id="gptZeroStatusText">
+              Evaluating Princeton burstiness & sentence variance...
+            </div>
+            <div class="gptzero-diagnostics" id="gptZeroDiagnostics">
+              <!-- Dynamically populated with burstiness diagnostics -->
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="gptZeroBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="gptZeroVerdict">Ready for analysis.</div>
+        </div>
+
         <!-- Card 1: RoBERTa Vocabulary Entropy & Repetition Benchmark -->
         <div class="detector-card" id="cardRoberta">
           <div class="det-card-top">
@@ -1089,13 +1179,15 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=81"></script>
-  <script src="js/detectors/BaseDetector.js?v=81"></script>
-  <script src="js/detectors/HumanizeAiDetector.js?v=81"></script>
-  <script src="js/detectors/Detectors.js?v=81"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=81"></script>
-  <script src="js/forensics/ForensicHub.js?v=81"></script>
-  <script src="js/session/SessionManager.js?v=81"></script>
-  <script src="app.js?v=81"></script>
+  <script src="js/data/preloadedSlots.js?v=82"></script>
+  <script src="js/detectors/BaseDetector.js?v=82"></script>
+  <script src="js/detectors/HumanizeAiDetector.js?v=82"></script>
+  <script src="js/detectors/ZeroGptDetector.js?v=82"></script>
+  <script src="js/detectors/GptZeroBurstinessDetector.js?v=82"></script>
+  <script src="js/detectors/Detectors.js?v=82"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=82"></script>
+  <script src="js/forensics/ForensicHub.js?v=82"></script>
+  <script src="js/session/SessionManager.js?v=82"></script>
+  <script src="app.js?v=82"></script>
 </body>
 </html>

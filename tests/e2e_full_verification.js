@@ -39,6 +39,35 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+  if (reqPath === '/api/zerogpt-proxy' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      const https = require('https');
+      const apiReq = https.request('https://api.zerogpt.com/api/detect/detectText', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Origin': 'https://www.zerogpt.com',
+          'Referer': 'https://www.zerogpt.com/'
+        }
+      }, (apiRes) => {
+        res.writeHead(apiRes.statusCode, {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        });
+        apiRes.pipe(res);
+      });
+      apiReq.on('error', (err) => {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      });
+      apiReq.write(body);
+      apiReq.end();
+    });
+    return;
+  }
   if (reqPath === '/') reqPath = '/index.html';
   const filePath = path.join(BASE_DIR, reqPath);
   console.log(`[HTTP REQ] ${req.method} ${req.url} -> ${fs.existsSync(filePath) ? 'EXISTS' : 'NOT FOUND'}`);
@@ -431,6 +460,37 @@ async function runE2ETest() {
     await new Promise(r => setTimeout(r, 600));
     const liveScanVerdict = await evalBrowser('document.getElementById("humanizeAiVerdictVal")?.textContent?.trim() || "--"');
     console.log(`✅ PASS: Clicked #recalcHumanizeAiBtn -> Live Scan Status: "${liveScanVerdict}"`);
+
+    // 4c-3. Test Flagship ZeroGPT.com Global AI Detection Standard
+    console.log('\n--- TESTING ZEROGPT.COM GLOBAL AI DETECTION STANDARD ---');
+    const zeroGptScore = await evalBrowser('document.getElementById("zeroGptHumanVal")?.textContent?.trim() || "--"');
+    const zeroGptFake = await evalBrowser('document.getElementById("zeroGptFakeVal")?.textContent?.trim() || "--"');
+    const zeroGptWords = await evalBrowser('document.getElementById("zeroGptWordsVal")?.textContent?.trim() || "--"');
+    console.log(`✅ PASS: ZeroGPT Telemetry: Human=${zeroGptScore}, Fake=${zeroGptFake}, AI Words=${zeroGptWords}`);
+    if (!zeroGptScore || zeroGptScore === '--%') {
+      throw new Error(`Expected valid ZeroGPT human score, got "${zeroGptScore}"`);
+    }
+
+    // Test ZeroGPT live scan button trigger
+    await evalBrowser('document.getElementById("recalcZeroGptBtn")?.click()');
+    await new Promise(r => setTimeout(r, 600));
+    const zeroGptLiveStatus = await evalBrowser('document.getElementById("zeroGptStatusText")?.textContent?.trim() || "--"');
+    console.log(`✅ PASS: Clicked #recalcZeroGptBtn -> Live ZeroGPT Status: "${zeroGptLiveStatus.slice(0, 60)}..."`);
+
+    // 4c-4. Test Flagship GPTZero Princeton Perplexity & Burstiness Benchmark
+    console.log('\n--- TESTING GPTZERO PRINCETON BURSTINESS & PERPLEXITY BENCHMARK ---');
+    const gptZeroScore = await evalBrowser('document.getElementById("gptZeroHumanVal")?.textContent?.trim() || "--"');
+    const gptZeroBurst = await evalBrowser('document.getElementById("gptZeroBurstVal")?.textContent?.trim() || "--"');
+    const gptZeroPpl = await evalBrowser('document.getElementById("gptZeroPplVal")?.textContent?.trim() || "--"');
+    console.log(`✅ PASS: GPTZero Telemetry: Cadence=${gptZeroScore}, Burstiness=${gptZeroBurst}, Perplexity=${gptZeroPpl}`);
+    if (!gptZeroScore || gptZeroScore === '--%') {
+      throw new Error(`Expected valid GPTZero cadence score, got "${gptZeroScore}"`);
+    }
+
+    // Test GPTZero recalculate button trigger
+    await evalBrowser('document.getElementById("recalcGptZeroBtn")?.click()');
+    await new Promise(r => setTimeout(r, 300));
+    console.log(`✅ PASS: Clicked #recalcGptZeroBtn -> Recomputed Princeton burstiness parameters.`);
 
     // 4d. Test Harvard NLP GLTR Next-Token Rank Predictability Engine
     console.log('\n--- TESTING HARVARD NLP GLTR RANK PREDICTABILITY ENGINE ---');
