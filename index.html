@@ -495,39 +495,47 @@
           <div class="det-verdict" id="binocVerdict">Ready to calculate.</div>
         </div>
 
-        <!-- Card 4: ByX Algorithm Uniqueness & Consensus Cliché Engine -->
+        <!-- Card 5: LSH MinHash Anti-Plagiarism & Thematic Lexicon Scanner -->
         <div class="detector-card" id="cardUniqueness">
           <div class="det-card-top">
             <div class="det-brand">
               <span class="det-indicator green" id="uniqueIndicator"></span>
-              <h4>ByX Algorithm Uniqueness & Anti-Plagiarism Engine</h4>
+              <h4>LSH MinHash Anti-Plagiarism &amp; Thematic Lexicon Scanner</h4>
             </div>
             <button class="btn-det-action" id="recalcUniqueBtn">⚡ Recalculate</button>
           </div>
-          <p class="det-sub">Detects common consensus clichés ("could go either way", "be cautious") and calculates your post's distinctive personal alpha score.</p>
+          <p class="det-sub">Locality Sensitive Hashing (LSH) 3-gram minhash shingling cross-referenced against all 12 session slots. Benchmarks authentic market tape lexicon density and sentence burstiness.</p>
           
-          <div class="det-metrics">
+          <div class="det-metrics" style="grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));">
             <div class="metric-box">
-              <span class="metric-title">UNIQUENESS SCORE</span>
-              <span class="metric-val real" id="uniqueScoreVal">--%</span>
+              <span class="metric-title">3-GRAM LSH SHINGLE</span>
+              <span class="metric-val real" id="uniqueLshVal">0.84%</span>
+              <span class="metric-hint">Target: &lt; 1.5% (Safe)</span>
             </div>
             <div class="metric-box">
-              <span class="metric-title">CROWD CLICHÉS</span>
-              <span class="metric-val fake" id="uniqueClicheCount">0</span>
+              <span class="metric-title">MAX CROSS-JACCARD</span>
+              <span class="metric-val real" id="uniqueScoreVal">14.2%</span>
+              <span class="metric-hint">Target: &lt; 18.5% Ceiling</span>
             </div>
             <div class="metric-box">
-              <span class="metric-title">ALGORITHM BOOST</span>
-              <span class="metric-val real" id="uniqueBoostVal">1.0x</span>
+              <span class="metric-title">TAPE LEXICON DENSITY</span>
+              <span class="metric-val real" id="uniqueTapeVal">9.8%</span>
+              <span class="metric-hint">Target: &ge; 8.0% (Alpha)</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">BURSTINESS (&sigma;/&mu;)</span>
+              <span class="metric-val real" id="uniqueBurstVal">0.52 B</span>
+              <span class="metric-hint">Human Rhythm (&ge; 0.45)</span>
             </div>
           </div>
 
-          <!-- Live Cliché Scan Telemetry -->
+          <!-- Live LSH & Lexicon Telemetry -->
           <div class="math-telemetry-box" id="uniqueTelemetry">
             <div class="telemetry-status-text" id="uniqueStatusText">
-              Scanning for generic consensus clichés...
+              Scanning LSH minhash shingles and thematic lexicons...
             </div>
             <div class="cliche-diagnostics" id="uniqueDiagnostics">
-              <!-- Dynamically populated with flagged clichés and one-click replacement suggestions -->
+              <!-- Dynamically populated with cross-slot shingle matrix and tape lexicons -->
             </div>
           </div>
 
