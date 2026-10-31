@@ -125,6 +125,18 @@ const hookOptionsList = document.getElementById('hookOptionsList');
 const applyUniqueSignatureBtn = document.getElementById('applyUniqueSignatureBtn');
 const saveUniqueAsBaseBtn = document.getElementById('saveUniqueAsBaseBtn');
 
+// Detector Flagship Card: HumanizeAI.pro Multi-LLM Neural Detector
+const recalcHumanizeAiBtn = document.getElementById('recalcHumanizeAiBtn');
+const humanizeAiIndicator = document.getElementById('humanizeAiIndicator');
+const humanizeAiScoreVal = document.getElementById('humanizeAiScoreVal');
+const humanizeAiVerdictVal = document.getElementById('humanizeAiVerdictVal');
+const humanizeAiModelVal = document.getElementById('humanizeAiModelVal');
+const humanizeAiStatusText = document.getElementById('humanizeAiStatusText');
+const humanizeAiDistribution = document.getElementById('humanizeAiDistribution');
+const humanizeAiDiagnostics = document.getElementById('humanizeAiDiagnostics');
+const humanizeAiBar = document.getElementById('humanizeAiBar');
+const humanizeAiVerdict = document.getElementById('humanizeAiVerdict');
+
 // Detector Card 1: RoBERTa Vocabulary Entropy & Token Benchmark
 const recalcRobertaBtn = document.getElementById('recalcRobertaBtn');
 const robertaIndicator = document.getElementById('robertaIndicator');
@@ -181,6 +193,9 @@ const draftNextActionsContent = document.getElementById('draftNextActionsContent
 // Generic Crowd Consensus Clichés (Penalized by ByX Algorithm)
 // Initialize App
 async function initApp() {
+  if (window.EdgeFlow && window.EdgeFlow.HumanizeAiDetector && !window.EdgeFlow.humanizeAiDetector) {
+    window.EdgeFlow.humanizeAiDetector = new window.EdgeFlow.HumanizeAiDetector();
+  }
   await loadPostsData();
   initSessionAndPointsHub();
   switchDaySession(currentSessionId, false);
@@ -2434,6 +2449,24 @@ function setupEvents() {
   });
 
   // Dedicated Recalculate Buttons with visual calculation feedback
+  if (recalcHumanizeAiBtn) {
+    recalcHumanizeAiBtn.addEventListener('click', async () => {
+      recalcHumanizeAiBtn.classList.add('active-calc');
+      recalcHumanizeAiBtn.textContent = '⏳ Querying API...';
+      try {
+        const text = polishedContent ? polishedContent.value : '';
+        const res = await window.EdgeFlow.humanizeAiDetector.analyzeLive(text);
+        window.EdgeFlow.humanizeAiDetector.renderUI(res);
+        showToast(`✓ Live HumanizeAI Scan: ${res.verdict} (${res.humanScore}% Human)`);
+      } catch (err) {
+        showToast('⚠️ Live scan fallback to neural model');
+      } finally {
+        recalcHumanizeAiBtn.classList.remove('active-calc');
+        recalcHumanizeAiBtn.textContent = '⚡ Live Scan';
+      }
+    });
+  }
+
   if (recalcRobertaBtn) {
     recalcRobertaBtn.addEventListener('click', () => {
       recalcRobertaBtn.classList.add('active-calc');

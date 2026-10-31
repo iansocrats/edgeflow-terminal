@@ -108,8 +108,12 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// Run All 4 Detectors + ByX Content Dimensions Engine + Draft AI Audit Studio & Next Actions
+// Run All Detectors + HumanizeAI.pro Neural Engine + ByX Content Dimensions Engine + Draft AI Audit Studio & Next Actions
 function runAllDetectors(text) {
+  if (window.EdgeFlow && window.EdgeFlow.humanizeAiDetector) {
+    const humanizeRes = window.EdgeFlow.humanizeAiDetector.analyze(text);
+    window.EdgeFlow.humanizeAiDetector.renderUI(humanizeRes);
+  }
   runRobertaEntropy(text);
   runGltrPredictability(text);
   runBinocularsPerplexity(text);

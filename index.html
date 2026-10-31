@@ -215,6 +215,54 @@
           <h3>🛡️ Live AI Detectors (Rigorous Academic NLP Telemetry on Polished Text)</h3>
         </div>
 
+        <!-- Flagship Card: HumanizeAI.pro Multi-LLM Neural Detector (Live Deep-Learning Telemetry) -->
+        <div class="detector-card" id="cardHumanizeAi">
+          <div class="det-card-top">
+            <div class="det-brand">
+              <span class="det-indicator green" id="humanizeAiIndicator"></span>
+              <h4>HumanizeAI.pro Multi-LLM Neural Detector</h4>
+            </div>
+            <button class="btn-det-action" id="recalcHumanizeAiBtn">⚡ Live Scan</button>
+          </div>
+          <p class="det-sub">Direct deep-learning classification calibrated against ChatGPT, Claude, Gemini, Grok, and DeepSeek detection engines. Pinpoints robotic cadence and synthetic phrasing.</p>
+          
+          <div class="det-metrics">
+            <div class="metric-box">
+              <span class="metric-title">HUMAN AUTHENTICITY</span>
+              <span class="metric-val real" id="humanizeAiScoreVal">--%</span>
+              <span class="metric-hint">Target: &ge;95% (Safe)</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">VERDICT</span>
+              <span class="metric-val real" id="humanizeAiVerdictVal">Analyzing...</span>
+              <span class="metric-hint">Live Status</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-title">MODEL ATTRIBUTION</span>
+              <span class="metric-val real" id="humanizeAiModelVal">None (0% AI)</span>
+              <span class="metric-hint">Target: None</span>
+            </div>
+          </div>
+
+          <!-- Live Neural Telemetry -->
+          <div class="math-telemetry-box" id="humanizeAiTelemetry">
+            <div class="telemetry-status-text" id="humanizeAiStatusText">
+              Ready to verify against HumanizeAI.pro...
+            </div>
+            <div class="humanizeai-distribution" id="humanizeAiDistribution">
+              <!-- Dynamically populated with LLM probability distribution bars -->
+            </div>
+            <div class="humanizeai-diagnostics" id="humanizeAiDiagnostics">
+              <!-- Dynamically populated with AI detection triggers & guidance -->
+            </div>
+          </div>
+
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="humanizeAiBar" style="width: 0%"></div>
+          </div>
+          <div class="det-verdict" id="humanizeAiVerdict">Ready for analysis.</div>
+        </div>
+
         <!-- Card 1: RoBERTa Vocabulary Entropy & Repetition Benchmark -->
         <div class="detector-card" id="cardRoberta">
           <div class="det-card-top">
@@ -1041,12 +1089,13 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=80"></script>
-  <script src="js/detectors/BaseDetector.js?v=80"></script>
-  <script src="js/detectors/Detectors.js?v=80"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=80"></script>
-  <script src="js/forensics/ForensicHub.js?v=80"></script>
-  <script src="js/session/SessionManager.js?v=80"></script>
-  <script src="app.js?v=80"></script>
+  <script src="js/data/preloadedSlots.js?v=81"></script>
+  <script src="js/detectors/BaseDetector.js?v=81"></script>
+  <script src="js/detectors/HumanizeAiDetector.js?v=81"></script>
+  <script src="js/detectors/Detectors.js?v=81"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=81"></script>
+  <script src="js/forensics/ForensicHub.js?v=81"></script>
+  <script src="js/session/SessionManager.js?v=81"></script>
+  <script src="app.js?v=81"></script>
 </body>
 </html>

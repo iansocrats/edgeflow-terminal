@@ -22,7 +22,7 @@ function getDayScoreKey(sessionId) {
 }
 
 function getDaySessionStorageKey(sessionId) {
-  return `byx_session_posts_v80_${sessionId}`;
+  return `byx_session_posts_v81_${sessionId}`;
 }
 
 function getSessionScore(sessionId) {

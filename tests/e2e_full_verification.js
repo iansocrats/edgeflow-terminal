@@ -10,6 +10,35 @@ const BASE_DIR = path.resolve(__dirname, '..');
 // 1. Static HTTP Server
 const server = http.createServer((req, res) => {
   let reqPath = req.url.split('?')[0];
+  if (reqPath === '/api/humanizeai-proxy' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      const https = require('https');
+      const apiReq = https.request('https://www.humanizeai.pro/api/detector', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Origin': 'https://www.humanizeai.pro',
+          'Referer': 'https://www.humanizeai.pro/detector'
+        }
+      }, (apiRes) => {
+        res.writeHead(apiRes.statusCode, {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        });
+        apiRes.pipe(res);
+      });
+      apiReq.on('error', (err) => {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      });
+      apiReq.write(body);
+      apiReq.end();
+    });
+    return;
+  }
   if (reqPath === '/') reqPath = '/index.html';
   const filePath = path.join(BASE_DIR, reqPath);
   console.log(`[HTTP REQ] ${req.method} ${req.url} -> ${fs.existsSync(filePath) ? 'EXISTS' : 'NOT FOUND'}`);
@@ -386,6 +415,22 @@ async function runE2ETest() {
     // Restore original Post 1 content
     await evalBrowser('displayPost(currentPostIndex)');
     await new Promise(r => setTimeout(r, 200));
+
+    // 4c-2. Test Flagship HumanizeAI.pro Multi-LLM Neural Detector
+    console.log('\n--- TESTING HUMANIZEAI.PRO MULTI-LLM NEURAL DETECTOR ---');
+    const humanizeScore = await evalBrowser('document.getElementById("humanizeAiScoreVal")?.textContent?.trim() || "--"');
+    const humanizeVerdict = await evalBrowser('document.getElementById("humanizeAiVerdictVal")?.textContent?.trim() || "--"');
+    const humanizeModel = await evalBrowser('document.getElementById("humanizeAiModelVal")?.textContent?.trim() || "--"');
+    console.log(`✅ PASS: HumanizeAI.pro Telemetry: Authenticity=${humanizeScore}, Verdict="${humanizeVerdict}", Model="${humanizeModel}"`);
+    if (!humanizeScore || humanizeScore === '--%') {
+      throw new Error(`Expected valid HumanizeAI authenticity score, got "${humanizeScore}"`);
+    }
+
+    // Test Live Scan button trigger
+    await evalBrowser('document.getElementById("recalcHumanizeAiBtn")?.click()');
+    await new Promise(r => setTimeout(r, 600));
+    const liveScanVerdict = await evalBrowser('document.getElementById("humanizeAiVerdictVal")?.textContent?.trim() || "--"');
+    console.log(`✅ PASS: Clicked #recalcHumanizeAiBtn -> Live Scan Status: "${liveScanVerdict}"`);
 
     // 4d. Test Harvard NLP GLTR Next-Token Rank Predictability Engine
     console.log('\n--- TESTING HARVARD NLP GLTR RANK PREDICTABILITY ENGINE ---');
