@@ -1176,11 +1176,17 @@ function setDeskView(viewMode) {
   const pillBarAnalysisBtn = document.getElementById('pillBarAnalysisBtn');
   const btnOpenAnalysisModal = document.getElementById('btnOpenAnalysisModal');
   const pillBarComparisonBtn = document.getElementById('pillBarComparisonBtn');
+  const btnOpenMathHub = document.getElementById('btnOpenMathHub');
+  const pillBarMathHubBtn = document.getElementById('pillBarMathHubBtn');
 
   // Reset active classes on all nav buttons
-  [pillBarScoresBtn, btnOpenScoresModal, pillBarAnalysisBtn, btnOpenAnalysisModal, pillBarComparisonBtn].forEach(b => {
+  [pillBarScoresBtn, btnOpenScoresModal, pillBarAnalysisBtn, btnOpenAnalysisModal, pillBarComparisonBtn, btnOpenMathHub, pillBarMathHubBtn].forEach(b => {
     if (b) b.classList.remove('active');
   });
+  if (viewMode === 'analysis' || viewMode === 'scores' || viewMode === 'cross' || viewMode === 'comparison') {
+    if (btnOpenMathHub) btnOpenMathHub.classList.add('active');
+    if (pillBarMathHubBtn) pillBarMathHubBtn.classList.add('active');
+  }
 
   if (viewMode === 'posts') {
     if (postWorkspace) postWorkspace.classList.remove('hidden');
@@ -2269,6 +2275,10 @@ function setupEvents() {
   const returnPostsFromAnalysisBtn = document.getElementById('returnPostsFromAnalysisBtn');
   const goToScoresFromAnalysisBtn = document.getElementById('goToScoresFromAnalysisBtn');
 
+  const btnOpenMathHub = document.getElementById('btnOpenMathHub');
+  const pillBarMathHubBtn = document.getElementById('pillBarMathHubBtn');
+  if (btnOpenMathHub) btnOpenMathHub.addEventListener('click', () => setDeskView('analysis'));
+  if (pillBarMathHubBtn) pillBarMathHubBtn.addEventListener('click', () => setDeskView('analysis'));
   if (btnOpenScoresModal) btnOpenScoresModal.addEventListener('click', () => setDeskView('scores'));
   if (pillBarScoresBtn) pillBarScoresBtn.addEventListener('click', () => setDeskView('scores'));
   if (returnPostsFromScoresBtn) returnPostsFromScoresBtn.addEventListener('click', () => setDeskView('posts'));

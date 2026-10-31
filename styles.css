@@ -5078,3 +5078,18 @@ h1, h2, h3, h4, .rules-title, .matrix-title, .forensic-post-title, .analysis-tit
   font-weight: 700;
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
 }
+
+/* Unified Mathematical Hub Nav Button Styles */
+.btn-nav-action.math-hub-pill {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(56, 189, 248, 0.28));
+  color: #f8fafc;
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+  font-weight: 800;
+}
+.pill-action-btn.math-hub-btn {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(56, 189, 248, 0.22));
+  color: #f8fafc;
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  font-weight: 800;
+}
