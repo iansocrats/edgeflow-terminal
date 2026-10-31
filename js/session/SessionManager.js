@@ -305,10 +305,10 @@ function renderWeeklyAuditTable() {
     {
       epoch: 'Day 5',
       date: 'Fri, Oct 30',
-      posts: '10 posts',
+      posts: '11 posts',
       score: 19.0,
-      avg: '1.90',
-      passRate: '10/10 Rebound Verified',
+      avg: '1.73',
+      passRate: '11/11 Rebound Verified',
       cumulative: (day1Pts + day2Pts + day3Pts + day4Pts + 19.0).toFixed(1),
       status: 'CERTIFIED',
       badgeClass: 'certified',

@@ -2232,7 +2232,7 @@ function getCrossAnalysisForensicHtml() {
         </span>
       </div>
       <p style="font-size: 0.82rem; color: #cbd5e1; margin-bottom: 14px; line-height: 1.5;">
-        Quantitative post-mortem evaluating yesterday's Day 5 performance (<strong>19.0 points across 10 posts = 1.90 pts/post</strong>, rebounding <strong>+171.4%</strong> vs Day 4's 7.0-point collapse). Grounded in verified Bybit V5 live order flow and ByX content dimensions, this audit reveals what drove Day 5's recovery and deploys the sprint strategy for the <strong>final 2 days</strong> of our Monday–Sunday campaign (<strong>Day 6 Today &amp; Day 7 Tomorrow</strong>). With <strong>56.0 / 150.0 pts</strong> secured, closing the remaining 94.0-point gap requires a run-rate of <strong>47.0 pts/day</strong> to breach the 150-point jackpot floor, or ~25 pts/day to solidify Tier 2 (106 pts) before the new epoch starts Monday.
+        Quantitative post-mortem evaluating yesterday's Day 5 performance (<strong>19.0 points across 11 posts = 1.73 pts/post</strong>, rebounding <strong>+171.4%</strong> vs Day 4's 7.0-point collapse). Grounded in verified Bybit V5 live order flow and ByX content dimensions, this audit reveals what drove Day 5's recovery and deploys the sprint strategy for the <strong>final 2 days</strong> of our Monday–Sunday campaign (<strong>Day 6 Today &amp; Day 7 Tomorrow</strong>). With <strong>56.0 / 150.0 pts</strong> secured, closing the remaining 94.0-point gap requires a run-rate of <strong>47.0 pts/day</strong> to breach the 150-point jackpot floor, or ~25 pts/day to solidify Tier 2 (106 pts) before the new epoch starts Monday.
       </p>
 
       <div class="cross-kpi-grid">
@@ -2243,8 +2243,8 @@ function getCrossAnalysisForensicHtml() {
         </div>
         <div class="cross-kpi-box" style="border-left: 3px solid #10b981;">
           <span class="cross-kpi-label">DAY 5 REBOUND (YESTERDAY)</span>
-          <span class="cross-kpi-val" style="color: #34d399;">19.0 Pts (10 Posts)</span>
-          <span class="cross-kpi-sub">1.90 pts/post (+171.4% vs Day 4)</span>
+          <span class="cross-kpi-val" style="color: #34d399;">19.0 Pts (11 Posts)</span>
+          <span class="cross-kpi-sub">1.73 pts/post (+171.4% vs Day 4)</span>
         </div>
         <div class="cross-kpi-box" style="border-left: 3px solid #f59e0b;">
           <span class="cross-kpi-label">REQUIRED SPRINT RUN-RATE</span>
@@ -2317,9 +2317,9 @@ function getCrossAnalysisForensicHtml() {
             <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(16, 185, 129, 0.12);">
               <td style="padding: 8px 10px; font-weight: 700; color: #34d399;">Day 5 (Yesterday)</td>
               <td style="padding: 8px 10px; color: #94a3b8;">Fri, Oct 30</td>
-              <td style="padding: 8px 10px;">10</td>
+              <td style="padding: 8px 10px;">11</td>
               <td style="padding: 8px 10px; font-weight: 800; color: #34d399;">19.0</td>
-              <td style="padding: 8px 10px; color: #34d399; font-weight: 800;">1.90</td>
+              <td style="padding: 8px 10px; color: #34d399; font-weight: 800;">1.73</td>
               <td style="padding: 8px 10px;">Safe-haven $XAUT + 0 hashtags + new coins</td>
               <td style="padding: 8px 10px; color: #34d399;">Strong Rebound (+171.4%)</td>
             </tr>
@@ -2355,7 +2355,7 @@ function getCrossAnalysisForensicHtml() {
         <ul style="font-size: 0.74rem; color: #cbd5e1; line-height: 1.6; padding-left: 16px; margin: 0;">
           <li><strong>Contrarian Macro Differentiator ($XAUT):</strong> The Tether Gold setup diverged sharply from standard altcoin noise, generating superior dwell time and high ByX Originality marks.</li>
           <li><strong>Zero Hashtag Enforcement:</strong> Completely eliminating '#' campaign tags removed Bybit's automated bot/spam multiplier penalty.</li>
-          <li><strong>Quality Score Compliance:</strong> 10 out of 10 posts achieved Content Quality Scores &ge; 40, unlocking baseline reward qualification across every single submission.</li>
+          <li><strong>Quality Score Compliance:</strong> 11 out of 11 posts achieved Content Quality Scores &ge; 40, unlocking baseline reward qualification across every single submission.</li>
         </ul>
       </div>
 
