@@ -60,6 +60,39 @@ function initForensicAnalysisHub() {
   if (btnD5) btnD5.addEventListener('click', () => { currentForensicDay = 'day5'; renderForensicAnalysisHub(); });
 }
 
+
+function bindComparisonToggles() {
+  const toggleSplit = document.getElementById('toggleCompSplitBtn');
+  const toggleDiff = document.getElementById('toggleCompDiffBtn');
+  const toggleFlow = document.getElementById('toggleMetricFlowBtn');
+  const toggleEv = document.getElementById('toggleMetricEvBtn');
+
+  if (toggleSplit) {
+    toggleSplit.addEventListener('click', () => {
+      currentComparisonView = 'split';
+      renderForensicAnalysisHub();
+    });
+  }
+  if (toggleDiff) {
+    toggleDiff.addEventListener('click', () => {
+      currentComparisonView = 'diff';
+      renderForensicAnalysisHub();
+    });
+  }
+  if (toggleFlow) {
+    toggleFlow.addEventListener('click', () => {
+      currentComparisonMetric = 'flow';
+      renderForensicAnalysisHub();
+    });
+  }
+  if (toggleEv) {
+    toggleEv.addEventListener('click', () => {
+      currentComparisonMetric = 'ev';
+      renderForensicAnalysisHub();
+    });
+  }
+}
+
 function bindMetricPills() {
   // Metric Pills (Row 1)
   const pills = document.querySelectorAll('.metric-pill');
@@ -135,8 +168,9 @@ function bindMetricPills() {
 }
 
 function renderForensicAnalysisHub() {
-  const container = document.getElementById('forensicAnalysisContentContainer');
-  if (!container) return;
+  try {
+    const container = document.getElementById('forensicAnalysisContentContainer');
+    if (!container) return;
 
   const btnCross = document.getElementById('btnForensicCross');
   const btnQuant = document.getElementById('btnForensicQuantMatrix');
@@ -172,8 +206,11 @@ function renderForensicAnalysisHub() {
     container.innerHTML = getCrossAnalysisForensicHtml();
   }
 
-  bindMetricPills();
-  bindComparisonToggles();
+    if (typeof bindMetricPills === 'function') bindMetricPills();
+    if (typeof bindComparisonToggles === 'function') bindComparisonToggles();
+  } catch (err) {
+    console.error('Error inside renderForensicAnalysisHub:', err);
+  }
 }
 
 window.EdgeFlow.setForensicDay = function(day) {

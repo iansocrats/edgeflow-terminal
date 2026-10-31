@@ -36,7 +36,7 @@
             <button id="btnCycleDay" type="button" class="btn-cycle-day" title="Cycle day session: Day 1 → 2 → 3 → 4 → 5">
               <span>↻ Cycle</span>
             </button>
-            <button id="btnOpenMathHub" class="btn-nav-action math-hub-pill" title="Open Unified Mathematical Hub: Scores, Cross-Analysis & Quant Models">
+            <button id="btnOpenMathHub" class="btn-nav-action math-hub-pill" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('quant_matrix');if(typeof setDeskView==='function')setDeskView('analysis');" title="Open Unified Mathematical Hub: Scores, Cross-Analysis & Quant Models">
               <span>📐 Mathematical Hub (56.0p / 150p)</span>
             </button>
           </div>
@@ -55,7 +55,7 @@
         <!-- Injected via JavaScript (Post 1 to 10 with live status indicators) -->
       </div>
       <div class="pills-pinned-actions">
-        <button id="pillBarMathHubBtn" class="pill-action-btn math-hub-btn" title="Open Unified Mathematical Hub: Scores, Cross-Analysis, Matrices & Bybit Telemetry">
+        <button id="pillBarMathHubBtn" class="pill-action-btn math-hub-btn" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('quant_matrix');if(typeof setDeskView==='function')setDeskView('analysis');" title="Open Unified Mathematical Hub: Scores, Cross-Analysis, Matrices & Bybit Telemetry">
           <span class="icon">📐</span>
           <span class="label">Mathematical Hub (56.0p)</span>
         </button>
@@ -1057,37 +1057,37 @@
         <!-- Interactive Epoch Tabs (Cross-Analysis, Matrix Comparison, Other Creator, Day 5 Active Desk, Day 4 Archive, Day 3 Archive) -->
         <!-- Interactive Epoch Tabs (Quant Matrix, Cross-Analysis, Matrix Comparison, Day 6 Active Desk, Daily Scores, Other Creator, Day 5 Winner) -->
       <div class="forensic-epoch-tabs" role="tablist">
-        <button class="forensic-tab-btn quant active" id="btnForensicQuantMatrix" data-fday="quant_matrix" role="tab" aria-selected="true" title="Academic Mathematics Hub: Information Theory & Multi-Language Quant Suite">
+        <button class="forensic-tab-btn quant active" id="btnForensicQuantMatrix" data-fday="quant_matrix" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('quant_matrix');" role="tab" aria-selected="true" title="Academic Mathematics Hub: Information Theory & Multi-Language Quant Suite">
           <span class="epoch-icon">🔢</span>
           <span class="epoch-title">Live Quant Matrix</span>
           <span class="epoch-subtag">6 Visualizers</span>
         </button>
-        <button class="forensic-tab-btn cross" id="btnForensicCross" data-fday="cross" role="tab" aria-selected="false" title="Days 1–5 Attribution Cross-Analysis & Post-Mortem">
+        <button class="forensic-tab-btn cross" id="btnForensicCross" data-fday="cross" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('cross');" role="tab" aria-selected="false" title="Days 1–5 Attribution Cross-Analysis & Post-Mortem">
           <span class="epoch-icon">📈</span>
           <span class="epoch-title">Cross-Analysis</span>
           <span class="epoch-subtag">Days 1–5</span>
         </button>
-        <button class="forensic-tab-btn comp" id="btnForensicComparison" data-fday="comparison" role="tab" aria-selected="false" title="Matrix Comparison: Mine vs Other Creator">
+        <button class="forensic-tab-btn comp" id="btnForensicComparison" data-fday="comparison" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('comparison');" role="tab" aria-selected="false" title="Matrix Comparison: Mine vs Other Creator">
           <span class="epoch-icon">⚖️</span>
           <span class="epoch-title">Matrix Comparison</span>
           <span class="epoch-subtag">Split / Diff Δ</span>
         </button>
-        <button class="forensic-tab-btn d6" id="btnForensicDay6" data-fday="day6" role="tab" aria-selected="false" title="Day 6: Saturday, Oct 31 (TODAY) — 12 High-Cap Setups">
+        <button class="forensic-tab-btn d6" id="btnForensicDay6" data-fday="day6" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('day6');" role="tab" aria-selected="false" title="Day 6: Saturday, Oct 31 (TODAY) — 12 High-Cap Setups">
           <span class="epoch-icon">🔥</span>
           <span class="epoch-title">Day 6: Today</span>
           <span class="epoch-subtag">12 Setups</span>
         </button>
-        <button class="forensic-tab-btn scores" id="btnForensicScoresTab" data-fday="scores_tab" role="tab" aria-selected="false" title="Bybit Leaderboard Sprint & Daily Scores">
+        <button class="forensic-tab-btn scores" id="btnForensicScoresTab" data-fday="scores_tab" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('scores_tab');" role="tab" aria-selected="false" title="Bybit Leaderboard Sprint & Daily Scores">
           <span class="epoch-icon">🏆</span>
           <span class="epoch-title">Daily Scores</span>
           <span class="epoch-subtag">56.0 / 150p</span>
         </button>
-        <button class="forensic-tab-btn creator" id="btnForensicCreatorBoss" data-fday="creator_boss" role="tab" aria-selected="false" title="Other Creator Benchmark: Crypto BOSS Trade Analysis">
+        <button class="forensic-tab-btn creator" id="btnForensicCreatorBoss" data-fday="creator_boss" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('creator_boss');" role="tab" aria-selected="false" title="Other Creator Benchmark: Crypto BOSS Trade Analysis">
           <span class="epoch-icon">🕵️</span>
           <span class="epoch-title">Other Creator</span>
           <span class="epoch-subtag">Crypto BOSS</span>
         </button>
-        <button class="forensic-tab-btn d5" id="btnForensicDay5" data-fday="day5" role="tab" aria-selected="false" title="Day 5 Archive: Fri, Oct 30 (19.0 pts Winner 🏆)">
+        <button class="forensic-tab-btn d5" id="btnForensicDay5" data-fday="day5" onclick="if(window.EdgeFlow&&window.EdgeFlow.setForensicDay)window.EdgeFlow.setForensicDay('day5');" role="tab" aria-selected="false" title="Day 5 Archive: Fri, Oct 30 (19.0 pts Winner 🏆)">
           <span class="epoch-icon">📁</span>
           <span class="epoch-title">Day 5 Winner</span>
           <span class="epoch-subtag">19.0p (11 Posts)</span>
@@ -1181,15 +1181,15 @@
   </div>
 
   <!-- Modular Architecture: OOAD Subsystems -->
-  <script src="js/data/preloadedSlots.js?v=82"></script>
-  <script src="js/detectors/BaseDetector.js?v=82"></script>
-  <script src="js/detectors/HumanizeAiDetector.js?v=82"></script>
-  <script src="js/detectors/ZeroGptDetector.js?v=82"></script>
-  <script src="js/detectors/GptZeroBurstinessDetector.js?v=82"></script>
-  <script src="js/detectors/Detectors.js?v=82"></script>
-  <script src="js/forensics/ForensicVisualizer.js?v=82"></script>
-  <script src="js/forensics/ForensicHub.js?v=82"></script>
-  <script src="js/session/SessionManager.js?v=82"></script>
-  <script src="app.js?v=82"></script>
+  <script src="js/data/preloadedSlots.js?v=87"></script>
+  <script src="js/detectors/BaseDetector.js?v=87"></script>
+  <script src="js/detectors/HumanizeAiDetector.js?v=87"></script>
+  <script src="js/detectors/ZeroGptDetector.js?v=87"></script>
+  <script src="js/detectors/GptZeroBurstinessDetector.js?v=87"></script>
+  <script src="js/detectors/Detectors.js?v=87"></script>
+  <script src="js/forensics/ForensicVisualizer.js?v=87"></script>
+  <script src="js/forensics/ForensicHub.js?v=87"></script>
+  <script src="js/session/SessionManager.js?v=87"></script>
+  <script src="app.js?v=87"></script>
 </body>
 </html>
