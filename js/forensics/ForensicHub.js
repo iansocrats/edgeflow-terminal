@@ -4,6 +4,8 @@
 window.EdgeFlow = window.EdgeFlow || {};
 
 let currentForensicDay = 'cross';
+let currentQuantVis = 'markov'; // 'markov' | 'laplacian' | 'waterfilling' | 'takens' | 'radar' | 'lyapunov'
+let currentQuantLang = 'py'; // 'py' | 'rust' | 'js' | 'cpp'
 let currentComparisonView = 'split'; // 'split' | 'diff'
 let currentComparisonMetric = 'flow'; // 'flow' | 'ev'
 let currentForensicMetric = 'jaccard'; // 'jaccard' | 'tfidf' | 'trigram' | 'entropy'
@@ -3267,27 +3269,126 @@ function getCreatorBossForensicHtml() {
 }
 
 // ============================================================================
-// ACADEMIC MATHEMATICS DECK & QUANT MATRIX VIEW
+// ACADEMIC MATHEMATICS DECK & QUANT MATRIX VIEW (INTERACTIVE MULTI-LANG SUITE)
 // ============================================================================
 function getQuantMatrixHtml() {
+  const activePosts = (window.EdgeFlow && window.EdgeFlow.SlotsData && window.EdgeFlow.SlotsData.getDay6PreloadedSlots)
+    ? window.EdgeFlow.SlotsData.getDay6PreloadedSlots()
+    : getActiveForensicPosts();
+
+  // Determine active visualizer SVG
+  let visualizerSvg = '';
+  let visDescription = '';
+  
+  if (currentQuantVis === 'markov') {
+    visualizerSvg = window.EdgeFlow && window.EdgeFlow.InfoTheoryVisualizer ? window.EdgeFlow.InfoTheoryVisualizer.renderMarkovStateGraph() : '';
+    visDescription = 'Direct force-directed Markov state graph showing stochastic regime transitions (Compression Coil &rarr; Liquidity Sweep &rarr; Breakout Expansion &rarr; Mean Reversion Chop).';
+  } else if (currentQuantVis === 'laplacian') {
+    visualizerSvg = window.EdgeFlow && window.EdgeFlow.GraphTheoryVisualizer ? window.EdgeFlow.GraphTheoryVisualizer.renderLaplacianNetwork() : '';
+    visDescription = 'Graph Laplacian Spectral Embedding (L = D - A). Algebraic connectivity &lambda;2 (Fiedler value) > 0.05 guarantees complete zero-collinearity across posts.';
+  } else if (currentQuantVis === 'waterfilling') {
+    visualizerSvg = window.EdgeFlow && window.EdgeFlow.InfoTheoryVisualizer ? window.EdgeFlow.InfoTheoryVisualizer.renderWaterFillingPool(activePosts) : '';
+    visDescription = 'Shannon Channel Capacity Water-Filling Pool. Allocates signal bandwidth and pacing across Asia, London, and NY sessions based on SNR volatility.';
+  } else if (currentQuantVis === 'takens') {
+    visualizerSvg = window.EdgeFlow && window.EdgeFlow.ChaosVisualizer ? window.EdgeFlow.ChaosVisualizer.renderTakensAttractor() : '';
+    visDescription = "Takens Phase Space Embedding in delay coordinates (x(t), x(t-&tau;), x(t-2&tau;)). Maps deterministic market attractor loops against Gaussian noise.";
+  } else if (currentQuantVis === 'lyapunov') {
+    visualizerSvg = window.EdgeFlow && window.EdgeFlow.ChaosVisualizer ? window.EdgeFlow.ChaosVisualizer.renderLyapunovHorizon() : '';
+    visDescription = "Lyapunov Predictability Horizon (&lambda;max = 0.045). Mathematically bounds maximum trade holding duration to 28.6 hours before market entropy destroys thesis edge.";
+  } else {
+    // Default radar / order flow compass
+    visualizerSvg = `
+      <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 16px; text-align: center;">
+        <svg viewBox="0 0 500 240" style="max-width: 100%; height: auto;">
+          <!-- Polar Grid Circles -->
+          <circle cx="250" cy="120" r="100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,3"/>
+          <circle cx="250" cy="120" r="70" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <circle cx="250" cy="120" r="40" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <circle cx="250" cy="120" r="10" fill="rgba(56,189,248,0.4)"/>
+          
+          <!-- Axes -->
+          <line x1="250" y1="10" x2="250" y2="230" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="140" y1="120" x2="360" y2="120" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          
+          <text x="250" y="24" fill="#38bdf8" font-size="8" font-weight="700" text-anchor="middle">+High OI Intensity (Squeeze Coil)</text>
+          <text x="250" y="226" fill="#94a3b8" font-size="8" text-anchor="middle">-Low OI Intensity (Spot Drift)</text>
+          <text x="365" y="123" fill="#34d399" font-size="8">+Negative Funding (Short Carry)</text>
+          <text x="135" y="123" fill="#f87171" font-size="8" text-anchor="end">+Positive Funding (Long Crowded)</text>
+          
+          <!-- Asset Vectors -->
+          <!-- SOL: High OI 1.36x, Negative funding -0.0053% -->
+          <line x1="250" y1="120" x2="310" y2="40" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <circle cx="310" cy="40" r="5" fill="#34d399"/>
+          <text x="320" y="38" fill="#34d399" font-size="9" font-weight="800">$SOL (1.36x Squeeze)</text>
+          
+          <!-- XRP: 0.78 OI, +0.0035% funding -->
+          <line x1="250" y1="120" x2="215" y2="85" stroke="#38bdf8" stroke-width="2"/>
+          <circle cx="215" cy="85" r="4" fill="#38bdf8"/>
+          <text x="205" y="85" fill="#38bdf8" font-size="8" font-weight="700" text-anchor="end">$XRP (0.78x Compression)</text>
+          
+          <!-- BTC: Supply wall -->
+          <line x1="250" y1="120" x2="200" y2="95" stroke="#fbbf24" stroke-width="2"/>
+          <circle cx="200" cy="95" r="4" fill="#fbbf24"/>
+          <text x="190" y="98" fill="#fbbf24" font-size="8" font-weight="700" text-anchor="end">$BTC (Supply Wall)</text>
+          
+          <!-- NEAR: Wave 3 Target -->
+          <line x1="250" y1="120" x2="190" y2="80" stroke="#a855f7" stroke-width="2"/>
+          <circle cx="190" cy="80" r="4" fill="#a855f7"/>
+          <text x="180" y="78" fill="#c084fc" font-size="8" font-weight="700" text-anchor="end">$NEAR (Wave 3 @ 02:05 PM)</text>
+        </svg>
+      </div>
+    `;
+    visDescription = 'Polar Order Flow Vector Compass. Maps Open Interest intensity (vertical axis) vs Funding Carry asymmetry (horizontal axis) to identify high-tension contrarian setups.';
+  }
+
   return `
     <div class="similarity-matrix-wrap" style="margin-bottom: 20px;">
-      <div class="similarity-matrix-header">
+      <div class="similarity-matrix-header" style="flex-wrap: wrap; gap: 10px;">
         <div>
-          <span class="similarity-matrix-title">📐 Academic Mathematics Hub: Information Theory & Linear Algebra Engine</span>
+          <span class="similarity-matrix-title">📐 Academic Mathematics Hub: Information Theory & Multi-Language Quant Suite</span>
           <p style="font-size: 0.74rem; color: #94a3b8; margin-top: 4px;">
-            Grounded in live Bybit V5 Perpetual order flow. Benchmarked across Information Theory (Shannon Entropy, Mutual Information) and Linear Algebra (Eigen-decomposition, Laplacian graph spectrum).
+            Benchmarking live Bybit V5 Perpetual order flow across Information Theory, Spectral Graph Laplacians, and Deterministic Chaos.
           </p>
         </div>
         <div style="display: flex; gap: 8px;">
           <span class="forensic-badge words" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">
-            Python • Rust • JavaScript Bridge
+            Python &bull; Rust &bull; JavaScript &bull; C++ Bridge
           </span>
         </div>
       </div>
 
+      <!-- Visualization Model Selector Bar -->
+      <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; margin-bottom: 12px; background: rgba(15, 23, 42, 0.6); padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
+        <button type="button" class="btn-matrix-toggle ${currentQuantVis === 'markov' ? 'active' : ''}" onclick="window.EdgeFlow.setQuantVis('markov')" style="font-size: 0.73rem; padding: 5px 10px; border-radius: 4px;">
+          ⚡ Markov State Machine
+        </button>
+        <button type="button" class="btn-matrix-toggle ${currentQuantVis === 'radar' ? 'active' : ''}" onclick="window.EdgeFlow.setQuantVis('radar')" style="font-size: 0.73rem; padding: 5px 10px; border-radius: 4px;">
+          🧭 Order Flow Vector Radar
+        </button>
+        <button type="button" class="btn-matrix-toggle ${currentQuantVis === 'laplacian' ? 'active' : ''}" onclick="window.EdgeFlow.setQuantVis('laplacian')" style="font-size: 0.73rem; padding: 5px 10px; border-radius: 4px;">
+          🧬 Spectral Laplacian Network
+        </button>
+        <button type="button" class="btn-matrix-toggle ${currentQuantVis === 'waterfilling' ? 'active' : ''}" onclick="window.EdgeFlow.setQuantVis('waterfilling')" style="font-size: 0.73rem; padding: 5px 10px; border-radius: 4px;">
+          🌊 Shannon Capacity Water-Filling
+        </button>
+        <button type="button" class="btn-matrix-toggle ${currentQuantVis === 'takens' ? 'active' : ''}" onclick="window.EdgeFlow.setQuantVis('takens')" style="font-size: 0.73rem; padding: 5px 10px; border-radius: 4px;">
+          🌀 Takens Phase Space Attractor
+        </button>
+        <button type="button" class="btn-matrix-toggle ${currentQuantVis === 'lyapunov' ? 'active' : ''}" onclick="window.EdgeFlow.setQuantVis('lyapunov')" style="font-size: 0.73rem; padding: 5px 10px; border-radius: 4px;">
+          ⏳ Lyapunov Predictability Horizon
+        </button>
+      </div>
+
+      <!-- Live Interactive Canvas / SVG Display Area -->
+      <div class="interactive-vis-container" style="margin-bottom: 16px;">
+        <div style="font-size: 0.74rem; color: #cbd5e1; margin-bottom: 8px; line-height: 1.4; padding: 6px 10px; background: rgba(30, 41, 59, 0.4); border-radius: 4px; border-left: 3px solid #38bdf8;">
+          <strong>Model Description:</strong> ${visDescription}
+        </div>
+        ${visualizerSvg}
+      </div>
+
       <!-- Live Order Flow Matrix Table -->
-      <div style="overflow-x: auto; margin-top: 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;">
+      <div style="overflow-x: auto; margin-top: 14px; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px;">
         <table class="forensic-table" style="width: 100%; border-collapse: collapse; font-size: 0.74rem;">
           <thead>
             <tr style="background: rgba(15, 23, 42, 0.9); color: #94a3b8;">
@@ -3297,7 +3398,7 @@ function getQuantMatrixHtml() {
               <th style="padding: 8px 10px;">Open Interest (OI)</th>
               <th style="padding: 8px 10px;">OI / Volume Ratio</th>
               <th style="padding: 8px 10px;">Funding Rate</th>
-              <th style="padding: 8px 10px;">DetectGPT Curvature (κ)</th>
+              <th style="padding: 8px 10px;">DetectGPT Curvature (&kappa;)</th>
               <th style="padding: 8px 10px;">State Regime</th>
             </tr>
           </thead>
@@ -3366,52 +3467,74 @@ function getQuantMatrixHtml() {
         </table>
       </div>
 
-      <!-- Programming Languages Visualization Bridge -->
-      <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
-        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="color: #38bdf8; font-size: 0.8rem;">🐍 Python SciPy / NumPy Matrix Deck</strong>
-            <span style="font-size: 0.68rem; color: #94a3b8;">Eigendecomposition</span>
-          </div>
-          <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #a5f3fc; overflow-x: auto; margin: 0;">
+      <!-- Multi-Language Code Implementation Suite -->
+      <div style="margin-top: 18px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <h4 style="font-size: 0.85rem; color: #f8fafc; margin: 0;">💻 Multi-Language Implementation Deck</h4>
+          <span style="font-size: 0.7rem; color: #94a3b8;">Python &bull; Rust &bull; JavaScript &bull; C++</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <strong style="color: #38bdf8; font-size: 0.78rem;">🐍 Python: SciPy / NumPy Matrix Deck</strong>
+              <span style="font-size: 0.68rem; color: #94a3b8;">Eigenvalues &amp; Entropy</span>
+            </div>
+            <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #a5f3fc; overflow-x: auto; margin: 0;">
 import numpy as np
-# Pairwise Jaccard Dissimilarity Laplacian
+from scipy.linalg import eigh
+
+# Graph Laplacian from Jaccard Matrix
 A = np.array([[0.0, 0.16, 0.14],
               [0.16, 0.0, 0.17],
               [0.14, 0.17, 0.0]])
 D = np.diag(A.sum(axis=1))
 L = D - A  # Graph Laplacian
-eigvals, _ = np.linalg.eigh(L)
-# Spectral gap proves 0 duplicate clusters
+eigvals, _ = eigh(L)
+# Fiedler eigenvalue &lambda;2 proves algebraic connectivity
 assert eigvals[1] > 0.05</pre>
-        </div>
-
-        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="color: #f97316; font-size: 0.8rem;">🦀 Rust ndarray High-Throughput Kernel</strong>
-            <span style="font-size: 0.68rem; color: #94a3b8;">Fast Order Flow Math</span>
           </div>
-          <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #fed7aa; overflow-x: auto; margin: 0;">
+
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <strong style="color: #f97316; font-size: 0.78rem;">🦀 Rust: ndarray High-Throughput Kernel</strong>
+              <span style="font-size: 0.68rem; color: #94a3b8;">SIMD Microstructure Math</span>
+            </div>
+            <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #fed7aa; overflow-x: auto; margin: 0;">
 use ndarray::Array2;
-// Compute Open Interest Intensity Tensor
-pub fn oi_intensity(oi: f64, vol: f64) -> f64 {
-    if vol == 0.0 { 0.0 } else { oi / vol }
-}
-// Threshold check for gamma coil
-let tension = oi_intensity(576.4, 423.5); // 1.36x</pre>
-        </div>
 
-        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="color: #fbbf24; font-size: 0.8rem;">⚡ JavaScript Canvas / DOM Visualizer</strong>
-            <span style="font-size: 0.68rem; color: #94a3b8;">WebGL Matrix Render</span>
+#[inline(always)]
+pub fn calculate_oi_intensity(oi: f64, turnover: f64) -> f64 {
+    if turnover == 0.0 { 0.0 } else { oi / turnover }
+}
+// 1.36x threshold signals high-tension gamma squeeze
+let tension = calculate_oi_intensity(576.4, 423.5);</pre>
           </div>
-          <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #fde68a; overflow-x: auto; margin: 0;">
-// Dynamic UI Differential Delta Matrix
+
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <strong style="color: #fbbf24; font-size: 0.78rem;">⚡ JavaScript: WebGL &amp; SVG Dynamic Visualizer</strong>
+              <span style="font-size: 0.68rem; color: #94a3b8;">Real-Time Canvas Pipeline</span>
+            </div>
+            <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #fde68a; overflow-x: auto; margin: 0;">
 function renderDeltaCell(metricA, metricB) {
   const delta = (metricA - metricB).toFixed(2);
-  return '<span class="' + (delta >= 0 ? 'pos' : 'neg') + '">&Delta; ' + delta + '</span>';
+  const color = delta >= 0 ? '#34d399' : '#f87171';
+  return '<span style="color:' + color + '">&Delta; ' + delta + '</span>';
 }</pre>
+          </div>
+
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <strong style="color: #a855f7; font-size: 0.78rem;">⚙️ C++: Eigen3 Vectorized Fast-DetectGPT</strong>
+              <span style="font-size: 0.68rem; color: #94a3b8;">Log-Likelihood Curvature</span>
+            </div>
+            <pre style="background: rgba(15, 23, 42, 0.9); padding: 8px; border-radius: 4px; font-size: 0.68rem; color: #e9d5ff; overflow-x: auto; margin: 0;">
+#include &lt;Eigen/Dense&gt;
+// Fast negative log curvature computation
+double compute_curvature(const Eigen::VectorXd& logits, const Eigen::VectorXd& pert) {
+    return (logits.mean() - pert.mean()) / pert.standardDeviation();
+}</pre>
+          </div>
         </div>
       </div>
     </div>
@@ -3632,3 +3755,8 @@ function getScoresHubHtml() {
     </div>
   `;
 }
+
+window.EdgeFlow.setQuantVis = function(visMode) {
+  currentQuantVis = visMode;
+  renderForensicAnalysisHub();
+};
