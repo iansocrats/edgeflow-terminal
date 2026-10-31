@@ -37,7 +37,7 @@ initRustWasm();
 
 const STORAGE_KEY = 'byx_post_studio_day5_fresh_v73';
 const SESSION_KEY = 'byx_active_session_id_v73';
-let currentSessionId = 'day5';
+let currentSessionId = 'day6';
 let currentPostIndex = 0;
 let postsData = [];
 let currentViewMode = 'plain'; // Default to clean plain text per user request
@@ -204,8 +204,10 @@ function setTodayDate() {
       currentDateBadge.textContent = 'Day 4 Archive (7.0 pts • 13 Posts)';
     } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'creator_boss') {
       currentDateBadge.textContent = '👤 Crypto BOSS Benchmark Archive (3 Setups • UID 535233761)';
+    } else if (typeof currentSessionId !== 'undefined' && currentSessionId === 'day5') {
+      currentDateBadge.textContent = 'Day 5 Archive (19.0 pts • Record Winner 🏆)';
     } else {
-      currentDateBadge.textContent = 'Day 5 Active Desk (Thu, Oct 30) • Recovery Sprint';
+      currentDateBadge.textContent = 'Day 6 Active Desk (Sat, Oct 31) • 12 High-Cap Setups';
     }
   }
 }
@@ -252,6 +254,15 @@ async function loadPostsData() {
     if (!postsData || postsData.length < 3 || postsData[0].coin !== '$ETH') {
       postsData = (typeof getCryptoBossPreloadedSlots === 'function') ? getCryptoBossPreloadedSlots() : [];
       localStorage.setItem(getDaySessionStorageKey('creator_boss'), JSON.stringify(postsData));
+    }
+  }
+
+  // Ensure Day 6 is 100% preloaded with the 12 high-cap setups
+  if (currentSessionId === 'day6') {
+    const d6Text = (postsData && postsData[0] && postsData[0].improved) ? postsData[0].improved : '';
+    if (!postsData || postsData.length < 12 || postsData[0].coin !== '$BTC' || postsData[1].coin !== '$ETH' || !d6Text.includes('$77,240') || (d6Text.split('\n')[0] || '').length > 50) {
+      postsData = (typeof getDay6PreloadedSlots === 'function') ? getDay6PreloadedSlots() : createEmptySlots();
+      localStorage.setItem(getDaySessionStorageKey('day6'), JSON.stringify(postsData));
     }
   }
 

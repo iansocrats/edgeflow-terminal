@@ -42,7 +42,8 @@ function initForensicAnalysisHub() {
   const btnCross = document.getElementById('btnForensicCross');
   const btnComp = document.getElementById('btnForensicComparison');
   const btnBoss = document.getElementById('btnForensicCreatorBoss');
-  const btnD5 = document.getElementById('btnForensicDay5');
+  const btnD6 = document.getElementById('btnForensicDay6');
+    const btnD5 = document.getElementById('btnForensicDay5');
   const btnD4 = document.getElementById('btnForensicDay4');
   const btnD3 = document.getElementById('btnForensicDay3');
 
@@ -170,14 +171,16 @@ function renderForensicAnalysisHub() {
   const btnCross = document.getElementById('btnForensicCross');
   const btnComp = document.getElementById('btnForensicComparison');
   const btnBoss = document.getElementById('btnForensicCreatorBoss');
-  const btnD5 = document.getElementById('btnForensicDay5');
+  const btnD6 = document.getElementById('btnForensicDay6');
+    const btnD5 = document.getElementById('btnForensicDay5');
   const btnD4 = document.getElementById('btnForensicDay4');
   const btnD3 = document.getElementById('btnForensicDay3');
 
   if (btnCross) btnCross.classList.toggle('active', currentForensicDay === 'cross');
   if (btnComp) btnComp.classList.toggle('active', currentForensicDay === 'comparison');
   if (btnBoss) btnBoss.classList.toggle('active', currentForensicDay === 'creator_boss');
-  if (btnD5) btnD5.classList.toggle('active', currentForensicDay === 'day5');
+  if (btnD6) btnD6.classList.toggle('active', currentForensicDay === 'day6');
+    if (btnD5) btnD5.classList.toggle('active', currentForensicDay === 'day5');
   if (btnD4) btnD4.classList.toggle('active', currentForensicDay === 'day4');
   if (btnD3) btnD3.classList.toggle('active', currentForensicDay === 'day3');
 

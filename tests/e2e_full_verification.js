@@ -149,20 +149,20 @@ async function runE2ETest() {
     // 2. Check Day 5 Active Recovery Desk Post Pills rendered
     const pillCount = await evalBrowser('document.querySelectorAll("#pillsContainer .pill-item").length');
     console.log(`✅ PASS: Found ${pillCount} post pills in Day 5 carousel.`);
-    if (pillCount !== 10) throw new Error(`Expected 10 pills on Day 5, got ${pillCount}`);
+    if (pillCount !== 12) throw new Error(`Expected 12 pills on Day 6, got ${pillCount}`);
 
     // 3. Check Post 1 Content loaded on Day 5 ($XRP)
     const postTitle = await evalBrowser('document.getElementById("currentPostTitle").textContent');
     const postContent = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Active Post Title: "${postTitle}"`);
     console.log(`✅ PASS: Active Post Content length: ${postContent.length} chars.`);
-    if (!postTitle.includes('XRP')) throw new Error('Expected Post 1 on Day 5 to be XRP');
+    if (!postTitle.includes('BTC')) throw new Error('Expected Post 1 on Day 6 to be BTC');
 
     // Verify all 10 Day 5 coins match the new-coin portfolio
     const day5Coins = await evalBrowser('postsData.map(p => p.coin)');
-    const expectedDay5Coins = ['$XRP', '$PARTI', '$LTC', '$SEI', '$ICP', '$MORPHO', '$XAUT', '$PUMPFUN', '$VVV', '$ONDO'];
+    const expectedDay6Coins = ['$BTC', '$ETH', '$SOL', '$XRP', '$NEAR', '$BNB', '$SUI', '$DOGE', '$XAUT', '$AAVE', '$LINK', '$ONDO'];
     console.log(`✅ PASS: Day 5 10 New-Coin Portfolio: ${day5Coins.join(', ')}`);
-    if (JSON.stringify(day5Coins) !== JSON.stringify(expectedDay5Coins)) {
+    if (JSON.stringify(day5Coins) !== JSON.stringify(expectedDay6Coins)) {
       throw new Error(`Expected Day 5 coins ${expectedDay5Coins.join(', ')}, got ${day5Coins.join(', ')}`);
     }
 
@@ -174,7 +174,7 @@ async function runE2ETest() {
     const contentP2 = await evalBrowser('document.getElementById("polishedContent").value');
     console.log(`✅ PASS: Clicked Pill 2 -> New Title: "${titleP2}"`);
     console.log(`✅ PASS: Post 2 Content loaded (${contentP2.length} chars, contains: "${contentP2.slice(0, 40)}...")`);
-    if (!titleP2.includes('PARTI')) throw new Error('Expected Post 2 on Day 5 to be PARTI');
+    if (!titleP2.includes('ETH')) throw new Error('Expected Post 2 on Day 6 to be ETH');
 
     // 4b. Test Day 4 Certified Archive Preservation (13 posts, $MSFT, $ETH, $BTC)
     console.log('\n--- TESTING DAY 4 CERTIFIED ARCHIVE PRESERVATION ---');

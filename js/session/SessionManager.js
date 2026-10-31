@@ -22,7 +22,7 @@ function getDayScoreKey(sessionId) {
 }
 
 function getDaySessionStorageKey(sessionId) {
-  return `byx_session_posts_v79_${sessionId}`;
+  return `byx_session_posts_v80_${sessionId}`;
 }
 
 function getSessionScore(sessionId) {
@@ -35,6 +35,9 @@ function getSessionScore(sessionId) {
   if (sessionId === 'day2') return 11.0;
   if (sessionId === 'day3') return 10.0;
   if (sessionId === 'day4') return 7.0;
+  if (sessionId === 'day5') return 19.0;
+  if (sessionId === 'day6') return 0.0;
+  if (sessionId === 'day7') return 0.0;
   if (sessionId === 'creator_boss') return 97.7;
   return 0.0;
 }
@@ -165,8 +168,10 @@ function updateWeeklyProgress() {
   const day2Score = getSessionScore('day2');
   const day3Score = getSessionScore('day3');
   const day4Score = getSessionScore('day4') || 7.0;
-  const day5Score = getSessionScore('day5') || 0.0;
-  const weeklyTotal = day1Score + day2Score + day3Score + day4Score + day5Score;
+  const day5Score = getSessionScore('day5') || 19.0;
+  const day6Score = getSessionScore('day6') || 0.0;
+  const day7Score = getSessionScore('day7') || 0.0;
+  const weeklyTotal = day1Score + day2Score + day3Score + day4Score + day5Score + day6Score + day7Score;
   const targetPoints = 150.0;
 
   if (weeklyAccumTotalText) {
@@ -645,6 +650,18 @@ function switchDaySession(newSessionId, forceFresh = false) {
     postsData = typeof getCryptoBossPreloadedSlots === 'function' ? getCryptoBossPreloadedSlots() : createEmptySlots();
   } else if (currentSessionId === 'day4') {
     postsData = typeof getDay4PreloadedSlots === 'function' ? getDay4PreloadedSlots() : createEmptySlots();
+  } else if (currentSessionId === 'day6') {
+    let savedD6 = localStorage.getItem(getDaySessionStorageKey('day6'));
+    if (savedD6) {
+      try {
+        postsData = JSON.parse(savedD6);
+      } catch (e) {
+        postsData = typeof getDay6PreloadedSlots === 'function' ? getDay6PreloadedSlots() : createEmptySlots();
+      }
+    } else {
+      postsData = typeof getDay6PreloadedSlots === 'function' ? getDay6PreloadedSlots() : createEmptySlots();
+      localStorage.setItem(getDaySessionStorageKey('day6'), JSON.stringify(postsData));
+    }
   } else if (currentSessionId === 'day5') {
     let savedD5 = localStorage.getItem(getDaySessionStorageKey('day5'));
     if (savedD5) {
@@ -655,10 +672,6 @@ function switchDaySession(newSessionId, forceFresh = false) {
       }
     } else {
       postsData = typeof getDay5PreloadedSlots === 'function' ? getDay5PreloadedSlots() : createEmptySlots();
-      // Ensure Day 4 is safely stored as baseline reference anchor in localStorage
-      if (!localStorage.getItem('byx_session_posts_day4')) {
-        localStorage.setItem('byx_session_posts_day4', JSON.stringify(getDay4PreloadedSlots()));
-      }
       localStorage.setItem(getDaySessionStorageKey('day5'), JSON.stringify(postsData));
     }
   } else {
@@ -686,11 +699,13 @@ function switchDaySession(newSessionId, forceFresh = false) {
   renderDynamicDayAudit();
   const dayLabels = {
     creator_boss: '👤 Other Creator: Crypto BOSS (Benchmark Archive)',
-    day5: 'Day 5: Thu, Oct 30 (Active Recovery Desk)',
-    day4: 'Day 4 Archive: Wed, Oct 29 (7.0 pts • 13 Posts)',
-    day3: 'Day 3 Archive: Oct 28 (10.0 pts)',
-    day2: 'Day 2 Archive: Oct 27 (11.0 pts)',
-    day1: 'Day 1 Archive: Oct 26 (9.0 pts)'
+    day7: 'Day 7: Sun, Nov 1 (Grand Finale • 75 Pt Target)',
+    day6: 'Day 6: Sat, Oct 31 (Active Desk • 12 High-Cap Setups)',
+    day5: 'Day 5 Archive: Fri, Oct 30 (19.0 pts • Winner 🏆)',
+    day4: 'Day 4 Archive: Thu, Oct 29 (7.0 pts • 13 Posts)',
+    day3: 'Day 3 Archive: Wed, Oct 28 (10.0 pts)',
+    day2: 'Day 2 Archive: Tue, Oct 27 (11.0 pts)',
+    day1: 'Day 1 Archive: Mon, Oct 26 (9.0 pts)'
   };
   showToast(`📂 Switched to ${dayLabels[currentSessionId] || currentSessionId}!`);
 }
@@ -743,7 +758,7 @@ function initSessionAndPointsHub() {
   // Header Cycle Day Button
   const btnCycleDay = document.getElementById('btnCycleDay');
   if (btnCycleDay) {
-    const cycleOrder = ['day1', 'day2', 'day3', 'day4', 'day5'];
+    const cycleOrder = ['day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7'];
     btnCycleDay.addEventListener('click', () => {
       const idx = cycleOrder.indexOf(currentSessionId);
       const nextIdx = (idx + 1) % cycleOrder.length;
@@ -773,7 +788,7 @@ function initSessionAndPointsHub() {
  */
 class SessionManager {
   constructor() {
-    this.currentSessionId = (typeof currentSessionId !== 'undefined') ? currentSessionId : 'day5';
+    this.currentSessionId = (typeof currentSessionId !== 'undefined') ? currentSessionId : 'day6';
   }
 
   getScore(sessionId) {
